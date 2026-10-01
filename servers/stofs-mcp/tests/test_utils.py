@@ -14,6 +14,7 @@ from stofs_mcp.stations import (
 )
 from stofs_mcp.utils import (
     align_timeseries,
+    compute_peak_stats,
     compute_validation_stats,
     find_nearest_station,
     format_station_table,
@@ -101,6 +102,38 @@ class TestComputeValidationStats:
     def test_mismatched_length_returns_none(self):
         stats = compute_validation_stats([1.0, 2.0], [1.0])
         assert stats["n"] == 0
+
+
+class TestComputePeakStats:
+    def test_peak_values_times_and_errors(self):
+        """Peaks, peak error and timing error come from the aligned series."""
+        times = [
+            "2022-09-28 20:00",
+            "2022-09-28 21:00",
+            "2022-09-28 22:00",
+            "2022-09-28 23:00",
+        ]
+        peak = compute_peak_stats(times, [1.0, 1.5, 2.0, 2.5], [1.0, 2.0, 3.0, 2.0])
+        assert peak["observed_peak_m"] == pytest.approx(3.0)
+        assert peak["observed_peak_time"] == "2022-09-28 22:00"
+        assert peak["forecast_peak_m"] == pytest.approx(2.5)
+        assert peak["forecast_peak_time"] == "2022-09-28 23:00"
+        assert peak["peak_error_m"] == pytest.approx(-0.5)
+        assert peak["peak_timing_error_hours"] == pytest.approx(1.0)
+        assert peak["observed_peak_at_series_end"] is False
+
+    def test_flags_observed_peak_at_series_end(self):
+        """A still-rising observed record (e.g. a gauge outage) is flagged."""
+        times = ["2022-09-28 15:00", "2022-09-28 16:00", "2022-09-28 17:00"]
+        peak = compute_peak_stats(times, [1.0, 1.2, 1.1], [1.0, 1.8, 2.3])
+        assert peak["observed_peak_at_series_end"] is True
+        assert peak["peak_timing_error_hours"] == pytest.approx(-1.0)
+
+    def test_empty_or_mismatched_returns_none(self):
+        """Empty or mismatched input yields None fields instead of raising."""
+        assert compute_peak_stats([], [], [])["observed_peak_m"] is None
+        mismatched = compute_peak_stats(["2022-09-28 15:00"], [1.0], [])
+        assert mismatched["peak_error_m"] is None
 
 
 # ---------------------------------------------------------------------------

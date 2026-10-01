@@ -977,6 +977,126 @@ class TestCompareWithObservationsErrors:
 
 
 # ---------------------------------------------------------------------------
+# Test: stofs_compare_with_observations — summary-first, hourly-capped output
+# ---------------------------------------------------------------------------
+
+
+def _six_minute_times(start: str, hours: int) -> list[str]:
+    """Consecutive 6-minute timestamps covering ``hours`` from ``start``."""
+    from datetime import datetime, timedelta
+
+    t0 = datetime.strptime(start, "%Y-%m-%d %H:%M")
+    return [
+        (t0 + timedelta(minutes=6 * i)).strftime("%Y-%m-%d %H:%M")
+        for i in range(hours * 10 + 1)
+    ]
+
+
+class TestCompareWithObservationsOutput:
+    """stofs_compare_with_observations leads with a summary and caps the series."""
+
+    # 30 h of 6-minute data starting at the 2022-09-27 18z file's first step.
+    TIMES = _six_minute_times("2022-09-27 18:06", 30)
+    # Observed peaks 1.0 m at index 200; forecast peaks 0.8 m 2 h later.
+    OBSERVED = [1.0 - abs(i - 200) / 200 for i in range(len(TIMES))]
+    FORECAST = [0.8 - abs(i - 220) / 250 for i in range(len(TIMES))]
+
+    def _ctx(self, monkeypatch):
+        """Mock ctx whose station file and CO-OPS fetch return the series above."""
+        from unittest.mock import AsyncMock
+
+        from stofs_mcp.tools import validation
+
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(return_value=None)
+        client.fetch_coops_observations = AsyncMock(
+            return_value={
+                "data": [
+                    {"t": t, "v": f"{v:.3f}"} for t, v in zip(self.TIMES, self.OBSERVED)
+                ]
+            }
+        )
+        monkeypatch.setattr(
+            validation,
+            "parse_station_netcdf",
+            lambda path, station_id: {"times": self.TIMES, "values": self.FORECAST},
+        )
+        return make_ctx(client)
+
+    async def _run(self, monkeypatch, **kwargs):
+        from stofs_mcp.tools.validation import stofs_compare_with_observations
+
+        return await stofs_compare_with_observations(
+            self._ctx(monkeypatch),
+            station_id="8725520",
+            cycle_date="2022-09-27",
+            cycle_hour="18",
+            hours_to_compare=30,
+            **kwargs,
+        )
+
+    @pytest.mark.asyncio
+    async def test_json_defaults_to_hourly_with_summary_first(self, monkeypatch):
+        """JSON returns hourly points after the summary; stats use every point."""
+        parsed = json.loads(await self._run(monkeypatch, response_format="json"))
+
+        keys = list(parsed)
+        assert keys.index("summary") < keys.index("comparison")
+        assert keys.index("statistics") < keys.index("comparison")
+        assert parsed["model_label"] == "ESTOFS-Global (STOFS-2D predecessor)"
+        assert parsed["resolution"] == "hourly"
+        assert parsed["n_points"] == parsed["total_points"] == 31
+        assert parsed["truncated"] is False
+        assert parsed["statistics"]["n"] == 301
+        assert all(c["time"].endswith(":00") for c in parsed["comparison"][1:])
+
+        summary = parsed["summary"]
+        assert summary["observed_peak_m"] == pytest.approx(1.0)
+        assert summary["observed_peak_time"] == "2022-09-28 14:06"
+        assert summary["forecast_peak_time"] == "2022-09-28 16:06"
+        assert summary["peak_error_m"] == pytest.approx(-0.2)
+        assert summary["peak_timing_error_hours"] == pytest.approx(2.0)
+        assert "bias_m" in summary and "rmse_m" in summary
+        assert "resolution_note" in parsed and "retrieved_at" in parsed
+
+    @pytest.mark.asyncio
+    async def test_full_resolution_returns_every_point(self, monkeypatch):
+        """full_resolution=True opts in to all 6-minute points."""
+        parsed = json.loads(
+            await self._run(monkeypatch, response_format="json", full_resolution=True)
+        )
+        assert parsed["resolution"] == "6-minute"
+        assert parsed["n_points"] == 301
+        assert "resolution_note" not in parsed
+
+    @pytest.mark.asyncio
+    async def test_max_points_truncates_with_hint(self, monkeypatch):
+        """max_points caps the series and stamps the truncation envelope."""
+        parsed = json.loads(
+            await self._run(
+                monkeypatch,
+                response_format="json",
+                full_resolution=True,
+                max_points=50,
+            )
+        )
+        assert parsed["truncated"] is True
+        assert parsed["n_points"] == 50
+        assert parsed["total_points"] == 301
+        assert "first 50 of 301" in parsed["hint"]
+        assert parsed["comparison"][0]["time"] == "2022-09-27 18:06"
+
+    @pytest.mark.asyncio
+    async def test_markdown_summary_precedes_series(self, monkeypatch):
+        """Markdown puts the peak table and statistics before the hourly rows."""
+        result = await self._run(monkeypatch)
+        assert result.index("Observed peak") < result.index("Time Series Comparison")
+        assert result.index("RMSE") < result.index("Time Series Comparison (hourly)")
+        assert "Showing 31 of 31 hourly points" in result
+        assert "full_resolution=true" in result
+
+
+# ---------------------------------------------------------------------------
 # Test: get_opendap_region — coverage mapping
 # ---------------------------------------------------------------------------
 
