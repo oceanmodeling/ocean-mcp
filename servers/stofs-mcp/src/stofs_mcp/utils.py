@@ -310,6 +310,55 @@ def compute_validation_stats(
     }
 
 
+def compute_peak_stats(
+    times: list[str],
+    forecast: list[float],
+    observed: list[float],
+) -> dict[str, Any]:
+    """Compare forecast and observed peaks over the same aligned timestamps.
+
+    Both maxima come from the aligned series, so they cover the same period.
+    ``observed_peak_at_series_end`` flags an observed maximum on the last
+    aligned point: the water was still rising when the record (or the gauge)
+    ended, so the true observed peak may be higher.
+
+    Args:
+        times: Aligned timestamps, 'YYYY-MM-DD HH:MM' (UTC).
+        forecast: Forecast values (m), same length as times.
+        observed: Observed values (m), same length as times.
+
+    Returns:
+        Dict with observed/forecast peak value and time, peak_error_m
+        (forecast peak minus observed peak) and peak_timing_error_hours
+        (positive means the forecast peak came later).
+    """
+    if not times or not (len(times) == len(forecast) == len(observed)):
+        return {
+            "observed_peak_m": None,
+            "observed_peak_time": None,
+            "forecast_peak_m": None,
+            "forecast_peak_time": None,
+            "peak_error_m": None,
+            "peak_timing_error_hours": None,
+            "observed_peak_at_series_end": None,
+        }
+
+    i_obs = max(range(len(observed)), key=observed.__getitem__)
+    i_fc = max(range(len(forecast)), key=forecast.__getitem__)
+    t_obs = datetime.strptime(times[i_obs], "%Y-%m-%d %H:%M")
+    t_fc = datetime.strptime(times[i_fc], "%Y-%m-%d %H:%M")
+
+    return {
+        "observed_peak_m": round(observed[i_obs], 4),
+        "observed_peak_time": times[i_obs],
+        "forecast_peak_m": round(forecast[i_fc], 4),
+        "forecast_peak_time": times[i_fc],
+        "peak_error_m": round(forecast[i_fc] - observed[i_obs], 4),
+        "peak_timing_error_hours": round((t_fc - t_obs).total_seconds() / 3600, 2),
+        "observed_peak_at_series_end": i_obs == len(observed) - 1,
+    }
+
+
 # ---------------------------------------------------------------------------
 # Time series alignment
 # ---------------------------------------------------------------------------
