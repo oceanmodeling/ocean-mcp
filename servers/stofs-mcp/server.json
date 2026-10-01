@@ -3,7 +3,7 @@
   "name": "io.github.oceanmodeling/stofs-mcp",
   "title": "NOAA STOFS MCP Server",
   "description": "NOAA STOFS storm surge forecasts, observation validation, and OPeNDAP data",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "repository": {
     "url": "https://github.com/oceanmodeling/ocean-mcp",
     "source": "github"
@@ -12,7 +12,7 @@
     {
       "registryType": "pypi",
       "identifier": "stofs-mcp",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "runtimeHint": "uvx",
       "transport": {
         "type": "stdio"

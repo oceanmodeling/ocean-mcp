@@ -3,7 +3,7 @@
   "name": "io.github.oceanmodeling/ofs-mcp",
   "title": "NOAA OFS MCP Server",
   "description": "NOAA OFS regional ocean model forecasts — water level, temperature, salinity",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": {
     "url": "https://github.com/oceanmodeling/ocean-mcp",
     "source": "github"
@@ -12,7 +12,7 @@
     {
       "registryType": "pypi",
       "identifier": "ofs-mcp",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "runtimeHint": "uvx",
       "transport": {
         "type": "stdio"

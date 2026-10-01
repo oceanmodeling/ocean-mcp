@@ -3,7 +3,7 @@
   "name": "io.github.oceanmodeling/schism-mcp",
   "title": "SCHISM Model Setup MCP Server",
   "description": "SCHISM model configuration debugging, parameter lookup, and validation",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": {
     "url": "https://github.com/oceanmodeling/ocean-mcp",
     "source": "github"
@@ -12,7 +12,7 @@
     {
       "registryType": "pypi",
       "identifier": "schism-mcp",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "runtimeHint": "uvx",
       "transport": {
         "type": "stdio"

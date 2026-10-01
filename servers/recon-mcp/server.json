@@ -3,7 +3,7 @@
   "name": "io.github.oceanmodeling/recon-mcp",
   "title": "NOAA Recon MCP Server",
   "description": "Hurricane reconnaissance data — HDOB flight observations, Vortex Data Messages, SFMR, and ATCF fixes",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "repository": {
     "url": "https://github.com/oceanmodeling/ocean-mcp",
     "source": "github"
@@ -12,7 +12,7 @@
     {
       "registryType": "pypi",
       "identifier": "recon-mcp",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "runtimeHint": "uvx",
       "transport": {
         "type": "stdio"

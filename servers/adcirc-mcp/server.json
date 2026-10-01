@@ -3,7 +3,7 @@
   "name": "io.github.oceanmodeling/adcirc-mcp",
   "title": "ADCIRC Model Setup MCP Server",
   "description": "ADCIRC model configuration debugging, parameter lookup, and validation",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "repository": {
     "url": "https://github.com/oceanmodeling/ocean-mcp",
     "source": "github"
@@ -12,7 +12,7 @@
     {
       "registryType": "pypi",
       "identifier": "adcirc-mcp",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "runtimeHint": "uvx",
       "transport": {
         "type": "stdio"

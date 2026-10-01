@@ -3,7 +3,7 @@
   "name": "io.github.oceanmodeling/nhc-mcp",
   "title": "NHC MCP Server",
   "description": "NHC storm tracks, forecast advisories, watches/warnings, and HURDAT2 data",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": {
     "url": "https://github.com/oceanmodeling/ocean-mcp",
     "source": "github"
@@ -12,7 +12,7 @@
     {
       "registryType": "pypi",
       "identifier": "nhc-mcp",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "runtimeHint": "uvx",
       "transport": {
         "type": "stdio"

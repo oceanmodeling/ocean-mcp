@@ -3,7 +3,7 @@
   "name": "io.github.oceanmodeling/usgs-mcp",
   "title": "USGS Water Services MCP Server",
   "description": "USGS Water Services streamflow, flood stages, and peak events via waterservices.usgs.gov",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": {
     "url": "https://github.com/oceanmodeling/ocean-mcp",
     "source": "github"
@@ -12,7 +12,7 @@
     {
       "registryType": "pypi",
       "identifier": "usgs-mcp",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "runtimeHint": "uvx",
       "transport": {
         "type": "stdio"
