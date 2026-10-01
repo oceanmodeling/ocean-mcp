@@ -35,6 +35,26 @@ MODEL_CYCLES = {
     "3d_atlantic": ["12"],
 }
 
+# STOFS-2D-Global ran as ESTOFS-Global before this date. The S3 archive files
+# earlier cycles under estofs.YYYYMMDD/ (from 20201230); stofs_2d_glo.YYYYMMDD/
+# starts here. Station-file layout is identical across the rename.
+ESTOFS_CUTOVER_DATE = "20230108"
+
+
+def get_model_label(model: str, date: str | None = None) -> str:
+    """Human-readable model name, naming ESTOFS for pre-cutover 2D cycles.
+
+    Args:
+        model: '2d_global' or '3d_atlantic'.
+        date: Cycle date in YYYYMMDD format, if known.
+    """
+    if model != "2d_global":
+        return "STOFS-3D-Atlantic"
+    if date and date < ESTOFS_CUTOVER_DATE:
+        return "ESTOFS-Global (STOFS-2D predecessor)"
+    return "STOFS-2D-Global"
+
+
 # Datum used by each model in station files
 MODEL_DATUMS = {
     "2d_global": "LMSL",  # Local Mean Sea Level

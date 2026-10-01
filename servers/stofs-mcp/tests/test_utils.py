@@ -4,6 +4,7 @@ import math
 import pytest
 
 from stofs_mcp.client import STOFSClient
+from stofs_mcp.models import get_model_label
 from stofs_mcp.stations import (
     STOFS_STATIONS,
     filter_by_proximity,
@@ -167,6 +168,44 @@ class TestBuildStationUrl:
     def test_invalid_model_raises(self):
         with pytest.raises(ValueError, match="Unknown model"):
             self.client.build_station_url("invalid_model", "20260219", "12", "cwl")
+
+    def test_2d_global_pre_cutover_uses_estofs_archive(self):
+        """Cycles before 2023-01-08 resolve to the estofs.* archive prefix."""
+        url = self.client.build_station_url("2d_global", "20220927", "00", "cwl")
+        assert url == (
+            "https://noaa-gestofs-pds.s3.amazonaws.com/estofs.20220927/"
+            "estofs.t00z.points.cwl.nc"
+        )
+
+    def test_2d_global_cutover_day_uses_stofs_prefix(self):
+        """The cutover date itself is the first stofs_2d_glo.* directory."""
+        url = self.client.build_station_url("2d_global", "20230108", "00", "cwl")
+        assert "/stofs_2d_glo.20230108/stofs_2d_glo.t00z.points.cwl.nc" in url
+
+    def test_3d_atlantic_ignores_cutover(self):
+        """The ESTOFS fallback applies only to the 2D-Global model."""
+        url = self.client.build_station_url("3d_atlantic", "20220927", "12", "cwl")
+        assert "STOFS-3D-Atl/stofs_3d_atl.20220927" in url
+
+
+class TestGetModelLabel:
+    def test_2d_global_current(self):
+        """Post-cutover 2D cycles are labelled STOFS-2D-Global."""
+        assert get_model_label("2d_global", "20260219") == "STOFS-2D-Global"
+
+    def test_2d_global_pre_cutover(self):
+        """Pre-cutover 2D cycles are labelled as ESTOFS-Global."""
+        assert get_model_label("2d_global", "20220927") == (
+            "ESTOFS-Global (STOFS-2D predecessor)"
+        )
+
+    def test_2d_global_without_date(self):
+        """No date falls back to the current model name."""
+        assert get_model_label("2d_global") == "STOFS-2D-Global"
+
+    def test_3d_atlantic(self):
+        """3D-Atlantic is never relabelled."""
+        assert get_model_label("3d_atlantic", "20220927") == "STOFS-3D-Atlantic"
 
 
 # ---------------------------------------------------------------------------

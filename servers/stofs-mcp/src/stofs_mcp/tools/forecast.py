@@ -11,7 +11,13 @@ from mcp.server.fastmcp import Context
 from mcp.types import ToolAnnotations
 
 from ..client import STOFSClient
-from ..models import MODEL_DATUMS, Region, STOFSModel, STOFSProduct
+from ..models import (
+    MODEL_DATUMS,
+    Region,
+    STOFSModel,
+    STOFSProduct,
+    get_model_label,
+)
 from ..server import mcp
 from ..utils import (
     _haversine,
@@ -129,9 +135,7 @@ async def stofs_get_station_forecast(
             )
 
         datum = MODEL_DATUMS.get(model.value, "unknown")
-        model_label = (
-            "STOFS-2D-Global" if model.value == "2d_global" else "STOFS-3D-Atlantic"
-        )
+        model_label = get_model_label(model.value, date_str)
         product_label = {
             "cwl": "Combined Water Level (tide + surge)",
             "htp": "Harmonic Tidal Prediction",
@@ -257,9 +261,7 @@ async def stofs_get_point_forecast(
         values = data["values"]
 
         datum = MODEL_DATUMS.get(model.value, "unknown")
-        model_label = (
-            "STOFS-2D-Global" if model.value == "2d_global" else "STOFS-3D-Atlantic"
-        )
+        model_label = get_model_label(model.value, date_str)
 
         if response_format == "json":
             return _cap_series_json(
@@ -423,9 +425,7 @@ async def stofs_get_max_water_level(
         rows = rows[:top_n]
 
         datum = MODEL_DATUMS.get(model.value, "unknown")
-        model_label = (
-            "STOFS-2D-Global" if model.value == "2d_global" else "STOFS-3D-Atlantic"
-        )
+        model_label = get_model_label(model.value, date_str)
 
         if response_format == "json":
             return json.dumps(
