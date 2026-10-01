@@ -1096,6 +1096,82 @@ class TestCompareWithObservationsOutput:
         assert "full_resolution=true" in result
 
 
+class TestCompareWithObservationsPeakCutOff:
+    """A peak cut off by the window or by a gauge outage is called out."""
+
+    TIMES = _six_minute_times("2024-09-25 18:06", 30)
+    # Water still rising at the end of the record.
+    RISING = [i / 100 for i in range(len(TIMES))]
+
+    def _ctx(self, monkeypatch, n_obs):
+        """Station file covers all of TIMES; observations stop after n_obs points."""
+        from unittest.mock import AsyncMock
+
+        from stofs_mcp.tools import validation
+
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(return_value=None)
+        client.fetch_coops_observations = AsyncMock(
+            return_value={
+                "data": [
+                    {"t": t, "v": f"{v:.3f}"}
+                    for t, v in zip(self.TIMES[:n_obs], self.RISING[:n_obs])
+                ]
+            }
+        )
+        monkeypatch.setattr(
+            validation,
+            "parse_station_netcdf",
+            lambda path, station_id: {"times": self.TIMES, "values": self.RISING},
+        )
+        return make_ctx(client)
+
+    async def _run(self, monkeypatch, n_obs, **kwargs):
+        from stofs_mcp.tools.validation import stofs_compare_with_observations
+
+        return await stofs_compare_with_observations(
+            self._ctx(monkeypatch, n_obs),
+            station_id="8727520",
+            cycle_date="2024-09-26",
+            cycle_hour="00",
+            hours_to_compare=30,
+            **kwargs,
+        )
+
+    def test_default_window_covers_three_days(self):
+        """The default window is 72 h, so a cycle a day out reaches the landfall peak."""
+        import inspect
+
+        from stofs_mcp.tools.validation import stofs_compare_with_observations
+
+        params = inspect.signature(stofs_compare_with_observations).parameters
+        assert params["hours_to_compare"].default == 72
+
+    @pytest.mark.asyncio
+    async def test_window_cut_off_suggests_longer_window(self, monkeypatch):
+        """Still rising at the window end -> tell the caller to widen the window."""
+        result = await self._run(monkeypatch, n_obs=len(self.TIMES))
+        assert "**Note:**" in result
+        assert "larger hours_to_compare (now 30 h, max 96)" in result
+
+    @pytest.mark.asyncio
+    async def test_gauge_outage_is_not_blamed_on_window(self, monkeypatch):
+        """Observations ending early point to the gauge, not to the window length."""
+        result = await self._run(monkeypatch, n_obs=200)
+        assert "the gauge may have failed" in result
+        assert "hours_to_compare" not in result.split("**Note:**")[1].split("\n")[0]
+
+    @pytest.mark.asyncio
+    async def test_json_carries_peak_note(self, monkeypatch):
+        """The JSON response includes the same note as peak_note."""
+        parsed = json.loads(
+            await self._run(monkeypatch, n_obs=len(self.TIMES), response_format="json")
+        )
+        assert "larger hours_to_compare" in parsed["peak_note"]
+        keys = list(parsed)
+        assert keys.index("peak_note") < keys.index("comparison")
+
+
 # ---------------------------------------------------------------------------
 # Test: get_opendap_region — coverage mapping
 # ---------------------------------------------------------------------------

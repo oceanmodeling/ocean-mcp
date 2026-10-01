@@ -72,7 +72,7 @@ async def stofs_compare_with_observations(
     model: STOFSModel = STOFSModel.GLOBAL_2D,
     cycle_date: str | None = None,
     cycle_hour: str | None = None,
-    hours_to_compare: int = 24,
+    hours_to_compare: int = 72,
     full_resolution: bool = False,
     max_points: int = 2000,
     response_format: Literal["markdown", "json"] = "markdown",
@@ -95,7 +95,7 @@ async def stofs_compare_with_observations(
         model: '2d_global' or '3d_atlantic'.
         cycle_date: Date in YYYY-MM-DD format. Default: latest.
         cycle_hour: Cycle hour '00', '06', '12', '18'. Default: latest.
-        hours_to_compare: Hours from the start of the file (default 24, max 96).
+        hours_to_compare: Hours from the start of the file (default 72, max 96).
         full_resolution: Return every 6-minute point instead of hourly points.
         max_points: Maximum series points to return (default 2000).
         response_format: 'markdown' or 'json'.
@@ -218,6 +218,36 @@ async def stofs_compare_with_observations(
         stats = compute_validation_stats(aligned_stofs, aligned_obs)
         peak = compute_peak_stats(common_times, aligned_stofs, aligned_obs)
 
+        # An observed maximum on the last aligned point means the peak was cut
+        # off: either the window ends too early or the gauge stopped reporting.
+        # Say which, so the caller can widen the window instead of concluding
+        # from a truncated record.
+        peak_note = None
+        if peak["observed_peak_at_series_end"]:
+            last_obs = parse_t(common_times[-1])
+            if t_end - last_obs <= timedelta(hours=1):
+                if hours_to_compare < 96:
+                    peak_note = (
+                        "The observed water level was still rising at the end of "
+                        f"the comparison window ({common_times[-1]} UTC), so the "
+                        "peak is outside it. Re-run with a larger hours_to_compare "
+                        f"(now {hours_to_compare} h, max 96) to capture the peak "
+                        "before drawing conclusions."
+                    )
+                else:
+                    peak_note = (
+                        "The observed water level was still rising at the end of "
+                        "the 96 h maximum window, so the peak is outside it. Use a "
+                        "later cycle to capture the peak."
+                    )
+            else:
+                peak_note = (
+                    f"Observations stop at {common_times[-1]} UTC, before the "
+                    f"comparison window ends ({t_end:%Y-%m-%d %H:%M} UTC), while "
+                    "the water was still rising: the gauge may have failed, so the "
+                    "true observed peak is likely higher."
+                )
+
         stofs_datum = MODEL_DATUMS.get(model.value, "unknown")
         model_label = get_model_label(model.value, date_str)
         datum_note = (
@@ -258,6 +288,7 @@ async def stofs_compare_with_observations(
                     "bias_m": stats["bias"],
                     "rmse_m": stats["rmse"],
                 },
+                **({"peak_note": peak_note} if peak_note else {}),
                 "statistics": stats,
                 "resolution": resolution,
                 "n_points": len(selected),
@@ -308,13 +339,8 @@ async def stofs_compare_with_observations(
             f"| Peak timing error | {peak['peak_timing_error_hours']:+.1f} h "
             "(positive = forecast later) | |",
         ]
-        if peak["observed_peak_at_series_end"]:
-            lines += [
-                "",
-                "*The observed maximum is the last overlapping point: water was "
-                "still rising when the record ended (gauge outage or short window), "
-                "so the true observed peak may be higher.*",
-            ]
+        if peak_note:
+            lines += ["", f"**Note:** {peak_note}"]
         lines += [
             "",
             f"### Summary Statistics (all {stats['n']} 6-minute points)",
