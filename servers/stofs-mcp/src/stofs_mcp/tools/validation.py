@@ -11,7 +11,12 @@ from mcp.server.fastmcp import Context
 from mcp.types import ToolAnnotations
 
 from ..client import STOFSClient
-from ..models import COOPS_VALIDATION_DATUMS, MODEL_DATUMS, STOFSModel
+from ..models import (
+    COOPS_VALIDATION_DATUMS,
+    MODEL_DATUMS,
+    STOFSModel,
+    get_model_label,
+)
 from ..server import mcp
 from ..utils import (
     align_timeseries,
@@ -176,9 +181,7 @@ async def stofs_compare_with_observations(
         stats = compute_validation_stats(aligned_stofs, aligned_obs)
 
         stofs_datum = MODEL_DATUMS.get(model.value, "unknown")
-        model_label = (
-            "STOFS-2D-Global" if model.value == "2d_global" else "STOFS-3D-Atlantic"
-        )
+        model_label = get_model_label(model.value, date_str)
         datum_note = (
             f"STOFS datum: **{stofs_datum}** | CO-OPS datum: **{coops_datum}** "
             "— small systematic offsets (1–5 cm) are expected"

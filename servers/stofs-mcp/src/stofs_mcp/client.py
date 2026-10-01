@@ -10,6 +10,8 @@ from typing import Any
 
 import httpx
 
+from .models import ESTOFS_CUTOVER_DATE
+
 S3_BASE_2D = "https://noaa-gestofs-pds.s3.amazonaws.com"
 S3_BASE_3D = "https://noaa-nos-stofs3d-pds.s3.amazonaws.com"
 NOMADS_BASE = "https://nomads.ncep.noaa.gov/pub/data/nccf/com/stofs/prod"
@@ -195,9 +197,10 @@ class STOFSClient:
             Full HTTPS URL to the station NetCDF file.
         """
         if model == "2d_global":
+            # Pre-cutover cycles are archived under the ESTOFS name.
+            prefix = "estofs" if date < ESTOFS_CUTOVER_DATE else "stofs_2d_glo"
             return (
-                f"{S3_BASE_2D}/stofs_2d_glo.{date}/"
-                f"stofs_2d_glo.t{cycle}z.points.{product}.nc"
+                f"{S3_BASE_2D}/{prefix}.{date}/{prefix}.t{cycle}z.points.{product}.nc"
             )
         elif model == "3d_atlantic":
             return (
