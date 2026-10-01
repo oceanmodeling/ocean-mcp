@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "stofs-mcp"
-version = "0.1.0"
+version = "0.2.0"
 description = "MCP server for NOAA STOFS storm surge forecast access and validation against CO-OPS observations"
 readme = "README.md"
 license = "MIT"

@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "recon-mcp"
-version = "0.1.1"
+version = "0.1.2"
 description = "MCP server for NOAA hurricane reconnaissance data (HDOB, VDM, ATCF fixes)"
 readme = "README.md"
 license = "MIT"

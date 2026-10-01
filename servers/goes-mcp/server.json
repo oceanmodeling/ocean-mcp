@@ -3,7 +3,7 @@
   "name": "io.github.oceanmodeling/goes-mcp",
   "title": "NOAA GOES Satellite Imagery MCP Server",
   "description": "GOES-18/19 satellite imagery — visible, infrared, water vapor, and composites via NOAA",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "repository": {
     "url": "https://github.com/oceanmodeling/ocean-mcp",
     "source": "github"
@@ -12,7 +12,7 @@
     {
       "registryType": "pypi",
       "identifier": "goes-mcp",
-      "version": "0.1.2",
+      "version": "0.1.3",
       "runtimeHint": "uvx",
       "transport": {
         "type": "stdio"
