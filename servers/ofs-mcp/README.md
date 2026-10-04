@@ -18,11 +18,11 @@ OFS comprises ~15 regional ocean models providing 48–72 hour forecasts of wate
 | `dbofs` | Delaware Bay OFS | ROMS | Delaware Bay, DE/NJ |
 | `gomofs` | Gulf of Maine OFS | ROMS | Gulf of Maine, ME/MA |
 | `ngofs2` | N. Gulf of Mexico OFS v2 | FVCOM | Gulf Coast, LA/TX |
-| `nyofs` | New York/NJ Harbor OFS | FVCOM | NY Harbor, NY/NJ |
+| `nyofs` | New York/NJ Harbor OFS | POM | NY Harbor, NY/NJ |
 | `sfbofs` | San Francisco Bay OFS | FVCOM | San Francisco Bay, CA |
-| `tbofs` | Tampa Bay OFS | FVCOM | Tampa Bay, FL |
+| `tbofs` | Tampa Bay OFS | ROMS | Tampa Bay, FL |
 | `wcofs` | West Coast OFS | ROMS | US West Coast, CA–WA |
-| `ciofs` | Cook Inlet OFS | FVCOM | Cook Inlet, AK |
+| `ciofs` | Cook Inlet OFS | ROMS | Cook Inlet, AK |
 
 All models run 4× daily (2× for WCOFS) at 00, 06, 12, 18 UTC with 6-minute output resolution.
 

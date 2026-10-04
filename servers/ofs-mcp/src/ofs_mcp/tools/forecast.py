@@ -401,8 +401,18 @@ async def ofs_compare_with_coops(
                 "land/masked or outside the model domain."
             )
         if from_s3_fallback and cleaned["is_sparse"]:
-            # One S3 hour can't be compared to an observation time series, and
-            # this model has no FMRC aggregation to provide a continuous one.
+            # One S3 hour can't be compared to an observation time series.
+            # Either the model has no FMRC aggregation, or it has one that
+            # failed to open (THREDDS is intermittently unavailable).
+            if model_info.get("has_fmrc", False):
+                return (
+                    f"{model_name}'s THREDDS FMRC aggregation could not be "
+                    f"opened ({opendap_error}), and the S3 fallback holds only "
+                    f"a single forecast hour (files are 50–120 MB each) — not "
+                    f"enough to validate against the CO-OPS series at "
+                    f"{station_name}. THREDDS outages are usually brief; try "
+                    f"again shortly."
+                )
             return (
                 f"{model_name} has no FMRC aggregation, so only a single "
                 f"forecast hour is retrievable from S3 (files are 50–120 MB "

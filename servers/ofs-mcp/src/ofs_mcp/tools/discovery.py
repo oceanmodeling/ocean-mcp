@@ -159,7 +159,7 @@ async def ofs_get_model_info(
             "",
             f"- **Model ID**: `{model.value}`",
             f"- **Grid type**: {info['grid_type'].upper()} "
-            f"({'structured curvilinear' if info['grid_type'] == 'roms' else 'unstructured triangular'})",
+            f"({'unstructured triangular' if info['grid_type'] == 'fvcom' else 'structured curvilinear'})",
             f"- **Domain**: {info['domain_desc']}",
             f"- **Bounding box**: {domain['lat_min']}–{domain['lat_max']}°N, "
             f"{domain['lon_min']}–{domain['lon_max']}°E",

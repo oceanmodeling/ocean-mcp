@@ -10,6 +10,8 @@ from ofs_mcp.utils import (
     align_timeseries,
     clean_timeseries,
     compute_validation_stats,
+    _read_point_series,
+    extract_point_timeseries,
     find_nearest_fvcom,
     find_nearest_roms,
     haversine,
@@ -416,3 +418,281 @@ def test_all_models_have_has_fmrc_flag():
     for model_id, info in OFS_MODELS.items():
         assert "has_fmrc" in info, f"Model '{model_id}' missing has_fmrc flag"
         assert isinstance(info["has_fmrc"], bool)
+
+
+# ---------------------------------------------------------------------------
+# Point extraction from the NetCDF layouts NOAA actually serves
+# ---------------------------------------------------------------------------
+
+# Grid used by every structured fixture: 3 x 4 cells, lat 39.0-39.2,
+# lon -76.0 to -75.7. The target (39.1, -75.8) is cell (i=1, j=2).
+_NT, _NY, _NX = 6, 3, 4
+_TARGET = (39.1, -75.8)
+_FMRC_UNITS = "hours since 2026-09-26 01:00:00.000 UTC"
+
+
+def _cell_value(k: int, i: int, j: int) -> float:
+    """Value written at time k, cell (i, j): identifies both in the result."""
+    return k + 0.01 * (i * _NX + j)
+
+
+def _write_structured(
+    path,
+    *,
+    time_name: str = "time",
+    stray_ocean_time: bool = False,
+    lon_name: str = "lon_rho",
+    lat_name: str = "lat_rho",
+    ydim: str = "eta_rho",
+    xdim: str = "xi_rho",
+    level_dim: str | None = None,
+    time_coordinate: bool = True,
+    land: tuple[int, int] | None = None,
+    dry: tuple[int, int] | None = None,
+    nan_steps: tuple[int, ...] = (),
+):
+    """Write a tiny structured-grid file (ROMS or POM layout).
+
+    ``land`` marks one cell mask_rho = 0, ``dry`` gives one cell h < 0 (a
+    tidal flat on a wetting/drying grid), and ``nan_steps`` puts NaN into the
+    target cell at those time steps.
+    """
+    import netCDF4
+    import numpy as np
+
+    with netCDF4.Dataset(path, "w") as nc:
+        nc.createDimension(time_name, _NT)
+        nc.createDimension(ydim, _NY)
+        nc.createDimension(xdim, _NX)
+        if time_coordinate:
+            t = nc.createVariable(time_name, "f8", (time_name,))
+            t.units = _FMRC_UNITS
+            t[:] = np.arange(_NT)
+        if stray_ocean_time:
+            # FMRC leftover: a length-1 ocean_time beside the real time axis.
+            nc.createDimension("ocean_time", 1)
+            ot = nc.createVariable("ocean_time", "f8", ("ocean_time",))
+            ot.units = "seconds since 2016-01-01 00:00:00"
+            ot[:] = [3.396e8]
+        lon = nc.createVariable(lon_name, "f8", (ydim, xdim))
+        lat = nc.createVariable(lat_name, "f8", (ydim, xdim))
+        lon[:] = np.tile(-76.0 + 0.1 * np.arange(_NX), (_NY, 1))
+        lat[:] = np.tile((39.0 + 0.1 * np.arange(_NY))[:, None], (1, _NX))
+        zeta = nc.createVariable("zeta", "f4", (time_name, ydim, xdim))
+        values = np.array(
+            [
+                [[_cell_value(k, i, j) for j in range(_NX)] for i in range(_NY)]
+                for k in range(_NT)
+            ],
+            dtype="f4",
+        )
+        for k in nan_steps:
+            values[k, 1, 2] = np.nan
+        zeta[:] = values
+        if land is not None:
+            mask = nc.createVariable("mask_rho", "f8", (ydim, xdim))
+            grid = np.ones((_NY, _NX))
+            grid[land] = 0.0
+            mask[:] = grid
+        if dry is not None:
+            h = nc.createVariable("h", "f8", (ydim, xdim))
+            grid = np.full((_NY, _NX), 10.0)
+            grid[dry] = -7.0
+            h[:] = grid
+        if level_dim:
+            nc.createDimension(level_dim, 3)
+            temp = nc.createVariable("temp", "f4", (time_name, level_dim, ydim, xdim))
+            # Value = level index, so the test can see which level was taken.
+            temp[:] = np.broadcast_to(
+                np.arange(3, dtype="f4")[None, :, None, None], (_NT, 3, _NY, _NX)
+            )
+
+
+def _write_fvcom(path, *, with_siglay: bool = False):
+    """Write a tiny FVCOM-layout file: 1-D node coordinates, zeta(time, node)."""
+    import netCDF4
+    import numpy as np
+
+    with netCDF4.Dataset(path, "w") as nc:
+        nc.createDimension("time", _NT)
+        nc.createDimension("node", 3)
+        t = nc.createVariable("time", "f8", ("time",))
+        t.units = "days since 2026-10-01 00:00:00"
+        t[:] = np.arange(_NT) / 24.0
+        lon = nc.createVariable("lon", "f8", ("node",))
+        lat = nc.createVariable("lat", "f8", ("node",))
+        lon[:] = [-90.0, -89.5, -89.0]
+        lat[:] = [29.0, 29.5, 30.0]
+        zeta = nc.createVariable("zeta", "f4", ("time", "node"))
+        zeta[:] = [[k + 0.1 * n for n in range(3)] for k in range(_NT)]
+        if with_siglay:
+            nc.createDimension("siglay", 3)
+            temp = nc.createVariable("temp", "f4", ("time", "siglay", "node"))
+            temp[:] = np.broadcast_to(
+                np.arange(3, dtype="f4")[None, :, None], (_NT, 3, 3)
+            )
+
+
+def _open(path):
+    import netCDF4
+
+    return netCDF4.Dataset(path)
+
+
+# netCDF4 1.7 itself sets .shape on arrays it writes, which NumPy 2.5
+# deprecates; only these fixtures write files.
+@pytest.mark.filterwarnings(
+    "ignore:Setting the shape on a NumPy array:DeprecationWarning"
+)
+class TestExtractPointTimeseries:
+    """extract_point_timeseries on the file layouts the live services serve."""
+
+    def test_fmrc_layout_reads_time_from_the_variable(self, tmp_path):
+        """FMRC: zeta on 'time' beside a stray length-1 'ocean_time' gives the full series."""
+        path = tmp_path / "cbofs_fmrc.nc"
+        _write_structured(path, stray_ocean_time=True)
+        with _open(path) as nc:
+            out = extract_point_timeseries(nc, "cbofs", "water_level", *_TARGET)
+        assert len(out["times"]) == _NT
+        assert out["times"][0] == "2026-09-26 01:00"
+        assert out["times"][-1] == "2026-09-26 06:00"
+        assert out["values"] == [round(_cell_value(k, 1, 2), 4) for k in range(_NT)]
+
+    def test_s3_roms_layout_uses_ocean_time(self, tmp_path):
+        """S3 ROMS files put zeta on 'ocean_time'; that axis is used."""
+        path = tmp_path / "cbofs_s3.nc"
+        _write_structured(path, time_name="ocean_time")
+        with _open(path) as nc:
+            out = extract_point_timeseries(nc, "cbofs", "water_level", *_TARGET)
+        assert len(out["values"]) == _NT
+
+    def test_grid_layout_comes_from_the_file(self, tmp_path):
+        """A ROMS file is read as ROMS even when the registry says FVCOM."""
+        path = tmp_path / "roms_under_fvcom_entry.nc"
+        _write_structured(path, stray_ocean_time=True)
+        with _open(path) as nc:
+            out = extract_point_timeseries(nc, "sfbofs", "water_level", *_TARGET)
+        assert out["values"][0] == round(_cell_value(0, 1, 2), 4)
+        assert (out["lat"], out["lon"]) == pytest.approx(_TARGET)
+
+    def test_pom_layout(self, tmp_path):
+        """NYOFS (POM): 2-D lon/lat on (ny, nx) is a structured grid."""
+        path = tmp_path / "nyofs_fmrc.nc"
+        _write_structured(path, lon_name="lon", lat_name="lat", ydim="ny", xdim="nx")
+        with _open(path) as nc:
+            out = extract_point_timeseries(nc, "nyofs", "water_level", *_TARGET)
+        assert out["values"] == [round(_cell_value(k, 1, 2), 4) for k in range(_NT)]
+
+    def test_fvcom_layout(self, tmp_path):
+        """FVCOM: 1-D node coordinates, value taken at the nearest node."""
+        path = tmp_path / "ngofs2.nc"
+        _write_fvcom(path)
+        with _open(path) as nc:
+            out = extract_point_timeseries(nc, "ngofs2", "water_level", 29.5, -89.5)
+        assert out["values"] == [round(k + 0.1, 4) for k in range(_NT)]
+        assert out["times"][1] == "2026-10-01 01:00"
+
+    def test_roms_surface_is_the_last_level(self, tmp_path):
+        """ROMS s_rho counts up from the bottom: surface temperature is the last level."""
+        path = tmp_path / "roms_temp.nc"
+        _write_structured(path, stray_ocean_time=True, level_dim="s_rho")
+        with _open(path) as nc:
+            out = extract_point_timeseries(nc, "cbofs", "temperature", *_TARGET)
+        assert set(out["values"]) == {2.0}
+
+    def test_pom_surface_is_the_first_level(self, tmp_path):
+        """POM sigma counts down from the surface: surface is level 0."""
+        path = tmp_path / "pom_temp.nc"
+        _write_structured(
+            path,
+            lon_name="lon",
+            lat_name="lat",
+            ydim="ny",
+            xdim="nx",
+            level_dim="sigma",
+        )
+        with _open(path) as nc:
+            out = extract_point_timeseries(nc, "nyofs", "temperature", *_TARGET)
+        assert set(out["values"]) == {0.0}
+
+    def test_fvcom_surface_is_the_first_siglay(self, tmp_path):
+        """FVCOM siglay index 0 is the surface layer."""
+        path = tmp_path / "fvcom_temp.nc"
+        _write_fvcom(path, with_siglay=True)
+        with _open(path) as nc:
+            out = extract_point_timeseries(nc, "ngofs2", "temperature", 29.5, -89.5)
+        assert set(out["values"]) == {0.0}
+
+    def test_land_cell_is_skipped(self, tmp_path):
+        """When the nearest cell is land, the nearest water cell is used."""
+        path = tmp_path / "land_nearest.nc"
+        _write_structured(path, stray_ocean_time=True, land=(1, 2))
+        with _open(path) as nc:
+            out = extract_point_timeseries(nc, "cbofs", "water_level", *_TARGET)
+        assert (out["lat"], out["lon"]) != pytest.approx(_TARGET)
+        assert out["values"][0] != round(_cell_value(0, 1, 2), 4)
+        assert len(out["values"]) == _NT
+
+    def test_dry_cell_with_negative_depth_is_skipped(self, tmp_path):
+        """A tidal-flat cell (water in the mask, h < 0) is not used."""
+        path = tmp_path / "dry_nearest.nc"
+        _write_structured(path, stray_ocean_time=True, land=(0, 0), dry=(1, 2))
+        with _open(path) as nc:
+            out = extract_point_timeseries(nc, "ciofs", "water_level", *_TARGET)
+        assert out["values"][0] != round(_cell_value(0, 1, 2), 4)
+
+    def test_nan_values_are_dropped(self, tmp_path):
+        """NaN gaps in an FMRC series count as fill, not as values."""
+        path = tmp_path / "nan_gaps.nc"
+        _write_structured(path, stray_ocean_time=True, nan_steps=(1, 4))
+        with _open(path) as nc:
+            out = extract_point_timeseries(nc, "nyofs", "water_level", *_TARGET)
+        assert len(out["values"]) == _NT - 2
+        assert out["fill_count"] == 2
+        assert "2026-09-26 02:00" not in out["times"]
+
+    def test_mismatched_time_axis_raises(self, tmp_path):
+        """With no coordinate for zeta's time dimension, a length-1 fallback is refused."""
+        path = tmp_path / "no_time_coordinate.nc"
+        _write_structured(
+            path, time_name="t", time_coordinate=False, stray_ocean_time=True
+        )
+        with _open(path) as nc:
+            with pytest.raises(RuntimeError, match="refusing to pair"):
+                extract_point_timeseries(nc, "cbofs", "water_level", *_TARGET)
+
+
+class _FlakyVariable:
+    """Stand-in for an OPeNDAP variable whose time steps >= ``bad_from`` fail."""
+
+    def __init__(self, n: int, bad_from: int):
+        import numpy as np
+
+        self.shape = (n, 2)
+        self._data = np.arange(n * 2, dtype=float).reshape(n, 2)
+        self._bad_from = bad_from
+
+    def __getitem__(self, key):
+        t = key[0]
+        stop = self.shape[0] if t.stop is None else t.stop
+        if stop > self._bad_from:
+            raise RuntimeError("NetCDF: DAP failure")
+        return self._data[key]
+
+
+class TestReadPointSeries:
+    """_read_point_series around partly unreadable FMRC aggregations."""
+
+    def test_unreadable_tail_becomes_nan(self):
+        """A failing newest run leaves NaN only where it could not be read."""
+        import numpy as np
+
+        out = _read_point_series(_FlakyVariable(60, bad_from=50), (1,), chunk=24)
+        assert np.isfinite(out[:48]).all()
+        assert np.isnan(out[48:]).all()
+        assert out[47] == 47 * 2 + 1
+
+    def test_nothing_readable_reraises(self):
+        """If no chunk can be read, the original error propagates."""
+        with pytest.raises(RuntimeError, match="DAP failure"):
+            _read_point_series(_FlakyVariable(30, bad_from=0), (0,), chunk=10)

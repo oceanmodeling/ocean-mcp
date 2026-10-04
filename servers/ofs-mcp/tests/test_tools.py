@@ -1003,7 +1003,7 @@ def _force_s3_fallback(monkeypatch, client, extracted):
     import tempfile
 
     def _raise_opendap(_model):
-        raise RuntimeError("no FMRC aggregation")
+        raise RuntimeError("OPeNDAP connection failed")
 
     async def _cycle(_model, num_days=2):
         return ("20260519", "03")
@@ -1085,8 +1085,8 @@ class TestS3SingleHourFallback:
         assert "single forecast hour" not in result
 
     @respx.mock
-    async def test_compare_single_hour_explains_no_fmrc(self, client, monkeypatch):
-        """Compare can't use one hour — say why (no FMRC), not 'no data'."""
+    async def test_compare_single_hour_explains_fmrc_failure(self, client, monkeypatch):
+        """An FMRC model whose aggregation fails to open says so, not 'no FMRC'."""
         from ofs_mcp.tools.forecast import ofs_compare_with_coops
 
         respx.get(url__startswith="https://api.tidesandcurrents.noaa.gov/mdapi/").mock(
@@ -1110,7 +1110,41 @@ class TestS3SingleHourFallback:
         result = await ofs_compare_with_coops(
             ctx, station_id="8571892", model=OFSModel.CBOFS
         )
-        assert "no FMRC aggregation" in result
+        assert "could not be opened (OPeNDAP connection failed)" in result
+        assert "single forecast hour" in result
+        assert "has no FMRC aggregation" not in result
+        assert "No CBOFS" not in result and "on land" not in result.lower()
+
+    @respx.mock
+    async def test_compare_single_hour_explains_no_fmrc(self, client, monkeypatch):
+        """A model without an FMRC aggregation says that, not 'no data'."""
+        from ofs_mcp.models import OFS_MODELS
+        from ofs_mcp.tools.forecast import ofs_compare_with_coops
+
+        monkeypatch.setitem(OFS_MODELS["cbofs"], "has_fmrc", False)
+
+        respx.get(url__startswith="https://api.tidesandcurrents.noaa.gov/mdapi/").mock(
+            return_value=httpx.Response(200, json=load_fixture("station_metadata.json"))
+        )
+        _force_s3_fallback(
+            monkeypatch,
+            client,
+            {
+                "times": ["2026-05-19 04:00"],
+                "values": [0.42],
+                "lat": 38.57,
+                "lon": -76.07,
+                "distance_km": 1.0,
+                "variable": "zeta",
+                "units": "m",
+                "fill_count": 0,
+            },
+        )
+        ctx = make_ctx(client)
+        result = await ofs_compare_with_coops(
+            ctx, station_id="8571892", model=OFSModel.CBOFS
+        )
+        assert "has no FMRC aggregation" in result
         assert "single forecast hour" in result
         assert "No CBOFS" not in result and "on land" not in result.lower()
 
