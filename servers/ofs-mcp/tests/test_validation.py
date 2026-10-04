@@ -68,13 +68,14 @@ class TestGridTypeEnum:
     """Tests for the GridType enum."""
 
     def test_grid_type_values(self):
-        """GridType should contain roms and fvcom."""
+        """GridType should contain roms, fvcom and pom."""
         assert GridType.ROMS.value == "roms"
         assert GridType.FVCOM.value == "fvcom"
+        assert GridType.POM.value == "pom"
 
-    def test_grid_type_has_two_members(self):
-        """GridType enum should have exactly 2 members."""
-        assert len(GridType) == 2
+    def test_grid_type_has_three_members(self):
+        """GridType enum should have exactly 3 members."""
+        assert len(GridType) == 3
 
 
 class TestOFSModelsRegistry:

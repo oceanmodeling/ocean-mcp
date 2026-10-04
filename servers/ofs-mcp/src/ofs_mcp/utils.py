@@ -96,11 +96,13 @@ def find_nearest_roms(
     lat_rho,  # numpy 2D array (eta_rho, xi_rho)
     lon_rho,  # numpy 2D array (eta_rho, xi_rho)
     max_distance_km: float = 200.0,
+    valid=None,  # optional numpy 2D bool array; only True cells are candidates
 ) -> tuple[int, int, float] | None:
     """Find nearest (i, j) grid cell on a ROMS structured grid.
 
     Returns:
-        (i, j, distance_km) or None if beyond max_distance_km.
+        (i, j, distance_km) or None if beyond max_distance_km (or if no
+        ``valid`` cell exists).
     """
     import numpy as np
 
@@ -115,6 +117,8 @@ def find_nearest_roms(
     dlambda = np.radians(lon_arr - target_lon)
     a = np.sin(dphi / 2) ** 2 + math.cos(phi1) * np.cos(phi2) * np.sin(dlambda / 2) ** 2
     dist = R * 2 * np.arctan2(np.sqrt(a), np.sqrt(1 - a))
+    if valid is not None:
+        dist = np.where(np.asarray(valid, dtype=bool), dist, np.inf)
 
     idx = np.unravel_index(np.argmin(dist), dist.shape)
     min_dist = float(dist[idx])
@@ -169,6 +173,35 @@ def find_nearest_fvcom(
 # ---------------------------------------------------------------------------
 
 
+def _read_point_series(var, index: tuple, chunk: int = 24):
+    """Read ``var[:, *index]``, tolerating unreadable stretches of the time axis.
+
+    THREDDS FMRC "best" aggregations list the newest run before all of its
+    data can be served, and one bad stretch fails the whole request with
+    "NetCDF: DAP failure". On failure, read ``chunk`` steps at a time and
+    leave the unreadable chunks as NaN (dropped later as fill). Re-raises if
+    nothing at all can be read.
+    """
+    import numpy as np
+
+    try:
+        return np.array(var[(slice(None),) + index], dtype=float)
+    except RuntimeError:
+        n = var.shape[0]
+        out = np.full(n, np.nan)
+        read_any = False
+        for a in range(0, n, chunk):
+            b = min(a + chunk, n)
+            try:
+                out[a:b] = np.array(var[(slice(a, b),) + index], dtype=float)
+                read_any = True
+            except RuntimeError:
+                continue
+        if not read_any:
+            raise
+        return out
+
+
 def extract_point_timeseries(
     nc,
     model: str,
@@ -179,7 +212,11 @@ def extract_point_timeseries(
 ) -> dict[str, Any]:
     """Extract a surface time series at a lat/lon point from an OFS NetCDF.
 
-    Works for both ROMS (structured) and FVCOM (unstructured) grids.
+    Works for structured (ROMS, POM) and unstructured (FVCOM) grids. The grid
+    layout and the time axis are read from the file itself, not from the
+    model registry: the same model is served with a different time axis by
+    the THREDDS FMRC aggregation ('time') than in its S3 files ('ocean_time'),
+    and several models have changed grid type over the years.
 
     Args:
         nc: Open netCDF4.Dataset (local file or OPeNDAP).
@@ -208,14 +245,7 @@ def extract_point_timeseries(
     from .models import OFS_MODELS
 
     model_info = OFS_MODELS.get(model, {})
-    grid_type = model_info.get("grid_type", "roms")
     nc_vars = model_info.get("nc_vars", {})
-
-    # --- Detect time variable ---
-    time_candidates = [nc_vars.get("time", ""), "ocean_time", "time", "Times"]
-    time_var_name = _detect_variable(nc, time_candidates)
-    if not time_var_name:
-        raise RuntimeError(f"Time variable not found in {model.upper()} NetCDF file.")
 
     # --- Detect variable to extract ---
     var_map = {
@@ -236,64 +266,84 @@ def extract_point_timeseries(
             f"Checked: {var_candidates}. Available: {list(nc.variables.keys())[:20]}"
         )
 
-    var_units = getattr(nc.variables[nc_var_name], "units", "")
+    var = nc.variables[nc_var_name]
+    var_units = getattr(var, "units", "")
+    fill_value = getattr(var, "_FillValue", None)
+    ndim = len(var.shape)
+
+    # --- Detect time variable ---
+    # The time axis is the variable's own first dimension. The registry name
+    # is only a fallback: in the THREDDS FMRC aggregations zeta is on 'time'
+    # while 'ocean_time' survives as a length-1 leftover, so trusting the
+    # registry paired a full series with a single timestamp.
+    time_dim = var.dimensions[0] if var.dimensions else ""
+    if time_dim in nc.variables:
+        time_var_name = time_dim
+    else:
+        time_candidates = [nc_vars.get("time", ""), "ocean_time", "time", "Times"]
+        time_var_name = _detect_variable(nc, [c for c in time_candidates if c])
+    if not time_var_name:
+        raise RuntimeError(f"Time variable not found in {model.upper()} NetCDF file.")
 
     # --- Find nearest grid point ---
-    if grid_type == "roms":
-        lon_candidates = [nc_vars.get("lon", ""), "lon_rho", "lon", "x", "longitude"]
-        lat_candidates = [nc_vars.get("lat", ""), "lat_rho", "lat", "y", "latitude"]
-        lon_name = _detect_variable(nc, lon_candidates)
-        lat_name = _detect_variable(nc, lat_candidates)
-        if not lon_name or not lat_name:
-            raise RuntimeError(
-                f"Coordinate variables not found in {model.upper()} NetCDF file."
-            )
+    lon_candidates = [nc_vars.get("lon", ""), "lon_rho", "lon", "x", "longitude"]
+    lat_candidates = [nc_vars.get("lat", ""), "lat_rho", "lat", "y", "latitude"]
+    lon_name = _detect_variable(nc, [c for c in lon_candidates if c])
+    lat_name = _detect_variable(nc, [c for c in lat_candidates if c])
+    if not lon_name or not lat_name:
+        raise RuntimeError(
+            f"Coordinate variables not found in {model.upper()} NetCDF file."
+        )
 
-        lon_rho = np.array(nc.variables[lon_name][:])
-        lat_rho = np.array(nc.variables[lat_name][:])
+    lon_arr = np.array(nc.variables[lon_name][:])
+    lat_arr = np.array(nc.variables[lat_name][:])
 
+    # Grid layout from the coordinates themselves: 2-D lon/lat is a structured
+    # grid (ROMS rho points, POM); 1-D is an FVCOM node list.
+    if lon_arr.ndim == 2:
+        # A coastal gauge's nearest grid point is often land, which holds only
+        # fill/NaN (or a constant on GOMOFS). Search water cells only: the
+        # land mask (ROMS mask_rho, POM mask) and, where bathymetry is given,
+        # h > 0 — wetting/drying grids (CIOFS) mark tidal flats as water but
+        # give them negative h, and those cells sit dry at a constant level.
+        valid = np.ones(lon_arr.shape, dtype=bool)
+        for mask_name in ("mask_rho", "mask"):
+            if mask_name in nc.variables:
+                land_mask = np.array(nc.variables[mask_name][:])
+                if land_mask.shape == lon_arr.shape:
+                    valid &= land_mask > 0.5
+                break
+        if "h" in nc.variables:
+            depth = np.array(nc.variables["h"][:])
+            if depth.shape == lon_arr.shape:
+                valid &= depth > 0
         result = find_nearest_roms(
-            target_lat, target_lon, lat_rho, lon_rho, max_distance_km
+            target_lat, target_lon, lat_arr, lon_arr, max_distance_km, valid
         )
         if result is None:
             raise ValueError(
-                f"No {model.upper()} grid point within {max_distance_km} km of "
+                f"No {model.upper()} water grid point within {max_distance_km} km of "
                 f"({target_lat:.4f}, {target_lon:.4f}). "
                 "Use ofs_list_models to check model domains, or increase max_distance_km."
             )
         i, j, dist_km = result
-        point_lat = float(lat_rho[i, j])
-        point_lon = float(lon_rho[i, j])
+        point_lat = float(lat_arr[i, j])
+        point_lon = float(lon_arr[i, j])
 
-        # Extract time series at this point
-        var = nc.variables[nc_var_name]
-        fill_value = getattr(var, "_FillValue", None)
-        ndim = len(var.shape)
-
-        if variable == "water_level":
-            # zeta: (time, eta_rho, xi_rho)
-            raw_vals = np.array(var[:, i, j])
-        elif ndim == 4:
-            # 3D variable: (time, s_rho, eta_rho, xi_rho) — take surface = last s_rho
-            raw_vals = np.array(var[:, -1, i, j])
+        if ndim == 4:
+            # (time, level, y, x). ROMS s_rho counts up from the bottom, so the
+            # surface is the last level; POM sigma counts down from the surface.
+            surface = -1 if var.dimensions[1] in ("s_rho", "s_w") else 0
+            raw_vals = _read_point_series(var, (surface, i, j))
         elif ndim == 3:
-            # Already 2D spatial
-            raw_vals = np.array(var[:, i, j])
+            # (time, y, x), e.g. zeta
+            raw_vals = _read_point_series(var, (i, j))
         else:
             raw_vals = np.array(var[:])
 
-    else:  # fvcom
-        lon_candidates = [nc_vars.get("lon", ""), "lon", "x", "longitude"]
-        lat_candidates = [nc_vars.get("lat", ""), "lat", "y", "latitude"]
-        lon_name = _detect_variable(nc, lon_candidates)
-        lat_name = _detect_variable(nc, lat_candidates)
-        if not lon_name or not lat_name:
-            raise RuntimeError(
-                f"Coordinate variables not found in {model.upper()} NetCDF file."
-            )
-
-        lons = np.array(nc.variables[lon_name][:]).ravel()
-        lats = np.array(nc.variables[lat_name][:]).ravel()
+    else:  # unstructured (FVCOM)
+        lons = lon_arr.ravel()
+        lats = lat_arr.ravel()
 
         result = find_nearest_fvcom(target_lat, target_lon, lats, lons, max_distance_km)
         if result is None:
@@ -306,24 +356,27 @@ def extract_point_timeseries(
         point_lat = float(lats[node_idx])
         point_lon = float(lons[node_idx])
 
-        var = nc.variables[nc_var_name]
-        fill_value = getattr(var, "_FillValue", None)
-        ndim = len(var.shape)
-
-        if variable == "water_level":
-            # zeta: (time, node)
-            raw_vals = np.array(var[:, node_idx])
-        elif ndim == 3:
+        if ndim == 3:
             # (time, siglay, node) — surface = siglay index 0
-            raw_vals = np.array(var[:, 0, node_idx])
+            raw_vals = _read_point_series(var, (0, node_idx))
         else:
-            raw_vals = np.array(var[:, node_idx])
+            # (time, node), e.g. zeta
+            raw_vals = _read_point_series(var, (node_idx,))
 
     # --- Parse times ---
     time_strings = _parse_nc_times(nc, time_var_name)
+    if len(time_strings) != len(raw_vals):
+        # zip() below would silently truncate to the shorter of the two.
+        raise RuntimeError(
+            f"{model.upper()} time axis '{time_var_name}' has {len(time_strings)} "
+            f"steps but '{nc_var_name}' has {len(raw_vals)}; refusing to pair them."
+        )
 
     # --- Mask fill values ---
-    mask = np.abs(raw_vals) > 1e10
+    # FMRC best series carry NaN where a run is missing; NaN fails the > 1e10
+    # test, so check finiteness explicitly.
+    raw_vals = raw_vals.astype(float)
+    mask = ~np.isfinite(raw_vals) | (np.abs(raw_vals) > 1e10)
     if fill_value is not None:
         mask |= raw_vals == float(fill_value)
 

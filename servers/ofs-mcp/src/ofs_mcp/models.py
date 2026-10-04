@@ -12,11 +12,11 @@ class OFSModel(str, Enum):
     DBOFS = "dbofs"  # Delaware Bay — ROMS
     GOMOFS = "gomofs"  # Gulf of Maine — ROMS
     NGOFS2 = "ngofs2"  # Northern Gulf of Mexico — FVCOM
-    NYOFS = "nyofs"  # New York / New Jersey Harbor — FVCOM
+    NYOFS = "nyofs"  # New York / New Jersey Harbor — POM
     SFBOFS = "sfbofs"  # San Francisco Bay — FVCOM
-    TBOFS = "tbofs"  # Tampa Bay — FVCOM
+    TBOFS = "tbofs"  # Tampa Bay — ROMS
     WCOFS = "wcofs"  # West Coast — ROMS
-    CIOFS = "ciofs"  # Cook Inlet, Alaska — FVCOM
+    CIOFS = "ciofs"  # Cook Inlet, Alaska — ROMS
 
 
 class OFSVariable(str, Enum):
@@ -32,6 +32,7 @@ class GridType(str, Enum):
 
     ROMS = "roms"  # Structured curvilinear (ROMS)
     FVCOM = "fvcom"  # Unstructured triangular (FVCOM)
+    POM = "pom"  # Structured curvilinear, sigma levels (POM)
 
 
 # S3 bucket base URL
@@ -169,7 +170,7 @@ OFS_MODELS: dict[str, dict] = {
     "nyofs": {
         "name": "New York / NJ Harbor OFS",
         "short_name": "NYOFS",
-        "grid_type": "fvcom",
+        "grid_type": "pom",
         "domain_desc": "New York Harbor, Hudson River, and surrounding estuary",
         "domain": {
             "lat_min": 40.3,
@@ -181,8 +182,8 @@ OFS_MODELS: dict[str, dict] = {
         "cycles": ["00", "06", "12", "18"],
         "forecast_hours": 48,
         "nowcast_hours": 6,
-        "grid_size": "~90k nodes",
-        "vertical_layers": 10,
+        "grid_size": "134 x 73 points",
+        "vertical_layers": 7,
         "datum": "NAVD88",
         "nc_vars": {
             "time": "time",
@@ -234,7 +235,7 @@ OFS_MODELS: dict[str, dict] = {
     "tbofs": {
         "name": "Tampa Bay OFS",
         "short_name": "TBOFS",
-        "grid_type": "fvcom",
+        "grid_type": "roms",
         "domain_desc": "Tampa Bay and Charlotte Harbor, Florida",
         "domain": {
             "lat_min": 26.5,
@@ -246,16 +247,16 @@ OFS_MODELS: dict[str, dict] = {
         "cycles": ["00", "06", "12", "18"],
         "forecast_hours": 48,
         "nowcast_hours": 6,
-        "grid_size": "~30k nodes",
-        "vertical_layers": 10,
+        "grid_size": "290 x 176 rho points",
+        "vertical_layers": 11,
         "datum": "NAVD88",
         "nc_vars": {
-            "time": "time",
+            "time": "ocean_time",
             "water_level": "zeta",
             "temperature": "temp",
-            "salinity": "salinity",
-            "lon": "lon",
-            "lat": "lat",
+            "salinity": "salt",
+            "lon": "lon_rho",
+            "lat": "lat_rho",
         },
         "thredds_id": "TBOFS",
         "has_fmrc": True,
@@ -294,7 +295,7 @@ OFS_MODELS: dict[str, dict] = {
     "ciofs": {
         "name": "Cook Inlet OFS",
         "short_name": "CIOFS",
-        "grid_type": "fvcom",
+        "grid_type": "roms",
         "domain_desc": "Cook Inlet, Kachemak Bay, and Kenai Peninsula coast, Alaska",
         "domain": {
             "lat_min": 59.0,
@@ -306,16 +307,16 @@ OFS_MODELS: dict[str, dict] = {
         "cycles": ["00", "06", "12", "18"],
         "forecast_hours": 48,
         "nowcast_hours": 6,
-        "grid_size": "~100k nodes",
-        "vertical_layers": 10,
+        "grid_size": "1044 x 724 rho points",
+        "vertical_layers": 30,
         "datum": "NAVD88",
         "nc_vars": {
-            "time": "time",
+            "time": "ocean_time",
             "water_level": "zeta",
             "temperature": "temp",
-            "salinity": "salinity",
-            "lon": "lon",
-            "lat": "lat",
+            "salinity": "salt",
+            "lon": "lon_rho",
+            "lat": "lat_rho",
         },
         "thredds_id": "CIOFS",
         "has_fmrc": True,

@@ -45,3 +45,30 @@ async def test_s3_file_exists_cbofs(client):
     exists = await client.check_file_exists(url)
     assert exists, f"Expected forecast file to exist at {url}"
     print(f"\nFile exists: {url}")
+
+
+@pytest.mark.integration
+@pytest.mark.parametrize(
+    "model, lat, lon",
+    [
+        ("cbofs", 39.2667, -76.5783),  # Baltimore (ROMS)
+        ("tbofs", 27.7606, -82.6269),  # St. Petersburg (ROMS since the upgrade)
+        ("nyofs", 40.7006, -74.0142),  # The Battery (POM)
+    ],
+)
+def test_fmrc_point_series_is_continuous(client, model, lat, lon):
+    """The FMRC point extraction returns a multi-day series, not one point."""
+    from ofs_mcp.utils import extract_point_timeseries
+
+    try:
+        nc = client.open_opendap(model)
+    except RuntimeError as exc:
+        pytest.skip(f"{model} OPeNDAP unavailable: {exc}")
+    try:
+        out = extract_point_timeseries(nc, model, "water_level", lat, lon)
+    finally:
+        nc.close()
+    assert len(out["values"]) >= 48, f"{model}: only {len(out['values'])} points"
+    print(
+        f"\n{model}: {len(out['values'])} points {out['times'][0]} → {out['times'][-1]}"
+    )
