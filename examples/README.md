@@ -23,6 +23,7 @@ The scripts get their data in one of three ways:
 |---|---|---|
 | [`charleston_vdatum_stofs3d_vs_coops.py`](charleston_vdatum_stofs3d_vs_coops.py) | STOFS-3D-Atlantic (NAVD88) against the Charleston gauge (MLLW), before and after moving the gauge onto NAVD88 with VDatum; the gauge's own datum sheet checks the VDatum offset | stofs, coops, vdatum |
 | [`ian_coast_to_river_flooding.py`](ian_coast_to_river_flooding.py) | Hurricane Ian: storm surge at Fort Myers on 28 September, then record crests on the Peace and Myakka rivers on 1 October; Ian's closest approach to the gauge comes from the best track | nhc, coops, usgs |
+| [`baltimore_cbofs_vs_stofs2d.py`](baltimore_cbofs_vs_stofs2d.py) | The regional Chesapeake Bay model (CBOFS) and the global STOFS-2D model scored against the Baltimore gauge over the same 48 hours, on MSL | ofs, stofs, coops |
 | [`harbor_waterlevel_waves_mcp.py`](harbor_waterlevel_waves_mcp.py) | New York Harbor water level (STOFS-2D vs CO-OPS) with offshore wave height from an NDBC buoy | stofs, coops, ndbc |
 | [`battery_stofs2d_vs_coops.py`](battery_stofs2d_vs_coops.py) | STOFS-2D-Global forecast vs CO-OPS observations at The Battery, with skill statistics | stofs, coops |
 | [`katrina_besttrack_nhc.py`](katrina_besttrack_nhc.py) | Hurricane Katrina (2005) track and intensity from HURDAT2 | nhc |
