@@ -123,10 +123,11 @@ async def recon_get_hdobs(
             ("lat", "Lat"),
             ("lon", "Lon"),
             ("static_pressure_mb", "P (mb)"),
+            ("extrapolated_slp_mb", "SLP (mb)"),
             ("fl_wind_dir_deg", "WDir"),
             ("fl_wind_speed_kt", "WSpd (kt)"),
             ("sfmr_sfc_wind_kt", "SFMR (kt)"),
-            ("sfmr_peak_sfc_wind_kt", "SFMR Pk"),
+            ("sfmr_rain_rate_mmhr", "Rain (mm/h)"),
             ("aircraft", "Aircraft"),
         ]
 

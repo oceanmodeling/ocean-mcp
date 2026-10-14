@@ -5,6 +5,8 @@ Run with: uv run pytest tests/test_live.py -v -s
 Skip in CI with: --ignore=tests/test_live.py
 """
 
+from datetime import datetime
+
 import pytest
 
 from recon_mcp.client import ReconClient
@@ -54,66 +56,51 @@ async def test_live_list_vdm_directory(client):
 @pytest.mark.integration
 @pytest.mark.asyncio
 async def test_live_fetch_hdob(client):
-    """Fetch and parse a real HDOB bulletin from 2024."""
+    """Parse a real archived HDOB: Milton's eye pass, 2024-10-09 07Z."""
     url = client.build_archive_dir_url(2024, "hdob", "al")
-    html = await client.list_directory(url)
-    entries = parse_directory_listing(html)
-
-    assert len(entries) > 0, "Need at least one HDOB file"
-
-    # Fetch the first file
-    file_url = url + entries[0]["href"]
-    text = await client.fetch_text(file_url)
+    text = await client.fetch_text(url + "AHONT1-KNHC.202410090710.txt")
     parsed = parse_hdob_message(text)
 
-    assert "header" in parsed
-    assert "observations" in parsed
-    # HDOB files should have at least some observations
-    print(f"Parsed HDOB: {len(parsed['observations'])} observations")
-    print(f"Header: {parsed['header']}")
+    assert parsed["header"]["mission"] == "AF300 1814A MILTON"
+    obs = parsed["observations"]
+    assert len(obs) == 20, "Expected all 20 data lines to decode"
+    eye = obs[0]
+    assert (eye["date"], eye["time"]) == ("20241009", "070200")
+    assert (eye["lat"], eye["lon"]) == (24.0, -85.7)
+    assert eye["extrapolated_slp_mb"] == pytest.approx(907.0)
+    assert max(o["sfmr_sfc_wind_kt"] or 0 for o in obs) == 152
 
 
 @pytest.mark.integration
 @pytest.mark.asyncio
 async def test_live_fetch_vdm(client):
-    """Fetch and parse a real VDM from 2024."""
+    """Parse a real archived VDM: the Milton fix at 2024-10-09 07:02Z."""
     url = client.build_archive_dir_url(2024, "vdm", "al")
-    html = await client.list_directory(url)
-    entries = parse_directory_listing(html)
+    text = await client.fetch_text(url + "REPNT2-KNHC.202410090724.txt")
+    parsed = parse_vdm_message(text, issued=datetime(2024, 10, 9, 7, 24))
 
-    assert len(entries) > 0, "Need at least one VDM file"
-
-    # Fetch the first file
-    file_url = url + entries[0]["href"]
-    text = await client.fetch_text(file_url)
-    parsed = parse_vdm_message(text)
-
-    assert "raw_text" in parsed
-    print(
-        f"Parsed VDM: storm_id={parsed.get('storm_id')}, "
-        f"min_slp={parsed.get('min_slp_mb')}"
-    )
+    assert parsed["storm_id"] == "AL142024"
+    assert parsed["vdm_format"] == "2018"
+    assert parsed["fix_time_utc"] == "2024-10-09T07:02:10Z"
+    assert (parsed["center_lat"], parsed["center_lon"]) == (24.0, -85.71)
+    assert parsed["min_slp_mb"] == 910
+    assert parsed["eye_diameter_nm"] == 8
 
 
 @pytest.mark.integration
 @pytest.mark.asyncio
 async def test_live_atcf_fdeck_milton(client):
-    """Fetch ATCF f-deck for Hurricane Milton (AL14 2024)."""
-    url = client.build_atcf_fdeck_url("al", 14, 2024)
-    try:
-        text = await client.fetch_text(url)
-    except Exception:
-        pytest.skip("Milton f-deck not available (may be archived)")
+    """Fetch Milton's (AL14 2024) archived f-deck and decode its fixes."""
+    text, url = await client.fetch_fdeck("al", 14, 2024)
+    assert url.endswith("/atcf/archive/2024/fal142024.dat.gz")
 
-    lines = text.strip().split("\n")
-    assert len(lines) > 0, "Expected f-deck records for Milton"
-
-    # Parse first record
-    record = parse_atcf_fix_record(lines[0])
-    if record:
-        print(f"First fix: {record}")
-        assert record["basin"] == "AL"
-        assert record["cyclone_num"] == 14
+    records = [parse_atcf_fix_record(line) for line in text.splitlines()]
+    records = [r for r in records if r]
+    assert len(records) > 500, "Expected Milton's full fix history"
+    aircraft = next(r for r in records if r["datetime"] == "202410090702")
+    assert aircraft["fix_type"] == "AIRC"
+    assert (aircraft["lat"], aircraft["lon"]) == (24.0, -85.71)
+    assert (aircraft["max_wind_kt"], aircraft["min_pressure_mb"]) == (158, 910)
 
 
 @pytest.mark.integration

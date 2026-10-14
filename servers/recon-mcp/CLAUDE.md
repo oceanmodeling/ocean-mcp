@@ -140,7 +140,7 @@ VDMs are the most operationally critical product — each one contains a center 
 - **Live current VDM**: `https://www.nhc.noaa.gov/text/MIAREPNT2.shtml`
 - **Format**: Plain text requiring custom parsing; major format overhaul in 2018 changed field assignments
 
-Key VDM fields (post-2018 format): **A** = fix date/time, **B** = center lat/lon, **C** = flight-level pressure/height, **D** = minimum SLP (extrapolated), **E** = storm motion, **H** = max SFMR surface wind inbound, **J** = max FL wind inbound, **L** = max SFMR surface wind outbound, **N** = max FL wind outbound, **S** = eye diameter/character.
+Key VDM fields (post-2018 format, items A-U): **A** = fix day/time (`DD/HH:MM:SSZ`; year and month come from the bulletin time), **B** = center in decimal degrees, **C** = standard level and its minimum height, **D** = minimum SLP (may read `EXTRAP 923 mb`), **E** = dropsonde surface wind at the center, **F** = eye character, **G** = eye shape/diameter (`C8`, `CO15-30`, `E04/33/23`), **H**/**L** = estimated max surface wind inbound/outbound, **J**/**N** = max flight-level wind inbound/outbound (direction and speed), **P**/**Q** = max flight-level temperature outside/inside the eye, **S** = fix method / fix level, **U** = mission and OB number; free-text remarks follow U. Pre-2018 VDMs (items A-P, archive 2006-2017) give the center in degrees and minutes with the longitude on the next line, inbound winds in **D**/**F**, SLP in **H**, eye in **L**/**M**, and the mission in **P**.
 
 **VDM+ structured NetCDF dataset (1989–2022)** — this is the key machine-readable resource:
 - **Landing page**: `https://verif.rap.ucar.edu/tcdata/vortex/`
@@ -162,9 +162,9 @@ During active storms, the **HDOB (High Density Observation) bulletin is the real
 - **File naming**: `URNT15-KNHC.{YYYYMMDDHHmm}.txt`
 - **Format spec**: `https://www.nhc.noaa.gov/abouthdobs_2007.shtml` and PDF at `https://www.nhc.noaa.gov/pdf/HDOB-specification.pdf`
 
-Each HDOB record contains 14 fields per 30-second observation:
+Each HDOB data line has 13 fields per 30-second observation (`hhmmss LLLLH NNNNNW PPPP GGGGG XXXX sTTT sddd wwwSSS MMM KKK ppp FF`); the date is not on the line but in the mission line (`... HDOB NN YYYYMMDD`, the date of the first data line):
 
-- Time (UTC), latitude, longitude, static pressure (tenths mb), geopotential altitude (m), extrapolated SLP (tenths mb offset from 1000), temperature (tenths °C), dewpoint (tenths °C), flight-level wind direction/speed (°/kt), peak 10-second FL wind speed (kt), **SFMR surface wind speed (kt)**, **SFMR peak surface wind (kt)**, **rain rate flag**, and quality flags
+- Time (UTC), latitude and longitude (degrees and minutes), static pressure (tenths mb, leading 1 dropped at 1000 mb and up), geopotential height (m), extrapolated surface pressure (same encoding) or, above 550 mb, the D-value in m (negative values appear as both D + 5000 and 5000 + |D|), temperature and dewpoint (tenths °C), flight-level wind direction and speed as one field (°, kt), peak 10-second FL wind (kt), **peak 10-second SFMR surface wind (kt)**, **SFMR rain rate (mm/h)**, and two QC flags. Missing values are slashes or 999.
 
 **Latency by product type**:
 - HDOB: **0–5 minutes** (automatic satellite uplink)
