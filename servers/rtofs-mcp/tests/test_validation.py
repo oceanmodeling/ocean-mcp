@@ -51,6 +51,14 @@ class TestDatasetRegistry:
                 f"Dataset '{key}' has invalid dimensions"
             )
 
+    def test_all_datasets_have_default_window(self):
+        """Each dataset has a positive default window so queries stay bounded."""
+        for key, ds in DATASETS.items():
+            hours = ds.get("default_window_hours")
+            assert isinstance(hours, int) and hours > 0, (
+                f"Dataset '{key}' needs a positive int default_window_hours"
+            )
+
     def test_all_datasets_have_variables(self):
         """Each dataset must have at least one variable."""
         for key, ds in DATASETS.items():

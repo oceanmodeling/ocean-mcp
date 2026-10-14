@@ -157,6 +157,115 @@ class TestFetchPointCSV:
             await client.close()
 
 
+class TestTimeWindow:
+    """NCSS point queries are always time-bounded (never temporal=all)."""
+
+    async def _query_params(self, dataset_key: str, **kwargs) -> dict[str, str]:
+        """Run fetch_point_csv against a mock and return the sent query params."""
+        fixture_text = FIXTURES_DIR.joinpath("ssh_point.csv").read_text()
+        url = f"{THREDDS_BASE}/ncss/{DATASETS[dataset_key]['path']}"
+        route = respx.get(url).mock(return_value=httpx.Response(200, text=fixture_text))
+        client = RTOFSClient()
+        try:
+            await client.fetch_point_csv(
+                dataset_key=dataset_key,
+                variable="surf_el",
+                latitude=35.0,
+                longitude=-65.0,
+                **kwargs,
+            )
+        finally:
+            await client.close()
+        return dict(route.calls.last.request.url.params)
+
+    @pytest.mark.asyncio
+    @respx.mock
+    async def test_no_time_requests_default_window_from_present(self):
+        """No time arguments: the dataset's default window starting now."""
+        params = await self._query_params("ssh")
+        assert params["time_start"] == "present"
+        assert params["time_duration"] == "PT24H"
+        assert "temporal" not in params
+
+    @pytest.mark.asyncio
+    @respx.mock
+    async def test_3d_default_window_is_72h(self):
+        """The 3-hourly 3D datasets default to a 72 h window."""
+        params = await self._query_params("sst", vert_coord=0.0)
+        assert params["time_duration"] == "PT72H"
+        assert "temporal" not in params
+
+    @pytest.mark.asyncio
+    @respx.mock
+    async def test_time_start_only_gets_default_duration(self):
+        """A start with no end is completed with the default window."""
+        params = await self._query_params("ssh", time_start="2026-10-12T00:00:00Z")
+        assert params["time_start"] == "2026-10-12T00:00:00Z"
+        assert params["time_duration"] == "PT24H"
+        assert "time_end" not in params
+
+    @pytest.mark.asyncio
+    @respx.mock
+    async def test_time_end_only_uses_given_duration(self):
+        """An end with an explicit duration is a window ending there."""
+        params = await self._query_params(
+            "sst", time_end="present", time_duration="PT6H"
+        )
+        assert params["time_end"] == "present"
+        assert params["time_duration"] == "PT6H"
+        assert "time_start" not in params
+
+    @pytest.mark.asyncio
+    @respx.mock
+    async def test_explicit_range_is_passed_through(self):
+        """A full start/end range is sent as-is, with no duration."""
+        params = await self._query_params(
+            "ssh",
+            time_start="2026-10-12T00:00:00Z",
+            time_end="2026-10-13T00:00:00Z",
+        )
+        assert params["time_start"] == "2026-10-12T00:00:00Z"
+        assert params["time_end"] == "2026-10-13T00:00:00Z"
+        assert "time_duration" not in params
+
+    @pytest.mark.asyncio
+    @respx.mock
+    async def test_single_time_wins(self):
+        """A single time is sent alone."""
+        params = await self._query_params(
+            "ssh", time="present", time_start="2026-10-12T00:00:00Z"
+        )
+        assert params["time"] == "present"
+        assert "time_start" not in params
+        assert "time_duration" not in params
+
+    @pytest.mark.asyncio
+    @respx.mock
+    async def test_multi_var_default_is_bounded(self):
+        """fetch_multi_var_csv uses the same bounded default."""
+        url = f"{THREDDS_BASE}/ncss/{DATASETS['currents']['path']}"
+        route = respx.get(url).mock(
+            return_value=httpx.Response(
+                200, text="time,water_u,water_v\n2026-10-14T00:00:00Z,0.1,0.2\n"
+            )
+        )
+        client = RTOFSClient()
+        try:
+            await client.fetch_multi_var_csv(
+                dataset_key="currents",
+                variables=["water_u", "water_v"],
+                latitude=35.0,
+                longitude=-65.0,
+            )
+        finally:
+            await client.close()
+        params = route.calls.last.request.url.params
+        assert params.get_list("var") == ["water_u", "water_v"]
+        assert params["time_start"] == "present"
+        assert params["time_duration"] == "PT72H"
+        assert "temporal" not in params
+
+
 class TestCheckDatasetAvailable:
     """Test dataset availability checking."""
 
@@ -246,3 +355,89 @@ def test_cap_series_json_caps_data():
     assert whole["truncated"] is False
     assert whole["total_rows"] == 1
     assert "retrieved_at" in whole
+
+
+class TestToolTimeWindows:
+    """The tools that used to fetch every time step now send bounded windows."""
+
+    @pytest.mark.asyncio
+    @respx.mock
+    async def test_surface_forecast_default_window(self):
+        """rtofs_get_surface_forecast with no range asks for the next 72 h of SST."""
+        from rtofs_mcp.tools.forecast import rtofs_get_surface_forecast
+
+        fixture_text = FIXTURES_DIR.joinpath("sst_timeseries.csv").read_text()
+        url = f"{THREDDS_BASE}/ncss/{DATASETS['sst']['path']}"
+        route = respx.get(url).mock(return_value=httpx.Response(200, text=fixture_text))
+        client = RTOFSClient()
+        try:
+            out = await rtofs_get_surface_forecast(
+                _mock_ctx(client), latitude=35.0, longitude=-65.0
+            )
+        finally:
+            await client.close()
+        params = route.calls.last.request.url.params
+        assert params["time_start"] == "present"
+        assert params["time_duration"] == "PT72H"
+        assert params["vertCoord"] == "0.0"
+        assert "Surface Forecast" in out
+
+    @pytest.mark.asyncio
+    @respx.mock
+    async def test_compare_fetches_24h_before_present(self):
+        """rtofs_compare_with_observations asks only for the 24 h ending now."""
+        import json
+
+        from rtofs_mcp.tools.analysis import rtofs_compare_with_observations
+
+        csv_text = (
+            "time,latitude,longitude,vertCoord,water_temp\n"
+            "2026-10-13T03:00:00Z,35.0,-65.0,0.0,26.0\n"
+            "2026-10-13T15:00:00Z,35.0,-65.0,0.0,26.2\n"
+            "2026-10-14T03:00:00Z,35.0,-65.0,0.0,26.5\n"
+        )
+        url = f"{THREDDS_BASE}/ncss/{DATASETS['sst']['path']}"
+        route = respx.get(url).mock(return_value=httpx.Response(200, text=csv_text))
+        client = RTOFSClient()
+        try:
+            out = await rtofs_compare_with_observations(
+                _mock_ctx(client),
+                latitude=35.0,
+                longitude=-65.0,
+                response_format="json",
+            )
+        finally:
+            await client.close()
+        params = route.calls.last.request.url.params
+        assert params["time_end"] == "present"
+        assert params["time_duration"] == "PT24H"
+        assert "temporal" not in params
+        result = json.loads(out)
+        assert result["window_hours"] == 24
+        assert result["earliest"]["time"] == "2026-10-13T03:00:00Z"
+        assert result["latest"]["time"] == "2026-10-14T03:00:00Z"
+        assert result["change_over_window"] == 0.5
+
+    @pytest.mark.asyncio
+    @respx.mock
+    async def test_compare_window_ends_at_given_time(self):
+        """A reference time becomes the end of the 24 h window."""
+        from rtofs_mcp.tools.analysis import rtofs_compare_with_observations
+
+        fixture_text = FIXTURES_DIR.joinpath("sst_timeseries.csv").read_text()
+        url = f"{THREDDS_BASE}/ncss/{DATASETS['sst']['path']}"
+        route = respx.get(url).mock(return_value=httpx.Response(200, text=fixture_text))
+        client = RTOFSClient()
+        try:
+            out = await rtofs_compare_with_observations(
+                _mock_ctx(client),
+                latitude=35.0,
+                longitude=-65.0,
+                time="2026-10-12T00:00:00Z",
+            )
+        finally:
+            await client.close()
+        params = route.calls.last.request.url.params
+        assert params["time_end"] == "2026-10-12T00:00:00Z"
+        assert params["time_duration"] == "PT24H"
+        assert "24 h window" in out

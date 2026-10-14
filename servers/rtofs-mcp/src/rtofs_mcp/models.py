@@ -29,24 +29,33 @@ THREDDS_BASE = "https://tds.hycom.org/thredds"
 # OPeNDAP endpoint template: {THREDDS_BASE}/dodsC/{dataset_path}
 
 # ESPC-D-V02 datasets (operational HYCOM/RTOFS)
+#
+# default_window_hours: the time window requested when a caller gives no
+# explicit range. HYCOM extracts a point one time step at a time from the
+# FMRC "best" aggregation (~0.5-1 s per uncached step), and the aggregation
+# spans ~16 days, so the whole series takes minutes. The windows are sized
+# to ~24 steps: 24 h of hourly SSH, 72 h of the 3-hourly 3D fields.
 DATASETS = {
     "ssh": {
         "path": "FMRC_ESPC-D-V02_ssh/FMRC_ESPC-D-V02_ssh_best.ncd",
         "variables": {"surf_el": {"unit": "m", "long_name": "Sea Surface Height"}},
         "description": "Sea Surface Height, hourly, 8-day forecast",
         "dimensions": "2D",
+        "default_window_hours": 24,
     },
     "sst": {
         "path": "FMRC_ESPC-D-V02_t3z/FMRC_ESPC-D-V02_t3z_best.ncd",
         "variables": {"water_temp": {"unit": "degC", "long_name": "Water Temperature"}},
-        "description": "Temperature (3D with depth), daily, 8-day forecast",
+        "description": "Temperature (3D with depth), 3-hourly, 8-day forecast",
         "dimensions": "3D",
+        "default_window_hours": 72,
     },
     "sss": {
         "path": "FMRC_ESPC-D-V02_s3z/FMRC_ESPC-D-V02_s3z_best.ncd",
         "variables": {"salinity": {"unit": "PSU", "long_name": "Salinity"}},
-        "description": "Salinity (3D with depth), daily, 8-day forecast",
+        "description": "Salinity (3D with depth), 3-hourly, 8-day forecast",
         "dimensions": "3D",
+        "default_window_hours": 72,
     },
     "currents": {
         "path": "FMRC_ESPC-D-V02_uv3z/FMRC_ESPC-D-V02_uv3z_best.ncd",
@@ -54,8 +63,9 @@ DATASETS = {
             "water_u": {"unit": "m/s", "long_name": "Eastward Current Velocity"},
             "water_v": {"unit": "m/s", "long_name": "Northward Current Velocity"},
         },
-        "description": "Ocean currents u/v (3D with depth), daily, 8-day forecast",
+        "description": "Ocean currents u/v (3D with depth), 3-hourly, 8-day forecast",
         "dimensions": "3D",
+        "default_window_hours": 72,
     },
 }
 
@@ -130,7 +140,7 @@ RTOFS_SPECS = {
     "vertical_levels": "40 layers (hybrid coordinates)",
     "forecast_length": "8 days (192 hours)",
     "update_cycle": "Daily (12z)",
-    "surface_output": "Hourly SSH; daily SST, SSS, currents (all with depth)",
+    "surface_output": "Hourly SSH; 3-hourly SST, SSS, currents (all with depth)",
     "data_source": "HYCOM THREDDS (NCSS CSV + OPeNDAP)",
     "data_url": "https://tds.hycom.org/thredds/",
     "longitude_convention": "0 to 360 (NCSS accepts -180 to 180 and converts)",

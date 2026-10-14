@@ -107,6 +107,7 @@ class RTOFSClient:
         time_start: str | None = None,
         time_end: str | None = None,
         vert_coord: float | None = None,
+        time_duration: str | None = None,
     ) -> list[dict[str, Any]]:
         """Fetch point data from THREDDS NCSS as CSV and parse to list of dicts.
 
@@ -115,10 +116,12 @@ class RTOFSClient:
             variable: THREDDS variable name (e.g., 'water_temp', 'surf_el').
             latitude: Latitude in decimal degrees (-80 to 90).
             longitude: Longitude in decimal degrees (-180 to 180).
-            time: Single time in ISO format. If None, returns all times.
+            time: Single time in ISO format, or 'present'.
             time_start: Start of time range.
             time_end: End of time range.
             vert_coord: Specific depth level in meters. None for all depths or 2D vars.
+            time_duration: ISO 8601 duration (e.g. 'PT24H') for a range given by
+                only one end. See _time_params for the defaults.
 
         Returns:
             List of dicts, one per row, with column names as keys.
@@ -137,14 +140,7 @@ class RTOFSClient:
             "longitude": str(longitude),
             "accept": "csv",
         }
-
-        if time:
-            params["time"] = time
-        elif time_start and time_end:
-            params["time_start"] = time_start
-            params["time_end"] = time_end
-        else:
-            params["temporal"] = "all"
+        params.update(_time_params(ds, time, time_start, time_end, time_duration))
 
         if vert_coord is not None:
             params["vertCoord"] = str(vert_coord)
@@ -178,6 +174,7 @@ class RTOFSClient:
         time_start: str | None = None,
         time_end: str | None = None,
         vert_coord: float | None = None,
+        time_duration: str | None = None,
     ) -> list[dict[str, Any]]:
         """Fetch multiple variables from the same dataset in one NCSS request."""
         ds = DATASETS.get(dataset_key)
@@ -197,14 +194,7 @@ class RTOFSClient:
                 ("accept", "csv"),
             ]
         )
-
-        if time:
-            params_list.append(("time", time))
-        elif time_start and time_end:
-            params_list.append(("time_start", time_start))
-            params_list.append(("time_end", time_end))
-        else:
-            params_list.append(("temporal", "all"))
+        params_list.extend(_time_params(ds, time, time_start, time_end, time_duration))
 
         if vert_coord is not None:
             params_list.append(("vertCoord", str(vert_coord)))
@@ -310,6 +300,31 @@ class RTOFSClient:
         """Close the HTTP client."""
         if self._client and not self._client.is_closed:
             await self._client.aclose()
+
+
+def _time_params(
+    ds: dict[str, Any],
+    time: str | None,
+    time_start: str | None,
+    time_end: str | None,
+    time_duration: str | None,
+) -> list[tuple[str, str]]:
+    """Build the NCSS time constraint for a point query. Never unbounded.
+
+    ``temporal=all`` reads every step of the ~16-day FMRC aggregation and
+    took from 50 s to several minutes, so the tools timed out. A range given
+    by only one end is completed with ``time_duration`` (default: the
+    dataset's ``default_window_hours``); a request with no time at all gets
+    that window starting at 'present'. NCSS clips a window to the data it has.
+    """
+    if time:
+        return [("time", time)]
+    if time_start and time_end:
+        return [("time_start", time_start), ("time_end", time_end)]
+    duration = time_duration or f"PT{ds['default_window_hours']}H"
+    if time_end:
+        return [("time_end", time_end), ("time_duration", duration)]
+    return [("time_start", time_start or "present"), ("time_duration", duration)]
 
 
 def _parse_csv(text: str) -> list[dict[str, Any]]:

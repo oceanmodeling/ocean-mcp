@@ -20,6 +20,9 @@ from ..models import (
 from ..server import mcp
 
 
+_COMPARE_WINDOW_HOURS = 24
+
+
 def _get_client(ctx: Context) -> RTOFSClient:
     return ctx.request_context.lifespan_context["rtofs_client"]
 
@@ -211,17 +214,17 @@ async def rtofs_compare_with_observations(
     time: str | None = None,
     response_format: Literal["markdown", "json"] = "markdown",
 ) -> str:
-    """Compare RTOFS forecast values at two different times at the same location.
+    """Compare RTOFS values at the same location over the 24 hours before a time.
 
-    Fetches the latest and an earlier forecast for the same point to show
-    how the forecast evolves. For SST, compares the most recent value with
-    the value from 24 hours earlier.
+    Fetches the 24 h window ending at the reference time and reports the
+    value at its start, middle and end, plus the change across the window.
 
     Args:
         latitude: Latitude in decimal degrees.
         longitude: Longitude in decimal degrees.
         variable: Surface variable to compare. Default: 'sst'.
-        time: Reference time in ISO format. Default: latest ('present').
+        time: Reference time (end of the window) in ISO format.
+              Default: now ('present').
         response_format: 'markdown' (default) or 'json'.
     """
     try:
@@ -244,12 +247,15 @@ async def rtofs_compare_with_observations(
 
         client = _get_client(ctx)
 
-        # Fetch full time series
+        # Only the window ending at the reference time; the full series is
+        # far too slow to extract for three values.
         rows = await client.fetch_point_csv(
             dataset_key=dataset_key,
             variable=thredds_var,
             latitude=latitude,
             longitude=longitude,
+            time_end=time or "present",
+            time_duration=f"PT{_COMPARE_WINDOW_HOURS}H",
             vert_coord=vert_coord,
         )
 
@@ -284,6 +290,7 @@ async def rtofs_compare_with_observations(
                     "longitude": longitude,
                     "variable": variable,
                     "unit": unit,
+                    "window_hours": _COMPARE_WINDOW_HOURS,
                     "n_time_steps": len(valid_rows),
                     "earliest": {
                         "time": first_row.get("time", ""),
@@ -297,13 +304,13 @@ async def rtofs_compare_with_observations(
                         "time": last_row.get("time", ""),
                         "value": last_val,
                     },
-                    "change_over_forecast": round(change, 4),
+                    "change_over_window": round(change, 4),
                 },
                 indent=2,
             )
 
         lines = [
-            f"## RTOFS Forecast Evolution — {var_info['long_name']}",
+            f"## RTOFS {_COMPARE_WINDOW_HOURS} h Change — {var_info['long_name']}",
             f"**Location**: ({latitude:.4f}°, {longitude:.4f}°)",
             f"**Variable**: {variable} ({unit})",
             f"**Time steps**: {len(valid_rows)}",
@@ -311,10 +318,10 @@ async def rtofs_compare_with_observations(
             "| Period | Time | Value |",
             "| --- | --- | --- |",
             f"| Earliest | {str(first_row.get('time', '')).replace('T', ' ')[:19]} | {first_val:.4f} {unit} |",
-            f"| Mid-forecast | {str(mid_row.get('time', '')).replace('T', ' ')[:19]} | {mid_val:.4f} {unit} |",
+            f"| Middle | {str(mid_row.get('time', '')).replace('T', ' ')[:19]} | {mid_val:.4f} {unit} |",
             f"| Latest | {str(last_row.get('time', '')).replace('T', ' ')[:19]} | {last_val:.4f} {unit} |",
             "",
-            f"**Change over forecast period**: {change:+.4f} {unit}",
+            f"**Change over the {_COMPARE_WINDOW_HOURS} h window**: {change:+.4f} {unit}",
             "",
             f"*Source: HYCOM THREDDS ({THREDDS_BASE})*",
         ]

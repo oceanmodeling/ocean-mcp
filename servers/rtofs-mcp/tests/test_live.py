@@ -22,9 +22,10 @@ pytestmark = pytest.mark.timeout(45)
 async def client():
     """Create and clean up a live client.
 
-    Fail fast: these are single-point smoke queries (healthy round-trips are
-    sub-10s), so a 30s timeout with a single retry rides out a one-off blip
-    without letting a true stall consume the job budget.
+    Fail fast: these are single-point smoke queries. Healthy round-trips take
+    1-25s (HYCOM extracts ~1 time step/s when its cache is cold), so a 30s
+    timeout with a single retry rides out a one-off blip without letting a
+    true stall consume the job budget.
     """
     c = RTOFSClient(timeout=30.0, max_retries=1)
     yield c
@@ -65,6 +66,8 @@ async def test_live_sst_surface_timeseries(client):
 
     Coastal cells are masked in the ~9 km HYCOM grid (see SSH test), so an
     open-ocean point is required to exercise the live time-series path.
+    No time arguments: this is the default window the surface-forecast tool
+    sends. It used to be ``temporal=all``, which took minutes (issue #127).
     """
     rows = await client.fetch_point_csv(
         dataset_key="sst",
