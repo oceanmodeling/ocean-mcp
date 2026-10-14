@@ -6,7 +6,7 @@ import json
 import math
 import os
 import re
-from datetime import datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 
@@ -54,12 +54,21 @@ def parse_directory_listing(html: str) -> list[dict]:
 # ---------------------------------------------------------------------------
 
 
+# HD/HA data line (NHC HDOB spec, https://www.nhc.noaa.gov/abouthdobs_2007.shtml):
+#   hhmmss LLLLH NNNNNW PPPP GGGGG XXXX sTTT sddd wwwSSS MMM KKK ppp FF
+# 13 fields. A missing value is slashes ('///'); the spec also allows 999.
+_HDOB_DATA_LINE = re.compile(r"^\d{6}\s+\d{4}[NS]\s+\d{5}[EW]\s")
+# Mission/ob identifier line: '<mission id> HDOB <ob number> <YYYYMMDD>'.
+_HDOB_MISSION_LINE = re.compile(r"^(.+?)\s+HDOB\s+(\d+)\s+(\d{8})\s*$")
+
+
 def parse_hdob_message(text: str) -> dict:
     """Parse an HDOB (High Density Observation) bulletin.
 
-    HDOB format: WMO header lines followed by space-delimited observation
-    records. Each record has 14 fields at 30-second intervals.
-    Lat/lon are in DDMM format (degrees and minutes), NOT tenths.
+    A bulletin is a WMO header (URNT15/URPN15/URPA15), a mission line ending
+    in ``HDOB <ob number> <YYYYMMDD>`` and up to 20 data lines. YYYYMMDD is
+    the date of the first data line; it advances when the time of day wraps
+    past midnight within the bulletin.
 
     Args:
         text: Raw HDOB bulletin text.
@@ -67,108 +76,77 @@ def parse_hdob_message(text: str) -> dict:
     Returns:
         Dict with 'header' info and 'observations' list.
     """
-    lines = text.strip().split("\n")
-    header_info: dict = {}
+    header: dict = {}
     observations: list[dict] = []
+    day: date | None = None
+    prev_time = ""
 
-    # Parse header lines
-    header_lines: list[str] = []
-    data_start = 0
-    for i, line in enumerate(lines):
+    for line in text.splitlines():
         stripped = line.strip()
-        if not stripped:
-            continue
-        # Data lines start with YYYYMMDD + 6-digit time (HHMMSS), but the
-        # HDOB header line also starts with YYYYMMDD followed by 4-digit time
-        # and "HDOB". Distinguish by checking for "HDOB" keyword.
-        if re.match(r"^\d{8}\s", stripped) and "HDOB" not in stripped:
-            data_start = i
+        if stripped.startswith(("$$", "NNNN")):
             break
-        header_lines.append(stripped)
-
-    # Extract aircraft ID and storm info from header
-    for hl in header_lines:
-        if "NOAA" in hl or "AF" in hl or "TEAL" in hl:
-            header_info["agency_line"] = hl
-        match = re.match(r"^(AHONT1|AHOPN1|URNT15|UZNT13)", hl)
-        if match:
-            header_info["wmo_header"] = hl
-        # Look for the HDOB observation header line with aircraft ID
-        ob_match = re.match(r"^(\d{8})\s+(\d{4})\s+(\w+)\s+HDOB\s+(\d+)", hl)
-        if ob_match:
-            header_info["date"] = ob_match.group(1)
-            header_info["time"] = ob_match.group(2)
-            header_info["aircraft"] = ob_match.group(3)
-            header_info["ob_number"] = ob_match.group(4)
-
-    # Parse observation records
-    for line in lines[data_start:]:
-        stripped = line.strip()
-        if not stripped:
+        if re.match(r"^UR(NT|PN|PA)15\b", stripped):
+            header["wmo_header"] = stripped
             continue
-        # Skip non-data lines ($$, end markers, etc.)
-        if stripped.startswith("$$") or stripped.startswith("NNNN"):
-            break
+        mission = _HDOB_MISSION_LINE.match(stripped)
+        if mission:
+            mission_id = " ".join(mission.group(1).split())
+            header["mission"] = mission_id
+            header["aircraft"] = mission_id.split()[0]
+            header["ob_number"] = int(mission.group(2))
+            header["date"] = mission.group(3)
+            try:
+                day = datetime.strptime(mission.group(3), "%Y%m%d").date()
+            except ValueError:
+                day = None
+            continue
 
         fields = stripped.split()
-        if len(fields) < 14:
+        if day is None or len(fields) != 13 or not _HDOB_DATA_LINE.match(stripped):
             continue
+        if fields[0] < prev_time:
+            day += timedelta(days=1)
+        prev_time = fields[0]
+        observations.append(_parse_hdob_record(fields, day))
 
-        # Validate first field is a date
-        if not re.match(r"^\d{8}$", fields[0]):
-            continue
-
-        obs = _parse_hdob_record(fields)
-        if obs:
-            observations.append(obs)
-
-    return {"header": header_info, "observations": observations}
+    return {"header": header, "observations": observations}
 
 
-def _parse_hdob_record(fields: list[str]) -> dict | None:
-    """Parse a single HDOB observation record (14 fields).
+def _parse_hdob_record(fields: list[str], day: date) -> dict:
+    """Decode one 13-field HD/HA data line.
 
-    Fields: date, time, lat(DDMM), lon(DDDMM), static_pressure,
-            gps_alt, extrap_slp, temp, dewpoint, wind_dir_speed,
-            peak_fl_wind, sfmr_sfc_wind, sfmr_peak_wind, rain_flag/qc
+    Values are 30-s averages except peak_fl_wind_kt and sfmr_sfc_wind_kt,
+    which are the highest 10-s means in the encoding interval;
+    sfmr_rain_rate_mmhr is the SFMR rain rate over that same 10 s.
     """
-    if len(fields) < 14:
-        return None
+    static = _decode_hdob_pressure(fields[3])
+    # XXXX is the extrapolated surface pressure when flying at or below the
+    # 550 mb level and the D-value (m) above it.
+    extrapolated_slp = d_value = None
+    if static is not None and static >= 550.0:
+        extrapolated_slp = _decode_hdob_pressure(fields[5])
+    elif static is not None:
+        d_value = _decode_hdob_d_value(fields[5])
 
-    date_str = fields[0]  # YYYYMMDD
-    time_str = fields[1]  # HHMMSS
-
-    # Parse lat/lon — DDMM format (degrees + minutes)
-    lat = _parse_hdob_latlon(fields[2], is_lat=True)
-    lon = _parse_hdob_latlon(fields[3], is_lat=False)
-
-    obs: dict = {
-        "date": date_str,
-        "time": time_str,
-        "lat": lat,
-        "lon": lon,
-        "static_pressure_mb": _parse_hdob_value(fields[4], scale=0.1),
-        "geopotential_alt_m": _parse_hdob_value(fields[5]),
-        "extrapolated_slp_mb": _parse_hdob_slp(fields[6]),
-        "temp_c": _parse_hdob_value(fields[7], scale=0.1),
-        "dewpoint_c": _parse_hdob_value(fields[8], scale=0.1),
+    wind = fields[8] if len(fields[8]) == 6 else "//////"
+    return {
+        "date": day.strftime("%Y%m%d"),
+        "time": fields[0],
+        "lat": _parse_hdob_latlon(fields[1], is_lat=True),
+        "lon": _parse_hdob_latlon(fields[2], is_lat=False),
+        "static_pressure_mb": static,
+        "geopotential_alt_m": _hdob_int(fields[4]),
+        "extrapolated_slp_mb": extrapolated_slp,
+        "d_value_m": d_value,
+        "temp_c": _hdob_tenths(fields[6]),
+        "dewpoint_c": _hdob_tenths(fields[7]),
+        "fl_wind_dir_deg": _hdob_int(wind[:3], missing=999),
+        "fl_wind_speed_kt": _hdob_int(wind[3:], missing=999),
+        "peak_fl_wind_kt": _hdob_int(fields[9], missing=999),
+        "sfmr_sfc_wind_kt": _hdob_int(fields[10], missing=999),
+        "sfmr_rain_rate_mmhr": _hdob_int(fields[11], missing=999),
+        "qc_flags": fields[12],
     }
-
-    # Wind direction/speed field: "DDD/SSS" format
-    wind_parts = fields[9].split("/") if "/" in fields[9] else [fields[9], "///"]
-    obs["fl_wind_dir_deg"] = (
-        _parse_hdob_value(wind_parts[0]) if len(wind_parts) > 0 else None
-    )
-    obs["fl_wind_speed_kt"] = (
-        _parse_hdob_value(wind_parts[1]) if len(wind_parts) > 1 else None
-    )
-
-    obs["peak_fl_wind_kt"] = _parse_hdob_value(fields[10])
-    obs["sfmr_sfc_wind_kt"] = _parse_hdob_value(fields[11])
-    obs["sfmr_peak_sfc_wind_kt"] = _parse_hdob_value(fields[12])
-    obs["rain_flag"] = fields[13] if fields[13] != "///" else None
-
-    return obs
 
 
 def _parse_hdob_latlon(value: str, is_lat: bool) -> float | None:
@@ -205,172 +183,281 @@ def _parse_hdob_latlon(value: str, is_lat: bool) -> float | None:
         return None
 
 
-def _parse_hdob_value(value: str, scale: float = 1.0) -> float | None:
-    """Parse an HDOB numeric value. '///' means missing."""
-    if not value or "///" in value:
+def _hdob_int(value: str, missing: int | None = None) -> int | None:
+    """Parse an integer HDOB field; slashes, or the ``missing`` code, mean None."""
+    if not value or "/" in value:
         return None
     try:
-        return float(value) * scale
+        number = int(value)
     except ValueError:
         return None
+    return None if number == missing else number
 
 
-def _parse_hdob_slp(value: str) -> float | None:
-    """Parse HDOB extrapolated SLP (offset from 1000 mb, in tenths).
+def _hdob_tenths(value: str) -> float | None:
+    """Parse a signed tenths field such as '+213' -> 21.3 or '-045' -> -4.5."""
+    number = _hdob_int(value)
+    return None if number is None else round(number / 10.0, 1)
 
-    Examples: '0150' → 1015.0 mb, '-0032' → 996.8 mb
+
+def _decode_hdob_pressure(value: str) -> float | None:
+    """Decode an HDOB pressure: tenths of mb, leading 1 dropped at >= 1000 mb.
+
+    Examples: '6965' -> 696.5, '9892' -> 989.2, '0015' -> 1001.5
     """
-    if not value or "///" in value:
+    tenths = _hdob_int(value)
+    if tenths is None:
         return None
-    try:
-        offset = float(value) * 0.1
-        return round(1000.0 + offset, 1)
-    except ValueError:
+    # Below 1000 tenths (100.0 mb) is above any recon aircraft's ceiling, so
+    # such a value can only be 1000.0 mb or more with its leading 1 dropped.
+    if tenths < 1000:
+        tenths += 10000
+    return round(tenths / 10.0, 1)
+
+
+def _decode_hdob_d_value(value: str) -> int | None:
+    """Decode an HDOB D-value (m). Negative values come in two encodings.
+
+    The spec's D + 5000 ('4825' -> -175) and 5000 + |D| ('5002' -> -2) both
+    occur in archived bulletins; each matched the standard-atmosphere D-value
+    from that line's own pressure and height. Real D-values stay within
+    about +-1500 m, so the 4xxx and 5xxx ranges cannot be confused.
+    """
+    raw = _hdob_int(value)
+    if raw is None:
         return None
+    if raw >= 5000:
+        return 5000 - raw
+    if raw >= 4000:
+        return raw - 5000
+    return raw
 
 
 # ---------------------------------------------------------------------------
 # VDM parser
 # ---------------------------------------------------------------------------
 
+# A VDM is a list of lettered items. The NHC archive (2006 onward) has two
+# layouts: A-U since 2018 and A-P before. Both give the fix time in A, the
+# center in B and the standard-level height in C; the rest moved.
+_VDM_ITEMS = {
+    "2018": {
+        "min_slp": "D",
+        "center_sfc_wind": "E",
+        "eye_character": "F",
+        "eye_shape": "G",
+        "max_sfc_wind_inbound": "H",
+        "max_fl_wind_inbound": "J",
+        "max_sfc_wind_outbound": "L",
+        "max_fl_wind_outbound": "N",
+        "temp_outside": "P",
+        "temp_inside": "Q",
+        "mission": "U",
+    },
+    "pre-2018": {
+        "max_sfc_wind_inbound": "D",
+        "max_fl_wind_inbound": "F",
+        "min_slp": "H",
+        "temp_outside": "I",
+        "temp_inside": "J",
+        "eye_character": "L",
+        "eye_shape": "M",
+        "mission": "P",
+    },
+}
 
-def parse_vdm_message(text: str) -> dict:
-    """Parse a Vortex Data Message (VDM).
 
-    VDMs contain lettered fields (A through U) with storm center fix data.
-    Post-2018 format is parsed here.
+def parse_vdm_message(text: str, issued: datetime | None = None) -> dict:
+    """Parse a Vortex Data Message (VDM) in the 2018+ or the earlier layout.
 
     Args:
         text: Raw VDM bulletin text.
+        issued: When the bulletin was issued (e.g. from the archive file
+            name). Item A has only day and time, so the year and month come
+            from here; without it fix_time_utc is item A's raw text.
 
     Returns:
-        Dict with header info and parsed fields.
+        Dict of decoded items. Items the message gives as NA are None.
     """
-    lines = text.strip().split("\n")
-    result: dict = {"raw_text": text}
-    header_lines: list[str] = []
+    result: dict = {"raw_text": text, "storm_id": None}
+    items: dict[str, str] = {}
+    continuation: dict[str, list[str]] = {}
+    current: str | None = None
 
-    # Extract header info
-    for line in lines:
+    for line in text.splitlines():
         stripped = line.strip()
-        if not stripped:
+        if not stripped or stripped in ("$$", ";"):
             continue
-        header_lines.append(stripped)
-        # Look for REPNT2/REPPN2 header
-        if re.match(r"^(URNT12|URPN12|REPNT2|REPPN2)", stripped):
-            result["wmo_header"] = stripped
-        # Storm identification line (e.g., "VORTEX DATA MESSAGE  AL142024")
-        vdm_match = re.search(
-            r"VORTEX\s+(?:DATA\s+)?MESSAGE\s+(\w+)", stripped, re.IGNORECASE
-        )
-        if vdm_match:
-            result["storm_id"] = vdm_match.group(1).upper()
-        # Observation line with storm name
-        obs_match = re.search(r"OB\s+\d+", stripped)
-        if obs_match:
-            result["observation_line"] = stripped
+        item = re.match(r"^([A-U])\.\s*(.*)$", stripped)
+        if item:
+            current = item.group(1)
+            items[current] = item.group(2).strip()
+        elif current is not None:
+            continuation.setdefault(current, []).append(stripped)
+        else:
+            if re.match(r"^UR(NT|PN)12\b", stripped):
+                result["wmo_header"] = stripped
+            storm = re.search(r"VORTEX\s+DATA\s+MESSAGE\s+(\w+)", stripped, re.I)
+            if storm:
+                result["storm_id"] = storm.group(1).upper()
 
-    # Parse lettered fields
-    full_text = "\n".join(lines)
+    layout = "2018" if "U" in items else "pre-2018"
+    letters = _VDM_ITEMS[layout]
+    # Lines after the last item (the mission line) are free-text remarks;
+    # elsewhere a line continues its item, e.g. the older layout's longitude.
+    remarks = continuation.pop(letters["mission"], [])
+    for letter, extra in continuation.items():
+        items[letter] = " ".join([items[letter], *extra])
 
-    # A. Date/Time of center fix
-    a_match = re.search(r"A\.\s*(\d{6})\s*UTC", full_text)
-    if a_match:
-        result["fix_time_utc"] = a_match.group(1)
+    def item_text(name: str) -> str | None:
+        letter = letters.get(name)
+        return items.get(letter) if letter else None
 
-    # B. Center fix coordinates
-    b_match = re.search(r"B\.\s*(\d{3,4}[NS])\s+(\d{4,5}[EW])", full_text)
-    if b_match:
-        lat = _parse_vdm_latlon(b_match.group(1), is_lat=True)
-        lon = _parse_vdm_latlon(b_match.group(2), is_lat=False)
-        result["center_lat"] = lat
-        result["center_lon"] = lon
+    lat, lon = _vdm_center(items.get("B"))
+    slp_text = item_text("min_slp")
+    min_slp = _vdm_number(slp_text, "mb")
+    sfc_dir, sfc_kt = _vdm_dir_speed(item_text("center_sfc_wind"))
+    in_dir, in_kt = _vdm_dir_speed(item_text("max_fl_wind_inbound"))
+    out_dir, out_kt = _vdm_dir_speed(item_text("max_fl_wind_outbound"))
+    eye_shape = _vdm_text(item_text("eye_shape"))
 
-    # C. Flight-level pressure/height at center
-    c_match = re.search(
-        r"C\.\s*(\d+)\s*MB?\s*/?\s*(\d+)\s*(?:M|FT|GP)", full_text, re.IGNORECASE
+    result.update(
+        {
+            "vdm_format": layout,
+            "fix_time_utc": _vdm_fix_time(items.get("A"), issued),
+            "center_lat": lat,
+            "center_lon": lon,
+            "std_level_mb": _vdm_number(items.get("C"), "mb"),
+            "min_height_m": _vdm_number(items.get("C"), "m"),
+            "min_slp_mb": min_slp,
+            "min_slp_extrapolated": (
+                "EXTRAP" in slp_text.upper() if min_slp is not None else None
+            ),
+            "center_sfc_wind_dir_deg": sfc_dir,
+            "center_sfc_wind_kt": sfc_kt,
+            "eye_character": _vdm_text(item_text("eye_character")),
+            "eye_shape": eye_shape,
+            "eye_diameter_nm": _vdm_eye_diameter(eye_shape),
+            "max_sfc_wind_inbound_kt": _vdm_number(
+                item_text("max_sfc_wind_inbound"), "kt"
+            ),
+            "max_fl_wind_inbound_dir_deg": in_dir,
+            "max_fl_wind_inbound_kt": in_kt,
+            "max_sfc_wind_outbound_kt": _vdm_number(
+                item_text("max_sfc_wind_outbound"), "kt"
+            ),
+            "max_fl_wind_outbound_dir_deg": out_dir,
+            "max_fl_wind_outbound_kt": out_kt,
+            "max_fl_temp_outside_c": _vdm_number(item_text("temp_outside"), "C"),
+            "max_fl_temp_inside_c": _vdm_number(item_text("temp_inside"), "C"),
+            "observation_line": _vdm_text(item_text("mission")),
+            "remarks": " / ".join(remarks) or None,
+        }
     )
-    if c_match:
-        result["fl_pressure_mb"] = int(c_match.group(1))
-        result["fl_height"] = int(c_match.group(2))
-
-    # D. Minimum SLP (extrapolated)
-    d_match = re.search(r"D\.\s*(\d+)\s*MB", full_text, re.IGNORECASE)
-    if d_match:
-        result["min_slp_mb"] = int(d_match.group(1))
-
-    # E. Eye/wall character or storm motion
-    e_match = re.search(r"E\.\s*(.+?)(?:\n|$)", full_text)
-    if e_match:
-        result["field_e"] = e_match.group(1).strip()
-
-    # H. Max SFMR surface wind inbound
-    h_match = re.search(r"H\.\s*(\d+)\s*KT", full_text, re.IGNORECASE)
-    if h_match:
-        result["max_sfmr_inbound_kt"] = int(h_match.group(1))
-
-    # J. Max flight-level wind inbound
-    j_match = re.search(r"J\.\s*(\d+)\s*KT", full_text, re.IGNORECASE)
-    if j_match:
-        result["max_fl_wind_inbound_kt"] = int(j_match.group(1))
-
-    # L. Max SFMR surface wind outbound
-    l_match = re.search(r"L\.\s*(\d+)\s*KT", full_text, re.IGNORECASE)
-    if l_match:
-        result["max_sfmr_outbound_kt"] = int(l_match.group(1))
-
-    # N. Max flight-level wind outbound
-    n_match = re.search(r"N\.\s*(\d+)\s*KT", full_text, re.IGNORECASE)
-    if n_match:
-        result["max_fl_wind_outbound_kt"] = int(n_match.group(1))
-
-    # S. Eye diameter/character
-    s_match = re.search(r"S\.\s*(.+?)(?:\n|$)", full_text)
-    if s_match:
-        eye_text = s_match.group(1).strip()
-        result["eye_character"] = eye_text
-        diam_match = re.search(r"(\d+)\s*NM", eye_text, re.IGNORECASE)
-        if diam_match:
-            result["eye_diameter_nm"] = int(diam_match.group(1))
-
     return result
 
 
-def _parse_vdm_latlon(value: str, is_lat: bool) -> float | None:
-    """Parse VDM lat/lon (DDMM or DDDMM format with hemisphere character).
+def _vdm_text(value: str | None) -> str | None:
+    """Collapse whitespace; None for an empty or NA item."""
+    if not value or value.strip().upper() == "NA":
+        return None
+    return " ".join(value.split())
 
-    Examples: '2606N' → 26.1, '08015W' → -80.25
+
+def _vdm_number(value: str | None, unit: str) -> int | None:
+    """First integer followed by ``unit``: '943 mb', 'EXTRAP 1011 MB', '14 C'."""
+    if not value:
+        return None
+    match = re.search(rf"(-?\d+)\s*{unit}\b", value, re.IGNORECASE)
+    return int(match.group(1)) if match else None
+
+
+def _vdm_dir_speed(value: str | None) -> tuple[int | None, int | None]:
+    """Direction and speed from an item such as '122 deg 101 kt'."""
+    match = re.search(r"(\d+)\s*deg\s+(\d+)\s*kt", value or "", re.IGNORECASE)
+    if not match:
+        return None, None
+    return int(match.group(1)), int(match.group(2))
+
+
+def _vdm_center(value: str | None) -> tuple[float | None, float | None]:
+    """Decode item B, the center fix, to signed decimal degrees.
+
+    2018+: '21.74 deg N 092.07 deg W'. Before: '36 deg 26 min N 071 deg 47
+    min W' (the longitude line already joined on).
+    """
+    if not value:
+        return None, None
+    decimal = re.search(
+        r"([\d.]+)\s*deg\s*([NS])\s+([\d.]+)\s*deg\s*([EW])", value, re.IGNORECASE
+    )
+    if decimal:
+        lat, lon = float(decimal.group(1)), float(decimal.group(3))
+        lat_hemi, lon_hemi = decimal.group(2), decimal.group(4)
+    else:
+        dm = re.search(
+            r"(\d+)\s*deg\s*(\d+)\s*min\s*([NS])\s+(\d+)\s*deg\s*(\d+)\s*min\s*([EW])",
+            value,
+            re.IGNORECASE,
+        )
+        if not dm or int(dm.group(2)) >= 60 or int(dm.group(5)) >= 60:
+            return None, None
+        lat = int(dm.group(1)) + int(dm.group(2)) / 60.0
+        lon = int(dm.group(4)) + int(dm.group(5)) / 60.0
+        lat_hemi, lon_hemi = dm.group(3), dm.group(6)
+    if lat > 90.0 or lon > 180.0:
+        return None, None
+    if lat_hemi.upper() == "S":
+        lat = -lat
+    if lon_hemi.upper() == "W":
+        lon = -lon
+    return round(lat, 4), round(lon, 4)
+
+
+def _vdm_fix_time(value: str | None, issued: datetime | None) -> str | None:
+    """Item A ('07/12:44:10Z', or older '10/1131Z') as an ISO UTC time.
+
+    The year and month come from ``issued``; a fix day later in the month
+    than the issue day belongs to the previous month.
     """
     if not value:
         return None
+    match = re.match(r"(\d{1,2})/(\d{2}):?(\d{2}):?(\d{2})?Z", value.strip())
+    if not match or issued is None:
+        return value.strip()
+    day, hour, minute = (int(match.group(i)) for i in (1, 2, 3))
+    second = int(match.group(4) or 0)
+    year, month = issued.year, issued.month
+    if day > issued.day:
+        year, month = (year - 1, 12) if month == 1 else (year, month - 1)
     try:
-        hemi = value[-1].upper()
-        numeric = value[:-1]
+        fix = datetime(year, month, day, hour, minute, second)
+    except ValueError:
+        return value.strip()
+    return fix.strftime("%Y-%m-%dT%H:%M:%SZ")
 
-        # VDM lat is exactly DDMM (4 digits); lon is exactly DDDMM (5 digits).
-        # Reject off-spec lengths/non-digits so wrong-column or garbled bulletin
-        # data parses to None instead of a silently bogus storm-center fix.
-        # Mirrors the guard in _parse_hdob_latlon.
-        expected_len = 4 if is_lat else 5
-        if len(numeric) != expected_len or not numeric.isdigit():
-            return None
 
-        degrees = int(numeric[:-2])
-        minutes = int(numeric[-2:])
-        if minutes >= 60:
-            return None
-
-        result = degrees + minutes / 60.0
-        if hemi in ("S", "W"):
-            result = -result
-        return round(result, 4)
-    except (ValueError, IndexError):
-        return None
+def _vdm_eye_diameter(shape: str | None) -> int | None:
+    """Eye diameter (nm) from the eye-shape item: 'C10' -> 10, or the inner
+    eye of a concentric 'CO15-30' -> 15. An elliptical 'E04/33/23' gives
+    orientation and axes, not one diameter, so it returns None."""
+    match = re.match(r"^CO?(\d+)", shape or "", re.IGNORECASE)
+    return int(match.group(1)) if match else None
 
 
 # ---------------------------------------------------------------------------
 # ATCF f-deck parser
 # ---------------------------------------------------------------------------
+
+# Leading f-deck columns shared by every fix format (checked against NHC
+# f-decks from 2005 to 2026):
+#   0 basin, 1 cyclone number, 2 YYYYMMDDHHMM, 3 fix format code
+#   (10/20 Dvorak, 30/31 microwave/scatterometer, 40 radar, 50 aircraft,
+#   60 dropsonde, 70 analysis), 4 fix type (DVTS, AIRC, DRPS, ANAL, ...),
+#   5 center/intensity flags, 6 'F' if flagged as bad, 7 lat, 8 lon,
+#   9 height of ob, 10 position confidence, 11 wind (kt), 12 its confidence,
+#   13 pressure (mb), 14 its confidence, ... 30 fix site (CIMS, KNHC, ...).
+_FDECK_MIN_FIELDS = 14
 
 
 def _parse_atcf_fix_latlon(value: str, is_lat: bool) -> float | None:
@@ -378,100 +465,75 @@ def _parse_atcf_fix_latlon(value: str, is_lat: bool) -> float | None:
 
     F-deck records encode position in HUNDREDTHS of a degree with a trailing
     hemisphere character — distinct from b-deck/a-deck best-track records,
-    which use TENTHS (see ``parse_atcf_latlon``). Latitude is exactly 4 digits
-    (0-9000 → 0-90.00°); longitude is exactly 5 digits (0-18000 → 0-180.00°).
+    which use TENTHS (see ``parse_atcf_latlon``). The number is not zero
+    padded: 94.90 W is '9490W' and 105.12 W is '10512W'.
 
-    Off-spec lengths, non-digit bodies, a missing hemisphere, or out-of-range
-    magnitudes return None so wrong-column or tenths-format data parses to None
-    instead of a silently 10x-wrong coordinate.
+    Non-digit bodies, a missing or wrong hemisphere, out-of-range
+    magnitudes, or a bare 0 (a placeholder: one radar fix reads '0E' at
+    29.46 N) return None.
 
     Examples:
         '2557N'  -> 25.57
-        '08015W' -> -80.15
+        '9490W'  -> -94.90
     """
     if not value:
         return None
+    hemi = value[-1].upper()
+    numeric = value[:-1]
+    if hemi not in (("N", "S") if is_lat else ("E", "W")):
+        return None
+    if not numeric.isdigit() or len(numeric) > (4 if is_lat else 5):
+        return None
+
+    result = int(numeric) / 100.0
+    if result == 0.0 or result > (90.0 if is_lat else 180.0):
+        return None
+    if hemi in ("S", "W"):
+        result = -result
+    return round(result, 4)
+
+
+def _fdeck_int(value: str) -> int | None:
+    """Integer f-deck field, None when blank."""
     try:
-        hemi = value[-1].upper()
-        if hemi not in ("N", "S", "E", "W"):
-            return None
-        numeric = value[:-1]
-
-        expected_len = 4 if is_lat else 5
-        if len(numeric) != expected_len or not numeric.isdigit():
-            return None
-
-        result = int(numeric) / 100.0
-        if (is_lat and result > 90.0) or (not is_lat and result > 180.0):
-            return None
-
-        if hemi in ("S", "W"):
-            result = -result
-        return round(result, 4)
-    except (ValueError, IndexError):
+        return int(value)
+    except ValueError:
         return None
 
 
 def parse_atcf_fix_record(line: str) -> dict | None:
-    """Parse a single ATCF f-deck (fix) record.
+    """Parse one ATCF f-deck (fix) record.
 
-    F-deck format is comma-delimited with fields for basin, storm number,
-    date, fix type, latitude, longitude, wind, pressure, etc.
+    Aircraft, dropsonde, satellite, radar and analysis fixes share the
+    leading columns decoded here. Intensity-only fixes carry no position, so
+    their lat/lon are None.
 
     Args:
         line: Single line from an f-deck file.
 
     Returns:
-        Parsed record dict, or None if the line is invalid.
+        Parsed record dict, or None if the line is blank or malformed.
     """
-    if not line.strip():
-        return None
-
     fields = [f.strip() for f in line.split(",")]
-    if len(fields) < 10:
+    if len(fields) < _FDECK_MIN_FIELDS:
         return None
-
-    basin = fields[0]
-    try:
-        cyclone_num = int(fields[1])
-    except ValueError:
+    cyclone_num = _fdeck_int(fields[1])
+    if cyclone_num is None:
         return None
-
-    date_str = fields[2]  # YYYYMMDDHH
-    fix_type = fields[3] if len(fields) > 3 else ""
-
-    # Parse lat/lon (fields 6 and 7 in standard f-deck). F-deck encodes
-    # position in HUNDREDTHS of a degree, unlike b-deck/a-deck which use
-    # TENTHS — using the tenths parser here silently produced 10x-wrong
-    # coordinates for every fix record.
-    lat, lon = None, None
-    if len(fields) > 7:
-        lat = _parse_atcf_fix_latlon(fields[6], is_lat=True)
-        lon = _parse_atcf_fix_latlon(fields[7], is_lat=False)
-
-    # Wind and pressure
-    max_wind = None
-    min_pressure = None
-    if len(fields) > 8 and fields[8]:
-        try:
-            max_wind = int(fields[8])
-        except ValueError:
-            pass
-    if len(fields) > 9 and fields[9]:
-        try:
-            min_pressure = int(fields[9])
-        except ValueError:
-            pass
 
     return {
-        "basin": basin,
+        "basin": fields[0],
         "cyclone_num": cyclone_num,
-        "datetime": date_str,
-        "fix_type": fix_type,
-        "lat": lat,
-        "lon": lon,
-        "max_wind_kt": max_wind,
-        "min_pressure_mb": min_pressure,
+        "datetime": fields[2],  # YYYYMMDDHHMM
+        "fix_format": _fdeck_int(fields[3]),
+        "fix_type": fields[4],
+        "center_intensity": fields[5] or None,
+        "flagged": fields[6].upper() == "F",
+        "lat": _parse_atcf_fix_latlon(fields[7], is_lat=True),
+        "lon": _parse_atcf_fix_latlon(fields[8], is_lat=False),
+        "max_wind_kt": _fdeck_int(fields[11]),
+        "min_pressure_mb": _fdeck_int(fields[13]),
+        "fix_site": fields[30] if len(fields) > 30 and fields[30] else None,
     }
 
 
@@ -564,7 +626,8 @@ def format_tabular_data(
 
     # Rows
     for row in rows:
-        cells = [str(row.get(col[0], "")) for col in columns]
+        values = (row.get(col[0], "") for col in columns)
+        cells = ["—" if v is None else str(v) for v in values]
         lines.append("| " + " | ".join(cells) + " |")
 
     lines.append("")

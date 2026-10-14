@@ -34,6 +34,6 @@ python -m recon_mcp
 ## Data Sources
 
 - **NHC Reconnaissance Archive**: `https://www.nhc.noaa.gov/archive/recon/`
-- **ATCF Fix Data**: `https://ftp.nhc.noaa.gov/atcf/fix/`
+- **ATCF Fix Data**: `https://ftp.nhc.noaa.gov/atcf/fix/` (current season; earlier seasons from `https://ftp.nhc.noaa.gov/atcf/archive/`)
 
 <!-- mcp-name: io.github.oceanmodeling/recon-mcp -->

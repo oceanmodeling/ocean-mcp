@@ -24,6 +24,7 @@ import respx
 from recon_mcp.client import ReconClient, RetryTransport
 from recon_mcp.models import (
     AOML_SFMR_BASE,
+    ATCF_ARCHIVE_BASE,
     ATCF_BDECK_BASE,
     ATCF_FIX_BASE,
     NHC_RECON_ARCHIVE_BASE,
@@ -308,13 +309,16 @@ class TestGetHdobs:
 
         parsed = json.loads(result)
         obs = parsed["data"][0]
-        # First HDOB record: lat=2557N → 25 deg 57 min N = 25.95
-        assert obs["lat"] == pytest.approx(25.95, abs=0.01)
-        # lon=08450W → 84 deg 50 min W = -84.8333
-        assert obs["lon"] == pytest.approx(-84.8333, abs=0.001)
-        # Check that wind fields are populated
-        assert obs["fl_wind_speed_kt"] == pytest.approx(80.0)
-        assert obs["sfmr_sfc_wind_kt"] == pytest.approx(60.0)
+        # First record of the real Milton bulletin (070200, in the eye):
+        # 2400N 08542W = 24.0, -85.7 (degrees + minutes), 907.0 mb.
+        assert obs["date"] == "20241009"
+        assert obs["time"] == "070200"
+        assert obs["lat"] == pytest.approx(24.0)
+        assert obs["lon"] == pytest.approx(-85.7)
+        assert obs["extrapolated_slp_mb"] == pytest.approx(907.0)
+        assert obs["fl_wind_speed_kt"] == 6
+        assert obs["sfmr_sfc_wind_kt"] == 53
+        assert obs["aircraft"] == "AF300"
 
     @respx.mock
     @pytest.mark.asyncio
@@ -449,10 +453,14 @@ class TestGetVdms:
 
         parsed = json.loads(result)
         record = parsed["data"][0]
-        # VDM fixture has D. 150KT — but the parser looks for "D. NNN MB"
-        # The fixture says: H. 140/120KT → max_sfmr_inbound_kt=120
-        assert record.get("max_sfmr_inbound_kt") == 120 or "storm_id" in record
+        # Real Milton VDM; year and month come from the archive file name.
         assert record["storm_id"] == "AL142024"
+        assert record["fix_time_utc"] == "2024-10-09T07:02:10Z"
+        assert (record["center_lat"], record["center_lon"]) == (24.0, -85.71)
+        assert record["min_slp_mb"] == 910
+        assert record["max_sfc_wind_inbound_kt"] == 158
+        assert record["max_fl_wind_outbound_kt"] == 135
+        assert record["eye_diameter_nm"] == 8
 
     @respx.mock
     @pytest.mark.asyncio
@@ -557,10 +565,11 @@ class TestGetFixes:
 
         parsed = json.loads(result)
         assert "data" in parsed
-        assert parsed["record_count"] == 3
+        assert parsed["record_count"] == 8
         first = parsed["data"][0]
         assert first["basin"] == "AL"
         assert first["cyclone_num"] == 14
+        assert first["fix_type"] == "AIRC"
 
     @respx.mock
     @pytest.mark.asyncio
@@ -576,12 +585,12 @@ class TestGetFixes:
 
         parsed = json.loads(result)
         first = parsed["data"][0]
-        # F-deck encodes position in hundredths of a degree:
-        # 2560N → 25.60, 08480W → -84.80 (not tenths → 256.0/-848.0).
-        assert first["lat"] == pytest.approx(25.60, abs=0.001)
-        assert first["lon"] == pytest.approx(-84.80, abs=0.001)
-        assert first["max_wind_kt"] == 80
-        assert first["min_pressure_mb"] == 968
+        # F-deck encodes position in hundredths of a degree, not zero padded:
+        # 2400N → 24.00, 8571W → -85.71 (the 0702Z Milton aircraft fix).
+        assert first["lat"] == pytest.approx(24.0)
+        assert first["lon"] == pytest.approx(-85.71)
+        assert first["max_wind_kt"] == 158
+        assert first["min_pressure_mb"] == 910
 
     @respx.mock
     @pytest.mark.asyncio
@@ -589,6 +598,8 @@ class TestGetFixes:
         """A 404 for the f-deck file returns a user-friendly error."""
         url = f"{ATCF_FIX_BASE}/fal992024.dat"
         respx.get(url).mock(return_value=httpx.Response(404, text="Not Found"))
+        archive_url = f"{ATCF_ARCHIVE_BASE}/2024/fal992024.dat.gz"
+        respx.get(archive_url).mock(return_value=httpx.Response(404, text="Not Found"))
 
         result = await recon_get_fixes(ctx, basin="al", storm_number=99, year=2024)
 
@@ -618,31 +629,54 @@ class TestGetFixes:
         )
 
         parsed = json.loads(result)
-        # Third record in fixture has pressure 950
-        third = parsed["data"][2]
-        assert third["min_pressure_mb"] == 950
+        # Analysis fix: pressure only. Satellite (DPNT) fix: wind and pressure.
+        analysis, dpnt = parsed["data"][1], parsed["data"][3]
+        assert (analysis["max_wind_kt"], analysis["min_pressure_mb"]) == (None, 908)
+        assert (dpnt["max_wind_kt"], dpnt["min_pressure_mb"]) == (127, 934)
 
     @respx.mock
     @pytest.mark.asyncio
     async def test_get_fixes_ep_basin(self, ctx: MagicMock) -> None:
         """EP basin correctly builds the f-deck URL with 'ep' prefix."""
-        url = f"{ATCF_FIX_BASE}/fep052023.dat"
-        # Single record for EP basin
+        url = f"{ATCF_FIX_BASE}/fep052026.dat"
+        # Real EP05 2026 analysis fix; longitudes of 100+ have five digits.
         ep_record = (
-            "EP,  5, 2023080612,  , HDOB, AI,                , "
-            "202308061200,   0,  150N,  1050W,   30, 0990,  ,    ,    ,"
-            "    ,    ,    ,    ,    , 150,    ,   , NOAA    ,   ,     ,"
-            "     ,     ,     ,     ,\n"
+            "EP, 05, 202607131200,  70, ANAL,         CI,  , 1220N, 10100W,"
+            "    10, 2,  30, 2, 1009, 2, MEAS,    ,     ,\n"
         )
         respx.get(url).mock(return_value=httpx.Response(200, text=ep_record))
 
         result = await recon_get_fixes(
-            ctx, basin="ep", storm_number=5, year=2023, response_format="json"
+            ctx, basin="ep", storm_number=5, year=2026, response_format="json"
         )
 
         parsed = json.loads(result)
         assert parsed["record_count"] == 1
-        assert parsed["data"][0]["basin"] == "EP"
+        record = parsed["data"][0]
+        assert record["basin"] == "EP"
+        assert (record["lat"], record["lon"]) == (12.2, -101.0)
+
+    @respx.mock
+    @pytest.mark.asyncio
+    async def test_get_fixes_archived_season(self, ctx: MagicMock) -> None:
+        """Past seasons are not in fix/: fall back to the gzipped archive."""
+        import gzip
+
+        respx.get(f"{ATCF_FIX_BASE}/fal142024.dat").mock(
+            return_value=httpx.Response(404, text="Not Found")
+        )
+        fdeck = _load_fixture("fdeck_sample.txt")
+        respx.get(f"{ATCF_ARCHIVE_BASE}/2024/fal142024.dat.gz").mock(
+            return_value=httpx.Response(200, content=gzip.compress(fdeck.encode()))
+        )
+
+        result = await recon_get_fixes(
+            ctx, basin="AL", storm_number=14, year=2024, response_format="json"
+        )
+
+        parsed = json.loads(result)
+        assert parsed["record_count"] == 8
+        assert parsed["data"][0]["min_pressure_mb"] == 910
 
 
 # ===================================================================
@@ -774,7 +808,7 @@ class TestOutputCaps:
             return_value=httpx.Response(200, text=bulletin)
         )
 
-        # 3 bulletins x 5 observations each = 15 total observations.
+        # 3 bulletins x 20 observations each = 60 total observations.
         result = await recon_get_hdobs(
             ctx,
             year=2024,
@@ -787,7 +821,7 @@ class TestOutputCaps:
 
         assert parsed["truncated"] is True
         assert parsed["record_count"] == 5
-        assert parsed["total_count"] == 15
+        assert parsed["total_count"] == 60
         assert "hint" in parsed
 
     @respx.mock
@@ -816,7 +850,7 @@ class TestOutputCaps:
         parsed = json.loads(result)
 
         assert parsed["truncated"] is False
-        assert parsed["record_count"] == parsed["total_count"] == 5
+        assert parsed["record_count"] == parsed["total_count"] == 20
         assert "hint" not in parsed
 
     @respx.mock
@@ -840,11 +874,11 @@ class TestOutputCaps:
 
         assert parsed["truncated"] is True
         assert parsed["record_count"] == 1
-        assert parsed["total_count"] == 3
-        # The fixture's 3rd (last) record is the most recent — 2024100915,
-        # min_pressure 950 — confirmed against the live f-deck's chronological
-        # ascending order (verified against ftp.nhc.noaa.gov/atcf/fix/).
-        assert parsed["data"][0]["min_pressure_mb"] == 950
+        assert parsed["total_count"] == 8
+        # The fixture's last record is the most recent: the 1059Z Key West
+        # radar fix (real f-decks are in ascending time order).
+        assert parsed["data"][0]["datetime"] == "202410091059"
+        assert parsed["data"][0]["fix_type"] == "RDRD"
 
     @respx.mock
     @pytest.mark.asyncio

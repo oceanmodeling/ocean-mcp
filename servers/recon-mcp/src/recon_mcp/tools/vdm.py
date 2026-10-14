@@ -1,5 +1,7 @@
 """Tool: recon_get_vdms — fetch and parse Vortex Data Messages."""
 
+import re
+from datetime import datetime
 from typing import Literal
 
 from mcp.server.fastmcp import Context
@@ -18,6 +20,14 @@ from ..utils import (
 
 def _get_client(ctx: Context) -> ReconClient:
     return ctx.request_context.lifespan_context["recon_client"]
+
+
+def _issued(filename: str) -> datetime | None:
+    """Issue time from an archive name such as REPNT2-KNHC.202410071313.txt."""
+    match = re.search(r"\.(\d{12})\.txt$", filename)
+    if not match:
+        return None
+    return datetime.strptime(match.group(1), "%Y%m%d%H%M")
 
 
 @mcp.tool(
@@ -92,7 +102,7 @@ async def recon_get_vdms(
             file_url = url + entry["href"]
             try:
                 text = await client.fetch_text(file_url)
-                parsed = parse_vdm_message(text)
+                parsed = parse_vdm_message(text, issued=_issued(entry["filename"]))
                 parsed["source_file"] = entry["filename"]
                 vdms.append(parsed)
             except Exception:
@@ -101,7 +111,9 @@ async def recon_get_vdms(
         # Filter by storm_id if specified
         if storm_id:
             storm_id_upper = storm_id.upper()
-            vdms = [v for v in vdms if v.get("storm_id", "").upper() == storm_id_upper]
+            vdms = [
+                v for v in vdms if (v.get("storm_id") or "").upper() == storm_id_upper
+            ]
 
         if not vdms:
             filter_note = f" for storm {storm_id}" if storm_id else ""
@@ -127,7 +139,7 @@ async def recon_get_vdms(
             ("center_lon", "Lon"),
             ("min_slp_mb", "Min SLP (mb)"),
             ("max_fl_wind_inbound_kt", "FL Wind In (kt)"),
-            ("max_sfmr_inbound_kt", "SFMR In (kt)"),
+            ("max_sfc_wind_inbound_kt", "Sfc Wind In (kt)"),
             ("eye_diameter_nm", "Eye (NM)"),
         ]
 

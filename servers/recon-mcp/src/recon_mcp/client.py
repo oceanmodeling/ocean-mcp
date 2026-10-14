@@ -161,7 +161,38 @@ class ReconClient:
         Returns:
             Full URL to the f-deck file.
         """
-        return f"{ATCF_FIX_BASE}/f{basin}{storm_number:02d}{year}.dat"
+        return f"{ATCF_FIX_BASE}/f{basin.lower()}{storm_number:02d}{year}.dat"
+
+    async def fetch_fdeck(
+        self, basin: str, storm_number: int, year: int
+    ) -> tuple[str, str]:
+        """Fetch ATCF f-deck (fix) text, trying active then archive paths.
+
+        fix/ holds only the current season; earlier storms are gzipped under
+        /atcf/archive/{year}/, as for b-decks (see fetch_best_track).
+
+        Returns:
+            (f-deck text, URL it was read from).
+
+        Raises:
+            httpx.HTTPStatusError: If the file is not found at either location.
+        """
+        import gzip
+
+        client = await self._get_client()
+        active_url = self.build_atcf_fdeck_url(basin, storm_number, year)
+        try:
+            response = await client.get(active_url)
+            response.raise_for_status()
+            return response.text, active_url
+        except httpx.HTTPStatusError:
+            pass
+
+        stem = f"f{basin.lower()}{storm_number:02d}{year}.dat"
+        archive_url = f"{ATCF_ARCHIVE_BASE}/{year}/{stem}.gz"
+        response = await client.get(archive_url)
+        response.raise_for_status()
+        return gzip.decompress(response.content).decode("utf-8"), archive_url
 
     async def download_netcdf(self, url: str) -> Path:
         """Download a NetCDF file to a temporary location.

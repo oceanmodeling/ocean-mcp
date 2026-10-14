@@ -39,7 +39,8 @@ async def recon_get_fixes(
 
     F-deck data contains structured aircraft and satellite position fixes
     including lat/lon, wind speed, and pressure. This is the most
-    machine-readable format for reconnaissance fix data.
+    machine-readable format for reconnaissance fix data. Current-season
+    storms come from ATCF fix/, earlier seasons from the ATCF archive.
 
     Args:
         basin: Basin code — 'al' (Atlantic), 'ep' (East Pacific), or 'cp' (Central Pacific).
@@ -53,8 +54,7 @@ async def recon_get_fixes(
     """
     try:
         client = _get_client(ctx)
-        url = client.build_atcf_fdeck_url(basin, storm_number, year)
-        text = await client.fetch_text(url)
+        text, url = await client.fetch_fdeck(basin, storm_number, year)
 
         records: list[dict] = []
         for line in text.strip().split("\n"):
