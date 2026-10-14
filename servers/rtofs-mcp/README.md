@@ -34,7 +34,7 @@ pip install rtofs-mcp
 | `rtofs_get_profile_forecast` | 3D depth profile at a point (temp, salinity, currents vs depth) |
 | `rtofs_get_area_forecast` | Surface forecast for a bounding box (parallel point queries) |
 | `rtofs_get_transect` | Vertical transect between two points (parallel depth profiles) |
-| `rtofs_compare_with_observations` | Compare forecast values at different times |
+| `rtofs_compare_with_observations` | Change at a point over the 24 h before a time (default: now) |
 
 ## Example Queries
 
@@ -50,9 +50,9 @@ pip install rtofs-mcp
 
 ESPC-D-V02 datasets (operational HYCOM/RTOFS):
 - `FMRC_ESPC-D-V02_ssh` — Sea Surface Height (2D, hourly)
-- `FMRC_ESPC-D-V02_t3z` — Water Temperature (3D, daily)
-- `FMRC_ESPC-D-V02_s3z` — Salinity (3D, daily)
-- `FMRC_ESPC-D-V02_uv3z` — Ocean Currents u/v (3D, daily)
+- `FMRC_ESPC-D-V02_t3z` — Water Temperature (3D, 3-hourly)
+- `FMRC_ESPC-D-V02_s3z` — Salinity (3D, 3-hourly)
+- `FMRC_ESPC-D-V02_uv3z` — Ocean Currents u/v (3D, 3-hourly)
 
 Data is queried via THREDDS NCSS (NetCDF Subset Service) which returns CSV for point queries — no NetCDF library required.
 

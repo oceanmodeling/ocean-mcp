@@ -70,8 +70,10 @@ async def rtofs_get_surface_forecast(
     """Get RTOFS surface time series at a point (SST, SSS, currents, or SSH).
 
     Queries HYCOM THREDDS NCSS for the nearest grid cell to the requested
-    lat/lon (~8 km resolution). Returns a time series over the full forecast
-    period or a specified time range.
+    lat/lon (~8 km resolution). By default returns the window starting now:
+    the next 72 h for the 3-hourly sst/sss/currents, the next 24 h for hourly
+    ssh. Data spans ~10 days back and ~6 days ahead. HYCOM extracts about one
+    time step per second, so keep custom windows to a few days.
 
     For 3D variables (SST, SSS, currents), surface values (depth=0) are returned.
 
@@ -80,8 +82,10 @@ async def rtofs_get_surface_forecast(
         longitude: Longitude in decimal degrees (-180 to 180).
         variable: One of: sst, sss, u_current, v_current, ssh. Default: 'sst'.
         time_start: Start time in ISO format (e.g., '2026-03-01T00:00:00Z').
-                    Default: all available times.
-        time_end: End time in ISO format. Default: all available.
+                    Default: now ('present'), or the default window before
+                    time_end when only time_end is given.
+        time_end: End time in ISO format. Default: the default window
+                  (72 h, or 24 h for ssh) after time_start.
         response_format: 'markdown' (default) or 'json'.
     """
     try:
