@@ -16,7 +16,17 @@ from erddap_mcp.utils import parse_erddap_json
 # issue #86) while staying reachable from everywhere else we checked — an
 # upstream network policy on NOAA's end, not an ERDDAP/API change. PacIOOS
 # runs the same ERDDAP software and has stayed reachable from CI.
+# Its certificate chains to emSign Root CA - G1, which certifi 2026.10.18
+# dropped and 2026.10.19 restored; a CERTIFICATE_VERIFY_FAILED here means the
+# CA bundle changed again, not that ERDDAP drifted (weekly drift issue #126).
 PACIOOS_URL = "https://pae-paha.pacioos.hawaii.edu/erddap"
+
+# Hard per-test ceiling. PacIOOS has intermittently stalled for GitHub's
+# runners (#126); a stalled request then sat through the client's 60 s timeout
+# and retries until the 5-minute CI step was killed, with no traceback. 45 s x
+# 5 tests stays under that budget, so a stall fails one test with a traceback.
+# Requires pytest-timeout.
+pytestmark = pytest.mark.timeout(45)
 
 
 @pytest.fixture

@@ -234,6 +234,24 @@ class TestHandleErddapError:
         result = handle_erddap_error(err, "https://example.com/erddap")
         assert "timed out" in result.lower()
 
+    def test_untrusted_certificate(self):
+        """A certificate-verification failure is not reported as an outage."""
+        import ssl
+
+        import httpx
+
+        cause = ssl.SSLCertVerificationError(1, "certificate verify failed")
+        cause.verify_message = "unable to get local issuer certificate"
+        try:
+            raise httpx.ConnectError("certificate verify failed") from cause
+        except httpx.ConnectError as err:
+            result = handle_erddap_error(err, "https://example.com/erddap")
+        assert "Could not verify the TLS certificate" in result
+        assert "example.com" in result
+        assert "unable to get local issuer certificate" in result
+        assert "certifi" in result
+        assert "may be down" not in result
+
 
 # --- cap_rows ---
 

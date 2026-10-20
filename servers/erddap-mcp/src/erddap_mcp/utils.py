@@ -192,6 +192,15 @@ def build_griddap_query(
     return "".join(parts)
 
 
+def _ca_bundle_name() -> str:
+    """'certifi <version>', the CA bundle httpx verifies against by default."""
+    try:
+        import certifi
+    except ImportError:
+        return "certifi"
+    return f"certifi {getattr(certifi, '__version__', '?')}"
+
+
 def handle_erddap_error(e: Exception, server_url: str = "") -> str:
     """Format an ERDDAP error into a user-friendly message with suggestions.
 
@@ -204,7 +213,7 @@ def handle_erddap_error(e: Exception, server_url: str = "") -> str:
     """
     import httpx
 
-    from .client import ERDDAPSecurityError
+    from .client import ERDDAPSecurityError, cert_verify_error
 
     msg = str(e)
 
@@ -241,6 +250,18 @@ def handle_erddap_error(e: Exception, server_url: str = "") -> str:
 
     if isinstance(e, httpx.TimeoutException):
         return "Request timed out. ERDDAP servers can be slow for large queries. Try reducing your data request size or increasing stride."
+
+    cert_error = cert_verify_error(e)
+    if cert_error is not None:
+        reason = getattr(cert_error, "verify_message", None) or str(cert_error)
+        return (
+            f"Could not verify the TLS certificate of the ERDDAP server at {server_url} "
+            f"({reason}). The server is reachable, but its certificate chain does not "
+            f"lead to a root in this Python install's CA bundle ({_ca_bundle_name()}), "
+            "so this is not an outage and retrying will not help: the server's "
+            "operator has to fix the chain. Use erddap_list_servers to find an "
+            "alternative server."
+        )
 
     if isinstance(e, httpx.ConnectError):
         return f"Could not connect to ERDDAP server at {server_url}. The server may be down. Use erddap_list_servers to find alternative servers."
