@@ -6,6 +6,7 @@ import asyncio
 import ipaddress
 import random
 import socket
+import ssl
 import time
 from typing import Any
 from urllib.parse import quote, urljoin, urlparse
@@ -65,6 +66,23 @@ def _validate_public_http_url(url: str) -> None:
 _RETRY_STATUS = frozenset({429, 500, 502, 503, 504})
 
 
+def cert_verify_error(exc: BaseException) -> ssl.SSLCertVerificationError | None:
+    """The TLS certificate-verification failure behind ``exc``, if there is one.
+
+    httpx raises it as ConnectError <- httpcore.ConnectError <-
+    ssl.SSLCertVerificationError, so walk the cause/context chain. Re-raised
+    exceptions can make that chain loop, hence the visited set.
+    """
+    visited: set[int] = set()
+    current: BaseException | None = exc
+    while current is not None and id(current) not in visited:
+        if isinstance(current, ssl.SSLCertVerificationError):
+            return current
+        visited.add(id(current))
+        current = current.__cause__ or current.__context__
+    return None
+
+
 class RetryTransport(httpx.AsyncHTTPTransport):
     """AsyncHTTPTransport that retries idempotent GETs on transient failures.
 
@@ -99,6 +117,10 @@ class RetryTransport(httpx.AsyncHTTPTransport):
             try:
                 response = await super().handle_async_request(request)
             except httpx.TransportError as exc:
+                # A certificate the CA bundle cannot verify fails the same
+                # way every time; retrying only delays the error.
+                if cert_verify_error(exc) is not None:
+                    raise
                 last_exc = exc
                 continue
             if response.status_code in _RETRY_STATUS and attempt < self._max_retries:

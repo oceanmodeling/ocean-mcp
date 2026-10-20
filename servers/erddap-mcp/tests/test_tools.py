@@ -9,6 +9,7 @@ so no network traffic occurs.
 from __future__ import annotations
 
 import json
+import ssl
 from pathlib import Path
 from unittest.mock import MagicMock
 
@@ -16,7 +17,7 @@ import httpx
 import pytest
 import respx
 
-from erddap_mcp.client import ERDDAPClient, RetryTransport
+from erddap_mcp.client import ERDDAPClient, RetryTransport, cert_verify_error
 
 # ---------------------------------------------------------------------------
 # Tool function imports
@@ -578,6 +579,94 @@ class TestGetAllDatasets:
         result = await erddap_get_all_datasets(ctx, server_url=COASTWATCH)
 
         assert "Could not connect" in result
+
+
+# =========================================================================
+# Untrusted TLS certificates
+# =========================================================================
+class TestUntrustedCertificate:
+    """Certificate-verification failures fail fast with a precise message.
+
+    Seen live on 2026-10-19: OOI's certificate chain ends at an emSign root
+    that certifi 2026.10.18 removed. The client retried twice and then called
+    the server "down". respx re-raises side effects ``from`` its own wrapper,
+    which drops the SSL cause, so these tests stub the base transport.
+    """
+
+    @staticmethod
+    def _stub_transport(monkeypatch: pytest.MonkeyPatch, error: Exception) -> list:
+        """Make every base-transport request raise ``error``; return the call log."""
+        calls: list = []
+
+        async def handle(self, request: httpx.Request) -> httpx.Response:
+            calls.append(request)
+            raise error
+
+        monkeypatch.setattr(httpx.AsyncHTTPTransport, "handle_async_request", handle)
+        return calls
+
+    @staticmethod
+    def _cert_error() -> httpx.ConnectError:
+        """The exception chain httpx raises for an unverifiable certificate."""
+        cause = ssl.SSLCertVerificationError(
+            1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed"
+        )
+        cause.verify_message = "unable to get local issuer certificate"
+        try:
+            raise httpx.ConnectError(str(cause)) from cause
+        except httpx.ConnectError as err:
+            return err
+
+    @pytest.mark.asyncio
+    async def test_certificate_failure_is_not_retried(
+        self, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        """One attempt only: the same certificate fails the same way again."""
+        calls = self._stub_transport(monkeypatch, self._cert_error())
+        transport = RetryTransport(max_retries=2, backoff_factor=0)
+
+        with pytest.raises(httpx.ConnectError):
+            await transport.handle_async_request(
+                httpx.Request("GET", f"{COASTWATCH}/info/index.json")
+            )
+        assert len(calls) == 1
+
+    @pytest.mark.asyncio
+    async def test_other_connect_errors_are_still_retried(
+        self, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        """A plain connection failure keeps the usual retries."""
+        calls = self._stub_transport(monkeypatch, httpx.ConnectError("refused"))
+        transport = RetryTransport(max_retries=2, backoff_factor=0)
+
+        with pytest.raises(httpx.ConnectError):
+            await transport.handle_async_request(
+                httpx.Request("GET", f"{COASTWATCH}/info/index.json")
+            )
+        assert len(calls) == 3
+
+    @pytest.mark.asyncio
+    async def test_tool_reports_certificate_problem(
+        self, monkeypatch: pytest.MonkeyPatch, ctx: MagicMock
+    ) -> None:
+        """The tool says the certificate is untrusted, not that the server is down."""
+        self._stub_transport(monkeypatch, self._cert_error())
+
+        result = await erddap_get_all_datasets(ctx, server_url=COASTWATCH)
+
+        assert "Could not verify the TLS certificate" in result
+        assert "unable to get local issuer certificate" in result
+        assert "not an outage" in result
+        assert "may be down" not in result
+
+    def test_cyclic_exception_chain_terminates(self) -> None:
+        """A cause/context chain that loops back on itself is not walked forever."""
+        first = httpx.ConnectError("first")
+        second = RuntimeError("second")
+        first.__cause__ = second
+        second.__cause__ = first
+
+        assert cert_verify_error(first) is None
 
 
 # =========================================================================
