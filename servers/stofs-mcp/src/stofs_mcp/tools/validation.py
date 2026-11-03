@@ -12,8 +12,7 @@ from mcp.types import ToolAnnotations
 
 from ..client import STOFSClient
 from ..models import (
-    COOPS_VALIDATION_DATUMS,
-    MODEL_DATUMS,
+    COOPS_DATUM_FOR_MODEL_DATUM,
     STOFSModel,
     get_model_label,
 )
@@ -26,6 +25,7 @@ from ..utils import (
     handle_stofs_error,
     parse_station_netcdf,
     resolve_cycle,
+    resolve_station_datum,
 )
 
 # Markdown row cap — hourly points over the 96 h maximum window fit under it.
@@ -155,10 +155,24 @@ async def stofs_compare_with_observations(
 
         t_end = parse_t(stofs_times_clipped[-1])
 
+        # The model datum comes from the file (version-dependent: STOFS-3D
+        # station output moved from NAVD88 to LMSL at the v3.1 cycle), and the
+        # CO-OPS request datum follows it, never a fixed per-model choice.
+        datum_info = resolve_station_datum(model.value, date_str, hour_str, stofs_data)
+        stofs_datum = datum_info["datum"]
+        coops_datum = COOPS_DATUM_FOR_MODEL_DATUM.get(stofs_datum)
+        if coops_datum is None:
+            return (
+                f"STOFS values for this cycle are referenced to {stofs_datum} "
+                f"({datum_info['datum_source']}), which has no CO-OPS "
+                "equivalent, so no like-for-like comparison is possible. "
+                "Convert the values first (e.g. with vdatum-mcp) and compare "
+                "them against coops_get_water_levels."
+            )
+
         # Fetch CO-OPS observations
         begin_str = t_start.strftime("%Y%m%d %H:%M")
         end_str = t_end.strftime("%Y%m%d %H:%M")
-        coops_datum = COOPS_VALIDATION_DATUMS.get(model.value, "MSL")
 
         try:
             obs_data = await client.fetch_coops_observations(
@@ -248,12 +262,16 @@ async def stofs_compare_with_observations(
                     "true observed peak is likely higher."
                 )
 
-        stofs_datum = MODEL_DATUMS.get(model.value, "unknown")
         model_label = get_model_label(model.value, date_str)
         datum_note = (
-            f"STOFS datum: **{stofs_datum}** | CO-OPS datum: **{coops_datum}** "
-            "— small systematic offsets (1–5 cm) are expected"
+            f"STOFS datum: **{stofs_datum}** ({datum_info['datum_source']}) | "
+            f"CO-OPS datum: **{coops_datum}**. No vertical transformation is "
+            "applied. Matching labels do not guarantee identical realizations "
+            "or epochs, so a mean offset (bias) alone does not show whether its "
+            "cause is the reference or the model."
         )
+        if datum_info["datum_warning"]:
+            datum_note += f" Warning: {datum_info['datum_warning']}"
 
         # Returned series: hourly unless full_resolution, then capped at
         # max_points keeping the head (as the forecast tools do).
@@ -278,7 +296,14 @@ async def stofs_compare_with_observations(
                 "cycle_date": date_str,
                 "cycle_hour": hour_str,
                 "stofs_datum": stofs_datum,
+                "stofs_datum_source": datum_info["datum_source"],
+                **(
+                    {"stofs_datum_warning": datum_info["datum_warning"]}
+                    if datum_info["datum_warning"]
+                    else {}
+                ),
                 "coops_datum": coops_datum,
+                "datum_note": datum_note.replace("**", ""),
                 "units": "m",
                 "timezone": "UTC",
                 "comparison_start": common_times[0],

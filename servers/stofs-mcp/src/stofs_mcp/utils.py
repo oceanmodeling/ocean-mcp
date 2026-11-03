@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import math
 import os
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -54,6 +55,117 @@ def _decode_station_names(var) -> list[str]:
     return names
 
 
+# Datum tokens in a CF standard_name / long_name, most specific first. The
+# separators are '_' or ' ', so match on non-letter boundaries, not \b.
+_DATUM_PATTERNS = (
+    (re.compile(r"(?<![a-z])navd ?(88)?(?![a-z])"), "NAVD88"),
+    (re.compile(r"(?<![a-z])mllw(?![a-z])|mean[_ ]lower[_ ]low[_ ]water"), "MLLW"),
+    (re.compile(r"(?<![a-z])l?msl(?![a-z])|mean[_ ]sea[_ ]level"), "LMSL"),
+    (re.compile(r"(?<![a-z])xgeoid ?(\d+[a-z]?)?(?![a-z])"), "xGEOID"),
+)
+
+
+def datum_from_label(label: str | None) -> str | None:
+    """Map a water-level variable label to a vertical datum name.
+
+    Returns 'NAVD88', 'MLLW', 'LMSL' or 'xGEOID…', or None when the label
+    names no specific datum. A bare "geoid" (ADCIRC's default
+    ``sea_surface_height_above_geoid``, written by STOFS-2D-Global whatever
+    the actual reference) is deliberately ambiguous and returns None.
+    """
+    text = (label or "").lower()
+    for pattern, name in _DATUM_PATTERNS:
+        match = pattern.search(text)
+        if match:
+            if name == "xGEOID":  # keep the model version, e.g. xGEOID20b
+                return "xGEOID" + (match.group(1) or "")
+            return name
+    return None
+
+
+def station_datum_label(nc, zeta_var_name: str | None) -> tuple[str, str]:
+    """Read the datum named by a station file's water-level variable.
+
+    Checks zeta's ``standard_name`` then ``long_name``, then the legacy global
+    ``datum`` / ``vertical_datum`` attributes. Never the global ``history``:
+    it names conversion scripts (``..._xgeoid_to_msl.nco``), not the result.
+
+    Returns:
+        (datum, label): datum is '' when no attribute names a specific datum;
+        label is the attribute text inspected, e.g.
+        'zeta:standard_name=sea_surface_height_above_navd88'.
+    """
+    candidates: list[tuple[str, str]] = []
+    if zeta_var_name and zeta_var_name in nc.variables:
+        var = nc.variables[zeta_var_name]
+        for attr in ("standard_name", "long_name"):
+            value = getattr(var, attr, None)
+            if value:
+                candidates.append((f"{zeta_var_name}:{attr}", str(value)))
+    for attr in ("datum", "vertical_datum"):
+        value = getattr(nc, attr, None)
+        if value:
+            candidates.append((f":{attr}", str(value)))
+
+    for where, value in candidates:
+        datum = datum_from_label(value)
+        if datum:
+            return datum, f"{where}={value}"
+    if candidates:
+        where, value = candidates[0]
+        return "", f"{where}={value}"
+    return "", ""
+
+
+def resolve_station_datum(
+    model: str,
+    date: str,
+    hour: str,
+    parsed: dict[str, Any] | None = None,
+) -> dict[str, str]:
+    """Decide which datum a station file's values are referenced to.
+
+    The file's own zeta metadata wins when it names a datum. Otherwise
+    (no label, or ADCIRC's generic "geoid" label) the datum NOAA documents
+    for that model and cycle date is used, and ``datum_source`` says so.
+
+    Args:
+        model: '2d_global' or '3d_atlantic'.
+        date: Cycle date, YYYYMMDD.
+        hour: Cycle hour, HH.
+        parsed: Result of parse_station_netcdf (needs 'datum'/'datum_label').
+
+    Returns:
+        Dict with 'datum', 'datum_source', and 'datum_warning' ('' if none).
+    """
+    from .models import documented_station_datum
+
+    parsed = parsed or {}
+    documented = documented_station_datum(model, date, hour)
+    file_datum = parsed.get("datum") or ""
+    label = parsed.get("datum_label") or ""
+
+    if file_datum:
+        warning = ""
+        if file_datum != documented:
+            warning = (
+                f"File metadata says {file_datum}, but NOAA documents {documented} "
+                f"for this cycle; using the file's {file_datum}."
+            )
+        return {
+            "datum": file_datum,
+            "datum_source": f"file metadata: {label}",
+            "datum_warning": warning,
+        }
+
+    why = f"file label {label} names no specific datum" if label else "no file label"
+    return {
+        "datum": documented,
+        "datum_source": f"NOAA documentation for this cycle; {why}",
+        "datum_warning": "",
+    }
+
+
 def parse_station_netcdf(
     filepath: Path | str,
     station_id: str | None = None,
@@ -72,7 +184,9 @@ def parse_station_netcdf(
             - 'lons': list of longitudes
             - 'n_stations': total station count
             - 'n_times': total time steps
-            - 'datum': datum attribute if available
+            - 'datum': datum named by the zeta metadata ('NAVD88', 'LMSL',
+              ...) or '' when the label is absent or ambiguous
+            - 'datum_label': the attribute the datum was read from
             If station_id provided, also:
             - 'station_id': the matched station ID
             - 'station_idx': index in the array
@@ -126,8 +240,8 @@ def parse_station_netcdf(
         n_stations = len(station_names) or (len(lats) if lats else 0)
         n_times = len(nc.variables[time_var_name])
 
-        # --- Datum attribute ---
-        datum = getattr(nc, "datum", getattr(nc, "vertical_datum", ""))
+        # --- Datum, from the water-level variable's own metadata ---
+        datum, datum_label = station_datum_label(nc, zeta_var_name)
 
         result: dict[str, Any] = {
             "station_names": station_names,
@@ -136,6 +250,7 @@ def parse_station_netcdf(
             "n_stations": n_stations,
             "n_times": n_times,
             "datum": datum,
+            "datum_label": datum_label,
         }
 
         if station_id is None:

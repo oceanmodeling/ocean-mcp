@@ -33,17 +33,24 @@ MCP server providing AI assistants with access to NOAA's Storm Tide Operational 
 - **Domain**: US East Coast + Gulf of Mexico + Puerto Rico (~2.9M nodes)
 - **Cycles**: 1x daily — 12 UTC
 - **Forecast**: 96 hours (4 days)
-- **Stations**: ~108 output points at 6-minute resolution
-- **Datum**: NAVD88
+- **Stations**: 108 output points (v2.1); 166 from the v3.1 upgrade, at 6-minute resolution
+- **Datum**: station NetCDF NAVD88 before the v3.1 upgrade (2026-08-17 12z cycle), LMSL from it; gridded output xGEOID20b
 - **Data**: [s3://noaa-nos-stofs3d-pds](https://noaa-nos-stofs3d-pds.s3.amazonaws.com)
 
 ## Vertical Datums
 
 > ⚠️ Datum differences matter when comparing models and observations:
-> - **STOFS-2D station files**: LMSL (Local Mean Sea Level)
-> - **STOFS-3D station files**: NAVD88
-> - **CO-OPS API**: Use `datum=MSL` for 2D comparison, `datum=NAVD` for 3D comparison
-> - Small systematic offsets (1–5 cm) between LMSL and MSL are expected
+> - **STOFS-2D station files**: LMSL (Local Mean Sea Level). The files label `zeta`
+>   `sea_surface_height_above_geoid`, which is ADCIRC's generic default, not the datum.
+> - **STOFS-3D station files**: NAVD88 through the 2026-08-16 cycle (v2.1); LMSL from
+>   the 2026-08-17 12z cycle (v3.1, NWS SCN 26-51). Gridded output stays on xGEOID20b.
+> - The station tools read the datum from each file's `zeta` metadata, fall back to the
+>   documented datum for the cycle date when the label is ambiguous, and report which
+>   applied (`datum_source`).
+> - `stofs_compare_with_observations` requests CO-OPS `datum=MSL` for LMSL output and
+>   `datum=NAVD` (CO-OPS's identifier for NAVD88) for NAVD88 output. No vertical
+>   transformation is applied. LMSL and a station's tidal MSL share a label but not
+>   necessarily a realization or epoch, so a mean offset alone does not attribute its cause.
 
 ## Quick Start
 

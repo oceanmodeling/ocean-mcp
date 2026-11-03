@@ -12,7 +12,7 @@ from mcp.types import ToolAnnotations
 
 from ..client import STOFSClient
 from ..models import (
-    MODEL_DATUMS,
+    GRIDDED_DATUMS,
     Region,
     STOFSModel,
     STOFSProduct,
@@ -29,6 +29,8 @@ from ..utils import (
     handle_stofs_error,
     parse_station_netcdf,
     resolve_cycle,
+    resolve_station_datum,
+    station_datum_label,
 )
 
 
@@ -134,7 +136,8 @@ async def stofs_get_station_forecast(
                 "The station may be in a dry area or the data may have fill values."
             )
 
-        datum = MODEL_DATUMS.get(model.value, "unknown")
+        datum_info = resolve_station_datum(model.value, date_str, hour_str, data)
+        datum = datum_info["datum"]
         model_label = get_model_label(model.value, date_str)
         product_label = {
             "cwl": "Combined Water Level (tide + surge)",
@@ -151,6 +154,7 @@ async def stofs_get_station_forecast(
                     "cycle_date": date_str,
                     "cycle_hour": hour_str,
                     "datum": datum,
+                    "datum_source": datum_info["datum_source"],
                     "lat": data.get("lat"),
                     "lon": data.get("lon"),
                     "model_start": data.get("model_start"),
@@ -168,7 +172,7 @@ async def stofs_get_station_forecast(
                 f"Model: {model_label}",
                 f"Product: {product_label}",
                 f"Cycle: {date_str[:4]}-{date_str[4:6]}-{date_str[6:]} {hour_str}z",
-                f"Datum: {datum}",
+                f"Datum: {datum} ({datum_info['datum_source']})",
                 f"Lat/Lon: {data.get('lat', '?')}, {data.get('lon', '?')}",
             ],
         )
@@ -260,7 +264,8 @@ async def stofs_get_point_forecast(
         times = data["times"]
         values = data["values"]
 
-        datum = MODEL_DATUMS.get(model.value, "unknown")
+        datum_info = resolve_station_datum(model.value, date_str, hour_str, data)
+        datum = datum_info["datum"]
         model_label = get_model_label(model.value, date_str)
 
         if response_format == "json":
@@ -274,6 +279,7 @@ async def stofs_get_point_forecast(
                     "cycle_date": date_str,
                     "cycle_hour": hour_str,
                     "datum": datum,
+                    "datum_source": datum_info["datum_source"],
                     "times": times,
                     "values": values,
                 }
@@ -287,7 +293,7 @@ async def stofs_get_point_forecast(
                 f"Nearest STOFS station: {nearest_name.strip()}",
                 f"Distance to nearest station: {distance_km:.1f} km",
                 f"Cycle: {date_str[:4]}-{date_str[4:6]}-{date_str[6:]} {hour_str}z",
-                f"Datum: {datum}",
+                f"Datum: {datum} ({datum_info['datum_source']})",
             ],
         )
 
@@ -361,6 +367,7 @@ async def stofs_get_max_water_level(
             if not zeta_var_name:
                 return "Could not find water level variable in STOFS NetCDF file."
 
+            file_datum, file_datum_label = station_datum_label(nc, zeta_var_name)
             zeta = np.array(nc.variables[zeta_var_name][:])
             getattr(nc.variables[zeta_var_name], "_FillValue", 1e37)
             zeta = np.where(np.abs(zeta) > 1e10, np.nan, zeta)
@@ -424,7 +431,13 @@ async def stofs_get_max_water_level(
         rows.sort(key=lambda r: r["max_wl"], reverse=True)
         rows = rows[:top_n]
 
-        datum = MODEL_DATUMS.get(model.value, "unknown")
+        datum_info = resolve_station_datum(
+            model.value,
+            date_str,
+            hour_str,
+            {"datum": file_datum, "datum_label": file_datum_label},
+        )
+        datum = datum_info["datum"]
         model_label = get_model_label(model.value, date_str)
 
         if response_format == "json":
@@ -434,6 +447,7 @@ async def stofs_get_max_water_level(
                     "cycle_date": date_str,
                     "cycle_hour": hour_str,
                     "datum": datum,
+                    "datum_source": datum_info["datum_source"],
                     "top_stations": rows,
                 },
                 indent=2,
@@ -575,7 +589,7 @@ async def stofs_get_gridded_forecast(
                 "Try a location closer to the coast."
             )
 
-        datum = MODEL_DATUMS.get(model.value, "unknown")
+        datum = GRIDDED_DATUMS.get(model.value, "unknown")
         model_label = (
             "STOFS-2D-Global" if model.value == "2d_global" else "STOFS-3D-Atlantic"
         )

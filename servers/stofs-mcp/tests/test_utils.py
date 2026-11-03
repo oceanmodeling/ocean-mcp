@@ -21,8 +21,13 @@ from stofs_mcp.utils import (
     format_timeseries_table,
     get_opendap_region,
     handle_stofs_error,
+    parse_station_netcdf,
     resolve_cycle,
+    resolve_station_datum,
+    datum_from_label,
 )
+
+from .conftest import ZETA_2D, ZETA_3D_V21, ZETA_3D_V31
 
 
 # ---------------------------------------------------------------------------
@@ -477,3 +482,112 @@ class TestResolveCycle:
         """A bad date returns None rather than silently using another cycle."""
         out = await resolve_cycle(None, "2d_global", "not-a-date", "00")
         assert out is None
+
+
+# ---------------------------------------------------------------------------
+# Vertical datum: read from the file, version-aware fallback
+# ---------------------------------------------------------------------------
+
+
+class TestDatumFromLabel:
+    """datum_from_label maps CF labels to datums and refuses ambiguous ones."""
+
+    @pytest.mark.parametrize(
+        "label,expected",
+        [
+            ("sea_surface_height_above_navd88", "NAVD88"),
+            ("water surface elevation above navd88", "NAVD88"),
+            ("sea_surface_height_above_msl", "LMSL"),
+            ("water surface elevation above msl", "LMSL"),
+            ("sea_surface_height_above_mean_sea_level", "LMSL"),
+            ("water level above LMSL", "LMSL"),
+            ("height above MLLW", "MLLW"),
+            ("water surface elevation above xgeoid20b", "xGEOID20b"),
+        ],
+    )
+    def test_specific_labels(self, label, expected):
+        """Labels that name a datum map to it."""
+        assert datum_from_label(label) == expected
+
+    @pytest.mark.parametrize(
+        "label",
+        ["sea_surface_height_above_geoid", "water surface elevation", "", None],
+    )
+    def test_ambiguous_labels_return_none(self, label):
+        """ADCIRC's generic 'above geoid' and empty labels name no datum."""
+        assert datum_from_label(label) is None
+
+    def test_msl_inside_another_word_is_not_a_datum(self):
+        """'mslp' (pressure) must not be read as MSL."""
+        assert datum_from_label("air_pressure_at_mslp") is None
+
+
+class TestParseStationNetcdfDatum:
+    """parse_station_netcdf reports the datum named by the zeta metadata."""
+
+    def test_v21_3d_file_reads_navd88(self, station_nc):
+        """A pre-v3.1 STOFS-3D file is NAVD88 per its zeta:standard_name."""
+        path = station_nc(ZETA_3D_V21, "2026-02-17 12:00", [0.1, 0.2])
+        meta = parse_station_netcdf(path)
+        assert meta["datum"] == "NAVD88"
+        assert meta["datum_label"] == (
+            "zeta:standard_name=sea_surface_height_above_navd88"
+        )
+
+    def test_v31_3d_file_reads_lmsl(self, station_nc):
+        """A v3.1 STOFS-3D file is LMSL per its zeta:standard_name."""
+        path = station_nc(ZETA_3D_V31, "2026-08-16 12:00", [0.1, 0.2])
+        assert parse_station_netcdf(path, "8443970")["datum"] == "LMSL"
+
+    def test_2d_geoid_label_is_ambiguous(self, station_nc):
+        """The 2D 'above geoid' label yields no datum, but keeps the label."""
+        path = station_nc(ZETA_2D, "2026-02-18 12:00", [0.1, 0.2])
+        meta = parse_station_netcdf(path)
+        assert meta["datum"] == ""
+        assert "sea_surface_height_above_geoid" in meta["datum_label"]
+
+
+class TestResolveStationDatum:
+    """resolve_station_datum prefers file metadata over the documented rule."""
+
+    def test_file_metadata_wins(self):
+        """An unambiguous file label is used and cited as the source."""
+        out = resolve_station_datum(
+            "3d_atlantic",
+            "20260818",
+            "12",
+            {"datum": "LMSL", "datum_label": "zeta:standard_name=..._msl"},
+        )
+        assert out["datum"] == "LMSL"
+        assert out["datum_source"].startswith("file metadata")
+        assert out["datum_warning"] == ""
+
+    def test_ambiguous_label_falls_back_to_documented(self):
+        """2D 'geoid' label -> documented LMSL, and the source says why."""
+        out = resolve_station_datum(
+            "2d_global",
+            "20260218",
+            "18",
+            {"datum": "", "datum_label": "zeta:standard_name=..._geoid"},
+        )
+        assert out["datum"] == "LMSL"
+        assert "NOAA documentation" in out["datum_source"]
+        assert "names no specific datum" in out["datum_source"]
+
+    def test_missing_metadata_uses_cycle_date_for_3d(self):
+        """With no label at all, the 3D fallback follows the v3.1 cutover."""
+        before = resolve_station_datum("3d_atlantic", "20260816", "12", {})
+        after = resolve_station_datum("3d_atlantic", "20260817", "12", {})
+        assert before["datum"] == "NAVD88"
+        assert after["datum"] == "LMSL"
+
+    def test_file_contradicting_documentation_is_flagged(self):
+        """A NAVD88 label on a post-v3.1 cycle is used but warned about."""
+        out = resolve_station_datum(
+            "3d_atlantic",
+            "20260901",
+            "12",
+            {"datum": "NAVD88", "datum_label": "zeta:standard_name=..._navd88"},
+        )
+        assert out["datum"] == "NAVD88"
+        assert "NOAA documents LMSL" in out["datum_warning"]

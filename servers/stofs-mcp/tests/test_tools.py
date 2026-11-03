@@ -24,6 +24,7 @@ from stofs_mcp.client import (
     STOFSClient,
 )
 from stofs_mcp.models import STOFSModel, STOFSProduct
+from .conftest import ZETA_2D, ZETA_3D_V21, ZETA_3D_V31, six_minute_times
 from stofs_mcp.utils import (
     align_timeseries,
     compute_validation_stats,
@@ -1170,6 +1171,195 @@ class TestCompareWithObservationsPeakCutOff:
         assert "larger hours_to_compare" in parsed["peak_note"]
         keys = list(parsed)
         assert keys.index("peak_note") < keys.index("comparison")
+
+
+# ---------------------------------------------------------------------------
+# Test: datum handling follows the file and the STOFS v3.1 transition
+# ---------------------------------------------------------------------------
+
+
+class TestCompareWithObservationsDatum:
+    """The CO-OPS request datum follows the station file's own datum.
+
+    Regression for the fixed 3d_atlantic -> NAVD88/NAVD mapping, which after
+    the STOFS v3.1 upgrade (2026-08-17 12z) compared LMSL model output with
+    NAVD observations while labelling the model NAVD88.
+    """
+
+    def _ctx(self, path, start, n):
+        from unittest.mock import AsyncMock
+
+        times = six_minute_times(start, n)
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(return_value=path)
+        client.fetch_coops_observations = AsyncMock(
+            return_value={"data": [{"t": t, "v": "0.100"} for t in times]}
+        )
+        return client, make_ctx(client)
+
+    async def _run(self, station_nc, zeta_attrs, model, date, hour, start):
+        from stofs_mcp.tools.validation import stofs_compare_with_observations
+
+        path = station_nc(zeta_attrs, start, [0.2] * 50)
+        client, ctx = self._ctx(path, start, 50)
+        out = await stofs_compare_with_observations(
+            ctx,
+            station_id="8443970",
+            model=model,
+            cycle_date=date,
+            cycle_hour=hour,
+            hours_to_compare=4,
+            response_format="json",
+        )
+        return client, out
+
+    @pytest.mark.asyncio
+    async def test_v31_3d_cycle_requests_msl_not_navd(self, station_nc):
+        """A post-cutover 3D file (above_msl) is compared with CO-OPS MSL."""
+        client, out = await self._run(
+            station_nc,
+            ZETA_3D_V31,
+            STOFSModel.ATLANTIC_3D,
+            "2026-08-18",
+            "12",
+            "2026-08-17 12:00",
+        )
+        assert client.fetch_coops_observations.call_args.kwargs["datum"] == "MSL"
+        parsed = json.loads(out)
+        assert parsed["stofs_datum"] == "LMSL"
+        assert parsed["coops_datum"] == "MSL"
+        assert "sea_surface_height_above_msl" in parsed["stofs_datum_source"]
+        assert "NAVD88" not in parsed["stofs_datum"]
+
+    @pytest.mark.asyncio
+    async def test_v21_3d_cycle_requests_navd(self, station_nc):
+        """The Boston example's 2026-02-18 3D file (above_navd88) uses NAVD."""
+        client, out = await self._run(
+            station_nc,
+            ZETA_3D_V21,
+            STOFSModel.ATLANTIC_3D,
+            "2026-02-18",
+            "12",
+            "2026-02-17 12:00",
+        )
+        assert client.fetch_coops_observations.call_args.kwargs["datum"] == "NAVD"
+        parsed = json.loads(out)
+        assert parsed["stofs_datum"] == "NAVD88"
+        assert parsed["coops_datum"] == "NAVD"
+
+    @pytest.mark.asyncio
+    async def test_2d_geoid_label_uses_documented_lmsl(self, station_nc):
+        """2D files say 'above geoid'; the documented LMSL is used and cited."""
+        client, out = await self._run(
+            station_nc,
+            ZETA_2D,
+            STOFSModel.GLOBAL_2D,
+            "2026-02-18",
+            "18",
+            "2026-02-18 12:00",
+        )
+        assert client.fetch_coops_observations.call_args.kwargs["datum"] == "MSL"
+        parsed = json.loads(out)
+        assert parsed["stofs_datum"] == "LMSL"
+        assert "NOAA documentation" in parsed["stofs_datum_source"]
+
+    @pytest.mark.asyncio
+    async def test_datum_without_coops_equivalent_is_not_compared(self, station_nc):
+        """An xGEOID20b-referenced file is refused instead of compared."""
+        client, out = await self._run(
+            station_nc,
+            {"standard_name": "sea_surface_height_above_xgeoid20b"},
+            STOFSModel.ATLANTIC_3D,
+            "2026-08-18",
+            "12",
+            "2026-08-17 12:00",
+        )
+        assert "no CO-OPS equivalent" in out
+        client.fetch_coops_observations.assert_not_called()
+
+    @pytest.mark.asyncio
+    async def test_note_does_not_promise_small_offsets(self, station_nc):
+        """The unsupported '1-5 cm offsets are expected' claim is gone."""
+        _, out = await self._run(
+            station_nc,
+            ZETA_3D_V31,
+            STOFSModel.ATLANTIC_3D,
+            "2026-08-18",
+            "12",
+            "2026-08-17 12:00",
+        )
+        note = json.loads(out)["datum_note"]
+        assert "1–5 cm" not in note
+        assert "No vertical transformation is applied" in note
+
+
+class TestForecastToolsDatum:
+    """Station-based forecast tools label values with the file's datum."""
+
+    @pytest.mark.asyncio
+    async def test_station_forecast_v31_3d_is_lmsl(self, station_nc):
+        """stofs_get_station_forecast reports LMSL for a v3.1 3D cycle."""
+        from unittest.mock import AsyncMock
+
+        from stofs_mcp.tools.forecast import stofs_get_station_forecast
+
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(
+            return_value=station_nc(ZETA_3D_V31, "2026-08-17 12:00", [0.1] * 5)
+        )
+        out = await stofs_get_station_forecast(
+            make_ctx(client),
+            station_id="8443970",
+            model=STOFSModel.ATLANTIC_3D,
+            cycle_date="2026-08-18",
+            cycle_hour="12",
+            response_format="json",
+        )
+        parsed = json.loads(out)
+        assert parsed["datum"] == "LMSL"
+        assert parsed["datum_source"].startswith("file metadata")
+
+    @pytest.mark.asyncio
+    async def test_max_water_level_v21_3d_is_navd88(self, station_nc):
+        """stofs_get_max_water_level reads NAVD88 from a pre-cutover 3D file."""
+        from unittest.mock import AsyncMock
+
+        from stofs_mcp.tools.forecast import stofs_get_max_water_level
+
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(
+            return_value=station_nc(ZETA_3D_V21, "2026-02-17 12:00", [0.1, 0.5])
+        )
+        out = await stofs_get_max_water_level(
+            make_ctx(client),
+            model=STOFSModel.ATLANTIC_3D,
+            cycle_date="2026-02-18",
+            cycle_hour="12",
+            response_format="json",
+        )
+        parsed = json.loads(out)
+        assert parsed["datum"] == "NAVD88"
+        assert parsed["top_stations"][0]["max_wl"] == pytest.approx(0.5)
+
+    @pytest.mark.asyncio
+    async def test_max_water_level_v31_3d_markdown_says_lmsl(self, station_nc):
+        """The markdown footer names LMSL for a post-cutover 3D cycle."""
+        from unittest.mock import AsyncMock
+
+        from stofs_mcp.tools.forecast import stofs_get_max_water_level
+
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(
+            return_value=station_nc(ZETA_3D_V31, "2026-08-17 12:00", [0.1, 0.5])
+        )
+        out = await stofs_get_max_water_level(
+            make_ctx(client),
+            model=STOFSModel.ATLANTIC_3D,
+            cycle_date="2026-08-18",
+            cycle_hour="12",
+        )
+        assert "Values relative to LMSL" in out
+        assert "NAVD88" not in out
 
 
 # ---------------------------------------------------------------------------

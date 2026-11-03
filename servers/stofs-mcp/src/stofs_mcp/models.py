@@ -55,16 +55,50 @@ def get_model_label(model: str, date: str | None = None) -> str:
     return "STOFS-2D-Global"
 
 
-# Datum used by each model in station files
-MODEL_DATUMS = {
-    "2d_global": "LMSL",  # Local Mean Sea Level
-    "3d_atlantic": "NAVD88",
+# --- Vertical datums -------------------------------------------------------
+#
+# The station-file datum is not a fixed property of the model. STOFS v3.1 went
+# operational at the 12 UTC cycle on 2026-08-17 (NOAA STOFS portal; NWS SCN
+# 26-51 announced it for 2026-07-07). From that cycle STOFS-3D-Atlantic station
+# NetCDF is referenced to LMSL instead of NAVD88: the files' zeta attributes
+# change from sea_surface_height_above_navd88 to sea_surface_height_above_msl.
+# STOFS-2D-Global station and gridded output is documented as LMSL throughout;
+# its files carry ADCIRC's generic "above geoid" label, which is not a datum.
+# Tools read the datum from the file first (utils.resolve_station_datum) and
+# fall back to documented_station_datum() only when the label is ambiguous.
+
+# First STOFS v3.1 cycle, YYYYMMDDHH.
+STOFS_V31_FIRST_CYCLE = "2026081712"
+
+
+def documented_station_datum(model: str, date: str, hour: str) -> str:
+    """Station-file datum NOAA documents for a model cycle.
+
+    Args:
+        model: '2d_global' or '3d_atlantic'.
+        date: Cycle date, YYYYMMDD.
+        hour: Cycle hour, HH.
+    """
+    if model == "3d_atlantic":
+        return "LMSL" if f"{date}{hour}" >= STOFS_V31_FIRST_CYCLE else "NAVD88"
+    return "LMSL"
+
+
+# Gridded (GRIB2 / NOMADS) output datum. NOAA: STOFS-3D-Atlantic gridded output
+# "will remain referenced to xGEOID20b"; STOFS-2D-Global gridded output is LMSL.
+GRIDDED_DATUMS = {
+    "2d_global": "LMSL",
+    "3d_atlantic": "xGEOID20b",
 }
 
-# Corresponding CO-OPS datum for validation
-COOPS_VALIDATION_DATUMS = {
-    "2d_global": "MSL",
-    "3d_atlantic": "NAVD",
+# CO-OPS API request identifier for each model datum. "NAVD" is CO-OPS's name
+# for NAVD88. LMSL maps to the station's tidal MSL: same label, but not
+# necessarily the same realization or epoch. Datums absent here (e.g.
+# xGEOID20b) have no CO-OPS equivalent, so no comparison is attempted.
+COOPS_DATUM_FOR_MODEL_DATUM = {
+    "LMSL": "MSL",
+    "NAVD88": "NAVD",
+    "MLLW": "MLLW",
 }
 
 # Approximate product availability lag after cycle time (hours)

@@ -3,13 +3,15 @@
 import pytest
 
 from stofs_mcp.models import (
-    COOPS_VALIDATION_DATUMS,
+    COOPS_DATUM_FOR_MODEL_DATUM,
+    GRIDDED_DATUMS,
     MODEL_CYCLES,
-    MODEL_DATUMS,
     MODEL_LAG_HOURS,
+    STOFS_V31_FIRST_CYCLE,
     Region,
     STOFSModel,
     STOFSProduct,
+    documented_station_datum,
 )
 
 
@@ -135,44 +137,66 @@ class TestModelCycles:
         assert MODEL_CYCLES["3d_atlantic"] == ["12"]
 
 
-class TestModelDatums:
-    """Tests for the MODEL_DATUMS constant."""
+class TestDocumentedStationDatum:
+    """The documented station-file datum depends on the model and cycle date."""
 
-    def test_has_2d_global_entry(self):
-        """MODEL_DATUMS should have an entry for '2d_global'."""
-        assert "2d_global" in MODEL_DATUMS
+    def test_v31_first_cycle_is_2026_08_17_12z(self):
+        """NOAA implemented STOFS v3.1 at the 12 UTC cycle on 2026-08-17."""
+        assert STOFS_V31_FIRST_CYCLE == "2026081712"
 
-    def test_has_3d_atlantic_entry(self):
-        """MODEL_DATUMS should have an entry for '3d_atlantic'."""
-        assert "3d_atlantic" in MODEL_DATUMS
+    def test_3d_atlantic_before_v31_is_navd88(self):
+        """3D station output is NAVD88 for the Boston example's 2026-02-18 cycle."""
+        assert documented_station_datum("3d_atlantic", "20260218", "12") == "NAVD88"
 
-    def test_2d_global_datum_is_lmsl(self):
-        """2d_global datum should be LMSL."""
-        assert MODEL_DATUMS["2d_global"] == "LMSL"
+    def test_3d_atlantic_last_v21_cycle_is_navd88(self):
+        """The 2026-08-16 12z cycle, the last v2.1 run, is still NAVD88."""
+        assert documented_station_datum("3d_atlantic", "20260816", "12") == "NAVD88"
 
-    def test_3d_atlantic_datum_is_navd88(self):
-        """3d_atlantic datum should be NAVD88."""
-        assert MODEL_DATUMS["3d_atlantic"] == "NAVD88"
+    def test_3d_atlantic_from_v31_is_lmsl(self):
+        """From the 2026-08-17 12z cycle, 3D station output is LMSL, not NAVD88."""
+        assert documented_station_datum("3d_atlantic", "20260817", "12") == "LMSL"
+        assert documented_station_datum("3d_atlantic", "20261101", "12") == "LMSL"
+
+    @pytest.mark.parametrize(
+        "date,hour",
+        [
+            ("20221201", "00"),
+            ("20260218", "18"),
+            ("20260817", "12"),
+            ("20261101", "06"),
+        ],
+    )
+    def test_2d_global_is_lmsl_throughout(self, date, hour):
+        """2D-Global station output is LMSL before and after the v3.1 upgrade."""
+        assert documented_station_datum("2d_global", date, hour) == "LMSL"
 
 
-class TestCoopsValidationDatums:
-    """Tests for the COOPS_VALIDATION_DATUMS constant."""
+class TestGriddedDatums:
+    """Gridded output has its own datum, separate from the station files."""
 
-    def test_has_2d_global_entry(self):
-        """COOPS_VALIDATION_DATUMS should have an entry for '2d_global'."""
-        assert "2d_global" in COOPS_VALIDATION_DATUMS
+    def test_3d_atlantic_gridded_is_xgeoid20b(self):
+        """NOAA: STOFS-3D gridded output remains referenced to xGEOID20b."""
+        assert GRIDDED_DATUMS["3d_atlantic"] == "xGEOID20b"
 
-    def test_has_3d_atlantic_entry(self):
-        """COOPS_VALIDATION_DATUMS should have an entry for '3d_atlantic'."""
-        assert "3d_atlantic" in COOPS_VALIDATION_DATUMS
+    def test_2d_global_gridded_is_lmsl(self):
+        """NOMADS documents 2D-Global gridded and station output as LMSL."""
+        assert GRIDDED_DATUMS["2d_global"] == "LMSL"
 
-    def test_2d_global_coops_datum_is_msl(self):
-        """2d_global CO-OPS validation datum should be MSL."""
-        assert COOPS_VALIDATION_DATUMS["2d_global"] == "MSL"
 
-    def test_3d_atlantic_coops_datum_is_navd(self):
-        """3d_atlantic CO-OPS validation datum should be NAVD."""
-        assert COOPS_VALIDATION_DATUMS["3d_atlantic"] == "NAVD"
+class TestCoopsDatumForModelDatum:
+    """The CO-OPS request datum follows the model datum, not the model name."""
+
+    def test_lmsl_requests_msl(self):
+        """LMSL model output is compared with CO-OPS MSL."""
+        assert COOPS_DATUM_FOR_MODEL_DATUM["LMSL"] == "MSL"
+
+    def test_navd88_requests_navd(self):
+        """CO-OPS spells NAVD88 as 'NAVD' in its API."""
+        assert COOPS_DATUM_FOR_MODEL_DATUM["NAVD88"] == "NAVD"
+
+    def test_xgeoid_has_no_coops_equivalent(self):
+        """xGEOID20b has no CO-OPS datum, so no comparison should be attempted."""
+        assert "xGEOID20b" not in COOPS_DATUM_FOR_MODEL_DATUM
 
 
 class TestModelLagHours:
