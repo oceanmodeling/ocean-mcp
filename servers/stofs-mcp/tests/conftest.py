@@ -35,17 +35,18 @@ async def client():
 def station_nc(tmp_path):
     """Factory writing a minimal STOFS-like station NetCDF file.
 
-    ``station_nc(zeta_attrs, start, values, stations=("8443970",))`` writes
-    6-minute ``zeta`` values (same series at every station) starting one step
-    after ``start`` ('YYYY-MM-DD HH:MM'), with the layout the real files use:
-    zeta(time, station), station_name(station, namelen), x/y coordinates.
+    ``station_nc(zeta_attrs, start, values, stations=("8443970",), xy=None)``
+    writes 6-minute ``zeta`` values (same series at every station) starting
+    one step after ``start`` ('YYYY-MM-DD HH:MM'), with the real files' layout:
+    zeta(time, station), station_name(station, namelen), x/y coordinates
+    (``xy``: one (x, y) pair per station; default Boston, correctly ordered).
     """
     import netCDF4
     import numpy as np
 
     counter = {"n": 0}
 
-    def _write(zeta_attrs, start, values, stations=("8443970",)):
+    def _write(zeta_attrs, start, values, stations=("8443970",), xy=None):
         counter["n"] += 1
         path = tmp_path / f"station_{counter['n']}.nc"
         nc = netCDF4.Dataset(str(path), "w")
@@ -61,8 +62,9 @@ def station_nc(tmp_path):
             for i, sid in enumerate(stations):
                 chars[i, : len(sid)] = [bytes([c]) for c in sid.encode()]
             names[:] = chars
-            nc.createVariable("x", "f8", ("station",))[:] = [-71.05] * len(stations)
-            nc.createVariable("y", "f8", ("station",))[:] = [42.35] * len(stations)
+            xy = xy or [(-71.05, 42.35)] * len(stations)
+            nc.createVariable("x", "f8", ("station",))[:] = [p[0] for p in xy]
+            nc.createVariable("y", "f8", ("station",))[:] = [p[1] for p in xy]
             z = nc.createVariable(
                 "zeta", "f8", ("time", "station"), fill_value=-99999.0
             )

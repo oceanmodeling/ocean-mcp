@@ -25,6 +25,7 @@ from stofs_mcp.utils import (
     resolve_cycle,
     resolve_station_datum,
     datum_from_label,
+    unswap_station_coords,
 )
 
 from .conftest import ZETA_2D, ZETA_3D_V21, ZETA_3D_V31
@@ -618,3 +619,36 @@ class TestValidationStatsDefinitions:
             raise ValueError(name)
 
         json.loads(json.dumps(stats), parse_constant=reject)  # no NaN emitted
+
+
+class TestUnswapStationCoords:
+    """STOFS-3D v2.1 station files store latitude in x for most rows."""
+
+    def test_swapped_3d_row_is_repaired(self):
+        """Boston as stored in the 2026-02-18 file (x=42.354, y=-71.050)."""
+        lats, lons = unswap_station_coords("3d_atlantic", [-71.0503], [42.3539])
+        assert lats == [42.3539] and lons == [-71.0503]
+
+    def test_correct_3d_row_is_untouched(self):
+        """Rows already stored correctly (3 of 108 in v2.1, all in v3.1) stay."""
+        lats, lons = unswap_station_coords("3d_atlantic", [28.4157], [-80.5934])
+        assert lats == [28.4157] and lons == [-80.5934]
+
+    def test_2d_southern_hemisphere_station_is_not_swapped(self):
+        """2D-Global has real stations with latitude < 0 < longitude (Sydney)."""
+        lats, lons = unswap_station_coords("2d_global", [-33.85], [151.23])
+        assert lats == [-33.85] and lons == [151.23]
+
+    def test_unknown_model_is_untouched(self):
+        """Without a model the repair is not applied."""
+        assert unswap_station_coords(None, [-71.0], [42.3]) == ([-71.0], [42.3])
+
+    def test_parse_station_netcdf_repairs_3d_file(self, station_nc):
+        """parse_station_netcdf(model='3d_atlantic') returns real coordinates."""
+        path = station_nc(
+            ZETA_3D_V21, "2026-02-17 12:00", [0.1, 0.2], xy=[(42.3539, -71.0503)]
+        )
+        data = parse_station_netcdf(path, "8443970", model="3d_atlantic")
+        assert (data["lat"], data["lon"]) == (42.3539, -71.0503)
+        raw = parse_station_netcdf(path, "8443970")
+        assert (raw["lat"], raw["lon"]) == (-71.0503, 42.3539)  # as stored

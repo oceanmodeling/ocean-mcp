@@ -166,9 +166,36 @@ def resolve_station_datum(
     }
 
 
+def unswap_station_coords(
+    model: str | None,
+    lats: list[float],
+    lons: list[float],
+) -> tuple[list[float], list[float]]:
+    """Repair STOFS-3D-Atlantic rows whose latitude and longitude are swapped.
+
+    STOFS-3D-Atlantic v2.1 station files (cycles before 2026-08-17 12z) store
+    latitude in ``x`` and longitude in ``y`` for most rows (105 of 108),
+    although the attributes say the opposite; v3.1 files are correct. The 3D
+    domain lies entirely north of the equator and west of Greenwich, so a row
+    reading as latitude < 0 < longitude must be swapped. The rule applies only
+    to 3d_atlantic: for 2D-Global such a row can be a real station (e.g.
+    Australia).
+    """
+    if model != "3d_atlantic":
+        return lats, lons
+    fixed_lats, fixed_lons = [], []
+    for lat, lon in zip(lats, lons):
+        if lat < 0 < lon:
+            lat, lon = lon, lat
+        fixed_lats.append(lat)
+        fixed_lons.append(lon)
+    return fixed_lats, fixed_lons
+
+
 def parse_station_netcdf(
     filepath: Path | str,
     station_id: str | None = None,
+    model: str | None = None,
 ) -> dict[str, Any]:
     """Open a STOFS station NetCDF file and extract water level time series.
 
@@ -176,6 +203,8 @@ def parse_station_netcdf(
         filepath: Path to the downloaded NetCDF file.
         station_id: CO-OPS station ID to extract. If None, returns metadata
                     about all stations without time series data.
+        model: '2d_global' or '3d_atlantic', if known. Enables the 3D
+               coordinate repair (see unswap_station_coords).
 
     Returns:
         Dict with keys:
@@ -236,6 +265,9 @@ def parse_station_netcdf(
             lons = list(
                 float(v) for v in np.array(nc.variables[lon_var_name][:]).ravel()
             )
+
+        if lats and lons:
+            lats, lons = unswap_station_coords(model, lats, lons)
 
         n_stations = len(station_names) or (len(lats) if lats else 0)
         n_times = len(nc.variables[time_var_name])

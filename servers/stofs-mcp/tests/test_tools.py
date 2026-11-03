@@ -1465,6 +1465,69 @@ class TestForecastToolsDatum:
         assert "NAVD88" not in out
 
 
+class TestStofs3dSwappedCoordinates:
+    """Point lookup works on pre-v3.1 STOFS-3D files with swapped x/y.
+
+    Regression: stofs_get_point_forecast at Boston for the 2026-02-18 3D
+    cycle returned "No STOFS station found within 50 km" because the file
+    stores Boston as x=42.354, y=-71.050.
+    """
+
+    @pytest.mark.asyncio
+    async def test_point_forecast_finds_boston_in_v21_3d_file(self, station_nc):
+        """The nearest station is found at 0 km after the repair."""
+        from unittest.mock import AsyncMock
+
+        from stofs_mcp.tools.forecast import stofs_get_point_forecast
+
+        path = station_nc(
+            ZETA_3D_V21,
+            "2026-02-17 12:00",
+            [0.1] * 5,
+            stations=("BHBM3 SOUS41 8443970 MA Boston", "8410140"),
+            xy=[(42.3539, -71.0503), (44.9046, -66.9829)],
+        )
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(return_value=path)
+        out = await stofs_get_point_forecast(
+            make_ctx(client),
+            latitude=42.3539,
+            longitude=-71.0503,
+            model=STOFSModel.ATLANTIC_3D,
+            cycle_date="2026-02-18",
+            cycle_hour="12",
+            response_format="json",
+        )
+        parsed = json.loads(out)
+        assert "8443970" in parsed["nearest_station"]
+        assert parsed["distance_km"] == pytest.approx(0.0, abs=0.01)
+
+    @pytest.mark.asyncio
+    async def test_max_water_level_region_filter_uses_real_coords(self, station_nc):
+        """east_coast filtering keeps Boston from a swapped 3D file."""
+        from unittest.mock import AsyncMock
+
+        from stofs_mcp.models import Region
+        from stofs_mcp.tools.forecast import stofs_get_max_water_level
+
+        path = station_nc(
+            ZETA_3D_V21, "2026-02-17 12:00", [0.1, 0.4], xy=[(42.3539, -71.0503)]
+        )
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(return_value=path)
+        out = await stofs_get_max_water_level(
+            make_ctx(client),
+            model=STOFSModel.ATLANTIC_3D,
+            cycle_date="2026-02-18",
+            cycle_hour="12",
+            region=Region.EAST_COAST,
+            response_format="json",
+        )
+        rows = json.loads(out)["top_stations"]
+        assert len(rows) == 1
+        assert (rows[0]["lat"], rows[0]["lon"]) == (42.3539, -71.0503)
+
+
 # ---------------------------------------------------------------------------
 # Test: get_opendap_region — coverage mapping
 # ---------------------------------------------------------------------------

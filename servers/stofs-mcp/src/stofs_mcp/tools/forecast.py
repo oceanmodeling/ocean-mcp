@@ -31,6 +31,7 @@ from ..utils import (
     resolve_cycle,
     resolve_station_datum,
     station_datum_label,
+    unswap_station_coords,
 )
 
 
@@ -125,7 +126,7 @@ async def stofs_get_station_forecast(
         tmp_path = await client.download_netcdf(url)
 
         # Parse
-        data = parse_station_netcdf(tmp_path, station_id)
+        data = parse_station_netcdf(tmp_path, station_id, model=model.value)
 
         times = data["times"]
         values = data["values"]
@@ -235,7 +236,7 @@ async def stofs_get_point_forecast(
         tmp_path = await client.download_netcdf(url)
 
         # Get all station metadata first
-        meta = parse_station_netcdf(tmp_path)
+        meta = parse_station_netcdf(tmp_path, model=model.value)
         station_names = meta["station_names"]
         lats = meta["lats"]
         lons = meta["lons"]
@@ -260,7 +261,7 @@ async def stofs_get_point_forecast(
         nearest_idx, nearest_name, distance_km = result
 
         # Extract data for nearest station
-        data = parse_station_netcdf(tmp_path, nearest_name.strip())
+        data = parse_station_netcdf(tmp_path, nearest_name.strip(), model=model.value)
         times = data["times"]
         values = data["values"]
 
@@ -390,6 +391,8 @@ async def stofs_get_max_water_level(
 
         finally:
             nc.close()
+
+        lats, lons = unswap_station_coords(model.value, lats, lons)
 
         n_stations = zeta.shape[1] if zeta.ndim == 2 else 0
         if n_stations == 0:
