@@ -1293,6 +1293,109 @@ class TestCompareWithObservationsDatum:
         assert "No vertical transformation is applied" in note
 
 
+class TestCompareWithObservationsWindowAndQuality:
+    """The response says where the window sits relative to the cycle time,
+    discloses clamping, and reports observation quality without filtering."""
+
+    def _ctx(self, path, records):
+        from unittest.mock import AsyncMock
+
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(return_value=path)
+        client.fetch_coops_observations = AsyncMock(return_value={"data": records})
+        return make_ctx(client)
+
+    async def _run(self, station_nc, records=None, **kwargs):
+        """3D file for the 2026-02-18 12z cycle: it starts 24 h before the cycle."""
+        from stofs_mcp.tools.validation import stofs_compare_with_observations
+
+        start = "2026-02-17 12:00"
+        path = station_nc(ZETA_3D_V21, start, [0.2] * 300)
+        if records is None:
+            records = [
+                {"t": t, "v": "0.100", "f": "0,0,0,0", "q": "v"}
+                for t in six_minute_times(start, 300)
+            ]
+        kwargs.setdefault("hours_to_compare", 30)
+        return await stofs_compare_with_observations(
+            self._ctx(path, records),
+            station_id="8443970",
+            model=STOFSModel.ATLANTIC_3D,
+            cycle_date="2026-02-18",
+            cycle_hour="12",
+            **kwargs,
+        )
+
+    def test_docstring_gives_model_specific_nowcast_length(self):
+        """The tool description no longer says the window starts 6 h before
+        the cycle for every model; 3D files start 24 h before it."""
+        from stofs_mcp.tools.validation import stofs_compare_with_observations
+
+        doc = stofs_compare_with_observations.__doc__
+        assert "24 hours before" in doc
+        assert "N + 24 (3D)" in doc
+
+    @pytest.mark.asyncio
+    async def test_3d_window_is_mostly_nowcast_and_says_so(self, station_nc):
+        """A 30 h 3D window spans lead -23.9 h to +6 h: 240 nowcast points."""
+        parsed = json.loads(await self._run(station_nc, response_format="json"))
+        assert parsed["cycle_time"] == "2026-02-18 12:00"
+        assert parsed["window_lead_hours"] == [-23.9, 6.0]
+        segments = parsed["statistics_by_segment"]
+        assert segments["nowcast"]["n"] == 240
+        assert segments["forecast"]["n"] == 60
+        assert segments["nowcast"]["bias"] == pytest.approx(0.1)
+
+    @pytest.mark.asyncio
+    async def test_clamped_window_is_disclosed(self, station_nc):
+        """hours_to_compare above 96 is clamped, and the response says so."""
+        parsed = json.loads(
+            await self._run(station_nc, hours_to_compare=200, response_format="json")
+        )
+        assert parsed["hours_to_compare"] == 96
+        assert parsed["hours_to_compare_requested"] == 200
+        markdown = await self._run(station_nc, hours_to_compare=200)
+        assert "200 h requested, clamped to 96 h" in markdown
+
+    @pytest.mark.asyncio
+    async def test_unclamped_window_has_no_requested_key(self, station_nc):
+        """Within limits, no clamping key is emitted."""
+        parsed = json.loads(await self._run(station_nc, response_format="json"))
+        assert "hours_to_compare_requested" not in parsed
+
+    @pytest.mark.asyncio
+    async def test_observation_quality_is_counted_not_filtered(self, station_nc):
+        """Preliminary and flagged records are counted and still compared."""
+        times = six_minute_times("2026-02-17 12:00", 300)
+        records = [
+            {
+                "t": t,
+                "v": "" if i == 5 else "0.100",
+                "f": "0,0,1,0" if i < 10 else "0,0,0,0",
+                "q": "p" if i % 2 else "v",
+            }
+            for i, t in enumerate(times)
+        ]
+        parsed = json.loads(
+            await self._run(station_nc, records=records, response_format="json")
+        )
+        quality = parsed["observation_quality"]
+        assert quality["missing"] == 1
+        assert quality["flagged"] == 9  # 10 flagged records, one has no value
+        assert quality["verified"] + quality["preliminary"] == 299
+        assert parsed["statistics"]["n"] == 299
+        assert parsed["alignment"] == "nearest observation within 3 minutes"
+
+    @pytest.mark.asyncio
+    async def test_markdown_names_max_absolute_error_and_segments(self, station_nc):
+        """Markdown labels max |F-O| unambiguously and shows the segments."""
+        result = await self._run(station_nc)
+        assert "Max absolute error, max(abs(F − O))" in result
+        assert "| Nowcast | 240 |" in result
+        assert "| Forecast | 60 |" in result
+        assert "verified" in result and "not filtered" in result
+
+
 class TestForecastToolsDatum:
     """Station-based forecast tools label values with the file's datum."""
 

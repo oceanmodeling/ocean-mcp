@@ -87,8 +87,17 @@ async def stofs_compare_with_observations(
     full_resolution is set.
 
     The comparison window starts at the beginning of the station file, which is
-    the nowcast 6 hours before the cycle time. To cover an event N hours after
-    the cycle time, set hours_to_compare to at least N + 6.
+    the nowcast: 6 hours before the cycle time for 2d_global, 24 hours before
+    it for 3d_atlantic. To cover an event N hours after the cycle time, set
+    hours_to_compare to at least N + 6 (2D) or N + 24 (3D). The response gives
+    the window's lead times and separate nowcast/forecast statistics.
+
+    The model datum is read from the station file (STOFS-3D station output
+    changed from NAVD88 to LMSL at the 2026-08-17 12z v3.1 cycle) and CO-OPS
+    observations are requested in the matching datum; no vertical
+    transformation is applied. Pairs match the nearest observation within
+    3 minutes. CO-OPS quality flags and verified/preliminary status are
+    counted and reported, not used to filter.
 
     Args:
         station_id: CO-OPS station ID (e.g., '8518750' for The Battery, NY).
@@ -103,6 +112,7 @@ async def stofs_compare_with_observations(
     tmp_path: Path | None = None
     try:
         client = _get_client(ctx)
+        hours_requested = hours_to_compare
         hours_to_compare = max(1, min(96, hours_to_compare))
 
         # Resolve cycle (shared resolver — honours a date even without an hour)
@@ -196,20 +206,36 @@ async def stofs_compare_with_observations(
                 "Try using a cycle from 24–48 hours ago."
             )
 
-        # Parse CO-OPS time series
+        # Parse CO-OPS time series, counting quality status (not filtering on
+        # it: limit flags also trip on genuine storm extremes).
         obs_times = []
         obs_values = []
+        obs_quality = {
+            "verified": 0,
+            "preliminary": 0,
+            "flagged": 0,
+            "missing": 0,
+        }
         for rec in obs_records:
             t_str = rec.get("t", "")
             v_str = rec.get("v", "")
             if not v_str or v_str in ("", " "):
+                obs_quality["missing"] += 1
                 continue
             try:
                 obs_values.append(float(v_str))
                 # CO-OPS uses 'YYYY-MM-DD HH:MM' format
                 obs_times.append(t_str)
             except (ValueError, TypeError):
+                obs_quality["missing"] += 1
                 continue
+            q = rec.get("q")
+            if q == "v":
+                obs_quality["verified"] += 1
+            elif q == "p":
+                obs_quality["preliminary"] += 1
+            if any(flag not in ("", "0") for flag in str(rec.get("f", "")).split(",")):
+                obs_quality["flagged"] += 1
 
         if not obs_times:
             return "CO-OPS observations returned but all values are missing/flagged."
@@ -231,6 +257,31 @@ async def stofs_compare_with_observations(
         # Statistics always use the full-resolution aligned series
         stats = compute_validation_stats(aligned_stofs, aligned_obs)
         peak = compute_peak_stats(common_times, aligned_stofs, aligned_obs)
+
+        # Nowcast (at or before the cycle time) and forecast segments differ in
+        # kind, so report them separately as well as together.
+        cycle_dt = datetime.strptime(date_str + hour_str, "%Y%m%d%H").replace(
+            tzinfo=timezone.utc
+        )
+
+        def lead_h(t_str: str) -> float:
+            return round((parse_t(t_str) - cycle_dt).total_seconds() / 3600, 2)
+
+        nowcast_idx = [i for i, t in enumerate(common_times) if lead_h(t) <= 0]
+        forecast_idx = [i for i, t in enumerate(common_times) if lead_h(t) > 0]
+        segments = {
+            name: compute_validation_stats(
+                [aligned_stofs[i] for i in idx], [aligned_obs[i] for i in idx]
+            )
+            for name, idx in (("nowcast", nowcast_idx), ("forecast", forecast_idx))
+        }
+        lead_start = lead_h(common_times[0])
+        lead_end = lead_h(common_times[-1])
+        hours_note = (
+            f"{hours_to_compare} h"
+            if hours_requested == hours_to_compare
+            else f"{hours_requested} h requested, clamped to {hours_to_compare} h"
+        )
 
         # An observed maximum on the last aligned point means the peak was cut
         # off: either the window ends too early or the gauge stopped reporting.
@@ -308,6 +359,14 @@ async def stofs_compare_with_observations(
                 "timezone": "UTC",
                 "comparison_start": common_times[0],
                 "comparison_end": common_times[-1],
+                "cycle_time": cycle_dt.strftime("%Y-%m-%d %H:%M"),
+                "window_lead_hours": [lead_start, lead_end],
+                "hours_to_compare": hours_to_compare,
+                **(
+                    {"hours_to_compare_requested": hours_requested}
+                    if hours_requested != hours_to_compare
+                    else {}
+                ),
                 "summary": {
                     **peak,
                     "bias_m": stats["bias"],
@@ -315,6 +374,9 @@ async def stofs_compare_with_observations(
                 },
                 **({"peak_note": peak_note} if peak_note else {}),
                 "statistics": stats,
+                "statistics_by_segment": segments,
+                "alignment": "nearest observation within 3 minutes",
+                "observation_quality": obs_quality,
                 "resolution": resolution,
                 "n_points": len(selected),
                 "total_points": total_points,
@@ -349,7 +411,8 @@ async def stofs_compare_with_observations(
             f"## {model_label} vs Observations — Station {station_id}",
             f"**Cycle**: {date_str[:4]}-{date_str[4:6]}-{date_str[6:]} {hour_str}z | "
             f"**Window**: {common_times[0]} to {common_times[-1]} UTC "
-            f"({hours_to_compare} h requested)",
+            f"(lead {lead_start:+.1f} h to {lead_end:+.1f} h from the cycle time; "
+            f"{hours_note})",
             f"⚠️  {datum_note}",
             "",
             "### Peak Water Level",
@@ -374,10 +437,23 @@ async def stofs_compare_with_observations(
             f"| Bias (mean error) | {_fmt_m(stats['bias'], signed=True)} |",
             f"| RMSE | {_fmt_m(stats['rmse'])} |",
             f"| MAE | {_fmt_m(stats['mae'])} |",
-            f"| Max absolute error | {_fmt_m(stats['peak_error'])} |",
+            f"| Max absolute error, max(abs(F − O)) | {_fmt_m(stats['max_abs_error'])} |",
             f"| Correlation (R) | {stats['correlation']:.3f} |"
             if stats["correlation"] is not None
             else "| Correlation (R) | N/A |",
+            "",
+            "| Segment | Points | Bias | RMSE |",
+            "| --- | --- | --- | --- |",
+            *(
+                f"| {name.capitalize()} | {seg['n']} "
+                f"| {_fmt_m(seg['bias'], signed=True)} | {_fmt_m(seg['rmse'])} |"
+                for name, seg in segments.items()
+            ),
+            "",
+            f"*Observations: {obs_quality['verified']} verified, "
+            f"{obs_quality['preliminary']} preliminary, "
+            f"{obs_quality['flagged']} with CO-OPS quality flags (not filtered), "
+            f"{obs_quality['missing']} missing. Pairs match within 3 minutes.*",
             "",
             f"### Time Series Comparison ({resolution})",
             "| Time (UTC) | Forecast (m) | Observed (m) | Error (m) |",

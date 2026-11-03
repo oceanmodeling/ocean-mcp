@@ -379,14 +379,20 @@ def compute_validation_stats(
     forecast: list[float],
     observed: list[float],
 ) -> dict[str, float]:
-    """Compute bias, RMSE, MAE, peak error, and correlation for aligned arrays.
+    """Compute bias, RMSE, MAE, max absolute error and correlation.
+
+    ``max_abs_error`` is max_t |forecast(t) - observed(t)|, the largest
+    pointwise discrepancy. It is not the error in the peak water level; that
+    is ``compute_peak_stats``'s ``peak_error_m``. ``peak_error`` is kept as a
+    legacy alias of ``max_abs_error`` for existing callers.
 
     Args:
         forecast: List of STOFS forecast values (m).
         observed: List of CO-OPS observed values (m), same length as forecast.
 
     Returns:
-        Dict with keys: bias, rmse, mae, peak_error, correlation, n.
+        Dict with keys: bias, rmse, mae, max_abs_error, peak_error (alias),
+        correlation, n.
     """
     import numpy as np
 
@@ -398,6 +404,7 @@ def compute_validation_stats(
             "bias": None,
             "rmse": None,
             "mae": None,
+            "max_abs_error": None,
             "peak_error": None,
             "correlation": None,
             "n": 0,
@@ -407,20 +414,23 @@ def compute_validation_stats(
     bias = float(np.mean(diff))
     rmse = float(np.sqrt(np.mean(diff**2)))
     mae = float(np.mean(np.abs(diff)))
-    peak_error = float(np.max(np.abs(diff)))
+    max_abs_error = float(np.max(np.abs(diff)))
 
-    # Correlation
-    if np.std(f) > 0 and np.std(o) > 0:
-        correlation = float(np.corrcoef(f, o)[0, 1])
-    else:
-        correlation = float("nan")
+    # Correlation: undefined for a constant series (np.std of identical floats
+    # can be ~1e-17, so test the range). None rather than NaN, which is not
+    # valid JSON.
+    correlation = None
+    if np.ptp(f) > 0 and np.ptp(o) > 0:
+        r = float(np.corrcoef(f, o)[0, 1])
+        correlation = r if math.isfinite(r) else None
 
     return {
         "bias": round(bias, 4),
         "rmse": round(rmse, 4),
         "mae": round(mae, 4),
-        "peak_error": round(peak_error, 4),
-        "correlation": round(correlation, 4),
+        "max_abs_error": round(max_abs_error, 4),
+        "peak_error": round(max_abs_error, 4),
+        "correlation": None if correlation is None else round(correlation, 4),
         "n": int(len(f)),
     }
 

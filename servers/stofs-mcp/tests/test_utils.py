@@ -591,3 +591,30 @@ class TestResolveStationDatum:
         )
         assert out["datum"] == "NAVD88"
         assert "NOAA documents LMSL" in out["datum_warning"]
+
+
+class TestValidationStatsDefinitions:
+    """max_abs_error is the largest pointwise error, not the peak-level error."""
+
+    def test_max_abs_error_differs_from_peak_error_m(self):
+        """Boston-like case: max |F-O| and (max F - max O) are different numbers."""
+        times = ["2026-02-18 12:00", "2026-02-18 12:06", "2026-02-18 12:12"]
+        forecast = [0.0, 1.0, 0.5]
+        observed = [0.2, 1.1, 0.4]
+        stats = compute_validation_stats(forecast, observed)
+        peak = compute_peak_stats(times, forecast, observed)
+        assert stats["max_abs_error"] == pytest.approx(0.2)
+        assert stats["peak_error"] == stats["max_abs_error"]  # legacy alias
+        assert peak["peak_error_m"] == pytest.approx(-0.1)
+
+    def test_constant_series_correlation_is_none_and_json_safe(self):
+        """A constant series has undefined correlation: None, not NaN."""
+        import json
+
+        stats = compute_validation_stats([0.2, 0.2, 0.2], [0.1, 0.3, 0.2])
+        assert stats["correlation"] is None
+
+        def reject(name):
+            raise ValueError(name)
+
+        json.loads(json.dumps(stats), parse_constant=reject)  # no NaN emitted
