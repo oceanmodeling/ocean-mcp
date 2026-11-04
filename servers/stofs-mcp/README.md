@@ -14,7 +14,7 @@ MCP server providing AI assistants with access to NOAA's Storm Tide Operational 
 | `stofs_get_station_forecast` | Get water level forecast time series at a CO-OPS station |
 | `stofs_get_point_forecast` | Get forecast at arbitrary lat/lon (nearest STOFS station) |
 | `stofs_get_gridded_forecast` | Forecast at any lat/lon via OPeNDAP (regular grid, no download) |
-| `stofs_compare_with_observations` | Compare STOFS forecast vs CO-OPS observations (bias, RMSE, correlation) |
+| `stofs_compare_with_observations` | Compare STOFS forecast vs CO-OPS observations (bias, RMSE, correlation); optional lead-time window (`lead_start_hours`, `lead_end_hours`) for same-valid-time comparisons |
 | `stofs_get_max_water_level` | Get top stations by peak predicted water level in a cycle |
 | `stofs_get_system_info` | STOFS model specifications, datums, cycle schedule |
 | `stofs_list_stations` | List STOFS output stations, filter by state/region/proximity |
@@ -44,9 +44,11 @@ MCP server providing AI assistants with access to NOAA's Storm Tide Operational 
 >   `sea_surface_height_above_geoid`, which is ADCIRC's generic default, not the datum.
 > - **STOFS-3D station files**: NAVD88 through the 2026-08-16 cycle (v2.1); LMSL from
 >   the 2026-08-17 12z cycle (v3.1, NWS SCN 26-51). Gridded output stays on xGEOID20b.
-> - The station tools read the datum from each file's `zeta` metadata, fall back to the
->   documented datum for the cycle date when the label is ambiguous, and report which
->   applied (`datum_source`).
+> - The station tools read the datum from each file's `zeta` metadata and report it with
+>   its provenance (`datum_provenance`) and any `datum_warning`. Only the STOFS-2D-Global /
+>   ESTOFS ADCIRC files, whose label is always the generic "above geoid", fall back to the
+>   documented LMSL. An unrecognized explicit reference (e.g. NGVD29, NAVD2022) or
+>   contradictory attributes make the datum `undetermined`, and no comparison is made.
 > - `stofs_compare_with_observations` requests CO-OPS `datum=MSL` for LMSL output and
 >   `datum=NAVD` (CO-OPS's identifier for NAVD88) for NAVD88 output. No vertical
 >   transformation is applied. LMSL and a station's tidal MSL share a label but not

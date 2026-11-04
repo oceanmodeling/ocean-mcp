@@ -1877,6 +1877,140 @@ class TestCompareWindowOriginAndCycleHour:
             await resolve_cycle(None, "3d_atlantic", "2026-10-30", "00")
 
 
+class TestCompareLeadWindow:
+    """A lead-time window compares different models over the same valid times."""
+
+    async def _run(
+        self, station_nc, model, zeta_attrs, start, n, global_attrs=None, **kw
+    ):
+        from unittest.mock import AsyncMock
+
+        from stofs_mcp.tools.validation import stofs_compare_with_observations
+
+        path = station_nc(zeta_attrs, start, [0.2] * n, global_attrs=global_attrs)
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(return_value=path)
+        client.fetch_coops_observations = AsyncMock(
+            return_value={
+                "data": [
+                    {"t": t, "v": "0.100", "q": "p", "f": "0,0,0,0"}
+                    for t in six_minute_times("2026-10-29 06:00", 1200)
+                ]
+            }
+        )
+        out = await stofs_compare_with_observations(
+            make_ctx(client),
+            station_id="8443970",
+            model=model,
+            cycle_date="2026-10-30",
+            cycle_hour="12",
+            response_format="json",
+            **kw,
+        )
+        return client, out
+
+    async def _forecast_48h(self, station_nc):
+        _, out3d = await self._run(
+            station_nc,
+            STOFSModel.ATLANTIC_3D,
+            ZETA_3D_V31,
+            "2026-10-29 12:00",  # 3D file starts 24 h before the cycle
+            1200,
+            lead_start_hours=0,
+            lead_end_hours=48,
+        )
+        _, out2d = await self._run(
+            station_nc,
+            STOFSModel.GLOBAL_2D,
+            ZETA_2D,
+            "2026-10-30 06:00",  # 2D file starts 6 h before the cycle
+            1860,
+            global_attrs=GLOBAL_2D,
+            lead_start_hours=0,
+            lead_end_hours=48,
+        )
+        return json.loads(out3d), json.loads(out2d)
+
+    @pytest.mark.asyncio
+    async def test_forecast_window_gives_identical_valid_times(self, station_nc):
+        """(0, 48] h selects the same 480 valid times from the 2D and 3D files."""
+        j3, j2 = await self._forecast_48h(station_nc)
+        for j in (j3, j2):
+            assert j["statistics"]["n"] == 480
+            assert j["window"]["matched"] == ["2026-10-30 12:06", "2026-11-01 12:00"]
+            assert j["window_lead_hours"] == [0.1, 48.0]
+            assert j["statistics_by_segment"]["nowcast"]["n"] == 0
+            assert j["statistics_by_segment"]["forecast"]["n"] == 480
+            assert j["hours_to_compare"] is None
+            assert j["lead_window_hours"] == [0, 48]
+            assert "lead (0, 48] h" in j["window"]["definition"]
+            assert "coverage_note" not in j
+
+    @pytest.mark.asyncio
+    async def test_3d_nowcast_window(self, station_nc):
+        """(-24, 0] h is the 3D nowcast: 240 points, none forecast."""
+        _, out = await self._run(
+            station_nc,
+            STOFSModel.ATLANTIC_3D,
+            ZETA_3D_V31,
+            "2026-10-29 12:00",
+            1200,
+            lead_start_hours=-24,
+            lead_end_hours=0,
+        )
+        j = json.loads(out)
+        assert j["statistics"]["n"] == 240
+        assert j["statistics_by_segment"]["forecast"]["n"] == 0
+        assert j["window"]["matched"] == ["2026-10-29 12:06", "2026-10-30 12:00"]
+
+    @pytest.mark.asyncio
+    async def test_observations_are_fetched_for_the_window_only(self, station_nc):
+        """The CO-OPS request starts at the first window time, not the file start."""
+        client, _ = await self._run(
+            station_nc,
+            STOFSModel.ATLANTIC_3D,
+            ZETA_3D_V31,
+            "2026-10-29 12:00",
+            1200,
+            lead_start_hours=0,
+            lead_end_hours=48,
+        )
+        args = client.fetch_coops_observations.call_args.args
+        assert args[1:3] == ("20261030 12:06", "20261101 12:00")
+
+    @pytest.mark.asyncio
+    async def test_window_beyond_the_file_is_reported(self, station_nc):
+        """A file that ends early triggers a coverage note instead of silence."""
+        _, out = await self._run(
+            station_nc,
+            STOFSModel.ATLANTIC_3D,
+            ZETA_3D_V31,
+            "2026-10-29 12:00",
+            720,  # 72 h file: ends at lead +48 h
+            lead_start_hours=0,
+            lead_end_hours=60,
+        )
+        j = json.loads(out)
+        assert (
+            "ends at 2026-11-01 12:00 UTC, before the window end" in j["coverage_note"]
+        )
+        assert j["statistics"]["n"] == 480
+
+    @pytest.mark.asyncio
+    async def test_inverted_bounds_are_refused(self, station_nc):
+        """lead_end_hours must exceed lead_start_hours."""
+        _, out = await self._run(
+            station_nc,
+            STOFSModel.ATLANTIC_3D,
+            ZETA_3D_V31,
+            "2026-10-29 12:00",
+            100,
+            lead_start_hours=10,
+            lead_end_hours=5,
+        )
+        assert out == "lead_end_hours must be greater than lead_start_hours."
+
+
 class TestStofs3dSwappedCoordinates:
     """Point lookup works on pre-v3.1 STOFS-3D files with swapped x/y.
 

@@ -76,6 +76,8 @@ async def stofs_compare_with_observations(
     cycle_date: str | None = None,
     cycle_hour: str | None = None,
     hours_to_compare: int = 72,
+    lead_start_hours: float | None = None,
+    lead_end_hours: float | None = None,
     full_resolution: bool = False,
     max_points: int = 2000,
     response_format: Literal["markdown", "json"] = "markdown",
@@ -95,6 +97,13 @@ async def stofs_compare_with_observations(
     hours_to_compare to at least N + 6 (2D) or N + 24 (3D). The response gives
     the window's lead times and separate nowcast/forecast statistics.
 
+    To compare different models over the same valid times, set a lead-time
+    window instead: lead_start_hours < lead <= lead_end_hours, with lead
+    measured from the cycle time (e.g. 0 and 48 for the 0-48 h forecast;
+    -24 and 0 for the 3D nowcast). Either bound may be omitted. A lead window
+    replaces hours_to_compare, and the response says if the file does not
+    cover it.
+
     The model datum is read from the station file (STOFS-3D station output
     changed from NAVD88 to LMSL at the 2026-08-17 12z v3.1 cycle) and CO-OPS
     observations are requested in the matching datum; no vertical
@@ -108,6 +117,10 @@ async def stofs_compare_with_observations(
         cycle_date: Date in YYYY-MM-DD format. Default: latest.
         cycle_hour: Cycle hour '00', '06', '12', '18'. Default: latest.
         hours_to_compare: Hours from the start of the file (default 72, max 96).
+            Ignored when a lead window is given.
+        lead_start_hours: Exclusive lower lead bound in hours from the cycle
+            time (negative = nowcast). Optional.
+        lead_end_hours: Inclusive upper lead bound in hours. Optional.
         full_resolution: Return every 6-minute point instead of hourly points.
         max_points: Maximum series points to return (default 2000).
         response_format: 'markdown' or 'json'.
@@ -151,24 +164,75 @@ async def stofs_compare_with_observations(
                     continue
             raise ValueError(f"Cannot parse: {s}")
 
+        cycle_dt = datetime.strptime(date_str + hour_str, "%Y%m%d%H").replace(
+            tzinfo=timezone.utc
+        )
         # The window starts at the file's first record (the nowcast start), not
         # at the first valid value, so a missing leading record cannot shift it.
         raw_start = stofs_data.get("model_start") or stofs_times[0]
+        raw_end = stofs_data.get("model_end") or stofs_times[-1]
         t_start = parse_t(raw_start)
-        t_end_max = t_start + timedelta(hours=hours_to_compare)
-        window_definition = f"file start + {hours_to_compare} h"
+        lead_window = lead_start_hours is not None or lead_end_hours is not None
+        coverage_note = None
+        if lead_window:
+            if (
+                lead_start_hours is not None
+                and lead_end_hours is not None
+                and lead_end_hours <= lead_start_hours
+            ):
+                return "lead_end_hours must be greater than lead_start_hours."
+            lo = (
+                cycle_dt + timedelta(hours=lead_start_hours)
+                if lead_start_hours is not None
+                else None
+            )
+            hi = (
+                cycle_dt + timedelta(hours=lead_end_hours)
+                if lead_end_hours is not None
+                else None
+            )
+            t_end_max = hi or parse_t(raw_end)
+
+            def in_window(t: datetime) -> bool:
+                return (lo is None or t > lo) and (hi is None or t <= hi)
+
+            bounds = (
+                "-inf" if lead_start_hours is None else f"{lead_start_hours:g}",
+                "+inf" if lead_end_hours is None else f"{lead_end_hours:g}",
+            )
+            window_definition = (
+                f"lead ({bounds[0]}, {bounds[1]}] h from the cycle time "
+                f"{cycle_dt:%Y-%m-%d %H:%M} UTC"
+            )
+            gaps = []
+            if lo is not None and t_start > lo + timedelta(minutes=6):
+                gaps.append(f"starts at {raw_start} UTC, after the window start")
+            if hi is not None and parse_t(raw_end) < hi:
+                gaps.append(f"ends at {raw_end} UTC, before the window end")
+            if gaps:
+                coverage_note = "The station file " + " and ".join(gaps) + "."
+        else:
+            t_end_max = t_start + timedelta(hours=hours_to_compare)
+
+            def in_window(t: datetime) -> bool:
+                return t_start <= t <= t_end_max
+
+            window_definition = f"file start + {hours_to_compare} h"
 
         # Clip STOFS to comparison window
         stofs_times_clipped = []
         stofs_values_clipped = []
         for t_str, v in zip(stofs_times, stofs_values):
-            t = parse_t(t_str)
-            if t_start <= t <= t_end_max:
+            if in_window(parse_t(t_str)):
                 stofs_times_clipped.append(t_str)
                 stofs_values_clipped.append(v)
 
         if not stofs_times_clipped:
-            return "Could not determine comparison time window from STOFS data."
+            return (
+                "No valid STOFS values in the comparison window "
+                f"({window_definition}); the station file covers {raw_start} to "
+                f"{raw_end} UTC."
+            )
 
         t_end = parse_t(stofs_times_clipped[-1])
 
@@ -195,7 +259,7 @@ async def stofs_compare_with_observations(
             )
 
         # Fetch CO-OPS observations
-        begin_str = t_start.strftime("%Y%m%d %H:%M")
+        begin_str = parse_t(stofs_times_clipped[0]).strftime("%Y%m%d %H:%M")
         end_str = t_end.strftime("%Y%m%d %H:%M")
 
         try:
@@ -310,10 +374,6 @@ async def stofs_compare_with_observations(
 
         # Nowcast (at or before the cycle time) and forecast segments differ in
         # kind, so report them separately as well as together.
-        cycle_dt = datetime.strptime(date_str + hour_str, "%Y%m%d%H").replace(
-            tzinfo=timezone.utc
-        )
-
         def lead_h(t_str: str) -> float:
             return round((parse_t(t_str) - cycle_dt).total_seconds() / 3600, 2)
 
@@ -327,11 +387,14 @@ async def stofs_compare_with_observations(
         }
         lead_start = lead_h(common_times[0])
         lead_end = lead_h(common_times[-1])
-        hours_note = (
-            f"{hours_to_compare} h"
-            if hours_requested == hours_to_compare
-            else f"{hours_requested} h requested, clamped to {hours_to_compare} h"
-        )
+        if lead_window:
+            hours_note = window_definition
+        elif hours_requested == hours_to_compare:
+            hours_note = f"{hours_to_compare} h"
+        else:
+            hours_note = (
+                f"{hours_requested} h requested, clamped to {hours_to_compare} h"
+            )
 
         # An observed maximum on the last aligned point means the peak was cut
         # off: either the window ends too early or the gauge stopped reporting.
@@ -341,7 +404,14 @@ async def stofs_compare_with_observations(
         if peak["observed_peak_at_series_end"]:
             last_obs = parse_t(common_times[-1])
             if t_end - last_obs <= timedelta(hours=1):
-                if hours_to_compare < 96:
+                if lead_window:
+                    peak_note = (
+                        "The observed maximum is the last point of the lead window "
+                        f"({common_times[-1]} UTC), so the true peak may lie after "
+                        "it. Re-run with a larger lead_end_hours before drawing "
+                        "conclusions about the peak."
+                    )
+                elif hours_to_compare < 96:
                     peak_note = (
                         "The observed maximum is the last point of the comparison "
                         f"window ({common_times[-1]} UTC), so the true peak may lie "
@@ -412,12 +482,18 @@ async def stofs_compare_with_observations(
                 "comparison_end": common_times[-1],
                 "cycle_time": cycle_dt.strftime("%Y-%m-%d %H:%M"),
                 "window_lead_hours": [lead_start, lead_end],
-                "hours_to_compare": hours_to_compare,
+                "hours_to_compare": None if lead_window else hours_to_compare,
                 **(
                     {"hours_to_compare_requested": hours_requested}
-                    if hours_requested != hours_to_compare
+                    if hours_requested != hours_to_compare and not lead_window
                     else {}
                 ),
+                **(
+                    {"lead_window_hours": [lead_start_hours, lead_end_hours]}
+                    if lead_window
+                    else {}
+                ),
+                **({"coverage_note": coverage_note} if coverage_note else {}),
                 "summary": {
                     **peak,
                     "bias_m": stats["bias"],
@@ -491,6 +567,8 @@ async def stofs_compare_with_observations(
         ]
         if peak_note:
             lines += ["", f"**Note:** {peak_note}"]
+        if coverage_note:
+            lines += ["", f"**Coverage:** {coverage_note}"]
         lines += [
             "",
             f"### Summary Statistics (all {stats['n']} 6-minute points)",
