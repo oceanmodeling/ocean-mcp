@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Literal
 import json
+import math
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -26,6 +27,7 @@ from ..utils import (
     parse_station_netcdf,
     resolve_cycle,
     datum_provenance,
+    dumps_strict,
     resolve_station_datum,
 )
 
@@ -223,6 +225,7 @@ async def stofs_compare_with_observations(
             "preliminary": 0,
             "flagged": 0,
             "missing": 0,
+            "nonfinite": 0,
         }
         for rec in obs_records:
             t_str = rec.get("t", "")
@@ -231,12 +234,16 @@ async def stofs_compare_with_observations(
                 obs_quality["missing"] += 1
                 continue
             try:
-                obs_values.append(float(v_str))
-                # CO-OPS uses 'YYYY-MM-DD HH:MM' format
-                obs_times.append(t_str)
+                value = float(v_str)
             except (ValueError, TypeError):
                 obs_quality["missing"] += 1
                 continue
+            if not math.isfinite(value):  # "NaN", "Infinity" parse as floats
+                obs_quality["nonfinite"] += 1
+                continue
+            obs_values.append(value)
+            obs_times.append(t_str)  # CO-OPS uses 'YYYY-MM-DD HH:MM'
+
             q = rec.get("q")
             if q == "v":
                 obs_quality["verified"] += 1
@@ -246,7 +253,11 @@ async def stofs_compare_with_observations(
                 obs_quality["flagged"] += 1
 
         if not obs_times:
-            return "CO-OPS observations returned but all values are missing/flagged."
+            return (
+                f"CO-OPS returned {len(obs_records)} records for station {station_id} "
+                f"but none has a usable value ({obs_quality['missing']} missing, "
+                f"{obs_quality['nonfinite']} non-finite)."
+            )
 
         # Align time series
         common_times, aligned_stofs, aligned_obs = align_timeseries(
@@ -413,7 +424,7 @@ async def stofs_compare_with_observations(
                 }
                 for i in selected
             ]
-            return json.dumps(result, indent=2)
+            return dumps_strict(result)
 
         # Markdown output — summary first, then the (hourly) series
         lines = [
@@ -462,7 +473,8 @@ async def stofs_compare_with_observations(
             f"*Observations: {obs_quality['verified']} verified, "
             f"{obs_quality['preliminary']} preliminary, "
             f"{obs_quality['flagged']} with CO-OPS quality flags (not filtered), "
-            f"{obs_quality['missing']} missing. Pairs match within 3 minutes.*",
+            f"{obs_quality['missing']} missing, {obs_quality['nonfinite']} non-finite "
+            "(excluded). Pairs match within 3 minutes.*",
             "",
             f"### Time Series Comparison ({resolution})",
             "| Time (UTC) | Forecast (m) | Observed (m) | Error (m) |",

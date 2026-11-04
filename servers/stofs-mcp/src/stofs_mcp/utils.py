@@ -2,12 +2,49 @@
 
 from __future__ import annotations
 
+import json
 import math
 import os
 import re
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+
+
+# ---------------------------------------------------------------------------
+# Strict JSON
+# ---------------------------------------------------------------------------
+
+
+def _json_safe(obj: Any) -> Any:
+    """Recursively convert NaN/±Inf (Python or NumPy) to None and NumPy
+    scalars to Python types, so the result serializes as standard JSON."""
+    if isinstance(obj, dict):
+        return {k: _json_safe(v) for k, v in obj.items()}
+    if isinstance(obj, (list, tuple)):
+        return [_json_safe(v) for v in obj]
+    if hasattr(obj, "item") and not isinstance(obj, (str, bytes)):
+        try:
+            obj = obj.item()  # NumPy scalar -> Python scalar
+        except (ValueError, TypeError):
+            return obj
+    if isinstance(obj, float) and not math.isfinite(obj):
+        return None
+    return obj
+
+
+def dumps_strict(obj: Any, indent: int | None = 2) -> str:
+    """json.dumps that never emits NaN/Infinity: non-finite numbers become
+    null, and allow_nan=False guards against anything left over."""
+    return json.dumps(_json_safe(obj), indent=indent, allow_nan=False)
+
+
+def is_finite_number(value: Any) -> bool:
+    """True for a real, finite number (False for None, NaN, ±Inf, non-numbers)."""
+    try:
+        return math.isfinite(float(value))
+    except (TypeError, ValueError):
+        return False
 
 
 # ---------------------------------------------------------------------------
@@ -281,12 +318,21 @@ def resolve_station_datum(
     """
     from .models import documented_station_datum
 
-    parsed = parsed or {}
+    parsed = dict(parsed or {})
     documented = documented_station_datum(model, date, hour)
-    status = parsed.get("datum_status") or (
-        "recognized" if parsed.get("datum") else "absent"
-    )
     label = parsed.get("datum_label") or ""
+    if not parsed.get("datum_status"):
+        # Caller without a classification: classify the "name=value" label(s)
+        # rather than trusting a bare datum or assuming absence.
+        attrs = dict(part.split("=", 1) for part in label.split("; ") if "=" in part)
+        combined = combine_datum_attributes(attrs)
+        if parsed.get("datum") and combined["status"] in ("absent", "generic"):
+            combined = combined | {"status": "recognized", "datum": parsed["datum"]}
+        parsed.setdefault("datum_attributes", attrs)
+        parsed["datum"] = combined["datum"] or parsed.get("datum") or ""
+        parsed["datum_reference"] = combined["reference"]
+        parsed["datum_status"] = combined["status"]
+    status = parsed["datum_status"]
     product = parsed.get("product") or {}
     base = {
         "documented_datum": documented,
@@ -409,6 +455,37 @@ def unswap_station_coords(
         fixed_lats.append(lat)
         fixed_lons.append(lon)
     return fixed_lats, fixed_lons
+
+
+def valid_values(var, raw) -> tuple[Any, Any, dict[str, int]]:
+    """Separate usable values from masked, fill and non-finite ones.
+
+    Honours the netCDF4 mask (auto-masked _FillValue/missing_value), the
+    variable's _FillValue and missing_value even when unmasked, the legacy
+    |v| > 1e10 sentinel, and NaN/±Inf. Nothing is replaced by zero.
+
+    Returns:
+        (data, invalid, excluded): float array, boolean array of rejected
+        entries, and counts {'masked_or_fill': n, 'nonfinite': n}.
+    """
+    import numpy as np
+
+    mask = np.ma.getmaskarray(raw)
+    data = np.asarray(np.ma.getdata(raw), dtype=float)
+    nonfinite = ~np.isfinite(data) & ~mask
+    with np.errstate(invalid="ignore"):
+        fill = mask | (np.abs(data) > 1e10)
+        for attr in ("_FillValue", "missing_value"):
+            value = getattr(var, attr, None)
+            if value is not None:
+                fill |= np.isin(data, np.atleast_1d(np.asarray(value, dtype=float)))
+    fill &= ~nonfinite
+    invalid = fill | nonfinite
+    return (
+        data,
+        invalid,
+        {"masked_or_fill": int(fill.sum()), "nonfinite": int(nonfinite.sum())},
+    )
 
 
 def parse_station_netcdf(
@@ -539,25 +616,14 @@ def parse_station_netcdf(
         datetimes = netCDF4.num2date(raw_times, units=units, calendar=calendar)
         time_strings = [dt.strftime("%Y-%m-%d %H:%M") for dt in datetimes]
 
-        # --- Water level time series ---
+        # --- Water level time series (zeta shape: (time, station)) ---
         zeta = nc.variables[zeta_var_name]
-        fill_value = getattr(zeta, "_FillValue", None)
+        data, invalid, excluded = valid_values(zeta, zeta[:, station_idx])
 
-        # zeta shape: (time, station)
-        values_raw = np.array(zeta[:, station_idx])
-
-        # Mask fill values
-        if fill_value is not None:
-            mask = np.abs(values_raw) > 1e10
-            mask |= values_raw == fill_value
-        else:
-            mask = np.abs(values_raw) > 1e10
-
-        # Build filtered lists
         times_out = []
         values_out = []
-        for t_str, v, m in zip(time_strings, values_raw.tolist(), mask.tolist()):
-            if not m:
+        for t_str, v, bad in zip(time_strings, data.tolist(), invalid.tolist()):
+            if not bad:
                 times_out.append(t_str)
                 values_out.append(round(float(v), 4))
 
@@ -574,6 +640,8 @@ def parse_station_netcdf(
                 "lon": station_lon,
                 "model_start": time_strings[0] if time_strings else "",
                 "model_end": time_strings[-1] if time_strings else "",
+                "n_records": len(time_strings),
+                "excluded_model_records": excluded,
             }
         )
         return result
@@ -639,6 +707,9 @@ def compute_validation_stats(
 ) -> dict[str, float]:
     """Compute bias, RMSE, MAE, max absolute error and correlation.
 
+    Pairs where either value is missing or non-finite are excluded and
+    counted in ``n_excluded_nonfinite``; nothing is replaced by zero.
+
     ``max_abs_error`` is max_t |forecast(t) - observed(t)|, the largest
     pointwise discrepancy. It is not the error in the peak water level; that
     is ``compute_peak_stats``'s ``peak_error_m``. ``peak_error`` is kept as a
@@ -650,23 +721,29 @@ def compute_validation_stats(
 
     Returns:
         Dict with keys: bias, rmse, mae, max_abs_error, peak_error (alias),
-        correlation, n.
+        correlation, n, n_excluded_nonfinite.
     """
     import numpy as np
 
-    f = np.array(forecast, dtype=float)
-    o = np.array(observed, dtype=float)
-
-    if len(f) == 0 or len(f) != len(o):
-        return {
-            "bias": None,
-            "rmse": None,
-            "mae": None,
-            "max_abs_error": None,
-            "peak_error": None,
-            "correlation": None,
-            "n": 0,
-        }
+    empty = {
+        "bias": None,
+        "rmse": None,
+        "mae": None,
+        "max_abs_error": None,
+        "peak_error": None,
+        "correlation": None,
+        "n": 0,
+        "n_excluded_nonfinite": 0,
+    }
+    if len(forecast) != len(observed):
+        return empty
+    f = np.array([v if is_finite_number(v) else np.nan for v in forecast], dtype=float)
+    o = np.array([v if is_finite_number(v) else np.nan for v in observed], dtype=float)
+    keep = np.isfinite(f) & np.isfinite(o)
+    n_excluded = int((~keep).sum())
+    f, o = f[keep], o[keep]
+    if len(f) == 0:
+        return empty | {"n_excluded_nonfinite": n_excluded}
 
     diff = f - o
     bias = float(np.mean(diff))
@@ -690,6 +767,7 @@ def compute_validation_stats(
         "peak_error": round(max_abs_error, 4),
         "correlation": None if correlation is None else round(correlation, 4),
         "n": int(len(f)),
+        "n_excluded_nonfinite": n_excluded,
     }
 
 
@@ -715,6 +793,15 @@ def compute_peak_stats(
         (forecast peak minus observed peak) and peak_timing_error_hours
         (positive means the forecast peak came later).
     """
+    if times and len(times) == len(forecast) == len(observed):
+        keep = [
+            i
+            for i in range(len(times))
+            if is_finite_number(forecast[i]) and is_finite_number(observed[i])
+        ]
+        times = [times[i] for i in keep]
+        forecast = [float(forecast[i]) for i in keep]
+        observed = [float(observed[i]) for i in keep]
     if not times or not (len(times) == len(forecast) == len(observed)):
         return {
             "observed_peak_m": None,

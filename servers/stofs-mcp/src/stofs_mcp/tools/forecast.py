@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from typing import Literal
-import json
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -31,6 +30,8 @@ from ..utils import (
     resolve_cycle,
     datum_markdown_lines,
     datum_provenance,
+    dumps_strict,
+    valid_values,
     resolve_station_datum,
     read_datum_metadata,
     unswap_station_coords,
@@ -68,7 +69,7 @@ def _cap_series_json(result: dict, max_points: int = 2000) -> str:
             f"Showing the first {len(times)} of {total} forecast points "
             "(truncated to limit response size)."
         )
-    return json.dumps(result, indent=2)
+    return dumps_strict(result)
 
 
 @mcp.tool(
@@ -375,9 +376,9 @@ async def stofs_get_max_water_level(
                 return "Could not find water level variable in STOFS NetCDF file."
 
             datum_meta = read_datum_metadata(nc, zeta_var_name)
-            zeta = np.array(nc.variables[zeta_var_name][:])
-            getattr(nc.variables[zeta_var_name], "_FillValue", 1e37)
-            zeta = np.where(np.abs(zeta) > 1e10, np.nan, zeta)
+            zeta_var = nc.variables[zeta_var_name]
+            zeta, invalid, _ = valid_values(zeta_var, zeta_var[:])
+            zeta = np.where(invalid, np.nan, zeta)
 
             station_names = (
                 _decode_station_names(nc.variables[sname_var_name])
@@ -405,8 +406,10 @@ async def stofs_get_max_water_level(
             return "Could not determine station count from STOFS file."
 
         # Compute per-station max
-        with np.errstate(all="ignore"):
-            max_vals = np.nanmax(zeta, axis=0)
+        # Stations with no valid value (dry, or all fill) stay NaN and are skipped.
+        has_data = ~np.all(np.isnan(zeta), axis=0)
+        max_vals = np.full(zeta.shape[1], np.nan)
+        max_vals[has_data] = np.nanmax(zeta[:, has_data], axis=0)
 
         rows = []
         for i in range(n_stations):
@@ -457,7 +460,7 @@ async def stofs_get_max_water_level(
         model_label = get_model_label(model.value, date_str)
 
         if response_format == "json":
-            return json.dumps(
+            return dumps_strict(
                 {
                     "model": model.value,
                     "cycle_date": date_str,
@@ -625,7 +628,7 @@ async def stofs_get_gridded_forecast(
         )
 
         if response_format == "json":
-            return json.dumps(
+            return dumps_strict(
                 {
                     "query_lat": latitude,
                     "query_lon": longitude,

@@ -27,6 +27,7 @@ from stofs_mcp.utils import (
     classify_datum_label,
     combine_datum_attributes,
     datum_from_label,
+    dumps_strict,
     unswap_station_coords,
 )
 
@@ -753,6 +754,20 @@ class TestResolveStationDatum:
         assert out["comparable"] is False
         assert "contradict" in out["datum_warning"]
 
+    def test_unclassified_caller_label_is_classified(self):
+        """A caller passing only a label still gets the unsupported verdict."""
+        out = resolve_station_datum(
+            "3d_atlantic",
+            "20260902",
+            "12",
+            {
+                "datum": "",
+                "datum_label": "zeta:standard_name=sea_surface_height_above_ngvd29",
+            },
+        )
+        assert out["comparable"] is False
+        assert "ngvd29" in out["datum_warning"]
+
     def test_file_contradicting_documentation_is_flagged(self):
         """A NAVD88 label on a post-v3.1 cycle is used but warned about."""
         out = resolve_station_datum(
@@ -824,3 +839,96 @@ class TestUnswapStationCoords:
         assert (data["lat"], data["lon"]) == (42.3539, -71.0503)
         raw = parse_station_netcdf(path, "8443970")
         assert (raw["lat"], raw["lon"]) == (-71.0503, 42.3539)  # as stored
+
+
+class TestNonFiniteValues:
+    """NaN, Inf, masked and fill values never reach statistics or JSON (review C3)."""
+
+    def _strict_loads(self, text):
+        import json
+
+        def reject(name):
+            raise ValueError(name)
+
+        return json.loads(text, parse_constant=reject)
+
+    def test_dumps_strict_nulls_nonfinite_values(self):
+        """NaN/±Inf, including NumPy scalars, become null; output is standard JSON."""
+        import numpy as np
+
+        out = self._strict_loads(
+            dumps_strict(
+                {
+                    "a": float("nan"),
+                    "b": [float("inf"), -float("inf"), 1.5],
+                    "c": np.float64("nan"),
+                }
+            )
+        )
+        assert out == {"a": None, "b": [None, None, 1.5], "c": None}
+
+    def test_stats_exclude_nonfinite_pairs_and_count_them(self):
+        """Non-finite pairs are dropped and counted, never treated as zero."""
+        stats = compute_validation_stats(
+            [0.1, float("nan"), 0.3, 0.4], [0.0, 0.2, float("inf"), 0.4]
+        )
+        assert stats["n"] == 2
+        assert stats["n_excluded_nonfinite"] == 2
+        assert stats["bias"] == pytest.approx(0.05)
+
+    def test_stats_all_invalid_returns_nulls(self):
+        """All-invalid input gives n=0 and null metrics."""
+        stats = compute_validation_stats([float("nan")], [0.1])
+        assert stats["n"] == 0 and stats["bias"] is None
+        assert stats["n_excluded_nonfinite"] == 1
+
+    def test_peak_stats_ignore_nonfinite(self):
+        """A NaN cannot become the peak."""
+        times = ["2026-10-30 12:00", "2026-10-30 12:06", "2026-10-30 12:12"]
+        peak = compute_peak_stats(
+            times, [0.1, float("nan"), 0.3], [0.2, 0.9, float("inf")]
+        )
+        assert peak["forecast_peak_m"] == pytest.approx(0.1)
+        assert peak["observed_peak_m"] == pytest.approx(0.2)
+
+    def test_parser_excludes_nan_inf_fill_and_masked(self, station_nc):
+        """NaN, +Inf, the -99999 fill and masked entries are excluded and counted."""
+        import netCDF4
+        import numpy as np
+
+        path = station_nc(
+            ZETA_3D_V31, "2026-10-29 12:00", [0.1, np.nan, np.inf, -99999.0, 0.2, 0.3]
+        )
+        nc = netCDF4.Dataset(str(path), "a")
+        z = nc["zeta"][:]
+        z[5, 0] = np.ma.masked
+        nc["zeta"][:] = z
+        nc.close()
+        data = parse_station_netcdf(path, "8443970")
+        assert data["values"] == [0.1, 0.2]
+        assert data["n_records"] == 6
+        assert data["excluded_model_records"] == {"masked_or_fill": 2, "nonfinite": 2}
+
+    def test_parser_honours_in_range_fill_value(self, tmp_path):
+        """A _FillValue inside the physical range (-9.99) is still excluded."""
+        import netCDF4
+        import numpy as np
+
+        path = tmp_path / "fill.nc"
+        nc = netCDF4.Dataset(str(path), "w")
+        nc.createDimension("time", 3)
+        nc.createDimension("station", 1)
+        nc.createDimension("namelen", 8)
+        t = nc.createVariable("time", "f8", ("time",))
+        t.units = "seconds since 2026-10-30 12:00:00"
+        t[:] = [360, 720, 1080]
+        n = nc.createVariable("station_name", "S1", ("station", "namelen"))
+        c = np.full((1, 8), b"", dtype="S1")
+        c[0, :7] = [bytes([x]) for x in b"8443970"]
+        n[:] = c
+        z = nc.createVariable("zeta", "f8", ("time", "station"), fill_value=-9.99)
+        z.standard_name = "sea_surface_height_above_msl"
+        z.set_auto_mask(False)
+        z[:] = np.array([[0.5], [-9.99], [0.7]])
+        nc.close()
+        assert parse_station_netcdf(path, "8443970")["values"] == [0.5, 0.7]

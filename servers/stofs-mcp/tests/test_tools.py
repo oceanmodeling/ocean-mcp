@@ -1710,6 +1710,101 @@ class TestDatumWarningsReachEveryTool:
         assert "NOAA documents LMSL" in parsed["datum_provenance"]["warning"]
 
 
+class TestNonFiniteComparisonsAndForecasts:
+    """End to end: non-finite inputs give valid JSON and correct counts (review C3)."""
+
+    START = "2026-10-29 12:00"
+
+    def _strict_loads(self, text):
+        def reject(name):
+            raise ValueError(name)
+
+        return json.loads(text, parse_constant=reject)
+
+    async def _compare(self, station_nc, model_values, obs_values):
+        from unittest.mock import AsyncMock
+
+        from stofs_mcp.tools.validation import stofs_compare_with_observations
+
+        path = station_nc(ZETA_3D_V31, self.START, model_values)
+        times = six_minute_times(self.START, len(obs_values))
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(return_value=path)
+        client.fetch_coops_observations = AsyncMock(
+            return_value={
+                "data": [
+                    {"t": t, "v": v, "f": "0,0,0,0", "q": "p"}
+                    for t, v in zip(times, obs_values)
+                ]
+            }
+        )
+        return await stofs_compare_with_observations(
+            make_ctx(client),
+            station_id="8443970",
+            model=STOFSModel.ATLANTIC_3D,
+            cycle_date="2026-10-30",
+            cycle_hour="12",
+            hours_to_compare=3,
+            response_format="json",
+        )
+
+    @pytest.mark.asyncio
+    async def test_nan_and_infinity_observations_are_excluded(self, station_nc):
+        """'NaN' and 'Infinity' observations are dropped, counted, and JSON is valid."""
+        obs = ["0.100"] * 30
+        obs[3], obs[4] = "NaN", "Infinity"
+        parsed = self._strict_loads(await self._compare(station_nc, [0.2] * 30, obs))
+        assert parsed["observation_quality"]["nonfinite"] == 2
+        assert parsed["statistics"]["n"] == 28
+        assert parsed["statistics"]["bias"] == pytest.approx(0.1)
+
+    @pytest.mark.asyncio
+    async def test_model_nan_and_fill_are_excluded(self, station_nc):
+        """Model NaN/fill records never pair with observations."""
+        import numpy as np
+
+        model = [0.2] * 30
+        model[5], model[6] = np.nan, -99999.0
+        parsed = self._strict_loads(
+            await self._compare(station_nc, model, ["0.100"] * 30)
+        )
+        assert parsed["statistics"]["n"] == 28
+        assert parsed["statistics"]["max_abs_error"] == pytest.approx(0.1)
+
+    @pytest.mark.asyncio
+    async def test_all_invalid_observations_give_a_clear_message(self, station_nc):
+        """All-missing/non-finite observations: an explanation, no statistics."""
+        out = await self._compare(station_nc, [0.2] * 30, ["NaN"] * 10 + [""] * 20)
+        assert "none has a usable value" in out
+        assert "20 missing, 10 non-finite" in out
+
+    @pytest.mark.asyncio
+    async def test_max_water_level_ignores_fill_only_station(self, station_nc):
+        """A station whose values are all fill is not ranked at -99999 m."""
+        from unittest.mock import AsyncMock
+
+        from stofs_mcp.tools.forecast import stofs_get_max_water_level
+
+        path = station_nc(
+            ZETA_3D_V31,
+            self.START,
+            [-99999.0, -99999.0],
+            stations=("8443970", "8410140"),
+        )
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(return_value=path)
+        parsed = self._strict_loads(
+            await stofs_get_max_water_level(
+                make_ctx(client),
+                model=STOFSModel.ATLANTIC_3D,
+                cycle_date="2026-10-30",
+                cycle_hour="12",
+                response_format="json",
+            )
+        )
+        assert parsed["top_stations"] == []
+
+
 class TestStofs3dSwappedCoordinates:
     """Point lookup works on pre-v3.1 STOFS-3D files with swapped x/y.
 
