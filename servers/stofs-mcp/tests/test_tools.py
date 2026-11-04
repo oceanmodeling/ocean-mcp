@@ -1478,7 +1478,12 @@ class TestCompareWithObservationsWindowAndQuality:
         assert quality["flagged"] == 9  # 10 flagged records, one has no value
         assert quality["verified"] + quality["preliminary"] == 299
         assert parsed["statistics"]["n"] == 299
-        assert parsed["alignment"] == "nearest observation within 3 minutes"
+        assert parsed["alignment"]["exact"] == 299
+        assert parsed["alignment"]["method"].startswith("one-to-one")
+        matched = quality["matched"]
+        assert matched["pairs"] == 299
+        assert matched["verified"] + matched["preliminary"] == 299
+        assert matched["flagged"] == 9
 
     @pytest.mark.asyncio
     async def test_markdown_names_max_absolute_error_and_segments(self, station_nc):
@@ -1803,6 +1808,73 @@ class TestNonFiniteComparisonsAndForecasts:
             )
         )
         assert parsed["top_stations"] == []
+
+
+class TestCompareWindowOriginAndCycleHour:
+    """Window origin and cycle-hour validation (second review H2)."""
+
+    @pytest.mark.asyncio
+    async def test_missing_leading_records_do_not_shift_the_window(self, station_nc):
+        """The window starts at the file's first record even if it is invalid."""
+        from unittest.mock import AsyncMock
+
+        import numpy as np
+
+        from stofs_mcp.tools.validation import stofs_compare_with_observations
+
+        start = "2026-10-29 12:00"
+        model = [np.nan] * 10 + [0.2] * 40  # first hour of model values missing
+        path = station_nc(ZETA_3D_V31, start, model)
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(return_value=path)
+        client.fetch_coops_observations = AsyncMock(
+            return_value={
+                "data": [{"t": t, "v": "0.100"} for t in six_minute_times(start, 50)]
+            }
+        )
+        parsed = json.loads(
+            await stofs_compare_with_observations(
+                make_ctx(client),
+                station_id="8443970",
+                model=STOFSModel.ATLANTIC_3D,
+                cycle_date="2026-10-30",
+                cycle_hour="12",
+                hours_to_compare=3,
+                response_format="json",
+            )
+        )
+        window = parsed["window"]
+        assert window["file_start"] == "2026-10-29 12:06"
+        assert window["requested_end"] == "2026-10-29 15:06"
+        assert window["model_available"][0] == "2026-10-29 13:06"
+        assert window["excluded_model_records"]["nonfinite"] == 10
+        assert parsed["statistics"]["n"] == 21  # 13:06 .. 15:06
+
+    @pytest.mark.asyncio
+    async def test_invalid_cycle_hour_is_rejected_before_network(self):
+        """'07' is not a STOFS-2D cycle: refused without touching S3 or CO-OPS."""
+        from unittest.mock import AsyncMock
+
+        from stofs_mcp.tools.validation import stofs_compare_with_observations
+
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(side_effect=AssertionError("network"))
+        out = await stofs_compare_with_observations(
+            make_ctx(client),
+            station_id="8443970",
+            cycle_date="2026-10-30",
+            cycle_hour="07",
+        )
+        assert "not a cycle of 2d_global" in out
+        client.download_netcdf.assert_not_called()
+
+    @pytest.mark.asyncio
+    async def test_3d_accepts_only_12z(self):
+        """STOFS-3D runs once a day at 12z."""
+        from stofs_mcp.utils import resolve_cycle
+
+        with pytest.raises(ValueError, match="valid hours: 12"):
+            await resolve_cycle(None, "3d_atlantic", "2026-10-30", "00")
 
 
 class TestStofs3dSwappedCoordinates:

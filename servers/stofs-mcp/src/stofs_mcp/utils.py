@@ -834,6 +834,103 @@ def compute_peak_stats(
 # ---------------------------------------------------------------------------
 
 
+_TIME_FORMATS = ("%Y-%m-%d %H:%M", "%Y/%m/%d %H:%M", "%m/%d/%Y %H:%M")
+
+
+def utc_seconds(s: str) -> int | None:
+    """Seconds since 1970 for a 'YYYY-MM-DD HH:MM' UTC string, None if malformed.
+
+    Uses calendar.timegm, so the result does not depend on the host's local
+    timezone or DST (naive datetime.timestamp() does).
+    """
+    import calendar
+
+    for fmt in _TIME_FORMATS:
+        try:
+            return calendar.timegm(datetime.strptime(s, fmt).timetuple())
+        except (ValueError, TypeError):
+            continue
+    return None
+
+
+def match_timeseries(
+    forecast_times: list[str],
+    observed_times: list[str],
+    tolerance_minutes: int = 3,
+) -> dict[str, Any]:
+    """Pair forecast and observation timestamps one-to-one, deterministically.
+
+    1. Exact timestamp matches are paired first.
+    2. Each remaining forecast time, in time order, takes the nearest unused
+       observation within ``tolerance_minutes``; on a tie the earlier
+       observation wins. No observation is used twice.
+
+    Times are UTC strings. Malformed times are skipped and counted; for a
+    repeated observation timestamp only the first record is used.
+
+    Returns:
+        Dict with 'pairs' (sorted (forecast_index, observed_index)), 'exact',
+        'nearest', 'bad_forecast_times', 'bad_observed_times',
+        'duplicate_observed_times' and 'tolerance_minutes'.
+    """
+    import bisect
+
+    tol = tolerance_minutes * 60
+    obs_by_sec: dict[int, int] = {}
+    bad_obs = dup_obs = 0
+    for i, t in enumerate(observed_times):
+        sec = utc_seconds(t)
+        if sec is None:
+            bad_obs += 1
+        elif sec in obs_by_sec:
+            dup_obs += 1
+        else:
+            obs_by_sec[sec] = i
+    obs_secs = sorted(obs_by_sec)
+
+    fc: list[tuple[int, int]] = []
+    bad_fc = 0
+    for i, t in enumerate(forecast_times):
+        sec = utc_seconds(t)
+        if sec is None:
+            bad_fc += 1
+        else:
+            fc.append((sec, i))
+    fc.sort()
+
+    used: set[int] = set()
+    pairs: dict[int, int] = {}
+    for sec, fi in fc:  # pass 1: exact
+        if sec in obs_by_sec and sec not in used:
+            used.add(sec)
+            pairs[fi] = obs_by_sec[sec]
+    n_exact = len(pairs)
+    for sec, fi in fc:  # pass 2: nearest unused within tolerance
+        if fi in pairs:
+            continue
+        best = None
+        k = bisect.bisect_left(obs_secs, sec - tol)
+        while k < len(obs_secs) and obs_secs[k] <= sec + tol:
+            cand = obs_secs[k]
+            if cand not in used:
+                d = abs(cand - sec)
+                if best is None or d < abs(best - sec):  # ties keep the earlier
+                    best = cand
+            k += 1
+        if best is not None:
+            used.add(best)
+            pairs[fi] = obs_by_sec[best]
+    return {
+        "pairs": sorted(pairs.items()),
+        "exact": n_exact,
+        "nearest": len(pairs) - n_exact,
+        "bad_forecast_times": bad_fc,
+        "bad_observed_times": bad_obs,
+        "duplicate_observed_times": dup_obs,
+        "tolerance_minutes": tolerance_minutes,
+    }
+
+
 def align_timeseries(
     forecast_times: list[str],
     forecast_values: list[float],
@@ -841,60 +938,15 @@ def align_timeseries(
     observed_values: list[float],
     tolerance_minutes: int = 3,
 ) -> tuple[list[str], list[float], list[float]]:
-    """Align two time series to common timestamps.
-
-    Matches forecast times to the nearest observed timestamp within
-    tolerance_minutes. Returns only matched pairs.
-
-    Args:
-        forecast_times: List of 'YYYY-MM-DD HH:MM' strings.
-        forecast_values: Corresponding forecast values.
-        observed_times: List of 'YYYY-MM-DD HH:MM' strings.
-        observed_values: Corresponding observed values.
-        tolerance_minutes: Max time difference for a match (default 3).
+    """Align two time series with match_timeseries (one-to-one, exact first).
 
     Returns:
-        (common_times, aligned_forecast, aligned_observed) lists.
+        (common_times, aligned_forecast, aligned_observed), in forecast order.
     """
-
-    def parse_dt(s: str) -> datetime:
-        for fmt in ("%Y-%m-%d %H:%M", "%Y/%m/%d %H:%M", "%m/%d/%Y %H:%M"):
-            try:
-                return datetime.strptime(s, fmt)
-            except ValueError:
-                continue
-        raise ValueError(f"Cannot parse datetime: {s!r}")
-
-    tol = tolerance_minutes * 60  # seconds
-
-    obs_dts = [parse_dt(t) for t in observed_times]
-    obs_timestamps = [dt.timestamp() for dt in obs_dts]
-
-    common_times = []
-    aligned_forecast = []
-    aligned_observed = []
-
-    for f_t_str, f_v in zip(forecast_times, forecast_values):
-        try:
-            f_dt = parse_dt(f_t_str)
-        except ValueError:
-            continue
-        f_ts = f_dt.timestamp()
-
-        # Find nearest observed
-        best_i = None
-        best_diff = float("inf")
-        for i, o_ts in enumerate(obs_timestamps):
-            diff = abs(f_ts - o_ts)
-            if diff < best_diff:
-                best_diff = diff
-                best_i = i
-
-        if best_i is not None and best_diff <= tol:
-            common_times.append(f_t_str)
-            aligned_forecast.append(f_v)
-            aligned_observed.append(observed_values[best_i])
-
+    m = match_timeseries(forecast_times, observed_times, tolerance_minutes)
+    common_times = [forecast_times[fi] for fi, _ in m["pairs"]]
+    aligned_forecast = [forecast_values[fi] for fi, _ in m["pairs"]]
+    aligned_observed = [observed_values[oi] for _, oi in m["pairs"]]
     return common_times, aligned_forecast, aligned_observed
 
 
@@ -1086,6 +1138,10 @@ async def resolve_cycle(
 
     Returns:
         (YYYYMMDD, HH) or None if a provided ``cycle_date`` is unparseable.
+
+    Raises:
+        ValueError: if ``cycle_hour`` is not one of the model's cycle hours
+            (checked before any network access).
     """
     from .models import MODEL_CYCLES
 
@@ -1104,7 +1160,13 @@ async def resolve_cycle(
             date_str = datetime.now(timezone.utc).strftime("%Y%m%d")
 
         if cycle_hour:
-            hour_str = cycle_hour.zfill(2)
+            hour_str = str(cycle_hour).strip().zfill(2)
+            valid = MODEL_CYCLES.get(model) or []
+            if valid and hour_str not in valid:
+                raise ValueError(
+                    f"Cycle hour '{cycle_hour}' is not a cycle of {model}; "
+                    f"valid hours: {', '.join(sorted(valid))}."
+                )
         else:
             # Default to the model's first listed cycle hour.
             hour_str = (MODEL_CYCLES.get(model) or ["12"])[0]

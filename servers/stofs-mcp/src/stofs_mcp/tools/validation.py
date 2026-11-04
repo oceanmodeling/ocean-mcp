@@ -19,7 +19,7 @@ from ..models import (
 )
 from ..server import mcp
 from ..utils import (
-    align_timeseries,
+    match_timeseries,
     cleanup_temp_file,
     compute_peak_stats,
     compute_validation_stats,
@@ -151,15 +151,19 @@ async def stofs_compare_with_observations(
                     continue
             raise ValueError(f"Cannot parse: {s}")
 
-        t_start = parse_t(stofs_times[0])
+        # The window starts at the file's first record (the nowcast start), not
+        # at the first valid value, so a missing leading record cannot shift it.
+        raw_start = stofs_data.get("model_start") or stofs_times[0]
+        t_start = parse_t(raw_start)
         t_end_max = t_start + timedelta(hours=hours_to_compare)
+        window_definition = f"file start + {hours_to_compare} h"
 
         # Clip STOFS to comparison window
         stofs_times_clipped = []
         stofs_values_clipped = []
         for t_str, v in zip(stofs_times, stofs_values):
             t = parse_t(t_str)
-            if t <= t_end_max:
+            if t_start <= t <= t_end_max:
                 stofs_times_clipped.append(t_str)
                 stofs_values_clipped.append(v)
 
@@ -220,9 +224,13 @@ async def stofs_compare_with_observations(
         # it: limit flags also trip on genuine storm extremes).
         obs_times = []
         obs_values = []
+        obs_status: list[str | None] = []
+        obs_flagged: list[bool] = []
         obs_quality = {
+            "records": len(obs_records),
             "verified": 0,
             "preliminary": 0,
+            "unknown_status": 0,
             "flagged": 0,
             "missing": 0,
             "nonfinite": 0,
@@ -243,14 +251,19 @@ async def stofs_compare_with_observations(
                 continue
             obs_values.append(value)
             obs_times.append(t_str)  # CO-OPS uses 'YYYY-MM-DD HH:MM'
-
             q = rec.get("q")
+            flagged = any(
+                flag not in ("", "0") for flag in str(rec.get("f", "")).split(",")
+            )
+            obs_status.append(q)
+            obs_flagged.append(flagged)
             if q == "v":
                 obs_quality["verified"] += 1
             elif q == "p":
                 obs_quality["preliminary"] += 1
-            if any(flag not in ("", "0") for flag in str(rec.get("f", "")).split(",")):
-                obs_quality["flagged"] += 1
+            else:
+                obs_quality["unknown_status"] += 1
+            obs_quality["flagged"] += flagged
 
         if not obs_times:
             return (
@@ -259,13 +272,31 @@ async def stofs_compare_with_observations(
                 f"{obs_quality['nonfinite']} non-finite)."
             )
 
-        # Align time series
-        common_times, aligned_stofs, aligned_obs = align_timeseries(
-            stofs_times_clipped,
-            stofs_values_clipped,
-            obs_times,
-            obs_values,
-        )
+        # Align: one-to-one, exact timestamps first, then nearest unused
+        # observation within 3 min (ties to the earlier one), UTC arithmetic.
+        match = match_timeseries(stofs_times_clipped, obs_times)
+        common_times = [stofs_times_clipped[fi] for fi, _ in match["pairs"]]
+        aligned_stofs = [stofs_values_clipped[fi] for fi, _ in match["pairs"]]
+        aligned_obs = [obs_values[oi] for _, oi in match["pairs"]]
+        matched_obs = [oi for _, oi in match["pairs"]]
+        obs_quality["matched"] = {
+            "pairs": len(matched_obs),
+            "verified": sum(obs_status[i] == "v" for i in matched_obs),
+            "preliminary": sum(obs_status[i] == "p" for i in matched_obs),
+            "unknown_status": sum(obs_status[i] not in ("v", "p") for i in matched_obs),
+            "flagged": sum(obs_flagged[i] for i in matched_obs),
+        }
+        alignment = {
+            "method": (
+                "one-to-one; exact timestamps first, then the nearest unused "
+                "observation within 3 min (ties to the earlier); UTC"
+            ),
+            "exact": match["exact"],
+            "nearest": match["nearest"],
+            "unmatched_model_records": len(stofs_times_clipped) - len(matched_obs),
+            "bad_observation_times": match["bad_observed_times"],
+            "duplicate_observation_times": match["duplicate_observed_times"],
+        }
 
         if not common_times:
             return (
@@ -312,24 +343,24 @@ async def stofs_compare_with_observations(
             if t_end - last_obs <= timedelta(hours=1):
                 if hours_to_compare < 96:
                     peak_note = (
-                        "The observed water level was still rising at the end of "
-                        f"the comparison window ({common_times[-1]} UTC), so the "
-                        "peak is outside it. Re-run with a larger hours_to_compare "
-                        f"(now {hours_to_compare} h, max 96) to capture the peak "
-                        "before drawing conclusions."
+                        "The observed maximum is the last point of the comparison "
+                        f"window ({common_times[-1]} UTC), so the true peak may lie "
+                        "after it. Re-run with a larger hours_to_compare "
+                        f"(now {hours_to_compare} h, max 96) before drawing "
+                        "conclusions about the peak."
                     )
                 else:
                     peak_note = (
-                        "The observed water level was still rising at the end of "
-                        "the 96 h maximum window, so the peak is outside it. Use a "
-                        "later cycle to capture the peak."
+                        "The observed maximum is the last point of the 96 h maximum "
+                        "window, so the true peak may lie after it. A later cycle "
+                        "would cover it."
                     )
             else:
                 peak_note = (
                     f"Observations stop at {common_times[-1]} UTC, before the "
-                    f"comparison window ends ({t_end:%Y-%m-%d %H:%M} UTC), while "
-                    "the water was still rising: the gauge may have failed, so the "
-                    "true observed peak is likely higher."
+                    f"comparison window ends ({t_end:%Y-%m-%d %H:%M} UTC), and the "
+                    "observed maximum is the last observation: the gauge may have "
+                    "failed, so the true observed peak may be higher."
                 )
 
         model_label = get_model_label(model.value, date_str)
@@ -395,7 +426,18 @@ async def stofs_compare_with_observations(
                 **({"peak_note": peak_note} if peak_note else {}),
                 "statistics": stats,
                 "statistics_by_segment": segments,
-                "alignment": "nearest observation within 3 minutes",
+                "window": {
+                    "definition": window_definition,
+                    "file_start": raw_start,
+                    "requested_end": t_end_max.strftime("%Y-%m-%d %H:%M"),
+                    "model_available": [
+                        stofs_times_clipped[0],
+                        stofs_times_clipped[-1],
+                    ],
+                    "matched": [common_times[0], common_times[-1]],
+                    "excluded_model_records": stofs_data.get("excluded_model_records"),
+                },
+                "alignment": alignment,
                 "observation_quality": obs_quality,
                 "resolution": resolution,
                 "n_points": len(selected),
@@ -474,7 +516,12 @@ async def stofs_compare_with_observations(
             f"{obs_quality['preliminary']} preliminary, "
             f"{obs_quality['flagged']} with CO-OPS quality flags (not filtered), "
             f"{obs_quality['missing']} missing, {obs_quality['nonfinite']} non-finite "
-            "(excluded). Pairs match within 3 minutes.*",
+            f"(excluded) of {obs_quality['records']} records; matched pairs: "
+            f"{obs_quality['matched']['verified']} verified, "
+            f"{obs_quality['matched']['preliminary']} preliminary, "
+            f"{obs_quality['matched']['flagged']} flagged. Pairs: "
+            f"{alignment['exact']} exact, {alignment['nearest']} within 3 min, "
+            "one-to-one.*",
             "",
             f"### Time Series Comparison ({resolution})",
             "| Time (UTC) | Forecast (m) | Observed (m) | Error (m) |",

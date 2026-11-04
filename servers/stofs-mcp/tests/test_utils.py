@@ -28,7 +28,9 @@ from stofs_mcp.utils import (
     combine_datum_attributes,
     datum_from_label,
     dumps_strict,
+    match_timeseries,
     unswap_station_coords,
+    utc_seconds,
 )
 
 from .conftest import (
@@ -932,3 +934,67 @@ class TestNonFiniteValues:
         z[:] = np.array([[0.5], [-9.99], [0.7]])
         nc.close()
         assert parse_station_netcdf(path, "8443970")["values"] == [0.5, 0.7]
+
+
+class TestMatchTimeseries:
+    """One-to-one, exact-first, deterministic pairing (second review H2)."""
+
+    def test_an_observation_is_never_reused(self):
+        """A lone 12:03 observation pairs with 12:00 only, not also with 12:06."""
+        m = match_timeseries(
+            ["2026-10-30 12:00", "2026-10-30 12:06"], ["2026-10-30 12:03"]
+        )
+        assert m["pairs"] == [(0, 0)]
+        assert m["nearest"] == 1
+
+    def test_exact_match_wins_over_an_earlier_nearest_claim(self):
+        """12:06 keeps its exact observation even though 12:03 is processed first."""
+        m = match_timeseries(
+            ["2026-10-30 12:03", "2026-10-30 12:06"],
+            ["2026-10-30 12:06", "2026-10-30 12:01"],
+        )
+        assert dict(m["pairs"]) == {1: 0, 0: 1}
+        assert (m["exact"], m["nearest"]) == (1, 1)
+
+    def test_equal_distance_tie_goes_to_the_earlier_observation(self):
+        """12:03 is 3 min from both 12:00 and 12:06; the earlier one is chosen."""
+        m = match_timeseries(
+            ["2026-10-30 12:03"], ["2026-10-30 12:06", "2026-10-30 12:00"]
+        )
+        assert m["pairs"] == [(0, 1)]
+
+    def test_beyond_tolerance_is_unmatched(self):
+        """Four minutes apart does not pair at the 3 min tolerance."""
+        m = match_timeseries(["2026-10-30 12:00"], ["2026-10-30 12:04"])
+        assert m["pairs"] == []
+
+    def test_malformed_and_duplicate_times_are_counted(self):
+        """Bad timestamps on either side are skipped and counted, not fatal."""
+        m = match_timeseries(
+            ["2026-10-30 12:00", "garbage"],
+            ["2026-10-30 12:00", "2026-10-30 12:00", "also bad"],
+        )
+        assert m["pairs"] == [(0, 0)]
+        assert m["bad_forecast_times"] == 1
+        assert m["bad_observed_times"] == 1
+        assert m["duplicate_observed_times"] == 1
+
+    def test_host_timezone_does_not_change_results(self, monkeypatch):
+        """Across a US DST change, pairing is identical under UTC and New York."""
+        import time
+
+        fc = ["2026-11-01 05:54", "2026-11-01 06:00", "2026-11-01 06:06"]
+        ob = ["2026-11-01 05:57", "2026-11-01 06:00", "2026-11-01 06:09"]
+        results = []
+        for tz in ("UTC", "America/New_York"):
+            monkeypatch.setenv("TZ", tz)
+            time.tzset()
+            results.append(match_timeseries(fc, ob)["pairs"])
+        monkeypatch.delenv("TZ")
+        time.tzset()
+        assert results[0] == results[1] == [(0, 0), (1, 1), (2, 2)]
+
+    def test_utc_seconds(self):
+        """utc_seconds is plain UTC epoch arithmetic."""
+        assert utc_seconds("1970-01-01 00:01") == 60
+        assert utc_seconds("not a time") is None
