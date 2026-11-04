@@ -1,0 +1,9 @@
+# Analysis environment for the independent scripts (00, 01, 03-06).
+# Resolved and used on 2026-11-04 in an isolated uv-managed CPython 3.13 environment.
+# Run: uv run --no-project --isolated --managed-python --python 3.13 --with-requirements requirements-analysis.txt python scripts/<script>.py
+# (--isolated/--managed-python keep any locally installed Ocean-MCP copy out of this environment)
+numpy==2.5.4
+netCDF4==1.7.4
+matplotlib==3.10.8
+# Only scripts/05b_lmsl_realization_check.py needs pygrib (NOAA GRIB2 decoding).
+pygrib==2.1.8

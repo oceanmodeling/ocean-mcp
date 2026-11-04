@@ -1,0 +1,17 @@
+# python 3.13.12
+certifi==2026.10.23
+cftime==1.6.6.1
+contourpy==1.4.0
+cycler==0.12.1
+fonttools==4.68.0
+kiwisolver==1.5.1
+matplotlib==3.10.8
+netCDF4==1.7.4
+numpy==2.5.4
+packaging==26.3
+pillow==13.0.0
+pygrib==2.1.8
+pyparsing==3.3.3
+pyproj==3.8.0
+python-dateutil==4.0.0
+tzdata==2026.6

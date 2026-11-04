@@ -1,0 +1,454 @@
+{
+  "2d_global_forecast": {
+    "window": "2d_global_forecast",
+    "mcp_datums": [
+      "LMSL",
+      "MSL"
+    ],
+    "mcp_window": {
+      "definition": "lead (0, 48] h from the cycle time 2026-10-30 12:00 UTC",
+      "file_start": "2026-10-30 06:06",
+      "requested_end": "2026-11-01 12:00",
+      "model_available": [
+        "2026-10-30 12:06",
+        "2026-11-01 12:00"
+      ],
+      "matched": [
+        "2026-10-30 12:06",
+        "2026-11-01 12:00"
+      ],
+      "excluded_model_records": {
+        "masked_or_fill": 0,
+        "nonfinite": 0
+      }
+    },
+    "mcp_alignment": {
+      "method": "one-to-one; exact timestamps first, then the nearest unused observation within 3 min (ties to the earlier); UTC",
+      "exact": 480,
+      "nearest": 0,
+      "unmatched_model_records": 0,
+      "bad_observation_times": 0,
+      "duplicate_observation_times": 0
+    },
+    "mcp_observation_quality": {
+      "records": 480,
+      "verified": 0,
+      "preliminary": 480,
+      "unknown_status": 0,
+      "flagged": 110,
+      "missing": 0,
+      "nonfinite": 0,
+      "matched": {
+        "pairs": 480,
+        "verified": 0,
+        "preliminary": 480,
+        "unknown_status": 0,
+        "flagged": 110
+      }
+    },
+    "metrics": {
+      "n": {
+        "independent": 480,
+        "ocean_mcp": 480,
+        "abs_diff": 0,
+        "tolerance": 0,
+        "agree": true
+      },
+      "bias_m": {
+        "independent": -0.00050134172916666,
+        "ocean_mcp": -0.0005,
+        "abs_diff": 1.341729166659967e-06,
+        "tolerance": 0.0001,
+        "agree": true
+      },
+      "rmse_m": {
+        "independent": 0.12299683288750661,
+        "ocean_mcp": 0.123,
+        "abs_diff": 3.167112493387969e-06,
+        "tolerance": 0.0001,
+        "agree": true
+      },
+      "mae_m": {
+        "independent": 0.0999930831875,
+        "ocean_mcp": 0.1,
+        "abs_diff": 6.916812500007419e-06,
+        "tolerance": 0.0001,
+        "agree": true
+      },
+      "pearson_r": {
+        "independent": 0.9933770698751176,
+        "ocean_mcp": 0.9934,
+        "abs_diff": 2.2930124882303282e-05,
+        "tolerance": 0.0001,
+        "agree": true
+      },
+      "max_abs_error_m": {
+        "independent": 0.26638000000000006,
+        "ocean_mcp": 0.2664,
+        "abs_diff": 1.999999999996449e-05,
+        "tolerance": 0.0001,
+        "agree": true
+      },
+      "max_model_minus_max_obs_m": {
+        "independent": -0.06736999999999971,
+        "ocean_mcp": -0.0674,
+        "abs_diff": 3.000000000029368e-05,
+        "tolerance": 0.0001,
+        "agree": true
+      },
+      "crmse_m (MCP: sqrt(rmse^2 - bias^2))": {
+        "independent": 0.12299581113528958,
+        "ocean_mcp": 0.12299898373563906,
+        "abs_diff": 3.1726003494741972e-06,
+        "tolerance": 0.0003,
+        "agree": true
+      }
+    },
+    "pointwise": {
+      "same_valid_times": true,
+      "max_abs_model_value_diff_m": 5.0000000000105516e-05,
+      "max_abs_obs_value_diff_m": 0.0,
+      "agree": true
+    },
+    "disagreements": []
+  },
+  "2d_global_nowcast": {
+    "window": "2d_global_nowcast",
+    "mcp_datums": [
+      "LMSL",
+      "MSL"
+    ],
+    "mcp_window": {
+      "definition": "lead (-6, 0] h from the cycle time 2026-10-30 12:00 UTC",
+      "file_start": "2026-10-30 06:06",
+      "requested_end": "2026-10-30 12:00",
+      "model_available": [
+        "2026-10-30 06:06",
+        "2026-10-30 12:00"
+      ],
+      "matched": [
+        "2026-10-30 06:06",
+        "2026-10-30 12:00"
+      ],
+      "excluded_model_records": {
+        "masked_or_fill": 0,
+        "nonfinite": 0
+      }
+    },
+    "mcp_alignment": {
+      "method": "one-to-one; exact timestamps first, then the nearest unused observation within 3 min (ties to the earlier); UTC",
+      "exact": 60,
+      "nearest": 0,
+      "unmatched_model_records": 0,
+      "bad_observation_times": 0,
+      "duplicate_observation_times": 0
+    },
+    "mcp_observation_quality": {
+      "records": 60,
+      "verified": 0,
+      "preliminary": 60,
+      "unknown_status": 0,
+      "flagged": 24,
+      "missing": 0,
+      "nonfinite": 0,
+      "matched": {
+        "pairs": 60,
+        "verified": 0,
+        "preliminary": 60,
+        "unknown_status": 0,
+        "flagged": 24
+      }
+    },
+    "metrics": {
+      "n": {
+        "independent": 60,
+        "ocean_mcp": 60,
+        "abs_diff": 0,
+        "tolerance": 0,
+        "agree": true
+      },
+      "bias_m": {
+        "independent": -0.01822176166666667,
+        "ocean_mcp": -0.0182,
+        "abs_diff": 2.17616666666684e-05,
+        "tolerance": 0.0001,
+        "agree": true
+      },
+      "rmse_m": {
+        "independent": 0.02379170303984493,
+        "ocean_mcp": 0.0238,
+        "abs_diff": 8.29696015507142e-06,
+        "tolerance": 0.0001,
+        "agree": true
+      },
+      "mae_m": {
+        "independent": 0.019554375,
+        "ocean_mcp": 0.0196,
+        "abs_diff": 4.5625000000000526e-05,
+        "tolerance": 0.0001,
+        "agree": true
+      },
+      "pearson_r": {
+        "independent": 0.9998738342038054,
+        "ocean_mcp": 0.9999,
+        "abs_diff": 2.6165796194632662e-05,
+        "tolerance": 0.0001,
+        "agree": true
+      },
+      "max_abs_error_m": {
+        "independent": 0.05735599999999996,
+        "ocean_mcp": 0.0574,
+        "abs_diff": 4.4000000000037065e-05,
+        "tolerance": 0.0001,
+        "agree": true
+      },
+      "max_model_minus_max_obs_m": {
+        "independent": -0.004070000000000018,
+        "ocean_mcp": -0.0041,
+        "abs_diff": 2.9999999999982298e-05,
+        "tolerance": 0.0001,
+        "agree": true
+      },
+      "crmse_m (MCP: sqrt(rmse^2 - bias^2))": {
+        "independent": 0.015297468264368574,
+        "ocean_mcp": 0.015336231610144654,
+        "abs_diff": 3.876334577608033e-05,
+        "tolerance": 0.0003,
+        "agree": true
+      }
+    },
+    "pointwise": {
+      "same_valid_times": true,
+      "max_abs_model_value_diff_m": 4.999999999988347e-05,
+      "max_abs_obs_value_diff_m": 0.0,
+      "agree": true
+    },
+    "disagreements": []
+  },
+  "3d_atlantic_forecast": {
+    "window": "3d_atlantic_forecast",
+    "mcp_datums": [
+      "LMSL",
+      "MSL"
+    ],
+    "mcp_window": {
+      "definition": "lead (0, 48] h from the cycle time 2026-10-30 12:00 UTC",
+      "file_start": "2026-10-29 12:06",
+      "requested_end": "2026-11-01 12:00",
+      "model_available": [
+        "2026-10-30 12:06",
+        "2026-11-01 12:00"
+      ],
+      "matched": [
+        "2026-10-30 12:06",
+        "2026-11-01 12:00"
+      ],
+      "excluded_model_records": {
+        "masked_or_fill": 0,
+        "nonfinite": 0
+      }
+    },
+    "mcp_alignment": {
+      "method": "one-to-one; exact timestamps first, then the nearest unused observation within 3 min (ties to the earlier); UTC",
+      "exact": 480,
+      "nearest": 0,
+      "unmatched_model_records": 0,
+      "bad_observation_times": 0,
+      "duplicate_observation_times": 0
+    },
+    "mcp_observation_quality": {
+      "records": 480,
+      "verified": 0,
+      "preliminary": 480,
+      "unknown_status": 0,
+      "flagged": 110,
+      "missing": 0,
+      "nonfinite": 0,
+      "matched": {
+        "pairs": 480,
+        "verified": 0,
+        "preliminary": 480,
+        "unknown_status": 0,
+        "flagged": 110
+      }
+    },
+    "metrics": {
+      "n": {
+        "independent": 480,
+        "ocean_mcp": 480,
+        "abs_diff": 0,
+        "tolerance": 0,
+        "agree": true
+      },
+      "bias_m": {
+        "independent": -0.14299885033346554,
+        "ocean_mcp": -0.143,
+        "abs_diff": 1.1496665344445933e-06,
+        "tolerance": 0.0001,
+        "agree": true
+      },
+      "rmse_m": {
+        "independent": 0.24555257562124647,
+        "ocean_mcp": 0.2456,
+        "abs_diff": 4.742437875354666e-05,
+        "tolerance": 0.0001,
+        "agree": true
+      },
+      "mae_m": {
+        "independent": 0.20860631475231262,
+        "ocean_mcp": 0.2086,
+        "abs_diff": 6.314752312608363e-06,
+        "tolerance": 0.0001,
+        "agree": true
+      },
+      "pearson_r": {
+        "independent": 0.9913206350537719,
+        "ocean_mcp": 0.9913,
+        "abs_diff": 2.063505377192243e-05,
+        "tolerance": 0.0001,
+        "agree": true
+      },
+      "max_abs_error_m": {
+        "independent": 0.5351339957084656,
+        "ocean_mcp": 0.5351,
+        "abs_diff": 3.399570846562838e-05,
+        "tolerance": 0.0001,
+        "agree": true
+      },
+      "max_model_minus_max_obs_m": {
+        "independent": 0.012794004291534655,
+        "ocean_mcp": 0.0128,
+        "abs_diff": 5.995708465345376e-06,
+        "tolerance": 0.0001,
+        "agree": true
+      },
+      "crmse_m (MCP: sqrt(rmse^2 - bias^2))": {
+        "independent": 0.19961812592431347,
+        "ocean_mcp": 0.19967563697156449,
+        "abs_diff": 5.751104725101874e-05,
+        "tolerance": 0.0003,
+        "agree": true
+      }
+    },
+    "pointwise": {
+      "same_valid_times": true,
+      "max_abs_model_value_diff_m": 4.999570846586643e-05,
+      "max_abs_obs_value_diff_m": 0.0,
+      "agree": true
+    },
+    "disagreements": []
+  },
+  "3d_atlantic_nowcast": {
+    "window": "3d_atlantic_nowcast",
+    "mcp_datums": [
+      "LMSL",
+      "MSL"
+    ],
+    "mcp_window": {
+      "definition": "lead (-24, 0] h from the cycle time 2026-10-30 12:00 UTC",
+      "file_start": "2026-10-29 12:06",
+      "requested_end": "2026-10-30 12:00",
+      "model_available": [
+        "2026-10-29 12:06",
+        "2026-10-30 12:00"
+      ],
+      "matched": [
+        "2026-10-29 12:06",
+        "2026-10-30 12:00"
+      ],
+      "excluded_model_records": {
+        "masked_or_fill": 0,
+        "nonfinite": 0
+      }
+    },
+    "mcp_alignment": {
+      "method": "one-to-one; exact timestamps first, then the nearest unused observation within 3 min (ties to the earlier); UTC",
+      "exact": 240,
+      "nearest": 0,
+      "unmatched_model_records": 0,
+      "bad_observation_times": 0,
+      "duplicate_observation_times": 0
+    },
+    "mcp_observation_quality": {
+      "records": 240,
+      "verified": 0,
+      "preliminary": 240,
+      "unknown_status": 0,
+      "flagged": 65,
+      "missing": 0,
+      "nonfinite": 0,
+      "matched": {
+        "pairs": 240,
+        "verified": 0,
+        "preliminary": 240,
+        "unknown_status": 0,
+        "flagged": 65
+      }
+    },
+    "metrics": {
+      "n": {
+        "independent": 240,
+        "ocean_mcp": 240,
+        "abs_diff": 0,
+        "tolerance": 0,
+        "agree": true
+      },
+      "bias_m": {
+        "independent": -0.02949048333346558,
+        "ocean_mcp": -0.0295,
+        "abs_diff": 9.516666534419016e-06,
+        "tolerance": 0.0001,
+        "agree": true
+      },
+      "rmse_m": {
+        "independent": 0.22518839747080577,
+        "ocean_mcp": 0.2252,
+        "abs_diff": 1.1602529194243427e-05,
+        "tolerance": 0.0001,
+        "agree": true
+      },
+      "mae_m": {
+        "independent": 0.2001765206958466,
+        "ocean_mcp": 0.2002,
+        "abs_diff": 2.3479304153389835e-05,
+        "tolerance": 0.0001,
+        "agree": true
+      },
+      "pearson_r": {
+        "independent": 0.9865919691776863,
+        "ocean_mcp": 0.9866,
+        "abs_diff": 8.03082231370933e-06,
+        "tolerance": 0.0001,
+        "agree": true
+      },
+      "max_abs_error_m": {
+        "independent": 0.39763199570846564,
+        "ocean_mcp": 0.3976,
+        "abs_diff": 3.199570846562638e-05,
+        "tolerance": 0.0001,
+        "agree": true
+      },
+      "max_model_minus_max_obs_m": {
+        "independent": 0.07146000429153476,
+        "ocean_mcp": 0.0715,
+        "abs_diff": 3.999570846523193e-05,
+        "tolerance": 0.0001,
+        "agree": true
+      },
+      "crmse_m (MCP: sqrt(rmse^2 - bias^2))": {
+        "independent": 0.223249021830395,
+        "ocean_mcp": 0.22325946788434303,
+        "abs_diff": 1.044605394803777e-05,
+        "tolerance": 0.0003,
+        "agree": true
+      }
+    },
+    "pointwise": {
+      "same_valid_times": true,
+      "max_abs_model_value_diff_m": 4.9995708465644384e-05,
+      "max_abs_obs_value_diff_m": 0.0,
+      "agree": true
+    },
+    "disagreements": []
+  }
+}

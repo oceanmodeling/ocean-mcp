@@ -1,0 +1,4 @@
+# Full NOAA station NetCDF inputs (25 MB + 8 MB) are not committed.
+# They are identified by URL and SHA-256 in data/manifest.json and fetched by scripts/00_fetch_inputs.py.
+data/raw/*.nc
+data/raw/grib/

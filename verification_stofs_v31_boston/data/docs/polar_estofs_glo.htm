@@ -1,0 +1,401 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-105836408-1"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments)};
+gtag('js', new Date());
+
+gtag('config', 'UA-105836408-1');
+</script>
+<meta http-equiv="refresh" content="600">
+<title>Experimental STOFS Web Portal</title>
+<script src="//dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=DOC&amp;subagency=NOAA" id="_fed_an_ua_tag"></script>
+</head>
+<body>
+<a href="https://polar.ncep.noaa.gov/estofs"><img
+src="./STOF-logo-banner.png" alt="" width="800" height="200"
+border="0"></a><br>
+<br>
+<tt>:: <a href="https://polar.ncep.noaa.gov/estofs/">Back to the
+Main Experimental STOFS Portal Page</a> :: </tt><br>
+<br>
+<table width="800" cellspacing="2" cellpadding="2" border="0">
+<tbody>
+<tr>
+<td valign="top"><font size="-1"><b>Table of Contents</b><br>
+</font>
+<ul>
+<li><a href="#STOFS_Disclaimer"><font size="-1">STOFS
+Disclaimer</font></a></li>
+<li><a href="#Page_Description"><font size="-1">Page
+Description</font></a></li>
+<li><a href="#Operational_STOFS-2D-Global"><font
+size="-1">Operational STOFS-2D-Global
+Configuration</font></a></li>
+<li><a href="#Model_Output"><font size="-1">Model Output
+Summary</font></a></li>
+<li><a href="#Skill_Reporting"><font size="-1">Skill
+Reporting Summary</font></a></li>
+<li><font size="-1"><a
+href="#STOFS_Pre-_and_Post-Processing_Software">STOFS
+
+Pre- and Post-Processing Software</a> <br>
+</font></li>
+<li><font size="-1"><a href="#Most_Recent_Model_Output">Most
+
+Recent Model Output</a><br>
+</font> </li>
+</ul>
+</td>
+</tr>
+<tr>
+<td valign="top"><font size="-1"><br>
+</font> </td>
+</tr>
+</tbody>
+</table>
+<br>
+<!---
+<table width="800" cellspacing="2" cellpadding="2" border="0">
+<tbody>
+<td bgcolor="red">
+<br>
+<b>ATTENTION!! ATTENTION!! ATTENTION!!</b>
+<br>
+<br>
+Important Message
+<br>
+<br>
+</tbody>
+</table>
+--->
+<table width="800" cellspacing="2" cellpadding="2" border="0">
+<tbody>
+<tr>
+<td width="800" valign="top" bgcolor="#ffff33"><font size="-1"><b><a
+name="STOFS_Disclaimer"></a>STOFS Disclaimer</b><br>
+<br>
+This is an experimental web portal for graphic
+visualization of the operational and experimental results
+from the storm surge and tide forecast systems being
+developed and tested by the National Ocean Service.<br>
+</font> <font size="-1"><br>
+STOFS model output is NOT total water level guidance.
+Actual water levels can be significantly higher than
+forecast due to waves and other components
+not presently included in STOFS. <br>
+</font> <font size="-1"><br>
+Please check with your regional National Weather Service
+forecast office for the official water level forecast.<br>
+<br>
+</font></td>
+<td valign="top"><br>
+</td>
+</tr>
+<tr>
+<td valign="top"><tt><br>
+</tt> </td>
+<td valign="top"><br>
+</td>
+</tr>
+<tr>
+<td valign="top"><a name="Page_Description"></a><font
+size="-1" color="#ffffff"><font color="#000000"><b>Page
+Description: STOFS-2D-Global</b><br>
+<br>
+This page provides experimental web dissemination for
+the output and validation of the Global Surge and Tide Operational Forecast System 2-D (STOFS-2D-Global).<br>
+<br>
+The Coastal &amp; Marine Modeling Branch (CMMB) of the
+Coast Survey Development Laboratory (CSDL) has
+upgraded STOFS-2D-Global to v3.1. This STOFS-2D-Global upgrade includes:<br><br> 
+*Inclusion of a gridded bias correction. This bias correction uses the current station bias correction approach used in operational STOFS2D-Global (v2.1), which corrects the station water level forecast guidance biases by removing the bias between the observed water levels at NOS/CO-OPS stations and most recent 5 days of nowcast water levels. This bias correction at stations is then propagated across the entire global grid using a graph diffusion approach. The result is that both station and gridded output is bias corrected.<br><br>
+*Addition of a few stations to the station output, as requested by National Weather Service forecast offices: Bogue Sound at Emerald Isle, NC; White Oak River at Swansboro, NC; Kings Bay MSF Pier, GA; and TEMCO Kalama Terminal, WA. Also, some redundant stations are removed from the output: Duck, NC; Fort Point, NH; Money Point, VA; and Springmaid Pier, SC. South Amboy, NJ was removed as it is no longer active and S Amboy Raritan River, NJ is the active station in that area. Finally, Naples Bay, North, FL has an updated NOS ID from 8725110 to 8725114.<br><br>
+The user evaluation and feedback for STOFS-2D-Global was officially collected up until January 16 2026, but we will always welcome feedback. The STOFS-2D-Global Upgrade Briefing to the NCEP Director occurred on January 22 2026. Operational implementation of the STOFS-2D-Global upgrade to v3.1 occurred at the 12 UTC cycle on August 17 2026.<br>
+<br>
+Evaluation is always being sought to verify that the upgrade of STOFS-2D-Global to v3.1 improves or maintains skill in the forecast guidance it provides for your use.<br>
+<br>
+Please send your feedback to:<br>
+</font></font><font size="-1"> </font> <font size="-1">Greg Seroka [<font color="#000000"><a
+href="mailto:gregory.seroka@noaa.gov">email</a>]</font></font>
+<br>
+<font size="-1">Edward Myers [<font color="#000000"><a
+href="mailto:edward.myers@noaa.gov">email</a>]
+</font></font> <font size="-1"> &nbsp;</font>
+<br>
+<font size="-1">Saeed Moghimi [<font color="#000000"><a
+href="mailto:saeed.moghimi@noaa.gov">email</a>]<br>
+</font></font> <font size="-1"> &nbsp;</font><br>
+</td>
+<td valign="top"><br>
+</td>
+</tr>
+<tr>
+<td valign="top"><a name="Operational_STOFS-2D-Global"></a><font
+size="-1"><b>Operational STOFS-2D-Global Configuration</b></font><br>
+<font size="-1"><br>
+<b>Model</b>: ADCIRC v56, 2D depth-integrated, with internal tides, self-attraction &amp; loading. Spherical coordinates on an unstructured global mesh<br>
+<b><br>
+Forcing</b>: GFS-FV3 13km 10-m winds, mslp, seaice, tidal potential with short-period 13 harmonics<br>
+<b><br>
+Mesh</b>: Global. Node count: 12,785,004. Elements count: 24,875,336. Coastal resolution: at least 1.5 km globally. Nominal coastal resolution (US): 120m. Maximal coastal resolution: 80m (30m Chetco River, OR). Open ocean resolution: 40km. Upland boundary: +10m MSL along the US East Coast, up to 20m for some of the US Pacific Islands. Flood plain spatial resolution: nominal 500m for the US East Coast, up to 80m for some of the US Islands.<br>
+<b><br>
+Computation</b>: Computational time step: 6 seconds (implicit). In total, STOFS-2D-Global currently runs on 4,064 computational cores on Weather and Climate Operational Supercomputing System 2 (WCOSS2).</b></font><font size="-1"><b></b><br>
+<b><br>
+</font> </td>
+<td valign="top"><br>
+</td>
+</tr>
+<tr>
+<td valign="top"><font size="-1"><b><a name="Model_Output"></a>Model
+
+Output</b><br>
+<br>
+Maximal forecasted water level elevation (maxele) on a
+native netCDF, 6-min forecast water level timeseries at
+1688 point locations worldwide, hourly snapshot fields in
+GRIB2 format on NDFD subgrids (CONUS, North Pacific,
+Alaska, Hawaii, Guam, Puerto Rico).<br>
+<b><br>
+Digital Output: </b>netCDF and GRIB2 output is
+available via </font><font size="-1">
+<meta charset="utf-8">
+<a
+href="https://nomads.ncep.noaa.gov/pub/data/nccf/com/stofs/prod/">https://nomads.ncep.noaa.gov/pub/data/nccf/com/stofs/prod/</a>.</font><br>
+<font size="-1"><b><br>
+Graphics Output: </b>this page provides links to
+reports including map plots of the maximal forecasted
+water level elevation (maxele), map plots of the maximal
+forecasted GFS winds, timeseries plots of the forecasted
+combined water levels along with the observed water levels
+where available, average and individual skill metrics for
+the point outputs where the observations are available.
+The reports are generated for operational STOFS-2D-Global.<br>
+<br>
+The typical auto-generated model report provides the
+following information:<br>
+Name (tag) of the experiment. The tag includes datestamp
+of the forecast cycle. It is printed on each plot. Please
+verify that you are looking at the latest cycle by
+checking the tag.<br>
+Datestamp when the report was generated (UTC)<br>
+Date span for the statistical analysis (UTC)<br>
+Bounding box of the geographical coordinates (East
+longitudes/North latitudes)<br>
+The section <i>Maximal Forecasted Water Levels</i>
+containing the maps of maxele fields for the whole domain
+and key sub-domains.<br>
+The section <i>Time-Series Metrics </i>containing the
+output and the analysis of the water level point output.<br>
+<br>
+</font></td>
+<td valign="top"><br>
+</td>
+</tr>
+<tr>
+<td valign="top"><font size="-1"><b><a name="Skill_Reporting"></a>S</b><b>kill
+
+Reporting</b> <br>
+<br>
+Skill metrics are reported for the time series comparison
+of the point output against NOAA coastal tide gauges water
+level observations, where available. The below describes the different metrics. For more details, please see <a
+href="https://github.com/noaa-ocs-modeling/autoval#package-description">https://github.com/noaa-ocs-modeling/autoval#package-description</a>.<br>
+<br>
+Metrics include: <br>
+</font>
+<table width="100%" cellspacing="2" cellpadding="2"
+border="1">
+<tbody>
+<tr>
+<td valign="top"><b><font size="-1">Skill (units)<br>
+</font></b></td>
+<td valign="top"><b><font size="-1">Description<br>
+</font></b></td>
+<td valign="top"><b><font size="-1">Best Skill Value<br>
+</font></b></td>
+</tr>
+<tr>
+<td valign="top"><font size="-1">RMSE (meters)</font></td>
+<td valign="top"><font size="-1">Root Mean Square
+Error between the model and the observations. </font></td>
+<td valign="top"><font size="-1">RMSE=0 <br>
+</font></td>
+</tr>
+<tr>
+<td valign="top"><font size="-1">PEAK (meters)</font></td>
+<td valign="top"><font size="-1">Under/overestimation
+of the maximal water level.&nbsp; </font></td>
+<td valign="top"><font size="-1">PEAK=0 <br>
+</font></td>
+</tr>
+<tr>
+<td valign="top"><font size="-1">PLAG (minutes)</font></td>
+<td valign="top"><font size="-1">Time lag between the
+modeled and the observed peak in water level.</font></td>
+<td valign="top"><font size="-1">PLAG=0 <br>
+</font></td>
+</tr>
+<tr>
+<td valign="top"><font size="-1">BIAS (meters)</font></td>
+<td valign="top"><font size="-1">Linear bias in the
+modeled water level. </font></td>
+<td valign="top"><font size="-1">BIAS=0</font></td>
+</tr>
+<tr>
+<td valign="top"><font size="-1">VEXP (%)</font></td>
+<td valign="top"><font size="-1">Variance explained, a
+measure of a coherence between the model and the
+observations. </font></td>
+<td valign="top"><font size="-1">VEXP=100</font></td>
+</tr>
+<tr>
+<td valign="top"><font size="-1">SKIL (unitless)</font></td>
+<td valign="top"><font size="-1">Statistical Skill of
+the model against the observations. </font></td>
+<td valign="top"><font size="-1">SKIL=1</font></td>
+</tr>
+<tr>
+<td valign="top"><font size="-1">RVAL (unitless)</font></td>
+<td valign="top"><font size="-1">R-Value of the model
+against the observations.</font></td>
+<td valign="top"><font size="-1">RVAL=1</font></td>
+</tr>
+<tr>
+<td valign="top"><font size="-1">NPTS (unitless)</font></td>
+<td valign="top"><font size="-1">The number of
+6-minute model/data pairs at the location that
+went into computing the above metrics.</font></td>
+<td valign="top"><br>
+</td>
+</tr>
+</tbody>
+</table>
+<font size="-1"><br>
+Metrics are computed for each individual point output
+station. All point output is provided in the <i>Individual
+
+Time-Series Statistics </i>sub-section of the report. <br>
+<br>
+Below is the example of the time series analysis for a
+given station, showing the <font color="#3333ff">modeled</font>
+(blue) and <font color="#33ff33">observed</font> (green)
+hydrographs, and the corresponding metrics:<br>
+<br>
+<a
+href="https://polar.ncep.noaa.gov/estofs/docs/example_ts_metrics.png"><img
+src="https://polar.ncep.noaa.gov/estofs/docs/example_ts_metrics.png"
+alt="ts" width="785" height="200" border="0"></a><br>
+<br>
+Individual station analysis provides time series skill for
+the model on the date span where the results overlap the
+observations. On the example above, the statistics were
+computed over the 17.8 hours (178 6-minute points where
+both model and data are valid). Skill metrics is
+represented as both a text table and a dashboard, with
+acceptable ranges for each skill shown in green bars.<br>
+<br>
+The maps for each skill metrics of all valid individual
+stations are provided in the experiment report in the </font><font
+size="-1"><font size="-1"><i>Average Time-Series
+Statistics</i> sub-section of the report</font>.<br>
+<br>
+The example below shows the map of RMSE values at each
+valid station. Values below a 0.2m threshold are plotted
+as circles. Values above 0.2m are plotted as
+upward-looking triangles, to help identify areas where the
+error is larger than a given threshold.&nbsp; &nbsp; <br>
+<br>
+<a
+href="https://polar.ncep.noaa.gov/estofs/autoval/estofs.glo/img/mapskill.rmse.png"><img
+src="https://polar.ncep.noaa.gov/estofs/autoval/estofs.glo/img/mapskill.rmse.png"
+alt="rmse" width="400" height="200" border="0"></a><br>
+<br>
+<br>
+Stations without the observations only report modeled
+nowcast/forecast time series (blue curve). <br>
+<br>
+Average skill metrics for the experiment is shown in the
+table in the <i>Average Time-</i><i>S</i><i>eries
+Statistics </i>sub-section of the report. <br>
+</font><br>
+</td>
+<td valign="top"><br>
+</td>
+</tr>
+<tr>
+<td valign="top"><br>
+<a name="STOFS_Pre-_and_Post-Processing_Software"></a><font
+size="-1"><b>STOFS Pre- and Post-Processing Software</b><br>
+<br>
+The pre- and post-processing software including skill
+computations has been developed by CSDL, in collaboration
+with other partners. The codes are written in Python3, and
+are publicly available from GitHub. <br>
+<br>
+The baseline library <a
+href="https://github.com/noaa-ocs-modeling/csdllib">csdllib</a>. <br>
+The automated skill analysis application <a
+href="https://github.com/noaa-ocs-modeling/autoval">autoval</a>. <br>
+</font><br>
+</td>
+<td valign="top"><br>
+</td>
+</tr>
+<tr>
+<td valign="top"><a name="Most_Recent_Model_Output"></a><font
+size="-1"><b>Most Recent Model Output</b><br>
+</font>
+<table width="100%" cellspacing="2" cellpadding="2"
+border="0">
+<tbody>
+<tr>
+<td valign="top"><br>
+</td>
+<td valign="top"><br>
+</td>
+<td valign="top"><br>
+</td>
+</tr>
+<tr>
+<td valign="top" bgcolor="#ffccff"><b><tt>&nbsp;STOFS-2D-Global</tt></b><b><tt><br>
+</tt></b></td>
+<td valign="top" bgcolor="#ffccff" align="center"><b><tt>[</tt></b><b><tt><a
+href="https://polar.ncep.noaa.gov/estofs/autoval/estofs.glo/index.htm">Report</a></tt></b><tt><b>]<br>
+operational <br>
+</b></tt><b><tt> </tt></b></td>
+</tr>
+</tbody>
+</table>
+<font size="-1">* STOFS-2D-Global operational run output is broadcast
+to <a
+href="https://nomads.ncep.noaa.gov/pub/data/nccf/com/stofs/prod/">nomads
+server</a>.<br>
+<br>
+<br>
+Maximal forecasted GFS winds for the latest operational STOFS-2D-Global cycle (in knots):<br>
+<br>
+<a
+href="https://polar.ncep.noaa.gov/estofs/glo6.0/maxwvel.png"><img
+src="https://polar.ncep.noaa.gov/estofs/glo6.0/maxwvel.png"
+alt="maxwvel" width="800" height="400" border="0"></a><br>
+</font><br>
+</td>
+<td valign="top"><br>
+</td>
+</tr>
+<tr>
+<td valign="top"><br>
+</td>
+<td valign="top"><br>
+</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
+
+

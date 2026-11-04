@@ -1,0 +1,45 @@
+{
+  "points": {
+    "coops_gauge": {
+      "lat": 42.3539,
+      "lon": -71.05028
+    },
+    "2d_global_output_point": {
+      "lat": 42.3548812866211,
+      "lon": -71.0485687255859
+    },
+    "3d_atlantic_output_point": {
+      "lat": 42.3539,
+      "lon": -71.05028
+    }
+  },
+  "grids": {
+    "IGLD85_ITRF2020_2020": "https://noaa-nos-stofs2d-pds.s3.amazonaws.com/_archive/coastalmodeling-vdatum/us_noaa_nos_IGLD85-ITRF2020_2020.0_nwldatum_4.7.0_20240621_3.tif",
+    "LMSL_ITRF2020_2020": "https://noaa-nos-stofs2d-pds.s3.amazonaws.com/_archive/coastalmodeling-vdatum/us_noaa_nos_LMSL-ITRF2020_2020.0_nwldatum_4.7.0_20240621_3.tif",
+    "LWD_ITRF2020_2020": "https://noaa-nos-stofs2d-pds.s3.amazonaws.com/_archive/coastalmodeling-vdatum/us_noaa_nos_LWD-ITRF2020_2020.0_nwldatum_4.7.0_20240621_3.tif",
+    "MHHW_ITRF2020_2020": "https://noaa-nos-stofs2d-pds.s3.amazonaws.com/_archive/coastalmodeling-vdatum/us_noaa_nos_MHHW-ITRF2020_2020.0_nwldatum_4.7.0_20240621_3.tif",
+    "MHW_ITRF2020_2020": "https://noaa-nos-stofs2d-pds.s3.amazonaws.com/_archive/coastalmodeling-vdatum/us_noaa_nos_MHW-ITRF2020_2020.0_nwldatum_4.7.0_20240621_3.tif",
+    "MLLW_ITRF2020_2020": "https://noaa-nos-stofs2d-pds.s3.amazonaws.com/_archive/coastalmodeling-vdatum/us_noaa_nos_MLLW-ITRF2020_2020.0_nwldatum_4.7.0_20240621_3.tif",
+    "MLW_ITRF2020_2020": "https://noaa-nos-stofs2d-pds.s3.amazonaws.com/_archive/coastalmodeling-vdatum/us_noaa_nos_MLW-ITRF2020_2020.0_nwldatum_4.7.0_20240621_3.tif",
+    "NAVD88_G2018": "us_noaa_g2018u0.tif",
+    "XGEOID20B": "https://noaa-nos-stofs2d-pds.s3.amazonaws.com/_archive/coastalmodeling-vdatum/xGEOID20B.tif"
+  },
+  "method": "vdatum.convert(src, dst, lat, lon, z=0, online=True)",
+  "offsets_m": {
+    "xgeoid20b->lmsl": {
+      "coops_gauge": 0.41763985225712474,
+      "2d_global_output_point": 0.4183986318246724,
+      "3d_atlantic_output_point": 0.41763985225712474
+    },
+    "xgeoid20b->navd88": {
+      "coops_gauge": 0.33054058296672295,
+      "2d_global_output_point": 0.3305921309230193,
+      "3d_atlantic_output_point": 0.33054058296672295
+    },
+    "navd88->lmsl": {
+      "coops_gauge": 0.09173215948229796,
+      "2d_global_output_point": 0.09243916501580429,
+      "3d_atlantic_output_point": 0.09173215948229796
+    }
+  }
+}

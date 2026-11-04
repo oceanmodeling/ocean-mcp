@@ -1,0 +1,521 @@
+{
+  "called_at": "2026-11-04T21:55:15+00:00",
+  "server": {
+    "package": "stofs-mcp",
+    "version": "0.2.0",
+    "mcp_sdk": "1.30.0",
+    "python": "3.13.2",
+    "git_commit": "31e7f6a71e6ea2468c963159982e257f53e763a4",
+    "command": [
+      "python",
+      "-m",
+      "stofs_mcp"
+    ],
+    "server_name": "stofs_mcp"
+  },
+  "request": {
+    "tool": "stofs_compare_with_observations",
+    "arguments": {
+      "station_id": "8443970",
+      "model": "2d_global",
+      "cycle_date": "2026-10-30",
+      "cycle_hour": "12",
+      "lead_start_hours": -6.0,
+      "lead_end_hours": 0.0,
+      "full_resolution": true,
+      "max_points": 2000,
+      "response_format": "json"
+    }
+  },
+  "is_error": false,
+  "response_text": "{\n  \"station_id\": \"8443970\",\n  \"model\": \"2d_global\",\n  \"model_label\": \"STOFS-2D-Global\",\n  \"cycle_date\": \"20261030\",\n  \"cycle_hour\": \"12\",\n  \"stofs_datum\": \"LMSL\",\n  \"stofs_datum_source\": \"NOAA documentation for STOFS_2D_GLOBAL V3.1.0; file label zeta:standard_name=sea_surface_height_above_geoid names no specific datum\",\n  \"datum_provenance\": {\n    \"datum\": \"LMSL\",\n    \"resolution\": \"documented_fallback\",\n    \"comparable\": true,\n    \"source\": \"NOAA documentation for STOFS_2D_GLOBAL V3.1.0; file label zeta:standard_name=sea_surface_height_above_geoid names no specific datum\",\n    \"warning\": null,\n    \"documented_datum\": \"LMSL\",\n    \"product_version\": \"STOFS_2D_GLOBAL V3.1.0\",\n    \"attributes\": {\n      \"zeta:standard_name\": \"sea_surface_height_above_geoid\",\n      \"zeta:long_name\": \"water surface elevation above geoid\"\n    }\n  },\n  \"coops_datum\": \"MSL\",\n  \"datum_note\": \"STOFS datum: LMSL (NOAA documentation for STOFS_2D_GLOBAL V3.1.0; file label zeta:standard_name=sea_surface_height_above_geoid names no specific datum) | CO-OPS datum: MSL. No vertical transformation is applied. Matching labels do not guarantee identical realizations or epochs, so a mean offset (bias) alone does not show whether its cause is the reference or the model.\",\n  \"units\": \"m\",\n  \"timezone\": \"UTC\",\n  \"comparison_start\": \"2026-10-30 06:06\",\n  \"comparison_end\": \"2026-10-30 12:00\",\n  \"cycle_time\": \"2026-10-30 12:00\",\n  \"window_lead_hours\": [\n    -5.9,\n    0.0\n  ],\n  \"hours_to_compare\": null,\n  \"lead_window_hours\": [\n    -6.0,\n    0.0\n  ],\n  \"summary\": {\n    \"observed_peak_m\": 1.502,\n    \"observed_peak_time\": \"2026-10-30 06:30\",\n    \"forecast_peak_m\": 1.4979,\n    \"forecast_peak_time\": \"2026-10-30 06:36\",\n    \"peak_error_m\": -0.0041,\n    \"peak_timing_error_hours\": 0.1,\n    \"observed_peak_at_series_end\": false,\n    \"bias_m\": -0.0182,\n    \"rmse_m\": 0.0238\n  },\n  \"statistics\": {\n    \"bias\": -0.0182,\n    \"rmse\": 0.0238,\n    \"mae\": 0.0196,\n    \"max_abs_error\": 0.0574,\n    \"peak_error\": 0.0574,\n    \"correlation\": 0.9999,\n    \"n\": 60,\n    \"n_excluded_nonfinite\": 0\n  },\n  \"statistics_by_segment\": {\n    \"nowcast\": {\n      \"bias\": -0.0182,\n      \"rmse\": 0.0238,\n      \"mae\": 0.0196,\n      \"max_abs_error\": 0.0574,\n      \"peak_error\": 0.0574,\n      \"correlation\": 0.9999,\n      \"n\": 60,\n      \"n_excluded_nonfinite\": 0\n    },\n    \"forecast\": {\n      \"bias\": null,\n      \"rmse\": null,\n      \"mae\": null,\n      \"max_abs_error\": null,\n      \"peak_error\": null,\n      \"correlation\": null,\n      \"n\": 0,\n      \"n_excluded_nonfinite\": 0\n    }\n  },\n  \"window\": {\n    \"definition\": \"lead (-6, 0] h from the cycle time 2026-10-30 12:00 UTC\",\n    \"file_start\": \"2026-10-30 06:06\",\n    \"requested_end\": \"2026-10-30 12:00\",\n    \"model_available\": [\n      \"2026-10-30 06:06\",\n      \"2026-10-30 12:00\"\n    ],\n    \"matched\": [\n      \"2026-10-30 06:06\",\n      \"2026-10-30 12:00\"\n    ],\n    \"excluded_model_records\": {\n      \"masked_or_fill\": 0,\n      \"nonfinite\": 0\n    }\n  },\n  \"alignment\": {\n    \"method\": \"one-to-one; exact timestamps first, then the nearest unused observation within 3 min (ties to the earlier); UTC\",\n    \"exact\": 60,\n    \"nearest\": 0,\n    \"unmatched_model_records\": 0,\n    \"bad_observation_times\": 0,\n    \"duplicate_observation_times\": 0\n  },\n  \"observation_quality\": {\n    \"records\": 60,\n    \"verified\": 0,\n    \"preliminary\": 60,\n    \"unknown_status\": 0,\n    \"flagged\": 24,\n    \"missing\": 0,\n    \"nonfinite\": 0,\n    \"matched\": {\n      \"pairs\": 60,\n      \"verified\": 0,\n      \"preliminary\": 60,\n      \"unknown_status\": 0,\n      \"flagged\": 24\n    }\n  },\n  \"resolution\": \"6-minute\",\n  \"n_points\": 60,\n  \"total_points\": 60,\n  \"truncated\": false,\n  \"retrieved_at\": \"2026-11-04T21:55:16+00:00\",\n  \"comparison\": [\n    {\n      \"time\": \"2026-10-30 06:06\",\n      \"stofs_m\": 1.4259,\n      \"obs_m\": 1.448,\n      \"error_m\": -0.0221\n    },\n    {\n      \"time\": \"2026-10-30 06:12\",\n      \"stofs_m\": 1.4418,\n      \"obs_m\": 1.47,\n      \"error_m\": -0.0282\n    },\n    {\n      \"time\": \"2026-10-30 06:18\",\n      \"stofs_m\": 1.4596,\n      \"obs_m\": 1.488,\n      \"error_m\": -0.0284\n    },\n    {\n      \"time\": \"2026-10-30 06:24\",\n      \"stofs_m\": 1.4777,\n      \"obs_m\": 1.495,\n      \"error_m\": -0.0173\n    },\n    {\n      \"time\": \"2026-10-30 06:30\",\n      \"stofs_m\": 1.4928,\n      \"obs_m\": 1.502,\n      \"error_m\": -0.0092\n    },\n    {\n      \"time\": \"2026-10-30 06:36\",\n      \"stofs_m\": 1.4979,\n      \"obs_m\": 1.495,\n      \"error_m\": 0.0029\n    },\n    {\n      \"time\": \"2026-10-30 06:42\",\n      \"stofs_m\": 1.4975,\n      \"obs_m\": 1.492,\n      \"error_m\": 0.0055\n    },\n    {\n      \"time\": \"2026-10-30 06:48\",\n      \"stofs_m\": 1.4911,\n      \"obs_m\": 1.489,\n      \"error_m\": 0.0021\n    },\n    {\n      \"time\": \"2026-10-30 06:54\",\n      \"stofs_m\": 1.4783,\n      \"obs_m\": 1.479,\n      \"error_m\": -0.0007\n    },\n    {\n      \"time\": \"2026-10-30 07:00\",\n      \"stofs_m\": 1.4612,\n      \"obs_m\": 1.472,\n      \"error_m\": -0.0108\n    },\n    {\n      \"time\": \"2026-10-30 07:06\",\n      \"stofs_m\": 1.4492,\n      \"obs_m\": 1.467,\n      \"error_m\": -0.0178\n    },\n    {\n      \"time\": \"2026-10-30 07:12\",\n      \"stofs_m\": 1.4332,\n      \"obs_m\": 1.451,\n      \"error_m\": -0.0178\n    },\n    {\n      \"time\": \"2026-10-30 07:18\",\n      \"stofs_m\": 1.414,\n      \"obs_m\": 1.43,\n      \"error_m\": -0.016\n    },\n    {\n      \"time\": \"2026-10-30 07:24\",\n      \"stofs_m\": 1.3902,\n      \"obs_m\": 1.404,\n      \"error_m\": -0.0138\n    },\n    {\n      \"time\": \"2026-10-30 07:30\",\n      \"stofs_m\": 1.3636,\n      \"obs_m\": 1.375,\n      \"error_m\": -0.0114\n    },\n    {\n      \"time\": \"2026-10-30 07:36\",\n      \"stofs_m\": 1.3323,\n      \"obs_m\": 1.337,\n      \"error_m\": -0.0047\n    },\n    {\n      \"time\": \"2026-10-30 07:42\",\n      \"stofs_m\": 1.2927,\n      \"obs_m\": 1.296,\n      \"error_m\": -0.0033\n    },\n    {\n      \"time\": \"2026-10-30 07:48\",\n      \"stofs_m\": 1.2483,\n      \"obs_m\": 1.25,\n      \"error_m\": -0.0017\n    },\n    {\n      \"time\": \"2026-10-30 07:54\",\n      \"stofs_m\": 1.1986,\n      \"obs_m\": 1.199,\n      \"error_m\": -0.0004\n    },\n    {\n      \"time\": \"2026-10-30 08:00\",\n      \"stofs_m\": 1.1489,\n      \"obs_m\": 1.162,\n      \"error_m\": -0.0131\n    },\n    {\n      \"time\": \"2026-10-30 08:06\",\n      \"stofs_m\": 1.104,\n      \"obs_m\": 1.124,\n      \"error_m\": -0.02\n    },\n    {\n      \"time\": \"2026-10-30 08:12\",\n      \"stofs_m\": 1.0591,\n      \"obs_m\": 1.081,\n      \"error_m\": -0.0219\n    },\n    {\n      \"time\": \"2026-10-30 08:18\",\n      \"stofs_m\": 1.014,\n      \"obs_m\": 1.039,\n      \"error_m\": -0.025\n    },\n    {\n      \"time\": \"2026-10-30 08:24\",\n      \"stofs_m\": 0.9673,\n      \"obs_m\": 1.003,\n      \"error_m\": -0.0357\n    },\n    {\n      \"time\": \"2026-10-30 08:30\",\n      \"stofs_m\": 0.9204,\n      \"obs_m\": 0.965,\n      \"error_m\": -0.0446\n    },\n    {\n      \"time\": \"2026-10-30 08:36\",\n      \"stofs_m\": 0.8739,\n      \"obs_m\": 0.915,\n      \"error_m\": -0.0411\n    },\n    {\n      \"time\": \"2026-10-30 08:42\",\n      \"stofs_m\": 0.8269,\n      \"obs_m\": 0.852,\n      \"error_m\": -0.0251\n    },\n    {\n      \"time\": \"2026-10-30 08:48\",\n      \"stofs_m\": 0.7783,\n      \"obs_m\": 0.802,\n      \"error_m\": -0.0237\n    },\n    {\n      \"time\": \"2026-10-30 08:54\",\n      \"stofs_m\": 0.7274,\n      \"obs_m\": 0.745,\n      \"error_m\": -0.0176\n    },\n    {\n      \"time\": \"2026-10-30 09:00\",\n      \"stofs_m\": 0.6775,\n      \"obs_m\": 0.692,\n      \"error_m\": -0.0145\n    },\n    {\n      \"time\": \"2026-10-30 09:06\",\n      \"stofs_m\": 0.6205,\n      \"obs_m\": 0.629,\n      \"error_m\": -0.0085\n    },\n    {\n      \"time\": \"2026-10-30 09:12\",\n      \"stofs_m\": 0.562,\n      \"obs_m\": 0.566,\n      \"error_m\": -0.004\n    },\n    {\n      \"time\": \"2026-10-30 09:18\",\n      \"stofs_m\": 0.5012,\n      \"obs_m\": 0.511,\n      \"error_m\": -0.0098\n    },\n    {\n      \"time\": \"2026-10-30 09:24\",\n      \"stofs_m\": 0.4391,\n      \"obs_m\": 0.455,\n      \"error_m\": -0.0159\n    },\n    {\n      \"time\": \"2026-10-30 09:30\",\n      \"stofs_m\": 0.3745,\n      \"obs_m\": 0.399,\n      \"error_m\": -0.0245\n    },\n    {\n      \"time\": \"2026-10-30 09:36\",\n      \"stofs_m\": 0.3076,\n      \"obs_m\": 0.338,\n      \"error_m\": -0.0304\n    },\n    {\n      \"time\": \"2026-10-30 09:42\",\n      \"stofs_m\": 0.2369,\n      \"obs_m\": 0.265,\n      \"error_m\": -0.0281\n    },\n    {\n      \"time\": \"2026-10-30 09:48\",\n      \"stofs_m\": 0.1643,\n      \"obs_m\": 0.188,\n      \"error_m\": -0.0237\n    },\n    {\n      \"time\": \"2026-10-30 09:54\",\n      \"stofs_m\": 0.0884,\n      \"obs_m\": 0.101,\n      \"error_m\": -0.0126\n    },\n    {\n      \"time\": \"2026-10-30 10:00\",\n      \"stofs_m\": 0.0111,\n      \"obs_m\": 0.018,\n      \"error_m\": -0.0069\n    },\n    {\n      \"time\": \"2026-10-30 10:06\",\n      \"stofs_m\": -0.0576,\n      \"obs_m\": -0.07,\n      \"error_m\": 0.0124\n    },\n    {\n      \"time\": \"2026-10-30 10:12\",\n      \"stofs_m\": -0.128,\n      \"obs_m\": -0.137,\n      \"error_m\": 0.009\n    },\n    {\n      \"time\": \"2026-10-30 10:18\",\n      \"stofs_m\": -0.1979,\n      \"obs_m\": -0.206,\n      \"error_m\": 0.0081\n    },\n    {\n      \"time\": \"2026-10-30 10:24\",\n      \"stofs_m\": -0.27,\n      \"obs_m\": -0.262,\n      \"error_m\": -0.008\n    },\n    {\n      \"time\": \"2026-10-30 10:30\",\n      \"stofs_m\": -0.34,\n      \"obs_m\": -0.328,\n      \"error_m\": -0.012\n    },\n    {\n      \"time\": \"2026-10-30 10:36\",\n      \"stofs_m\": -0.4083,\n      \"obs_m\": -0.39,\n      \"error_m\": -0.0183\n    },\n    {\n      \"time\": \"2026-10-30 10:42\",\n      \"stofs_m\": -0.4767,\n      \"obs_m\": -0.452,\n      \"error_m\": -0.0247\n    },\n    {\n      \"time\": \"2026-10-30 10:48\",\n      \"stofs_m\": -0.5436,\n      \"obs_m\": -0.521,\n      \"error_m\": -0.0226\n    },\n    {\n      \"time\": \"2026-10-30 10:54\",\n      \"stofs_m\": -0.6088,\n      \"obs_m\": -0.584,\n      \"error_m\": -0.0248\n    },\n    {\n      \"time\": \"2026-10-30 11:00\",\n      \"stofs_m\": -0.6721,\n      \"obs_m\": -0.662,\n      \"error_m\": -0.0101\n    },\n    {\n      \"time\": \"2026-10-30 11:06\",\n      \"stofs_m\": -0.7461,\n      \"obs_m\": -0.717,\n      \"error_m\": -0.0291\n    },\n    {\n      \"time\": \"2026-10-30 11:12\",\n      \"stofs_m\": -0.8134,\n      \"obs_m\": -0.779,\n      \"error_m\": -0.0344\n    },\n    {\n      \"time\": \"2026-10-30 11:18\",\n      \"stofs_m\": -0.8771,\n      \"obs_m\": -0.823,\n      \"error_m\": -0.0541\n    },\n    {\n      \"time\": \"2026-10-30 11:24\",\n      \"stofs_m\": -0.9304,\n      \"obs_m\": -0.873,\n      \"error_m\": -0.0574\n    },\n    {\n      \"time\": \"2026-10-30 11:30\",\n      \"stofs_m\": -0.9854,\n      \"obs_m\": -0.931,\n      \"error_m\": -0.0544\n    },\n    {\n      \"time\": \"2026-10-30 11:36\",\n      \"stofs_m\": -1.0275,\n      \"obs_m\": -0.98,\n      \"error_m\": -0.0475\n    },\n    {\n      \"time\": \"2026-10-30 11:42\",\n      \"stofs_m\": -1.0585,\n      \"obs_m\": -1.029,\n      \"error_m\": -0.0295\n    },\n    {\n      \"time\": \"2026-10-30 11:48\",\n      \"stofs_m\": -1.0878,\n      \"obs_m\": -1.06,\n      \"error_m\": -0.0278\n    },\n    {\n      \"time\": \"2026-10-30 11:54\",\n      \"stofs_m\": -1.1214,\n      \"obs_m\": -1.103,\n      \"error_m\": -0.0184\n    },\n    {\n      \"time\": \"2026-10-30 12:00\",\n      \"stofs_m\": -1.1449,\n      \"obs_m\": -1.135,\n      \"error_m\": -0.0099\n    }\n  ]\n}",
+  "response": {
+    "station_id": "8443970",
+    "model": "2d_global",
+    "model_label": "STOFS-2D-Global",
+    "cycle_date": "20261030",
+    "cycle_hour": "12",
+    "stofs_datum": "LMSL",
+    "stofs_datum_source": "NOAA documentation for STOFS_2D_GLOBAL V3.1.0; file label zeta:standard_name=sea_surface_height_above_geoid names no specific datum",
+    "datum_provenance": {
+      "datum": "LMSL",
+      "resolution": "documented_fallback",
+      "comparable": true,
+      "source": "NOAA documentation for STOFS_2D_GLOBAL V3.1.0; file label zeta:standard_name=sea_surface_height_above_geoid names no specific datum",
+      "warning": null,
+      "documented_datum": "LMSL",
+      "product_version": "STOFS_2D_GLOBAL V3.1.0",
+      "attributes": {
+        "zeta:standard_name": "sea_surface_height_above_geoid",
+        "zeta:long_name": "water surface elevation above geoid"
+      }
+    },
+    "coops_datum": "MSL",
+    "datum_note": "STOFS datum: LMSL (NOAA documentation for STOFS_2D_GLOBAL V3.1.0; file label zeta:standard_name=sea_surface_height_above_geoid names no specific datum) | CO-OPS datum: MSL. No vertical transformation is applied. Matching labels do not guarantee identical realizations or epochs, so a mean offset (bias) alone does not show whether its cause is the reference or the model.",
+    "units": "m",
+    "timezone": "UTC",
+    "comparison_start": "2026-10-30 06:06",
+    "comparison_end": "2026-10-30 12:00",
+    "cycle_time": "2026-10-30 12:00",
+    "window_lead_hours": [
+      -5.9,
+      0.0
+    ],
+    "hours_to_compare": null,
+    "lead_window_hours": [
+      -6.0,
+      0.0
+    ],
+    "summary": {
+      "observed_peak_m": 1.502,
+      "observed_peak_time": "2026-10-30 06:30",
+      "forecast_peak_m": 1.4979,
+      "forecast_peak_time": "2026-10-30 06:36",
+      "peak_error_m": -0.0041,
+      "peak_timing_error_hours": 0.1,
+      "observed_peak_at_series_end": false,
+      "bias_m": -0.0182,
+      "rmse_m": 0.0238
+    },
+    "statistics": {
+      "bias": -0.0182,
+      "rmse": 0.0238,
+      "mae": 0.0196,
+      "max_abs_error": 0.0574,
+      "peak_error": 0.0574,
+      "correlation": 0.9999,
+      "n": 60,
+      "n_excluded_nonfinite": 0
+    },
+    "statistics_by_segment": {
+      "nowcast": {
+        "bias": -0.0182,
+        "rmse": 0.0238,
+        "mae": 0.0196,
+        "max_abs_error": 0.0574,
+        "peak_error": 0.0574,
+        "correlation": 0.9999,
+        "n": 60,
+        "n_excluded_nonfinite": 0
+      },
+      "forecast": {
+        "bias": null,
+        "rmse": null,
+        "mae": null,
+        "max_abs_error": null,
+        "peak_error": null,
+        "correlation": null,
+        "n": 0,
+        "n_excluded_nonfinite": 0
+      }
+    },
+    "window": {
+      "definition": "lead (-6, 0] h from the cycle time 2026-10-30 12:00 UTC",
+      "file_start": "2026-10-30 06:06",
+      "requested_end": "2026-10-30 12:00",
+      "model_available": [
+        "2026-10-30 06:06",
+        "2026-10-30 12:00"
+      ],
+      "matched": [
+        "2026-10-30 06:06",
+        "2026-10-30 12:00"
+      ],
+      "excluded_model_records": {
+        "masked_or_fill": 0,
+        "nonfinite": 0
+      }
+    },
+    "alignment": {
+      "method": "one-to-one; exact timestamps first, then the nearest unused observation within 3 min (ties to the earlier); UTC",
+      "exact": 60,
+      "nearest": 0,
+      "unmatched_model_records": 0,
+      "bad_observation_times": 0,
+      "duplicate_observation_times": 0
+    },
+    "observation_quality": {
+      "records": 60,
+      "verified": 0,
+      "preliminary": 60,
+      "unknown_status": 0,
+      "flagged": 24,
+      "missing": 0,
+      "nonfinite": 0,
+      "matched": {
+        "pairs": 60,
+        "verified": 0,
+        "preliminary": 60,
+        "unknown_status": 0,
+        "flagged": 24
+      }
+    },
+    "resolution": "6-minute",
+    "n_points": 60,
+    "total_points": 60,
+    "truncated": false,
+    "retrieved_at": "2026-11-04T21:55:16+00:00",
+    "comparison": [
+      {
+        "time": "2026-10-30 06:06",
+        "stofs_m": 1.4259,
+        "obs_m": 1.448,
+        "error_m": -0.0221
+      },
+      {
+        "time": "2026-10-30 06:12",
+        "stofs_m": 1.4418,
+        "obs_m": 1.47,
+        "error_m": -0.0282
+      },
+      {
+        "time": "2026-10-30 06:18",
+        "stofs_m": 1.4596,
+        "obs_m": 1.488,
+        "error_m": -0.0284
+      },
+      {
+        "time": "2026-10-30 06:24",
+        "stofs_m": 1.4777,
+        "obs_m": 1.495,
+        "error_m": -0.0173
+      },
+      {
+        "time": "2026-10-30 06:30",
+        "stofs_m": 1.4928,
+        "obs_m": 1.502,
+        "error_m": -0.0092
+      },
+      {
+        "time": "2026-10-30 06:36",
+        "stofs_m": 1.4979,
+        "obs_m": 1.495,
+        "error_m": 0.0029
+      },
+      {
+        "time": "2026-10-30 06:42",
+        "stofs_m": 1.4975,
+        "obs_m": 1.492,
+        "error_m": 0.0055
+      },
+      {
+        "time": "2026-10-30 06:48",
+        "stofs_m": 1.4911,
+        "obs_m": 1.489,
+        "error_m": 0.0021
+      },
+      {
+        "time": "2026-10-30 06:54",
+        "stofs_m": 1.4783,
+        "obs_m": 1.479,
+        "error_m": -0.0007
+      },
+      {
+        "time": "2026-10-30 07:00",
+        "stofs_m": 1.4612,
+        "obs_m": 1.472,
+        "error_m": -0.0108
+      },
+      {
+        "time": "2026-10-30 07:06",
+        "stofs_m": 1.4492,
+        "obs_m": 1.467,
+        "error_m": -0.0178
+      },
+      {
+        "time": "2026-10-30 07:12",
+        "stofs_m": 1.4332,
+        "obs_m": 1.451,
+        "error_m": -0.0178
+      },
+      {
+        "time": "2026-10-30 07:18",
+        "stofs_m": 1.414,
+        "obs_m": 1.43,
+        "error_m": -0.016
+      },
+      {
+        "time": "2026-10-30 07:24",
+        "stofs_m": 1.3902,
+        "obs_m": 1.404,
+        "error_m": -0.0138
+      },
+      {
+        "time": "2026-10-30 07:30",
+        "stofs_m": 1.3636,
+        "obs_m": 1.375,
+        "error_m": -0.0114
+      },
+      {
+        "time": "2026-10-30 07:36",
+        "stofs_m": 1.3323,
+        "obs_m": 1.337,
+        "error_m": -0.0047
+      },
+      {
+        "time": "2026-10-30 07:42",
+        "stofs_m": 1.2927,
+        "obs_m": 1.296,
+        "error_m": -0.0033
+      },
+      {
+        "time": "2026-10-30 07:48",
+        "stofs_m": 1.2483,
+        "obs_m": 1.25,
+        "error_m": -0.0017
+      },
+      {
+        "time": "2026-10-30 07:54",
+        "stofs_m": 1.1986,
+        "obs_m": 1.199,
+        "error_m": -0.0004
+      },
+      {
+        "time": "2026-10-30 08:00",
+        "stofs_m": 1.1489,
+        "obs_m": 1.162,
+        "error_m": -0.0131
+      },
+      {
+        "time": "2026-10-30 08:06",
+        "stofs_m": 1.104,
+        "obs_m": 1.124,
+        "error_m": -0.02
+      },
+      {
+        "time": "2026-10-30 08:12",
+        "stofs_m": 1.0591,
+        "obs_m": 1.081,
+        "error_m": -0.0219
+      },
+      {
+        "time": "2026-10-30 08:18",
+        "stofs_m": 1.014,
+        "obs_m": 1.039,
+        "error_m": -0.025
+      },
+      {
+        "time": "2026-10-30 08:24",
+        "stofs_m": 0.9673,
+        "obs_m": 1.003,
+        "error_m": -0.0357
+      },
+      {
+        "time": "2026-10-30 08:30",
+        "stofs_m": 0.9204,
+        "obs_m": 0.965,
+        "error_m": -0.0446
+      },
+      {
+        "time": "2026-10-30 08:36",
+        "stofs_m": 0.8739,
+        "obs_m": 0.915,
+        "error_m": -0.0411
+      },
+      {
+        "time": "2026-10-30 08:42",
+        "stofs_m": 0.8269,
+        "obs_m": 0.852,
+        "error_m": -0.0251
+      },
+      {
+        "time": "2026-10-30 08:48",
+        "stofs_m": 0.7783,
+        "obs_m": 0.802,
+        "error_m": -0.0237
+      },
+      {
+        "time": "2026-10-30 08:54",
+        "stofs_m": 0.7274,
+        "obs_m": 0.745,
+        "error_m": -0.0176
+      },
+      {
+        "time": "2026-10-30 09:00",
+        "stofs_m": 0.6775,
+        "obs_m": 0.692,
+        "error_m": -0.0145
+      },
+      {
+        "time": "2026-10-30 09:06",
+        "stofs_m": 0.6205,
+        "obs_m": 0.629,
+        "error_m": -0.0085
+      },
+      {
+        "time": "2026-10-30 09:12",
+        "stofs_m": 0.562,
+        "obs_m": 0.566,
+        "error_m": -0.004
+      },
+      {
+        "time": "2026-10-30 09:18",
+        "stofs_m": 0.5012,
+        "obs_m": 0.511,
+        "error_m": -0.0098
+      },
+      {
+        "time": "2026-10-30 09:24",
+        "stofs_m": 0.4391,
+        "obs_m": 0.455,
+        "error_m": -0.0159
+      },
+      {
+        "time": "2026-10-30 09:30",
+        "stofs_m": 0.3745,
+        "obs_m": 0.399,
+        "error_m": -0.0245
+      },
+      {
+        "time": "2026-10-30 09:36",
+        "stofs_m": 0.3076,
+        "obs_m": 0.338,
+        "error_m": -0.0304
+      },
+      {
+        "time": "2026-10-30 09:42",
+        "stofs_m": 0.2369,
+        "obs_m": 0.265,
+        "error_m": -0.0281
+      },
+      {
+        "time": "2026-10-30 09:48",
+        "stofs_m": 0.1643,
+        "obs_m": 0.188,
+        "error_m": -0.0237
+      },
+      {
+        "time": "2026-10-30 09:54",
+        "stofs_m": 0.0884,
+        "obs_m": 0.101,
+        "error_m": -0.0126
+      },
+      {
+        "time": "2026-10-30 10:00",
+        "stofs_m": 0.0111,
+        "obs_m": 0.018,
+        "error_m": -0.0069
+      },
+      {
+        "time": "2026-10-30 10:06",
+        "stofs_m": -0.0576,
+        "obs_m": -0.07,
+        "error_m": 0.0124
+      },
+      {
+        "time": "2026-10-30 10:12",
+        "stofs_m": -0.128,
+        "obs_m": -0.137,
+        "error_m": 0.009
+      },
+      {
+        "time": "2026-10-30 10:18",
+        "stofs_m": -0.1979,
+        "obs_m": -0.206,
+        "error_m": 0.0081
+      },
+      {
+        "time": "2026-10-30 10:24",
+        "stofs_m": -0.27,
+        "obs_m": -0.262,
+        "error_m": -0.008
+      },
+      {
+        "time": "2026-10-30 10:30",
+        "stofs_m": -0.34,
+        "obs_m": -0.328,
+        "error_m": -0.012
+      },
+      {
+        "time": "2026-10-30 10:36",
+        "stofs_m": -0.4083,
+        "obs_m": -0.39,
+        "error_m": -0.0183
+      },
+      {
+        "time": "2026-10-30 10:42",
+        "stofs_m": -0.4767,
+        "obs_m": -0.452,
+        "error_m": -0.0247
+      },
+      {
+        "time": "2026-10-30 10:48",
+        "stofs_m": -0.5436,
+        "obs_m": -0.521,
+        "error_m": -0.0226
+      },
+      {
+        "time": "2026-10-30 10:54",
+        "stofs_m": -0.6088,
+        "obs_m": -0.584,
+        "error_m": -0.0248
+      },
+      {
+        "time": "2026-10-30 11:00",
+        "stofs_m": -0.6721,
+        "obs_m": -0.662,
+        "error_m": -0.0101
+      },
+      {
+        "time": "2026-10-30 11:06",
+        "stofs_m": -0.7461,
+        "obs_m": -0.717,
+        "error_m": -0.0291
+      },
+      {
+        "time": "2026-10-30 11:12",
+        "stofs_m": -0.8134,
+        "obs_m": -0.779,
+        "error_m": -0.0344
+      },
+      {
+        "time": "2026-10-30 11:18",
+        "stofs_m": -0.8771,
+        "obs_m": -0.823,
+        "error_m": -0.0541
+      },
+      {
+        "time": "2026-10-30 11:24",
+        "stofs_m": -0.9304,
+        "obs_m": -0.873,
+        "error_m": -0.0574
+      },
+      {
+        "time": "2026-10-30 11:30",
+        "stofs_m": -0.9854,
+        "obs_m": -0.931,
+        "error_m": -0.0544
+      },
+      {
+        "time": "2026-10-30 11:36",
+        "stofs_m": -1.0275,
+        "obs_m": -0.98,
+        "error_m": -0.0475
+      },
+      {
+        "time": "2026-10-30 11:42",
+        "stofs_m": -1.0585,
+        "obs_m": -1.029,
+        "error_m": -0.0295
+      },
+      {
+        "time": "2026-10-30 11:48",
+        "stofs_m": -1.0878,
+        "obs_m": -1.06,
+        "error_m": -0.0278
+      },
+      {
+        "time": "2026-10-30 11:54",
+        "stofs_m": -1.1214,
+        "obs_m": -1.103,
+        "error_m": -0.0184
+      },
+      {
+        "time": "2026-10-30 12:00",
+        "stofs_m": -1.1449,
+        "obs_m": -1.135,
+        "error_m": -0.0099
+      }
+    ]
+  }
+}

@@ -1,0 +1,1601 @@
+{
+  "called_at": "2026-11-04T21:55:17+00:00",
+  "server": {
+    "package": "stofs-mcp",
+    "version": "0.2.0",
+    "mcp_sdk": "1.30.0",
+    "python": "3.13.2",
+    "git_commit": "31e7f6a71e6ea2468c963159982e257f53e763a4",
+    "command": [
+      "python",
+      "-m",
+      "stofs_mcp"
+    ],
+    "server_name": "stofs_mcp"
+  },
+  "request": {
+    "tool": "stofs_compare_with_observations",
+    "arguments": {
+      "station_id": "8443970",
+      "model": "3d_atlantic",
+      "cycle_date": "2026-10-30",
+      "cycle_hour": "12",
+      "lead_start_hours": -24.0,
+      "lead_end_hours": 0.0,
+      "full_resolution": true,
+      "max_points": 2000,
+      "response_format": "json"
+    }
+  },
+  "is_error": false,
+  "response_text": "{\n  \"station_id\": \"8443970\",\n  \"model\": \"3d_atlantic\",\n  \"model_label\": \"STOFS-3D-Atlantic\",\n  \"cycle_date\": \"20261030\",\n  \"cycle_hour\": \"12\",\n  \"stofs_datum\": \"LMSL\",\n  \"stofs_datum_source\": \"file metadata: zeta:standard_name=sea_surface_height_above_msl\",\n  \"datum_provenance\": {\n    \"datum\": \"LMSL\",\n    \"resolution\": \"file_metadata\",\n    \"comparable\": true,\n    \"source\": \"file metadata: zeta:standard_name=sea_surface_height_above_msl\",\n    \"warning\": null,\n    \"documented_datum\": \"LMSL\",\n    \"product_version\": \"stofs.v3.1.6\",\n    \"attributes\": {\n      \"zeta:standard_name\": \"sea_surface_height_above_msl\",\n      \"zeta:long_name\": \"water surface elevation above msl\"\n    }\n  },\n  \"coops_datum\": \"MSL\",\n  \"datum_note\": \"STOFS datum: LMSL (file metadata: zeta:standard_name=sea_surface_height_above_msl) | CO-OPS datum: MSL. No vertical transformation is applied. Matching labels do not guarantee identical realizations or epochs, so a mean offset (bias) alone does not show whether its cause is the reference or the model.\",\n  \"units\": \"m\",\n  \"timezone\": \"UTC\",\n  \"comparison_start\": \"2026-10-29 12:06\",\n  \"comparison_end\": \"2026-10-30 12:00\",\n  \"cycle_time\": \"2026-10-30 12:00\",\n  \"window_lead_hours\": [\n    -23.9,\n    0.0\n  ],\n  \"hours_to_compare\": null,\n  \"lead_window_hours\": [\n    -24.0,\n    0.0\n  ],\n  \"summary\": {\n    \"observed_peak_m\": 1.996,\n    \"observed_peak_time\": \"2026-10-29 18:00\",\n    \"forecast_peak_m\": 2.0675,\n    \"forecast_peak_time\": \"2026-10-29 18:12\",\n    \"peak_error_m\": 0.0715,\n    \"peak_timing_error_hours\": 0.2,\n    \"observed_peak_at_series_end\": false,\n    \"bias_m\": -0.0295,\n    \"rmse_m\": 0.2252\n  },\n  \"statistics\": {\n    \"bias\": -0.0295,\n    \"rmse\": 0.2252,\n    \"mae\": 0.2002,\n    \"max_abs_error\": 0.3976,\n    \"peak_error\": 0.3976,\n    \"correlation\": 0.9866,\n    \"n\": 240,\n    \"n_excluded_nonfinite\": 0\n  },\n  \"statistics_by_segment\": {\n    \"nowcast\": {\n      \"bias\": -0.0295,\n      \"rmse\": 0.2252,\n      \"mae\": 0.2002,\n      \"max_abs_error\": 0.3976,\n      \"peak_error\": 0.3976,\n      \"correlation\": 0.9866,\n      \"n\": 240,\n      \"n_excluded_nonfinite\": 0\n    },\n    \"forecast\": {\n      \"bias\": null,\n      \"rmse\": null,\n      \"mae\": null,\n      \"max_abs_error\": null,\n      \"peak_error\": null,\n      \"correlation\": null,\n      \"n\": 0,\n      \"n_excluded_nonfinite\": 0\n    }\n  },\n  \"window\": {\n    \"definition\": \"lead (-24, 0] h from the cycle time 2026-10-30 12:00 UTC\",\n    \"file_start\": \"2026-10-29 12:06\",\n    \"requested_end\": \"2026-10-30 12:00\",\n    \"model_available\": [\n      \"2026-10-29 12:06\",\n      \"2026-10-30 12:00\"\n    ],\n    \"matched\": [\n      \"2026-10-29 12:06\",\n      \"2026-10-30 12:00\"\n    ],\n    \"excluded_model_records\": {\n      \"masked_or_fill\": 0,\n      \"nonfinite\": 0\n    }\n  },\n  \"alignment\": {\n    \"method\": \"one-to-one; exact timestamps first, then the nearest unused observation within 3 min (ties to the earlier); UTC\",\n    \"exact\": 240,\n    \"nearest\": 0,\n    \"unmatched_model_records\": 0,\n    \"bad_observation_times\": 0,\n    \"duplicate_observation_times\": 0\n  },\n  \"observation_quality\": {\n    \"records\": 240,\n    \"verified\": 0,\n    \"preliminary\": 240,\n    \"unknown_status\": 0,\n    \"flagged\": 65,\n    \"missing\": 0,\n    \"nonfinite\": 0,\n    \"matched\": {\n      \"pairs\": 240,\n      \"verified\": 0,\n      \"preliminary\": 240,\n      \"unknown_status\": 0,\n      \"flagged\": 65\n    }\n  },\n  \"resolution\": \"6-minute\",\n  \"n_points\": 240,\n  \"total_points\": 240,\n  \"truncated\": false,\n  \"retrieved_at\": \"2026-11-04T21:55:17+00:00\",\n  \"comparison\": [\n    {\n      \"time\": \"2026-10-29 12:06\",\n      \"stofs_m\": -1.5701,\n      \"obs_m\": -1.454,\n      \"error_m\": -0.1161\n    },\n    {\n      \"time\": \"2026-10-29 12:12\",\n      \"stofs_m\": -1.5772,\n      \"obs_m\": -1.43,\n      \"error_m\": -0.1472\n    },\n    {\n      \"time\": \"2026-10-29 12:18\",\n      \"stofs_m\": -1.593,\n      \"obs_m\": -1.395,\n      \"error_m\": -0.198\n    },\n    {\n      \"time\": \"2026-10-29 12:24\",\n      \"stofs_m\": -1.6148,\n      \"obs_m\": -1.36,\n      \"error_m\": -0.2548\n    },\n    {\n      \"time\": \"2026-10-29 12:30\",\n      \"stofs_m\": -1.6184,\n      \"obs_m\": -1.313,\n      \"error_m\": -0.3054\n    },\n    {\n      \"time\": \"2026-10-29 12:36\",\n      \"stofs_m\": -1.5962,\n      \"obs_m\": -1.264,\n      \"error_m\": -0.3322\n    },\n    {\n      \"time\": \"2026-10-29 12:42\",\n      \"stofs_m\": -1.559,\n      \"obs_m\": -1.205,\n      \"error_m\": -0.354\n    },\n    {\n      \"time\": \"2026-10-29 12:48\",\n      \"stofs_m\": -1.5123,\n      \"obs_m\": -1.138,\n      \"error_m\": -0.3743\n    },\n    {\n      \"time\": \"2026-10-29 12:54\",\n      \"stofs_m\": -1.4621,\n      \"obs_m\": -1.082,\n      \"error_m\": -0.3801\n    },\n    {\n      \"time\": \"2026-10-29 13:00\",\n      \"stofs_m\": -1.4121,\n      \"obs_m\": -1.031,\n      \"error_m\": -0.3811\n    },\n    {\n      \"time\": \"2026-10-29 13:06\",\n      \"stofs_m\": -1.3576,\n      \"obs_m\": -0.967,\n      \"error_m\": -0.3906\n    },\n    {\n      \"time\": \"2026-10-29 13:12\",\n      \"stofs_m\": -1.295,\n      \"obs_m\": -0.913,\n      \"error_m\": -0.382\n    },\n    {\n      \"time\": \"2026-10-29 13:18\",\n      \"stofs_m\": -1.2122,\n      \"obs_m\": -0.86,\n      \"error_m\": -0.3522\n    },\n    {\n      \"time\": \"2026-10-29 13:24\",\n      \"stofs_m\": -1.1114,\n      \"obs_m\": -0.818,\n      \"error_m\": -0.2934\n    },\n    {\n      \"time\": \"2026-10-29 13:30\",\n      \"stofs_m\": -1.0282,\n      \"obs_m\": -0.755,\n      \"error_m\": -0.2732\n    },\n    {\n      \"time\": \"2026-10-29 13:36\",\n      \"stofs_m\": -0.9796,\n      \"obs_m\": -0.69,\n      \"error_m\": -0.2896\n    },\n    {\n      \"time\": \"2026-10-29 13:42\",\n      \"stofs_m\": -0.9394,\n      \"obs_m\": -0.62,\n      \"error_m\": -0.3194\n    },\n    {\n      \"time\": \"2026-10-29 13:48\",\n      \"stofs_m\": -0.8881,\n      \"obs_m\": -0.542,\n      \"error_m\": -0.3461\n    },\n    {\n      \"time\": \"2026-10-29 13:54\",\n      \"stofs_m\": -0.8189,\n      \"obs_m\": -0.465,\n      \"error_m\": -0.3539\n    },\n    {\n      \"time\": \"2026-10-29 14:00\",\n      \"stofs_m\": -0.7563,\n      \"obs_m\": -0.397,\n      \"error_m\": -0.3593\n    },\n    {\n      \"time\": \"2026-10-29 14:06\",\n      \"stofs_m\": -0.7094,\n      \"obs_m\": -0.326,\n      \"error_m\": -0.3834\n    },\n    {\n      \"time\": \"2026-10-29 14:12\",\n      \"stofs_m\": -0.6506,\n      \"obs_m\": -0.253,\n      \"error_m\": -0.3976\n    },\n    {\n      \"time\": \"2026-10-29 14:18\",\n      \"stofs_m\": -0.5734,\n      \"obs_m\": -0.201,\n      \"error_m\": -0.3724\n    },\n    {\n      \"time\": \"2026-10-29 14:24\",\n      \"stofs_m\": -0.4809,\n      \"obs_m\": -0.122,\n      \"error_m\": -0.3589\n    },\n    {\n      \"time\": \"2026-10-29 14:30\",\n      \"stofs_m\": -0.3669,\n      \"obs_m\": -0.048,\n      \"error_m\": -0.3189\n    },\n    {\n      \"time\": \"2026-10-29 14:36\",\n      \"stofs_m\": -0.2508,\n      \"obs_m\": 0.045,\n      \"error_m\": -0.2958\n    },\n    {\n      \"time\": \"2026-10-29 14:42\",\n      \"stofs_m\": -0.1626,\n      \"obs_m\": 0.133,\n      \"error_m\": -0.2956\n    },\n    {\n      \"time\": \"2026-10-29 14:48\",\n      \"stofs_m\": -0.0888,\n      \"obs_m\": 0.221,\n      \"error_m\": -0.3098\n    },\n    {\n      \"time\": \"2026-10-29 14:54\",\n      \"stofs_m\": 0.0021,\n      \"obs_m\": 0.307,\n      \"error_m\": -0.3049\n    },\n    {\n      \"time\": \"2026-10-29 15:00\",\n      \"stofs_m\": 0.0928,\n      \"obs_m\": 0.38,\n      \"error_m\": -0.2872\n    },\n    {\n      \"time\": \"2026-10-29 15:06\",\n      \"stofs_m\": 0.1571,\n      \"obs_m\": 0.45,\n      \"error_m\": -0.2929\n    },\n    {\n      \"time\": \"2026-10-29 15:12\",\n      \"stofs_m\": 0.219,\n      \"obs_m\": 0.54,\n      \"error_m\": -0.321\n    },\n    {\n      \"time\": \"2026-10-29 15:18\",\n      \"stofs_m\": 0.3014,\n      \"obs_m\": 0.624,\n      \"error_m\": -0.3226\n    },\n    {\n      \"time\": \"2026-10-29 15:24\",\n      \"stofs_m\": 0.3864,\n      \"obs_m\": 0.715,\n      \"error_m\": -0.3286\n    },\n    {\n      \"time\": \"2026-10-29 15:30\",\n      \"stofs_m\": 0.4536,\n      \"obs_m\": 0.794,\n      \"error_m\": -0.3404\n    },\n    {\n      \"time\": \"2026-10-29 15:36\",\n      \"stofs_m\": 0.5259,\n      \"obs_m\": 0.875,\n      \"error_m\": -0.3491\n    },\n    {\n      \"time\": \"2026-10-29 15:42\",\n      \"stofs_m\": 0.597,\n      \"obs_m\": 0.953,\n      \"error_m\": -0.356\n    },\n    {\n      \"time\": \"2026-10-29 15:48\",\n      \"stofs_m\": 0.6829,\n      \"obs_m\": 1.024,\n      \"error_m\": -0.3411\n    },\n    {\n      \"time\": \"2026-10-29 15:54\",\n      \"stofs_m\": 0.79,\n      \"obs_m\": 1.095,\n      \"error_m\": -0.305\n    },\n    {\n      \"time\": \"2026-10-29 16:00\",\n      \"stofs_m\": 0.894,\n      \"obs_m\": 1.164,\n      \"error_m\": -0.27\n    },\n    {\n      \"time\": \"2026-10-29 16:06\",\n      \"stofs_m\": 0.9967,\n      \"obs_m\": 1.243,\n      \"error_m\": -0.2463\n    },\n    {\n      \"time\": \"2026-10-29 16:12\",\n      \"stofs_m\": 1.1351,\n      \"obs_m\": 1.321,\n      \"error_m\": -0.1859\n    },\n    {\n      \"time\": \"2026-10-29 16:18\",\n      \"stofs_m\": 1.2387,\n      \"obs_m\": 1.394,\n      \"error_m\": -0.1553\n    },\n    {\n      \"time\": \"2026-10-29 16:24\",\n      \"stofs_m\": 1.2616,\n      \"obs_m\": 1.456,\n      \"error_m\": -0.1944\n    },\n    {\n      \"time\": \"2026-10-29 16:30\",\n      \"stofs_m\": 1.2503,\n      \"obs_m\": 1.518,\n      \"error_m\": -0.2677\n    },\n    {\n      \"time\": \"2026-10-29 16:36\",\n      \"stofs_m\": 1.2706,\n      \"obs_m\": 1.577,\n      \"error_m\": -0.3064\n    },\n    {\n      \"time\": \"2026-10-29 16:42\",\n      \"stofs_m\": 1.355,\n      \"obs_m\": 1.634,\n      \"error_m\": -0.279\n    },\n    {\n      \"time\": \"2026-10-29 16:48\",\n      \"stofs_m\": 1.4596,\n      \"obs_m\": 1.691,\n      \"error_m\": -0.2314\n    },\n    {\n      \"time\": \"2026-10-29 16:54\",\n      \"stofs_m\": 1.5368,\n      \"obs_m\": 1.737,\n      \"error_m\": -0.2002\n    },\n    {\n      \"time\": \"2026-10-29 17:00\",\n      \"stofs_m\": 1.5909,\n      \"obs_m\": 1.778,\n      \"error_m\": -0.1871\n    },\n    {\n      \"time\": \"2026-10-29 17:06\",\n      \"stofs_m\": 1.6478,\n      \"obs_m\": 1.815,\n      \"error_m\": -0.1672\n    },\n    {\n      \"time\": \"2026-10-29 17:12\",\n      \"stofs_m\": 1.7235,\n      \"obs_m\": 1.852,\n      \"error_m\": -0.1285\n    },\n    {\n      \"time\": \"2026-10-29 17:18\",\n      \"stofs_m\": 1.7968,\n      \"obs_m\": 1.882,\n      \"error_m\": -0.0852\n    },\n    {\n      \"time\": \"2026-10-29 17:24\",\n      \"stofs_m\": 1.8525,\n      \"obs_m\": 1.909,\n      \"error_m\": -0.0565\n    },\n    {\n      \"time\": \"2026-10-29 17:30\",\n      \"stofs_m\": 1.8926,\n      \"obs_m\": 1.936,\n      \"error_m\": -0.0434\n    },\n    {\n      \"time\": \"2026-10-29 17:36\",\n      \"stofs_m\": 1.9211,\n      \"obs_m\": 1.959,\n      \"error_m\": -0.0379\n    },\n    {\n      \"time\": \"2026-10-29 17:42\",\n      \"stofs_m\": 1.9426,\n      \"obs_m\": 1.979,\n      \"error_m\": -0.0364\n    },\n    {\n      \"time\": \"2026-10-29 17:48\",\n      \"stofs_m\": 1.9663,\n      \"obs_m\": 1.99,\n      \"error_m\": -0.0237\n    },\n    {\n      \"time\": \"2026-10-29 17:54\",\n      \"stofs_m\": 1.9979,\n      \"obs_m\": 1.993,\n      \"error_m\": 0.0049\n    },\n    {\n      \"time\": \"2026-10-29 18:00\",\n      \"stofs_m\": 2.0334,\n      \"obs_m\": 1.996,\n      \"error_m\": 0.0374\n    },\n    {\n      \"time\": \"2026-10-29 18:06\",\n      \"stofs_m\": 2.0571,\n      \"obs_m\": 1.987,\n      \"error_m\": 0.0701\n    },\n    {\n      \"time\": \"2026-10-29 18:12\",\n      \"stofs_m\": 2.0675,\n      \"obs_m\": 1.971,\n      \"error_m\": 0.0965\n    },\n    {\n      \"time\": \"2026-10-29 18:18\",\n      \"stofs_m\": 2.0665,\n      \"obs_m\": 1.953,\n      \"error_m\": 0.1135\n    },\n    {\n      \"time\": \"2026-10-29 18:24\",\n      \"stofs_m\": 2.0543,\n      \"obs_m\": 1.932,\n      \"error_m\": 0.1223\n    },\n    {\n      \"time\": \"2026-10-29 18:30\",\n      \"stofs_m\": 2.0427,\n      \"obs_m\": 1.912,\n      \"error_m\": 0.1307\n    },\n    {\n      \"time\": \"2026-10-29 18:36\",\n      \"stofs_m\": 2.0383,\n      \"obs_m\": 1.883,\n      \"error_m\": 0.1553\n    },\n    {\n      \"time\": \"2026-10-29 18:42\",\n      \"stofs_m\": 2.0341,\n      \"obs_m\": 1.857,\n      \"error_m\": 0.1771\n    },\n    {\n      \"time\": \"2026-10-29 18:48\",\n      \"stofs_m\": 2.0302,\n      \"obs_m\": 1.823,\n      \"error_m\": 0.2072\n    },\n    {\n      \"time\": \"2026-10-29 18:54\",\n      \"stofs_m\": 2.0112,\n      \"obs_m\": 1.785,\n      \"error_m\": 0.2262\n    },\n    {\n      \"time\": \"2026-10-29 19:00\",\n      \"stofs_m\": 1.9714,\n      \"obs_m\": 1.739,\n      \"error_m\": 0.2324\n    },\n    {\n      \"time\": \"2026-10-29 19:06\",\n      \"stofs_m\": 1.9299,\n      \"obs_m\": 1.691,\n      \"error_m\": 0.2389\n    },\n    {\n      \"time\": \"2026-10-29 19:12\",\n      \"stofs_m\": 1.8949,\n      \"obs_m\": 1.642,\n      \"error_m\": 0.2529\n    },\n    {\n      \"time\": \"2026-10-29 19:18\",\n      \"stofs_m\": 1.8655,\n      \"obs_m\": 1.596,\n      \"error_m\": 0.2695\n    },\n    {\n      \"time\": \"2026-10-29 19:24\",\n      \"stofs_m\": 1.8361,\n      \"obs_m\": 1.551,\n      \"error_m\": 0.2851\n    },\n    {\n      \"time\": \"2026-10-29 19:30\",\n      \"stofs_m\": 1.7937,\n      \"obs_m\": 1.497,\n      \"error_m\": 0.2967\n    },\n    {\n      \"time\": \"2026-10-29 19:36\",\n      \"stofs_m\": 1.7367,\n      \"obs_m\": 1.44,\n      \"error_m\": 0.2967\n    },\n    {\n      \"time\": \"2026-10-29 19:42\",\n      \"stofs_m\": 1.6793,\n      \"obs_m\": 1.374,\n      \"error_m\": 0.3053\n    },\n    {\n      \"time\": \"2026-10-29 19:48\",\n      \"stofs_m\": 1.6238,\n      \"obs_m\": 1.312,\n      \"error_m\": 0.3118\n    },\n    {\n      \"time\": \"2026-10-29 19:54\",\n      \"stofs_m\": 1.5683,\n      \"obs_m\": 1.253,\n      \"error_m\": 0.3153\n    },\n    {\n      \"time\": \"2026-10-29 20:00\",\n      \"stofs_m\": 1.5114,\n      \"obs_m\": 1.184,\n      \"error_m\": 0.3274\n    },\n    {\n      \"time\": \"2026-10-29 20:06\",\n      \"stofs_m\": 1.4567,\n      \"obs_m\": 1.114,\n      \"error_m\": 0.3427\n    },\n    {\n      \"time\": \"2026-10-29 20:12\",\n      \"stofs_m\": 1.391,\n      \"obs_m\": 1.048,\n      \"error_m\": 0.343\n    },\n    {\n      \"time\": \"2026-10-29 20:18\",\n      \"stofs_m\": 1.3122,\n      \"obs_m\": 0.993,\n      \"error_m\": 0.3192\n    },\n    {\n      \"time\": \"2026-10-29 20:24\",\n      \"stofs_m\": 1.2357,\n      \"obs_m\": 0.932,\n      \"error_m\": 0.3037\n    },\n    {\n      \"time\": \"2026-10-29 20:30\",\n      \"stofs_m\": 1.162,\n      \"obs_m\": 0.861,\n      \"error_m\": 0.301\n    },\n    {\n      \"time\": \"2026-10-29 20:36\",\n      \"stofs_m\": 1.0825,\n      \"obs_m\": 0.784,\n      \"error_m\": 0.2985\n    },\n    {\n      \"time\": \"2026-10-29 20:42\",\n      \"stofs_m\": 0.9962,\n      \"obs_m\": 0.706,\n      \"error_m\": 0.2902\n    },\n    {\n      \"time\": \"2026-10-29 20:48\",\n      \"stofs_m\": 0.9032,\n      \"obs_m\": 0.619,\n      \"error_m\": 0.2842\n    },\n    {\n      \"time\": \"2026-10-29 20:54\",\n      \"stofs_m\": 0.7906,\n      \"obs_m\": 0.527,\n      \"error_m\": 0.2636\n    },\n    {\n      \"time\": \"2026-10-29 21:00\",\n      \"stofs_m\": 0.6756,\n      \"obs_m\": 0.455,\n      \"error_m\": 0.2206\n    },\n    {\n      \"time\": \"2026-10-29 21:06\",\n      \"stofs_m\": 0.5923,\n      \"obs_m\": 0.381,\n      \"error_m\": 0.2113\n    },\n    {\n      \"time\": \"2026-10-29 21:12\",\n      \"stofs_m\": 0.5129,\n      \"obs_m\": 0.296,\n      \"error_m\": 0.2169\n    },\n    {\n      \"time\": \"2026-10-29 21:18\",\n      \"stofs_m\": 0.4408,\n      \"obs_m\": 0.208,\n      \"error_m\": 0.2328\n    },\n    {\n      \"time\": \"2026-10-29 21:24\",\n      \"stofs_m\": 0.3758,\n      \"obs_m\": 0.113,\n      \"error_m\": 0.2628\n    },\n    {\n      \"time\": \"2026-10-29 21:30\",\n      \"stofs_m\": 0.2909,\n      \"obs_m\": 0.013,\n      \"error_m\": 0.2779\n    },\n    {\n      \"time\": \"2026-10-29 21:36\",\n      \"stofs_m\": 0.1751,\n      \"obs_m\": -0.09,\n      \"error_m\": 0.2651\n    },\n    {\n      \"time\": \"2026-10-29 21:42\",\n      \"stofs_m\": 0.0737,\n      \"obs_m\": -0.176,\n      \"error_m\": 0.2497\n    },\n    {\n      \"time\": \"2026-10-29 21:48\",\n      \"stofs_m\": -0.0262,\n      \"obs_m\": -0.248,\n      \"error_m\": 0.2218\n    },\n    {\n      \"time\": \"2026-10-29 21:54\",\n      \"stofs_m\": -0.1174,\n      \"obs_m\": -0.328,\n      \"error_m\": 0.2106\n    },\n    {\n      \"time\": \"2026-10-29 22:00\",\n      \"stofs_m\": -0.196,\n      \"obs_m\": -0.393,\n      \"error_m\": 0.197\n    },\n    {\n      \"time\": \"2026-10-29 22:06\",\n      \"stofs_m\": -0.2848,\n      \"obs_m\": -0.477,\n      \"error_m\": 0.1922\n    },\n    {\n      \"time\": \"2026-10-29 22:12\",\n      \"stofs_m\": -0.3758,\n      \"obs_m\": -0.546,\n      \"error_m\": 0.1702\n    },\n    {\n      \"time\": \"2026-10-29 22:18\",\n      \"stofs_m\": -0.4551,\n      \"obs_m\": -0.642,\n      \"error_m\": 0.1869\n    },\n    {\n      \"time\": \"2026-10-29 22:24\",\n      \"stofs_m\": -0.5376,\n      \"obs_m\": -0.706,\n      \"error_m\": 0.1684\n    },\n    {\n      \"time\": \"2026-10-29 22:30\",\n      \"stofs_m\": -0.6434,\n      \"obs_m\": -0.789,\n      \"error_m\": 0.1456\n    },\n    {\n      \"time\": \"2026-10-29 22:36\",\n      \"stofs_m\": -0.7447,\n      \"obs_m\": -0.851,\n      \"error_m\": 0.1063\n    },\n    {\n      \"time\": \"2026-10-29 22:42\",\n      \"stofs_m\": -0.8407,\n      \"obs_m\": -0.92,\n      \"error_m\": 0.0793\n    },\n    {\n      \"time\": \"2026-10-29 22:48\",\n      \"stofs_m\": -0.9498,\n      \"obs_m\": -1.007,\n      \"error_m\": 0.0572\n    },\n    {\n      \"time\": \"2026-10-29 22:54\",\n      \"stofs_m\": -1.0413,\n      \"obs_m\": -1.079,\n      \"error_m\": 0.0377\n    },\n    {\n      \"time\": \"2026-10-29 23:00\",\n      \"stofs_m\": -1.0834,\n      \"obs_m\": -1.154,\n      \"error_m\": 0.0706\n    },\n    {\n      \"time\": \"2026-10-29 23:06\",\n      \"stofs_m\": -1.1383,\n      \"obs_m\": -1.231,\n      \"error_m\": 0.0927\n    },\n    {\n      \"time\": \"2026-10-29 23:12\",\n      \"stofs_m\": -1.2358,\n      \"obs_m\": -1.299,\n      \"error_m\": 0.0632\n    },\n    {\n      \"time\": \"2026-10-29 23:18\",\n      \"stofs_m\": -1.3436,\n      \"obs_m\": -1.363,\n      \"error_m\": 0.0194\n    },\n    {\n      \"time\": \"2026-10-29 23:24\",\n      \"stofs_m\": -1.4292,\n      \"obs_m\": -1.411,\n      \"error_m\": -0.0182\n    },\n    {\n      \"time\": \"2026-10-29 23:30\",\n      \"stofs_m\": -1.4838,\n      \"obs_m\": -1.451,\n      \"error_m\": -0.0328\n    },\n    {\n      \"time\": \"2026-10-29 23:36\",\n      \"stofs_m\": -1.523,\n      \"obs_m\": -1.495,\n      \"error_m\": -0.028\n    },\n    {\n      \"time\": \"2026-10-29 23:42\",\n      \"stofs_m\": -1.5683,\n      \"obs_m\": -1.543,\n      \"error_m\": -0.0253\n    },\n    {\n      \"time\": \"2026-10-29 23:48\",\n      \"stofs_m\": -1.6229,\n      \"obs_m\": -1.576,\n      \"error_m\": -0.0469\n    },\n    {\n      \"time\": \"2026-10-29 23:54\",\n      \"stofs_m\": -1.6829,\n      \"obs_m\": -1.609,\n      \"error_m\": -0.0739\n    },\n    {\n      \"time\": \"2026-10-30 00:00\",\n      \"stofs_m\": -1.7359,\n      \"obs_m\": -1.641,\n      \"error_m\": -0.0949\n    },\n    {\n      \"time\": \"2026-10-30 00:06\",\n      \"stofs_m\": -1.7633,\n      \"obs_m\": -1.664,\n      \"error_m\": -0.0993\n    },\n    {\n      \"time\": \"2026-10-30 00:12\",\n      \"stofs_m\": -1.7829,\n      \"obs_m\": -1.682,\n      \"error_m\": -0.1009\n    },\n    {\n      \"time\": \"2026-10-30 00:18\",\n      \"stofs_m\": -1.8039,\n      \"obs_m\": -1.691,\n      \"error_m\": -0.1129\n    },\n    {\n      \"time\": \"2026-10-30 00:24\",\n      \"stofs_m\": -1.8257,\n      \"obs_m\": -1.693,\n      \"error_m\": -0.1327\n    },\n    {\n      \"time\": \"2026-10-30 00:30\",\n      \"stofs_m\": -1.8471,\n      \"obs_m\": -1.69,\n      \"error_m\": -0.1571\n    },\n    {\n      \"time\": \"2026-10-30 00:36\",\n      \"stofs_m\": -1.8645,\n      \"obs_m\": -1.68,\n      \"error_m\": -0.1845\n    },\n    {\n      \"time\": \"2026-10-30 00:42\",\n      \"stofs_m\": -1.8757,\n      \"obs_m\": -1.67,\n      \"error_m\": -0.2057\n    },\n    {\n      \"time\": \"2026-10-30 00:48\",\n      \"stofs_m\": -1.8794,\n      \"obs_m\": -1.655,\n      \"error_m\": -0.2244\n    },\n    {\n      \"time\": \"2026-10-30 00:54\",\n      \"stofs_m\": -1.876,\n      \"obs_m\": -1.635,\n      \"error_m\": -0.241\n    },\n    {\n      \"time\": \"2026-10-30 01:00\",\n      \"stofs_m\": -1.866,\n      \"obs_m\": -1.61,\n      \"error_m\": -0.256\n    },\n    {\n      \"time\": \"2026-10-30 01:06\",\n      \"stofs_m\": -1.8489,\n      \"obs_m\": -1.58,\n      \"error_m\": -0.2689\n    },\n    {\n      \"time\": \"2026-10-30 01:12\",\n      \"stofs_m\": -1.8258,\n      \"obs_m\": -1.546,\n      \"error_m\": -0.2798\n    },\n    {\n      \"time\": \"2026-10-30 01:18\",\n      \"stofs_m\": -1.7967,\n      \"obs_m\": -1.511,\n      \"error_m\": -0.2857\n    },\n    {\n      \"time\": \"2026-10-30 01:24\",\n      \"stofs_m\": -1.7619,\n      \"obs_m\": -1.47,\n      \"error_m\": -0.2919\n    },\n    {\n      \"time\": \"2026-10-30 01:30\",\n      \"stofs_m\": -1.7216,\n      \"obs_m\": -1.435,\n      \"error_m\": -0.2866\n    },\n    {\n      \"time\": \"2026-10-30 01:36\",\n      \"stofs_m\": -1.6752,\n      \"obs_m\": -1.386,\n      \"error_m\": -0.2892\n    },\n    {\n      \"time\": \"2026-10-30 01:42\",\n      \"stofs_m\": -1.6249,\n      \"obs_m\": -1.337,\n      \"error_m\": -0.2879\n    },\n    {\n      \"time\": \"2026-10-30 01:48\",\n      \"stofs_m\": -1.5744,\n      \"obs_m\": -1.287,\n      \"error_m\": -0.2874\n    },\n    {\n      \"time\": \"2026-10-30 01:54\",\n      \"stofs_m\": -1.5197,\n      \"obs_m\": -1.238,\n      \"error_m\": -0.2817\n    },\n    {\n      \"time\": \"2026-10-30 02:00\",\n      \"stofs_m\": -1.4464,\n      \"obs_m\": -1.174,\n      \"error_m\": -0.2724\n    },\n    {\n      \"time\": \"2026-10-30 02:06\",\n      \"stofs_m\": -1.3545,\n      \"obs_m\": -1.116,\n      \"error_m\": -0.2385\n    },\n    {\n      \"time\": \"2026-10-30 02:12\",\n      \"stofs_m\": -1.2677,\n      \"obs_m\": -1.061,\n      \"error_m\": -0.2067\n    },\n    {\n      \"time\": \"2026-10-30 02:18\",\n      \"stofs_m\": -1.2013,\n      \"obs_m\": -1.011,\n      \"error_m\": -0.1903\n    },\n    {\n      \"time\": \"2026-10-30 02:24\",\n      \"stofs_m\": -1.1593,\n      \"obs_m\": -0.961,\n      \"error_m\": -0.1983\n    },\n    {\n      \"time\": \"2026-10-30 02:30\",\n      \"stofs_m\": -1.1219,\n      \"obs_m\": -0.904,\n      \"error_m\": -0.2179\n    },\n    {\n      \"time\": \"2026-10-30 02:36\",\n      \"stofs_m\": -1.0669,\n      \"obs_m\": -0.843,\n      \"error_m\": -0.2239\n    },\n    {\n      \"time\": \"2026-10-30 02:42\",\n      \"stofs_m\": -0.9936,\n      \"obs_m\": -0.795,\n      \"error_m\": -0.1986\n    },\n    {\n      \"time\": \"2026-10-30 02:48\",\n      \"stofs_m\": -0.8871,\n      \"obs_m\": -0.73,\n      \"error_m\": -0.1571\n    },\n    {\n      \"time\": \"2026-10-30 02:54\",\n      \"stofs_m\": -0.773,\n      \"obs_m\": -0.661,\n      \"error_m\": -0.112\n    },\n    {\n      \"time\": \"2026-10-30 03:00\",\n      \"stofs_m\": -0.7137,\n      \"obs_m\": -0.579,\n      \"error_m\": -0.1347\n    },\n    {\n      \"time\": \"2026-10-30 03:06\",\n      \"stofs_m\": -0.7045,\n      \"obs_m\": -0.493,\n      \"error_m\": -0.2115\n    },\n    {\n      \"time\": \"2026-10-30 03:12\",\n      \"stofs_m\": -0.6666,\n      \"obs_m\": -0.415,\n      \"error_m\": -0.2516\n    },\n    {\n      \"time\": \"2026-10-30 03:18\",\n      \"stofs_m\": -0.5704,\n      \"obs_m\": -0.332,\n      \"error_m\": -0.2384\n    },\n    {\n      \"time\": \"2026-10-30 03:24\",\n      \"stofs_m\": -0.4559,\n      \"obs_m\": -0.249,\n      \"error_m\": -0.2069\n    },\n    {\n      \"time\": \"2026-10-30 03:30\",\n      \"stofs_m\": -0.3801,\n      \"obs_m\": -0.181,\n      \"error_m\": -0.1991\n    },\n    {\n      \"time\": \"2026-10-30 03:36\",\n      \"stofs_m\": -0.3329,\n      \"obs_m\": -0.101,\n      \"error_m\": -0.2319\n    },\n    {\n      \"time\": \"2026-10-30 03:42\",\n      \"stofs_m\": -0.2652,\n      \"obs_m\": -0.014,\n      \"error_m\": -0.2512\n    },\n    {\n      \"time\": \"2026-10-30 03:48\",\n      \"stofs_m\": -0.1803,\n      \"obs_m\": 0.083,\n      \"error_m\": -0.2633\n    },\n    {\n      \"time\": \"2026-10-30 03:54\",\n      \"stofs_m\": -0.0981,\n      \"obs_m\": 0.164,\n      \"error_m\": -0.2621\n    },\n    {\n      \"time\": \"2026-10-30 04:00\",\n      \"stofs_m\": -0.0122,\n      \"obs_m\": 0.245,\n      \"error_m\": -0.2572\n    },\n    {\n      \"time\": \"2026-10-30 04:06\",\n      \"stofs_m\": 0.0973,\n      \"obs_m\": 0.316,\n      \"error_m\": -0.2187\n    },\n    {\n      \"time\": \"2026-10-30 04:12\",\n      \"stofs_m\": 0.2229,\n      \"obs_m\": 0.369,\n      \"error_m\": -0.1461\n    },\n    {\n      \"time\": \"2026-10-30 04:18\",\n      \"stofs_m\": 0.3138,\n      \"obs_m\": 0.445,\n      \"error_m\": -0.1312\n    },\n    {\n      \"time\": \"2026-10-30 04:24\",\n      \"stofs_m\": 0.3449,\n      \"obs_m\": 0.509,\n      \"error_m\": -0.1641\n    },\n    {\n      \"time\": \"2026-10-30 04:30\",\n      \"stofs_m\": 0.3583,\n      \"obs_m\": 0.589,\n      \"error_m\": -0.2307\n    },\n    {\n      \"time\": \"2026-10-30 04:36\",\n      \"stofs_m\": 0.4316,\n      \"obs_m\": 0.664,\n      \"error_m\": -0.2324\n    },\n    {\n      \"time\": \"2026-10-30 04:42\",\n      \"stofs_m\": 0.554,\n      \"obs_m\": 0.747,\n      \"error_m\": -0.193\n    },\n    {\n      \"time\": \"2026-10-30 04:48\",\n      \"stofs_m\": 0.6689,\n      \"obs_m\": 0.824,\n      \"error_m\": -0.1551\n    },\n    {\n      \"time\": \"2026-10-30 04:54\",\n      \"stofs_m\": 0.7521,\n      \"obs_m\": 0.896,\n      \"error_m\": -0.1439\n    },\n    {\n      \"time\": \"2026-10-30 05:00\",\n      \"stofs_m\": 0.8181,\n      \"obs_m\": 0.967,\n      \"error_m\": -0.1489\n    },\n    {\n      \"time\": \"2026-10-30 05:06\",\n      \"stofs_m\": 0.8623,\n      \"obs_m\": 1.01,\n      \"error_m\": -0.1477\n    },\n    {\n      \"time\": \"2026-10-30 05:12\",\n      \"stofs_m\": 0.9328,\n      \"obs_m\": 1.064,\n      \"error_m\": -0.1312\n    },\n    {\n      \"time\": \"2026-10-30 05:18\",\n      \"stofs_m\": 1.0302,\n      \"obs_m\": 1.109,\n      \"error_m\": -0.0788\n    },\n    {\n      \"time\": \"2026-10-30 05:24\",\n      \"stofs_m\": 1.1112,\n      \"obs_m\": 1.156,\n      \"error_m\": -0.0448\n    },\n    {\n      \"time\": \"2026-10-30 05:30\",\n      \"stofs_m\": 1.1639,\n      \"obs_m\": 1.197,\n      \"error_m\": -0.0331\n    },\n    {\n      \"time\": \"2026-10-30 05:36\",\n      \"stofs_m\": 1.2098,\n      \"obs_m\": 1.249,\n      \"error_m\": -0.0392\n    },\n    {\n      \"time\": \"2026-10-30 05:42\",\n      \"stofs_m\": 1.2621,\n      \"obs_m\": 1.287,\n      \"error_m\": -0.0249\n    },\n    {\n      \"time\": \"2026-10-30 05:48\",\n      \"stofs_m\": 1.3186,\n      \"obs_m\": 1.332,\n      \"error_m\": -0.0134\n    },\n    {\n      \"time\": \"2026-10-30 05:54\",\n      \"stofs_m\": 1.3741,\n      \"obs_m\": 1.377,\n      \"error_m\": -0.0029\n    },\n    {\n      \"time\": \"2026-10-30 06:00\",\n      \"stofs_m\": 1.4251,\n      \"obs_m\": 1.419,\n      \"error_m\": 0.0061\n    },\n    {\n      \"time\": \"2026-10-30 06:06\",\n      \"stofs_m\": 1.469,\n      \"obs_m\": 1.448,\n      \"error_m\": 0.021\n    },\n    {\n      \"time\": \"2026-10-30 06:12\",\n      \"stofs_m\": 1.5124,\n      \"obs_m\": 1.47,\n      \"error_m\": 0.0424\n    },\n    {\n      \"time\": \"2026-10-30 06:18\",\n      \"stofs_m\": 1.5554,\n      \"obs_m\": 1.488,\n      \"error_m\": 0.0674\n    },\n    {\n      \"time\": \"2026-10-30 06:24\",\n      \"stofs_m\": 1.5874,\n      \"obs_m\": 1.495,\n      \"error_m\": 0.0924\n    },\n    {\n      \"time\": \"2026-10-30 06:30\",\n      \"stofs_m\": 1.6091,\n      \"obs_m\": 1.502,\n      \"error_m\": 0.1071\n    },\n    {\n      \"time\": \"2026-10-30 06:36\",\n      \"stofs_m\": 1.6327,\n      \"obs_m\": 1.495,\n      \"error_m\": 0.1377\n    },\n    {\n      \"time\": \"2026-10-30 06:42\",\n      \"stofs_m\": 1.658,\n      \"obs_m\": 1.492,\n      \"error_m\": 0.166\n    },\n    {\n      \"time\": \"2026-10-30 06:48\",\n      \"stofs_m\": 1.6775,\n      \"obs_m\": 1.489,\n      \"error_m\": 0.1885\n    },\n    {\n      \"time\": \"2026-10-30 06:54\",\n      \"stofs_m\": 1.6879,\n      \"obs_m\": 1.479,\n      \"error_m\": 0.2089\n    },\n    {\n      \"time\": \"2026-10-30 07:00\",\n      \"stofs_m\": 1.6913,\n      \"obs_m\": 1.472,\n      \"error_m\": 0.2193\n    },\n    {\n      \"time\": \"2026-10-30 07:06\",\n      \"stofs_m\": 1.6888,\n      \"obs_m\": 1.467,\n      \"error_m\": 0.2218\n    },\n    {\n      \"time\": \"2026-10-30 07:12\",\n      \"stofs_m\": 1.6843,\n      \"obs_m\": 1.451,\n      \"error_m\": 0.2333\n    },\n    {\n      \"time\": \"2026-10-30 07:18\",\n      \"stofs_m\": 1.6784,\n      \"obs_m\": 1.43,\n      \"error_m\": 0.2484\n    },\n    {\n      \"time\": \"2026-10-30 07:24\",\n      \"stofs_m\": 1.6644,\n      \"obs_m\": 1.404,\n      \"error_m\": 0.2604\n    },\n    {\n      \"time\": \"2026-10-30 07:30\",\n      \"stofs_m\": 1.6383,\n      \"obs_m\": 1.375,\n      \"error_m\": 0.2633\n    },\n    {\n      \"time\": \"2026-10-30 07:36\",\n      \"stofs_m\": 1.6057,\n      \"obs_m\": 1.337,\n      \"error_m\": 0.2687\n    },\n    {\n      \"time\": \"2026-10-30 07:42\",\n      \"stofs_m\": 1.5737,\n      \"obs_m\": 1.296,\n      \"error_m\": 0.2777\n    },\n    {\n      \"time\": \"2026-10-30 07:48\",\n      \"stofs_m\": 1.5433,\n      \"obs_m\": 1.25,\n      \"error_m\": 0.2933\n    },\n    {\n      \"time\": \"2026-10-30 07:54\",\n      \"stofs_m\": 1.5123,\n      \"obs_m\": 1.199,\n      \"error_m\": 0.3133\n    },\n    {\n      \"time\": \"2026-10-30 08:00\",\n      \"stofs_m\": 1.4774,\n      \"obs_m\": 1.162,\n      \"error_m\": 0.3154\n    },\n    {\n      \"time\": \"2026-10-30 08:06\",\n      \"stofs_m\": 1.4445,\n      \"obs_m\": 1.124,\n      \"error_m\": 0.3205\n    },\n    {\n      \"time\": \"2026-10-30 08:12\",\n      \"stofs_m\": 1.4117,\n      \"obs_m\": 1.081,\n      \"error_m\": 0.3307\n    },\n    {\n      \"time\": \"2026-10-30 08:18\",\n      \"stofs_m\": 1.3648,\n      \"obs_m\": 1.039,\n      \"error_m\": 0.3258\n    },\n    {\n      \"time\": \"2026-10-30 08:24\",\n      \"stofs_m\": 1.3053,\n      \"obs_m\": 1.003,\n      \"error_m\": 0.3023\n    },\n    {\n      \"time\": \"2026-10-30 08:30\",\n      \"stofs_m\": 1.2427,\n      \"obs_m\": 0.965,\n      \"error_m\": 0.2777\n    },\n    {\n      \"time\": \"2026-10-30 08:36\",\n      \"stofs_m\": 1.1788,\n      \"obs_m\": 0.915,\n      \"error_m\": 0.2638\n    },\n    {\n      \"time\": \"2026-10-30 08:42\",\n      \"stofs_m\": 1.1159,\n      \"obs_m\": 0.852,\n      \"error_m\": 0.2639\n    },\n    {\n      \"time\": \"2026-10-30 08:48\",\n      \"stofs_m\": 1.0569,\n      \"obs_m\": 0.802,\n      \"error_m\": 0.2549\n    },\n    {\n      \"time\": \"2026-10-30 08:54\",\n      \"stofs_m\": 0.9952,\n      \"obs_m\": 0.745,\n      \"error_m\": 0.2502\n    },\n    {\n      \"time\": \"2026-10-30 09:00\",\n      \"stofs_m\": 0.9253,\n      \"obs_m\": 0.692,\n      \"error_m\": 0.2333\n    },\n    {\n      \"time\": \"2026-10-30 09:06\",\n      \"stofs_m\": 0.8516,\n      \"obs_m\": 0.629,\n      \"error_m\": 0.2226\n    },\n    {\n      \"time\": \"2026-10-30 09:12\",\n      \"stofs_m\": 0.7746,\n      \"obs_m\": 0.566,\n      \"error_m\": 0.2086\n    },\n    {\n      \"time\": \"2026-10-30 09:18\",\n      \"stofs_m\": 0.6967,\n      \"obs_m\": 0.511,\n      \"error_m\": 0.1857\n    },\n    {\n      \"time\": \"2026-10-30 09:24\",\n      \"stofs_m\": 0.6211,\n      \"obs_m\": 0.455,\n      \"error_m\": 0.1661\n    },\n    {\n      \"time\": \"2026-10-30 09:30\",\n      \"stofs_m\": 0.5497,\n      \"obs_m\": 0.399,\n      \"error_m\": 0.1507\n    },\n    {\n      \"time\": \"2026-10-30 09:36\",\n      \"stofs_m\": 0.4734,\n      \"obs_m\": 0.338,\n      \"error_m\": 0.1354\n    },\n    {\n      \"time\": \"2026-10-30 09:42\",\n      \"stofs_m\": 0.397,\n      \"obs_m\": 0.265,\n      \"error_m\": 0.132\n    },\n    {\n      \"time\": \"2026-10-30 09:48\",\n      \"stofs_m\": 0.3239,\n      \"obs_m\": 0.188,\n      \"error_m\": 0.1359\n    },\n    {\n      \"time\": \"2026-10-30 09:54\",\n      \"stofs_m\": 0.2434,\n      \"obs_m\": 0.101,\n      \"error_m\": 0.1424\n    },\n    {\n      \"time\": \"2026-10-30 10:00\",\n      \"stofs_m\": 0.1645,\n      \"obs_m\": 0.018,\n      \"error_m\": 0.1465\n    },\n    {\n      \"time\": \"2026-10-30 10:06\",\n      \"stofs_m\": 0.083,\n      \"obs_m\": -0.07,\n      \"error_m\": 0.153\n    },\n    {\n      \"time\": \"2026-10-30 10:12\",\n      \"stofs_m\": -0.0003,\n      \"obs_m\": -0.137,\n      \"error_m\": 0.1367\n    },\n    {\n      \"time\": \"2026-10-30 10:18\",\n      \"stofs_m\": -0.0824,\n      \"obs_m\": -0.206,\n      \"error_m\": 0.1236\n    },\n    {\n      \"time\": \"2026-10-30 10:24\",\n      \"stofs_m\": -0.1623,\n      \"obs_m\": -0.262,\n      \"error_m\": 0.0997\n    },\n    {\n      \"time\": \"2026-10-30 10:30\",\n      \"stofs_m\": -0.24,\n      \"obs_m\": -0.328,\n      \"error_m\": 0.088\n    },\n    {\n      \"time\": \"2026-10-30 10:36\",\n      \"stofs_m\": -0.316,\n      \"obs_m\": -0.39,\n      \"error_m\": 0.074\n    },\n    {\n      \"time\": \"2026-10-30 10:42\",\n      \"stofs_m\": -0.3945,\n      \"obs_m\": -0.452,\n      \"error_m\": 0.0575\n    },\n    {\n      \"time\": \"2026-10-30 10:48\",\n      \"stofs_m\": -0.471,\n      \"obs_m\": -0.521,\n      \"error_m\": 0.05\n    },\n    {\n      \"time\": \"2026-10-30 10:54\",\n      \"stofs_m\": -0.5446,\n      \"obs_m\": -0.584,\n      \"error_m\": 0.0394\n    },\n    {\n      \"time\": \"2026-10-30 11:00\",\n      \"stofs_m\": -0.6183,\n      \"obs_m\": -0.662,\n      \"error_m\": 0.0437\n    },\n    {\n      \"time\": \"2026-10-30 11:06\",\n      \"stofs_m\": -0.6917,\n      \"obs_m\": -0.717,\n      \"error_m\": 0.0253\n    },\n    {\n      \"time\": \"2026-10-30 11:12\",\n      \"stofs_m\": -0.7644,\n      \"obs_m\": -0.779,\n      \"error_m\": 0.0146\n    },\n    {\n      \"time\": \"2026-10-30 11:18\",\n      \"stofs_m\": -0.835,\n      \"obs_m\": -0.823,\n      \"error_m\": -0.012\n    },\n    {\n      \"time\": \"2026-10-30 11:24\",\n      \"stofs_m\": -0.9011,\n      \"obs_m\": -0.873,\n      \"error_m\": -0.0281\n    },\n    {\n      \"time\": \"2026-10-30 11:30\",\n      \"stofs_m\": -0.9739,\n      \"obs_m\": -0.931,\n      \"error_m\": -0.0429\n    },\n    {\n      \"time\": \"2026-10-30 11:36\",\n      \"stofs_m\": -1.0524,\n      \"obs_m\": -0.98,\n      \"error_m\": -0.0724\n    },\n    {\n      \"time\": \"2026-10-30 11:42\",\n      \"stofs_m\": -1.1181,\n      \"obs_m\": -1.029,\n      \"error_m\": -0.0891\n    },\n    {\n      \"time\": \"2026-10-30 11:48\",\n      \"stofs_m\": -1.1676,\n      \"obs_m\": -1.06,\n      \"error_m\": -0.1076\n    },\n    {\n      \"time\": \"2026-10-30 11:54\",\n      \"stofs_m\": -1.2098,\n      \"obs_m\": -1.103,\n      \"error_m\": -0.1068\n    },\n    {\n      \"time\": \"2026-10-30 12:00\",\n      \"stofs_m\": -1.2527,\n      \"obs_m\": -1.135,\n      \"error_m\": -0.1177\n    }\n  ]\n}",
+  "response": {
+    "station_id": "8443970",
+    "model": "3d_atlantic",
+    "model_label": "STOFS-3D-Atlantic",
+    "cycle_date": "20261030",
+    "cycle_hour": "12",
+    "stofs_datum": "LMSL",
+    "stofs_datum_source": "file metadata: zeta:standard_name=sea_surface_height_above_msl",
+    "datum_provenance": {
+      "datum": "LMSL",
+      "resolution": "file_metadata",
+      "comparable": true,
+      "source": "file metadata: zeta:standard_name=sea_surface_height_above_msl",
+      "warning": null,
+      "documented_datum": "LMSL",
+      "product_version": "stofs.v3.1.6",
+      "attributes": {
+        "zeta:standard_name": "sea_surface_height_above_msl",
+        "zeta:long_name": "water surface elevation above msl"
+      }
+    },
+    "coops_datum": "MSL",
+    "datum_note": "STOFS datum: LMSL (file metadata: zeta:standard_name=sea_surface_height_above_msl) | CO-OPS datum: MSL. No vertical transformation is applied. Matching labels do not guarantee identical realizations or epochs, so a mean offset (bias) alone does not show whether its cause is the reference or the model.",
+    "units": "m",
+    "timezone": "UTC",
+    "comparison_start": "2026-10-29 12:06",
+    "comparison_end": "2026-10-30 12:00",
+    "cycle_time": "2026-10-30 12:00",
+    "window_lead_hours": [
+      -23.9,
+      0.0
+    ],
+    "hours_to_compare": null,
+    "lead_window_hours": [
+      -24.0,
+      0.0
+    ],
+    "summary": {
+      "observed_peak_m": 1.996,
+      "observed_peak_time": "2026-10-29 18:00",
+      "forecast_peak_m": 2.0675,
+      "forecast_peak_time": "2026-10-29 18:12",
+      "peak_error_m": 0.0715,
+      "peak_timing_error_hours": 0.2,
+      "observed_peak_at_series_end": false,
+      "bias_m": -0.0295,
+      "rmse_m": 0.2252
+    },
+    "statistics": {
+      "bias": -0.0295,
+      "rmse": 0.2252,
+      "mae": 0.2002,
+      "max_abs_error": 0.3976,
+      "peak_error": 0.3976,
+      "correlation": 0.9866,
+      "n": 240,
+      "n_excluded_nonfinite": 0
+    },
+    "statistics_by_segment": {
+      "nowcast": {
+        "bias": -0.0295,
+        "rmse": 0.2252,
+        "mae": 0.2002,
+        "max_abs_error": 0.3976,
+        "peak_error": 0.3976,
+        "correlation": 0.9866,
+        "n": 240,
+        "n_excluded_nonfinite": 0
+      },
+      "forecast": {
+        "bias": null,
+        "rmse": null,
+        "mae": null,
+        "max_abs_error": null,
+        "peak_error": null,
+        "correlation": null,
+        "n": 0,
+        "n_excluded_nonfinite": 0
+      }
+    },
+    "window": {
+      "definition": "lead (-24, 0] h from the cycle time 2026-10-30 12:00 UTC",
+      "file_start": "2026-10-29 12:06",
+      "requested_end": "2026-10-30 12:00",
+      "model_available": [
+        "2026-10-29 12:06",
+        "2026-10-30 12:00"
+      ],
+      "matched": [
+        "2026-10-29 12:06",
+        "2026-10-30 12:00"
+      ],
+      "excluded_model_records": {
+        "masked_or_fill": 0,
+        "nonfinite": 0
+      }
+    },
+    "alignment": {
+      "method": "one-to-one; exact timestamps first, then the nearest unused observation within 3 min (ties to the earlier); UTC",
+      "exact": 240,
+      "nearest": 0,
+      "unmatched_model_records": 0,
+      "bad_observation_times": 0,
+      "duplicate_observation_times": 0
+    },
+    "observation_quality": {
+      "records": 240,
+      "verified": 0,
+      "preliminary": 240,
+      "unknown_status": 0,
+      "flagged": 65,
+      "missing": 0,
+      "nonfinite": 0,
+      "matched": {
+        "pairs": 240,
+        "verified": 0,
+        "preliminary": 240,
+        "unknown_status": 0,
+        "flagged": 65
+      }
+    },
+    "resolution": "6-minute",
+    "n_points": 240,
+    "total_points": 240,
+    "truncated": false,
+    "retrieved_at": "2026-11-04T21:55:17+00:00",
+    "comparison": [
+      {
+        "time": "2026-10-29 12:06",
+        "stofs_m": -1.5701,
+        "obs_m": -1.454,
+        "error_m": -0.1161
+      },
+      {
+        "time": "2026-10-29 12:12",
+        "stofs_m": -1.5772,
+        "obs_m": -1.43,
+        "error_m": -0.1472
+      },
+      {
+        "time": "2026-10-29 12:18",
+        "stofs_m": -1.593,
+        "obs_m": -1.395,
+        "error_m": -0.198
+      },
+      {
+        "time": "2026-10-29 12:24",
+        "stofs_m": -1.6148,
+        "obs_m": -1.36,
+        "error_m": -0.2548
+      },
+      {
+        "time": "2026-10-29 12:30",
+        "stofs_m": -1.6184,
+        "obs_m": -1.313,
+        "error_m": -0.3054
+      },
+      {
+        "time": "2026-10-29 12:36",
+        "stofs_m": -1.5962,
+        "obs_m": -1.264,
+        "error_m": -0.3322
+      },
+      {
+        "time": "2026-10-29 12:42",
+        "stofs_m": -1.559,
+        "obs_m": -1.205,
+        "error_m": -0.354
+      },
+      {
+        "time": "2026-10-29 12:48",
+        "stofs_m": -1.5123,
+        "obs_m": -1.138,
+        "error_m": -0.3743
+      },
+      {
+        "time": "2026-10-29 12:54",
+        "stofs_m": -1.4621,
+        "obs_m": -1.082,
+        "error_m": -0.3801
+      },
+      {
+        "time": "2026-10-29 13:00",
+        "stofs_m": -1.4121,
+        "obs_m": -1.031,
+        "error_m": -0.3811
+      },
+      {
+        "time": "2026-10-29 13:06",
+        "stofs_m": -1.3576,
+        "obs_m": -0.967,
+        "error_m": -0.3906
+      },
+      {
+        "time": "2026-10-29 13:12",
+        "stofs_m": -1.295,
+        "obs_m": -0.913,
+        "error_m": -0.382
+      },
+      {
+        "time": "2026-10-29 13:18",
+        "stofs_m": -1.2122,
+        "obs_m": -0.86,
+        "error_m": -0.3522
+      },
+      {
+        "time": "2026-10-29 13:24",
+        "stofs_m": -1.1114,
+        "obs_m": -0.818,
+        "error_m": -0.2934
+      },
+      {
+        "time": "2026-10-29 13:30",
+        "stofs_m": -1.0282,
+        "obs_m": -0.755,
+        "error_m": -0.2732
+      },
+      {
+        "time": "2026-10-29 13:36",
+        "stofs_m": -0.9796,
+        "obs_m": -0.69,
+        "error_m": -0.2896
+      },
+      {
+        "time": "2026-10-29 13:42",
+        "stofs_m": -0.9394,
+        "obs_m": -0.62,
+        "error_m": -0.3194
+      },
+      {
+        "time": "2026-10-29 13:48",
+        "stofs_m": -0.8881,
+        "obs_m": -0.542,
+        "error_m": -0.3461
+      },
+      {
+        "time": "2026-10-29 13:54",
+        "stofs_m": -0.8189,
+        "obs_m": -0.465,
+        "error_m": -0.3539
+      },
+      {
+        "time": "2026-10-29 14:00",
+        "stofs_m": -0.7563,
+        "obs_m": -0.397,
+        "error_m": -0.3593
+      },
+      {
+        "time": "2026-10-29 14:06",
+        "stofs_m": -0.7094,
+        "obs_m": -0.326,
+        "error_m": -0.3834
+      },
+      {
+        "time": "2026-10-29 14:12",
+        "stofs_m": -0.6506,
+        "obs_m": -0.253,
+        "error_m": -0.3976
+      },
+      {
+        "time": "2026-10-29 14:18",
+        "stofs_m": -0.5734,
+        "obs_m": -0.201,
+        "error_m": -0.3724
+      },
+      {
+        "time": "2026-10-29 14:24",
+        "stofs_m": -0.4809,
+        "obs_m": -0.122,
+        "error_m": -0.3589
+      },
+      {
+        "time": "2026-10-29 14:30",
+        "stofs_m": -0.3669,
+        "obs_m": -0.048,
+        "error_m": -0.3189
+      },
+      {
+        "time": "2026-10-29 14:36",
+        "stofs_m": -0.2508,
+        "obs_m": 0.045,
+        "error_m": -0.2958
+      },
+      {
+        "time": "2026-10-29 14:42",
+        "stofs_m": -0.1626,
+        "obs_m": 0.133,
+        "error_m": -0.2956
+      },
+      {
+        "time": "2026-10-29 14:48",
+        "stofs_m": -0.0888,
+        "obs_m": 0.221,
+        "error_m": -0.3098
+      },
+      {
+        "time": "2026-10-29 14:54",
+        "stofs_m": 0.0021,
+        "obs_m": 0.307,
+        "error_m": -0.3049
+      },
+      {
+        "time": "2026-10-29 15:00",
+        "stofs_m": 0.0928,
+        "obs_m": 0.38,
+        "error_m": -0.2872
+      },
+      {
+        "time": "2026-10-29 15:06",
+        "stofs_m": 0.1571,
+        "obs_m": 0.45,
+        "error_m": -0.2929
+      },
+      {
+        "time": "2026-10-29 15:12",
+        "stofs_m": 0.219,
+        "obs_m": 0.54,
+        "error_m": -0.321
+      },
+      {
+        "time": "2026-10-29 15:18",
+        "stofs_m": 0.3014,
+        "obs_m": 0.624,
+        "error_m": -0.3226
+      },
+      {
+        "time": "2026-10-29 15:24",
+        "stofs_m": 0.3864,
+        "obs_m": 0.715,
+        "error_m": -0.3286
+      },
+      {
+        "time": "2026-10-29 15:30",
+        "stofs_m": 0.4536,
+        "obs_m": 0.794,
+        "error_m": -0.3404
+      },
+      {
+        "time": "2026-10-29 15:36",
+        "stofs_m": 0.5259,
+        "obs_m": 0.875,
+        "error_m": -0.3491
+      },
+      {
+        "time": "2026-10-29 15:42",
+        "stofs_m": 0.597,
+        "obs_m": 0.953,
+        "error_m": -0.356
+      },
+      {
+        "time": "2026-10-29 15:48",
+        "stofs_m": 0.6829,
+        "obs_m": 1.024,
+        "error_m": -0.3411
+      },
+      {
+        "time": "2026-10-29 15:54",
+        "stofs_m": 0.79,
+        "obs_m": 1.095,
+        "error_m": -0.305
+      },
+      {
+        "time": "2026-10-29 16:00",
+        "stofs_m": 0.894,
+        "obs_m": 1.164,
+        "error_m": -0.27
+      },
+      {
+        "time": "2026-10-29 16:06",
+        "stofs_m": 0.9967,
+        "obs_m": 1.243,
+        "error_m": -0.2463
+      },
+      {
+        "time": "2026-10-29 16:12",
+        "stofs_m": 1.1351,
+        "obs_m": 1.321,
+        "error_m": -0.1859
+      },
+      {
+        "time": "2026-10-29 16:18",
+        "stofs_m": 1.2387,
+        "obs_m": 1.394,
+        "error_m": -0.1553
+      },
+      {
+        "time": "2026-10-29 16:24",
+        "stofs_m": 1.2616,
+        "obs_m": 1.456,
+        "error_m": -0.1944
+      },
+      {
+        "time": "2026-10-29 16:30",
+        "stofs_m": 1.2503,
+        "obs_m": 1.518,
+        "error_m": -0.2677
+      },
+      {
+        "time": "2026-10-29 16:36",
+        "stofs_m": 1.2706,
+        "obs_m": 1.577,
+        "error_m": -0.3064
+      },
+      {
+        "time": "2026-10-29 16:42",
+        "stofs_m": 1.355,
+        "obs_m": 1.634,
+        "error_m": -0.279
+      },
+      {
+        "time": "2026-10-29 16:48",
+        "stofs_m": 1.4596,
+        "obs_m": 1.691,
+        "error_m": -0.2314
+      },
+      {
+        "time": "2026-10-29 16:54",
+        "stofs_m": 1.5368,
+        "obs_m": 1.737,
+        "error_m": -0.2002
+      },
+      {
+        "time": "2026-10-29 17:00",
+        "stofs_m": 1.5909,
+        "obs_m": 1.778,
+        "error_m": -0.1871
+      },
+      {
+        "time": "2026-10-29 17:06",
+        "stofs_m": 1.6478,
+        "obs_m": 1.815,
+        "error_m": -0.1672
+      },
+      {
+        "time": "2026-10-29 17:12",
+        "stofs_m": 1.7235,
+        "obs_m": 1.852,
+        "error_m": -0.1285
+      },
+      {
+        "time": "2026-10-29 17:18",
+        "stofs_m": 1.7968,
+        "obs_m": 1.882,
+        "error_m": -0.0852
+      },
+      {
+        "time": "2026-10-29 17:24",
+        "stofs_m": 1.8525,
+        "obs_m": 1.909,
+        "error_m": -0.0565
+      },
+      {
+        "time": "2026-10-29 17:30",
+        "stofs_m": 1.8926,
+        "obs_m": 1.936,
+        "error_m": -0.0434
+      },
+      {
+        "time": "2026-10-29 17:36",
+        "stofs_m": 1.9211,
+        "obs_m": 1.959,
+        "error_m": -0.0379
+      },
+      {
+        "time": "2026-10-29 17:42",
+        "stofs_m": 1.9426,
+        "obs_m": 1.979,
+        "error_m": -0.0364
+      },
+      {
+        "time": "2026-10-29 17:48",
+        "stofs_m": 1.9663,
+        "obs_m": 1.99,
+        "error_m": -0.0237
+      },
+      {
+        "time": "2026-10-29 17:54",
+        "stofs_m": 1.9979,
+        "obs_m": 1.993,
+        "error_m": 0.0049
+      },
+      {
+        "time": "2026-10-29 18:00",
+        "stofs_m": 2.0334,
+        "obs_m": 1.996,
+        "error_m": 0.0374
+      },
+      {
+        "time": "2026-10-29 18:06",
+        "stofs_m": 2.0571,
+        "obs_m": 1.987,
+        "error_m": 0.0701
+      },
+      {
+        "time": "2026-10-29 18:12",
+        "stofs_m": 2.0675,
+        "obs_m": 1.971,
+        "error_m": 0.0965
+      },
+      {
+        "time": "2026-10-29 18:18",
+        "stofs_m": 2.0665,
+        "obs_m": 1.953,
+        "error_m": 0.1135
+      },
+      {
+        "time": "2026-10-29 18:24",
+        "stofs_m": 2.0543,
+        "obs_m": 1.932,
+        "error_m": 0.1223
+      },
+      {
+        "time": "2026-10-29 18:30",
+        "stofs_m": 2.0427,
+        "obs_m": 1.912,
+        "error_m": 0.1307
+      },
+      {
+        "time": "2026-10-29 18:36",
+        "stofs_m": 2.0383,
+        "obs_m": 1.883,
+        "error_m": 0.1553
+      },
+      {
+        "time": "2026-10-29 18:42",
+        "stofs_m": 2.0341,
+        "obs_m": 1.857,
+        "error_m": 0.1771
+      },
+      {
+        "time": "2026-10-29 18:48",
+        "stofs_m": 2.0302,
+        "obs_m": 1.823,
+        "error_m": 0.2072
+      },
+      {
+        "time": "2026-10-29 18:54",
+        "stofs_m": 2.0112,
+        "obs_m": 1.785,
+        "error_m": 0.2262
+      },
+      {
+        "time": "2026-10-29 19:00",
+        "stofs_m": 1.9714,
+        "obs_m": 1.739,
+        "error_m": 0.2324
+      },
+      {
+        "time": "2026-10-29 19:06",
+        "stofs_m": 1.9299,
+        "obs_m": 1.691,
+        "error_m": 0.2389
+      },
+      {
+        "time": "2026-10-29 19:12",
+        "stofs_m": 1.8949,
+        "obs_m": 1.642,
+        "error_m": 0.2529
+      },
+      {
+        "time": "2026-10-29 19:18",
+        "stofs_m": 1.8655,
+        "obs_m": 1.596,
+        "error_m": 0.2695
+      },
+      {
+        "time": "2026-10-29 19:24",
+        "stofs_m": 1.8361,
+        "obs_m": 1.551,
+        "error_m": 0.2851
+      },
+      {
+        "time": "2026-10-29 19:30",
+        "stofs_m": 1.7937,
+        "obs_m": 1.497,
+        "error_m": 0.2967
+      },
+      {
+        "time": "2026-10-29 19:36",
+        "stofs_m": 1.7367,
+        "obs_m": 1.44,
+        "error_m": 0.2967
+      },
+      {
+        "time": "2026-10-29 19:42",
+        "stofs_m": 1.6793,
+        "obs_m": 1.374,
+        "error_m": 0.3053
+      },
+      {
+        "time": "2026-10-29 19:48",
+        "stofs_m": 1.6238,
+        "obs_m": 1.312,
+        "error_m": 0.3118
+      },
+      {
+        "time": "2026-10-29 19:54",
+        "stofs_m": 1.5683,
+        "obs_m": 1.253,
+        "error_m": 0.3153
+      },
+      {
+        "time": "2026-10-29 20:00",
+        "stofs_m": 1.5114,
+        "obs_m": 1.184,
+        "error_m": 0.3274
+      },
+      {
+        "time": "2026-10-29 20:06",
+        "stofs_m": 1.4567,
+        "obs_m": 1.114,
+        "error_m": 0.3427
+      },
+      {
+        "time": "2026-10-29 20:12",
+        "stofs_m": 1.391,
+        "obs_m": 1.048,
+        "error_m": 0.343
+      },
+      {
+        "time": "2026-10-29 20:18",
+        "stofs_m": 1.3122,
+        "obs_m": 0.993,
+        "error_m": 0.3192
+      },
+      {
+        "time": "2026-10-29 20:24",
+        "stofs_m": 1.2357,
+        "obs_m": 0.932,
+        "error_m": 0.3037
+      },
+      {
+        "time": "2026-10-29 20:30",
+        "stofs_m": 1.162,
+        "obs_m": 0.861,
+        "error_m": 0.301
+      },
+      {
+        "time": "2026-10-29 20:36",
+        "stofs_m": 1.0825,
+        "obs_m": 0.784,
+        "error_m": 0.2985
+      },
+      {
+        "time": "2026-10-29 20:42",
+        "stofs_m": 0.9962,
+        "obs_m": 0.706,
+        "error_m": 0.2902
+      },
+      {
+        "time": "2026-10-29 20:48",
+        "stofs_m": 0.9032,
+        "obs_m": 0.619,
+        "error_m": 0.2842
+      },
+      {
+        "time": "2026-10-29 20:54",
+        "stofs_m": 0.7906,
+        "obs_m": 0.527,
+        "error_m": 0.2636
+      },
+      {
+        "time": "2026-10-29 21:00",
+        "stofs_m": 0.6756,
+        "obs_m": 0.455,
+        "error_m": 0.2206
+      },
+      {
+        "time": "2026-10-29 21:06",
+        "stofs_m": 0.5923,
+        "obs_m": 0.381,
+        "error_m": 0.2113
+      },
+      {
+        "time": "2026-10-29 21:12",
+        "stofs_m": 0.5129,
+        "obs_m": 0.296,
+        "error_m": 0.2169
+      },
+      {
+        "time": "2026-10-29 21:18",
+        "stofs_m": 0.4408,
+        "obs_m": 0.208,
+        "error_m": 0.2328
+      },
+      {
+        "time": "2026-10-29 21:24",
+        "stofs_m": 0.3758,
+        "obs_m": 0.113,
+        "error_m": 0.2628
+      },
+      {
+        "time": "2026-10-29 21:30",
+        "stofs_m": 0.2909,
+        "obs_m": 0.013,
+        "error_m": 0.2779
+      },
+      {
+        "time": "2026-10-29 21:36",
+        "stofs_m": 0.1751,
+        "obs_m": -0.09,
+        "error_m": 0.2651
+      },
+      {
+        "time": "2026-10-29 21:42",
+        "stofs_m": 0.0737,
+        "obs_m": -0.176,
+        "error_m": 0.2497
+      },
+      {
+        "time": "2026-10-29 21:48",
+        "stofs_m": -0.0262,
+        "obs_m": -0.248,
+        "error_m": 0.2218
+      },
+      {
+        "time": "2026-10-29 21:54",
+        "stofs_m": -0.1174,
+        "obs_m": -0.328,
+        "error_m": 0.2106
+      },
+      {
+        "time": "2026-10-29 22:00",
+        "stofs_m": -0.196,
+        "obs_m": -0.393,
+        "error_m": 0.197
+      },
+      {
+        "time": "2026-10-29 22:06",
+        "stofs_m": -0.2848,
+        "obs_m": -0.477,
+        "error_m": 0.1922
+      },
+      {
+        "time": "2026-10-29 22:12",
+        "stofs_m": -0.3758,
+        "obs_m": -0.546,
+        "error_m": 0.1702
+      },
+      {
+        "time": "2026-10-29 22:18",
+        "stofs_m": -0.4551,
+        "obs_m": -0.642,
+        "error_m": 0.1869
+      },
+      {
+        "time": "2026-10-29 22:24",
+        "stofs_m": -0.5376,
+        "obs_m": -0.706,
+        "error_m": 0.1684
+      },
+      {
+        "time": "2026-10-29 22:30",
+        "stofs_m": -0.6434,
+        "obs_m": -0.789,
+        "error_m": 0.1456
+      },
+      {
+        "time": "2026-10-29 22:36",
+        "stofs_m": -0.7447,
+        "obs_m": -0.851,
+        "error_m": 0.1063
+      },
+      {
+        "time": "2026-10-29 22:42",
+        "stofs_m": -0.8407,
+        "obs_m": -0.92,
+        "error_m": 0.0793
+      },
+      {
+        "time": "2026-10-29 22:48",
+        "stofs_m": -0.9498,
+        "obs_m": -1.007,
+        "error_m": 0.0572
+      },
+      {
+        "time": "2026-10-29 22:54",
+        "stofs_m": -1.0413,
+        "obs_m": -1.079,
+        "error_m": 0.0377
+      },
+      {
+        "time": "2026-10-29 23:00",
+        "stofs_m": -1.0834,
+        "obs_m": -1.154,
+        "error_m": 0.0706
+      },
+      {
+        "time": "2026-10-29 23:06",
+        "stofs_m": -1.1383,
+        "obs_m": -1.231,
+        "error_m": 0.0927
+      },
+      {
+        "time": "2026-10-29 23:12",
+        "stofs_m": -1.2358,
+        "obs_m": -1.299,
+        "error_m": 0.0632
+      },
+      {
+        "time": "2026-10-29 23:18",
+        "stofs_m": -1.3436,
+        "obs_m": -1.363,
+        "error_m": 0.0194
+      },
+      {
+        "time": "2026-10-29 23:24",
+        "stofs_m": -1.4292,
+        "obs_m": -1.411,
+        "error_m": -0.0182
+      },
+      {
+        "time": "2026-10-29 23:30",
+        "stofs_m": -1.4838,
+        "obs_m": -1.451,
+        "error_m": -0.0328
+      },
+      {
+        "time": "2026-10-29 23:36",
+        "stofs_m": -1.523,
+        "obs_m": -1.495,
+        "error_m": -0.028
+      },
+      {
+        "time": "2026-10-29 23:42",
+        "stofs_m": -1.5683,
+        "obs_m": -1.543,
+        "error_m": -0.0253
+      },
+      {
+        "time": "2026-10-29 23:48",
+        "stofs_m": -1.6229,
+        "obs_m": -1.576,
+        "error_m": -0.0469
+      },
+      {
+        "time": "2026-10-29 23:54",
+        "stofs_m": -1.6829,
+        "obs_m": -1.609,
+        "error_m": -0.0739
+      },
+      {
+        "time": "2026-10-30 00:00",
+        "stofs_m": -1.7359,
+        "obs_m": -1.641,
+        "error_m": -0.0949
+      },
+      {
+        "time": "2026-10-30 00:06",
+        "stofs_m": -1.7633,
+        "obs_m": -1.664,
+        "error_m": -0.0993
+      },
+      {
+        "time": "2026-10-30 00:12",
+        "stofs_m": -1.7829,
+        "obs_m": -1.682,
+        "error_m": -0.1009
+      },
+      {
+        "time": "2026-10-30 00:18",
+        "stofs_m": -1.8039,
+        "obs_m": -1.691,
+        "error_m": -0.1129
+      },
+      {
+        "time": "2026-10-30 00:24",
+        "stofs_m": -1.8257,
+        "obs_m": -1.693,
+        "error_m": -0.1327
+      },
+      {
+        "time": "2026-10-30 00:30",
+        "stofs_m": -1.8471,
+        "obs_m": -1.69,
+        "error_m": -0.1571
+      },
+      {
+        "time": "2026-10-30 00:36",
+        "stofs_m": -1.8645,
+        "obs_m": -1.68,
+        "error_m": -0.1845
+      },
+      {
+        "time": "2026-10-30 00:42",
+        "stofs_m": -1.8757,
+        "obs_m": -1.67,
+        "error_m": -0.2057
+      },
+      {
+        "time": "2026-10-30 00:48",
+        "stofs_m": -1.8794,
+        "obs_m": -1.655,
+        "error_m": -0.2244
+      },
+      {
+        "time": "2026-10-30 00:54",
+        "stofs_m": -1.876,
+        "obs_m": -1.635,
+        "error_m": -0.241
+      },
+      {
+        "time": "2026-10-30 01:00",
+        "stofs_m": -1.866,
+        "obs_m": -1.61,
+        "error_m": -0.256
+      },
+      {
+        "time": "2026-10-30 01:06",
+        "stofs_m": -1.8489,
+        "obs_m": -1.58,
+        "error_m": -0.2689
+      },
+      {
+        "time": "2026-10-30 01:12",
+        "stofs_m": -1.8258,
+        "obs_m": -1.546,
+        "error_m": -0.2798
+      },
+      {
+        "time": "2026-10-30 01:18",
+        "stofs_m": -1.7967,
+        "obs_m": -1.511,
+        "error_m": -0.2857
+      },
+      {
+        "time": "2026-10-30 01:24",
+        "stofs_m": -1.7619,
+        "obs_m": -1.47,
+        "error_m": -0.2919
+      },
+      {
+        "time": "2026-10-30 01:30",
+        "stofs_m": -1.7216,
+        "obs_m": -1.435,
+        "error_m": -0.2866
+      },
+      {
+        "time": "2026-10-30 01:36",
+        "stofs_m": -1.6752,
+        "obs_m": -1.386,
+        "error_m": -0.2892
+      },
+      {
+        "time": "2026-10-30 01:42",
+        "stofs_m": -1.6249,
+        "obs_m": -1.337,
+        "error_m": -0.2879
+      },
+      {
+        "time": "2026-10-30 01:48",
+        "stofs_m": -1.5744,
+        "obs_m": -1.287,
+        "error_m": -0.2874
+      },
+      {
+        "time": "2026-10-30 01:54",
+        "stofs_m": -1.5197,
+        "obs_m": -1.238,
+        "error_m": -0.2817
+      },
+      {
+        "time": "2026-10-30 02:00",
+        "stofs_m": -1.4464,
+        "obs_m": -1.174,
+        "error_m": -0.2724
+      },
+      {
+        "time": "2026-10-30 02:06",
+        "stofs_m": -1.3545,
+        "obs_m": -1.116,
+        "error_m": -0.2385
+      },
+      {
+        "time": "2026-10-30 02:12",
+        "stofs_m": -1.2677,
+        "obs_m": -1.061,
+        "error_m": -0.2067
+      },
+      {
+        "time": "2026-10-30 02:18",
+        "stofs_m": -1.2013,
+        "obs_m": -1.011,
+        "error_m": -0.1903
+      },
+      {
+        "time": "2026-10-30 02:24",
+        "stofs_m": -1.1593,
+        "obs_m": -0.961,
+        "error_m": -0.1983
+      },
+      {
+        "time": "2026-10-30 02:30",
+        "stofs_m": -1.1219,
+        "obs_m": -0.904,
+        "error_m": -0.2179
+      },
+      {
+        "time": "2026-10-30 02:36",
+        "stofs_m": -1.0669,
+        "obs_m": -0.843,
+        "error_m": -0.2239
+      },
+      {
+        "time": "2026-10-30 02:42",
+        "stofs_m": -0.9936,
+        "obs_m": -0.795,
+        "error_m": -0.1986
+      },
+      {
+        "time": "2026-10-30 02:48",
+        "stofs_m": -0.8871,
+        "obs_m": -0.73,
+        "error_m": -0.1571
+      },
+      {
+        "time": "2026-10-30 02:54",
+        "stofs_m": -0.773,
+        "obs_m": -0.661,
+        "error_m": -0.112
+      },
+      {
+        "time": "2026-10-30 03:00",
+        "stofs_m": -0.7137,
+        "obs_m": -0.579,
+        "error_m": -0.1347
+      },
+      {
+        "time": "2026-10-30 03:06",
+        "stofs_m": -0.7045,
+        "obs_m": -0.493,
+        "error_m": -0.2115
+      },
+      {
+        "time": "2026-10-30 03:12",
+        "stofs_m": -0.6666,
+        "obs_m": -0.415,
+        "error_m": -0.2516
+      },
+      {
+        "time": "2026-10-30 03:18",
+        "stofs_m": -0.5704,
+        "obs_m": -0.332,
+        "error_m": -0.2384
+      },
+      {
+        "time": "2026-10-30 03:24",
+        "stofs_m": -0.4559,
+        "obs_m": -0.249,
+        "error_m": -0.2069
+      },
+      {
+        "time": "2026-10-30 03:30",
+        "stofs_m": -0.3801,
+        "obs_m": -0.181,
+        "error_m": -0.1991
+      },
+      {
+        "time": "2026-10-30 03:36",
+        "stofs_m": -0.3329,
+        "obs_m": -0.101,
+        "error_m": -0.2319
+      },
+      {
+        "time": "2026-10-30 03:42",
+        "stofs_m": -0.2652,
+        "obs_m": -0.014,
+        "error_m": -0.2512
+      },
+      {
+        "time": "2026-10-30 03:48",
+        "stofs_m": -0.1803,
+        "obs_m": 0.083,
+        "error_m": -0.2633
+      },
+      {
+        "time": "2026-10-30 03:54",
+        "stofs_m": -0.0981,
+        "obs_m": 0.164,
+        "error_m": -0.2621
+      },
+      {
+        "time": "2026-10-30 04:00",
+        "stofs_m": -0.0122,
+        "obs_m": 0.245,
+        "error_m": -0.2572
+      },
+      {
+        "time": "2026-10-30 04:06",
+        "stofs_m": 0.0973,
+        "obs_m": 0.316,
+        "error_m": -0.2187
+      },
+      {
+        "time": "2026-10-30 04:12",
+        "stofs_m": 0.2229,
+        "obs_m": 0.369,
+        "error_m": -0.1461
+      },
+      {
+        "time": "2026-10-30 04:18",
+        "stofs_m": 0.3138,
+        "obs_m": 0.445,
+        "error_m": -0.1312
+      },
+      {
+        "time": "2026-10-30 04:24",
+        "stofs_m": 0.3449,
+        "obs_m": 0.509,
+        "error_m": -0.1641
+      },
+      {
+        "time": "2026-10-30 04:30",
+        "stofs_m": 0.3583,
+        "obs_m": 0.589,
+        "error_m": -0.2307
+      },
+      {
+        "time": "2026-10-30 04:36",
+        "stofs_m": 0.4316,
+        "obs_m": 0.664,
+        "error_m": -0.2324
+      },
+      {
+        "time": "2026-10-30 04:42",
+        "stofs_m": 0.554,
+        "obs_m": 0.747,
+        "error_m": -0.193
+      },
+      {
+        "time": "2026-10-30 04:48",
+        "stofs_m": 0.6689,
+        "obs_m": 0.824,
+        "error_m": -0.1551
+      },
+      {
+        "time": "2026-10-30 04:54",
+        "stofs_m": 0.7521,
+        "obs_m": 0.896,
+        "error_m": -0.1439
+      },
+      {
+        "time": "2026-10-30 05:00",
+        "stofs_m": 0.8181,
+        "obs_m": 0.967,
+        "error_m": -0.1489
+      },
+      {
+        "time": "2026-10-30 05:06",
+        "stofs_m": 0.8623,
+        "obs_m": 1.01,
+        "error_m": -0.1477
+      },
+      {
+        "time": "2026-10-30 05:12",
+        "stofs_m": 0.9328,
+        "obs_m": 1.064,
+        "error_m": -0.1312
+      },
+      {
+        "time": "2026-10-30 05:18",
+        "stofs_m": 1.0302,
+        "obs_m": 1.109,
+        "error_m": -0.0788
+      },
+      {
+        "time": "2026-10-30 05:24",
+        "stofs_m": 1.1112,
+        "obs_m": 1.156,
+        "error_m": -0.0448
+      },
+      {
+        "time": "2026-10-30 05:30",
+        "stofs_m": 1.1639,
+        "obs_m": 1.197,
+        "error_m": -0.0331
+      },
+      {
+        "time": "2026-10-30 05:36",
+        "stofs_m": 1.2098,
+        "obs_m": 1.249,
+        "error_m": -0.0392
+      },
+      {
+        "time": "2026-10-30 05:42",
+        "stofs_m": 1.2621,
+        "obs_m": 1.287,
+        "error_m": -0.0249
+      },
+      {
+        "time": "2026-10-30 05:48",
+        "stofs_m": 1.3186,
+        "obs_m": 1.332,
+        "error_m": -0.0134
+      },
+      {
+        "time": "2026-10-30 05:54",
+        "stofs_m": 1.3741,
+        "obs_m": 1.377,
+        "error_m": -0.0029
+      },
+      {
+        "time": "2026-10-30 06:00",
+        "stofs_m": 1.4251,
+        "obs_m": 1.419,
+        "error_m": 0.0061
+      },
+      {
+        "time": "2026-10-30 06:06",
+        "stofs_m": 1.469,
+        "obs_m": 1.448,
+        "error_m": 0.021
+      },
+      {
+        "time": "2026-10-30 06:12",
+        "stofs_m": 1.5124,
+        "obs_m": 1.47,
+        "error_m": 0.0424
+      },
+      {
+        "time": "2026-10-30 06:18",
+        "stofs_m": 1.5554,
+        "obs_m": 1.488,
+        "error_m": 0.0674
+      },
+      {
+        "time": "2026-10-30 06:24",
+        "stofs_m": 1.5874,
+        "obs_m": 1.495,
+        "error_m": 0.0924
+      },
+      {
+        "time": "2026-10-30 06:30",
+        "stofs_m": 1.6091,
+        "obs_m": 1.502,
+        "error_m": 0.1071
+      },
+      {
+        "time": "2026-10-30 06:36",
+        "stofs_m": 1.6327,
+        "obs_m": 1.495,
+        "error_m": 0.1377
+      },
+      {
+        "time": "2026-10-30 06:42",
+        "stofs_m": 1.658,
+        "obs_m": 1.492,
+        "error_m": 0.166
+      },
+      {
+        "time": "2026-10-30 06:48",
+        "stofs_m": 1.6775,
+        "obs_m": 1.489,
+        "error_m": 0.1885
+      },
+      {
+        "time": "2026-10-30 06:54",
+        "stofs_m": 1.6879,
+        "obs_m": 1.479,
+        "error_m": 0.2089
+      },
+      {
+        "time": "2026-10-30 07:00",
+        "stofs_m": 1.6913,
+        "obs_m": 1.472,
+        "error_m": 0.2193
+      },
+      {
+        "time": "2026-10-30 07:06",
+        "stofs_m": 1.6888,
+        "obs_m": 1.467,
+        "error_m": 0.2218
+      },
+      {
+        "time": "2026-10-30 07:12",
+        "stofs_m": 1.6843,
+        "obs_m": 1.451,
+        "error_m": 0.2333
+      },
+      {
+        "time": "2026-10-30 07:18",
+        "stofs_m": 1.6784,
+        "obs_m": 1.43,
+        "error_m": 0.2484
+      },
+      {
+        "time": "2026-10-30 07:24",
+        "stofs_m": 1.6644,
+        "obs_m": 1.404,
+        "error_m": 0.2604
+      },
+      {
+        "time": "2026-10-30 07:30",
+        "stofs_m": 1.6383,
+        "obs_m": 1.375,
+        "error_m": 0.2633
+      },
+      {
+        "time": "2026-10-30 07:36",
+        "stofs_m": 1.6057,
+        "obs_m": 1.337,
+        "error_m": 0.2687
+      },
+      {
+        "time": "2026-10-30 07:42",
+        "stofs_m": 1.5737,
+        "obs_m": 1.296,
+        "error_m": 0.2777
+      },
+      {
+        "time": "2026-10-30 07:48",
+        "stofs_m": 1.5433,
+        "obs_m": 1.25,
+        "error_m": 0.2933
+      },
+      {
+        "time": "2026-10-30 07:54",
+        "stofs_m": 1.5123,
+        "obs_m": 1.199,
+        "error_m": 0.3133
+      },
+      {
+        "time": "2026-10-30 08:00",
+        "stofs_m": 1.4774,
+        "obs_m": 1.162,
+        "error_m": 0.3154
+      },
+      {
+        "time": "2026-10-30 08:06",
+        "stofs_m": 1.4445,
+        "obs_m": 1.124,
+        "error_m": 0.3205
+      },
+      {
+        "time": "2026-10-30 08:12",
+        "stofs_m": 1.4117,
+        "obs_m": 1.081,
+        "error_m": 0.3307
+      },
+      {
+        "time": "2026-10-30 08:18",
+        "stofs_m": 1.3648,
+        "obs_m": 1.039,
+        "error_m": 0.3258
+      },
+      {
+        "time": "2026-10-30 08:24",
+        "stofs_m": 1.3053,
+        "obs_m": 1.003,
+        "error_m": 0.3023
+      },
+      {
+        "time": "2026-10-30 08:30",
+        "stofs_m": 1.2427,
+        "obs_m": 0.965,
+        "error_m": 0.2777
+      },
+      {
+        "time": "2026-10-30 08:36",
+        "stofs_m": 1.1788,
+        "obs_m": 0.915,
+        "error_m": 0.2638
+      },
+      {
+        "time": "2026-10-30 08:42",
+        "stofs_m": 1.1159,
+        "obs_m": 0.852,
+        "error_m": 0.2639
+      },
+      {
+        "time": "2026-10-30 08:48",
+        "stofs_m": 1.0569,
+        "obs_m": 0.802,
+        "error_m": 0.2549
+      },
+      {
+        "time": "2026-10-30 08:54",
+        "stofs_m": 0.9952,
+        "obs_m": 0.745,
+        "error_m": 0.2502
+      },
+      {
+        "time": "2026-10-30 09:00",
+        "stofs_m": 0.9253,
+        "obs_m": 0.692,
+        "error_m": 0.2333
+      },
+      {
+        "time": "2026-10-30 09:06",
+        "stofs_m": 0.8516,
+        "obs_m": 0.629,
+        "error_m": 0.2226
+      },
+      {
+        "time": "2026-10-30 09:12",
+        "stofs_m": 0.7746,
+        "obs_m": 0.566,
+        "error_m": 0.2086
+      },
+      {
+        "time": "2026-10-30 09:18",
+        "stofs_m": 0.6967,
+        "obs_m": 0.511,
+        "error_m": 0.1857
+      },
+      {
+        "time": "2026-10-30 09:24",
+        "stofs_m": 0.6211,
+        "obs_m": 0.455,
+        "error_m": 0.1661
+      },
+      {
+        "time": "2026-10-30 09:30",
+        "stofs_m": 0.5497,
+        "obs_m": 0.399,
+        "error_m": 0.1507
+      },
+      {
+        "time": "2026-10-30 09:36",
+        "stofs_m": 0.4734,
+        "obs_m": 0.338,
+        "error_m": 0.1354
+      },
+      {
+        "time": "2026-10-30 09:42",
+        "stofs_m": 0.397,
+        "obs_m": 0.265,
+        "error_m": 0.132
+      },
+      {
+        "time": "2026-10-30 09:48",
+        "stofs_m": 0.3239,
+        "obs_m": 0.188,
+        "error_m": 0.1359
+      },
+      {
+        "time": "2026-10-30 09:54",
+        "stofs_m": 0.2434,
+        "obs_m": 0.101,
+        "error_m": 0.1424
+      },
+      {
+        "time": "2026-10-30 10:00",
+        "stofs_m": 0.1645,
+        "obs_m": 0.018,
+        "error_m": 0.1465
+      },
+      {
+        "time": "2026-10-30 10:06",
+        "stofs_m": 0.083,
+        "obs_m": -0.07,
+        "error_m": 0.153
+      },
+      {
+        "time": "2026-10-30 10:12",
+        "stofs_m": -0.0003,
+        "obs_m": -0.137,
+        "error_m": 0.1367
+      },
+      {
+        "time": "2026-10-30 10:18",
+        "stofs_m": -0.0824,
+        "obs_m": -0.206,
+        "error_m": 0.1236
+      },
+      {
+        "time": "2026-10-30 10:24",
+        "stofs_m": -0.1623,
+        "obs_m": -0.262,
+        "error_m": 0.0997
+      },
+      {
+        "time": "2026-10-30 10:30",
+        "stofs_m": -0.24,
+        "obs_m": -0.328,
+        "error_m": 0.088
+      },
+      {
+        "time": "2026-10-30 10:36",
+        "stofs_m": -0.316,
+        "obs_m": -0.39,
+        "error_m": 0.074
+      },
+      {
+        "time": "2026-10-30 10:42",
+        "stofs_m": -0.3945,
+        "obs_m": -0.452,
+        "error_m": 0.0575
+      },
+      {
+        "time": "2026-10-30 10:48",
+        "stofs_m": -0.471,
+        "obs_m": -0.521,
+        "error_m": 0.05
+      },
+      {
+        "time": "2026-10-30 10:54",
+        "stofs_m": -0.5446,
+        "obs_m": -0.584,
+        "error_m": 0.0394
+      },
+      {
+        "time": "2026-10-30 11:00",
+        "stofs_m": -0.6183,
+        "obs_m": -0.662,
+        "error_m": 0.0437
+      },
+      {
+        "time": "2026-10-30 11:06",
+        "stofs_m": -0.6917,
+        "obs_m": -0.717,
+        "error_m": 0.0253
+      },
+      {
+        "time": "2026-10-30 11:12",
+        "stofs_m": -0.7644,
+        "obs_m": -0.779,
+        "error_m": 0.0146
+      },
+      {
+        "time": "2026-10-30 11:18",
+        "stofs_m": -0.835,
+        "obs_m": -0.823,
+        "error_m": -0.012
+      },
+      {
+        "time": "2026-10-30 11:24",
+        "stofs_m": -0.9011,
+        "obs_m": -0.873,
+        "error_m": -0.0281
+      },
+      {
+        "time": "2026-10-30 11:30",
+        "stofs_m": -0.9739,
+        "obs_m": -0.931,
+        "error_m": -0.0429
+      },
+      {
+        "time": "2026-10-30 11:36",
+        "stofs_m": -1.0524,
+        "obs_m": -0.98,
+        "error_m": -0.0724
+      },
+      {
+        "time": "2026-10-30 11:42",
+        "stofs_m": -1.1181,
+        "obs_m": -1.029,
+        "error_m": -0.0891
+      },
+      {
+        "time": "2026-10-30 11:48",
+        "stofs_m": -1.1676,
+        "obs_m": -1.06,
+        "error_m": -0.1076
+      },
+      {
+        "time": "2026-10-30 11:54",
+        "stofs_m": -1.2098,
+        "obs_m": -1.103,
+        "error_m": -0.1068
+      },
+      {
+        "time": "2026-10-30 12:00",
+        "stofs_m": -1.2527,
+        "obs_m": -1.135,
+        "error_m": -0.1177
+      }
+    ]
+  }
+}
