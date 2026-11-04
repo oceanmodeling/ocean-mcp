@@ -359,6 +359,32 @@ def resolve_station_datum(
     }
 
 
+def datum_provenance(datum_info: dict[str, Any]) -> dict[str, Any]:
+    """JSON-ready provenance for a resolved station datum (every tool emits it).
+
+    'warning' is None when there is nothing to report, so consumers can rely
+    on the key being present.
+    """
+    return {
+        "datum": datum_info.get("datum"),
+        "resolution": datum_info.get("resolution"),
+        "comparable": datum_info.get("comparable"),
+        "source": datum_info.get("datum_source"),
+        "warning": datum_info.get("datum_warning") or None,
+        "documented_datum": datum_info.get("documented_datum"),
+        "product_version": datum_info.get("product_version") or None,
+        "attributes": datum_info.get("attributes") or {},
+    }
+
+
+def datum_markdown_lines(datum_info: dict[str, Any]) -> list[str]:
+    """Markdown metadata lines: the datum with its source, then any warning."""
+    lines = [f"Datum: {datum_info.get('datum')} ({datum_info.get('datum_source')})"]
+    if datum_info.get("datum_warning"):
+        lines.append(f"⚠️ Datum warning: {datum_info['datum_warning']}")
+    return lines
+
+
 def unswap_station_coords(
     model: str | None,
     lats: list[float],

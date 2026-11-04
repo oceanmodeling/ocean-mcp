@@ -1559,6 +1559,157 @@ class TestForecastToolsDatum:
         assert "NAVD88" not in out
 
 
+class TestDatumWarningsReachEveryTool:
+    """Datum warnings and provenance appear in every public tool (review C2).
+
+    Regression: station, point and maximum tools dropped datum_warning, so a
+    NAVD88-labelled file served for a v3.1 cycle came back without a warning.
+    """
+
+    CYCLE = {"cycle_date": "2026-09-02", "cycle_hour": "12"}
+
+    def _ctx(self, station_nc, zeta_attrs):
+        from unittest.mock import AsyncMock
+
+        path = station_nc(
+            zeta_attrs, "2026-09-01 12:00", [0.1, 0.4, 0.2], xy=[(-71.05, 42.35)]
+        )
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(return_value=path)
+        return make_ctx(client)
+
+    async def _all_json(self, station_nc, zeta_attrs):
+        from stofs_mcp.tools.forecast import (
+            stofs_get_max_water_level,
+            stofs_get_point_forecast,
+            stofs_get_station_forecast,
+        )
+
+        model = STOFSModel.ATLANTIC_3D
+        return {
+            "station": json.loads(
+                await stofs_get_station_forecast(
+                    self._ctx(station_nc, zeta_attrs),
+                    station_id="8443970",
+                    model=model,
+                    response_format="json",
+                    **self.CYCLE,
+                )
+            ),
+            "point": json.loads(
+                await stofs_get_point_forecast(
+                    self._ctx(station_nc, zeta_attrs),
+                    latitude=42.35,
+                    longitude=-71.05,
+                    model=model,
+                    response_format="json",
+                    **self.CYCLE,
+                )
+            ),
+            "max": json.loads(
+                await stofs_get_max_water_level(
+                    self._ctx(station_nc, zeta_attrs),
+                    model=model,
+                    response_format="json",
+                    **self.CYCLE,
+                )
+            ),
+        }
+
+    @pytest.mark.asyncio
+    async def test_documentation_mismatch_warns_in_station_point_and_max_json(
+        self, station_nc
+    ):
+        """A NAVD88 file on a v3.1 cycle: datum kept, warning in all three tools."""
+        out = await self._all_json(station_nc, ZETA_3D_V21)
+        for name, parsed in out.items():
+            assert parsed["datum"] == "NAVD88", name
+            assert "NOAA documents LMSL" in parsed["datum_warning"], name
+            prov = parsed["datum_provenance"]
+            assert prov["resolution"] == "file_metadata", name
+            assert prov["attributes"]["zeta:standard_name"].endswith("navd88"), name
+
+    @pytest.mark.asyncio
+    async def test_unsupported_datum_is_undetermined_in_station_point_and_max(
+        self, station_nc
+    ):
+        """An NGVD29 file is labelled undetermined, never LMSL, in every tool."""
+        out = await self._all_json(
+            station_nc, {"standard_name": "sea_surface_height_above_ngvd29"}
+        )
+        for name, parsed in out.items():
+            assert parsed["datum"] == "undetermined", name
+            assert parsed["datum_provenance"]["comparable"] is False, name
+            assert "ngvd29" in parsed["datum_warning"], name
+
+    @pytest.mark.asyncio
+    async def test_no_warning_key_is_null_not_missing(self, station_nc):
+        """A clean v3.1 file gives datum_warning None, present for consumers."""
+        out = await self._all_json(station_nc, ZETA_3D_V31)
+        for name, parsed in out.items():
+            assert "datum_warning" in parsed and parsed["datum_warning"] is None, name
+
+    @pytest.mark.asyncio
+    async def test_markdown_shows_warning_in_every_tool(self, station_nc):
+        """The warning line is in the Markdown of station, point and max tools."""
+        from stofs_mcp.tools.forecast import (
+            stofs_get_max_water_level,
+            stofs_get_point_forecast,
+            stofs_get_station_forecast,
+        )
+
+        model = STOFSModel.ATLANTIC_3D
+        outputs = [
+            await stofs_get_station_forecast(
+                self._ctx(station_nc, ZETA_3D_V21),
+                station_id="8443970",
+                model=model,
+                **self.CYCLE,
+            ),
+            await stofs_get_point_forecast(
+                self._ctx(station_nc, ZETA_3D_V21),
+                latitude=42.35,
+                longitude=-71.05,
+                model=model,
+                **self.CYCLE,
+            ),
+            await stofs_get_max_water_level(
+                self._ctx(station_nc, ZETA_3D_V21), model=model, **self.CYCLE
+            ),
+        ]
+        for text in outputs:
+            assert "Datum warning" in text and "NOAA documents LMSL" in text
+
+    @pytest.mark.asyncio
+    async def test_compare_carries_the_warning_in_provenance(self, station_nc):
+        """The comparison proceeds on the file's datum and reports the warning."""
+        from unittest.mock import AsyncMock
+
+        from stofs_mcp.tools.validation import stofs_compare_with_observations
+
+        start = "2026-09-01 12:00"
+        path = station_nc(ZETA_3D_V21, start, [0.2] * 50)
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(return_value=path)
+        client.fetch_coops_observations = AsyncMock(
+            return_value={
+                "data": [{"t": t, "v": "0.100"} for t in six_minute_times(start, 50)]
+            }
+        )
+        parsed = json.loads(
+            await stofs_compare_with_observations(
+                make_ctx(client),
+                station_id="8443970",
+                model=STOFSModel.ATLANTIC_3D,
+                hours_to_compare=4,
+                response_format="json",
+                **self.CYCLE,
+            )
+        )
+        assert client.fetch_coops_observations.call_args.kwargs["datum"] == "NAVD"
+        assert "NOAA documents LMSL" in parsed["datum_provenance"]["warning"]
+
+
 class TestStofs3dSwappedCoordinates:
     """Point lookup works on pre-v3.1 STOFS-3D files with swapped x/y.
 

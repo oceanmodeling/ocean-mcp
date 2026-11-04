@@ -29,6 +29,8 @@ from ..utils import (
     handle_stofs_error,
     parse_station_netcdf,
     resolve_cycle,
+    datum_markdown_lines,
+    datum_provenance,
     resolve_station_datum,
     read_datum_metadata,
     unswap_station_coords,
@@ -156,6 +158,8 @@ async def stofs_get_station_forecast(
                     "cycle_hour": hour_str,
                     "datum": datum,
                     "datum_source": datum_info["datum_source"],
+                    "datum_warning": datum_info["datum_warning"] or None,
+                    "datum_provenance": datum_provenance(datum_info),
                     "lat": data.get("lat"),
                     "lon": data.get("lon"),
                     "model_start": data.get("model_start"),
@@ -173,7 +177,7 @@ async def stofs_get_station_forecast(
                 f"Model: {model_label}",
                 f"Product: {product_label}",
                 f"Cycle: {date_str[:4]}-{date_str[4:6]}-{date_str[6:]} {hour_str}z",
-                f"Datum: {datum} ({datum_info['datum_source']})",
+                *datum_markdown_lines(datum_info),
                 f"Lat/Lon: {data.get('lat', '?')}, {data.get('lon', '?')}",
             ],
         )
@@ -281,6 +285,8 @@ async def stofs_get_point_forecast(
                     "cycle_hour": hour_str,
                     "datum": datum,
                     "datum_source": datum_info["datum_source"],
+                    "datum_warning": datum_info["datum_warning"] or None,
+                    "datum_provenance": datum_provenance(datum_info),
                     "times": times,
                     "values": values,
                 }
@@ -294,7 +300,7 @@ async def stofs_get_point_forecast(
                 f"Nearest STOFS station: {nearest_name.strip()}",
                 f"Distance to nearest station: {distance_km:.1f} km",
                 f"Cycle: {date_str[:4]}-{date_str[4:6]}-{date_str[6:]} {hour_str}z",
-                f"Datum: {datum} ({datum_info['datum_source']})",
+                *datum_markdown_lines(datum_info),
             ],
         )
 
@@ -458,6 +464,8 @@ async def stofs_get_max_water_level(
                     "cycle_hour": hour_str,
                     "datum": datum,
                     "datum_source": datum_info["datum_source"],
+                    "datum_warning": datum_info["datum_warning"] or None,
+                    "datum_provenance": datum_provenance(datum_info),
                     "top_stations": rows,
                 },
                 indent=2,
@@ -468,8 +476,11 @@ async def stofs_get_max_water_level(
             f"**Cycle**: {date_str[:4]}-{date_str[4:6]}-{date_str[6:]} {hour_str}z | "
             f"**Datum**: {datum} | "
             f"**Showing top {len(rows)} stations**",
+            f"*Datum source: {datum_info['datum_source']}*",
             "",
         ]
+        if datum_info["datum_warning"]:
+            lines.insert(2, f"⚠️ **Datum warning**: {datum_info['datum_warning']}")
         if region:
             lines[1] += f" | **Region**: {region.value}"
 
@@ -484,7 +495,11 @@ async def stofs_get_max_water_level(
             )
 
         lines.append("")
-        lines.append(f"*Data from NOAA STOFS. Values relative to {datum}.*")
+        lines.append(
+            f"*Data from NOAA STOFS. Values relative to {datum}.*"
+            if datum_info["comparable"]
+            else "*Data from NOAA STOFS. Vertical datum undetermined; see the warning.*"
+        )
         return "\n".join(lines)
 
     except Exception as e:
@@ -624,6 +639,7 @@ async def stofs_get_gridded_forecast(
                     "cycle_date": date_str,
                     "cycle_hour": hour_str,
                     "datum": datum,
+                    "datum_source": "NOAA documentation for the gridded product",
                     "source": "NOMADS OPeNDAP (regular grid)",
                     "n_points": data["n_times"],
                     "times": data["times"],

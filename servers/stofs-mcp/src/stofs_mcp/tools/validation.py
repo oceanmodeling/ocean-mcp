@@ -25,6 +25,7 @@ from ..utils import (
     handle_stofs_error,
     parse_station_netcdf,
     resolve_cycle,
+    datum_provenance,
     resolve_station_datum,
 )
 
@@ -355,16 +356,7 @@ async def stofs_compare_with_observations(
                 "cycle_hour": hour_str,
                 "stofs_datum": stofs_datum,
                 "stofs_datum_source": datum_info["datum_source"],
-                "datum_provenance": {
-                    k: datum_info[k]
-                    for k in (
-                        "resolution",
-                        "datum_source",
-                        "documented_datum",
-                        "attributes",
-                        "product_version",
-                    )
-                },
+                "datum_provenance": datum_provenance(datum_info),
                 **(
                     {"stofs_datum_warning": datum_info["datum_warning"]}
                     if datum_info["datum_warning"]

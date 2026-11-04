@@ -149,7 +149,9 @@ class STOFSClient:
             station_id: CO-OPS station ID (e.g., '8518750').
             begin_date: Start date in YYYYMMDD or 'YYYYMMDD HH:MM' format.
             end_date: End date in YYYYMMDD or 'YYYYMMDD HH:MM' format.
-            datum: Vertical datum — 'MSL' for 2D-Global, 'NAVD' for 3D-Atlantic.
+            datum: CO-OPS datum identifier ('MSL', 'NAVD', 'MLLW', ...). Callers
+                derive it from the station file's resolved datum
+                (models.COOPS_DATUM_FOR_MODEL_DATUM); it is version-dependent.
 
         Returns:
             CO-OPS API JSON response with 'data' list.
