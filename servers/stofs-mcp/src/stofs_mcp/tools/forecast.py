@@ -30,7 +30,7 @@ from ..utils import (
     parse_station_netcdf,
     resolve_cycle,
     resolve_station_datum,
-    station_datum_label,
+    read_datum_metadata,
     unswap_station_coords,
 )
 
@@ -368,7 +368,7 @@ async def stofs_get_max_water_level(
             if not zeta_var_name:
                 return "Could not find water level variable in STOFS NetCDF file."
 
-            file_datum, file_datum_label = station_datum_label(nc, zeta_var_name)
+            datum_meta = read_datum_metadata(nc, zeta_var_name)
             zeta = np.array(nc.variables[zeta_var_name][:])
             getattr(nc.variables[zeta_var_name], "_FillValue", 1e37)
             zeta = np.where(np.abs(zeta) > 1e10, np.nan, zeta)
@@ -438,7 +438,14 @@ async def stofs_get_max_water_level(
             model.value,
             date_str,
             hour_str,
-            {"datum": file_datum, "datum_label": file_datum_label},
+            {
+                "datum": datum_meta["datum"],
+                "datum_status": datum_meta["status"],
+                "datum_label": datum_meta["label"],
+                "datum_reference": datum_meta["reference"],
+                "datum_attributes": datum_meta["attributes"],
+                "product": datum_meta["product"],
+            },
         )
         datum = datum_info["datum"]
         model_label = get_model_label(model.value, date_str)

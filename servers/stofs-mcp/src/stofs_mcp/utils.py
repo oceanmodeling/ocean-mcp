@@ -55,66 +55,201 @@ def _decode_station_names(var) -> list[str]:
     return names
 
 
-# Datum tokens in a CF standard_name / long_name, most specific first. The
-# separators are '_' or ' ', so match on non-letter boundaries, not \b.
-_DATUM_PATTERNS = (
-    (re.compile(r"(?<![a-z])navd ?(88)?(?![a-z])"), "NAVD88"),
-    (re.compile(r"(?<![a-z])mllw(?![a-z])|mean[_ ]lower[_ ]low[_ ]water"), "MLLW"),
-    (re.compile(r"(?<![a-z])l?msl(?![a-z])|mean[_ ]sea[_ ]level"), "LMSL"),
-    (re.compile(r"(?<![a-z])xgeoid ?(\d+[a-z]?)?(?![a-z])"), "xGEOID"),
+# ---------------------------------------------------------------------------
+# Vertical datum: classify file metadata, never guess an unfamiliar reference
+# ---------------------------------------------------------------------------
+
+# Known datum tokens in a CF standard_name / long_name. Separators are '_',
+# ' ' or punctuation, so tokens are delimited by non-alphanumerics. Digits
+# count as part of a token: "navd2022" is not NAVD88, "gmsl" is not LMSL.
+_KNOWN_DATUM_PATTERNS = (
+    (re.compile(r"(?<![a-z0-9])navd(?:[ _]?88)?(?![ _]?\d)(?![a-z0-9])"), "NAVD88"),
+    (
+        re.compile(r"(?<![a-z0-9])mllw(?![a-z0-9])|mean[_ ]lower[_ ]low[_ ]water"),
+        "MLLW",
+    ),
+    (
+        re.compile(r"(?<![a-z0-9])l?msl(?![a-z0-9])|(?<![a-z])mean[_ ]sea[_ ]level"),
+        "LMSL",
+    ),
+    (re.compile(r"(?<![a-z0-9])xgeoid[ _]?(\d+[a-z]?)?(?![a-z0-9])"), "xGEOID"),
 )
+
+# The reference a label names explicitly: "..._above_<ref>", "relative to <ref>".
+_REFERENCE_PHRASE = re.compile(
+    r"(?:above|relative[_ ]to|referenced[_ ]to|with[_ ]respect[_ ]to)[_ ]+([a-z0-9][a-z0-9_ ]*)"
+)
+
+# References that name no specific vertical datum. ADCIRC writes
+# "sea_surface_height_above_geoid" whatever the actual reference.
+_GENERIC_REFERENCES = {"geoid"}
+
+
+def classify_datum_label(
+    label: str | None, explicit_reference: bool = False
+) -> dict[str, str | None]:
+    """Classify one water-level label by the vertical datum it names.
+
+    ``explicit_reference=True`` is for attributes whose whole value is a datum
+    name (global ``datum`` / ``vertical_datum``): an unknown value there is
+    'unsupported', not 'generic'.
+
+    Returns {'status', 'datum', 'reference'} where status is one of:
+
+    - 'absent': no label;
+    - 'generic': names no specific datum (no reference, or ADCIRC's "geoid");
+    - 'recognized': names exactly one known datum ('datum' is set);
+    - 'unsupported': names an explicit reference this server does not know,
+      e.g. NGVD29 or NAVD2022 ('reference' is set);
+    - 'conflicting': names more than one known datum.
+    """
+    text = (label or "").strip().lower()
+    if not text:
+        return {"status": "absent", "datum": None, "reference": None}
+
+    found: list[str] = []
+    for pattern, name in _KNOWN_DATUM_PATTERNS:
+        for match in pattern.finditer(text):
+            datum = name
+            if name == "xGEOID":  # keep the model version, e.g. xGEOID20b
+                datum = "xGEOID" + (match.group(1) or "")
+            if datum not in found:
+                found.append(datum)
+    phrase = _REFERENCE_PHRASE.search(text)
+    reference = phrase.group(1).strip(" _") if phrase else None
+    if explicit_reference and reference is None:
+        reference = text
+
+    if len(found) > 1:
+        return {"status": "conflicting", "datum": None, "reference": ", ".join(found)}
+    if found:
+        return {"status": "recognized", "datum": found[0], "reference": reference}
+    if reference and reference not in _GENERIC_REFERENCES:
+        return {"status": "unsupported", "datum": None, "reference": reference}
+    return {"status": "generic", "datum": None, "reference": reference}
 
 
 def datum_from_label(label: str | None) -> str | None:
-    """Map a water-level variable label to a vertical datum name.
+    """The single known datum a label names, else None (see classify_datum_label)."""
+    return classify_datum_label(label)["datum"]
 
-    Returns 'NAVD88', 'MLLW', 'LMSL' or 'xGEOID…', or None when the label
-    names no specific datum. A bare "geoid" (ADCIRC's default
-    ``sea_surface_height_above_geoid``, written by STOFS-2D-Global whatever
-    the actual reference) is deliberately ambiguous and returns None.
+
+def _product_signature(nc) -> dict[str, str]:
+    """Identify the producing system from global attributes (model, title,
+    version, and the STOFS package version in ``history``)."""
+    sig: dict[str, str] = {}
+    for attr in ("model", "title", "version", "source"):
+        value = getattr(nc, attr, None)
+        if value is not None:
+            sig[attr] = str(value).split("!")[0].strip()
+    history = str(getattr(nc, "history", "") or "")
+    match = re.search(r"stofs\.v(\d+(?:\.\d+)*)", history)
+    if match:
+        sig["package"] = f"stofs.v{match.group(1)}"
+    title = sig.get("title", "")
+    match = re.search(
+        r"(STOFS_2D_GLOBAL|ESTOFS GLOBAL)[ ._]*V?(\d+(?:\.\d+)*)", title, re.I
+    )
+    if match:
+        sig["product_version"] = f"{match.group(1).upper()} V{match.group(2)}"
+    elif "package" in sig:
+        sig["product_version"] = sig["package"]
+    return sig
+
+
+def read_datum_metadata(nc, zeta_var_name: str | None) -> dict[str, Any]:
+    """Collect and classify every datum-bearing attribute of a station file.
+
+    Inspects zeta's ``standard_name`` and ``long_name`` and the legacy global
+    ``datum`` / ``vertical_datum``, never ``history`` (it names conversion
+    scripts, not the result). All raw attribute values are kept.
+
+    Returns a dict with 'status' (absent / generic / recognized / unsupported
+    / conflicting, combined over all attributes), 'datum' ('' unless
+    recognized), 'label' (the deciding attribute), 'reference', 'attributes'
+    ({name: raw value}) and 'product' (global-attribute signature).
     """
-    text = (label or "").lower()
-    for pattern, name in _DATUM_PATTERNS:
-        match = pattern.search(text)
-        if match:
-            if name == "xGEOID":  # keep the model version, e.g. xGEOID20b
-                return "xGEOID" + (match.group(1) or "")
-            return name
-    return None
-
-
-def station_datum_label(nc, zeta_var_name: str | None) -> tuple[str, str]:
-    """Read the datum named by a station file's water-level variable.
-
-    Checks zeta's ``standard_name`` then ``long_name``, then the legacy global
-    ``datum`` / ``vertical_datum`` attributes. Never the global ``history``:
-    it names conversion scripts (``..._xgeoid_to_msl.nco``), not the result.
-
-    Returns:
-        (datum, label): datum is '' when no attribute names a specific datum;
-        label is the attribute text inspected, e.g.
-        'zeta:standard_name=sea_surface_height_above_navd88'.
-    """
-    candidates: list[tuple[str, str]] = []
+    attributes: dict[str, str] = {}
     if zeta_var_name and zeta_var_name in nc.variables:
         var = nc.variables[zeta_var_name]
         for attr in ("standard_name", "long_name"):
             value = getattr(var, attr, None)
             if value:
-                candidates.append((f"{zeta_var_name}:{attr}", str(value)))
+                attributes[f"{zeta_var_name}:{attr}"] = str(value)
     for attr in ("datum", "vertical_datum"):
         value = getattr(nc, attr, None)
         if value:
-            candidates.append((f":{attr}", str(value)))
+            attributes[f":{attr}"] = str(value)
 
-    for where, value in candidates:
-        datum = datum_from_label(value)
-        if datum:
-            return datum, f"{where}={value}"
-    if candidates:
-        where, value = candidates[0]
-        return "", f"{where}={value}"
-    return "", ""
+    combined = combine_datum_attributes(attributes)
+    combined["product"] = _product_signature(nc)
+    return combined
+
+
+def combine_datum_attributes(attributes: dict[str, str]) -> dict[str, Any]:
+    """Combine per-attribute classifications into one file-level verdict.
+
+    An unsupported reference or two different known datums make the file
+    'unsupported' / 'conflicting'; generic labels never conflict with a
+    specific one.
+    """
+    classified = {
+        k: classify_datum_label(v, explicit_reference=k.startswith(":"))
+        for k, v in attributes.items()
+    }
+    unsupported = [k for k, c in classified.items() if c["status"] == "unsupported"]
+    recognized = {
+        k: c["datum"] for k, c in classified.items() if c["status"] == "recognized"
+    }
+    conflicting = [k for k, c in classified.items() if c["status"] == "conflicting"]
+    distinct = sorted(set(recognized.values()))
+
+    def fmt(keys):
+        return "; ".join(f"{k}={attributes[k]}" for k in keys)
+
+    if unsupported:
+        k = unsupported[0]
+        status, datum, label, ref = (
+            "unsupported",
+            "",
+            fmt(unsupported),
+            classified[k]["reference"],
+        )
+    elif conflicting or len(distinct) > 1:
+        keys = conflicting + [k for k in recognized if k not in conflicting]
+        status, datum, label, ref = "conflicting", "", fmt(keys), None
+    elif distinct:
+        k = next(iter(recognized))
+        status, datum, label, ref = "recognized", distinct[0], fmt([k]), None
+    elif attributes:
+        status, datum, label, ref = "generic", "", fmt(list(attributes)[:1]), None
+    else:
+        status, datum, label, ref = "absent", "", "", None
+    return {
+        "status": status,
+        "datum": datum,
+        "label": label,
+        "reference": ref,
+        "attributes": attributes,
+    }
+
+
+def _documented_fallback_applies(model: str, product: dict[str, str]) -> bool:
+    """Whether NOAA's documented datum may stand in for a generic/absent label.
+
+    Only for the recognized legacy case: STOFS-2D-Global (and its predecessor
+    ESTOFS-Global) station files are ADCIRC output whose zeta always carries
+    the generic "above geoid" label, while NOAA documents the product as LMSL.
+    No fallback for STOFS-3D (its files name the datum explicitly) or for an
+    unrecognized producer, so an unfamiliar future file is never silently
+    assigned a datum.
+    """
+    if model != "2d_global":
+        return False
+    title = product.get("title", "").upper()
+    return product.get("model", "").upper() == "ADCIRC" and (
+        "STOFS_2D_GLOBAL" in title or "ESTOFS GLOBAL" in title
+    )
 
 
 def resolve_station_datum(
@@ -122,47 +257,105 @@ def resolve_station_datum(
     date: str,
     hour: str,
     parsed: dict[str, Any] | None = None,
-) -> dict[str, str]:
-    """Decide which datum a station file's values are referenced to.
+) -> dict[str, Any]:
+    """Decide which datum a station file's values are referenced to, if any.
 
-    The file's own zeta metadata wins when it names a datum. Otherwise
-    (no label, or ADCIRC's generic "geoid" label) the datum NOAA documents
-    for that model and cycle date is used, and ``datum_source`` says so.
+    - A recognized datum in the file metadata is used; a warning is added when
+      it differs from what NOAA documents for that model and cycle.
+    - An unsupported explicit reference or conflicting attributes give datum
+      'undetermined' and comparable=False, with the reason in the warning.
+    - A generic/absent label falls back to the documented datum only for the
+      recognized STOFS-2D/ESTOFS ADCIRC signature; otherwise 'undetermined'.
 
     Args:
         model: '2d_global' or '3d_atlantic'.
         date: Cycle date, YYYYMMDD.
         hour: Cycle hour, HH.
-        parsed: Result of parse_station_netcdf (needs 'datum'/'datum_label').
+        parsed: Result of parse_station_netcdf ('datum_status', 'datum',
+            'datum_label', 'datum_attributes', 'product').
 
     Returns:
-        Dict with 'datum', 'datum_source', and 'datum_warning' ('' if none).
+        Dict with 'datum', 'resolution' (file_metadata / documented_fallback /
+        undetermined), 'comparable', 'datum_source', 'datum_warning' ('' if
+        none), 'documented_datum', 'attributes' and 'product_version'.
     """
     from .models import documented_station_datum
 
     parsed = parsed or {}
     documented = documented_station_datum(model, date, hour)
-    file_datum = parsed.get("datum") or ""
+    status = parsed.get("datum_status") or (
+        "recognized" if parsed.get("datum") else "absent"
+    )
     label = parsed.get("datum_label") or ""
+    product = parsed.get("product") or {}
+    base = {
+        "documented_datum": documented,
+        "attributes": parsed.get("datum_attributes") or {},
+        "product_version": product.get("product_version", ""),
+    }
 
-    if file_datum:
+    if status == "recognized":
+        datum = parsed.get("datum") or ""
         warning = ""
-        if file_datum != documented:
+        if datum != documented:
             warning = (
-                f"File metadata says {file_datum}, but NOAA documents {documented} "
-                f"for this cycle; using the file's {file_datum}."
+                f"File metadata says {datum}, but NOAA documents {documented} for "
+                f"this model and cycle; using the file's {datum}."
             )
-        return {
-            "datum": file_datum,
+        return base | {
+            "datum": datum,
+            "resolution": "file_metadata",
+            "comparable": True,
             "datum_source": f"file metadata: {label}",
             "datum_warning": warning,
         }
-
-    why = f"file label {label} names no specific datum" if label else "no file label"
-    return {
-        "datum": documented,
-        "datum_source": f"NOAA documentation for this cycle; {why}",
-        "datum_warning": "",
+    if status == "unsupported":
+        return base | {
+            "datum": "undetermined",
+            "resolution": "undetermined",
+            "comparable": False,
+            "datum_source": f"file metadata: {label}",
+            "datum_warning": (
+                f"The file references '{parsed.get('datum_reference')}', a vertical "
+                "datum this server does not recognize; values are not paired with "
+                "any CO-OPS datum."
+            ),
+        }
+    if status == "conflicting":
+        return base | {
+            "datum": "undetermined",
+            "resolution": "undetermined",
+            "comparable": False,
+            "datum_source": f"file metadata: {label}",
+            "datum_warning": (
+                "The file's datum attributes contradict each other "
+                f"({label}); values are not paired with any CO-OPS datum."
+            ),
+        }
+    if _documented_fallback_applies(model, product):
+        why = (
+            f"file label {label} names no specific datum" if label else "no file label"
+        )
+        return base | {
+            "datum": documented,
+            "resolution": "documented_fallback",
+            "comparable": True,
+            "datum_source": (
+                f"NOAA documentation for {product.get('product_version') or 'this product'}; {why}"
+            ),
+            "datum_warning": "",
+        }
+    return base | {
+        "datum": "undetermined",
+        "resolution": "undetermined",
+        "comparable": False,
+        "datum_source": f"file metadata: {label}"
+        if label
+        else "no datum metadata in file",
+        "datum_warning": (
+            "The file names no specific vertical datum and is not a product with a "
+            "documented default; values are not paired with any CO-OPS datum."
+        ),
     }
 
 
@@ -214,8 +407,11 @@ def parse_station_netcdf(
             - 'n_stations': total station count
             - 'n_times': total time steps
             - 'datum': datum named by the zeta metadata ('NAVD88', 'LMSL',
-              ...) or '' when the label is absent or ambiguous
-            - 'datum_label': the attribute the datum was read from
+              ...) or '' unless recognized
+            - 'datum_status': absent / generic / recognized / unsupported /
+              conflicting (see read_datum_metadata)
+            - 'datum_label', 'datum_reference', 'datum_attributes' (all raw
+              datum-bearing attributes), 'product' (global-attribute signature)
             If station_id provided, also:
             - 'station_id': the matched station ID
             - 'station_idx': index in the array
@@ -273,7 +469,7 @@ def parse_station_netcdf(
         n_times = len(nc.variables[time_var_name])
 
         # --- Datum, from the water-level variable's own metadata ---
-        datum, datum_label = station_datum_label(nc, zeta_var_name)
+        dm = read_datum_metadata(nc, zeta_var_name)
 
         result: dict[str, Any] = {
             "station_names": station_names,
@@ -281,8 +477,12 @@ def parse_station_netcdf(
             "lons": lons,
             "n_stations": n_stations,
             "n_times": n_times,
-            "datum": datum,
-            "datum_label": datum_label,
+            "datum": dm["datum"],
+            "datum_status": dm["status"],
+            "datum_label": dm["label"],
+            "datum_reference": dm["reference"],
+            "datum_attributes": dm["attributes"],
+            "product": dm["product"],
         }
 
         if station_id is None:

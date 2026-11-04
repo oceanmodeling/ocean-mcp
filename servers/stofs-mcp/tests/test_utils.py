@@ -24,11 +24,20 @@ from stofs_mcp.utils import (
     parse_station_netcdf,
     resolve_cycle,
     resolve_station_datum,
+    classify_datum_label,
+    combine_datum_attributes,
     datum_from_label,
     unswap_station_coords,
 )
 
-from .conftest import ZETA_2D, ZETA_3D_V21, ZETA_3D_V31
+from .conftest import (
+    GLOBAL_2D,
+    GLOBAL_3D_V31,
+    GLOBAL_ESTOFS,
+    ZETA_2D,
+    ZETA_3D_V21,
+    ZETA_3D_V31,
+)
 
 
 # ---------------------------------------------------------------------------
@@ -548,39 +557,201 @@ class TestParseStationNetcdfDatum:
         assert "sea_surface_height_above_geoid" in meta["datum_label"]
 
 
+class TestClassifyDatumLabel:
+    """Labels are classified; unfamiliar explicit references are not guessed."""
+
+    @pytest.mark.parametrize(
+        "label,status,datum",
+        [
+            ("sea_surface_height_above_navd88", "recognized", "NAVD88"),
+            ("water level above NAVD", "recognized", "NAVD88"),
+            ("sea_surface_height_above_msl", "recognized", "LMSL"),
+            ("sea_surface_height_above_mean_sea_level", "recognized", "LMSL"),
+            ("height above MLLW", "recognized", "MLLW"),
+            ("water surface elevation above xgeoid20b", "recognized", "xGEOID20b"),
+            ("sea_surface_height_above_geoid", "generic", None),
+            ("water surface elevation", "generic", None),
+            ("", "absent", None),
+            (None, "absent", None),
+        ],
+    )
+    def test_known_generic_and_absent(self, label, status, datum):
+        """Known datums are recognized; generic and absent labels name none."""
+        c = classify_datum_label(label)
+        assert (c["status"], c["datum"]) == (status, datum)
+
+    @pytest.mark.parametrize(
+        "label,reference",
+        [
+            ("sea_surface_height_above_ngvd29", "ngvd29"),
+            ("sea_surface_height_above_NAVD2022", "navd2022"),
+            ("water level above navd 2022", "navd 2022"),
+            ("sea_surface_height_above_reference_ellipsoid", "reference_ellipsoid"),
+            ("water level above GMSL", "gmsl"),
+        ],
+    )
+    def test_unfamiliar_explicit_reference_is_unsupported(self, label, reference):
+        """NGVD29, NAVD2022, ellipsoid and global MSL are not mapped to a known datum."""
+        c = classify_datum_label(label)
+        assert c["status"] == "unsupported"
+        assert c["reference"] == reference
+        assert datum_from_label(label) is None
+
+    def test_two_datums_in_one_label_conflict(self):
+        """A label naming two different datums is conflicting, not first-match."""
+        c = classify_datum_label("water level relative to MLLW and NAVD88")
+        assert c["status"] == "conflicting"
+        assert datum_from_label("water level relative to MLLW and NAVD88") is None
+
+
+class TestCombineDatumAttributes:
+    """File-level verdicts across standard_name, long_name and global attrs."""
+
+    def test_specific_attributes_that_disagree_conflict(self):
+        """NAVD88 standard_name vs MSL long_name is a conflict (review C1)."""
+        out = combine_datum_attributes(
+            {
+                "zeta:standard_name": "sea_surface_height_above_navd88",
+                "zeta:long_name": "water surface elevation above msl",
+            }
+        )
+        assert out["status"] == "conflicting"
+        assert "above_navd88" in out["label"] and "above msl" in out["label"]
+
+    def test_generic_does_not_conflict_with_specific(self):
+        """A generic 'geoid' long_name does not override a specific standard_name."""
+        out = combine_datum_attributes(
+            {
+                "zeta:standard_name": "sea_surface_height_above_msl",
+                "zeta:long_name": "water surface elevation above geoid",
+            }
+        )
+        assert (out["status"], out["datum"]) == ("recognized", "LMSL")
+
+    def test_unsupported_wins_over_recognized(self):
+        """Any unsupported explicit reference blocks interpretation."""
+        out = combine_datum_attributes(
+            {
+                "zeta:standard_name": "sea_surface_height_above_navd88",
+                ":vertical_datum": "NGVD29",
+            }
+        )
+        assert out["status"] == "unsupported"
+
+    def test_raw_attributes_are_preserved(self):
+        """Every inspected attribute is returned verbatim."""
+        attrs = {"zeta:standard_name": "sea_surface_height_above_geoid"}
+        assert combine_datum_attributes(attrs)["attributes"] == attrs
+
+
+class TestProductSignature:
+    """parse_station_netcdf identifies the producing system and version."""
+
+    def test_3d_v31_package_version(self, station_nc):
+        """The STOFS package version is read from the 3D history attribute."""
+        path = station_nc(
+            ZETA_3D_V31, "2026-10-29 12:00", [0.1], global_attrs=GLOBAL_3D_V31
+        )
+        assert (
+            parse_station_netcdf(path)["product"]["product_version"] == "stofs.v3.1.4"
+        )
+
+    def test_2d_title_version(self, station_nc):
+        """The 2D product version is read from ADCIRC's padded title."""
+        path = station_nc(ZETA_2D, "2026-10-30 06:00", [0.1], global_attrs=GLOBAL_2D)
+        product = parse_station_netcdf(path)["product"]
+        assert product["model"] == "ADCIRC"
+        assert product["product_version"] == "STOFS_2D_GLOBAL V3.1.0"
+
+    def test_estofs_title_version(self, station_nc):
+        """The pre-2023 ESTOFS archive title is recognized too."""
+        path = station_nc(
+            ZETA_2D, "2022-12-01 00:00", [0.1], global_attrs=GLOBAL_ESTOFS
+        )
+        assert parse_station_netcdf(path)["product"]["product_version"] == (
+            "ESTOFS GLOBAL V2.1.0"
+        )
+
+
+def _meta(status, datum="", label="", reference=None, product=None):
+    return {
+        "datum": datum,
+        "datum_status": status,
+        "datum_label": label,
+        "datum_reference": reference,
+        "datum_attributes": {},
+        "product": product or {},
+    }
+
+
+ADCIRC_2D = {"model": "ADCIRC", "title": "STOFS_2D_GLOBAL.V3.1.0"}
+
+
 class TestResolveStationDatum:
-    """resolve_station_datum prefers file metadata over the documented rule."""
+    """resolve_station_datum: file metadata first, fallback only when safe."""
 
     def test_file_metadata_wins(self):
         """An unambiguous file label is used and cited as the source."""
         out = resolve_station_datum(
-            "3d_atlantic",
-            "20260818",
-            "12",
-            {"datum": "LMSL", "datum_label": "zeta:standard_name=..._msl"},
+            "3d_atlantic", "20260818", "12", _meta("recognized", "LMSL", "zeta:..._msl")
         )
         assert out["datum"] == "LMSL"
+        assert out["comparable"] is True
+        assert out["resolution"] == "file_metadata"
         assert out["datum_source"].startswith("file metadata")
         assert out["datum_warning"] == ""
 
-    def test_ambiguous_label_falls_back_to_documented(self):
-        """2D 'geoid' label -> documented LMSL, and the source says why."""
+    def test_2d_generic_label_with_adcirc_signature_falls_back(self):
+        """2D 'geoid' label from an ADCIRC STOFS-2D file -> documented LMSL."""
         out = resolve_station_datum(
             "2d_global",
             "20260218",
             "18",
-            {"datum": "", "datum_label": "zeta:standard_name=..._geoid"},
+            _meta("generic", label="zeta:..._geoid", product=ADCIRC_2D),
         )
-        assert out["datum"] == "LMSL"
-        assert "NOAA documentation" in out["datum_source"]
+        assert (out["datum"], out["resolution"]) == ("LMSL", "documented_fallback")
+        assert out["comparable"] is True
         assert "names no specific datum" in out["datum_source"]
 
-    def test_missing_metadata_uses_cycle_date_for_3d(self):
-        """With no label at all, the 3D fallback follows the v3.1 cutover."""
-        before = resolve_station_datum("3d_atlantic", "20260816", "12", {})
-        after = resolve_station_datum("3d_atlantic", "20260817", "12", {})
-        assert before["datum"] == "NAVD88"
-        assert after["datum"] == "LMSL"
+    def test_2d_generic_label_from_unknown_producer_is_undetermined(self):
+        """Without the ADCIRC STOFS-2D signature there is no fallback."""
+        out = resolve_station_datum(
+            "2d_global", "20260218", "18", _meta("generic", label="zeta:..._geoid")
+        )
+        assert out["datum"] == "undetermined"
+        assert out["comparable"] is False
+        assert out["datum_warning"]
+
+    @pytest.mark.parametrize("date", ["20260816", "20260817", "20270101"])
+    def test_3d_without_label_is_undetermined(self, date):
+        """No date-based guess for a 3D file that names no datum."""
+        out = resolve_station_datum("3d_atlantic", date, "12", {})
+        assert out["datum"] == "undetermined"
+        assert out["comparable"] is False
+
+    def test_unsupported_reference_is_undetermined(self):
+        """An NGVD29 label is reported, not replaced by LMSL (review C1)."""
+        out = resolve_station_datum(
+            "3d_atlantic",
+            "20260902",
+            "12",
+            _meta("unsupported", label="zeta:..._ngvd29", reference="ngvd29"),
+        )
+        assert out["datum"] == "undetermined"
+        assert out["comparable"] is False
+        assert "ngvd29" in out["datum_warning"]
+        assert "names no specific datum" not in out["datum_source"]
+
+    def test_conflicting_attributes_are_undetermined(self):
+        """Contradictory attributes block interpretation and are named."""
+        out = resolve_station_datum(
+            "3d_atlantic",
+            "20260902",
+            "12",
+            _meta("conflicting", label="a=navd88; b=msl"),
+        )
+        assert out["comparable"] is False
+        assert "contradict" in out["datum_warning"]
 
     def test_file_contradicting_documentation_is_flagged(self):
         """A NAVD88 label on a post-v3.1 cycle is used but warned about."""
@@ -588,9 +759,10 @@ class TestResolveStationDatum:
             "3d_atlantic",
             "20260901",
             "12",
-            {"datum": "NAVD88", "datum_label": "zeta:standard_name=..._navd88"},
+            _meta("recognized", "NAVD88", "zeta:..._navd88"),
         )
         assert out["datum"] == "NAVD88"
+        assert out["comparable"] is True
         assert "NOAA documents LMSL" in out["datum_warning"]
 
 

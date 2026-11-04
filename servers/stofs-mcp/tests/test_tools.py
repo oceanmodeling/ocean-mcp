@@ -24,7 +24,15 @@ from stofs_mcp.client import (
     STOFSClient,
 )
 from stofs_mcp.models import STOFSModel, STOFSProduct
-from .conftest import ZETA_2D, ZETA_3D_V21, ZETA_3D_V31, six_minute_times
+from .conftest import (
+    GLOBAL_2D,
+    GLOBAL_ESTOFS,
+    ZETA_2D,
+    ZETA_3D_V21,
+    ZETA_3D_V31,
+    adcirc_2d_meta,
+    six_minute_times,
+)
 from stofs_mcp.utils import (
     align_timeseries,
     compute_validation_stats,
@@ -1020,7 +1028,10 @@ class TestCompareWithObservationsOutput:
         monkeypatch.setattr(
             validation,
             "parse_station_netcdf",
-            lambda path, station_id: {"times": self.TIMES, "values": self.FORECAST},
+            lambda path, station_id: (
+                adcirc_2d_meta(GLOBAL_ESTOFS["title"])
+                | {"times": self.TIMES, "values": self.FORECAST}
+            ),
         )
         return make_ctx(client)
 
@@ -1123,7 +1134,9 @@ class TestCompareWithObservationsPeakCutOff:
         monkeypatch.setattr(
             validation,
             "parse_station_netcdf",
-            lambda path, station_id: {"times": self.TIMES, "values": self.RISING},
+            lambda path, station_id: (
+                adcirc_2d_meta() | {"times": self.TIMES, "values": self.RISING}
+            ),
         )
         return make_ctx(client)
 
@@ -1197,10 +1210,12 @@ class TestCompareWithObservationsDatum:
         )
         return client, make_ctx(client)
 
-    async def _run(self, station_nc, zeta_attrs, model, date, hour, start):
+    async def _run(
+        self, station_nc, zeta_attrs, model, date, hour, start, global_attrs=None
+    ):
         from stofs_mcp.tools.validation import stofs_compare_with_observations
 
-        path = station_nc(zeta_attrs, start, [0.2] * 50)
+        path = station_nc(zeta_attrs, start, [0.2] * 50, global_attrs=global_attrs)
         client, ctx = self._ctx(path, start, 50)
         out = await stofs_compare_with_observations(
             ctx,
@@ -1257,11 +1272,90 @@ class TestCompareWithObservationsDatum:
             "2026-02-18",
             "18",
             "2026-02-18 12:00",
+            global_attrs=GLOBAL_2D,
         )
         assert client.fetch_coops_observations.call_args.kwargs["datum"] == "MSL"
         parsed = json.loads(out)
         assert parsed["stofs_datum"] == "LMSL"
         assert "NOAA documentation" in parsed["stofs_datum_source"]
+        assert parsed["datum_provenance"]["resolution"] == "documented_fallback"
+        assert parsed["datum_provenance"]["product_version"] == "STOFS_2D_GLOBAL V3.1.0"
+
+    @pytest.mark.asyncio
+    async def test_2d_geoid_label_without_adcirc_signature_is_refused(self, station_nc):
+        """A generic label from an unrecognized producer gets no assumed datum."""
+        client, out = await self._run(
+            station_nc,
+            ZETA_2D,
+            STOFSModel.GLOBAL_2D,
+            "2026-02-18",
+            "18",
+            "2026-02-18 12:00",
+        )
+        assert out.startswith("No comparison")
+        client.fetch_coops_observations.assert_not_called()
+
+    @pytest.mark.asyncio
+    async def test_unsupported_explicit_datum_is_refused(self, station_nc):
+        """An NGVD29 label is not mistaken for LMSL on a v3.1 cycle (review C1)."""
+        client, out = await self._run(
+            station_nc,
+            {"standard_name": "sea_surface_height_above_ngvd29"},
+            STOFSModel.ATLANTIC_3D,
+            "2026-09-02",
+            "12",
+            "2026-09-01 12:00",
+        )
+        assert out.startswith("No comparison")
+        assert "ngvd29" in out
+        client.fetch_coops_observations.assert_not_called()
+
+    @pytest.mark.asyncio
+    async def test_future_navd_realization_is_not_navd88(self, station_nc):
+        """'NAVD2022' is a different realization and is refused, not read as NAVD88."""
+        client, out = await self._run(
+            station_nc,
+            {"standard_name": "sea_surface_height_above_NAVD2022"},
+            STOFSModel.ATLANTIC_3D,
+            "2026-09-02",
+            "12",
+            "2026-09-01 12:00",
+        )
+        assert out.startswith("No comparison")
+        client.fetch_coops_observations.assert_not_called()
+
+    @pytest.mark.asyncio
+    async def test_conflicting_attributes_are_refused(self, station_nc):
+        """standard_name NAVD88 vs long_name MSL: refused, both labels reported."""
+        client, out = await self._run(
+            station_nc,
+            {
+                "standard_name": "sea_surface_height_above_navd88",
+                "long_name": "water surface elevation above msl",
+            },
+            STOFSModel.ATLANTIC_3D,
+            "2026-09-02",
+            "12",
+            "2026-09-01 12:00",
+        )
+        assert out.startswith("No comparison")
+        assert "contradict" in out
+        assert "above_navd88" in out and "above msl" in out
+        client.fetch_coops_observations.assert_not_called()
+
+    @pytest.mark.asyncio
+    async def test_3d_file_without_datum_label_is_refused(self, station_nc):
+        """3D files always name their datum; one that does not is not guessed."""
+        client, out = await self._run(
+            station_nc,
+            {},
+            STOFSModel.ATLANTIC_3D,
+            "2026-09-02",
+            "12",
+            "2026-09-01 12:00",
+        )
+        assert out.startswith("No comparison")
+        client.fetch_coops_observations.assert_not_called()
 
     @pytest.mark.asyncio
     async def test_datum_without_coops_equivalent_is_not_compared(self, station_nc):

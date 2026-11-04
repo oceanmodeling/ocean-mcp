@@ -22,6 +22,40 @@ ZETA_2D = {
     "long_name": "water surface elevation above geoid",
 }
 
+# Global attributes identifying the producer, copied from the same real files
+# (ADCIRC pads its titles with "! NCPROJ - PROJECT TITLE").
+GLOBAL_2D = {
+    "model": "ADCIRC",
+    "title": "STOFS_2D_GLOBAL.V3.1.0     ! NCPROJ - PROJECT TITLE",
+}
+GLOBAL_ESTOFS = {
+    "model": "ADCIRC",
+    "title": "ESTOFS GLOBAL V2.1.0       ! NCPROJ - PROJECT TITLE",
+}
+GLOBAL_3D_V21 = {
+    "title": "SCHISM Model output",
+    "history": "ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v2.1.18/fix/stofs_3d_atl/"
+    "stofs_3d_atl_sta_cwl_xgeoid_to_navd.nco in.nc out_navd.nc",
+}
+GLOBAL_3D_V31 = {
+    "title": "SCHISM Model output",
+    "history": "ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v3.1.4/fix/stofs_3d_atl/"
+    "stofs_3d_atl_sta_cwl_xgeoid_to_msl.nco in.nc out_msl.nc",
+}
+
+
+def adcirc_2d_meta(title: str = GLOBAL_2D["title"]) -> dict:
+    """Datum fields parse_station_netcdf returns for a real 2D/ESTOFS file,
+    for tests that stub the parser."""
+    return {
+        "datum": "",
+        "datum_status": "generic",
+        "datum_label": "zeta:standard_name=sea_surface_height_above_geoid",
+        "datum_reference": "geoid",
+        "datum_attributes": {"zeta:standard_name": "sea_surface_height_above_geoid"},
+        "product": {"model": "ADCIRC", "title": title.split("!")[0].strip()},
+    }
+
 
 @pytest.fixture
 async def client():
@@ -39,18 +73,23 @@ def station_nc(tmp_path):
     writes 6-minute ``zeta`` values (same series at every station) starting
     one step after ``start`` ('YYYY-MM-DD HH:MM'), with the real files' layout:
     zeta(time, station), station_name(station, namelen), x/y coordinates
-    (``xy``: one (x, y) pair per station; default Boston, correctly ordered).
+    (``xy``: one (x, y) pair per station; default Boston, correctly ordered)
+    and optional ``global_attrs`` (e.g. GLOBAL_2D) identifying the producer.
     """
     import netCDF4
     import numpy as np
 
     counter = {"n": 0}
 
-    def _write(zeta_attrs, start, values, stations=("8443970",), xy=None):
+    def _write(
+        zeta_attrs, start, values, stations=("8443970",), xy=None, global_attrs=None
+    ):
         counter["n"] += 1
         path = tmp_path / f"station_{counter['n']}.nc"
         nc = netCDF4.Dataset(str(path), "w")
         try:
+            for key, value in (global_attrs or {}).items():
+                setattr(nc, key, value)
             nc.createDimension("time", len(values))
             nc.createDimension("station", len(stations))
             nc.createDimension("namelen", 50)

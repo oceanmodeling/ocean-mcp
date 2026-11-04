@@ -170,6 +170,13 @@ async def stofs_compare_with_observations(
         # CO-OPS request datum follows it, never a fixed per-model choice.
         datum_info = resolve_station_datum(model.value, date_str, hour_str, stofs_data)
         stofs_datum = datum_info["datum"]
+        if not datum_info["comparable"]:
+            return (
+                f"No comparison: the vertical datum of the STOFS values for station "
+                f"{station_id} could not be established. "
+                f"{datum_info['datum_warning']} "
+                f"Datum attributes: {json.dumps(datum_info['attributes'])}."
+            )
         coops_datum = COOPS_DATUM_FOR_MODEL_DATUM.get(stofs_datum)
         if coops_datum is None:
             return (
@@ -348,6 +355,16 @@ async def stofs_compare_with_observations(
                 "cycle_hour": hour_str,
                 "stofs_datum": stofs_datum,
                 "stofs_datum_source": datum_info["datum_source"],
+                "datum_provenance": {
+                    k: datum_info[k]
+                    for k in (
+                        "resolution",
+                        "datum_source",
+                        "documented_datum",
+                        "attributes",
+                        "product_version",
+                    )
+                },
                 **(
                     {"stofs_datum_warning": datum_info["datum_warning"]}
                     if datum_info["datum_warning"]
