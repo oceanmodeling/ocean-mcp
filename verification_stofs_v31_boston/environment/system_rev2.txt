@@ -1,0 +1,7 @@
+captured_at: 2026-11-05T03:54:20Z
+revision: 2 (docs/stofs-v31-boston-example-v2)
+os: Linux 6.6.87.2-microsoft-standard-WSL2 x86_64 GNU/Linux
+uv: uv 0.10.4
+stofs-mcp code for the offline replay (02b): fix/stofs-release-prep db234f7, version 0.3.0
+live MCP run (02): commit 31e7f6a, stofs-mcp 0.2.0 (see system.txt, results/mcp/*.json)
+python (server env): 3.13.2

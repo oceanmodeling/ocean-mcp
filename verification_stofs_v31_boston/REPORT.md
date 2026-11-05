@@ -1,6 +1,13 @@
 # STOFS v3.1 Boston validation case study: technical report
 
-Prepared 2026-11-04 for the Ocean-MCP manuscript (Section 3.1). Branch `docs/stofs-v31-boston-example`, stacked on `fix/stofs-datum-hardening`. Nothing was pushed, merged, tagged or uploaded. `OceanMCP_Manuscript_Draft.docx` was not opened or modified.
+Prepared 2026-11-04 for the Ocean-MCP manuscript (Section 3.1). **Revision 2**, branch `docs/stofs-v31-boston-example-v2`, stacked on `fix/stofs-release-prep`. Revision 1 is on `docs/stofs-v31-boston-example`. Nothing was pushed, merged, tagged or uploaded. `OceanMCP_Manuscript_Draft.docx` was not opened or modified.
+
+> **Revision 2 corrects the datum interpretation of revision 1.** Revision 1 (§3.4, §10.2, §12) stated three things that are now **withdrawn**:
+> - that NOAA's STOFS-3D station LMSL at Boston lies about 4 cm below VDatum's LMSL;
+> - that the 3D forecast bias would be about −0.18 m against VDatum's LMSL;
+> - that 4 cm quantifies the reference uncertainty of the 3D comparison.
+>
+> Those statements rested on a single-site grid proxy. Across 115 stations the same proxy is centred on zero, and NOAA's own conversion constants match VDatum (§3, item 4). This follows the independent audit of 2026-11-04 (`STOFS_V31_FABLE_AUDIT.md` §5.1), whose analysis was reproduced here with this package's own scripts. All forecast statistics are unchanged. The figure is now two panels, with the statistics in a separate table (§9).
 
 Each statement is marked with its evidence class:
 
@@ -13,7 +20,10 @@ Each statement is marked with its evidence class:
 
 ## Summary
 
-- **Software prerequisites [V].** The second review's three critical STOFS blockers were unresolved at `69e721f`; I reproduced each with the review's probes. They are now fixed on `fix/stofs-datum-hardening` (§0). All results below were produced with that code (commit `31e7f6a`) through the MCP stdio protocol.
+- **Software prerequisites [V].**
+  - The second review's three critical STOFS blockers were unresolved at `69e721f`. They are fixed on `fix/stofs-datum-hardening` (§0).
+  - The independent audit then found shifted no-data sentinels in the real v3.1 files and an unbounded 2D datum fallback. Both are fixed on `fix/stofs-release-prep` (stofs-mcp 0.3.0, unreleased).
+  - The comparisons were produced live through the MCP stdio protocol with commit `31e7f6a`, and replayed offline with the 0.3.0 code: identical results (§7).
 - **Case.** One fixed, archived cycle: STOFS-2D-Global v3.1 and STOFS-3D-Atlantic v3.1, 2026-10-30 12:00 UTC, at CO-OPS 8443970 (Boston, MA). It was selected before any statistics were computed (§1).
 - **Common window [V].** Forecast lead 0 < lead ≤ 48 h: the same 480 six-minute valid times for both models, 2026-10-30 12:06 to 2026-11-01 12:00 UTC, exact timestamp matching, no missing records.
 - **Forecast results [V].**
@@ -27,9 +37,10 @@ Each statement is marked with its evidence class:
 - **Caveats on interpretation [D/V].**
   - Both products apply observation-based bias corrections (§8), so this is not an independent assessment of model physics.
   - The observations are CO-OPS **preliminary** data.
-  - NOAA's 3D "LMSL" at Boston sits about **4 cm** from VDatum's LMSL, which matches the CO-OPS MSL datum (§3).
-  - Present-day sea level at Boston is about 0.15–0.20 m above the 1983–2001 MSL datum epoch.
-- **Verdict.** The example is suitable for the manuscript **as a demonstration of retrieval, metadata handling, alignment and reproducible statistics**, not as a skill comparison. Three conditions apply first: release the hardening, rerun once CO-OPS verifies the observations, and deposit the raw inputs in a DOI archive (§11).
+  - NOAA's STOFS-3D station conversion follows VDatum's xGEOID20b→LMSL transformation. VDatum's LMSL matches the CO-OPS MSL datum at Boston. The 3D bias therefore **cannot be attributed to the station datum conversion** (§3).
+  - The remaining reference caveats are the tidal epoch and the unverifiable 2D realization. Present-day sea level at Boston is about 0.15–0.20 m above the 1983–2001 MSL datum epoch.
+  - The 3D error is dominated by tidal phase and amplitude (lag +12 min, σ 12.5% high). The mean bias is 34% of the mean squared error.
+- **Verdict.** The example is suitable for the manuscript **as a demonstration of retrieval, metadata handling, alignment and reproducible statistics**, not as a skill comparison. Three conditions apply first: release stofs-mcp 0.3.0, rerun once CO-OPS verifies the observations, and deposit the raw inputs in a DOI archive (§11).
 
 ---
 
@@ -69,7 +80,24 @@ Verification of the branch [V]:
 
 - Full CI has **not** run, because nothing was pushed.
 
-Not addressed in this work: coordinate validation (second review H1), `swl` residual labelling, VDatum output provenance, the retired gridded route. See §10.
+### Revision 2: fixes after the independent audit (`fix/stofs-release-prep`, stofs-mcp 0.3.0)
+
+| Commit | Change |
+|---|---|
+| `0e07048` | **Audit C-1, critical.** Shifted no-data sentinels: \|v\| ≥ 10⁴ m is excluded as `sentinel`, and 50 m ≤ \|v\| < 10⁴ m as `implausible`, in every tool, counted by reason. The max tool names excluded stations |
+| `52f5ae6` | **Audit M-2.** The STOFS-2D datum fallback is limited to documented versions (V2.1, V3.1; ESTOFS V2.1 with a warning). V4.0 and other unknown versions are `undetermined` |
+| `1240d98` | Audit minor findings: "above the geoid" wording, null quality flags, duplicate model times, NumPy arrays in JSON, docstring |
+| `db234f7` | Audit M-3. The 0.2.0 maps `MODEL_DATUMS` / `COOPS_VALIDATION_DATUMS` are restored as deprecated. Version bumped to 0.3.0, and a CHANGELOG added |
+
+The sentinel defect affected **this cycle's 3D file**, at five Caribbean stations, not Boston:
+- At `31e7f6a`, the max-water-level tool ranked them at 9,999,999.4–9,999,999.6 m.
+- The station tool returned 1,200 values of ≈ 10⁷ m labelled LMSL.
+- `scripts/02b_replay_tools_offline.py` reruns all four affected tools on the archived file with the 0.3.0 code. Those stations are excluded and named, and the top 3D value is 3.3 m at Eastport (`results/replay_offline.json`).
+- The Boston series contains no excluded value, and its comparisons are identical.
+
+0.3.0 verification [V]: 356 tests pass on CPython 3.11.14, 3.12.3 and 3.13.2. CI's lint and format checks pass; the wheel and sdist build; live tests give 5 passed, 2 skipped.
+
+Not addressed: coordinate validation (second review H1), `swl` residual labelling, VDatum output provenance, the retired gridded route. See §10.
 
 ---
 
@@ -131,13 +159,51 @@ No offset was applied anywhere. These are evaluations of the reference, not corr
 3. **VDatum's LMSL matches the CO-OPS MSL datum at Boston [V].** VDatum gives NAVD88→LMSL **0.0917 m** at the gauge; CO-OPS gives NAVD88 − MSL **0.092 m**.
    - Grids: `us_noaa_nos_LMSL-ITRF2020_2020.0_nwldatum_4.7.0_20240621_3.tif`, `xGEOID20B.tif`, `us_noaa_g2018u0.tif`.
    - The ITRF2020 2020.0 frame epoch in the grid names is a different concept from the 1983–2001 tidal epoch.
-4. **NOAA's 3D "LMSL" realization at Boston [V, estimate].** For this same cycle, 3D station values minus the native xGEOID20b GRIB2 field at the nearest wet cell (0.86 km away) is **+0.4583 m** (sd 0.0052 m over 49 h). VDatum's xGEOID20b→LMSL there is **+0.4176 m**.
-   - NOAA's station LMSL zero therefore lies about **0.041 m below** VDatum's LMSL surface at Boston. The next two wet cells (5.3 and 5.5 km away) give 0.456 and 0.461 m.
-   - Measured against VDatum's LMSL, the 3D values would be about 4 cm lower and the 3D forecast bias about −0.18 m instead of −0.143 m. **This is not applied.** It quantifies a reference uncertainty of order 4 cm for the 3D comparison.
-   - Caveats: grid cell versus station location, regridding of the native mesh, a single cycle.
+4. **NOAA's 3D station LMSL is the VDatum LMSL [V].** Two independent lines of evidence for this cycle come from `scripts/05c`–`05e`, written to `results/allstations_grid_vs_vdatum.json`.
+
+   **(a) NOAA's own conversion constants.** Five Caribbean stations hold 1e7 + c for every record, a no-data value to which NOAA's xGEOID20b→LMSL post-processing added the station constant c. So c can be read directly, with no grid involved:
+
+   | Station | NOAA c (m) | VDatum xGEOID20b→LMSL (m) | NOAA − VDatum (m) |
+   |---|---:|---:|---:|
+   | 9751401 Lime Tree Bay, VI | −0.5562 | −0.5565 | +0.0003 |
+   | 9752235 Culebra, PR | −0.4500 | −0.4506 | +0.0006 |
+   | 9751381 Lameshur Bay, VI | −0.4180 | −0.4171 | −0.0009 |
+   | 9752695 Esperanza, PR | −0.4768 | −0.4833 | +0.0064 |
+   | 9751364 Christiansted, VI | −0.5893 | −0.5645 | −0.0248 |
+
+   **(b) Station minus grid, at every station.** The criteria are those of the audit:
+   - a wet GRIB2 cell (finite in all 49 hourly fields) within 4 km;
+   - an hourly station-minus-grid SD below 5 cm over lead 0–48 h;
+   - residual = mean(station − xGEOID20b grid) − VDatum xGEOID20b→LMSL at the station.
+
+   133 stations have a wet cell within 4 km, and **115** meet both criteria:
+
+   | Statistic | Residual (m) |
+   |---|---:|
+   | Median | +0.0001 |
+   | Mean | +0.0003 |
+   | SD (sample / population) | 0.0455 / 0.0453 |
+   | 10th / 90th percentile | −0.0130 / +0.0277 |
+   | Northeast, lat > 40 N, n = 17: median, SD (population) | −0.0008, 0.0168 |
+   | Largest \|residual\| | Pilottown, LA −0.439 (Mississippi River); Dahlgren, VA +0.103; Freeport Harbor, TX +0.065 |
+
+   **Interpretation.** NOAA's station conversion follows the VDatum xGEOID20b→LMSL transformation (the vendored `nwldatum_4.7.0` grids). The constants agree to within 1 mm at three sites, and the all-station residual is centred on zero.
+
+   **Boston.** Station minus grid at the nearest wet cell (0.86 km) is +0.4583 m (SD 0.0052 m), against VDatum's +0.4176 m, a residual of **+0.0407 m**.
+   - It is the largest of the 17 Northeast stations, and its |residual| exceeds that of 93% of all 115.
+   - It is a **station-versus-grid-cell residual, not a datum difference.** The inner harbour is below the 2.5 km grid scale, with one wet cell within 3 km. The proxy's site-level spread (SD ≈ 4.5 cm, tails of ±3–10 cm) is as large as the residual.
+   - The 5.3 and 5.5 km cells that revision 1 cited as corroboration are compared with the same Boston series, so they are not independent evidence.
+
+   **Not claimed.** This does not establish millimetre-level absolute accuracy of the reference at Boston:
+   - Site-level departures of NOAA's constant from the vendored VDatum version cannot be excluded at Boston, as Christiansted shows (−2.5 cm, plausibly a grid-version difference), although nothing indicates one.
+   - VDatum's own transformation uncertainty is not quantified here.
+   - At the gauge, VDatum's direct xGEOID20b→LMSL path (0.4176 m) and its path through NAVD88 (0.3305 + 0.0917 = 0.4222 m) differ by 4.6 mm.
 5. **2D realization [U].** The 2D files carry no specific label, and there is no xGEOID-based gridded product to test the conversion against, so NOAA's 2D LMSL realization cannot be checked from these data. The 2D station bias correction (§8) ties the output's recent mean to CO-OPS observations, which limits but does not identify any reference difference.
 
-Conclusion: the model LMSL and CO-OPS MSL references are **nominally compatible but not proven identical**. For 3D at Boston the evidence puts the difference at about 4 cm; for 2D it is unresolved. Matching labels alone were not taken as proof of compatibility.
+Conclusion:
+- The STOFS-3D station values are traceable to VDatum LMSL. VDatum LMSL matches the CO-OPS MSL datum at Boston (0.0917 vs 0.092 m via NAVD88). The 3D bias (−0.143 m) therefore cannot be attributed to the station datum conversion.
+- Two reference caveats remain. The first is the tidal epoch: present-day sea level is +0.15–0.20 m above the 1983–2001 datum, and the model must carry that offset through its physics or its observation-based correction. The second is the unverifiable 2D realization.
+- Matching labels alone were not taken as proof of compatibility.
 
 ## 4. Observation retrieval and alignment
 
@@ -200,6 +266,10 @@ The comparison covers n, bias, RMSE, MAE, r, max|e| and max(M) − max(O). Centr
 
 The exact MCP requests and raw responses are in `results/mcp/*.json`, with server `stofs-mcp 0.2.0`, MCP SDK 1.30.0, CPython 3.13.2 and git commit `31e7f6a`.
 
+**Offline replay with the 0.3.0 code [V].** `scripts/02b_replay_tools_offline.py` reruns the four archived requests through the tool functions of `fix/stofs-release-prep` (stofs-mcp 0.3.0), with no network. Station files come from copies of `data/raw`, and observations from the archived CO-OPS response.
+- All four comparisons are **identical** to the live MCP responses: same series, statistics and peak error (`results/replay_offline.json`).
+- The archived NetCDF checksums are unchanged by the run.
+
 ## 8. Operational bias correction: caveats
 
 Both products use recent CO-OPS observations operationally. **The results are not an independent validation of uncorrected model physics.**
@@ -211,19 +281,31 @@ Both products use recent CO-OPS observations operationally. **The results are no
 
 ## 9. Figures and reproduction
 
-Files in `figures/`:
+**Publication figure (revision 2), two panels**, produced by `scripts/06b_figure_two_panel.py`:
 
-- `boston_stofs_v31_validation.pdf` and `.svg` (vector);
-- `boston_stofs_v31_validation_300dpi.png` (2244×2580);
-- `boston_stofs_v31_validation_preview.png` (150 dpi, 1122×1290, for on-screen review).
+- `figures/boston_stofs_v31_fig.pdf` and `.svg` (vector);
+- `figures/boston_stofs_v31_fig_300dpi.png` (2244×1560);
+- `figures/boston_stofs_v31_fig_preview.png` (150 dpi, 1122×780, for on-screen review).
 
-The panels are:
+Design:
 
-- **A:** observed, 2D and 3D water level over the common forecast window, with valid time on the bottom axis and lead time on the top axis;
-- **B:** signed errors on the same axis;
-- **C:** the statistics table.
+- Sized for a 190 mm column; every font is 8–8.5 pt at final size, so all are ≥ 7 pt.
+- **A:** observed, 2D and 3D water level over the common forecast window, with valid time below and lead time above. The y-label reads "model LMSL / gauge MSL, no offset applied".
+- **B:** signed errors.
+- No statistics or metadata appear inside the image.
 
-The caption states the cycle, valid times, products, versions, datums, preliminary status and the bias-correction caveat.
+**Caption:** `figures/boston_stofs_v31_fig_caption.md`, generated by `scripts/06c_statistics_table.py` from the results so its numbers cannot drift. It states:
+- cycle, valid times, lead window, product versions, and datums with their provenance;
+- the preliminary status of the observations;
+- both operational bias corrections;
+- that the 3D error is dominated by phase and amplitude;
+- input checksums.
+
+**Statistics table** (`scripts/06c_statistics_table.py`), with definitions and units for all four windows:
+- `results/table_boston_v31_statistics.csv` and `.json` (machine-readable, full precision);
+- `.md` and `.tex` (for typesetting).
+
+The revision-1 three-panel figure (`figures/boston_stofs_v31_validation*`, `scripts/06_figure.py`) is kept for the record and superseded. Its numbers are correct, but its footer type was 6.3 pt and its statistics were rendered as an image.
 
 Reproduction commands, run from the repository root on this branch:
 
@@ -233,19 +315,24 @@ RUN="uv run --no-project --isolated --managed-python --python 3.13 --with-requir
 $RUN scripts/00_fetch_inputs.py --grib      # or --verify-only to check checksums
 $RUN scripts/01_extract_boston.py
 (cd .. && uv run --project servers/stofs-mcp python verification_stofs_v31_boston/scripts/02_run_ocean_mcp.py)
+(cd .. && uv run --project servers/stofs-mcp python verification_stofs_v31_boston/scripts/02b_replay_tools_offline.py)   # offline; exit 1 if a replay differs
 $RUN scripts/03_verify_independent.py      # exit 1 on any Ocean-MCP disagreement
 $RUN scripts/04_datum_assessment.py
 (cd .. && uv run --project servers/vdatum-mcp python verification_stofs_v31_boston/scripts/05a_vdatum_offsets.py)
 $RUN scripts/05b_lmsl_realization_check.py
-$RUN scripts/06_figure.py
+$RUN scripts/05c_station_table.py
+(cd .. && uv run --project servers/vdatum-mcp python verification_stofs_v31_boston/scripts/05d_vdatum_allstations.py)
+$RUN scripts/05e_grid_vs_vdatum_allstations.py
+$RUN scripts/06b_figure_two_panel.py
+$RUN scripts/06c_statistics_table.py
 ```
 
 Notes on running:
 
-- **Offline replay.** With the raw files present and checked, steps 01, 03 (against the archived `results/mcp`), 04, 05b and 06 run offline.
+- **Offline replay.** With the raw files present and checked, steps 01, 02b, 03 (against the archived `results/mcp`), 04, 05b, 05c, 05e, 06b and 06c run offline.
 - **Live steps.**
   - Step 02 fetches live data from S3 and CO-OPS (4 + 4 requests).
-  - Step 05a downloads the VDatum grids on first use.
+  - Steps 05a and 05d download the VDatum grids on first use.
   - Step 00 makes 2 S3 requests (49 more with `--grib`), 4 CO-OPS requests with 2 s pauses, and 4 documentation requests.
 - **Storage.** `data/raw` needs 86 MB.
 - **Paths.** All paths are relative to the package. Set `STOFS_V31_DATA` to keep data elsewhere.
@@ -254,11 +341,14 @@ Notes on running:
 ## 10. Remaining uncertainties and limitations
 
 1. **Preliminary observations [V].** Every matched observation is preliminary and may be revised when CO-OPS verifies the data. The exact response used is archived with its checksum.
-2. **Reference realization [V/U].** NOAA's 3D LMSL at Boston differs from VDatum/CO-OPS MSL by about 4 cm; this estimate rests on a grid proxy and a single cycle. The 2D realization is unverifiable here. CO-OPS MSL is a 1983–2001 epoch datum, while present-day sea level is about 0.15–0.20 m higher.
+2. **Reference [V/U].**
+   - NOAA's 3D station conversion follows VDatum. At Boston no conversion discrepancy is evident, but the grid proxy cannot resolve the reference at one site better than a few centimetres, and VDatum's own uncertainty is not quantified (§3).
+   - The 2D realization is unverifiable here.
+   - CO-OPS MSL is a 1983–2001 epoch datum, while present-day sea level is about 0.15–0.20 m higher. That epoch offset is the one reference effect that is real and unquantified in the comparison.
 3. **Bias corrections [D].** Both products are corrected with CO-OPS observations, and the 2D correction targets station biases directly. The comparison measures the corrected operational guidance.
 4. **Scope.** One station, one cycle and one 48 h window, with serially correlated samples. The models' output points differ by 178 m. This is not a skill assessment and not evidence that either model is more accurate in general. The cycle was not chosen for its statistics.
 5. **Nowcast windows differ** (6 h versus 24 h) and are reported only for completeness.
-6. **Software status.** The results come from unmerged, unreleased code (`31e7f6a`; the package version still reads 0.2.0). A release with a version bump and full supported-Python CI is still needed. The remaining second-review items have not been addressed:
+6. **Software status.** The live results come from `31e7f6a`, and the offline replay from 0.3.0 (`fix/stofs-release-prep`). Both are unmerged and unreleased. A release and full supported-Python CI on GitHub are still needed; Python 3.11–3.13 pass locally. The remaining second-review items have not been addressed:
    - coordinate validation (H1);
    - `swl` semantics (H3);
    - VDatum output provenance (H5).
@@ -269,7 +359,7 @@ Notes on running:
 
 **Suitable as the main Section 3.1 demonstration, under these conditions:**
 
-1. Merge and release `fix/stofs-datum-hardening` (and its base). Cite the released version, and rerun step 02 against the release.
+1. Merge and release `fix/stofs-release-prep` (stofs-mcp 0.3.0) together with its base branches. It contains the sentinel fix, without which the 3D product's Caribbean stations read as 10⁷ m. Cite the released version, and rerun step 02 against the release.
 2. Rerun steps 00–06 once CO-OPS has verified the 2026-10-29 to 11-01 observations, and report any change. Alternatively, state explicitly that the observations are preliminary and cite the archived response.
 3. Deposit the package and the raw inputs (about 33 MB of NetCDF; the GRIB2 files are optional) in a DOI archive.
 4. Present the example as a workflow demonstration, not a model comparison.
@@ -283,8 +373,11 @@ These are instructions, not rewritten prose.
   - 3D LMSL from file metadata (`sea_surface_height_above_msl`, `stofs.v3.1.6`);
   - 2D LMSL from NOAA documentation (its files carry a generic "above geoid" label);
   - CO-OPS MSL (1983–2001 epoch).
-  - Add that no transformation was applied. Report the roughly 4 cm 3D reference uncertainty and the unverifiable 2D realization.
-- **Report** the §6 forecast statistics with definitions and units, and say that observations are preliminary and flags were retained.
+  - Add that no transformation was applied.
+  - Add that the 3D station conversion was checked against VDatum. NOAA's constants match it at sentinel stations, and the residual across 115 stations is centred on zero, so the 3D bias cannot be attributed to the conversion.
+  - Name the remaining caveats: the tidal epoch, and the unverifiable 2D realization.
+  - Do **not** claim a centimetre-level datum difference, or millimetre-level absolute accuracy, at Boston.
+- **Report** the forecast statistics from the separate table (`results/table_boston_v31_statistics.*`) with definitions and units. Describe the 3D error as dominated by phase and amplitude (lag +12 min, σ 12.5% high; bias is 34% of the MSE). Say that observations are preliminary and flags were retained.
 - **Disclose both bias corrections** (§8), and say explicitly that the low 2D bias is expected from its CO-OPS-based station correction.
 - **Do not** rank the models, attribute the 3D bias (−0.143 m) to a datum or to physics, or describe either product as validated.
 - **Demonstrate the software contribution:**

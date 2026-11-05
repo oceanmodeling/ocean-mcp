@@ -1,13 +1,15 @@
-"""Step 5b: where does NOAA's STOFS-3D v3.1 "LMSL" sit at Boston?
+"""Step 5b: Boston station value minus the native xGEOID20b grid (a grid proxy).
 
 STOFS-3D computes on xGEOID20b; its gridded GRIB2 output stays on xGEOID20b
 while the station NetCDF is converted to LMSL. For the same cycle, station
-value minus the gridded value at the nearest wet grid cell is the vertical
-shift NOAA applied at Boston. Compared with VDatum's xGEOID20b->LMSL (step 5a),
-the difference estimates how NOAA's LMSL realization differs from VDatum's
-LMSL, which matches the CO-OPS MSL datum at Boston via NAVD88. This is a
-diagnostic of the reference, not a correction; nothing is applied to the
-comparison.
+value minus the gridded value at the nearest wet grid cell, compared with
+VDatum's xGEOID20b->LMSL (step 5a), gives a residual. At a single site this
+residual mixes any datum-conversion difference with station-versus-cell
+differences (cell placement, regridding, local mean-level gradients). Step 5e
+shows that across 115 stations it is centred on zero (median +0.0001 m), and
+NOAA's own conversion constants equal VDatum at three of five sentinel sites
+to within 1 mm: Boston's +0.041 m is a station-versus-grid-cell residual, NOT a
+datum difference. Diagnostic only; nothing is applied to the comparison.
 
 Needs pygrib and the GRIB2 files from `00_fetch_inputs.py --grib`.
 Usage: uv run --no-project --isolated --managed-python --python 3.13 --with-requirements requirements-analysis.txt \
@@ -96,14 +98,18 @@ def main() -> int:
         "station_point": {"lat": lat0, "lon": lon0},
         "nearest_wet_cells": rows,
         "vdatum_xgeoid20b_to_lmsl_m": vd_lmsl,
-        "noaa_shift_minus_vdatum_m": round(
+        "station_minus_grid_minus_vdatum_m": round(
             nearest["station_minus_grid_mean_m"] - vd_lmsl, 4
         ),
         "interpretation": (
-            "A positive value means NOAA's station LMSL zero lies below VDatum's LMSL "
-            "surface by that amount at this point, i.e. station values read higher "
-            "than VDatum-converted gridded values. Uncertainties: grid-cell vs station "
-            "location, regridding of the native mesh, a single cycle."
+            "Grid-proxy residual at one site: station (native mesh point) versus a "
+            "2.5 km GRIB2 cell, minus VDatum. It mixes datum-conversion differences "
+            "with station-versus-cell differences and cannot by itself be read as a "
+            "datum difference. Across 115 STOFS-3D stations the same residual has a "
+            "median of +0.0001 m (step 5e), so the Boston value is a station-versus-"
+            "cell residual (inner harbour; one wet cell within 3 km), not a datum "
+            "difference. The 5.3 and 5.5 km cells are compared with the same Boston "
+            "series, so they do not corroborate it independently."
         ),
     }
     c.dump_json(out, c.RESULTS / "lmsl_realization_check.json")
@@ -112,8 +118,8 @@ def main() -> int:
     print(
         "VDatum xGEOID20b->LMSL:",
         round(vd_lmsl, 4),
-        "| NOAA shift - VDatum:",
-        out["noaa_shift_minus_vdatum_m"],
+        "| station - grid - VDatum (grid-proxy residual):",
+        out["station_minus_grid_minus_vdatum_m"],
     )
     return 0
 

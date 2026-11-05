@@ -52,6 +52,6 @@
     }
   ],
   "vdatum_xgeoid20b_to_lmsl_m": 0.41763985225712474,
-  "noaa_shift_minus_vdatum_m": 0.0407,
-  "interpretation": "A positive value means NOAA's station LMSL zero lies below VDatum's LMSL surface by that amount at this point, i.e. station values read higher than VDatum-converted gridded values. Uncertainties: grid-cell vs station location, regridding of the native mesh, a single cycle."
+  "station_minus_grid_minus_vdatum_m": 0.0407,
+  "interpretation": "Grid-proxy residual at one site: station (native mesh point) versus a 2.5 km GRIB2 cell, minus VDatum. It mixes datum-conversion differences with station-versus-cell differences and cannot by itself be read as a datum difference. Across 115 STOFS-3D stations the same residual has a median of +0.0001 m (step 5e), so the Boston value is a station-versus-cell residual (inner harbour; one wet cell within 3 km), not a datum difference. The 5.3 and 5.5 km cells are compared with the same Boston series, so they do not corroborate it independently."
 }
