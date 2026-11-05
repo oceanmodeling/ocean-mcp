@@ -1282,6 +1282,42 @@ class TestCompareWithObservationsDatum:
         assert parsed["datum_provenance"]["product_version"] == "STOFS_2D_GLOBAL V3.1.0"
 
     @pytest.mark.asyncio
+    async def test_future_2d_version_is_refused(self, station_nc):
+        """A STOFS_2D_GLOBAL V4.0.0 file gets no assumed datum (audit M-2)."""
+        client, out = await self._run(
+            station_nc,
+            ZETA_2D,
+            STOFSModel.GLOBAL_2D,
+            "2026-10-30",
+            "12",
+            "2026-10-30 06:00",
+            global_attrs={
+                "model": "ADCIRC",
+                "title": "STOFS_2D_GLOBAL.V4.0.0     ! NCPROJ",
+            },
+        )
+        assert out.startswith("No comparison")
+        assert "V4.0.0 is not a version whose station datum is documented" in out
+        client.fetch_coops_observations.assert_not_called()
+
+    @pytest.mark.asyncio
+    async def test_estofs_compares_with_assumed_datum_warning(self, station_nc):
+        """ESTOFS GLOBAL V2.1 is compared on LMSL with the warning in provenance."""
+        client, out = await self._run(
+            station_nc,
+            ZETA_2D,
+            STOFSModel.GLOBAL_2D,
+            "2022-12-01",
+            "00",
+            "2022-11-30 18:00",
+            global_attrs=GLOBAL_ESTOFS,
+        )
+        assert client.fetch_coops_observations.call_args.kwargs["datum"] == "MSL"
+        prov = json.loads(out)["datum_provenance"]
+        assert prov["resolution"] == "documented_fallback"
+        assert "assumed" in prov["warning"]
+
+    @pytest.mark.asyncio
     async def test_2d_geoid_label_without_adcirc_signature_is_refused(self, station_nc):
         """A generic label from an unrecognized producer gets no assumed datum."""
         client, out = await self._run(

@@ -84,6 +84,31 @@ def documented_station_datum(model: str, date: str, hour: str) -> str:
     return "LMSL"
 
 
+# STOFS-2D-Global station files carry ADCIRC's generic "above geoid" label, so
+# their datum comes from documentation, and only for versions that
+# documentation covers. Keys are (product family, "major.minor"); any patch
+# level matches. A version not listed here (e.g. V3.2, V4.0) is not assigned a
+# datum: STOFS-3D changed its station datum at a version boundary in 2026.
+DOCUMENTED_2D_STATION_DATUM = {
+    ("STOFS_2D_GLOBAL", "3.1"): (
+        "NOMADS STOFS-Global description (archived 2026-11-04): station and "
+        "gridded output referenced to LMSL"
+    ),
+    ("STOFS_2D_GLOBAL", "2.1"): (
+        "NWS SCN 26-51: the v3.1 upgrade lists no change to the 2D station datum, "
+        "so v2.1 shares the documented v3.1 LMSL reference (inference)"
+    ),
+}
+# Accepted with a datum_warning: no archived documentation, LMSL by analogy.
+ASSUMED_2D_STATION_DATUM = {
+    ("ESTOFS GLOBAL", "2.1"): (
+        "ESTOFS-Global V2.1 (STOFS-2D-Global's predecessor, ADCIRC): LMSL assumed "
+        "by analogy with STOFS-2D-Global; not confirmed against archived ESTOFS "
+        "documentation"
+    ),
+}
+
+
 # Gridded (GRIB2 / NOMADS) output datum. NOAA: STOFS-3D-Atlantic gridded output
 # "will remain referenced to xGEOID20b"; STOFS-2D-Global gridded output is LMSL.
 GRIDDED_DATUMS = {

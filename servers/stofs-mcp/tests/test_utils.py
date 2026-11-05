@@ -27,6 +27,7 @@ from stofs_mcp.utils import (
     classify_datum_label,
     combine_datum_attributes,
     datum_from_label,
+    documented_fallback,
     dumps_strict,
     match_timeseries,
     value_exclusion_reason,
@@ -1063,3 +1064,77 @@ class TestTransformedSentinels:
         data = parse_station_netcdf(path, "8443970")
         assert data["values"] == []
         assert data["excluded_model_records"]["implausible"] == 5
+
+
+class TestVersionBoundedFallback:
+    """The 2D documented-datum fallback is bounded by version (audit M-2)."""
+
+    @pytest.mark.parametrize(
+        "title",
+        [
+            "STOFS_2D_GLOBAL.V3.1.0     ! NCPROJ - PROJECT TITLE",
+            "STOFS_2D_GLOBAL.V3.1.4",
+            "STOFS_2D_GLOBAL.V2.1.0     ! NCPROJ - PROJECT TITLE",
+        ],
+    )
+    def test_documented_versions_fall_back_without_warning(self, title):
+        """V2.1 and V3.1 (any patch level) use the documented LMSL."""
+        verdict, why = documented_fallback(
+            "2d_global", {"model": "ADCIRC", "title": title}
+        )
+        assert verdict == "documented"
+        out = resolve_station_datum(
+            "2d_global",
+            "20261030",
+            "12",
+            _meta("generic", product={"model": "ADCIRC", "title": title}),
+        )
+        assert (out["datum"], out["comparable"], out["datum_warning"]) == (
+            "LMSL",
+            True,
+            "",
+        )
+
+    def test_estofs_falls_back_with_a_warning(self):
+        """ESTOFS GLOBAL V2.1 resolves to LMSL but says it is assumed."""
+        product = {"model": "ADCIRC", "title": "ESTOFS GLOBAL V2.1.0       ! NCPROJ"}
+        assert documented_fallback("2d_global", product)[0] == "assumed"
+        out = resolve_station_datum(
+            "2d_global", "20221201", "00", _meta("generic", product=product)
+        )
+        assert out["datum"] == "LMSL" and out["comparable"] is True
+        assert (
+            "assumed" in out["datum_warning"]
+            and "ESTOFS GLOBAL V2.1.0" in out["datum_warning"]
+        )
+
+    @pytest.mark.parametrize(
+        "title,version",
+        [
+            ("STOFS_2D_GLOBAL.V4.0.0     ! NCPROJ - PROJECT TITLE", "V4.0.0"),
+            ("STOFS_2D_GLOBAL.V3.2.0", "V3.2.0"),
+            ("ESTOFS GLOBAL V3.0.0", "V3.0.0"),
+        ],
+    )
+    def test_undocumented_versions_get_no_datum(self, title, version):
+        """A future V4.0.0 (or V3.2.0) is not silently assumed to be LMSL."""
+        product = {"model": "ADCIRC", "title": title}
+        verdict, why = documented_fallback("2d_global", product)
+        assert verdict is None and version in why
+        out = resolve_station_datum(
+            "2d_global", "20280101", "00", _meta("generic", product=product)
+        )
+        assert out["datum"] == "undetermined" and out["comparable"] is False
+        assert version in out["datum_warning"]
+
+    @pytest.mark.parametrize(
+        "model,product",
+        [
+            ("2d_global", {"model": "ADCIRC", "title": "STOFS_2D_GLOBAL"}),
+            ("2d_global", {"model": "SCHISM", "title": "STOFS_2D_GLOBAL.V3.1.0"}),
+            ("3d_atlantic", {"model": "ADCIRC", "title": "STOFS_2D_GLOBAL.V3.1.0"}),
+        ],
+    )
+    def test_unversioned_or_wrong_producer_gets_no_datum(self, model, product):
+        """No version, a non-ADCIRC producer or the 3D model: no fallback."""
+        assert documented_fallback(model, product)[0] is None

@@ -271,21 +271,49 @@ def combine_datum_attributes(attributes: dict[str, str]) -> dict[str, Any]:
     }
 
 
-def _documented_fallback_applies(model: str, product: dict[str, str]) -> bool:
+_VERSION_IN_TITLE = re.compile(
+    r"(STOFS_2D_GLOBAL|ESTOFS GLOBAL)[ ._]*V?(\d+)\.(\d+)(?:\.(\d+))?", re.I
+)
+
+
+def documented_fallback(model: str, product: dict[str, str]) -> tuple[str | None, str]:
     """Whether NOAA's documented datum may stand in for a generic/absent label.
 
-    Only for the recognized legacy case: STOFS-2D-Global (and its predecessor
-    ESTOFS-Global) station files are ADCIRC output whose zeta always carries
-    the generic "above geoid" label, while NOAA documents the product as LMSL.
-    No fallback for STOFS-3D (its files name the datum explicitly) or for an
-    unrecognized producer, so an unfamiliar future file is never silently
+    Only STOFS-2D-Global station files qualify: ADCIRC output whose zeta always
+    carries the generic "above geoid" label. The version in the title must be
+    one the documentation covers (models.DOCUMENTED_2D_STATION_DATUM, no
+    warning) or an accepted legacy version (ASSUMED_2D_STATION_DATUM, with a
+    warning). Anything else, including a future STOFS_2D_GLOBAL V4.0, is not
     assigned a datum.
+
+    Returns:
+        ('documented' | 'assumed' | None, explanation).
     """
+    from .models import ASSUMED_2D_STATION_DATUM, DOCUMENTED_2D_STATION_DATUM
+
     if model != "2d_global":
-        return False
-    title = product.get("title", "").upper()
-    return product.get("model", "").upper() == "ADCIRC" and (
-        "STOFS_2D_GLOBAL" in title or "ESTOFS GLOBAL" in title
+        return None, "only STOFS-2D-Global files have a documented default datum"
+    if product.get("model", "").upper() != "ADCIRC":
+        return None, "the file is not ADCIRC output (STOFS-2D-Global signature)"
+    title = product.get("title", "")
+    match = _VERSION_IN_TITLE.search(title)
+    if not match:
+        return None, (
+            f"the title '{title}' carries no STOFS-2D-Global/ESTOFS version, so the "
+            "documented default cannot be checked against it"
+        )
+    family = match.group(1).upper()
+    key = (family, f"{int(match.group(2))}.{int(match.group(3))}")
+    version = f"{family} V{key[1]}" + (f".{match.group(4)}" if match.group(4) else "")
+    if key in DOCUMENTED_2D_STATION_DATUM:
+        return "documented", f"{version}: {DOCUMENTED_2D_STATION_DATUM[key]}"
+    if key in ASSUMED_2D_STATION_DATUM:
+        return "assumed", f"{version}: {ASSUMED_2D_STATION_DATUM[key]}"
+    known = ", ".join(f"{f} V{v}" for f, v in DOCUMENTED_2D_STATION_DATUM)
+    return None, (
+        f"{version} is not a version whose station datum is documented "
+        f"(documented: {known}); STOFS-3D changed its station datum at a version "
+        "boundary, so no default is assumed"
     )
 
 
@@ -378,18 +406,19 @@ def resolve_station_datum(
                 f"({label}); values are not paired with any CO-OPS datum."
             ),
         }
-    if _documented_fallback_applies(model, product):
-        why = (
-            f"file label {label} names no specific datum" if label else "no file label"
-        )
+    verdict, explanation = documented_fallback(model, product)
+    why = f"file label {label} names no specific datum" if label else "no file label"
+    if verdict is not None:
         return base | {
             "datum": documented,
             "resolution": "documented_fallback",
             "comparable": True,
-            "datum_source": (
-                f"NOAA documentation for {product.get('product_version') or 'this product'}; {why}"
+            "datum_source": f"NOAA documentation ({explanation}); {why}",
+            "datum_warning": (
+                f"Datum assumed, not documented for this version: {explanation}."
+                if verdict == "assumed"
+                else ""
             ),
-            "datum_warning": "",
         }
     return base | {
         "datum": "undetermined",
@@ -399,8 +428,8 @@ def resolve_station_datum(
         if label
         else "no datum metadata in file",
         "datum_warning": (
-            "The file names no specific vertical datum and is not a product with a "
-            "documented default; values are not paired with any CO-OPS datum."
+            f"The file names no specific vertical datum and no documented default "
+            f"applies: {explanation}. Values are not paired with any CO-OPS datum."
         ),
     }
 
