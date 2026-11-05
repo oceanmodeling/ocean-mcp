@@ -45,14 +45,26 @@ MCP server providing AI assistants with access to NOAA's Storm Tide Operational 
 > - **STOFS-3D station files**: NAVD88 through the 2026-08-16 cycle (v2.1); LMSL from
 >   the 2026-08-17 12z cycle (v3.1, NWS SCN 26-51). Gridded output stays on xGEOID20b.
 > - The station tools read the datum from each file's `zeta` metadata and report it with
->   its provenance (`datum_provenance`) and any `datum_warning`. Only the STOFS-2D-Global /
->   ESTOFS ADCIRC files, whose label is always the generic "above geoid", fall back to the
->   documented LMSL. An unrecognized explicit reference (e.g. NGVD29, NAVD2022) or
->   contradictory attributes make the datum `undetermined`, and no comparison is made.
+>   its provenance (`datum_provenance`) and any `datum_warning`. STOFS-2D-Global files,
+>   whose label is always ADCIRC's generic "above geoid", fall back to the documented
+>   LMSL only for documented versions (STOFS_2D_GLOBAL V2.1, V3.1; ESTOFS GLOBAL V2.1
+>   with a warning). An unrecognized explicit reference (e.g. NGVD29, NAVD2022),
+>   contradictory attributes, or an undocumented 2D version (e.g. V4.0) make the datum
+>   `undetermined`, and no comparison is made.
 > - `stofs_compare_with_observations` requests CO-OPS `datum=MSL` for LMSL output and
 >   `datum=NAVD` (CO-OPS's identifier for NAVD88) for NAVD88 output. No vertical
 >   transformation is applied. LMSL and a station's tidal MSL share a label but not
 >   necessarily a realization or epoch, so a mean offset alone does not attribute its cause.
+
+## Data Validity
+
+Values that are masked, equal to the declared fill, non-finite, no-data sentinels
+(|value| ≥ 10⁴ m, including codes shifted by a datum or bias constant such as
+STOFS-3D's `1e7 + c` and STOFS-2D's `-99999 + 0.4`) or physically implausible
+(|value| ≥ 50 m) are excluded by every tool and counted by reason
+(`excluded_model_records`, `excluded_values`). `stofs_get_max_water_level` names
+stations left without a valid value (`excluded_stations`) instead of ranking them.
+See `CHANGELOG.md` for the 0.3.0 changes.
 
 ## Quick Start
 

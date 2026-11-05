@@ -219,3 +219,52 @@ class TestModelLagHours:
     def test_3d_atlantic_lag_greater_than_2d_global(self):
         """3d_atlantic should have a longer lag than 2d_global."""
         assert MODEL_LAG_HOURS["3d_atlantic"] > MODEL_LAG_HOURS["2d_global"]
+
+
+class TestDeprecatedDatumMaps:
+    """The 0.2.0 public maps still import, with their old values, but warn."""
+
+    def test_model_datums_warns_and_keeps_0_2_0_values(self):
+        """MODEL_DATUMS is importable; access emits a DeprecationWarning."""
+        import stofs_mcp.models as models
+
+        with pytest.warns(DeprecationWarning, match="MODEL_DATUMS is deprecated"):
+            value = models.MODEL_DATUMS
+        assert value == {"2d_global": "LMSL", "3d_atlantic": "NAVD88"}
+
+    def test_coops_validation_datums_warns_and_keeps_0_2_0_values(self):
+        """COOPS_VALIDATION_DATUMS is importable via 'from ... import'."""
+        with pytest.warns(DeprecationWarning, match="COOPS_VALIDATION_DATUMS"):
+            from stofs_mcp.models import COOPS_VALIDATION_DATUMS
+        assert COOPS_VALIDATION_DATUMS == {"2d_global": "MSL", "3d_atlantic": "NAVD"}
+
+    def test_mutating_the_returned_map_does_not_leak(self):
+        """Each access returns a copy."""
+        import stofs_mcp.models as models
+
+        with pytest.warns(DeprecationWarning):
+            models.MODEL_DATUMS["3d_atlantic"] = "x"
+        with pytest.warns(DeprecationWarning):
+            assert models.MODEL_DATUMS["3d_atlantic"] == "NAVD88"
+
+    def test_unknown_attribute_still_raises(self):
+        """Module __getattr__ does not swallow other missing names."""
+        import stofs_mcp.models as models
+
+        with pytest.raises(AttributeError):
+            models.NOT_A_NAME  # noqa: B018
+
+    def test_no_tool_uses_the_deprecated_maps(self):
+        """The package source never reads the deprecated names."""
+        import pathlib
+
+        import stofs_mcp
+
+        root = pathlib.Path(stofs_mcp.__file__).parent
+        for path in root.rglob("*.py"):
+            text = path.read_text()
+            if path.name == "models.py":
+                continue
+            assert (
+                "MODEL_DATUMS" not in text and "COOPS_VALIDATION_DATUMS" not in text
+            ), path

@@ -156,3 +156,36 @@ MODEL_LAG_HOURS = {
     "2d_global": 3,
     "3d_atlantic": 5,
 }
+
+
+# --- Deprecated public names (removed in the 0.3.0 development line) ---------
+#
+# stofs-mcp 0.2.0 exported fixed per-model maps. They are wrong for STOFS-3D
+# cycles from 2026-08-17 12z (station output is LMSL, not NAVD88) and no tool
+# uses them; the tools resolve the datum per file (utils.resolve_station_datum).
+# They are kept, with their 0.2.0 values, only so existing imports keep working,
+# and emit a DeprecationWarning on access. Planned removal: 1.0.
+_DEPRECATED = {
+    "MODEL_DATUMS": (
+        {"2d_global": "LMSL", "3d_atlantic": "NAVD88"},
+        "MODEL_DATUMS is deprecated and wrong for STOFS-3D cycles from "
+        "2026-08-17 12z (LMSL, not NAVD88); use "
+        "stofs_mcp.utils.resolve_station_datum() or documented_station_datum().",
+    ),
+    "COOPS_VALIDATION_DATUMS": (
+        {"2d_global": "MSL", "3d_atlantic": "NAVD"},
+        "COOPS_VALIDATION_DATUMS is deprecated and wrong for STOFS-3D cycles from "
+        "2026-08-17 12z (MSL, not NAVD); map the resolved datum through "
+        "COOPS_DATUM_FOR_MODEL_DATUM instead.",
+    ),
+}
+
+
+def __getattr__(name: str):
+    if name in _DEPRECATED:
+        import warnings
+
+        value, message = _DEPRECATED[name]
+        warnings.warn(message, DeprecationWarning, stacklevel=2)
+        return dict(value)
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
