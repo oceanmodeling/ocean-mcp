@@ -1138,3 +1138,50 @@ class TestVersionBoundedFallback:
     def test_unversioned_or_wrong_producer_gets_no_datum(self, model, product):
         """No version, a non-ADCIRC producer or the 3D model: no fallback."""
         assert documented_fallback(model, product)[0] is None
+
+
+class TestAuditMinorFindings:
+    """Minor findings m-1..m-4, m-6 of the 2026-11-04 audit."""
+
+    @pytest.mark.parametrize(
+        "label",
+        [
+            "water surface elevation above the geoid",
+            "water surface elevation above geoid in metres",
+            "sea_surface_height_above_geoid",
+        ],
+    )
+    def test_geoid_wording_variants_stay_generic(self, label):
+        """m-1: 'the'/'in metres' around 'geoid' do not make it unsupported."""
+        assert classify_datum_label(label)["status"] == "generic"
+
+    def test_specific_geoid_model_is_still_unsupported(self):
+        """A named geoid model (e.g. geoid12b) is an explicit, unknown reference."""
+        assert classify_datum_label("height above geoid12b")["status"] == "unsupported"
+
+    @pytest.mark.parametrize("value", ["N/A", "none", "unknown"])
+    def test_placeholder_global_datum_is_absent(self, value):
+        """m-6: datum='N/A' means no datum given, not an unsupported one."""
+        assert (
+            classify_datum_label(value, explicit_reference=True)["status"] == "absent"
+        )
+
+    def test_duplicate_forecast_times_are_counted_not_paired(self):
+        """m-3: a repeated model time is counted and not paired a second time."""
+        m = match_timeseries(
+            ["2026-10-30 12:00", "2026-10-30 12:00"],
+            ["2026-10-30 12:00", "2026-10-30 12:03"],
+        )
+        assert m["pairs"] == [(0, 0)]
+        assert m["duplicate_forecast_times"] == 1
+
+    def test_dumps_strict_serializes_arrays(self):
+        """m-4: NumPy arrays (with NaN) serialize as lists with nulls."""
+        import json
+
+        import numpy as np
+
+        out = json.loads(
+            dumps_strict({"a": np.array([1.5, np.nan]), "b": np.zeros((1, 2))})
+        )
+        assert out == {"a": [1.5, None], "b": [[0.0, 0.0]]}

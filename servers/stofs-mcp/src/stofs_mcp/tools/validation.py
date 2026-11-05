@@ -109,9 +109,11 @@ async def stofs_compare_with_observations(
     The model datum is read from the station file (STOFS-3D station output
     changed from NAVD88 to LMSL at the 2026-08-17 12z v3.1 cycle) and CO-OPS
     observations are requested in the matching datum; no vertical
-    transformation is applied. Pairs match the nearest observation within
-    3 minutes. CO-OPS quality flags and verified/preliminary status are
-    counted and reported, not used to filter.
+    transformation is applied. Pairing is one-to-one: exact timestamps first,
+    then the nearest unused observation within 3 minutes (ties to the earlier).
+    Values that are missing, non-finite, no-data sentinels or beyond 50 m are
+    excluded and counted. CO-OPS quality flags and verified/preliminary status
+    are counted and reported, not used to filter.
 
     Args:
         station_id: CO-OPS station ID (e.g., '8518750' for The Battery, NY).
@@ -328,7 +330,7 @@ async def stofs_compare_with_observations(
             obs_times.append(t_str)  # CO-OPS uses 'YYYY-MM-DD HH:MM'
             q = rec.get("q")
             flagged = any(
-                flag not in ("", "0") for flag in str(rec.get("f", "")).split(",")
+                flag not in ("", "0") for flag in str(rec.get("f") or "").split(",")
             )
             obs_status.append(q)
             obs_flagged.append(flagged)
@@ -372,6 +374,7 @@ async def stofs_compare_with_observations(
             "unmatched_model_records": len(stofs_times_clipped) - len(matched_obs),
             "bad_observation_times": match["bad_observed_times"],
             "duplicate_observation_times": match["duplicate_observed_times"],
+            "duplicate_model_times": match["duplicate_forecast_times"],
         }
 
         if not common_times:

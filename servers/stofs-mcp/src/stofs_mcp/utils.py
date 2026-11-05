@@ -23,6 +23,8 @@ def _json_safe(obj: Any) -> Any:
         return {k: _json_safe(v) for k, v in obj.items()}
     if isinstance(obj, (list, tuple)):
         return [_json_safe(v) for v in obj]
+    if hasattr(obj, "tolist") and getattr(obj, "ndim", 0):
+        return _json_safe(obj.tolist())  # NumPy array -> nested lists
     if hasattr(obj, "item") and not isinstance(obj, (str, bytes)):
         try:
             obj = obj.item()  # NumPy scalar -> Python scalar
@@ -120,6 +122,10 @@ _REFERENCE_PHRASE = re.compile(
 # References that name no specific vertical datum. ADCIRC writes
 # "sea_surface_height_above_geoid" whatever the actual reference.
 _GENERIC_REFERENCES = {"geoid"}
+# Words that qualify a reference without naming another one ("above the geoid",
+# "above geoid in metres"), and placeholder values meaning "no datum given".
+_REFERENCE_FILLER = {"the", "a", "an", "in", "m", "meter", "meters", "metre", "metres"}
+_PLACEHOLDER_VALUES = {"n/a", "na", "none", "null", "unknown", "unspecified", "-"}
 
 
 def classify_datum_label(
@@ -141,7 +147,7 @@ def classify_datum_label(
     - 'conflicting': names more than one known datum.
     """
     text = (label or "").strip().lower()
-    if not text:
+    if not text or (explicit_reference and text in _PLACEHOLDER_VALUES):
         return {"status": "absent", "datum": None, "reference": None}
 
     found: list[str] = []
@@ -161,7 +167,12 @@ def classify_datum_label(
         return {"status": "conflicting", "datum": None, "reference": ", ".join(found)}
     if found:
         return {"status": "recognized", "datum": found[0], "reference": reference}
-    if reference and reference not in _GENERIC_REFERENCES:
+    words = [
+        w
+        for w in re.split(r"[ _]+", reference or "")
+        if w and w not in _REFERENCE_FILLER
+    ]
+    if reference and not (words and set(words) <= _GENERIC_REFERENCES):
         return {"status": "unsupported", "datum": None, "reference": reference}
     return {"status": "generic", "datum": None, "reference": reference}
 
@@ -945,12 +956,14 @@ def match_timeseries(
        observation wins. No observation is used twice.
 
     Times are UTC strings. Malformed times are skipped and counted; for a
-    repeated observation timestamp only the first record is used.
+    repeated timestamp (forecast or observation) only the first record is used
+    and the repeats are counted.
 
     Returns:
         Dict with 'pairs' (sorted (forecast_index, observed_index)), 'exact',
         'nearest', 'bad_forecast_times', 'bad_observed_times',
-        'duplicate_observed_times' and 'tolerance_minutes'.
+        'duplicate_observed_times', 'duplicate_forecast_times' and
+        'tolerance_minutes'.
     """
     import bisect
 
@@ -968,12 +981,16 @@ def match_timeseries(
     obs_secs = sorted(obs_by_sec)
 
     fc: list[tuple[int, int]] = []
-    bad_fc = 0
+    seen_fc: set[int] = set()
+    bad_fc = dup_fc = 0
     for i, t in enumerate(forecast_times):
         sec = utc_seconds(t)
         if sec is None:
             bad_fc += 1
+        elif sec in seen_fc:
+            dup_fc += 1  # only the first record of a repeated time is paired
         else:
+            seen_fc.add(sec)
             fc.append((sec, i))
     fc.sort()
 
@@ -1006,6 +1023,7 @@ def match_timeseries(
         "bad_forecast_times": bad_fc,
         "bad_observed_times": bad_obs,
         "duplicate_observed_times": dup_obs,
+        "duplicate_forecast_times": dup_fc,
         "tolerance_minutes": tolerance_minutes,
     }
 

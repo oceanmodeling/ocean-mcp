@@ -2195,6 +2195,43 @@ class TestSentinelStationsInEveryTool:
         assert parsed["statistics"]["max_abs_error"] == pytest.approx(0.1)
 
 
+class TestNullQualityFlags:
+    """m-2: a null CO-OPS 'f' field is not counted as flagged."""
+
+    @pytest.mark.asyncio
+    async def test_null_flag_is_not_flagged(self, station_nc):
+        """f: null gave str(None) = 'None', which used to count as a flag."""
+        from unittest.mock import AsyncMock
+
+        from stofs_mcp.tools.validation import stofs_compare_with_observations
+
+        start = "2026-10-29 12:00"
+        path = station_nc(ZETA_3D_V31, start, [0.2] * 30)
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(return_value=path)
+        client.fetch_coops_observations = AsyncMock(
+            return_value={
+                "data": [
+                    {"t": t, "v": "0.100", "f": None, "q": "p"}
+                    for t in six_minute_times(start, 30)
+                ]
+            }
+        )
+        parsed = json.loads(
+            await stofs_compare_with_observations(
+                make_ctx(client),
+                station_id="8443970",
+                model=STOFSModel.ATLANTIC_3D,
+                cycle_date="2026-10-30",
+                cycle_hour="12",
+                hours_to_compare=3,
+                response_format="json",
+            )
+        )
+        assert parsed["observation_quality"]["flagged"] == 0
+        assert parsed["observation_quality"]["matched"]["flagged"] == 0
+
+
 class TestStofs3dSwappedCoordinates:
     """Point lookup works on pre-v3.1 STOFS-3D files with swapped x/y.
 
