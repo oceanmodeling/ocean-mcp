@@ -2011,6 +2011,154 @@ class TestCompareLeadWindow:
         assert out == "lead_end_hours must be greater than lead_start_hours."
 
 
+class TestSentinelStationsInEveryTool:
+    """Sentinel stations are never ranked or presented as water levels (audit C-1).
+
+    Regression: on the 2026-10-30 12z STOFS-3D file the max tool ranked five
+    Caribbean stations at 9,999,999.4-9,999,999.6 m.
+    """
+
+    CYCLE = {"cycle_date": "2026-10-30", "cycle_hour": "12"}
+    START = "2026-10-29 12:00"
+
+    def _ctx(self, path, obs=None):
+        from unittest.mock import AsyncMock
+
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(return_value=path)
+        client.fetch_coops_observations = AsyncMock(return_value={"data": obs or []})
+        return make_ctx(client), client
+
+    def _file(self, station_nc, sentinel_values):
+        """A real-like 3D file: Boston valid plus a 1e7 + c Caribbean station."""
+        import numpy as np
+
+        n = 30
+        path = station_nc(
+            ZETA_3D_V31, self.START, [0.5] * n, stations=("8443970", "9751381")
+        )
+        import netCDF4
+
+        nc = netCDF4.Dataset(str(path), "a")
+        z = np.asarray(nc["zeta"][:])
+        z[:, 1] = sentinel_values(n)
+        nc["zeta"][:] = z
+        nc.close()
+        return path
+
+    @pytest.mark.asyncio
+    async def test_max_tool_does_not_rank_sentinel_station(self, station_nc):
+        """The 1e7 + c station is listed as excluded, never as a top station."""
+        from stofs_mcp.tools.forecast import stofs_get_max_water_level
+
+        path = self._file(station_nc, lambda n: [9999999.582] * n)
+        ctx, _ = self._ctx(path)
+        parsed = json.loads(
+            await stofs_get_max_water_level(
+                ctx, model=STOFSModel.ATLANTIC_3D, response_format="json", **self.CYCLE
+            )
+        )
+        assert [r["station"] for r in parsed["top_stations"]] == ["8443970"]
+        assert max(r["max_wl"] for r in parsed["top_stations"]) < 10
+        excluded = parsed["excluded_stations"]
+        assert excluded[0]["station"] == "9751381"
+        assert excluded[0]["reasons"] == {"sentinel": 30}
+        assert excluded[0]["example_raw_value"] == pytest.approx(9999999.582)
+        assert parsed["excluded_values"]["sentinel"] == 30
+
+    @pytest.mark.asyncio
+    async def test_max_tool_markdown_names_excluded_station(self, station_nc):
+        """The Markdown says which station was excluded and why."""
+        from stofs_mcp.tools.forecast import stofs_get_max_water_level
+
+        path = self._file(station_nc, lambda n: [9999999.582] * n)
+        ctx, _ = self._ctx(path)
+        text = await stofs_get_max_water_level(
+            ctx, model=STOFSModel.ATLANTIC_3D, **self.CYCLE
+        )
+        assert "Excluded stations" in text and "9751381 (30 sentinel)" in text
+        assert "9999999" not in text
+
+    @pytest.mark.asyncio
+    async def test_station_tool_reports_no_valid_data(self, station_nc):
+        """The station tool explains that every record was a sentinel."""
+        from stofs_mcp.tools.forecast import stofs_get_station_forecast
+
+        path = self._file(station_nc, lambda n: [9999999.582] * n)
+        ctx, _ = self._ctx(path)
+        out = await stofs_get_station_forecast(
+            ctx, station_id="9751381", model=STOFSModel.ATLANTIC_3D, **self.CYCLE
+        )
+        assert out.startswith("No valid data for station 9751381")
+        assert "30 sentinel" in out
+
+    @pytest.mark.asyncio
+    async def test_point_tool_reports_no_valid_data(self, station_nc):
+        """If the nearest station is all sentinels, the point tool says so."""
+        from stofs_mcp.tools.forecast import stofs_get_point_forecast
+
+        path = self._file(station_nc, lambda n: [9999999.582] * n)
+        import netCDF4
+
+        nc = netCDF4.Dataset(str(path), "a")  # put the sentinel station at 18.3 N
+        nc["x"][:] = [-71.05, -64.7242]
+        nc["y"][:] = [42.35, 18.3182]
+        nc.close()
+        ctx, _ = self._ctx(path)
+        out = await stofs_get_point_forecast(
+            ctx,
+            latitude=18.3182,
+            longitude=-64.7242,
+            model=STOFSModel.ATLANTIC_3D,
+            **self.CYCLE,
+        )
+        assert "9751381" in out and "has no valid data" in out
+        assert "30 sentinel" in out
+
+    @pytest.mark.asyncio
+    async def test_compare_tool_refuses_without_fetching(self, station_nc):
+        """No comparison and no CO-OPS request for an all-sentinel station."""
+        from stofs_mcp.tools.validation import stofs_compare_with_observations
+
+        path = self._file(station_nc, lambda n: [9999999.582] * n)
+        ctx, client = self._ctx(path)
+        out = await stofs_compare_with_observations(
+            ctx, station_id="9751381", model=STOFSModel.ATLANTIC_3D, **self.CYCLE
+        )
+        assert out.startswith("No usable STOFS values for station 9751381")
+        assert "Nothing was compared" in out
+        client.fetch_coops_observations.assert_not_called()
+
+    @pytest.mark.asyncio
+    async def test_out_of_range_observations_are_excluded(self, station_nc):
+        """Observation sentinels/implausible values are counted, not compared."""
+        from stofs_mcp.tools.validation import stofs_compare_with_observations
+
+        path = station_nc(ZETA_3D_V31, self.START, [0.2] * 30)
+        obs = [
+            {"t": t, "v": v, "f": "0,0,0,0", "q": "p"}
+            for t, v in zip(
+                six_minute_times(self.START, 30),
+                ["0.100"] * 27 + ["99999.0", "-99998.6", "150.0"],
+            )
+        ]
+        ctx, _ = self._ctx(path, obs)
+        parsed = json.loads(
+            await stofs_compare_with_observations(
+                ctx,
+                station_id="8443970",
+                model=STOFSModel.ATLANTIC_3D,
+                hours_to_compare=3,
+                response_format="json",
+                **self.CYCLE,
+            )
+        )
+        q = parsed["observation_quality"]
+        assert (q["sentinel"], q["implausible"]) == (2, 1)
+        assert parsed["statistics"]["n"] == 27
+        assert parsed["statistics"]["max_abs_error"] == pytest.approx(0.1)
+
+
 class TestStofs3dSwappedCoordinates:
     """Point lookup works on pre-v3.1 STOFS-3D files with swapped x/y.
 

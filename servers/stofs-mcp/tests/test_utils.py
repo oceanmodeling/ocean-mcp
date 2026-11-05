@@ -29,6 +29,7 @@ from stofs_mcp.utils import (
     datum_from_label,
     dumps_strict,
     match_timeseries,
+    value_exclusion_reason,
     unswap_station_coords,
     utc_seconds,
 )
@@ -909,7 +910,12 @@ class TestNonFiniteValues:
         data = parse_station_netcdf(path, "8443970")
         assert data["values"] == [0.1, 0.2]
         assert data["n_records"] == 6
-        assert data["excluded_model_records"] == {"masked_or_fill": 2, "nonfinite": 2}
+        assert data["excluded_model_records"] == {
+            "masked_or_fill": 2,
+            "nonfinite": 2,
+            "sentinel": 0,
+            "implausible": 0,
+        }
 
     def test_parser_honours_in_range_fill_value(self, tmp_path):
         """A _FillValue inside the physical range (-9.99) is still excluded."""
@@ -998,3 +1004,62 @@ class TestMatchTimeseries:
         """utc_seconds is plain UTC epoch arithmetic."""
         assert utc_seconds("1970-01-01 00:01") == 60
         assert utc_seconds("not a time") is None
+
+
+# Real patterns from the 2026-10-30 12z NOAA station files (inspected 2026-11-04).
+# STOFS-3D v3.1: five Caribbean stations hold 1e7 + c for every record, c being
+# the station's xGEOID20b->LMSL constant (e.g. 9751381 Lameshur Bay 9999999.5820).
+SENTINEL_3D = [9999999.4107, 9999999.4438, 9999999.5820, 9999999.5232, 9999999.5500]
+# STOFS-2D v3.1: intermittently dry stations write -99999 + 0.4 when dry.
+SENTINEL_2D_DRY = -99998.6
+# STOFS-2D v3.1 station SA816 (46.22 N, 35.44 E): 90.7..136.2 m, time-varying.
+AZOV_SA816 = [123.3301, 115.65, 136.2006, 90.7486, 113.2918]
+
+
+class TestTransformedSentinels:
+    """Shifted no-data codes and implausible values are excluded (audit C-1)."""
+
+    @pytest.mark.parametrize("value", SENTINEL_3D + [SENTINEL_2D_DRY, 1e10, -1e7])
+    def test_shifted_sentinels_are_sentinel(self, value):
+        """1e7 + c and -99999 + c no longer pass as water levels."""
+        assert value_exclusion_reason(value) == "sentinel"
+
+    @pytest.mark.parametrize("value", AZOV_SA816 + [-50.0, 50.0, 9999.0])
+    def test_values_beyond_50_m_are_implausible(self, value):
+        """|v| >= 50 m is counted as implausible, separately from sentinels."""
+        assert value_exclusion_reason(value) == "implausible"
+
+    @pytest.mark.parametrize("value", [0.0, -1.562, 2.002, 16.0, -25.0, 49.99])
+    def test_physical_water_levels_are_kept(self, value):
+        """Ordinary and extreme-but-physical water levels stay valid."""
+        assert value_exclusion_reason(value) is None
+
+    def test_constant_1e7_plus_c_station_is_fully_excluded(self, station_nc):
+        """All 1200 records of a Lameshur-Bay-like series are 'sentinel'."""
+        path = station_nc(ZETA_3D_V31, "2026-10-29 12:00", [9999999.5820] * 1200)
+        data = parse_station_netcdf(path, "8443970")
+        assert data["values"] == []
+        assert data["n_records"] == 1200
+        assert data["excluded_model_records"]["sentinel"] == 1200
+
+    def test_dry_records_shifted_by_bias_correction_are_excluded(self, station_nc):
+        """-99998.6 dry records are dropped; the wet values around them stay."""
+        values = [0.2, SENTINEL_2D_DRY, SENTINEL_2D_DRY, 0.3, -0.1]
+        path = station_nc(ZETA_2D, "2026-10-30 06:00", values, global_attrs=GLOBAL_2D)
+        data = parse_station_netcdf(path, "8443970")
+        assert data["values"] == [0.2, 0.3, -0.1]
+        assert data["excluded_model_records"] == {
+            "masked_or_fill": 0,
+            "nonfinite": 0,
+            "sentinel": 2,
+            "implausible": 0,
+        }
+
+    def test_azov_like_series_is_implausible(self, station_nc):
+        """A 90-136 m series is excluded as implausible, not as no-data."""
+        path = station_nc(
+            ZETA_2D, "2026-10-30 06:00", AZOV_SA816, global_attrs=GLOBAL_2D
+        )
+        data = parse_station_netcdf(path, "8443970")
+        assert data["values"] == []
+        assert data["excluded_model_records"]["implausible"] == 5

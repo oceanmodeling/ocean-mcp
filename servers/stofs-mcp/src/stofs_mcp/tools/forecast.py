@@ -11,6 +11,7 @@ from mcp.types import ToolAnnotations
 
 from ..client import STOFSClient
 from ..models import (
+    PLAUSIBLE_WATER_LEVEL_M,
     GRIDDED_DATUMS,
     Region,
     STOFSModel,
@@ -30,8 +31,9 @@ from ..utils import (
     resolve_cycle,
     datum_markdown_lines,
     datum_provenance,
+    describe_exclusions,
     dumps_strict,
-    valid_values,
+    exclusion_masks,
     resolve_station_datum,
     read_datum_metadata,
     unswap_station_coords,
@@ -135,9 +137,14 @@ async def stofs_get_station_forecast(
         values = data["values"]
 
         if not times:
+            why = describe_exclusions(data.get("excluded_model_records"))
             return (
-                f"No valid data found for station {station_id} in this STOFS cycle. "
-                "The station may be in a dry area or the data may have fill values."
+                f"No valid data for station {station_id} in this STOFS cycle: all "
+                f"{data.get('n_records', 0)} records were excluded"
+                + (f" ({why})" if why else "")
+                + ". 'sentinel' values are no-data codes (possibly shifted by a "
+                "datum constant); 'implausible' values exceed "
+                f"{PLAUSIBLE_WATER_LEVEL_M:g} m."
             )
 
         datum_info = resolve_station_datum(model.value, date_str, hour_str, data)
@@ -161,6 +168,7 @@ async def stofs_get_station_forecast(
                     "datum_source": datum_info["datum_source"],
                     "datum_warning": datum_info["datum_warning"] or None,
                     "datum_provenance": datum_provenance(datum_info),
+                    "excluded_model_records": data.get("excluded_model_records"),
                     "lat": data.get("lat"),
                     "lon": data.get("lon"),
                     "model_start": data.get("model_start"),
@@ -269,6 +277,15 @@ async def stofs_get_point_forecast(
         data = parse_station_netcdf(tmp_path, nearest_name.strip(), model=model.value)
         times = data["times"]
         values = data["values"]
+        if not times:
+            why = describe_exclusions(data.get("excluded_model_records"))
+            return (
+                f"The nearest STOFS station, {nearest_name.strip()} "
+                f"({distance_km:.1f} km away), has no valid data in this cycle: all "
+                f"{data.get('n_records', 0)} records were excluded"
+                + (f" ({why})" if why else "")
+                + ". Try another nearby station with stofs_list_stations."
+            )
 
         datum_info = resolve_station_datum(model.value, date_str, hour_str, data)
         datum = datum_info["datum"]
@@ -288,6 +305,7 @@ async def stofs_get_point_forecast(
                     "datum_source": datum_info["datum_source"],
                     "datum_warning": datum_info["datum_warning"] or None,
                     "datum_provenance": datum_provenance(datum_info),
+                    "excluded_model_records": data.get("excluded_model_records"),
                     "times": times,
                     "values": values,
                 }
@@ -377,8 +395,11 @@ async def stofs_get_max_water_level(
 
             datum_meta = read_datum_metadata(nc, zeta_var_name)
             zeta_var = nc.variables[zeta_var_name]
-            zeta, invalid, _ = valid_values(zeta_var, zeta_var[:])
-            zeta = np.where(invalid, np.nan, zeta)
+            raw_zeta, masks = exclusion_masks(zeta_var, zeta_var[:])
+            invalid = np.zeros(raw_zeta.shape, dtype=bool)
+            for m in masks.values():
+                invalid |= m
+            zeta = np.where(invalid, np.nan, raw_zeta)
 
             station_names = (
                 _decode_station_names(nc.variables[sname_var_name])
@@ -410,6 +431,25 @@ async def stofs_get_max_water_level(
         has_data = ~np.all(np.isnan(zeta), axis=0)
         max_vals = np.full(zeta.shape[1], np.nan)
         max_vals[has_data] = np.nanmax(zeta[:, has_data], axis=0)
+
+        excluded_values = {k: int(m.sum()) for k, m in masks.items()}
+        # Stations left with no valid value because of no-data sentinels or
+        # implausible values are named, not silently dropped.
+        excluded_stations = []
+        for i in np.where(~has_data)[0]:
+            reasons = {k: int(m[:, i].sum()) for k, m in masks.items() if m[:, i].any()}
+            if not reasons.keys() & {"sentinel", "implausible"}:
+                continue  # dry or fill-only: no water level to report
+            finite = raw_zeta[:, i][np.isfinite(raw_zeta[:, i])]
+            excluded_stations.append(
+                {
+                    "station": station_names[i].strip()
+                    if i < len(station_names)
+                    else str(i),
+                    "reasons": reasons,
+                    "example_raw_value": float(finite[0]) if finite.size else None,
+                }
+            )
 
         rows = []
         for i in range(n_stations):
@@ -469,6 +509,8 @@ async def stofs_get_max_water_level(
                     "datum_source": datum_info["datum_source"],
                     "datum_warning": datum_info["datum_warning"] or None,
                     "datum_provenance": datum_provenance(datum_info),
+                    "excluded_values": excluded_values,
+                    "excluded_stations": excluded_stations,
                     "top_stations": rows,
                 },
                 indent=2,
@@ -498,6 +540,21 @@ async def stofs_get_max_water_level(
             )
 
         lines.append("")
+        if excluded_stations:
+            lines.append(
+                "**Excluded stations** (no valid value; not ranked): "
+                + "; ".join(
+                    f"{e['station']} ({describe_exclusions(e['reasons'])})"
+                    for e in excluded_stations
+                )
+            )
+            lines.append("")
+        if any(excluded_values.values()):
+            lines.append(
+                f"*Excluded values: {describe_exclusions(excluded_values)}. "
+                "'sentinel' = no-data code (possibly shifted by a datum constant); "
+                f"'implausible' = |value| >= {PLAUSIBLE_WATER_LEVEL_M:g} m.*"
+            )
         lines.append(
             f"*Data from NOAA STOFS. Values relative to {datum}.*"
             if datum_info["comparable"]

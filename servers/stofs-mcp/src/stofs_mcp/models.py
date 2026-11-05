@@ -101,6 +101,31 @@ COOPS_DATUM_FOR_MODEL_DATUM = {
     "MLLW": "MLLW",
 }
 
+# --- Water-level validity bounds (metres) ------------------------------------
+#
+# NOAA station files encode missing data with sentinels that are sometimes
+# shifted by a per-station additive constant before they reach us, so the
+# declared _FillValue no longer matches: STOFS-3D v3.1 writes 1e7 + c (c is the
+# xGEOID20b->LMSL datum constant) at five Caribbean stations, and STOFS-2D v3.1
+# writes -99999 + 0.4 during dry periods at intermittently dry stations
+# (2026-10-30 12z files). Any |value| >= NO_DATA_MAGNITUDE_M is treated as such
+# a sentinel: every known no-data code (-99999, 1e7, 1e10, the netCDF default
+# fill) stays above it after a shift of a few metres.
+NO_DATA_MAGNITUDE_M = 1.0e4
+
+# Values between PLAUSIBLE_WATER_LEVEL_M and NO_DATA_MAGNITUDE_M are excluded
+# as physically implausible (and counted separately, never silently). Rationale:
+# the largest tidal amplitudes (~8 m; ~16 m range, Bay of Fundy) and the largest
+# recorded storm surges (~8-13 m) keep coastal water level within ~25 m of local
+# mean sea level, so 50 m is a 2x margin. Assumption: values are relative to a
+# coastal tidal or geodetic datum. A lake station referenced to a geodetic datum
+# (Great Lakes ~75-183 m) would exceed it; STOFS station products contain none,
+# and IGLD85 labels are refused by the datum classifier. Example excluded by it:
+# STOFS-2D v3.1 station SA816 (46.22 N, 35.44 E) reports 90.7-136.2 m, changing
+# ~2.4 m per hour (a 100 m bound would have kept its values below 100 m).
+PLAUSIBLE_WATER_LEVEL_M = 50.0
+
+
 # Approximate product availability lag after cycle time (hours)
 MODEL_LAG_HOURS = {
     "2d_global": 3,

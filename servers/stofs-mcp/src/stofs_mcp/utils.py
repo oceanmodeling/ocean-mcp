@@ -457,35 +457,85 @@ def unswap_station_coords(
     return fixed_lats, fixed_lons
 
 
-def valid_values(var, raw) -> tuple[Any, Any, dict[str, int]]:
-    """Separate usable values from masked, fill and non-finite ones.
+EXCLUSION_REASONS = ("masked_or_fill", "nonfinite", "sentinel", "implausible")
 
-    Honours the netCDF4 mask (auto-masked _FillValue/missing_value), the
-    variable's _FillValue and missing_value even when unmasked, the legacy
-    |v| > 1e10 sentinel, and NaN/±Inf. Nothing is replaced by zero.
 
-    Returns:
-        (data, invalid, excluded): float array, boolean array of rejected
-        entries, and counts {'masked_or_fill': n, 'nonfinite': n}.
+def value_exclusion_reason(value: Any) -> str | None:
+    """Why a single water-level value is unusable, or None if it is usable.
+
+    'nonfinite' (NaN/±Inf or not a number), 'sentinel' (|v| >=
+    NO_DATA_MAGNITUDE_M: a no-data code, possibly shifted by a constant) or
+    'implausible' (|v| >= PLAUSIBLE_WATER_LEVEL_M, 50 m). See models.py for
+    the rationale of both bounds.
     """
+    from .models import NO_DATA_MAGNITUDE_M, PLAUSIBLE_WATER_LEVEL_M
+
+    if not is_finite_number(value):
+        return "nonfinite"
+    magnitude = abs(float(value))
+    if magnitude >= NO_DATA_MAGNITUDE_M:
+        return "sentinel"
+    if magnitude >= PLAUSIBLE_WATER_LEVEL_M:
+        return "implausible"
+    return None
+
+
+def exclusion_masks(var, raw) -> tuple[Any, dict[str, Any]]:
+    """Float data and one boolean mask per exclusion reason (see valid_values)."""
     import numpy as np
+
+    from .models import NO_DATA_MAGNITUDE_M, PLAUSIBLE_WATER_LEVEL_M
 
     mask = np.ma.getmaskarray(raw)
     data = np.asarray(np.ma.getdata(raw), dtype=float)
     nonfinite = ~np.isfinite(data) & ~mask
     with np.errstate(invalid="ignore"):
-        fill = mask | (np.abs(data) > 1e10)
+        fill = mask.copy()
         for attr in ("_FillValue", "missing_value"):
             value = getattr(var, attr, None)
             if value is not None:
                 fill |= np.isin(data, np.atleast_1d(np.asarray(value, dtype=float)))
-    fill &= ~nonfinite
-    invalid = fill | nonfinite
-    return (
-        data,
-        invalid,
-        {"masked_or_fill": int(fill.sum()), "nonfinite": int(nonfinite.sum())},
-    )
+        fill &= ~nonfinite
+        magnitude = np.where(fill | nonfinite, 0.0, np.abs(data))
+        sentinel = magnitude >= NO_DATA_MAGNITUDE_M
+        implausible = ~sentinel & (magnitude >= PLAUSIBLE_WATER_LEVEL_M)
+    return data, {
+        "masked_or_fill": fill,
+        "nonfinite": nonfinite,
+        "sentinel": sentinel,
+        "implausible": implausible,
+    }
+
+
+def valid_values(var, raw) -> tuple[Any, Any, dict[str, int]]:
+    """Separate usable water-level values from unusable ones, by reason.
+
+    In order of precedence:
+    - 'masked_or_fill': the netCDF4 mask, or a value equal to the variable's
+      _FillValue or missing_value (even when unmasked);
+    - 'nonfinite': NaN or ±Inf;
+    - 'sentinel': |v| >= NO_DATA_MAGNITUDE_M, a no-data code that may have been
+      shifted by a constant so that it no longer equals _FillValue (STOFS-3D
+      v3.1: 1e7 + c; STOFS-2D v3.1: -99999 + 0.4);
+    - 'implausible': PLAUSIBLE_WATER_LEVEL_M <= |v| < NO_DATA_MAGNITUDE_M.
+
+    Nothing is replaced by zero; every tool uses this rule.
+
+    Returns:
+        (data, invalid, excluded): float array, boolean array of rejected
+        entries, and counts per reason in EXCLUSION_REASONS.
+    """
+    data, masks = exclusion_masks(var, raw)
+    invalid = masks["masked_or_fill"].copy()
+    for name in ("nonfinite", "sentinel", "implausible"):
+        invalid |= masks[name]
+    return data, invalid, {k: int(m.sum()) for k, m in masks.items()}
+
+
+def describe_exclusions(excluded: dict[str, int] | None) -> str:
+    """'1200 sentinel, 3 masked_or_fill' style summary ('' if nothing excluded)."""
+    parts = [f"{n} {k}" for k, n in (excluded or {}).items() if n]
+    return ", ".join(parts)
 
 
 def parse_station_netcdf(

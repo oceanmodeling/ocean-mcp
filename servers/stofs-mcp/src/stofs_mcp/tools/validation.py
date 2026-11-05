@@ -4,7 +4,6 @@ from __future__ import annotations
 
 from typing import Literal
 import json
-import math
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -13,6 +12,7 @@ from mcp.types import ToolAnnotations
 
 from ..client import STOFSClient
 from ..models import (
+    PLAUSIBLE_WATER_LEVEL_M,
     COOPS_DATUM_FOR_MODEL_DATUM,
     STOFSModel,
     get_model_label,
@@ -27,8 +27,10 @@ from ..utils import (
     parse_station_netcdf,
     resolve_cycle,
     datum_provenance,
+    describe_exclusions,
     dumps_strict,
     resolve_station_datum,
+    value_exclusion_reason,
 )
 
 # Markdown row cap — hourly points over the 96 h maximum window fit under it.
@@ -148,9 +150,14 @@ async def stofs_compare_with_observations(
         stofs_values = stofs_data["values"]
 
         if not stofs_times:
+            why = describe_exclusions(stofs_data.get("excluded_model_records"))
             return (
-                f"No STOFS data found for station {station_id}. "
-                "The station may not be in this model's output."
+                f"No usable STOFS values for station {station_id} in this cycle: all "
+                f"{stofs_data.get('n_records', 0)} records were excluded"
+                + (f" ({why})" if why else "")
+                + ". 'sentinel' values are no-data codes (possibly shifted by a datum "
+                "constant); 'implausible' values exceed "
+                f"{PLAUSIBLE_WATER_LEVEL_M:g} m. Nothing was compared."
             )
 
         # Determine comparison time window
@@ -298,6 +305,8 @@ async def stofs_compare_with_observations(
             "flagged": 0,
             "missing": 0,
             "nonfinite": 0,
+            "sentinel": 0,
+            "implausible": 0,
         }
         for rec in obs_records:
             t_str = rec.get("t", "")
@@ -310,8 +319,10 @@ async def stofs_compare_with_observations(
             except (ValueError, TypeError):
                 obs_quality["missing"] += 1
                 continue
-            if not math.isfinite(value):  # "NaN", "Infinity" parse as floats
-                obs_quality["nonfinite"] += 1
+            # Same rule as the model values: "NaN"/"Infinity" parse as floats.
+            reason = value_exclusion_reason(value)
+            if reason:
+                obs_quality[reason] += 1
                 continue
             obs_values.append(value)
             obs_times.append(t_str)  # CO-OPS uses 'YYYY-MM-DD HH:MM'
@@ -333,7 +344,8 @@ async def stofs_compare_with_observations(
             return (
                 f"CO-OPS returned {len(obs_records)} records for station {station_id} "
                 f"but none has a usable value ({obs_quality['missing']} missing, "
-                f"{obs_quality['nonfinite']} non-finite)."
+                f"{obs_quality['nonfinite']} non-finite, {obs_quality['sentinel']} "
+                f"sentinel, {obs_quality['implausible']} implausible)."
             )
 
         # Align: one-to-one, exact timestamps first, then nearest unused
@@ -593,7 +605,8 @@ async def stofs_compare_with_observations(
             f"*Observations: {obs_quality['verified']} verified, "
             f"{obs_quality['preliminary']} preliminary, "
             f"{obs_quality['flagged']} with CO-OPS quality flags (not filtered), "
-            f"{obs_quality['missing']} missing, {obs_quality['nonfinite']} non-finite "
+            f"{obs_quality['missing']} missing, {obs_quality['nonfinite']} non-finite, "
+            f"{obs_quality['sentinel'] + obs_quality['implausible']} out of range "
             f"(excluded) of {obs_quality['records']} records; matched pairs: "
             f"{obs_quality['matched']['verified']} verified, "
             f"{obs_quality['matched']['preliminary']} preliminary, "
