@@ -1,0 +1,27 @@
+{
+ "session_id": "phase0_erddap_replay_dnsguard",
+ "arm": "phase0",
+ "server": {
+  "python": "/tmp/claude-1000/-mnt-d-ocean-mcp/349682ef-6680-4b65-946b-8dddc1d96a0d/scratchpad/envs/erddap/bin/python",
+  "module": "erddap_mcp",
+  "mode": "replay",
+  "archives": [
+   "/mnt/d/ocean-mcp/.claude/worktrees/safeguards-comparison/verification_safeguards_comparison/data/archive/base"
+  ],
+  "dists": [
+   "erddap-mcp",
+   "mcp",
+   "httpx"
+  ]
+ },
+ "calls": [
+  {
+   "call_id": "unarchived_host",
+   "tool": "erddap_get_dataset_info",
+   "arguments": {
+    "server_url": "https://coastwatch.pfeg.noaa.gov/erddap",
+    "dataset_id": "jplMURSST41"
+   }
+  }
+ ]
+}

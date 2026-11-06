@@ -1,0 +1,47 @@
+{
+ "format": "ocean-replay-archive/1",
+ "entries": [
+  {
+   "id": "e0001",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-nos-stofs3d-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/STOFS-3D-Atl/stofs_3d_atl.20261030/stofs_3d_atl.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20261030/stofs_3d_atl.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ],
+     [
+      "last-modified",
+      "Fri, 30 Oct 2026 19:57:01 GMT"
+     ],
+     [
+      "etag",
+      "\"553651281166e6410f52f2967b49b840\""
+     ]
+    ],
+    "body_file": "bodies/6e159109826c6af3f94a0d10d3938e1aeb5111db1b83217b64e4cf68a4f54aeb.nc",
+    "body_sha256": "6e159109826c6af3f94a0d10d3938e1aeb5111db1b83217b64e4cf68a4f54aeb",
+    "bytes": 8297477
+   },
+   "provenance": {
+    "source": "synthetic",
+    "task": "S1",
+    "mutation": "zeta:standard_name and zeta:long_name deleted; no other change",
+    "origin_entry": "e0002",
+    "origin_sha256": "4660819425aa1d2eec0e63a37d3a78e8fef2e00f62a1cb56f088347ef51a450f",
+    "label": "SYNTHETIC: controlled mutation of a real NOAA file"
+   }
+  }
+ ],
+ "dns": {}
+}

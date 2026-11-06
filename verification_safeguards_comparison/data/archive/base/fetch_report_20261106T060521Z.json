@@ -1,0 +1,154 @@
+[
+ {
+  "name": "stofs3d_20260218_t12z",
+  "entry": "e0005",
+  "http_status": 200,
+  "bytes": 5509661,
+  "sha256": "d13345a36695ac69ff463f52f6f5dc187639e65a068a33626d9ab2090ca633b5",
+  "retrieved_at": "2026-11-06T06:04:14+00:00",
+  "expected_sha256": "d13345a36695ac69ff463f52f6f5dc187639e65a068a33626d9ab2090ca633b5",
+  "expected_source": "MANUSCRIPT_SECOND_REVIEW.md checksum table",
+  "matches_expected": true
+ },
+ {
+  "name": "stofs3d_20260816_t12z",
+  "entry": "e0006",
+  "http_status": 200,
+  "bytes": 5509661,
+  "sha256": "f78e84ef18ae35083c7efe83c26df4c907d7359fb397155e1c2d748001d02462",
+  "retrieved_at": "2026-11-06T06:04:19+00:00",
+  "expected_sha256": "f78e84ef18ae35083c7efe83c26df4c907d7359fb397155e1c2d748001d02462",
+  "expected_source": "MANUSCRIPT_SECOND_REVIEW.md checksum table",
+  "matches_expected": true
+ },
+ {
+  "name": "stofs3d_20260817_t12z",
+  "entry": "e0007",
+  "http_status": 200,
+  "bytes": 8297477,
+  "sha256": "f47962fa8504ef4017e5a858603fa8ee0894546524e125ec38025e1fe05289c4",
+  "retrieved_at": "2026-11-06T06:04:23+00:00",
+  "expected_sha256": "f47962fa8504ef4017e5a858603fa8ee0894546524e125ec38025e1fe05289c4",
+  "expected_source": "MANUSCRIPT_SECOND_REVIEW.md checksum table",
+  "matches_expected": true
+ },
+ {
+  "name": "coops_8443970_NAVD_20260815_19",
+  "entry": "e0008",
+  "http_status": 200,
+  "bytes": 90511,
+  "sha256": "29192c304fc598440768b97bcee9c38fc88c2507efc1004d820989ef3c523911",
+  "retrieved_at": "2026-11-06T06:04:28+00:00",
+  "records": 1200,
+  "round_trip": "byte-exact"
+ },
+ {
+  "name": "coops_8443970_MSL_20260815_19",
+  "entry": "e0009",
+  "http_status": 200,
+  "bytes": 90491,
+  "sha256": "14b73c356606c6d97687fe03758b18376d187c9c89c093d2cf5e8a7b3b17d15b",
+  "retrieved_at": "2026-11-06T06:04:32+00:00",
+  "records": 1200,
+  "round_trip": "byte-exact"
+ },
+ {
+  "name": "coops_8443970_MSL_20261029_1101",
+  "entry": "e0010",
+  "http_status": 200,
+  "bytes": 72338,
+  "sha256": "25ad6659322952fa57b5f7e1943da6b3990dcbbbfad63ed07807511197b089e2",
+  "retrieved_at": "2026-11-06T06:04:36+00:00",
+  "records": 960,
+  "round_trip": "byte-exact"
+ },
+ {
+  "name": "coops_8443970_NAVD_20261029_1101",
+  "entry": "e0011",
+  "http_status": 200,
+  "bytes": 72338,
+  "sha256": "29297072e32c4fd75b486ef2bb9723572bfcf2af5d2b1479d2cf4fcb9537c92b",
+  "retrieved_at": "2026-11-06T06:04:40+00:00",
+  "records": 960,
+  "round_trip": "byte-exact"
+ },
+ {
+  "name": "coops_9751381_MSL_20261029_1101",
+  "entry": "e0012",
+  "http_status": 200,
+  "bytes": 71810,
+  "sha256": "ec9668caa503c1c3728038d292ad06735e5694e17cbc3fcad70d1a2b1cf9ed62",
+  "retrieved_at": "2026-11-06T06:04:44+00:00",
+  "records": 960,
+  "round_trip": "byte-exact"
+ },
+ {
+  "name": "coops_9751381_NAVD_20261029_1101",
+  "entry": "e0013",
+  "http_status": 200,
+  "bytes": 71810,
+  "sha256": "35e759cb201fe7e857d3fc8b5e690734d0ac95a2b3b6ee43e9719626385bc546",
+  "retrieved_at": "2026-11-06T06:04:48+00:00",
+  "records": 960,
+  "round_trip": "byte-exact"
+ },
+ {
+  "name": "coops_8725520_water_level_MLLW_20220927_29",
+  "entry": "e0014",
+  "http_status": 200,
+  "bytes": 53919,
+  "sha256": "28fc969931a5d493eebba656555b3b1834da187356917ce8714e13e3ea7d0550",
+  "retrieved_at": "2026-11-06T06:04:52+00:00"
+ },
+ {
+  "name": "coops_8725520_predictions_MLLW_20220927_29",
+  "entry": "e0015",
+  "http_status": 200,
+  "bytes": 27313,
+  "sha256": "302a36f1121156cb1edc8e748e028c904ddf2281940eca0e6f744443b3413fd8",
+  "retrieved_at": "2026-11-06T06:04:57+00:00"
+ },
+ {
+  "name": "erddap_jplMURSST41_info",
+  "entry": "e0016",
+  "http_status": 200,
+  "bytes": 12990,
+  "sha256": "9c517f7bfeada953d82fecbf1abbe01b2b113368d1bcbb279134987450372b05",
+  "retrieved_at": "2026-11-06T06:05:01+00:00"
+ },
+ {
+  "name": "erddap_jplMURSST41_subset",
+  "entry": "e0017",
+  "http_status": 200,
+  "bytes": 922450,
+  "sha256": "3eb504b5454363bb5e4a88adf98729ffa0bdcedf831723d54513d3e94bf625da",
+  "retrieved_at": "2026-11-06T06:05:06+00:00",
+  "expected_sha256": "3eb504b5454363bb5e4a88adf98729ffa0bdcedf831723d54513d3e94bf625da",
+  "expected_source": "MANUSCRIPT_SECOND_REVIEW.md checksum table (fresh direct MUR response; request form not recorded there, so a mismatch is informative only)",
+  "matches_expected": true
+ },
+ {
+  "name": "erddap_cwwcNDBCMet_41009_2024_wvht",
+  "entry": "e0018",
+  "http_status": 400,
+  "bytes": 97,
+  "sha256": "14fb7ea920da20c599430b118dee44f59b754d4ab1353c5e60bd3b5393215062",
+  "retrieved_at": "2026-11-06T06:05:12+00:00"
+ },
+ {
+  "name": "doc_ndbc_measdes",
+  "entry": "e0019",
+  "http_status": 200,
+  "bytes": 51056,
+  "sha256": "fbc351f083e8653ecca5cc4c7d703c994dd689f5be3f89ff839c890d0a131960",
+  "retrieved_at": "2026-11-06T06:05:17+00:00"
+ },
+ {
+  "name": "doc_coops_api_help",
+  "entry": "e0020",
+  "http_status": 200,
+  "bytes": 42037,
+  "sha256": "2f35c273fdb3eeca2aa98111d0ed62998500c2ed9f4c507b0543d919dd6b4da5",
+  "retrieved_at": "2026-11-06T06:05:21+00:00"
+ }
+]

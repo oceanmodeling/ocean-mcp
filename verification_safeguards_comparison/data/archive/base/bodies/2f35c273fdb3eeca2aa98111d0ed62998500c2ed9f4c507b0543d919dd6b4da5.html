@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- Remove the next line to disable mobile mode -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="description here" />
+<link href="css/bootstrap.css" rel="stylesheet">
+<title>CO-OPS Data Retrieval API</title>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span2">
+				<ul class="nav nav-list well">
+					<li class="nav-header">Jump to:</li>
+					<li><a href="#station">Station ID</a></li>
+					<li><a href="#timerange">Date & Time</a></li>
+					<li><a href="#products">Data Products</a></li>
+					<li><a href="#expand">Expand</a></li>
+					<li><a href="#datum">Datum</a></li>
+					<li><a href="#units">Units</a></li>
+					<li><a href="#timezone">Time Zone</a></li>
+					<li><a href="#interval">Interval</a></li>
+					<li><a href="#bin">Bin</a></li>
+					<li><a href="#velocitytype">Velocity Type</a></li>
+					<li><a href="#format">Format</a></li>
+					<li><a href="#application">Application</a></li>
+					<li><a href="#DataAPIResponse">Data API Response
+							Descriptions</a></li>
+					<li><a href="#requestResponse">Sample API Queries</a></li>
+					<li><a href="#APIThrottling">API Throttling</a></li>
+					<li><a href="#error">Error Message</a></li>
+					<li><a href="#contact">Contact Us</a></li>
+					<li class="nav-header">Help links:</li>
+					<li><a href="responseHelp.html">Response Help Page</a></li>
+				</ul>
+			</div>
+			<div class="span9">
+				<div class="hero well">
+					<h3>CO-OPS API For Data Retrieval</h3>
+				</div>
+				The CO-OPS API for data retrieval can be used to retrieve
+				observations and predictions from CO-OPS stations. <a name="station"></a>
+				<h4>Station ID</h4>
+				A 7 character station ID, or a currents station ID. Specify the
+				station ID with the "station=" parameter.<br> Examples: <br>
+				station=9414290 (water level / met station) <br> station=cb1401
+				(currents station) <br> Station listings for various products
+				can be viewed at <a href="https://tidesandcurrents.noaa.gov">https://tidesandcurrents.noaa.gov</a>
+				or viewed on a map at <a
+					href="https://tidesandcurrents.noaa.gov/map">Tides & Currents
+					Station Map</a> <a name="timerange"></a>
+				<h4>
+					<br>Date & Time
+				</h4>
+				The API understands several parameters related to date ranges. <br>
+				All dates can be formatted as follows: <br> yyyyMMdd, yyyyMMdd
+				HH:mm, MM/dd/yyyy, or MM/dd/yyyy HH:mm <br> <br> One the 5
+				following sets of parameters can be specified in a request: <br>
+				<br>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Parameter Name (s)</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tr>
+						<td>begin_date and end_date</td>
+						<td>Specify the date/time range of retrieval</td>
+					</tr>
+					<tr>
+						<td>begin_date and range</td>
+						<td>Specify a begin date and a number of hours to retrieve
+							data starting from that date</td>
+					</tr>
+					<tr>
+						<td>end_date and range</td>
+						<td>Specify an end date and a number of hours to retrieve
+							data ending at that date</td>
+					</tr>
+					<tr>
+						<td>date</td>
+						<td>Data from today’s date.<br> <span
+							class="label label-info">Note!</span> Only available for
+							preliminary water level data, meteorological data and
+							predictions. <br>Valid options for the date parameter are: <br>•
+							Today (24 hours starting at midnight) <br>• Latest (last
+							data point available within the last 18 min) <br>• Recent
+							(last 72 hours)
+						</td>
+					</tr>
+					<tr>
+						<td>range</td>
+						<td>Specify a number of hours to to back from now and
+							retrieve data for that period<br> <span
+							class="label label-info">Note!</span> <br>• If used alone,
+							only available for preliminary water level data, meteorological
+							data <br>• If used with a historical begin or end date, may
+							be used with verified data <br>• If used for daily
+							maximum/minimum with a historical begin or end date, range is set
+							in the number of years.<br>
+						</td>
+					</tr>
+				</table>
+				<dl>
+					<b><i>Examples:</i></b>
+
+					<br>
+					<table>
+						<tr>
+							<td style="width: 372px;">begin_date=20120101&amp;end_date=20120102</td>
+							<td>Retrieves data for January 1st, 2012 through January
+								2nd, 2012</td>
+						</tr>
+						<tr>
+							<td>begin_date=20120415&range=48</td>
+							<td>Retrieves data for 48 hours beginning on April 15, 2012</td>
+						</tr>
+						<tr>
+							<td>end_date=20120307&range=48</td>
+							<td>Retrieves data for 48 hours ending on March 17, 2012</td>
+						</tr>
+						<tr>
+							<td>begin_date=20190101&range=5</td>
+							<td>Retrieves data for January 1st, 2019 through December
+								31, 2023</td>
+						</tr>
+						<tr>
+							<td>date=today</td>
+							<td>Retrieves data for today</td>
+						</tr>
+						<tr>
+							<td>date=latest</td>
+							<td>Retrieves the last data point available within the last
+								18 min</td>
+						</tr>
+						<tr>
+							<td>date=recent</td>
+							<td>Retrieves the last 3 days of data</td>
+						</tr>
+						<tr>
+							<td>range=12</td>
+							<td>Retrieves the last 12 hours of data</td>
+						</tr>
+					</table>
+				</dl>
+				<a name="products"></a>
+				<h4>
+					<br>Data Products
+				</h4>
+				Specify the type of data with the "product=" option parameter. <br>
+				<br>
+				<table class="table table-bordered">
+					<tr>
+						<td><b>Data Length Limitations:</b></td>
+						<td>To prevent numerous large data requests slowing data
+							access through the internet services; all internet data services
+							have limits on the amount/length of data which can be retrieved
+							per request. These limits are based on the interval of data
+							requested.</td>
+					</tr>
+					<tr>
+						<td>1-minute interval data</td>
+						<td>Data length is limited to 4 days</td>
+					</tr>
+					<tr>
+						<td>6-minute interval data</td>
+						<td>Data length is limited to 1 month</td>
+					</tr>
+					<tr>
+						<td>Hourly interval data</td>
+						<td>Data length is limited to 1 year</td>
+					</tr>
+					<tr>
+						<td>High / Low data</td>
+						<td>Data length is limited to 1 year</td>
+					</tr>
+					<tr>
+						<td>Daily Means data</td>
+						<td>Data length is limited to 10 years</td>
+					</tr>
+					<tr>
+						<td>Daily Maximum / Minimum data</td>
+						<td>Data length is limited to 10 years</td>
+					</tr>
+					<tr>
+						<td>Monthly Means data</td>
+						<td>Data length is limited to 200 years</td>
+					</tr>
+				</table>
+				<table class="table table-bordered">
+					<tr>
+						<td><b>Tides / Water Levels Data</b></td>
+						<td><span class="label label-info">Note!</span>Data is
+							verified on a monthly basis for the past month. (Example: January
+							data is verified in February). Daily maximum/minimum becomes
+							available after monthly verification is completed for the past
+							month. (Example: January data becomes available in March).No
+							specific date can be provided for verified data availability; as
+							the order stations are verified will change each month to avoid
+							appearances of one station being “more important” than another. <br>
+							<a href="#datum">Datum is mandatory for water level data
+								products, except Air Gap</a></td>
+					</tr>
+					<tr>
+						<td><b>Option</b></td>
+						<td><b>Description</b></td>
+					</tr>
+					<tr>
+						<td>water_level</td>
+						<td>Preliminary or verified 6-minute interval water levels,
+							depending on data availability.</td>
+					</tr>
+					<tr>
+						<td>hourly_height</td>
+						<td>Verified hourly height water level data for the station.</td>
+					</tr>
+					<tr>
+						<td>high_low</td>
+						<td>Verified high tide / low tide water level data for the
+							station.</td>
+					</tr>
+					<tr>
+						<td>daily_mean</td>
+						<td>Verified daily mean water level data for the station. <br>
+							<span class="label label-info">Note!</span>Great Lakes stations
+							only. <a href="#timezone"> Only available with
+								“time_zone=LST”</a></td>
+					</tr>
+					<tr>
+						<td>Daily Maximum</td>
+						<td>Verified daily maximum 6 minute or hourly water level
+							data for the station. <br> <span class="label label-info">Note!</span>Only
+							available with “time_zone=LST” or “time_zone=GMT” and default is
+							from the hourly data. Use “interval=6” for 6-minute data
+						</td>
+					</tr>
+					<tr>
+						<td>Daily Minimum</td>
+						<td>Verified daily minimum 6 minute or hourly water level
+							data for the station. <br> <span class="label label-info">Note!</span>Only
+							available with “time_zone=LST” or “time_zone=GMT” and default is
+							from the hourly data. Use “interval=6” for 6-minute data
+						</td>
+					</tr>
+					<tr>
+						<td>monthly_mean</td>
+						<td>Verified monthly mean water level data for the station.</td>
+					</tr>
+					<tr>
+						<td>one_minute_water_level</td>
+						<td>Preliminary 1-minute interval water level data for the
+							station.</td>
+					</tr>
+					<tr>
+						<td>predictions</td>
+						<td>Water level / tide prediction data for the station.<br>
+							<span class="label label-info">Note!</span><a href="#interval">See
+								Interval for available data interval options and data length
+								limitations.</a></td>
+					</tr>
+					<tr>
+						<td><s>datums</s></td>
+						<td>Datums product no longer available on CO-OPS Data API, please visit <a
+							href="https://api.tidesandcurrents.noaa.gov/mdapi/prod/#Datums">
+								CO-OPS Metadata API.</a>
+						</td>
+					</tr>
+					<tr>
+						<td>air_gap</td>
+						<td>Air Gap (distance between a bridge and the water's
+							surface) at the station.</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><b>Meteorological Data</b></td>
+						<td><span class="label label-info">Note!</span>Default is
+							6-minute interval data. <a href="#interval">Use with
+								“interval=h” for hourly data</a></td>
+					</tr>
+					<tr>
+						<td><b>Option</b></td>
+						<td><b>Description</b></td>
+					</tr>
+					<tr>
+						<td>air_temperature</td>
+						<td>Air temperature as measured at the station.</td>
+					</tr>
+					<tr>
+						<td>water_temperature</td>
+						<td>Water temperature as measured at the station.</td>
+					</tr>
+					<tr>
+						<td>wind</td>
+						<td>Wind speed, direction, and gusts as measured at the
+							station.</td>
+					</tr>
+					<tr>
+						<td>air_pressure</td>
+						<td>Barometric pressure as measured at the station.</td>
+					</tr>
+					<tr>
+						<td>conductivity</td>
+						<td>The water's conductivity as measured at the station.</td>
+					</tr>
+					<tr>
+						<td>visibility</td>
+						<td>Visibility (atmospheric clarity) as measured at the
+							station. <br> <a href="#units">(Units of Nautical Miles
+								or Kilometers.)</a>
+						</td>
+					</tr>
+					<tr>
+						<td>humidity</td>
+						<td>Relative humidity as measured at the station.</td>
+					</tr>
+					<tr>
+						<td>salinity</td>
+						<td>Salinity and specific gravity data for the station.</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><b>Currents Data</b></td>
+						<td><a href="#bin">Bin is required for most stations</a></td>
+					</tr>
+					<tr>
+						<td><b>Option</b></td>
+						<td><b>Description</b></td>
+					</tr>
+					<tr>
+						<td>currents</td>
+						<td>Currents data for the station. <span
+							class="label label-info">Note!</span> Default data interval is
+							6-minute interval data.<a href="#interval">Use with
+								“interval=h” for hourly data</a>> There may be differences in bin
+							depths across the deployments as sensor depth and on rare
+							occasions bin size could change when a sensor is re-deployed.
+						</td>
+					</tr>
+					<tr>
+						<td>currents_predictions</td>
+						<td>Currents prediction data for the stations. <span
+							class="label label-info">Note!</span> <a href="#interval">See
+								Interval for options available and data length limitations.</a></td>
+					</tr>
+					<tr>
+						<td>currents_header</td>
+						<td>Currents header data for the stations. <span
+							class="label label-info">Note!</span> Data length is limited to 1
+							month.
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><b>Operational Forecast (OFS) </b></td>
+						<td><span class="label label-info">Note!</span> Model nowcast
+							/ forecast data is available at most real-time water level
+							stations within OFS model domains.</td>
+					</tr>
+					<tr>
+						<td><b>Option</b></td>
+						<td><b>Description</b></td>
+					</tr>
+					<tr>
+						<td>ofs_water_level</td>
+						<td>Water level model guidance at 6-minute intervals based on
+							NOS OFS models. Data available from 2020 to present.</td>
+					</tr>
+				</table>
+				<b><i>Examples:</i></b> <br>
+				<table>
+					<tr>
+						<td style="width: 372px;">product=water_level</td>
+						<td>Retrieves 6-minute interval water level data for the
+							station</td>
+					</tr>
+					<tr>
+						<td>product=hourly_height</td>
+						<td>Retrieves verified hourly water level data for the
+							station</td>
+					</tr>
+					<tr>
+						<td>product=visibility</td>
+						<td>Retrieves visibility data for the station</td>
+					</tr>
+					<tr>
+						<td>product =currents_predictions</td>
+						<td>Retrieves predicted currents for the station</td>
+					</tr>
+					<tr>
+						<td>product=ofs_water_level</td>
+						<td>Retrieves 6-minute nowcast/forecast guidance from OFS
+							models for the station</td>
+					</tr>
+				</table>
+				<br /> <br /> <a name="expand"></a>
+				<h4>Expand</h4>
+				The expand can be specified with the "expand=" option parameter. <br>
+				<span class="label label-info">Note!</span> expand is for currents
+				product to retrieve echo intensity and correlation magnitude data. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Only
+				apply to currents product. <br> <br>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Option</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<td>detailed</td>
+					<td>Currents product - to retrieve echo intensity and
+						correlation magnitude data(The units are in counts)</td>
+					</tr>
+				</table>
+				<b><i>Examples:</i></b> <br>
+				<table>
+					<tr>
+						<td style="width: 372px;">expand=detailed</td>
+						<td>Retrieves currents data with echo intensity and
+							correlation magnitude data for the station</td>
+					</tr>
+				</table>
+				<a name="datum"></a>
+				<h4>Datum</h4>
+				The datum can be specified with the "datum=" option parameter. <br>
+				<span class="label label-info">Note!</span> Datum is mandatory for
+				all water level products to correct the data to the reference point
+				desired. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Does
+				not apply to Air Gap data, which is only provided relative to a
+				fixed reference point on the bridge. <br> <br>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Option</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tr>
+						<td>CRD</td>
+						<td>Columbia River Datum. <span class="label label-info">Note!</span>Only
+							available for certain stations on the Columbia River,
+							Washington/Oregon
+						</td>
+					</tr>
+					<tr>
+						<td>IGLD</td>
+						<td>International Great Lakes Datum <span
+							class="label label-info">Note!</span> Only available for Great
+							Lakes stations.
+						</td>
+					</tr>
+					<tr>
+						<td>LWD</td>
+						<td>Great Lakes Low Water Datum (Nautical Chart Datum for the
+							Great Lakes). <br> <span class="label label-info">Note!</span>
+							Only available for Great Lakes Stations
+						</td>
+					</tr>
+					<tr>
+						<td>MHHW</td>
+						<td>Mean Higher High Water</td>
+					</tr>
+					<tr>
+						<td>MHW</td>
+						<td>Mean High Water</td>
+					</tr>
+					<tr>
+						<td>MTL</td>
+						<td>Mean Tide Level</td>
+					</tr>
+					<tr>
+						<td>MSL</td>
+						<td>Mean Sea Level</td>
+					</tr>
+					<tr>
+						<td>MLW</td>
+						<td>Mean Low Water</td>
+					</tr>
+					<tr>
+						<td>MLLW</td>
+						<td>Mean Lower Low Water (Nautical Chart Datum for all U.S.
+							coastal waters) <br> <span class="label label-info">Note!</span>
+							Subordinate tide prediction stations must use “datum=MLLW”
+						</td>
+					</tr>
+					<tr>
+						<td>NAVD</td>
+						<td>North American Vertical Datum <span
+							class="label label-info">Note!</span> This datum is not available
+							for all stations.
+						</td>
+					</tr>
+					<tr>
+						<td>STND</td>
+						<td>Station Datum - original reference that all data is
+							collected to, uniquely defined for each station.</td>
+					</tr>
+				</table>
+				<b><i>Examples:</i></b> <br>
+				<table>
+					<tr>
+						<td style="width: 372px;">datum=MLLW</td>
+						<td>Retrieves data with heights relative to Mean Lower Low
+							Water (MLLW) for the station</td>
+					</tr>
+				</table>
+
+				<a name="units"></a>
+				<h4>
+					<br>Units
+				</h4>
+				The unit type can be specified with the "units=" option parameter. <br>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Option</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tr>
+						<td>metric</td>
+						<td>Metric units (Celsius, meters, cm/s appropriate for the
+							data) <br> <span class="label label-info">Note!</span>Visibility
+							data is kilometers (km), Currents data is in cm/s.
+						</td>
+					</tr>
+					<tr>
+						<td>english</td>
+						<td>English units (fahrenheit, feet, knots appropriate for
+							the data)<br> <span class="label label-info">Note!</span>Visibility
+							data is Nautical Miles (nm), Currents data is in knots.
+						</td>
+					</tr>
+				</table>
+				<b><i>Examples:</i></b> <br>
+				<table>
+					<tr>
+						<td style="width: 372px;">units=english</td>
+						<td>Retrieves data in english units.</td>
+					</tr>
+				</table>
+				<a name="timezone"></a>
+				<h4>
+					<br>Time Zone
+				</h4>
+				The time_zone of the data can be specified with the "time_zone="
+				option parameter. <br> <span class="label label-info">Note!</span>Does
+				not apply to products of monthly_mean; daily_mean (Great
+				Lakes) must use time_zone=lst<br>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Option</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tr>
+						<td>gmt</td>
+						<td>Greenwich Mean Time</td>
+					</tr>
+					<tr>
+						<td>lst</td>
+						<td>Local Standard Time, not corrected for Daylight Saving
+							Time, local to the requested station.</td>
+					</tr>
+					<tr>
+						<td>lst_ldt</td>
+						<td>Local Standard Time, corrected for Daylight Saving Time
+							when appropriate, local to the requested station</td>
+					</tr>
+				</table>
+				<b><i>Examples:</i></b> <br>
+				<table>
+					<tr>
+						<td style="width: 372px;">time_zone=gmt</td>
+						<td>Retrieves data with date/times in Greenwich Mean Time.</td>
+					</tr>
+					<tr>
+						<td>time_zone=lst_ldt</td>
+						<td>Retrieves data with dates/times in Local Time, adjusted
+							for daylight saving time when appropriate.</td>
+					</tr>
+				</table>
+
+				<a name="interval"></a>
+				<h4>
+					<br>Interval
+				</h4>
+				<b>Tide/Water Level Data<br></b> Verified water level height
+				data cannot be retrieved using the Interval parameter. <br>Each
+				available interval for verified water level data is a separate data
+				product and must be retrieved using the appropriate product type. <br>
+				<br>
+				<b>Tide/Water Level Predictions</b><br> <span
+					class="label label-info">Note!</span> Harmonic tide prediction
+				stations can provide tide predictions on any available interval.<br>Subordinate
+				tide prediction stations can only provide tide predictions on a high
+				/ low interval. <br>Data Length Limitation: High/Low tide
+				predictions are limited to 10 years. All other intervals are limited
+				to 1 year. <br>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Option</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tr>
+						<td>h</td>
+						<td>Hourly tide predictions for the station.</td>
+					</tr>
+					<tr>
+						<td>1, 5, 6, 10, 15, 30, 60</td>
+						<td>Tide predictions on the interval (number of minutes)
+							requested. These are the only values accepted.</td>
+					</tr>
+					<tr>
+						<td>hilo</td>
+						<td>Tide predictions for high tide and low tide times and
+							heights.</td>
+					</tr>
+				</table>
+				<b><i>Examples:</i></b> <br>
+				<table>
+					<tr>
+						<td style="width: 372px;">interval=h</td>
+						<td>Returns tide predictions on an hourly interval</td>
+					</tr>
+					<tr>
+						<td>interval=15</td>
+						<td>Returns tide predictions on a 15-minute interval</td>
+					</tr>
+					<tr>
+						<td>interval =hilo</td>
+						<td>Returns tide predictions for high tide and low tide times
+							and heights</td>
+					</tr>
+				</table>
+				<p></p>
+				<b>Currents Data</b><br> 
+				<span class="label label-info">Note!</span>The default interval is the only interval available, 6-minute interval data. There is no need to specify it.
+				<br>
+				<br> <b>Currents Predictions</b><br> <span
+					class="label label-info">Note!</span>Harmonic currents prediction
+				stations can provide tidal current predictions on any available
+				interval. <br>Subordinate current prediction stations can only
+				provide tidal current predictions on a max/slack interval. <br>Data
+				Length Limitation: Max_Slack current predictions are limited to 1
+				year. All other intervals are limited to 1 month.
+
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Option</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tr>
+						<td>h</td>
+						<td>Hourly current predictions for the station.</td>
+					</tr>
+					<tr>
+						<td>1, 6, 10, 30, 60</td>
+						<td>Current predictions on the interval (number of minutes)
+							requested. These are the only values accepted.</td>
+					</tr>
+					<tr>
+						<td>max_slack</td>
+						<td>Current predictions of max flood/ebb currents (time and
+							speed) and slack water (times).</td>
+					</tr>
+				</table>
+				<b><i>Examples:</i></b> <br>
+				<table>
+					<tr>
+						<td style="width: 372px;">interval=h</td>
+						<td>Returns current predictions on an hourly interval</td>
+					</tr>
+					<tr>
+						<td>interval=10</td>
+						<td>Returns current predictions on a 10-minute interval</td>
+					</tr>
+					<tr>
+						<td>interval=max_slack</td>
+						<td>Returns current predictions for max flood, slack water,
+							and max ebb currents</td>
+					</tr>
+				</table>
+				<b><br>Meteorological Data</b><br> <span
+					class="label label-info">Note!</span> The default interval is a
+				6-minute interval and there is no need to specify it.
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Option</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tr>
+						<td>h</td>
+						<td>Hourly interval data (the 6-minute interval value on the
+							hour) is returned.</td>
+					</tr>
+				</table>
+				<b><i>Examples:</i></b> <br>
+				<table>
+					<tr>
+						<td style="width: 372px;">interval=h</td>
+						<td>Retrieves meteorological data on the hour.</td>
+					</tr>
+				</table>
+				<a name="bin"></a>
+				<h4>
+					<br>Bin
+				</h4>
+				Current data and predictions provide information for a specific
+				depth, each depth available for a station has a different Bin
+				number.<br>• At PORTS (real time currents) stations a bin
+				number is not required, the data is returned using a predefined bin.
+				<br>◦ If a bin number of 0 (bin=0) is used, data for all bins
+				are provided. (Data Length Limitation: 7 days for all bins) <br>•
+				All other current stations require a bin number to access data. <br>•
+				Historic Survey Current Stations - the Bin numbers / depths for
+				historical survey currents stations are available through the <a
+					href="https://api.tidesandcurrents.noaa.gov/mdapi/prod/">
+					MetaData API</a> <br>◦ If a bin number of 0 (bin=0) is used, data
+				for all bins is provided. (Data Length Limitation: 7 days for all
+				bins) <br>• Tidal current predictions stations - the Bin number
+				for tidal current prediction stations are available through the <a
+					href="https://api.tidesandcurrents.noaa.gov/mdapi/prod/">
+					MetaData API </a> and <a
+					href="https://opendap.co-ops.nos.noaa.gov/axis/webservices/currentpredictionstations/response.jsp?format=html">
+					Soap Web Services Station Listing </a> <br>◦ If a bin number is
+				not used, the bin nearest the surface will be provided. <br>◦
+				Using an invalid number (like bin=-1) will provide an error message
+				noting the valid bin numbers. <br>
+
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Option</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tr>
+						<td>&lt;numerical value&gt;</td>
+						<td>The bin number requested</td>
+					</tr>
+				</table>
+				<b><i>Examples:</i></b> <br>
+				<table>
+					<tr>
+						<td style="width: 372px;">bin=3</td>
+						<td>Returns currents data for bin number 3 of the specified
+							station</td>
+					</tr>
+				</table>
+
+
+				<a name="velocitytype"></a>
+				<h4>
+					<br>Velocity Type
+				</h4>
+                    The Velocity Type can be specified with the "vel_type=" option parameter.
+                    <br><span class="label label-info">Note!</span> This only applies to Current Predictions at Harmonic Stations.
+                    <br><br> 
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Option</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td>speed_dir</td>
+                            <td>Return results for speed and direction -the 2 dimensional speed and direction, may not match flood/ebb directions<br>
+                            <span class="label label-info">Note!</span>only supports current prediction intervals of 1, 6, 10, 30, 60; does not apply to max_slack predictions.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>default</td>
+                            <td>Return results for velocity major, mean flood direction and mean ebb direction.  
+<br>If not included in the API query, the default is automatically used
+ </td>
+                        </tr>
+                     
+                    </table>
+                    <b><i>Examples:</i></b>
+                        
+<br>
+					<table>
+                        <tr>
+                            <td style="width: 372px; ">vel_type = speed_dir</td>
+                            <td>Returns current predictions data in a velocity and direction output.</td>
+                        </tr>
+						<tr>
+                            <td>vel_type = default</td>
+                            <td>Returns current predictions data in flood/ebb directions</td>
+                        </tr>
+                    </table>                    
+                    <a name="format"></a>
+                    <h4><br>Format</h4>
+                    The data file output format can be specified.
+                    <br><br>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Option</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>                        
+                        <tr>
+                            <td>xml</td>
+                            <td>Extensible Markup Language. This format is an industry standard for data.
+                        </tr>
+                        <tr>
+                            <td>json</td>
+                            <td>Javascript Object Notation. This format is useful for direct import to a javascript plotting library. Parsers are available for other languages such as Java and Perl.</td>
+                        </tr>
+                        <tr>
+                            <td>csv</td>
+                            <td>Comma Separated Values. This format is suitable for import into Microsoft Excel or other spreadsheet programs. 
+                        </tr>
+                    </table>
+                    <b><i>Examples:</i></b>
+                        
+<br>
+
+				<table>
+					<tr>
+						<td style="width: 372px;">format=xml</td>
+						<td>Returns data requested in xml format.</td>
+					</tr>
+				</table>
+				<a name="application"></a>
+				<h4>
+					<br>Application
+				</h4>
+				This parameter provides an “identifier” in automated activity /
+				error logs that allows us to identify your query from others. <br>This
+				allows us to identify and assist you in correcting any problems
+				encountered in your query. <br>• External Users: please use the
+				name of your company, organization, application, your name, or a
+				combination / variation of these. <br>• Internal NOAA Users:
+				please include the office acronym and name of the application
+				calling the API. <br>Initials, abbreviations or acronyms for
+				part of the value are acceptable. <br>Separate words of the
+				name can be separated by an underscore, or merged into a single
+				entry. <br> <br> <span class="label label-info">Note!</span>
+				This is not a required parameter. Not including the parameter will
+				make identifying issues through automated logs impossible. <br>
+				<b><i>Examples:</i></b> <br>
+				<table>
+					<tr>
+						<td style="width: 372px;">Your_Company</td>
+						<td>A user or application from Your Company has called the
+							API</td>
+					</tr>
+					<tr>
+						<td>MyTideApp</td>
+						<td>An application, My Tide App, has called the API</td>
+					</tr>
+					<tr>
+						<td>John_Public</td>
+						<td>The customer, John Public, has called the API</td>
+					</tr>
+					<tr>
+						<td>UnivAlpha_AStudent</td>
+						<td>The customer, A. Student from University Alpha, has
+							called the API</td>
+					</tr>
+					<tr>
+						<td>NWSMarineForecast</td>
+						<td>The NOAA National Weather Service (NWS), Marine Forecast
+							application has called the API</td>
+					</tr>
+				</table>
+				<br> <a name="DataAPIResponse"></a>
+				<h4>
+					<br>Data API Response Descriptions
+				</h4>
+				The formatted data responses (columns and data flags) for different
+				data types are described in the <a href="responseHelp.html">
+					Response Help Page. </a> <br> <a name="requestResponse"></a>
+				<h4>
+					<br>Sample API Queries
+				</h4>
+				<span class="label label-info">Note!</span> The order of specific
+				parameters listed in the query is flexible. The samples below use
+				the parameter order created by our <a
+					href="https://tidesandcurrents.noaa.gov/api-helper/url-generator.html">
+					API Builder Tool. </a><br> <br> <br> • Real Time Water
+				Levels Data - 9414290 San Francisco, CA - Today. <a
+					href="https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?date=today&station=9414290&product=water_level&datum=MLLW&time_zone=gmt&units=english&application=DataAPI_Sample&format=xml"><br>https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?date=today&station=9414290&product=water_level&datum=MLLW&time_zone=gmt&units=english&application=DataAPI_Sample&format=xml</a>
+
+
+				<br> <br>• Verified Hourly Heights Data - 8518750 The
+				Battery, NY - 2020<br> <a
+					href="https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date=20200101&amp;end_date=20201231&amp;station=8518750&amp;product=hourly_height&amp;datum=MLLW&amp;time_zone=lst&amp;units=metric&amp;application=DataAPI_Sample&amp;format=json">
+					https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date=20200101&amp;end_date=20201231&amp;station=8518750&amp;product=hourly_height&amp;datum=MLLW&amp;time_zone=lst&amp;units=metric&amp;application=DataAPI_Sample&amp;format=json</a><br>
+
+
+				<br>• Tide Predictions (high/low) - 8557863 Rehoboth Beach, MD
+				- August 2025 <br> <a
+					href="https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date=20250801&amp;end_date=20250831&amp;station=8557863&amp;product=predictions&amp;datum=MLLW&amp;time_zone=lst_ldt&amp;interval=hilo&amp;units=english&amp;application=DataAPI_Sample&amp;format=xml">https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date=20250801&amp;end_date=20250831&amp;station=8557863&amp;product=predictions&amp;datum=MLLW&amp;time_zone=lst_ldt&amp;interval=hilo&amp;units=english&amp;application=DataAPI_Sample&amp;format=xml</a><br>
+
+
+				<br>• Wind Data (Hourly) - 8724580 Key West, FL - June 2021 <br>
+				<a
+					href="https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date=20210601&amp;end_date=20210630&amp;station=8724580&amp;product=wind&amp;time_zone=lst_ldt&amp;interval=h&amp;units=english&amp;application=DataAPI_Sample&amp;format=csv">https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date=20210601&amp;end_date=20210630&amp;station=8724580&amp;product=wind&amp;time_zone=lst_ldt&amp;interval=h&amp;units=english&amp;application=DataAPI_Sample&amp;format=csv</a><br>
+
+
+				<br>• Visibility Data - 8453662 Providence Visibility
+				(kilometers) - Today <br> <a
+					href="https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?date=today&amp;station=8453662&amp;product=visibility&amp;time_zone=lst_ldt&amp;units=metric&amp;format=csv">https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?date=today&amp;station=8453662&amp;product=visibility&amp;time_zone=lst_ldt&amp;units=metric&amp;format=csv</a>
+
+
+				<br> <br>• Real Time Currents Data - cb0102 Cape Henry
+				(PORTS station) - Today <br> <a
+					href="https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?date=today&amp;station=cb0102&amp;product=currents&amp;time_zone=gmt&amp;units=english&amp;application=DataAPI_Sample&amp;format=xml">https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?date=today&amp;station=cb0102&amp;product=currents&amp;time_zone=gmt&amp;units=english&amp;application=DataAPI_Sample&amp;format=xml</a>
+
+
+				<br> <br>• Historical Currents Survey Data - CFR1624
+				Southport, NC; 10ft depth (bin 9) - April 2016 <br> <a
+					href="https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date=20160401&amp;end_date=20160430&amp;station=CFR1624&amp;product=currents&amp;time_zone=gmt&amp;units=english&amp;application=DataAPI_Sample&amp;format=csv&amp;bin=9">https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date=20160401&amp;end_date=20160430&amp;station=CFR1624&amp;product=currents&amp;time_zone=gmt&amp;units=english&amp;application=DataAPI_Sample&amp;format=csv&amp;bin=9</a><br>
+
+
+				<br>• Current Predictions (10 minute Interval, flood/ebb
+				direction) - EPT0003 Eastport, Estes Head - Today <br> <a
+					href="https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?date=today&station=EPT0003&product=currents_predictions&time_zone=gmt&interval=10&units=english&application=DataAPI_Sample&format=xml&bin=14">https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?date=today&amp;station=EPT0003&amp;product=currents_predictions&amp;time_zone=gmt&amp;interval=10&amp;units=english&amp;application=DataAPI_Sample&amp;format=xml&amp;bin=14</a><br>
+
+
+				<br>• Current Predictions (10 Minute Interval, speed/direction)
+				- EPT0003 Eastport, Estes Head - Today <br> <a
+					href="https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?date=today&station=EPT0003&product=currents_predictions&time_zone=gmt&interval=10&units=english&vel_type=speed_dir&application=DataAPI_Sample&format=xml&bin=14">https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?date=today&amp;station=EPT0003&amp;product=currents_predictions&amp;time_zone=gmt&amp;interval=10&amp;units=english&amp;vel_type=speed_dir&amp;application=DataAPI_Sample&amp;format=xml&amp;bin=14</a><br>
+
+
+				<br>• Current Predictions (Max/Slack) - PCT1291 Grays Harbor
+				Entrance, WA - November 2022 <br> <a
+					href="https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date=20221101&amp;end_date=20221130&amp;station=PCT1291&amp;product=currents_predictions&amp;time_zone=lst&amp;interval=MAX_SLACK&amp;units=english&amp;application=DataAPI_Sample&amp;format=xml&amp;bin=1">https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date=20221101&amp;end_date=20221130&amp;station=PCT1291&amp;product=currents_predictions&amp;time_zone=lst&amp;interval=MAX_SLACK&amp;units=english&amp;application=DataAPI_Sample&amp;format=xml&amp;bin=1</a><br>
+
+				<br>• OFS Water Level (6-min) - 8638610 Sewells Point, VA
+				(CBOFS) <br> <a
+					href="https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date=20220701&end_date=20220703&station=8638610&product=ofs_water_level&datum=MLLW&time_zone=gmt&units=english&format=xml">https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date=20220701&end_date=20220703&station=8638610&product=ofs_water_level&datum=MLLW&time_zone=gmt&units=english&format=xml</a><br>
+
+				<br>• OFS Water Level (6-min) - 9063020 Buffalo, NY (LEOFS) <br>
+				<a
+					href="https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date=20220701&end_date=20220703&station=9063020&product=ofs_water_level&datum=LWD&time_zone=gmt&units=english&format=xml">https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date=20220701&end_date=20220703&station=9063020&product=ofs_water_level&datum=LWD&time_zone=gmt&units=english&format=xml</a><br>
+
+				<br>• Currents Header Data Service - cb0402 Naval Station
+				Norfolk LB 7 <br> <a
+					href="https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date=20250324&end_date=20250325&station=cb0402&product=currents_header&application=DataAPI_Sample&format=xml">https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date=20250324&end_date=20250325&station=cb0402&product=currents_header&application=DataAPI_Sample&format=xml</a><br>
+
+				<br>• Currents Header Data Service - n03020 The Narrows <br>
+				<a
+					href="https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?end_date=20190703&range=24&station=n03020&product=currents_header&application=DataAPI_Sample&format=xml">https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?end_date=20190703&range=24&station=n03020&product=currents_header&application=DataAPI_Sample&format=xml</a><br>
+
+				<a name="error"></a>
+				<br>• Daily Maximum and Minimum Water Level Data (Hourly)   - 8638610 Sewells Point, VA - January 2025
+<br>
+				<a
+					href="https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date=20250101&end_date=20250131&station=8638610&product=daily_max_min&datum=MHHW&time_zone=gmt&units=metric&application=DataAPI_Sample&format=json">https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date=20250101&end_date=20250131&station=8638610&product=daily_max_min&datum=MHHW&time_zone=gmt&units=metric&application=DataAPI_Sample&format=json</a><br>
+
+				<a name="APIThrottling"></a>   
+				<h4>
+					<br>API Throttling
+				</h4>
+				<div class="alert alert-warning" role="alert" style="color:black;">
+  <br>
+                    <span class="label label-info">Note!</span> CO-OPS protects its APIs and systems when encountering heavy load by limiting (throttling) the quantity / volume of data queries received from a singular customer.
+                    <br>A recommended best practice would be to provide "sleep statements" between successive API calls in order to reduce / space out that load. You may need to test via trial and error to determine what works for your use case. 
+                    <br>In addition, a best practice is to only download the data you need. 
+				</div>
+				
+				<a name="error"></a>                    
+				<h4>
+					<br>Error Message
+				</h4>
+				Depending on the nature of the exception the user will get a
+				customized error message back in the same format of the request. <br>
+				<br>
+
+				<pre>
+&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;error&gt;
+Wrong Date: The end date should be greater than the begin date 
+&lt;/error&gt;
+                    </pre>
+
+				<pre>
+{
+    "error": 
+    {
+    "message":
+        "Great Lakes stations don't have Predictions data."
+    }
+} 
+                    </pre>
+                  
+
+				<a name="contact"></a>
+				<h4>
+					<br>Contact Us
+				</h4>
+				E-mail: <a
+					href="mailto:co-ops.userservices@noaa.gov?subject=CO-OPS Data API">
+					User Services (co-ops.userservices@noaa.gov)</a> <br> <br>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+	<title>NDBC - Measurement Descriptions and Units</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+	<meta http-equiv="Content-Type" content="Text/html; charset=iso-8859-1">
+	<meta name="DC.title" content="National Data Buoy Center">
+	<meta name="DC.description" content="Descriptions of the various file formats found on the National Data Buoy Center website.">
+	<meta name="description" content="Descriptions of the various file formats found on the National Data Buoy Center website.">
+	<meta name="DC.subject" content="weather, buoy, weather buoy, marine, forecast, hurricane, wind, wave, offshore, surfing, temperature, meteorology, climate, ocean">
+	<meta name="DC.creator" content="US Department of Commerce, National Oceanic and Atmospheric Administration, National Weather Service, National Data Buoy Center">
+	<meta name="DC.language" content="EN-US">
+
+	<meta name="DC.format" content="text/html;charset=iso-8859-1">
+	<meta name="DC.date.created" content="1996-11-08">
+	<link rel="stylesheet" href="/style/ndbc2022a.css" type="text/css">
+	<style>
+	.meas-des-glossary {
+		display: grid;
+		gap: 0.5em;
+		grid-template-columns: 14ch auto;
+		margin-inline: 1em;
+	}
+	.meas-des-term {
+		margin: 0;
+	}
+	.meas-des-meaning {
+		margin:0;
+		overflow-wrap: anywhere;
+	}
+	</style>
+	<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<script defer src="/js/ndbc_utils.js"></script>
+<script async id="_fed_an_ua_tag" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=DOC&subagency=NOAA"></script>
+<script src="https://touchpoints.app.cloud.gov/touchpoints/b5347857.js" defer></script>
+
+
+</head>
+<body>
+  <a href="#contents" class="skip-nav-link usa-skipnav">Skip Navigation</a>
+
+    <div class="web-page">
+    <!-- Header Section -->
+    <header class="header">
+      <div class="banner">
+        <a href="https://www.noaa.gov/" class="header-noaa-link"><img src="/images/noaa-logo.png" width="53" height="59" alt="NOAA Logo" class="header-noaa-icon responsive"></a>
+        <a href="https://www.weather.gov/" class="header-nws-link"><img src="/images/nws-logo.png" width="53" height="59" alt="NWS Logo" class="header-nws-icon responsive"></a>
+	<a href="/" class="header-ndbc-link"><img src="/images/ndbcheader.png" width="554" height="60" alt="National Data Buoy Center" class="header-ndbc-icon responsive"></a>
+        <a href="https://www.commerce.gov/" class="header-doc-link"><img src="/images/header_doc.png" width="135" height="60" alt="United States Department of Commerce" class="header-doc responsive"></a>
+      </div>
+<!-- Top Menu Content -->
+	<div class="nav-container">
+          <button class="mobile-nav-toggle" aria-controls="topnavbar" aria-expanded="false"><span class="visually-hidden">Menu</span><span class="bar1"></span><span class="bar2"></span><span class="bar3"></span></button>
+        <nav class="topnav" id="topnavbar">
+          <ul id="topnav">
+  
+    <!-- Home Link -->
+            <li>
+              <div class="section-link">
+                <a href="/">Home</a>
+              </div>
+            </li>
+ 
+    <!-- Observations Menu -->
+            <li>
+              <div class="section-link has-dropdown">
+                <a href="/observations.shtml">Observations</a>
+              </div>
+              <div class="drop drop-left">
+                <ul>
+                  <li><a href="/obs.shtml">All Stations (Map)</a></li>
+                  <li><a href="/os.shtml">Observation Search</a></li>
+                  <li><a href="/histsearch.php">Historical Observation Search</a></li>
+                  <li><a href="/ship_obs.php">Ship Obs Report</a></li>
+                  <li><a href="/buoycams.shtml">BuoyCAMs</a></li>
+                  <li><a href="/faq/rss_access.shtml">RSS Feeds <img src="/images/feed-icon-14x14.png" alt="Image indicating link to RSS feed access page" width="14" height="14"></a></li>
+                  <li><a href="/widgets/">Web Widget</a></li>
+                </ul>
+              </div>
+            </li>
+
+    <!-- Information Menu -->
+            <li>
+              <div class="section-link has-dropdown">
+                <a href="/information.shtml">Information</a>
+              </div>
+              <div class="drop drop-left">
+                <ul>
+                  <li><a href="https://tao.ndbc.noaa.gov/pgm-info/">TAO Program Info</a></li>
+                  <li><a href="/dart/dart.shtml">DART&reg; Program Info</a></li>
+                  <li><a href="https://ioos.noaa.gov/">IOOS&reg; Program Info</a></li>
+                  <li><a href="https://vos.noaa.gov/">Voluntary Observing Ship</a></li>
+                  <li><a href="/docs/ndbc_web_data_guide.pdf">Web Data Guide</a></li>
+                  <li><a href="/ops.shtml">Maintenance Schedule</a></li>
+                  <li><a href="/wstat.shtml">Station Status</a></li>
+                  <li><a href="/publications/">Publications</a></li>
+                </ul>
+              </div>
+            </li>
+
+    <!-- Education Menu -->
+            <li>
+              <div class="section-link has-dropdown">
+                <a href="/education.shtml">Education</a>
+              </div>
+              <div class="drop drop-left">
+                <ul>
+                  <li><a href="/education/">Education</a></li>
+                  <li><a href="/faq/">Frequently Asked Questions</a></li>
+                </ul>
+              </div>
+            </li>
+
+    <!-- News Menu -->
+            <li>
+              <div class="section-link has-dropdown">
+                <a href="/news.shtml">News</a>
+              </div>
+              <div class="drop drop-left">
+                <ul>
+                  <li><a href="/news/">News @ NDBC</a></li>
+                  <li><a href="/ndbcexit.php?url=https://www.facebook.com/NWSNDBC"><img src="/images/f_logo.png" alt="Follow the National Data Buoy Center on Facebook" width="16" height="16"> &nbsp; NDBC on Facebook</a></li>
+                  <li><a href="/ndbcexit.php?url=https://www.x.com/databuoycenter"><img src="/images/x.png" alt="Follow the National Data Buoy Center on X" width="16" height="16"> &nbsp; NDBC on X</a></li>
+                  <li><a href="/ndbcexit.php?url=https://www.linkedin.com/company/noaa"><img src="/images/linkedin_logo.png" alt="Follow the National Data Buoy Center on LinkedIn" width="19" height="16"> &nbsp; NOAA on LinkedIn</a></li>
+                </ul>
+              </div>
+            </li>
+
+    <!-- Search Menu -->
+            <li>
+              <div class="section-link has-dropdown">
+                <a href="/search.shtml">Search</a>
+              </div>
+              <div class="dropsearch drop-right">
+                <div class="site-search">
+		  <p><b>Site Search</b></p>
+                  <form method="get" action="https://search.usa.gov/search" role="search" aria-label="Sitewide">
+                    <input type="hidden" name="v:project" value="firstgov">
+                    <label for="query">Search For</label>
+                    <input type="search" name="query" id="query" size="12" autocomplete="off" enterkeyhint="search">
+                    <input type="submit" value="Go">
+                    <p>
+                      <input type="radio" name="affiliate" checked="checked" value="ndbc.noaa.gov" id="ndbc">
+                      <label for="ndbc" class="search-scope">NDBC</label>
+                      <input type="radio" name="affiliate" value="noaa.gov" id="noaa">
+                      <label for="noaa" class="search-scope">All NOAA</label>
+                    </p>
+                  </form>
+                </div>
+              </div>
+            </li>
+
+    <!-- About Menu -->
+            <li>
+              <div class="section-link has-dropdown">
+                <a href="/about.shtml">About</a>
+              </div>
+              <div class="drop drop-right">
+                <ul>
+                  <li><a href="/faq/ndbc.shtml">About Us</a></li>
+		  <li><a href="/ndbc-history.shtml">NDBC History</a></li>
+                  <li><a href="/visitorinfo.shtml">Visitor Information</a></li>
+                  <li><a href="/contact_us.shtml">Contact Us</a></li>
+                </ul>
+              </div>
+            </li>
+
+          </ul><!-- End of top nav ul -->
+        </nav><!-- End of topnav content div -->
+	</div>
+    </header>
+
+        <!-- START OF CONTENT -->
+		<main class="main-content" id="contents">
+			<div class="station-search"><form id="station_form" method="get" action="/station_page.php" role="search" aria-label="Station ID">
+			<label for="station">Station ID Search</label>
+			<span class="searchinput"><input name="station" id="station" class="station-input" type="search" required pattern="[0-9a-zA-z]{4,7}" title="4 to 7 letters or digits" value="" size="8" maxlength="7">
+			<input type="submit" value="Go"></span></form>
+			<a href="/to_station.shtml" title="View a list of available stations ordered by owner" class="nav">Station List</a>
+			</div>
+			<div class="notices">
+			
+			
+			</div>
+			<h1>Measurement Descriptions and Units</h1>
+			
+
+
+
+<p>Real Time files generally contain the last 45 days of "Realtime" data - data that went through automated quality checks and were distributed as soon as they were received.  Historical files have gone through post-processing analysis and represent the data sent to the archive centers.  The formats for both are generally the same, with the major difference being the treatment of missing data.  Missing data in the Realtime files are denoted by "MM" while a variable number of 9's are used to denote missing data in the Historical files, depending on the data type (for example: 999.0  99.0).</p>
+<a id="general"></a><h2>General</h2>
+
+<p><b>Units</b>: Station pages display the current hour's measurements in Imperial units by default, 
+but can be changed by the viewer to metric units.  When accessing Real Time and Historical data 
+files, the <b>measurements are generally in metric units</b>, as described below, and cannot be changed.</p>
+
+<p><b>Time</b>: Station pages show current observations in station local time by default, but can be changed by the viewer to UTC (formerly GMT). <b>Both Realtime and Historical files show times in UTC only</b>. See the <a href="/faq/acq.shtml">Acquisition Time help topic</a> for a more detailed description of observation times. For more information on the times in the files, see the <a href="/faq/mods.shtml">changes page</a>.</p>
+
+<p><b>Station ID</b>: Five-digit WMO <a href="/faq/staid.shtml">Station Identifier</a>, used since 1976.  ID's can be reassigned to future deployments within the same 1 degree square.</p>
+
+<p><b>Formats</b>: Data are classified according to the following groups.  The header lines are shown at the beginning of group.  Note that in the Realtime files, non-data lines begin with "#".  Such lines should be treated as comment lines.</p>
+
+<a id="stdmet"></a><h2>Standard Meteorological Data</h2>
+<pre class="wide-layout">
+#YY  MM DD hh mm WDIR WSPD GST  WVHT   DPD   APD MWD   PRES  ATMP  WTMP  DEWP  VIS PTDY  TIDE
+#yr  mo dy hr mn degT m/s  m/s     m   sec   sec degT   hPa  degC  degC  degC  nmi  hPa    ft
+2014 09 11 16 50 120  5.0  6.0   0.6     6   4.2 134 1016.5  29.3  30.5  24.4   MM +0.3    MM
+</pre>
+
+<dl class="meas-des-glossary">
+	<dt class="meas-des-term"><a id="wdir"></a>WDIR</dt>
+		<dd class="meas-des-meaning">Wind direction (the direction the wind is coming from in degrees
+		clockwise from true N) during the same period used for WSPD. See 
+		<a href="/faq/wndav.shtml">Wind Averaging Methods</a></dd>
+	<dt class="meas-des-term"><a id="wspd"></a>WSPD</dt>
+		<dd class="meas-des-meaning">Wind speed (m/s) averaged over an eight-minute period for buoys and
+		a two-minute period for land stations.  Reported Hourly.  See 
+		<a href="/faq/wndav.shtml">Wind Averaging Methods</a>.</dd>
+	<dt class="meas-des-term">GST</dt>
+		<dd class="meas-des-meaning">Peak 5 or 8 second gust speed (m/s) measured during the eight-minute
+		or two-minute period.  The 5 or 8 second period can be determined by 
+		payload, See the <a href="/faq/rsa.shtml">Sensor Reporting, Sampling, and
+		Accuracy</a> section.</dd>
+	<dt class="meas-des-term"><a id="wvht">WVHT</a></dt>
+		<dd class="meas-des-meaning">Significant wave height (meters) is calculated as the average of the
+		highest one-third of all of the wave heights during the 20-minute
+		sampling period.  See the <a href="/faq/wave.shtml">Wave Measurements</a>
+		section.</dd>
+	<dt class="meas-des-term"><a id="dpd">DPD</a></dt>
+		<dd class="meas-des-meaning">Dominant wave period (seconds) is the period with the maximum wave
+		energy. See the <a href="/faq/wave.shtml">Wave Measurements</a> section.</dd>
+		<dt class="meas-des-term"><a id="apd">APD</a></dt>
+		<dd class="meas-des-meaning">Average wave period (seconds) of all waves during the 20-minute
+		period. See the <a href="/faq/wave.shtml">Wave Measurements</a> section.</dd>
+	<dt class="meas-des-term">MWD</dt>
+		<dd class="meas-des-meaning">The direction from which the waves at the dominant period (DPD) are 
+		coming. The units are degrees from true North, increasing clockwise, with 
+		North as 0 (zero) degrees and East as 90 degrees.  
+		See the <a href="/faq/wave.shtml">Wave Measurements</a> section.</dd>
+	<dt class="meas-des-term"><a id="pres"></a>PRES</dt>
+		<dd class="meas-des-meaning">Sea level pressure (hPa).  For C-MAN sites and Great Lakes buoys,
+		the recorded pressure is reduced to sea level using the method
+		described in <i>NWS Technical Procedures Bulletin 291</i> (11/14/80). (
+		labeled BAR in Historical files)</dd>
+	<dt class="meas-des-term">ATMP</dt>
+		<dd class="meas-des-meaning">Air temperature (Celsius).  For sensor heights on buoys, see
+		<a href="/faq/hull.shtml">Hull Descriptions</a>.  For sensor heights at
+		C-MAN stations, see <a href="/faq/cmanht.shtml">C-MAN Sensor Locations</a></dd>
+	<dt class="meas-des-term">WTMP</dt>
+		<dd class="meas-des-meaning">Sea surface temperature (Celsius). For buoys the depth is referenced
+		to the hull's waterline. For fixed platforms it varies with tide, but is
+		referenced to, or near <a href="https://tidesandcurrents.noaa.gov/datum_options.html#MLLW">Mean Lower Low Water (MLLW)</a>.</dd>
+	<dt class="meas-des-term">DEWP</dt>
+		<dd class="meas-des-meaning">Dew point temperature taken at the same height as the air
+		temperature measurement.</dd>
+	<dt class="meas-des-term">VIS</dt>
+		<dd class="meas-des-meaning">Station visibility (nautical miles). Note that buoy stations are limited to reports from 0 to 1.6 nmi.</dd>
+	<dt class="meas-des-term">PTDY</dt>
+		<dd class="meas-des-meaning">Pressure Tendency is the direction (plus or minus) and the amount of
+		pressure change (hPa)for a three hour period ending at the time of
+		observation. (not in Historical files)</dd>
+	<dt class="meas-des-term">TIDE</dt>
+		<dd class="meas-des-meaning">The water level in feet above or below <a href="https://tidesandcurrents.noaa.gov/datum_options.html#MLLW">Mean Lower Low Water (MLLW)</a>. 
+		</dd>
+</dl>
+
+<a id="drift"></a><h2>Standard Meteorological Data for Drifting Buoys</h2>
+<pre class="wide-layout">
+#YY  MM DD hhmm     LAT      LON WDIR WSPD GST   PRES PTDY ATMP WTMP  DEWP  WVHT  DPD
+#yr  mo dy hrmn     deg      deg degT m/s  m/s    hPa  hPa degC degC  degC     m  sec
+2022 07 27 1200   25.99   -89.66  60  9.0   MM 1010.1   MM 25.2 24.5  24.2   1.2    8
+</pre>
+
+<p>This format is also used for uncrewed surface vehicles.</p>
+
+<dl class="meas-des-glossary">
+		<dt class="meas-des-term">LAT</dt>
+		<dd class="meas-des-meaning">Latitude in decimal degrees at which observation was taken.
+		Positive values represent northern hemisphere while negative values
+		represent southern hemisphere.
+		</dd>
+		<dt class="meas-des-term">LON</dt>
+		<dd class="meas-des-meaning">Longitude in decimal degrees at which observation was taken.
+		Positive values represent eastern hemisphere while negative values
+		represent western hemisphere.
+		</dd>
+		<dt class="meas-des-term">WDIR</dt>
+		<dd class="meas-des-meaning">Wind direction (the direction the wind is coming from in degrees
+		clockwise from true N) during the same period used for WSPD. See 
+		<a href="/faq/wndav.shtml">Wind Averaging Methods</a></dd>
+		<dt class="meas-des-term">WSPD</dt>
+		<dd class="meas-des-meaning">Wind speed (m/s) averaged over an eight-minute period for buoys and
+		a two-minute period for land stations.  Reported Hourly.  See 
+		<a href="/faq/wndav.shtml">Wind Averaging Methods</a>.</dd>
+		<dt class="meas-des-term">GST</dt>
+		<dd class="meas-des-meaning">Peak 5 or 8 second gust speed (m/s) measured during the eight-minute
+		or two-minute period.  The 5 or 8 second period can be determined by 
+		payload, See the <a href="/faq/rsa.shtml">Sensor Reporting, Sampling, and
+		Accuracy</a> section.</dd>
+		<dt class="meas-des-term">PRES</dt>
+		<dd class="meas-des-meaning">Sea level pressure (hPa).  For C-MAN sites and Great Lakes buoys,
+		the recorded pressure is reduced to sea level using the method
+		described in <i>NWS Technical Procedures Bulletin 291</i> (11/14/80). (
+		labeled BAR in Historical files)</dd>
+		<dt class="meas-des-term">PTDY</dt>
+		<dd class="meas-des-meaning">Pressure Tendency is the direction (plus or minus) and the amount of
+		pressure change (hPa)for a three hour period ending at the time of
+		observation. (not in Historical files)</dd>
+		<dt class="meas-des-term">ATMP</dt>
+		<dd class="meas-des-meaning">Air temperature (Celsius).  For sensor heights on buoys, see
+		<a href="/faq/hull.shtml">Hull Descriptions</a>.  For sensor heights at
+		C-MAN stations, see <a href="/faq/cmanht.shtml">C-MAN Sensor Locations</a></dd>
+		<dt class="meas-des-term">WTMP</dt>
+		<dd class="meas-des-meaning">Sea surface temperature (Celsius). For buoys the depth is referenced
+		to the hull's waterline. For fixed platforms it varies with tide, but is
+		referenced to, or near <a href="https://tidesandcurrents.noaa.gov/datum_options.html#MLLW">Mean Lower Low Water (MLLW)</a>.</dd>
+		<dt class="meas-des-term">DEWP</dt>
+		<dd class="meas-des-meaning">Dew point temperature taken at the same height as the air
+		temperature measurement.</dd>
+		<dt class="meas-des-term">WVHT</dt>
+		<dd class="meas-des-meaning">Significant wave height (meters) is calculated as the average of the
+		highest one-third of all of the wave heights during the 20-minute
+		sampling period.  See the <a href="/faq/wave.shtml">Wave Measurements</a>
+		section.</dd>
+		<dt class="meas-des-term">DPD</dt>
+		<dd class="meas-des-meaning">Dominant wave period (seconds) is the period with the maximum wave
+		energy. See the <a href="/faq/wave.shtml">Wave Measurements</a> section.</dd>
+	</dl>
+
+<a id="deriv"></a><h2>Derived Met Values</h2>
+<pre class="wide-layout">
+#YY  MM DD hh mm CHILL  HEAT   ICE WSPD10 WSPD20
+#yr  mo dy hr mn  degC  degC cm/hr    m/s    m/s
+2014 09 11 16 50    MM  34.4    MM      5      5
+</pre>
+
+    <dl class="meas-des-glossary">
+		<dt class="meas-des-term">HEAT</dt>
+		<dd class="meas-des-meaning">For more information on heat index, please see the
+		<a href="https://weather.gov/ama/heatindex">NWS Heat Wave</a> page.</dd>
+		<dt class="meas-des-term">CHILL</dt>
+		<dd class="meas-des-meaning">Please note that NDBC uses unadjusted winds to calculate wind
+		chill.  The winds are calculated at anemometer height. For more
+		information on wind chill, please see the 
+		<a href="https://www.weather.gov/safety/cold-wind-chill-chart">NWS Wind Chill Temperature Index</a>.</dd>
+		<dt class="meas-des-term">ICE</dt>
+		<dd class="meas-des-meaning">Estimated ice accretion in inches per hour based on an
+		algorithm developed by Overland and Pease at the Pacific Marine
+		Environmental Laboratory in the mid-1980s. The algorithm relates icing
+		to the presently observed wind speed, air temperature, and sea surface
+		temperature.  The method is designed for trawlers in the 20 to 75 meter 
+		length range, underway at normal speeds in open seas and not heading 
+		downwind. In general, NWS forecasters translate ice accretion rates to the 
+		following categories:<ul>
+		<li>light: 0.0 to 0.24 inches of ice accretion/hour;</li>
+		<li>moderate: 0.25 to 0.8 inches/hour; and</li>
+		<li>heavy: greater than 0.8 inches/hour.</li></ul></dd>
+		<dt class="meas-des-term">WSPD10</dt>
+		<dd class="meas-des-meaning">The estimation of Wind Speed (WSPD) measurement raised or lowered to a height
+    of 10 meters. NDBC uses the method of Liu et al., 1979: Bulk parameterization
+    of air-sea exchanges in heat and water vapor including molecular constraints at
+    the interface, <i>Journal of Atmospheric Science</i>, 36, pp. 1722-1735.</dd>
+		<dt class="meas-des-term">WSPD20</dt>
+		<dd class="meas-des-meaning">The estimation of Wind Speed (WSPD) measurement raised or lowered to a height
+    of 20 meters. NDBC uses the method of Liu et al., 1979: Bulk parameterization
+    of air-sea exchanges in heat and water vapor including molecular constraints at
+    the interface, <i>Journal of Atmospheric Science</i>, 36, pp. 1722-1735.</dd>
+	</dl>
+	
+<a id="supl"></a><h2>Supplemental Measurements Data</h2>
+<pre class="wide-layout">
+#YY  MM DD hh mm   PRES PTIME  WSPD  WDIR WTIME
+#yr  mo dy hr mn    hPa  hhmm   m/s  degT  hhmm
+2014 09 11 16 50     MM    MM     6   110  1603
+</pre>
+
+<dl class="meas-des-glossary">
+		<dt class="meas-des-term">Lowest 1 minute pressure</dt>
+		<dd class="meas-des-meaning">Lowest recorded atmospheric pressure for the hour to the nearest 0.1 hPa and the time at which it occurred (hour and minute).</dd>
+		<dt class="meas-des-term">Highest 1 minute wind speed</dt>
+		<dd class="meas-des-meaning">Highest recorded wind speed for the hour to the nearest 0.1 m/s, its corresponding direction to the nearest degree, and the time at which it occurred (hour and minute).</dd>
+</dl>
+
+<a id="cwind"></a><h2>Continuous Winds</h2>
+<pre class="wide-layout">
+#YY  MM DD hh mm WDIR WSPD GDR GST GTIME
+#yr  mo dy hr mn degT m/s degT m/s hhmm
+2014 09 11 16 50 117  5.2 120  6.0 1644
+</pre>
+<dl class="meas-des-glossary">
+		<dt class="meas-des-term">WDIR</dt>
+		<dd class="meas-des-meaning">Ten-minute average wind direction measurements in degrees clockwise
+		from true North. (DIR in Historical files)</dd>
+		<dt class="meas-des-term"><a id="cwspd"></a>WSPD</dt>
+		<dd class="meas-des-meaning">Ten-minute average wind speed values in m/s. (SPD in Historical files)</dd>
+		<dt class="meas-des-term">GDR</dt>
+		<dd class="meas-des-meaning">Direction, in degrees clockwise from true North, of the GST,
+		reported at the last hourly 10-minute segment.</dd>
+		<dt class="meas-des-term"><a id="cgst"></a>GST</dt>
+		<dd class="meas-des-meaning">Maximum 5-second peak gust during the measurement hour, reported at
+		the last hourly 10-minute segment.</dd>
+		<dt class="meas-des-term"><a id="gtime">GTIME</a></dt>
+		<dd class="meas-des-meaning">The minute of the hour that the GSP occurred, reported at the last
+		hourly 10-minute segment.</dd>
+</dl>
+
+<p>For more information on continuous winds and the timing of these
+measurements, see the <a href="/faq/cwind.shtml">continuous winds</a> help section.</p>
+
+<a id="spec"></a><h2>Detailed Wave Summary (Realtime data files only)</h2>
+<pre class="wide-layout">
+#YY  MM DD hh mm WVHT  SwH  SwP  WWH  WWP SwD WWD  STEEPNESS  APD MWD
+#yr  mo dy hr mn    m    m  sec    m  sec  -  degT     -      sec degT
+2014 09 11 17 00  0.6  0.4  5.6  0.4  4.3  SE  MM        N/A  4.2 134
+</pre>
+
+<dl class="meas-des-glossary">
+	<dt class="meas-des-term">WVHT</dt>
+	<dd class="meas-des-meaning">Significant Wave Height is the average height (meters) of the
+		highest one-third of the waves during a 20 minute sampling period.</dd>
+	<dt class="meas-des-term">SwH</dt>
+	<dd class="meas-des-meaning">Swell height is the vertical distance (meters) between any swell
+		crest and the succeeding swell wave trough.</dd>
+	<dt class="meas-des-term">SwP</dt>
+	<dd class="meas-des-meaning">Swell Period is the time (usually measured in seconds) that it takes
+		successive swell wave crests or troughs pass a fixed point.</dd>
+	<dt class="meas-des-term">WWH</dt>
+	<dd class="meas-des-meaning">Wind Wave Height is the vertical distance (meters) between any wind
+		wave crest and the succeeding wind wave trough (independent of swell
+		waves).</dd>
+	<dt class="meas-des-term">WWP</dt>
+	<dd class="meas-des-meaning">Wind Wave Period is the time (in seconds) that it takes successive
+		wind wave crests or troughs to pass a fixed point.</dd>
+	<dt class="meas-des-term">SwD</dt>
+	<dd class="meas-des-meaning">The direction from which the swell waves at the swell wave 
+		period (SWPD) are coming.  The units are degrees from true North, 
+		increasing clockwise, with North as 0 (zero) degrees and East as 90 
+		degrees.</dd>
+	<dt class="meas-des-term">WWD</dt>
+	<dd class="meas-des-meaning">The direction from which the wind waves at the wind wave period (WWPD)
+		are coming.  The units are degrees from true North, increasing clockwise, 
+		with North as 0 (zero) degrees and East as 90 degrees.</dd>
+	<dt class="meas-des-term">STEEPNESS</dt>
+	<dd class="meas-des-meaning">Wave steepness is the ratio of wave height to wave length and is an
+		indicator of wave stability.  When wave steepness exceeds a 1/7 ratio;
+		the wave becomes unstable and begins to break.</dd>
+	<dt class="meas-des-term">APD</dt>
+	<dd class="meas-des-meaning">Average Wave Period is the average period (seconds) of the highest
+		one-third of the wave observed during a 20 minute sampling period.</dd>
+	<dt class="meas-des-term">MWD</dt>
+	<dd class="meas-des-meaning">The direction from which the waves at the dominant period (DPD) are 
+		coming. The units are degrees from true North, increasing clockwise, with 
+		North as 0 (zero) degrees and East as 90 degrees.  
+		See the <a href="/faq/wave.shtml">Wave Measurements</a> section.</dd>
+</dl>
+
+<a id="swden"></a><h2>Spectral Wave Data</h2>
+<pre class="wide-layout">
+#YY  MM DD hh mm Sep_Freq  &lt; spec_1 (freq_1) spec_2 (freq_2) spec_3 (freq_3) ... &gt;
+2014 09 11 17 00 0.225 0.000 (0.033) 0.000 (0.038) 0.000 (0.043) ...&gt; 
+</pre>
+
+<pre class="wide-layout">
+#YY  MM DD hh mm alpha1_1 (freq_1) alpha1_2 (freq_2) alpha1_3 (freq_3) ... &gt;
+2014 09 11 17 00 999.0 (0.033) 999.0 (0.038) 999.0 (0.043) ...&gt;
+</pre>
+
+<pre class="wide-layout">
+#YY  MM DD hh mm alpha2_1 (freq_1) alpha2_2 (freq_2) alpha2_3 (freq_3) ... &gt;
+2014 09 11 17 00 999.0 (0.033) 999.0 (0.038) 999.0 (0.043) ...
+</pre>
+
+<pre class="wide-layout">
+#YY  MM DD hh mm r1_1 (freq_1) r1_2 (freq_2) r1_3 (freq_3) ... &gt;
+2014 09 11 17 00 999.00 (0.033) 999.00 (0.038) 999.00 (0.043) ...&gt;
+</pre>
+
+<pre class="wide-layout">
+#YY  MM DD hh mm r2_1 (freq_1) r2_2 (freq_2) r2_3 (freq_3) ... &gt;
+2014 09 11 17 00 999.00 (0.033) 999.00 (0.038) 999.00 (0.043) ...&gt;
+</pre>
+
+<dl class="meas-des-glossary">
+		<dt class="meas-des-term">Sep_Freq</dt>
+		<dd class="meas-des-meaning">The Separation Frequency is the frequency that separates wind waves (WWH, WWP, WWD)
+		from swell waves (SWH, SWP,SWD). NDBC inserts the value 9.999 if  Sep_Freq is missing.</dd>
+		<dt class="meas-des-term">Spectral wave density</dt>
+		<dd class="meas-des-meaning">Energy in (meter*meter)/Hz, for each frequency bin (typically from
+		0.03 Hz to 0.40 Hz).</dd>
+		<dt class="meas-des-term"><a id="swdir"></a>Spectral wave direction</dt>
+		<dd class="meas-des-meaning">Mean wave direction, in degrees from true North, for each frequency
+		bin. A list of <a href="/faq/dwa.shtml">directional stations</a> is available.</dd>
+		<dt class="meas-des-term">Directional Wave Spectrum</dt>
+		<dd class="meas-des-meaning">= C11(f) * D(f,A), f=frequency (Hz), A=Azimuth angle measured
+		clockwise from true North to the direction wave is from.<br>
+		D(f,A) = (1/PI)*(0.5+R1*COS(A-ALPHA1)+R2*COS(2*(A-ALPHA2))).  
+		R1 and R2 are the first and second normalized polar coordinates of the Fourier coefficients and are nondimensional. ALPHA1 and ALPHA2 
+		are respectively mean and principal wave directions.<br>In terms of
+		Longuet-Higgins Fourier Coefficients<ul>
+		<li>R1 = (SQRT(a<sub><small>1</small></sub>*a<sub><small>1</small></sub>+b<sub><small>1</small></sub>*b<sub><small>1</small></sub>))/a<sub><small>0</small></sub></li>
+		<li>R2 = (SQRT(a<sub><small>2</small></sub>*a<sub><small>2</small></sub>+b<sub><small>2</small></sub>*b<sub><small>2</small></sub>))/a<sub><small>0</small></sub></li>
+		<li>ALPHA1 = 270.0-ARCTAN(b<sub><small>1</small></sub>,a<sub><small>1</small></sub>)</li>
+		<li>ALPHA2 = 270.0-(0.5*ARCTAN(b<sub><small>2</small></sub>,a<sub><small>2</small></sub>)+{0. or 180.})</li></ul></dd>
+		<dt class="meas-des-term"></dt>
+		<dd class="meas-des-meaning"> Notes:<ol>
+<li>The <em>R1 and R2 values in the monthly and yearly historical data files are scaled by 100</em>, a carryover from how the data are transported to the archive centers. The units are hundredths, so the R1 and R2 values in those files should be multiplied by 0.01.</li>
+<li>D(f,A) can take on negative values because of the trigonometric sine and cosine functions. There are several approaches to prevent or deal with the negative values. For more information and discussion of some approaches see:  Use of advanced directional wave spectra analysis methods, M. D. Earle,  K. E. Steele, and D. W. C. Wang, Ocean Engineering, Volume 26, Issue 12, December 1999, Pages 1421-1434.</li>
+<li>ALPHA2 has ambiguous results in using the arctangent function with the Fourier Coefficients,b 2 ,a 2 . When necessary, NDBC adds 180 degrees to ALPHA2 in order to minimize the difference between ALPHA 1 and ALPHA2.</li>
+</ol></dd>
+</dl>
+
+<p>For more information on the mathematics behind the measuring of 
+surface water waves, see the <a href="/faq/wave.shtml">waves</a> help section.</p>
+
+<a id="adcp"></a><h2>Ocean Current Data</h2>
+<pre class="wide-layout">
+#YY  MM DD hh mm DEP01 DIR01 SPD01 DEP02 DIR02 SPD02 DEP03 DIR03 SPD03 ...&gt;
+#yr  mo dy hr mn     m  degT  cm/s     m  degT  cm/s     m  degT  cm/s ...&gt;
+2014 09 11 17 04     2    40     8    10   120     5    14   250    13 ...&gt;
+</pre>
+<dl class="meas-des-glossary">
+		<dt class="meas-des-term">DEP01, DEP02, ...</dt>
+		<dd class="meas-des-meaning">The distance from the sea surface to the middle of the depth cells,
+		or bins, measured in meters.</dd>
+		<dt class="meas-des-term">DIR01, DIR02, ...</dt>
+		<dd class="meas-des-meaning">The direction the ocean current is flowing toward.  0-360 degrees,
+		360 is due north, 0 means no measurable current.</dd>
+		<dt class="meas-des-term">SPD01, SPD02, ...</dt>
+		<dd class="meas-des-meaning">The speed of the ocean current measured in cm/s.</dd>
+</dl>
+
+<a id="adcp2"></a><h2>Ocean Current Data (Expanded ADCP format)</h2>
+<pre class="wide-layout">
+#YY  MM DD hh mm I Bin   Depth Dir Speed ErrVl VerVl %Good3 %Good4 %GoodE   EI1   EI2   EI3   EI4   CM1   CM2   CM3   CM4 Flags
+#yr  mo dy hr mn -   -     m  degT  cm/s  cm/s  cm/s      %      %      %     -     -     -     -     -     -     -     - -
+2014 09 11 17 46 1   1    69.4 117  63.2  -0.7  -1.2      0    100      0   171   166   177   170   234   231   233   230 393333330
+2014 09 11 17 46 1   2   101.4 122  63.1  -1.0  -3.7      0    100      0   147   145   154   150   236   236   235   237 393333330
+2014 09 11 17 46 1   3   133.4 120  54.1   4.2  -3.4      0    100      0   142   134   142   140   225   238   236   238 393333330
+</pre>
+<dl class="meas-des-glossary">
+		<dt class="meas-des-term">Instrument Number</dt>
+		<dd class="meas-des-meaning">Stations may have more than one ADCP instrument.  This field distinguishes these instruments by number.  Valid values are 0-9, with 0 being reserved for surface measurements.</dd>
+		<dt class="meas-des-term">Bin</dt>
+		<dd class="meas-des-meaning">The bin number, ranging from 1 to 128, where 1 is the bin closest to the transducer head.</dd>
+		<dt class="meas-des-term">Depth</dt>
+		<dd class="meas-des-meaning">The distance from the sea surface to the middle of the depth cells,
+        or bins, measured in meters.</dd>
+		<dt class="meas-des-term">Dir</dt>
+		<dd class="meas-des-meaning">The direction the ocean current is flowing toward.  0-360 degrees,
+		360 is due north, 0 means no measurable current.</dd>
+		<dt class="meas-des-term">Speed</dt>
+		<dd class="meas-des-meaning">The speed of the ocean current measured in cm/s.</dd>
+		<dt class="meas-des-term">ErrVl</dt>
+		<dd class="meas-des-meaning">The error velocity measured in cm/s.</dd>
+		<dt class="meas-des-term">VerVl</dt>
+		<dd class="meas-des-meaning">The vertical velocity of the ocean current measured in cm/s.</dd>
+		<dt class="meas-des-term">%Good3</dt>
+		<dd class="meas-des-meaning">The percentage of three-beam solutions that are good.</dd>
+		<dt class="meas-des-term">%Good4</dt>
+		<dd class="meas-des-meaning">The percentage of four-beam solutions that are good.</dd>
+		<dt class="meas-des-term">%GoodE</dt>
+		<dd class="meas-des-meaning">The percentage of transformations rejected.</dd>
+		<dt class="meas-des-term">EI1, EI2, EI3, EI4</dt>
+		<dd class="meas-des-meaning">The echo intensity values for the four beams.  Valid values are 0 to 255.<br>
+		EI1 = Echo Intensity for beam #1;<br>
+		EI2 = Echo Intensity for beam #1;<br>
+		EI3 = Echo Intensity for beam #3; and<br>
+		EI4 = Echo Intensity for beam #4.</dd>
+		<dt class="meas-des-term">CM1, CM2, CM3, CM4</dt>
+		<dd class="meas-des-meaning">The correlation magnitude values for the four beams.  Valid values are 0 to 255.<br>
+		CM1 = Correlation Magnitude for beam #1;<br>
+		CM2 = Correlation Magnitude for beam #1;<br>
+		CM3 = Correlation Magnitude for beam #3; and<br>
+		CM4 = Correlation Magnitude for beam #4.</dd>
+		<dt class="meas-des-term">Flags</dt>
+		<dd class="meas-des-meaning"><p>The nine quality flags represent the results of the following quality tests based on their position in the flags field.</p>
+		<p>Flag 1 represents the overall bin status.<br>
+		Flag 2 represents the ADCP Built-In Test (BIT) status.<br>
+		Flag 3 represents the Error Velocity test status.<br>
+		Flag 4 represents the Percent Good test status.<br>
+		Flag 5 represents the Correlation Magnitude test status.<br>
+		Flag 6 represents the Vertical Velocity test status.<br>
+		Flag 7 represents the North Horizontal Velocity test status.<br>
+		Flag 8 represents the East Horizontal Velocity test status.<br>
+		Flag 9 represents the Echo Intensity test status.</p>
+		<p>Valid values are:<br>
+		0 = quality not evaluated;<br>
+		1 = failed quality test;<br>
+		2 = questionable or suspect data;<br>
+		3 = good data/passed quality test; and<br>
+		9 = missing data.</p></dd>
+</dl>
+
+<a id="mmbcur"></a><h2>Marsh-McBirney Current Measurements</h2>
+<pre class="wide-layout">
+YY MM DD hh mm    DIR    SPD
+96 10 31 23  0    198    1.1
+</pre>
+<dl class="meas-des-glossary">
+		<dt class="meas-des-term">DIR</dt>
+		<dd class="meas-des-meaning">Direction the current is flowing TOWARDS, measured in degrees
+		clockwise from North.</dd>
+		<dt class="meas-des-term">SPD</dt>
+		<dd class="meas-des-meaning">Current speed in cm/s.</dd>
+</dl>
+
+<a id="wlevel"></a><h2>Water Level</h2>
+<pre class="wide-layout">
+#YY  MM DD hh mm TG01 TG02 TG03 TG04 TG05 TG06 TG07 TG08 TG09 TG10
+2014 07 01 00 00 10.6 10.6 10.6 10.5 10.6 10.6 10.6 10.7 10.7 10.8
+</pre>
+<dl class="meas-des-glossary">
+		<dt class="meas-des-term">TG01, TG02, ..., TG10</dt>
+		<dd class="meas-des-meaning">Six-minute water levels representing the height, in feet, of the
+		water above or below <a href="https://tidesandcurrents.noaa.gov/datum_options.html#MLLW">Mean Lower Low Water (MLLW)</a>,
+		offset by 10 ft. to prevent negative values.   Please subtract 10
+		ft. from every value to obtain the true water level value, in reference to MLLW.</dd>
+</dl>
+
+<a id="ocean"></a><h2>Oceanographic Data</h2>
+<pre class="wide-layout">
+#YY  MM DD hh mm   DEPTH  OTMP   COND   SAL   O2% O2PPM  CLCON  TURB    PH    EH
+#yr  mo dy hr mn       m  degC  mS/cm   psu     %   ppm   ug/l   FTU     -    mv
+2014 09 11 17 00     1.0 29.05     MM 34.98    MM    MM     MM    MM    MM    MM
+</pre>
+<dl class="meas-des-glossary">
+		<dt class="meas-des-term">Depth (DEPTH)</dt>
+		<dd class="meas-des-meaning">Depth (meters) at which measurements are taken.</dd>
+		<dt class="meas-des-term">Ocean Temperature (OTMP)</dt>
+		<dd class="meas-des-meaning">The direct measurement (Celsius) of the Ocean Temperature (as opposed
+		to the indirect measurement  (see WTMP above)).</dd>
+		<dt class="meas-des-term">Conductivity (COND)</dt>
+		<dd class="meas-des-meaning">Conductivity is a measure of the electrical conductivity properties of
+		seawater in milliSiemens per centimeter.</dd>
+		<dt class="meas-des-term">Salinity (SAL)</dt>
+		<dd class="meas-des-meaning">Salinity is computed by a known functional relationship between the
+		measured electrical conductivity of seawater (CON), temperature (OTMP) and
+		pressure. Salinity is computed using the Practical Salinity Scale of 1978
+		(PSS78) and reported in Practical Salinity Units.</dd>
+		<dt class="meas-des-term">Oxygen Saturation (O2%)</dt>
+		<dd class="meas-des-meaning">Dissolved oxygen as a percentage.</dd>
+		<dt class="meas-des-term">Oxygen Concentration (O2PPM)</dt>
+		<dd class="meas-des-meaning">Dissolved oxygen in parts per million.</dd>
+		<dt class="meas-des-term">Chlorophyll Concentration (CLCON)</dt>
+		<dd class="meas-des-meaning">Chlorophyll concentration in micrograms per liter (ug/l).</dd>
+		<dt class="meas-des-term">Turbidity (TURB)</dt>
+		<dd class="meas-des-meaning">Turbidity is an expression of the optical property that causes light to
+		be scattered and absorbed rather than transmitted in straight lines through
+		the sample (APHA 1980). Units are Formazin Turbidity Units (FTU).</dd>
+		<dt class="meas-des-term">pH (PH)</dt>
+		<dd class="meas-des-meaning">A measure of the acidity or alkalinity of the seawater.</dd>
+		<dt class="meas-des-term">Eh (EH)</dt>
+		<dd class="meas-des-meaning">Redox (oxidation and reduction) potential of seawater in millivolts.</dd>
+</dl>
+
+<a id="srad"></a><h2>Solar Radiation Data</h2>
+<pre class="wide-layout">
+#YY  MM DD hh mm  SRAD1  SWRAD  LWRAD
+#yr  mo dy hr mn   w/m2   w/m2   w/m2
+2014 09 11 18 00 1061.0     MM     MM
+</pre>
+<dl class="meas-des-glossary">
+		<dt class="meas-des-term"><a id="swrad"></a>Shortwave Radiation <br>(SRAD1, SWRAD)</dt>
+		<dd class="meas-des-meaning">Average shortwave radiation in watts per square
+		meter for the preceding hour. Sample frequency is 2 times per second (2
+		Hz).   If present, <a id="srad1"></a>SRAD1 is from a LI-COR LI-200 pyranometer sensor, and
+		SWRAD is from an Eppley PSP Precision Spectral Pyranometer.</dd>
+		<dt class="meas-des-term"><a id="lwrad"></a>Longwave Radiation (LWRAD)</dt>
+		<dd class="meas-des-meaning">Average downwelling longwave radiation in watts per
+		square meter for the preceding hour.  Sample frequency is 2 times per
+		second (2 Hz).  If present, LWRAD is from an Eppley PIR Precision
+		Infrared Radiometer.</dd>
+</dl>
+
+<a id="dart"></a><h2>DART&reg; (Tsunameters) Measurements</h2>
+<pre class="wide-layout">
+#YY  MM DD hh mm ss T   HEIGHT
+#yr  mo dy hr mn  s -        m
+2014 09 11 17 00 00 1 5848.422
+</pre>
+<dl class="meas-des-glossary">
+		<dt class="meas-des-term">T (TYPE)</dt>
+		<dd class="meas-des-meaning">Measurement Type:<ul>
+		<li>1 = 15-minute measurement;</li>
+		<li>2 = 1-minute measurement; and</li>
+		<li>3 = 15-second measurement.</li></ul></dd>
+		<dt class="meas-des-term">HEIGHT</dt>
+		<dd class="meas-des-meaning">Height of water column in meters.</dd>
+</dl>
+<p>
+tt = Tsunami Trigger Time, see the <a href="/dart/algorithm.shtml">Tsunami Detection Algorithm</a><br>
+ts = data Time Stamp(s)
+</p>
+
+<a id="rain24"></a><h2>24-Hour Rain Measurements</h2>
+<pre class="wide-layout">
+#YY  MM DD hh mm   RATE  PCT  SDEV
+#yr  mo dy hr mn   mm/h   %     -
+2008 01 01 12 00   0.0   0.0   0.1
+</pre>
+<dl class="meas-des-glossary">
+		<dt class="meas-des-term">24-Hour Rain Rate</dt>
+		<dd class="meas-des-meaning">Average precipitation rate in units of millimeters per hour over 24-hour period from 00:00 to 23:59.99 GMT.</dd>
+		<dt class="meas-des-term">Percent Time Raining in 24-Hour Period</dt>
+		<dd class="meas-des-meaning">Percentage of 144 ten-minute periods within a 24 hour period with a measurable accumulation of precipitation.</dd>
+		<dt class="meas-des-term">SDev</dt>
+		<dd class="meas-des-meaning">---</dd>
+		<dt class="meas-des-term">Flag</dt>
+		<dd class="meas-des-meaning">In the case of 24-hour rainfall measurements, a flag is assigned when over half of the 10-minute measurements from which it is derived are flagged.</dd>
+</dl>
+
+<a id="rain"></a><h2>Hourly Rain Measurements</h2>
+<pre class="wide-layout">
+#YY  MM DD hh mm  ACCUM
+#yr  mo dy hr mn    mm
+2008 01 01 00 30   0.0 
+</pre>
+<dl class="meas-des-glossary">
+		<dt class="meas-des-term">Hourly Rain Accumulation</dt>
+		<dd class="meas-des-meaning">Total accumulation of precipitation in units of millimeters on station during the 60-minute period from minute 0 to minute 59:59.99 of the hour.</dd>
+		<dt class="meas-des-term">Flag</dt>
+		<dd class="meas-des-meaning">In the case of one-hour accumulation, a flag is assigned when over half of the 10-minute measurements from which it is derived have been flagged.</dd>
+</dl>
+
+<a id="rain10"></a><h2>10-Minute Rain Measurements</h2>
+<pre class="wide-layout">
+#YY  MM DD hh mm   RATE
+#yr  mo dy hr mn   mm/h
+2008 01 01 00 00   0.0 
+</pre>
+<dl class="meas-des-glossary">
+		<dt class="meas-des-term">10-Minute Rain Rate</dt>
+		<dd class="meas-des-meaning">Rain rate in units of millimeters per hour on station over the 10-minute period from 5 minutes before to 4 minutes 59.99 seconds after the time with which it is associated.</dd>
+		<dt class="meas-des-term">Flag</dt>
+		<dd class="meas-des-meaning">In the case of 10-minute rainfall measurements, a flag is assigned to any measurement when either the -5 or +5 minute rain measurement from which it is derived is missing or obviously an error.</dd>
+</dl>
+
+<a id="hkp"></a><h2>Housekeeping Measurements</h2>
+<pre class="wide-layout">
+#YY  MM DD hh mm  BATTV BATTCURR BATTTEMP REMCAP
+#yr  mo dy hr mn  Volts     Amps     DegC     Ah
+2016 09 15 19 00 12.381   -0.177     32.9  116.8
+</pre>
+<dl class="meas-des-glossary">
+		<dt class="meas-des-term">BATTV</dt>
+		<dd class="meas-des-meaning">Hourly Average Battery Voltage (volts)</dd>
+		<dt class="meas-des-term">BATTCURR</dt>
+		<dd class="meas-des-meaning">Hourly Average Battery Current (amperes)</dd>
+		<dt class="meas-des-term">BATTTEMP</dt>
+		<dd class="meas-des-meaning">Hourly Average Battery Temperature (degrees Celsius)</dd>
+		<dt class="meas-des-term">REMCAP</dt>
+		<dd class="meas-des-meaning">Remaining Battery Capacity (ampere-hours)</dd>
+</dl>
+
+<a id="discontinued"></a><h2>Discontinued Measurement Abbreviations</h2>
+<p>Some historical files have column heading abbreviations that have changed over time.  The old abbreviations are listed below with links to the new standardized abbreviation description.</p>
+<dl class="meas-des-glossary">
+		<dt class="meas-des-term"><b>Old</b></dt>
+		<dd class="meas-des-meaning"><b>New Abbreviation</b></dd>
+		<dt class="meas-des-term">WD</dt>
+		<dd class="meas-des-meaning"><a href="#wdir">WDIR</a> - Wind Direction</dd>
+		<dt class="meas-des-term">DIR</dt>
+		<dd class="meas-des-meaning"><a href="#wdir">WDIR</a> - 10 Minute Wind Direction</dd>
+		<dt class="meas-des-term">SPD</dt>
+		<dd class="meas-des-meaning"><a href="#cwspd">WSPD</a> - 10 Minute Wind Speed</dd>
+		<dt class="meas-des-term">GSP</dt>
+		<dd class="meas-des-meaning"><a href="#cgst">GST</a> - Gust in Continuous Winds data</dd>
+		<dt class="meas-des-term">GMN</dt>
+		<dd class="meas-des-meaning"><a href="#gtime">GTIME</a> - Time of Gust in Continuous Winds data</dd>
+		<dt class="meas-des-term">BARO</dt>
+		<dd class="meas-des-meaning"><a href="#pres">PRES</a> - Pressure</dd>
+		<dt class="meas-des-term">H0</dt>
+		<dd class="meas-des-meaning"><a href="#wvht">WVHT</a> - Significant Wave Height</dd>
+		<dt class="meas-des-term">DOMPD</dt>
+		<dd class="meas-des-meaning"><a href="#dpd">DPD</a> - Dominant Wave Period</dd>
+		<dt class="meas-des-term">AVP</dt>
+		<dd class="meas-des-meaning"><a href="#apd">APD</a> - Average Wave Period</dd>
+		<dt class="meas-des-term">SRAD</dt>
+		<dd class="meas-des-meaning"><a href="#swrad">SWRAD</a> - Short Wave Solar Radiation</dd>
+		<dt class="meas-des-term">SRAD2</dt>
+		<dd class="meas-des-meaning"><a href="#swrad">SWRAD</a> - LI-COR Short Wave Solar Radiation</dd>
+		<dt class="meas-des-term">LRAD</dt>
+		<dd class="meas-des-meaning"><a href="#lwrad">LWRAD</a> - Long Wave Solar Radiation</dd>
+		<dt class="meas-des-term">LRAD1</dt>
+		<dd class="meas-des-meaning"><a href="#lwrad">LWRAD</a> - Long Wave Solar Radiation</dd>
+</dl>
+
+			<hr><div class="socialMediaContainer">
+				<a class="socialMediaLink" href="/ndbcexit.php?url=https://www.facebook.com/NWSNDBC"><img src="/images/facebook_logo.png" class="socialMediaLogo" height="21" width="21" alt="Facebook Logo" title="NDBC on Facebook">&nbsp;NDBC on Facebook</a>
+				<a class="socialMediaLink" href="/ndbcexit.php?url=https://www.linkedin.com/company/noaa"><img src="/images/linkedin_logo.png" class="socialMediaLogo" height="21" width="25" alt="LinkedIn Logo" title="NDBC on LinkedIn">&nbsp;NOAA on LinkedIn</a>
+				<a class="socialMediaLink" href="/ndbcexit.php?url=https://www.x.com/databuoycenter"><img src="/images/x.png" class="socialMediaLogo" height="21" width="21" alt="X Logo" title="NDBC on X">&nbsp;NDBC on X</a>
+			</div>
+
+		</main>
+
+        <!-- END OF CONTENT -->
+        <footer class="footer">
+          <div class="footer-content">
+
+            <div class="footer-column">
+              <a class="footer-column-head">Observations</a><br>
+              <a href="/obs.shtml">All Stations (Map)</a><br>
+              <a href="/os.shtml">Observation Search</a><br>
+              <a href="/histsearch.php">Historical Observation Search</a><br>
+              <a href="/ship_obs.php">Ship Obs Report</a><br>
+              <a href="/buoycams.shtml">BuoyCAMs</a><br>
+              <a href="/faq/rss_access.shtml">RSS Feeds <img src="/images/feed-icon-14x14.png" alt="Image indicating link to RSS feed access page" width="14" height="14"></a><br>
+              <a href="/widgets/">Web Widget</a><br>
+            </div>
+
+            <div class="footer-column">
+              <a class="footer-column-head">Information</a><br>
+              <a href="https://tao.ndbc.noaa.gov/pgm-info/">TAO Program Info</a><br>
+              <a href="/dart/dart.shtml">DART&reg; Program Info</a><br>
+              <a href="https://ioos.noaa.gov/">IOOS&reg; Program Info</a><br>
+              <a href="https://vos.noaa.gov/">Voluntary Observing Ship</a><br>
+              <a href="/docs/ndbc_web_data_guide.pdf">Web Data Guide</a><br>
+              <a href="/ops.shtml">Station Maintenance Schedule</a><br>
+              <a href="/wstat.shtml">Station Status</a><br>
+              <a href="/publications/">Publications</a>
+            </div>
+
+            <div>
+            <div class="footer-column">
+              <a class="footer-column-head">Education</a><br>
+              <a href="/education/">Education</a><br>
+            </div>
+
+            <div class="footer-column">
+              <a class="footer-column-head">News</a><br>
+              <a href="/news/">News @ NDBC</a><br>
+              <a href="/ndbcexit.php?url=https://www.facebook.com/NWSNDBC"><img src="/images/f_logo.png" alt="Follow the National Data Buoy Center on Facebook" width="16" height="16"> &nbsp; NDBC on Facebook</a><br>
+              <a href="/ndbcexit.php?url=https://www.x.com/databuoycenter"><img src="/images/x.png" alt="Follow the National Data Buoy Center on X" width="16" height="16"> &nbsp; NDBC on X</a><br>
+              <a href="/ndbcexit.php?url=https://www.linkedin.com/company/noaa"><img src="/images/linkedin_logo.png" alt="Follow the National Data Buoy Center on LinkedIn" width="19" height="16"> &nbsp; NOAA on LinkedIn</a>
+            </div>
+            </div>
+
+            <div>
+            <div class="footer-column">
+              <a class="footer-column-head">Other NDBC Websites</a><br>
+              <a href="/mobile/">Low Bandwidth Website</a><br>
+              <a href="https://dods.ndbc.noaa.gov/">NDBC Data via NetCDF (THREDDS)</a><br>
+              <a href="https://hfradar.ndbc.noaa.gov/">Surface Currents via High Frequency Radar</a><br>
+              <a href="https://tao.ndbc.noaa.gov/">Tropical Atmosphere Ocean (TAO)</a><br>
+              <a href="https://dods.ndbc.noaa.gov/oceansites/">OceanSITES</a><br>
+              <a href="https://viz.pmel.noaa.gov/osmc/">OSMC</a><br>
+            </div>
+
+            <div class="footer-column">
+              <a class="footer-column-head">About Us</a><br>
+              <a href="/faq/ndbc.shtml">About Us</a><br>
+	      <a href="/ndbc-history.shtml">NDBC History</a><br>
+              <a href="/visitorinfo.shtml">Visitor Information</a><br>
+              <a href="/contact_us.shtml">Contact Us</a>
+            </div>
+            </div>
+
+          </div>
+
+<!-- legal footer area -->
+          <div class="footer-legal-content">
+            <div class="footer-legal-gov">
+              <a href="https://www.usa.gov/"><img src="/images/usa_gov.png" alt="usa.gov" width="110" height="30"></a>
+            </div> 
+            <div class="footer-legal-column">
+              <p> 
+                  <a href="https://www.commerce.gov/">US Dept of Commerce</a><br>
+                  <a href="https://www.noaa.gov/">National Oceanic and Atmospheric Administration</a><br>
+                  <a href="https://www.weather.gov/">National Weather Service</a><br>
+                  National Data Buoy Center<br>
+                  Building 3205<br>
+                  Stennis Space Center, MS, 39529<br>
+                  <a href="mailto:webmaster.ndbc@noaa.gov">webmaster.ndbc@noaa.gov</a>
+              </p>
+            </div>
+
+ 	    <div class="footer-legal-column2">
+            <p>
+              <a href="https://www.weather.gov/disclaimer">Disclaimer</a><br>
+              <a href="https://www.cio.noaa.gov/services_programs/info_quality.html">Information Quality</a><br>
+              <a href="https://www.weather.gov/help">Help</a><br>
+              <a href="https://www.weather.gov/glossary">Glossary</a>
+            </p>
+            </div>
+
+   	    <div class="footer-legal-column3">
+            <p>
+              <a href="https://www.weather.gov/privacy">Privacy Policy</a><br>
+              <a href="https://www.noaa.gov/information-technology/foia">Freedom of Information Act (FOIA)</a><br>
+	      <a href="https://www.noaa.gov/accessibility">Accessibility</a><br>
+              <a href="https://www.weather.gov/careers">Career Opportunities</a>
+            </p>
+          </div>
+	
+        </div><!-- end of footer-legal-content div  -->
+
+    </footer><!-- End of center div -->
+</div> <!-- End of web page div -->
+
+
+</body>
+</html> 

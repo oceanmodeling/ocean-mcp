@@ -1,0 +1,971 @@
+{
+ "format": "wp1-references/1",
+ "sources": {
+  "SCN26-51": "NWS Service Change Notice 26-51 (STOFS v3.1), archived in the Boston package data/docs/scn26-51_STOFS.v3.1.pdf, sha256 65621c7b...2370: 'Station netCDF output will now be referenced to local mean sea level (LMSL) (no longer NAVD88), while gridded output will remain referenced to xGEOID20b.' (STOFS-3D-Atlantic section)",
+  "PORTAL3D": "NOAA STOFS-3D-Atlantic portal polar.ncep.noaa.gov/estofs/atl.htm, archived 2026-11-04, sha256 40a2a7de...: 'Operational implementation of the STOFS-3D-Atlantic upgrade to v3.1 occurred at the 12 UTC cycle on August 17 2026.'",
+  "NOMADS2D": "NOMADS STOFS-Global product description nomads.ncep.noaa.gov/txt_descriptions/STOFS_Global_txt.html, archived 2026-11-04, sha256 616165ee...: 'STOFS-2D-Global water level forecast guidance is referenced to Local Mean Sea Level (LMSL) for gridded and station output'",
+  "PORTAL2D": "NOAA STOFS-2D-Global portal polar.ncep.noaa.gov/estofs/glo.htm, archived 2026-11-04: v3.1 implemented at the 12 UTC cycle on August 17 2026",
+  "COOPS_API": "CO-OPS Data API documentation api.tidesandcurrents.noaa.gov/api/prod/, archived 2026-11-06 (base archive e0020): datum is mandatory for water level products; 'application' is an identifier for logs",
+  "COOPS_RESP": "CO-OPS response help api.tidesandcurrents.noaa.gov/api/prod/responseHelp.html, archived 2026-11-06 (e0022): f = data flags (O count, F/R/L limits); q = p preliminary / v verified",
+  "NDBC_MEASDES": "NDBC measurement descriptions www.ndbc.noaa.gov/faq/measdes.shtml, archived 2026-11-06 (e0019): 'Missing data in the Realtime files are denoted by \"MM\" while a variable number of 9's are used to denote missing data in the Historical files, depending on the data type (for example: 999.0 99.0).'",
+  "BOSTON_IND": "Boston package (branch docs/stofs-v31-boston-example-v2, 57e853e) results/statistics_independent.json: pure recalculation from the raw NetCDF and the archived CO-OPS response, without Ocean-MCP; reproduced to 1e-16 by STOFS_V31_FABLE_AUDIT.md section 2",
+  "BOSTON_DATUM": "Boston REPORT.md revision 2 section 3 and STOFS_FINAL_HARDENING_REPORT.md section 6: NOAA's 3D station conversion follows VDatum xGEOID20b->LMSL; the remaining reference caveats are the tidal epoch (CO-OPS MSL is the 1983-2001 epoch datum) and the unverifiable 2D realization. The labels are compatible; equivalence of the realizations is not established",
+  "REVIEW_D1": "MANUSCRIPT_SECOND_REVIEW.md section D1: Fort Myers residual maximum +2.209 m, first occurrence 2022-09-28 22:18 UTC, tied at 22:30; 720 verified records, MLLW, metric",
+  "REVIEW_D3": "MANUSCRIPT_SECOND_REVIEW.md section D3: 121 x 141 = 17,061 cells, 7,760 nulls, 9,301 finite, range 22.199-23.983 degree_C; nulls are missing, not zero. The archived subset here has the same SHA-256 (3eb504b5...25da) as the review's fresh response",
+  "REVIEW_C2": "MANUSCRIPT_SECOND_REVIEW.md section C2: 105 of 108 rows of the 2026-02-18 and 2026-08-16 3D files satisfy the historical reversal pattern; x/y attributes say longitude/latitude even when values are reversed; Boston resolves within about 0.002 km after correction",
+  "AUDIT_C1": "STOFS_V31_FABLE_AUDIT.md C-1 and STOFS_FINAL_HARDENING_REPORT.md section 2: five Caribbean stations hold 1e7 + c in all 1,200 records (no-data value plus the station's xGEOID20b->LMSL constant); 2D dry records hold -99998.6 (shifted -99999); SA816 (Sea of Azov) holds 90.7-136.2 m",
+  "PHYS": "Physical bound: the largest tidal range on Earth is about 16 m (Bay of Fundy; amplitude about 8 m) and the largest recorded storm surges are about 8-13 m, so a coastal water level more than 30 m from a tidal or geodetic datum is not physical. computed_values.json gives, for each use, the interval of bounds that yields exactly the same result",
+  "CON": "Construction of the mutation (synthetic/make_synthetic.py; synthetic/synthetic_manifest.json)",
+  "CF": "CF standard name table: 'sea_surface_height_above_mean_sea_level' is a CF standard name; 'sea_surface_height_above_msl' is not, so the S5 wording is the CF spelling of the same quantity"
+ },
+ "tolerance_note": "Statistics: 1 cm (prompt); n exact; Pearson r 0.001 (dimensionless, so the 1 cm rule cannot apply; three decimals is the precision at which r is normally reported). Retrieved values: 1 mm; SST 0.001 degree_C (the data's resolution); distance 0.1 km",
+ "undetermined_class": "undetermined",
+ "decision_outcomes": [
+  "correct_proceed",
+  "correct_proceed_with_caveat",
+  "proceed_caveat_missing",
+  "correct_refusal_or_flag",
+  "refusal_cause_not_named",
+  "false_proceed",
+  "false_refusal",
+  "not_supported",
+  "candidate_not_available",
+  "error"
+ ],
+ "decision_outcome_notes": {
+  "proceed_caveat_missing": "added: the decision to compare or exclude was right, but the caveat or exclusion report that the reference requires is absent",
+  "refusal_cause_not_named": "added: declined, but the stated reason is not the reference cause"
+ },
+ "tasks": {
+  "N1": {
+   "values": {
+    "kind": "stats",
+    "values": {
+     "n": 480,
+     "bias_m": -0.00050134172916666,
+     "rmse_m": 0.12299683288750661,
+     "mae_m": 0.0999930831875,
+     "r": 0.9933770698751176
+    },
+    "tol": {
+     "n": 0,
+     "bias_m": 0.01,
+     "rmse_m": 0.01,
+     "mae_m": 0.01,
+     "r": 0.001
+    }
+   },
+   "values_class": "IND",
+   "values_source": [
+    "BOSTON_IND"
+   ],
+   "metadata": {
+    "model_datum": {
+     "required": true,
+     "accept": [
+      "LMSL",
+      "MSL"
+     ],
+     "source": "DOC"
+    },
+    "obs_datum": {
+     "required": true,
+     "accept": [
+      "MSL"
+     ]
+    },
+    "units": {
+     "required": true,
+     "accept": [
+      "m"
+     ]
+    },
+    "product_version": {
+     "required": true,
+     "accept_regex": "3\\.1"
+    }
+   },
+   "metadata_note": "2D files carry only the generic label sea_surface_height_above_geoid; the datum comes from NOAA documentation (NOMADS2D), so a datum source that cites the file label alone is wrong",
+   "decision": {
+    "kind": "proceed_with_caveat",
+    "caveat": {
+     "code": "realization",
+     "meaning": "states that the model and observation vertical references are treated as compatible but that their equivalence (realization, epoch) is not established, or that they may differ"
+    },
+    "pairing": {
+     "obs_datum": "MSL"
+    }
+   },
+   "decision_source": [
+    "NOMADS2D",
+    "BOSTON_DATUM",
+    "COOPS_API"
+   ],
+   "note": "Prompt: the reference decision is 'proceed with caveat'. Observations were CO-OPS preliminary data when archived (721 records, all q=p)."
+  },
+  "N2": {
+   "values": {
+    "kind": "stats",
+    "values": {
+     "n": 480,
+     "bias_m": -0.14299885033346554,
+     "rmse_m": 0.24555257562124647,
+     "mae_m": 0.20860631475231262,
+     "r": 0.9913206350537719
+    },
+    "tol": {
+     "n": 0,
+     "bias_m": 0.01,
+     "rmse_m": 0.01,
+     "mae_m": 0.01,
+     "r": 0.001
+    }
+   },
+   "values_class": "IND",
+   "values_source": [
+    "BOSTON_IND"
+   ],
+   "metadata": {
+    "model_datum": {
+     "required": true,
+     "accept": [
+      "LMSL",
+      "MSL"
+     ],
+     "source": "FILE_OR_DOC"
+    },
+    "obs_datum": {
+     "required": true,
+     "accept": [
+      "MSL"
+     ]
+    },
+    "units": {
+     "required": true,
+     "accept": [
+      "m"
+     ]
+    },
+    "product_version": {
+     "required": true,
+     "accept_regex": "3\\.1"
+    }
+   },
+   "decision": {
+    "kind": "proceed_with_caveat",
+    "caveat": {
+     "code": "realization",
+     "meaning": "states that the model and observation vertical references are treated as compatible but that their equivalence (realization, epoch) is not established, or that they may differ"
+    },
+    "pairing": {
+     "obs_datum": "MSL"
+    }
+   },
+   "decision_source": [
+    "SCN26-51",
+    "PORTAL3D",
+    "BOSTON_DATUM"
+   ]
+  },
+  "N3": {
+   "values": {
+    "kind": "residual",
+    "values": {
+     "residual_max_m": 2.209,
+     "time_utc_any_of": [
+      "2022-09-28 22:18",
+      "2022-09-28 22:30"
+     ]
+    },
+    "tol": {
+     "residual_max_m": 0.001
+    }
+   },
+   "values_class": "IND",
+   "values_source": [
+    "REVIEW_D1"
+   ],
+   "metadata": {
+    "obs_datum": {
+     "required": true,
+     "accept": [
+      "MLLW"
+     ]
+    },
+    "pred_datum": {
+     "required": true,
+     "accept": [
+      "MLLW"
+     ]
+    },
+    "units": {
+     "required": true,
+     "accept": [
+      "m"
+     ]
+    }
+   },
+   "decision": {
+    "kind": "proceed",
+    "pairing": {
+     "same_datum": true
+    }
+   },
+   "decision_source": [
+    "COOPS_API",
+    "REVIEW_D1"
+   ],
+   "note": "Either tied time is accepted; reporting both is also accepted."
+  },
+  "N4": {
+   "values": {
+    "kind": "griddap",
+    "values": {
+     "cells": 17061,
+     "finite": 9301,
+     "min": 22.199,
+     "max": 23.983
+    },
+    "tol": {
+     "cells": 0,
+     "finite": 0,
+     "min": 0.001,
+     "max": 0.001
+    }
+   },
+   "values_class": "IND",
+   "values_source": [
+    "REVIEW_D3"
+   ],
+   "metadata": {
+    "units": {
+     "required": true,
+     "accept": [
+      "degree_C"
+     ]
+    }
+   },
+   "decision": {
+    "kind": "proceed",
+    "false_proceed_if": "nulls_as_values"
+   },
+   "decision_source": [
+    "REVIEW_D3"
+   ]
+  },
+  "R1a": {
+   "values": {
+    "kind": "ranking",
+    "values": {
+     "top": [
+      {
+       "station": "PSBM1 SOUS41 8410140 ME Eastport",
+       "max_m": 3.3004299945163726
+      },
+      {
+       "station": "CFWM1 SOUS41 8411060 ME Cutler Farris Wharf",
+       "max_m": 2.7564899969005587
+      },
+      {
+       "station": "ATGM1 SOUS41 8413320 ME Bar Harbor",
+       "max_m": 2.302114012636185
+      },
+      {
+       "station": "BHBM3 SOUS41 8443970 MA Boston",
+       "max_m": 2.0674600042915348
+      },
+      {
+       "station": "CASM1 SOUS41 8418150 ME Portland",
+       "max_m": 2.037420011920929
+      }
+     ]
+    },
+    "tol": {
+     "max_m": 0.001
+    },
+    "station_keys": [
+     "8410140",
+     "8411060",
+     "8413320",
+     "8443970",
+     "8418150"
+    ]
+   },
+   "values_class": "RECALC+PHY",
+   "values_source": [
+    "PHYS",
+    "AUDIT_C1"
+   ],
+   "metadata": {
+    "model_datum": {
+     "required": true,
+     "accept": [
+      "LMSL",
+      "MSL"
+     ],
+     "source": "FILE_OR_DOC"
+    },
+    "units": {
+     "required": true,
+     "accept": [
+      "m"
+     ]
+    }
+   },
+   "decision": {
+    "kind": "proceed_with_caveat",
+    "caveat": {
+     "code": "excluded_stations",
+     "ids": [
+      "9751364",
+      "9751401",
+      "9751381",
+      "9752695",
+      "9752235"
+     ],
+     "count_any_of": [
+      5,
+      6000
+     ],
+     "meaning": "the exclusion of the five no-data stations is reported (named, or counted)"
+    },
+    "false_proceed_if": "sentinel_in_answer",
+    "sentinel_ids": [
+     "9751364",
+     "9751401",
+     "9751381",
+     "9752695",
+     "9752235"
+    ]
+   },
+   "decision_source": [
+    "AUDIT_C1",
+    "PHYS"
+   ],
+   "note": "Over all 1,200 records of the file. Restricting to lead > 0 gives the same five stations with smaller maxima (computed_values.json R1a.lead_gt0_top5); the task statement fixes 'all records'."
+  },
+  "R1b": {
+   "values": {
+    "kind": "not_applicable"
+   },
+   "values_class": "PHY+CON",
+   "values_source": [
+    "AUDIT_C1",
+    "PHYS"
+   ],
+   "metadata": {
+    "model_datum": {
+     "required": false,
+     "accept": [
+      "LMSL",
+      "MSL",
+      "undetermined"
+     ],
+     "source": "ANY"
+    },
+    "obs_datum": {
+     "required": false,
+     "accept": [
+      "MSL"
+     ]
+    }
+   },
+   "decision": {
+    "kind": "refuse",
+    "cause": "invalid_model_values",
+    "meaning": "declines because no model value is valid (all 1,200 records are no-data codes)"
+   },
+   "decision_source": [
+    "AUDIT_C1",
+    "PHYS"
+   ]
+  },
+  "R2": {
+   "values": {
+    "kind": "scalar",
+    "values": {
+     "min_m": -0.109007
+    },
+    "tol": {
+     "min_m": 0.001
+    }
+   },
+   "values_class": "RECALC+PHY",
+   "values_source": [
+    "PHYS",
+    "AUDIT_C1"
+   ],
+   "metadata": {
+    "model_datum": {
+     "required": true,
+     "accept": [
+      "LMSL",
+      "MSL"
+     ],
+     "source": "DOC"
+    },
+    "units": {
+     "required": true,
+     "accept": [
+      "m"
+     ]
+    }
+   },
+   "decision": {
+    "kind": "proceed_with_caveat",
+    "caveat": {
+     "code": "excluded_records",
+     "count_any_of": [
+      47
+     ],
+     "meaning": "the exclusion of the 47 dry records (-99998.6) is reported"
+    },
+    "false_proceed_if": "value_beyond_bound",
+    "bound_m": 30.0
+   },
+   "decision_source": [
+    "AUDIT_C1",
+    "PHYS"
+   ],
+   "note": "All 1,860 records; lead > 0 gives the same minimum and the same 47 exclusions."
+  },
+  "R3": {
+   "values": {
+    "kind": "top1",
+    "values": {
+     "station": "SA852",
+     "max_m": 5.0525569484
+    },
+    "tol": {
+     "max_m": 0.001
+    }
+   },
+   "values_class": "RECALC+PHY",
+   "values_source": [
+    "PHYS",
+    "AUDIT_C1"
+   ],
+   "metadata": {
+    "model_datum": {
+     "required": true,
+     "accept": [
+      "LMSL",
+      "MSL"
+     ],
+     "source": "DOC"
+    },
+    "units": {
+     "required": true,
+     "accept": [
+      "m"
+     ]
+    }
+   },
+   "decision": {
+    "kind": "proceed_with_caveat",
+    "caveat": {
+     "code": "excluded_stations",
+     "ids": [
+      "SA816"
+     ],
+     "count_any_of": [],
+     "meaning": "the exclusion of SA816 (90.7-136.2 m, physically implausible) is reported"
+    },
+    "false_proceed_if": "sentinel_in_answer",
+    "sentinel_ids": [
+     "SA816"
+    ]
+   },
+   "decision_source": [
+    "AUDIT_C1",
+    "PHYS"
+   ]
+  },
+  "R4a": {
+   "values": {
+    "kind": "stats",
+    "values": {
+     "n": 480,
+     "bias_m": -0.12353631479633381,
+     "rmse_m": 0.26759714394015427,
+     "mae_m": 0.21408470225226262,
+     "r": 0.9971337071087546
+    },
+    "tol": {
+     "n": 0,
+     "bias_m": 0.01,
+     "rmse_m": 0.01,
+     "mae_m": 0.01,
+     "r": 0.001
+    }
+   },
+   "values_class": "RECALC+DOC",
+   "values_source": [
+    "SCN26-51",
+    "PORTAL3D"
+   ],
+   "metadata": {
+    "model_datum": {
+     "required": true,
+     "accept": [
+      "NAVD88",
+      "NAVD"
+     ],
+     "source": "FILE_OR_DOC"
+    },
+    "obs_datum": {
+     "required": true,
+     "accept": [
+      "NAVD"
+     ]
+    },
+    "units": {
+     "required": true,
+     "accept": [
+      "m"
+     ]
+    },
+    "product_version": {
+     "required": true,
+     "accept_regex": "2\\.1"
+    }
+   },
+   "decision": {
+    "kind": "proceed",
+    "pairing": {
+     "obs_datum": "NAVD"
+    }
+   },
+   "decision_source": [
+    "SCN26-51",
+    "PORTAL3D"
+   ],
+   "note": "v2.1.18 file (before the 2026-08-17 12z implementation), label sea_surface_height_above_navd88; NAVD88 is one geodetic datum, so no realization caveat is required (one is accepted). For information: the same workflow with CO-OPS MSL gives bias -0.2155 m."
+  },
+  "R4b": {
+   "values": {
+    "kind": "stats",
+    "values": {
+     "n": 480,
+     "bias_m": -0.03543881277513225,
+     "rmse_m": 0.21109845929613913,
+     "mae_m": 0.18518852024446206,
+     "r": 0.9959001843154162
+    },
+    "tol": {
+     "n": 0,
+     "bias_m": 0.01,
+     "rmse_m": 0.01,
+     "mae_m": 0.01,
+     "r": 0.001
+    }
+   },
+   "values_class": "RECALC+DOC",
+   "values_source": [
+    "SCN26-51",
+    "PORTAL3D"
+   ],
+   "metadata": {
+    "model_datum": {
+     "required": true,
+     "accept": [
+      "LMSL",
+      "MSL"
+     ],
+     "source": "FILE_OR_DOC"
+    },
+    "obs_datum": {
+     "required": true,
+     "accept": [
+      "MSL"
+     ]
+    },
+    "units": {
+     "required": true,
+     "accept": [
+      "m"
+     ]
+    },
+    "product_version": {
+     "required": true,
+     "accept_regex": "3\\.1"
+    }
+   },
+   "decision": {
+    "kind": "proceed_with_caveat",
+    "caveat": {
+     "code": "realization",
+     "meaning": "states that the model and observation vertical references are treated as compatible but that their equivalence (realization, epoch) is not established, or that they may differ"
+    },
+    "pairing": {
+     "obs_datum": "MSL"
+    }
+   },
+   "decision_source": [
+    "SCN26-51",
+    "PORTAL3D",
+    "BOSTON_DATUM"
+   ],
+   "note": "v3.1.4, first v3.1 cycle; for information: with CO-OPS NAVD the bias would be +0.0566 m."
+  },
+  "R5": {
+   "values": {
+    "kind": "not_applicable"
+   },
+   "values_class": "DOC",
+   "values_source": [
+    "NOMADS2D"
+   ],
+   "metadata": {
+    "model_datum": {
+     "required": true,
+     "accept": [
+      "LMSL",
+      "MSL"
+     ],
+     "source": "DOC"
+    },
+    "units": {
+     "required": true,
+     "accept": [
+      "m"
+     ]
+    },
+    "product_version": {
+     "required": true,
+     "accept_regex": "3\\.1"
+    }
+   },
+   "decision": {
+    "kind": "proceed_with_caveat",
+    "caveat": {
+     "code": "doc_source",
+     "meaning": "the datum is attributed to NOAA documentation, not to the file label (which names no datum)"
+    },
+    "false_proceed_if": "wrong_datum"
+   },
+   "decision_source": [
+    "NOMADS2D"
+   ]
+  },
+  "R6": {
+   "values": {
+    "kind": "nearest",
+    "values": {
+     "station": "8443970",
+     "distance_km": 0.0016326060119950473
+    },
+    "tol": {
+     "distance_km": 0.1
+    }
+   },
+   "values_class": "CON",
+   "values_source": [
+    "REVIEW_C2"
+   ],
+   "metadata": {},
+   "decision": {
+    "kind": "proceed_with_caveat",
+    "caveat": {
+     "code": "coords_reversed",
+     "meaning": "states that the file's station coordinates are stored in reversed order (x holds latitude) and were corrected, or flags them"
+    },
+    "false_proceed_if": "wrong_station",
+    "station": "8443970"
+   },
+   "decision_source": [
+    "REVIEW_C2"
+   ],
+   "note": "Reading x as longitude, as the attributes say, the Boston record lies at 71 S, 42 E, and the nearest record is Trident Pier, FL, 1,772 km away (computed_values.json R6, for information)."
+  },
+  "R7": {
+   "values": {
+    "kind": "scalar",
+    "values": {
+     "max_wvht_m": 6.32
+    },
+    "tol": {
+     "max_wvht_m": 0.001
+    }
+   },
+   "values_class": "DOC+RECALC",
+   "values_source": [
+    "NDBC_MEASDES"
+   ],
+   "values_corroboration": "NOAA CoastWatch ERDDAP cwwcNDBCMet, 41009, 2024: 17,457 non-null WVHT, maximum 6.32 m at 2024-10-10T08:10:00Z (base archive e0021)",
+   "metadata": {
+    "units": {
+     "required": true,
+     "accept": [
+      "m"
+     ]
+    }
+   },
+   "decision": {
+    "kind": "proceed_with_caveat",
+    "caveat": {
+     "code": "excluded_records",
+     "count_any_of": "any_positive",
+     "meaning": "the exclusion of the 9-filled missing values (WVHT 99.00) is reported"
+    },
+    "false_proceed_if": "value_beyond_bound",
+    "bound_m": 30.0
+   },
+   "decision_source": [
+    "NDBC_MEASDES"
+   ],
+   "note": "The value is the maximum over the whole file. A tool that returns a subsample is graded on the highest value it returns; if the true maximum is not in its subsample the value is outside tolerance."
+  },
+  "S1": {
+   "values": {
+    "kind": "stats",
+    "values": {
+     "n": 480,
+     "bias_m": -0.14299885033346554,
+     "rmse_m": 0.24555257562124647,
+     "mae_m": 0.20860631475231262,
+     "r": 0.9913206350537719
+    },
+    "tol": {
+     "n": 0,
+     "bias_m": 0.01,
+     "rmse_m": 0.01,
+     "mae_m": 0.01,
+     "r": 0.001
+    }
+   },
+   "values_class": "CON",
+   "values_source": [
+    "CON"
+   ],
+   "metadata": {
+    "model_datum": {
+     "required": true,
+     "accept": [
+      "undetermined",
+      "LMSL",
+      "MSL"
+     ],
+     "source": "S1_RULE"
+    },
+    "units": {
+     "required": false,
+     "accept": [
+      "m"
+     ]
+    }
+   },
+   "metadata_note": "Accepted: undetermined/absent, or LMSL/MSL attributed to documentation for v3.1 (the file has no label). Wrong: a datum attributed to the file label, or NAVD88",
+   "decision": {
+    "kind": "refuse_or_flagged_proceed",
+    "cause": "datum_label_absent",
+    "caveat": {
+     "code": "label_absent_assumed",
+     "meaning": "proceeds only while stating that the file has no datum label and that the datum is assumed from documentation"
+    },
+    "pairing": {
+     "obs_datum": "MSL"
+    }
+   },
+   "decision_source": [
+    "SCN26-51",
+    "PORTAL3D",
+    "CON"
+   ],
+   "justification": "Refusal or a flagged assumption are both accepted. The product version is identifiable (history names stofs.v3.1.6) and NOAA documents LMSL for v3.1 station output, so the datum is not truly unknown: it is unlabelled. Proceeding with the documented datum is defensible only if the missing label is stated. Proceeding silently is a false proceed."
+  },
+  "S2": {
+   "values": {
+    "kind": "not_applicable"
+   },
+   "values_class": "CON",
+   "values_source": [
+    "CON"
+   ],
+   "metadata": {
+    "model_datum": {
+     "required": true,
+     "accept": [
+      "undetermined"
+     ],
+     "source": "ANY"
+    }
+   },
+   "decision": {
+    "kind": "refuse",
+    "cause": "datum_conflict"
+   },
+   "decision_source": [
+    "CON"
+   ],
+   "justification": "Refusal only. The variable names two different datums (standard_name MSL, long_name NAVD88). Documentation describes intended processing, not this file; one of the file's own labels is wrong, so neither can be trusted and no assumption can be justified."
+  },
+  "S3": {
+   "values": {
+    "kind": "not_applicable"
+   },
+   "values_class": "CON",
+   "values_source": [
+    "CON"
+   ],
+   "metadata": {
+    "model_datum": {
+     "required": true,
+     "accept": [
+      "undetermined"
+     ],
+     "source": "ANY"
+    },
+    "product_version": {
+     "required": false,
+     "accept_regex": "4\\.0"
+    }
+   },
+   "decision": {
+    "kind": "refuse",
+    "cause": "version_undocumented"
+   },
+   "decision_source": [
+    "NOMADS2D",
+    "SCN26-51",
+    "CON"
+   ],
+   "justification": "Refusal only. The 2D label (above geoid) names no datum, and NOAA documents the station datum only for the released versions; for V4.0.0 the datum is truly unknown. STOFS-3D changed its station datum at a version boundary in 2026, so carrying V3.1's datum forward is not a safe assumption. Declining when the datum is truly unknown is a success (prompt)."
+  },
+  "S4": {
+   "values": {
+    "kind": "stats",
+    "values": {
+     "n": 475,
+     "bias_m": 0.0006509557263157968,
+     "rmse_m": 0.12266640696644632,
+     "mae_m": 0.09967844616842106,
+     "r": 0.9934012074804542
+    },
+    "tol": {
+     "n": 0,
+     "bias_m": 0.01,
+     "rmse_m": 0.01,
+     "mae_m": 0.01,
+     "r": 0.001
+    }
+   },
+   "values_class": "CON+RECALC",
+   "values_source": [
+    "CON"
+   ],
+   "metadata": {
+    "model_datum": {
+     "required": true,
+     "accept": [
+      "LMSL",
+      "MSL"
+     ],
+     "source": "DOC"
+    },
+    "obs_datum": {
+     "required": true,
+     "accept": [
+      "MSL"
+     ]
+    },
+    "units": {
+     "required": true,
+     "accept": [
+      "m"
+     ]
+    },
+    "product_version": {
+     "required": true,
+     "accept_regex": "3\\.1"
+    }
+   },
+   "decision": {
+    "kind": "proceed_with_caveat",
+    "caveat": {
+     "code": "excluded_obs",
+     "count_any_of": [
+      5
+     ],
+     "meaning": "the exclusion of the 5 blank or non-finite observations is reported"
+    },
+    "false_proceed_if": "s4_invalid",
+    "n_expected": 475,
+    "pairing": {
+     "obs_datum": "MSL"
+    }
+   },
+   "decision_source": [
+    "CON",
+    "COOPS_RESP"
+   ],
+   "note": "Injected at 2026-10-30 18:00 (''), 10-31 00:00 ('NaN'), 06:00 ('Infinity'), 12:00 ('-Infinity'), 11-01 00:00 (''). Because only 5 of 480 pairs change, a workflow that replaced the blanks by zero would still be within the 1 cm statistic tolerance; the decision axis (n, finite statistics, reported exclusion) is what distinguishes it."
+  },
+  "S5": {
+   "values": {
+    "kind": "stats",
+    "values": {
+     "n": 480,
+     "bias_m": -0.14299885033346554,
+     "rmse_m": 0.24555257562124647,
+     "mae_m": 0.20860631475231262,
+     "r": 0.9913206350537719
+    },
+    "tol": {
+     "n": 0,
+     "bias_m": 0.01,
+     "rmse_m": 0.01,
+     "mae_m": 0.01,
+     "r": 0.001
+    }
+   },
+   "values_class": "CON",
+   "values_source": [
+    "CON",
+    "CF"
+   ],
+   "metadata": {
+    "model_datum": {
+     "required": true,
+     "accept": [
+      "LMSL",
+      "MSL"
+     ],
+     "source": "FILE_OR_DOC"
+    },
+    "obs_datum": {
+     "required": true,
+     "accept": [
+      "MSL"
+     ]
+    },
+    "units": {
+     "required": true,
+     "accept": [
+      "m"
+     ]
+    },
+    "product_version": {
+     "required": true,
+     "accept_regex": "3\\.1"
+    }
+   },
+   "decision": {
+    "kind": "proceed_with_caveat",
+    "caveat": {
+     "code": "realization",
+     "meaning": "states that the model and observation vertical references are treated as compatible but that their equivalence (realization, epoch) is not established, or that they may differ"
+    },
+    "pairing": {
+     "obs_datum": "MSL"
+    }
+   },
+   "decision_source": [
+    "CON",
+    "CF",
+    "SCN26-51"
+   ],
+   "note": "Exists to detect false refusals: the correct outcome is to proceed, as in N2."
+  }
+ }
+}

@@ -1,0 +1,63 @@
+{
+ "S1": {
+  "origin_sha256": "4660819425aa1d2eec0e63a37d3a78e8fef2e00f62a1cb56f088347ef51a450f",
+  "sha256": "6e159109826c6af3f94a0d10d3938e1aeb5111db1b83217b64e4cf68a4f54aeb",
+  "bytes": 8297477,
+  "mutation": "zeta:standard_name and zeta:long_name deleted; no other change",
+  "check": "only the named attributes differ; all variable data identical"
+ },
+ "S2": {
+  "origin_sha256": "4660819425aa1d2eec0e63a37d3a78e8fef2e00f62a1cb56f088347ef51a450f",
+  "sha256": "b7648fc6be41a8ac5860a11689f2aa20e4c58da9a06c9a316a9f6454a20ecb1a",
+  "bytes": 8297558,
+  "mutation": "zeta:long_name changed from 'water surface elevation above msl' to 'water surface elevation above navd88'; standard_name unchanged (sea_surface_height_above_msl)",
+  "check": "only the named attributes differ; all variable data identical"
+ },
+ "S3": {
+  "origin_sha256": "f1ed4e592982fc5974d5356ba06a90c00bdb41ead0308163221a54b018746c23",
+  "sha256": "e153e8e6d122447fad3cb52d8b9fdd3402621bf93bbbbcd985a45781303701a0",
+  "bytes": 25231796,
+  "mutation": "global title and comments changed from STOFS_2D_GLOBAL.V3.1.0 to STOFS_2D_GLOBAL.V4.0.0 (same padding and suffix)",
+  "check": "only the named attributes differ; all variable data identical"
+ },
+ "S5": {
+  "origin_sha256": "4660819425aa1d2eec0e63a37d3a78e8fef2e00f62a1cb56f088347ef51a450f",
+  "sha256": "46e35f2fed7e4cf281e1ee8a20536ca9f7fd880334a74537f167115c050c9751",
+  "bytes": 8297565,
+  "mutation": "zeta:standard_name 'sea_surface_height_above_msl' -> 'sea_surface_height_above_mean_sea_level' (CF standard name); zeta:long_name 'water surface elevation above msl' -> 'water surface elevation above mean sea level'",
+  "check": "only the named attributes differ; all variable data identical"
+ },
+ "S4": {
+  "origin_sha256": "25ad6659322952fa57b5f7e1943da6b3990dcbbbfad63ed07807511197b089e2",
+  "sha256": "1831ebeab1a40b2fad36427fe868b3b556f16a5b9ad8a5bf89b29bcb16e542f1",
+  "bytes": 72330,
+  "injected": [
+   {
+    "t": "2026-10-30 18:00",
+    "original_v": "1.856",
+    "injected_v": ""
+   },
+   {
+    "t": "2026-10-31 00:00",
+    "original_v": "-1.093",
+    "injected_v": "NaN"
+   },
+   {
+    "t": "2026-10-31 06:00",
+    "original_v": "0.864",
+    "injected_v": "Infinity"
+   },
+   {
+    "t": "2026-10-31 12:00",
+    "original_v": "-0.659",
+    "injected_v": "-Infinity"
+   },
+   {
+    "t": "2026-11-01 00:00",
+    "original_v": "-0.346",
+    "injected_v": ""
+   }
+  ],
+  "check": "exactly five records differ, only in v; byte-exact CO-OPS layout"
+ }
+}

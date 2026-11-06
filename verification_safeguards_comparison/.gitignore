@@ -1,0 +1,5 @@
+# Full NOAA station NetCDF bodies (~100 MB with the synthetic copies) are not committed.
+# They are identified by URL and SHA-256 in data/archive/*/index.json and data/manifest.json;
+# replay/fetch_inputs.py (real files) and synthetic/make_synthetic.py (mutations) recreate them.
+data/archive/**/bodies/*.nc
+__pycache__/
