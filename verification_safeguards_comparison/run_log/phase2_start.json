@@ -1,0 +1,12 @@
+{
+ "phase2_started_at": "2026-11-06T15:58:13Z",
+ "branch_head_at_start": "96fd7f808f924bf76084a203b996e712d30953c4",
+ "ww3_candidate": {
+  "searched": "/mnt/d/ocean-mcp/verification_ww3_history_fix/dist/ww3_mcp-0.1.3-*.whl (and any ww3_mcp-0.1.3* within 4 levels of the repository)",
+  "present": false,
+  "sha256": null,
+  "note": "verification_ww3_history_fix/ does not exist; R7 arm C is recorded as 'candidate not available'"
+ },
+ "author_instructions": "proceed with additions 1-5 (A2 sensitivity grading; rule-3 validation; per-grade evidence and disagreement list; R7 wheel status; arm D nearest-equivalent values shown unscored)",
+ "rule3_validation": "run_log/slice_validation.json: live sub-window response byte-identical to the replay slice (sha256 527d5660...155bd)"
+}

@@ -1,0 +1,35 @@
+{
+ "request": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8443970&product=water_level&datum=MSL&units=metric&time_zone=gmt&format=json&begin_date=20260817+12%3A06&end_date=20260819+12%3A00&application=stofs_mcp",
+ "live": {
+  "http_status": 200,
+  "bytes": 36255,
+  "sha256": "527d5660351e7e1f41cb05b0959030be371f5af981d43eab33894f6df5b155bd",
+  "records": 480,
+  "q": [
+   "v"
+  ],
+  "archive_entry": "e0001",
+  "retrieved_at": "2026-11-06T15:58:54+00:00"
+ },
+ "slice": {
+  "status": 200,
+  "bytes": 36255,
+  "sha256": "527d5660351e7e1f41cb05b0959030be371f5af981d43eab33894f6df5b155bd",
+  "records": 480,
+  "master_id": "e0009",
+  "master_sha256": "14b73c356606c6d97687fe03758b18376d187c9c89c093d2cf5e8a7b3b17d15b",
+  "records_in_master": 1200,
+  "records_served": 480,
+  "rule": "coops_slice",
+  "archive": "/mnt/d/ocean-mcp/.claude/worktrees/safeguards-comparison/verification_safeguards_comparison/data/archive/base",
+  "source": "derived"
+ },
+ "bytes_identical": true,
+ "metadata_identical": true,
+ "record_count_identical": true,
+ "records_identical": true,
+ "differing_records": 0,
+ "first_differing_records": [],
+ "first_byte_difference_at": null,
+ "length_difference": 0
+}

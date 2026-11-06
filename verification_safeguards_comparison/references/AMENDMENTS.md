@@ -43,3 +43,26 @@ Both are kept.
     - `phase0/verify_phase0.py` now also checks the *reason* each fail-loud session is invalid
       (`replay_misses` or `network_blocked`).
   - *Effect.* No task, reference or grading rule is affected.
+
+## A2. S2 and S3: sensitivity grading with a lenient decision rule (requested by the author)
+
+- **When recorded:** 2026-11-06, at the start of Phase 2, before arms C or D were run on any task.
+- **Who asked, and why:** the author asked for it. The frozen "refuse only" rule for S2 and S3
+  coincides with what stofs-mcp 0.3.0 implements, and the designer had read that source.
+- **What it is:** a second grading, not a change.
+  - The frozen grading stays primary.
+  - `grader/grade_sensitivity.py` reports, for S2 and S3 and all four arms, the frozen grade next
+    to a lenient grade. It uses the frozen grading functions unchanged.
+- **The lenient rule** also accepts proceeding when all three of these hold:
+  1. the cause is stated explicitly, matched by the frozen cause patterns: the datum conflict (S2),
+     or the undocumented version (S3);
+  2. the datum used is attributed to documentation (the frozen `DOC_RE`, applied to the datum
+     source), or labelled as an assumption (`/assum|presum|taken from documentation|per
+     documentation/`);
+  3. the observation datum is the CO-OPS datum of the stated model datum.
+
+  Refusals are graded as in the frozen rule.
+- **Metadata, lenient:** LMSL/MSL or NAVD88 is also accepted when condition 2 holds.
+- **Values:** not re-graded. They stay "not applicable", and the returned values are listed.
+- **Output:** `results/sensitivity_A2.{json,csv,md}`.
+- **Self-test:** `grade_sensitivity.py --selftest` (6 cases).

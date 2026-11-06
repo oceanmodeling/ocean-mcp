@@ -1,0 +1,133 @@
+{
+ "format": "ocean-replay-archive/1",
+ "entries": [
+  {
+   "id": "e0001",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "api.tidesandcurrents.noaa.gov",
+    "port": null,
+    "path": "/api/prod/datagetter",
+    "params": [
+     [
+      "begin_date",
+      "20260817 12:06"
+     ],
+     [
+      "datum",
+      "MSL"
+     ],
+     [
+      "end_date",
+      "20260819 12:00"
+     ],
+     [
+      "format",
+      "json"
+     ],
+     [
+      "product",
+      "water_level"
+     ],
+     [
+      "station",
+      "8443970"
+     ],
+     [
+      "time_zone",
+      "gmt"
+     ],
+     [
+      "units",
+      "metric"
+     ]
+    ]
+   },
+   "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8443970&product=water_level&datum=MSL&units=metric&time_zone=gmt&format=json&begin_date=20260817+12%3A06&end_date=20260819+12%3A00&application=stofs_mcp",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "date",
+      "Fri, 06 Nov 2026 15:58:54 GMT"
+     ],
+     [
+      "content-type",
+      "application/json;charset=UTF-8"
+     ],
+     [
+      "content-length",
+      "3094"
+     ],
+     [
+      "connection",
+      "keep-alive"
+     ],
+     [
+      "x-amzn-requestid",
+      "d0c5cef6-954f-4246-95ed-e5dc3bab927f"
+     ],
+     [
+      "access-control-allow-origin",
+      "*"
+     ],
+     [
+      "content-encoding",
+      "gzip"
+     ],
+     [
+      "access-control-allow-headers",
+      "X-Requested-With"
+     ],
+     [
+      "x-amzn-remapped-connection",
+      "keep-alive"
+     ],
+     [
+      "x-amz-apigw-id",
+      "GbPhwG2IIAMEhAg="
+     ],
+     [
+      "cache-control",
+      "no-cache, no-store, must-revalidate, max-age=0"
+     ],
+     [
+      "x-amzn-remapped-server",
+      "nginx"
+     ],
+     [
+      "expires",
+      "Thu, 01 Jan 1970 00:00:00 GMT"
+     ],
+     [
+      "pragma",
+      "no-cache"
+     ],
+     [
+      "x-amzn-remapped-date",
+      "Fri, 06 Nov 2026 15:58:53 GMT"
+     ]
+    ],
+    "body_file": "bodies/527d5660351e7e1f41cb05b0959030be371f5af981d43eab33894f6df5b155bd.json",
+    "body_sha256": "527d5660351e7e1f41cb05b0959030be371f5af981d43eab33894f6df5b155bd",
+    "bytes": 36255
+   },
+   "provenance": {
+    "source": "recorded",
+    "retrieved_at": "2026-11-06T15:58:54+00:00",
+    "http_version": "HTTP/1.1",
+    "input_name": "validation_coops_8443970_MSL_20260817T1206_20260819T1200",
+    "note": "rule-3 validation only; not used by any task"
+   }
+  }
+ ],
+ "dns": {
+  "api.tidesandcurrents.noaa.gov": [
+   "52.44.89.212",
+   "52.6.149.12",
+   "98.84.75.111"
+  ]
+ }
+}

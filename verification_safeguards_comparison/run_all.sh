@@ -83,4 +83,6 @@ say "5. arms C and D: real MCP stdio sessions, replay, no network"
 say "6. grading, all arms (frozen references, then amended)"
 python3 -I "$V/grader/grade.py" "$V" --arms A,B,C,D > /dev/null
 python3 -I "$V/grader/grade_amended.py" "$V" --arms A,B,C,D
+python3 -I "$V/grader/grade_sensitivity.py" --selftest | tail -1
+python3 -I "$V/grader/grade_sensitivity.py" "$V" --arms A,B,C,D
 say "done; compare with the committed results: git -C \"$V\" diff --stat -- results/"
