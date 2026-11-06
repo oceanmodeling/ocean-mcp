@@ -1,0 +1,81 @@
+{
+ "task_id": "R3",
+ "arm": "B",
+ "status": "answered",
+ "action": "proceed",
+ "values": {
+  "top": [
+   {
+    "station": "UJ852 SOUS00 SA852",
+    "max_m": 5.0525569484
+   },
+   {
+    "station": "ZZZZZ SOUS45 ber0014 AK Naknek River Ent #13",
+    "max_m": 4.9187745209
+   },
+   {
+    "station": "UH166 SOUS00 GL040 Broome Australia brom",
+    "max_m": 4.5771018945
+   },
+   {
+    "station": "ZZZZZ SOUS45 9465374 AK Dillingham",
+    "max_m": 4.5590924181
+   },
+   {
+    "station": "ZZZZZ SOUS45 9465261 AK Clarks Point Nushagak Bay",
+    "max_m": 4.3897739774
+   }
+  ],
+  "station": "UJ852 SOUS00 SA852",
+  "max_m": 5.0525569484
+ },
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {
+  "units": {
+   "value": "m",
+   "source": "zeta:units attribute"
+  },
+  "model_datum": {
+   "value": "LMSL",
+   "source": "NOAA documentation: NOMADS STOFS-Global product description (station output referenced to LMSL)"
+  }
+ },
+ "texts": [
+  "[B-Q1] Stations with no valid value, excluded from the ranking: ['UJ816 SOUS00 SA816'].",
+  "[B-D1] The file label {'standard_name': 'sea_surface_height_above_geoid', 'long_name': 'water surface elevation above geoid'} names no datum ('geoid' is a generic surface); the datum LMSL is taken from NOAA documentation for version 3.1.0."
+ ],
+ "exclusions": [
+  {
+   "what": "stations",
+   "count": 1,
+   "names": [
+    "UJ816 SOUS00 SA816"
+   ],
+   "reason": "all records excluded; 1860 beyond the 30 m bound (e.g. 123.3301 m)"
+  },
+  {
+   "what": "model_values",
+   "count": 4539,
+   "names": [],
+   "reason": "fill_or_nonfinite"
+  },
+  {
+   "what": "model_values",
+   "count": 2022,
+   "names": [],
+   "reason": "beyond_physical_bound"
+  }
+ ],
+ "evidence": {
+  "inputs": [
+   {
+    "archive": "base",
+    "entry": "e0001",
+    "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20261030/stofs_2d_glo.t12z.points.cwl.nc",
+    "sha256": "f1ed4e592982fc5974d5356ba06a90c00bdb41ead0308163221a54b018746c23",
+    "why": "url"
+   }
+  ]
+ }
+}

@@ -1,0 +1,44 @@
+{
+ "A": {
+  "values": {
+   "within_tolerance": 7,
+   "outside_tolerance": 7,
+   "not_applicable": 4
+  },
+  "metadata": {
+   "correct": 11,
+   "wrong": 6,
+   "not_applicable": 1
+  },
+  "metadata_strict": {
+   "correct": 11,
+   "wrong": 6,
+   "not_applicable": 1
+  },
+  "decision": {
+   "proceed_caveat_missing": 4,
+   "correct_proceed": 2,
+   "false_proceed": 11,
+   "correct_proceed_with_caveat": 1
+  }
+ },
+ "B": {
+  "values": {
+   "within_tolerance": 13,
+   "not_applicable": 5
+  },
+  "metadata": {
+   "correct": 17,
+   "not_applicable": 1
+  },
+  "metadata_strict": {
+   "correct": 17,
+   "not_applicable": 1
+  },
+  "decision": {
+   "correct_proceed_with_caveat": 11,
+   "correct_proceed": 3,
+   "correct_refusal_or_flag": 4
+  }
+ }
+}

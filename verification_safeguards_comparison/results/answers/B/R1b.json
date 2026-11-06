@@ -1,0 +1,49 @@
+{
+ "task_id": "R1b",
+ "arm": "B",
+ "status": "refused",
+ "action": "refuse",
+ "values": {},
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {
+  "units": {
+   "value": "m",
+   "source": "zeta:units attribute"
+  },
+  "product_version": {
+   "value": "3.1.6",
+   "source": "global attribute history (package path)"
+  },
+  "model_datum": {
+   "value": "LMSL",
+   "source": "file label zeta {'standard_name': 'sea_surface_height_above_msl', 'long_name': 'water surface elevation above msl'}; consistent with SCN 26-51 (v3.1 station output referenced to LMSL)"
+  },
+  "obs_datum": {
+   "value": "MSL",
+   "source": "[B-D2] CO-OPS datum for LMSL (CO-OPS API datum names)"
+  }
+ },
+ "texts": [
+  "[B-Q1] No valid model value for LAMV3 SOUS41 9751381 VI Lameshur Bay, St John in 0 < lead <= 48 h: all 480 records excluded ({'fill_or_nonfinite': 0, 'declared_dry_value': 0, 'beyond_physical_bound': 480, 'of_which_no_data_magnitude': 480}); values such as 9999999.5820 m are no-data codes or beyond any physical water level. Not compared."
+ ],
+ "exclusions": [
+  {
+   "what": "model_records",
+   "count": 480,
+   "names": [],
+   "reason": "beyond_physical_bound"
+  }
+ ],
+ "evidence": {
+  "inputs": [
+   {
+    "archive": "base",
+    "entry": "e0002",
+    "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20261030/stofs_3d_atl.t12z.points.cwl.nc",
+    "sha256": "4660819425aa1d2eec0e63a37d3a78e8fef2e00f62a1cb56f088347ef51a450f",
+    "why": "url"
+   }
+  ]
+ }
+}

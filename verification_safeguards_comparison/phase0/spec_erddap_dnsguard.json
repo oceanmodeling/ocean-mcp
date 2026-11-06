@@ -19,9 +19,10 @@
    "call_id": "unarchived_host",
    "tool": "erddap_get_dataset_info",
    "arguments": {
-    "server_url": "https://coastwatch.pfeg.noaa.gov/erddap",
-    "dataset_id": "jplMURSST41"
+    "server_url": "https://erddap.secoora.org/erddap",
+    "dataset_id": "not_archived"
    }
   }
- ]
+ ],
+ "note": "Rerun 2026-11-06 after the base archive gained DNS answers for coastwatch.pfeg.noaa.gov (N4 inputs): the demonstration now uses a host whose DNS is not archived. Deliberately run outside the network namespace, so only the in-process guard can block it."
 }

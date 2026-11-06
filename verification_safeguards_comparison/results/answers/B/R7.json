@@ -1,0 +1,41 @@
+{
+ "task_id": "R7",
+ "arm": "B",
+ "status": "answered",
+ "action": "proceed",
+ "values": {
+  "max_wvht_m": 6.32,
+  "time": "2024-10-10 08:10"
+ },
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {
+  "units": {
+   "value": "m",
+   "source": "units header row of the file"
+  }
+ },
+ "texts": [
+  "[B-W1] 35235 of 52692 rows hold the NDBC historical missing code for WVHT (99.00) and were excluded."
+ ],
+ "exclusions": [
+  {
+   "what": "records",
+   "count": 35235,
+   "names": [],
+   "reason": "NDBC historical missing code (99.00)"
+  }
+ ],
+ "evidence": {
+  "valid": 17457,
+  "inputs": [
+   {
+    "archive": "base",
+    "entry": "e0004",
+    "url": "https://www.ndbc.noaa.gov/view_text_file.php?filename=41009h2024.txt.gz&dir=data/historical/stdmet/",
+    "sha256": "f149d373877f4892f75092a969a0b12c27da7c8d54e0db9827a8fbcaef0bc648",
+    "why": "url"
+   }
+  ]
+ }
+}

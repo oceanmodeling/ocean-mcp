@@ -1,0 +1,156 @@
+{
+ "session_valid": true,
+ "http": {
+  "requests": 8,
+  "replay_misses": 0,
+  "network_blocked": 0,
+  "log": "http_log.jsonl"
+ },
+ "network_probe": {
+  "1.1.1.1:443": "refused: OSError: [Errno 101] Network is unreachable",
+  "1.1.1.1:443_seconds": 0.001,
+  "8.8.8.8:53": "refused: OSError: [Errno 101] Network is unreachable",
+  "8.8.8.8:53_seconds": 0.0
+ },
+ "packages": {
+  "python": "3.13.12",
+  "stofs-mcp": "0.3.0",
+  "mcp": "1.30.0",
+  "httpx": "0.28.1",
+  "netCDF4": "1.7.5.1.post1",
+  "numpy": "2.5.4"
+ },
+ "calls": {
+  "2d_global_forecast": {
+   "live_commit": "31e7f6a71e6ea2468c963159982e257f53e763a4",
+   "n": 480,
+   "bias": -0.0005,
+   "rmse": 0.123,
+   "series_points": 480,
+   "series_identical": true,
+   "statistics_identical": true,
+   "allowed_differences": [
+    "/alignment/duplicate_model_times",
+    "/datum_note",
+    "/datum_provenance/source",
+    "/observation_quality/implausible",
+    "/observation_quality/sentinel",
+    "/retrieved_at",
+    "/stofs_datum_source",
+    "/window/excluded_model_records/implausible",
+    "/window/excluded_model_records/sentinel"
+   ],
+   "unexpected_differences": []
+  },
+  "3d_atlantic_forecast": {
+   "live_commit": "31e7f6a71e6ea2468c963159982e257f53e763a4",
+   "n": 480,
+   "bias": -0.143,
+   "rmse": 0.2456,
+   "series_points": 480,
+   "series_identical": true,
+   "statistics_identical": true,
+   "allowed_differences": [
+    "/alignment/duplicate_model_times",
+    "/observation_quality/implausible",
+    "/observation_quality/sentinel",
+    "/retrieved_at",
+    "/window/excluded_model_records/implausible",
+    "/window/excluded_model_records/sentinel"
+   ],
+   "unexpected_differences": []
+  },
+  "2d_global_nowcast": {
+   "live_commit": "31e7f6a71e6ea2468c963159982e257f53e763a4",
+   "n": 60,
+   "bias": -0.0182,
+   "rmse": 0.0238,
+   "series_points": 60,
+   "series_identical": true,
+   "statistics_identical": true,
+   "allowed_differences": [
+    "/alignment/duplicate_model_times",
+    "/datum_note",
+    "/datum_provenance/source",
+    "/observation_quality/implausible",
+    "/observation_quality/sentinel",
+    "/retrieved_at",
+    "/stofs_datum_source",
+    "/window/excluded_model_records/implausible",
+    "/window/excluded_model_records/sentinel"
+   ],
+   "unexpected_differences": []
+  },
+  "3d_atlantic_nowcast": {
+   "live_commit": "31e7f6a71e6ea2468c963159982e257f53e763a4",
+   "n": 240,
+   "bias": -0.0295,
+   "rmse": 0.2252,
+   "series_points": 240,
+   "series_identical": true,
+   "statistics_identical": true,
+   "allowed_differences": [
+    "/alignment/duplicate_model_times",
+    "/observation_quality/implausible",
+    "/observation_quality/sentinel",
+    "/retrieved_at",
+    "/window/excluded_model_records/implausible",
+    "/window/excluded_model_records/sentinel"
+   ],
+   "unexpected_differences": []
+  }
+ },
+ "stofs020_smoke": {
+  "valid": true,
+  "http": {
+   "requests": 1,
+   "replay_misses": 0,
+   "network_blocked": 0,
+   "log": "http_log.jsonl"
+  },
+  "expected_valid": true,
+  "expected_reason": null,
+  "reason_observed": true,
+  "first_response": "{\n  \"station_id\": \"8443970\",\n  \"model\": \"3d_atlantic\",\n  \"product\": \"cwl\",\n  \"cycle_date\": \"20261030\",\n  \"cycle_hour\": \"12\",\n  \"datum\": \"NAVD88\",\n  \"lat\": 42.35"
+ },
+ "stofs030_failloud": {
+  "valid": false,
+  "http": {
+   "requests": 0,
+   "replay_misses": 1,
+   "network_blocked": 0,
+   "log": "http_log.jsonl"
+  },
+  "expected_valid": false,
+  "expected_reason": "replay_misses",
+  "reason_observed": true,
+  "first_response": "Unexpected error (2d_global): ReplayMiss: not archived: GET https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20261031/stofs_2d_glo.t12z.points.cwl.nc"
+ },
+ "ww3_012_failloud": {
+  "valid": false,
+  "http": {
+   "requests": 0,
+   "replay_misses": 1,
+   "network_blocked": 0,
+   "log": "http_log.jsonl"
+  },
+  "expected_valid": false,
+  "expected_reason": "replay_misses",
+  "reason_observed": true,
+  "first_response": "not archived: GET https://www.ndbc.noaa.gov/data/realtime2/41009.txt"
+ },
+ "erddap_dnsguard": {
+  "valid": false,
+  "http": {
+   "requests": 0,
+   "replay_misses": 0,
+   "network_blocked": 1,
+   "log": "http_log.jsonl"
+  },
+  "expected_valid": false,
+  "expected_reason": "network_blocked",
+  "reason_observed": true,
+  "first_response": "Blocked for security: Could not resolve host 'erddap.secoora.org': [Errno -2] ocean-replay: DNS for 'erddap.secoora.org' is not archived Only public http(s) ERD"
+ },
+ "phase0_passed": true
+}

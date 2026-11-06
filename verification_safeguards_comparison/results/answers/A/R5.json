@@ -1,0 +1,37 @@
+{
+ "task_id": "R5",
+ "arm": "A",
+ "status": "answered",
+ "action": "proceed",
+ "values": {},
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {
+  "model_datum": {
+   "value": "LMSL",
+   "source": "fixed pairing from current product documentation (NOMADS STOFS-Global product description)"
+  },
+  "units": {
+   "value": "m",
+   "source": "zeta:units attribute"
+  },
+  "product_version": {
+   "value": "STOFS_2D_GLOBAL.V3.1.0     ! NCPROJ - PROJECT TITLE",
+   "source": "global attribute title"
+  }
+ },
+ "texts": [],
+ "exclusions": [],
+ "evidence": {
+  "zeta_standard_name": "sea_surface_height_above_geoid",
+  "inputs": [
+   {
+    "archive": "base",
+    "entry": "e0001",
+    "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20261030/stofs_2d_glo.t12z.points.cwl.nc",
+    "sha256": "f1ed4e592982fc5974d5356ba06a90c00bdb41ead0308163221a54b018746c23",
+    "why": "url"
+   }
+  ]
+ }
+}

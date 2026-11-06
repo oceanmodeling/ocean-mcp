@@ -1,0 +1,62 @@
+{
+ "task_id": "N2",
+ "arm": "B",
+ "status": "answered",
+ "action": "proceed",
+ "values": {
+  "n": 480,
+  "bias_m": -0.14299885033346554,
+  "rmse_m": 0.24555257562124647,
+  "mae_m": 0.20860631475231262,
+  "r": 0.9913206350537714
+ },
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {
+  "units": {
+   "value": "m",
+   "source": "zeta:units attribute"
+  },
+  "product_version": {
+   "value": "3.1.6",
+   "source": "global attribute history (package path)"
+  },
+  "model_datum": {
+   "value": "LMSL",
+   "source": "file label zeta {'standard_name': 'sea_surface_height_above_msl', 'long_name': 'water surface elevation above msl'}; consistent with SCN 26-51 (v3.1 station output referenced to LMSL)"
+  },
+  "obs_datum": {
+   "value": "MSL",
+   "source": "[B-D2] CO-OPS datum for LMSL (CO-OPS API datum names)"
+  }
+ },
+ "texts": [
+  "[B-D4] Model LMSL and CO-OPS MSL are both mean-sea-level datums and are treated as compatible, but their equivalence is not established: CO-OPS MSL is the tidal datum of the 1983-2001 National Tidal Datum Epoch [COOPSDAT], and NOAA does not state the epoch or realization of the model's LMSL [SCN26-51, NOMADS2D]. A mean offset (bias) can therefore include a reference difference; no vertical transformation was applied.",
+  "[B-Q2] 480 of 480 matched observations are CO-OPS preliminary (q=p) and may be revised."
+ ],
+ "exclusions": [],
+ "evidence": {
+  "pairs": 480,
+  "obs_in_window": 480,
+  "flagged_pairs_kept": 0,
+  "q_status": {
+   "p": 721
+  },
+  "inputs": [
+   {
+    "archive": "base",
+    "entry": "e0002",
+    "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20261030/stofs_3d_atl.t12z.points.cwl.nc",
+    "sha256": "4660819425aa1d2eec0e63a37d3a78e8fef2e00f62a1cb56f088347ef51a450f",
+    "why": "url"
+   },
+   {
+    "archive": "base",
+    "entry": "e0003",
+    "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8443970&product=water_level&datum=MSL&units=metric&time_zone=gmt&format=json&begin_date=20261029+12%3A00&end_date=20261101+12%3A00&application=ocean_mcp_verification",
+    "sha256": "c207c80138900573e09fe2733efdc2c055b923c9dc39f5c594d46d4d84ff8d6d",
+    "why": "coops master 8443970 MSL"
+   }
+  ]
+ }
+}

@@ -1,0 +1,57 @@
+{
+ "task_id": "R3",
+ "arm": "A",
+ "status": "answered",
+ "action": "proceed",
+ "values": {
+  "top": [
+   {
+    "station": "UJ816 SOUS00 SA816",
+    "max_m": 136.2005569911
+   },
+   {
+    "station": "UJ852 SOUS00 SA852",
+    "max_m": 5.0525569484
+   },
+   {
+    "station": "ZZZZZ SOUS45 ber0014 AK Naknek River Ent #13",
+    "max_m": 4.9187745209
+   },
+   {
+    "station": "UH166 SOUS00 GL040 Broome Australia brom",
+    "max_m": 4.5771018945
+   },
+   {
+    "station": "ZZZZZ SOUS45 9465374 AK Dillingham",
+    "max_m": 4.5590924181
+   }
+  ],
+  "station": "UJ816 SOUS00 SA816",
+  "max_m": 136.2005569911
+ },
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {
+  "model_datum": {
+   "value": "LMSL",
+   "source": "fixed pairing from current product documentation (NOMADS STOFS-Global product description)"
+  },
+  "units": {
+   "value": "m",
+   "source": "zeta:units attribute"
+  }
+ },
+ "texts": [],
+ "exclusions": [],
+ "evidence": {
+  "inputs": [
+   {
+    "archive": "base",
+    "entry": "e0001",
+    "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20261030/stofs_2d_glo.t12z.points.cwl.nc",
+    "sha256": "f1ed4e592982fc5974d5356ba06a90c00bdb41ead0308163221a54b018746c23",
+    "why": "url"
+   }
+  ]
+ }
+}

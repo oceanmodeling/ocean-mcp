@@ -185,7 +185,20 @@ S1 to S3 justification (also in `references.json`):
 - **No composite score.** Counts are per arm and axis, with false proceeds, false refusals and
   "not supported" shown separately.
 
-## 6. Known limits of this design (to be repeated in the report)
+## 6. After the freeze
+
+- **Amendment A1** (`references/AMENDMENTS.md`). It was recorded after arms A and B were graded and
+  before arms C and D ran.
+  - The fix: S1's axis-1 rule is "graded only if the workflow proceeds", as this document states,
+    but a dict-merge bug in `build_references.py` dropped it from the frozen JSON.
+  - How it is applied: as a separate patch (`references.amended.json`). The frozen files are
+    untouched.
+  - Both gradings are kept. One cell changes: S1, arm B, values.
+- **Phase 0 DNS-guard demonstration.** It was rerun with an unarchived host, and
+  `verify_phase0.py` now checks the reason each fail-loud session is invalid. This does not affect
+  any task.
+
+## 7. Known limits of this design (to be repeated in the report)
 
 - The same author and assistant wrote every arm, the references and the grader. The designer had read:
   - the hardening and audit reports;

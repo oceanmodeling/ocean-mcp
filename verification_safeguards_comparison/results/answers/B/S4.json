@@ -1,0 +1,78 @@
+{
+ "task_id": "S4",
+ "arm": "B",
+ "status": "answered",
+ "action": "proceed",
+ "values": {
+  "n": 475,
+  "bias_m": 0.0006509557263157965,
+  "rmse_m": 0.12266640696644632,
+  "mae_m": 0.09967844616842106,
+  "r": 0.9934012074804537
+ },
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {
+  "units": {
+   "value": "m",
+   "source": "zeta:units attribute"
+  },
+  "product_version": {
+   "value": "3.1.0",
+   "source": "global attribute title"
+  },
+  "model_datum": {
+   "value": "LMSL",
+   "source": "NOAA documentation: NOMADS STOFS-Global product description (station output referenced to LMSL)"
+  },
+  "obs_datum": {
+   "value": "MSL",
+   "source": "[B-D2] CO-OPS datum for LMSL (CO-OPS API datum names)"
+  }
+ },
+ "texts": [
+  "[B-D1] The file label {'standard_name': 'sea_surface_height_above_geoid', 'long_name': 'water surface elevation above geoid'} names no datum ('geoid' is a generic surface); the datum LMSL is taken from NOAA documentation for version 3.1.0.",
+  "[B-D4] Model LMSL and CO-OPS MSL are both mean-sea-level datums and are treated as compatible, but their equivalence is not established: CO-OPS MSL is the tidal datum of the 1983-2001 National Tidal Datum Epoch [COOPSDAT], and NOAA does not state the epoch or realization of the model's LMSL [SCN26-51, NOMADS2D]. A mean offset (bias) can therefore include a reference difference; no vertical transformation was applied.",
+  "[B-Q2] 475 of 475 matched observations are CO-OPS preliminary (q=p) and may be revised.",
+  "[B-T2] 5 model records in the window had no observation at the same time.",
+  "[B-Q2] Observations excluded before pairing: {'blank': 2, 'non_numeric': 0, 'non_finite': 3, 'beyond_bound': 0}."
+ ],
+ "exclusions": [
+  {
+   "what": "obs_values",
+   "count": 2,
+   "names": [],
+   "reason": "blank"
+  },
+  {
+   "what": "obs_values",
+   "count": 3,
+   "names": [],
+   "reason": "non_finite"
+  }
+ ],
+ "evidence": {
+  "pairs": 475,
+  "obs_in_window": 475,
+  "flagged_pairs_kept": 0,
+  "q_status": {
+   "p": 955
+  },
+  "inputs": [
+   {
+    "archive": "base",
+    "entry": "e0001",
+    "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20261030/stofs_2d_glo.t12z.points.cwl.nc",
+    "sha256": "f1ed4e592982fc5974d5356ba06a90c00bdb41ead0308163221a54b018746c23",
+    "why": "url"
+   },
+   {
+    "archive": "synthetic/S4",
+    "entry": "e0001",
+    "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8443970&product=water_level&datum=MSL&units=metric&time_zone=gmt&format=json&begin_date=20261029&end_date=20261101&application=ocean_mcp_wp1",
+    "sha256": "1831ebeab1a40b2fad36427fe868b3b556f16a5b9ad8a5bf89b29bcb16e542f1",
+    "why": "coops master 8443970 MSL"
+   }
+  ]
+ }
+}

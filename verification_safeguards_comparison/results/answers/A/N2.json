@@ -1,0 +1,54 @@
+{
+ "task_id": "N2",
+ "arm": "A",
+ "status": "answered",
+ "action": "proceed",
+ "values": {
+  "n": 480,
+  "bias_m": -0.14299885033346554,
+  "rmse_m": 0.24555257562124647,
+  "mae_m": 0.20860631475231262,
+  "r": 0.991320635053772
+ },
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {
+  "model_datum": {
+   "value": "LMSL",
+   "source": "fixed pairing from current product documentation (NWS SCN 26-51, STOFS v3.1)"
+  },
+  "obs_datum": {
+   "value": "MSL",
+   "source": "CO-OPS request parameter datum=MSL (fixed pairing)"
+  },
+  "units": {
+   "value": "m",
+   "source": "zeta:units attribute"
+  },
+  "product_version": {
+   "value": "SCHISM Model output",
+   "source": "global attribute title"
+  }
+ },
+ "texts": [],
+ "exclusions": [],
+ "evidence": {
+  "pairs": 480,
+  "inputs": [
+   {
+    "archive": "base",
+    "entry": "e0002",
+    "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20261030/stofs_3d_atl.t12z.points.cwl.nc",
+    "sha256": "4660819425aa1d2eec0e63a37d3a78e8fef2e00f62a1cb56f088347ef51a450f",
+    "why": "url"
+   },
+   {
+    "archive": "base",
+    "entry": "e0003",
+    "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8443970&product=water_level&datum=MSL&units=metric&time_zone=gmt&format=json&begin_date=20261029+12%3A00&end_date=20261101+12%3A00&application=ocean_mcp_verification",
+    "sha256": "c207c80138900573e09fe2733efdc2c055b923c9dc39f5c594d46d4d84ff8d6d",
+    "why": "coops master 8443970 MSL"
+   }
+  ]
+ }
+}

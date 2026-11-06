@@ -109,6 +109,8 @@
    "log": "http_log.jsonl"
   },
   "expected_valid": true,
+  "expected_reason": null,
+  "reason_observed": true,
   "first_response": "{\n  \"station_id\": \"8443970\",\n  \"model\": \"3d_atlantic\",\n  \"product\": \"cwl\",\n  \"cycle_date\": \"20261030\",\n  \"cycle_hour\": \"12\",\n  \"datum\": \"NAVD88\",\n  \"lat\": 42.35"
  },
  "stofs030_failloud": {
@@ -120,6 +122,8 @@
    "log": "http_log.jsonl"
   },
   "expected_valid": false,
+  "expected_reason": "replay_misses",
+  "reason_observed": true,
   "first_response": "Unexpected error (2d_global): ReplayMiss: not archived: GET https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20261031/stofs_2d_glo.t12z.points.cwl.nc"
  },
  "ww3_012_failloud": {
@@ -131,6 +135,8 @@
    "log": "http_log.jsonl"
   },
   "expected_valid": false,
+  "expected_reason": "replay_misses",
+  "reason_observed": true,
   "first_response": "not archived: GET https://www.ndbc.noaa.gov/data/realtime2/41009.txt"
  },
  "erddap_dnsguard": {
@@ -142,7 +148,9 @@
    "log": "http_log.jsonl"
   },
   "expected_valid": false,
-  "first_response": "Blocked for security: Could not resolve host 'coastwatch.pfeg.noaa.gov': [Errno -2] ocean-replay: DNS for 'coastwatch.pfeg.noaa.gov' is not archived Only public"
+  "expected_reason": "network_blocked",
+  "reason_observed": true,
+  "first_response": "Blocked for security: Could not resolve host 'erddap.secoora.org': [Errno -2] ocean-replay: DNS for 'erddap.secoora.org' is not archived Only public http(s) ERD"
  },
  "phase0_passed": true
 }

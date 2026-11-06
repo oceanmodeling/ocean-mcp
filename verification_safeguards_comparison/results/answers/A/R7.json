@@ -1,0 +1,32 @@
+{
+ "task_id": "R7",
+ "arm": "A",
+ "status": "answered",
+ "action": "proceed",
+ "values": {
+  "max_wvht_m": 99.0,
+  "time": "2024-01-01 00:00"
+ },
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {
+  "units": {
+   "value": "m",
+   "source": "units header row of the file (#yr mo ... m)"
+  }
+ },
+ "texts": [],
+ "exclusions": [],
+ "evidence": {
+  "rows": 52692,
+  "inputs": [
+   {
+    "archive": "base",
+    "entry": "e0004",
+    "url": "https://www.ndbc.noaa.gov/view_text_file.php?filename=41009h2024.txt.gz&dir=data/historical/stdmet/",
+    "sha256": "f149d373877f4892f75092a969a0b12c27da7c8d54e0db9827a8fbcaef0bc648",
+    "why": "url"
+   }
+  ]
+ }
+}

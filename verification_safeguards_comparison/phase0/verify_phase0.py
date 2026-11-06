@@ -77,12 +77,16 @@ def main() -> int:
             "allowed_differences": allowed, "unexpected_differences": unexpected}
         ok &= not unexpected and report["calls"][c["call_id"]]["series_identical"]
     # other sessions
-    exp = {"stofs020_smoke": True, "stofs030_failloud": False, "ww3_012_failloud": False, "erddap_dnsguard": False}
-    for name, valid in exp.items():
+    # (expected validity, counter that must be >= 1 for the expected reason)
+    exp = {"stofs020_smoke": (True, None), "stofs030_failloud": (False, "replay_misses"),
+           "ww3_012_failloud": (False, "replay_misses"), "erddap_dnsguard": (False, "network_blocked")}
+    for name, (valid, reason) in exp.items():
         tr = json.loads((sess / name / "transcript.json").read_text())
+        reason_ok = reason is None or tr["http"].get(reason, 0) >= 1
         report[name] = {"valid": tr["valid"], "http": tr["http"], "expected_valid": valid,
+                        "expected_reason": reason, "reason_observed": reason_ok,
                         "first_response": tr["calls"][0]["content"][0]["text"][:160]}
-        ok &= tr["valid"] == valid
+        ok &= tr["valid"] == valid and reason_ok
     report["phase0_passed"] = bool(ok)
     (vdir / "phase0/phase0_check.json").write_text(json.dumps(report, indent=1) + "\n")
     print(json.dumps(report, indent=1))

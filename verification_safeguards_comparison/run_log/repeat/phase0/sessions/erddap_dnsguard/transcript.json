@@ -1,0 +1,600 @@
+{
+ "session_id": "phase0_erddap_replay_dnsguard",
+ "arm": "phase0",
+ "started_at": "2026-11-06T06:47:42+00:00",
+ "network_probe": {
+  "1.1.1.1:443": "CONNECTED",
+  "1.1.1.1:443_seconds": 0.008,
+  "8.8.8.8:53": "CONNECTED",
+  "8.8.8.8:53_seconds": 0.013
+ },
+ "server_command": [
+  "/tmp/claude-1000/-mnt-d-ocean-mcp/349682ef-6680-4b65-946b-8dddc1d96a0d/scratchpad/envs/erddap/bin/python",
+  "-I",
+  "/mnt/d/ocean-mcp/.claude/worktrees/safeguards-comparison/verification_safeguards_comparison/replay/ocean_replay_launcher.py",
+  "--mode",
+  "replay",
+  "--log",
+  "/mnt/d/ocean-mcp/.claude/worktrees/safeguards-comparison/verification_safeguards_comparison/run_log/repeat/phase0/sessions/erddap_dnsguard/http_log.jsonl",
+  "--archive",
+  "/mnt/d/ocean-mcp/.claude/worktrees/safeguards-comparison/verification_safeguards_comparison/data/archive/base",
+  "-m",
+  "erddap_mcp"
+ ],
+ "server_env": {
+  "PATH": "/usr/bin:/bin",
+  "HOME": "/mnt/d/ocean-mcp/.claude/worktrees/safeguards-comparison/verification_safeguards_comparison/run_log/repeat/phase0/sessions/erddap_dnsguard",
+  "TZ": "UTC",
+  "LANG": "C.UTF-8"
+ },
+ "packages": {
+  "python": "3.13.12",
+  "erddap-mcp": "0.1.2",
+  "mcp": "1.30.0",
+  "httpx": "0.28.1"
+ },
+ "calls": [
+  {
+   "call_id": "unarchived_host",
+   "tool": "erddap_get_dataset_info",
+   "arguments": {
+    "server_url": "https://erddap.secoora.org/erddap",
+    "dataset_id": "not_archived"
+   },
+   "sent_at": "2026-11-06T06:47:43+00:00",
+   "received_at": "2026-11-06T06:47:43+00:00",
+   "is_error": false,
+   "content": [
+    {
+     "type": "text",
+     "text": "Blocked for security: Could not resolve host 'erddap.secoora.org': [Errno -2] ocean-replay: DNS for 'erddap.secoora.org' is not archived Only public http(s) ERDDAP servers are allowed; use erddap_list_servers to see known servers.",
+     "annotations": null,
+     "meta": null
+    }
+   ],
+   "structured_content": {
+    "result": "Blocked for security: Could not resolve host 'erddap.secoora.org': [Errno -2] ocean-replay: DNS for 'erddap.secoora.org' is not archived Only public http(s) ERDDAP servers are allowed; use erddap_list_servers to see known servers."
+   }
+  }
+ ],
+ "initialize": {
+  "meta": null,
+  "protocolVersion": "2025-11-25",
+  "capabilities": {
+   "experimental": {},
+   "logging": null,
+   "prompts": {
+    "listChanged": false
+   },
+   "resources": {
+    "subscribe": false,
+    "listChanged": false
+   },
+   "tools": {
+    "listChanged": false
+   },
+   "completions": null,
+   "tasks": null
+  },
+  "serverInfo": {
+   "name": "erddap_mcp",
+   "title": null,
+   "version": "1.30.0",
+   "websiteUrl": null,
+   "icons": null
+  },
+  "instructions": null
+ },
+ "tools": [
+  {
+   "name": "erddap_get_griddap_data",
+   "title": null,
+   "description": "Retrieve gridded data from an ERDDAP griddap dataset with dimension subsetting.\n\nArgs:\n    server_url: ERDDAP server URL (e.g., 'https://coastwatch.pfeg.noaa.gov/erddap').\n    dataset_id: ERDDAP dataset identifier (e.g., 'erdMH1chlamday').\n    variables: List of variable names to retrieve (default: first data variable).\n    time_range: Time range as [start, stop] (e.g., ['2024-01-01T00:00:00Z', '2024-01-31T00:00:00Z']). Use same value for single time step.\n    latitude_range: Latitude range as [min, max] (e.g., [36.0, 38.0]).\n    longitude_range: Longitude range as [min, max] (e.g., [-123.0, -121.0]).\n    depth_range: Depth/altitude range as [min, max] (optional, for datasets with depth dimension).\n    stride: Step size for subsetting (default 1). Increase to reduce data volume.\n    response_format: Output format \u2014 'markdown' (default) or 'json'.\n    max_records: Cap on JSON rows returned (default 2000). The first\n        max_records grid points are kept and the JSON flags any truncation.\n        (Markdown is already capped at 100 rows.)\n",
+   "inputSchema": {
+    "properties": {
+     "server_url": {
+      "title": "Server Url",
+      "type": "string"
+     },
+     "dataset_id": {
+      "title": "Dataset Id",
+      "type": "string"
+     },
+     "variables": {
+      "anyOf": [
+       {
+        "items": {
+         "type": "string"
+        },
+        "type": "array"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Variables"
+     },
+     "time_range": {
+      "anyOf": [
+       {
+        "items": {
+         "type": "string"
+        },
+        "type": "array"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Time Range"
+     },
+     "latitude_range": {
+      "anyOf": [
+       {
+        "items": {
+         "type": "number"
+        },
+        "type": "array"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Latitude Range"
+     },
+     "longitude_range": {
+      "anyOf": [
+       {
+        "items": {
+         "type": "number"
+        },
+        "type": "array"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Longitude Range"
+     },
+     "depth_range": {
+      "anyOf": [
+       {
+        "items": {
+         "type": "number"
+        },
+        "type": "array"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Depth Range"
+     },
+     "stride": {
+      "default": 1,
+      "title": "Stride",
+      "type": "integer"
+     },
+     "response_format": {
+      "default": "markdown",
+      "enum": [
+       "markdown",
+       "json"
+      ],
+      "title": "Response Format",
+      "type": "string"
+     },
+     "max_records": {
+      "default": 2000,
+      "title": "Max Records",
+      "type": "integer"
+     }
+    },
+    "required": [
+     "server_url",
+     "dataset_id"
+    ],
+    "title": "erddap_get_griddap_dataArguments",
+    "type": "object"
+   },
+   "outputSchema": {
+    "properties": {
+     "result": {
+      "title": "Result",
+      "type": "string"
+     }
+    },
+    "required": [
+     "result"
+    ],
+    "title": "erddap_get_griddap_dataOutput",
+    "type": "object"
+   },
+   "icons": null,
+   "annotations": {
+    "title": null,
+    "readOnlyHint": true,
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true
+   },
+   "meta": null,
+   "execution": null
+  },
+  {
+   "name": "erddap_get_dataset_info",
+   "title": null,
+   "description": "Get detailed metadata for an ERDDAP dataset \u2014 variables, dimensions, attributes, time/spatial coverage.\n\nArgs:\n    server_url: ERDDAP server URL (e.g., 'https://coastwatch.pfeg.noaa.gov/erddap').\n    dataset_id: ERDDAP dataset identifier (e.g., 'erdMH1chlamday').\n",
+   "inputSchema": {
+    "properties": {
+     "server_url": {
+      "title": "Server Url",
+      "type": "string"
+     },
+     "dataset_id": {
+      "title": "Dataset Id",
+      "type": "string"
+     }
+    },
+    "required": [
+     "server_url",
+     "dataset_id"
+    ],
+    "title": "erddap_get_dataset_infoArguments",
+    "type": "object"
+   },
+   "outputSchema": {
+    "properties": {
+     "result": {
+      "title": "Result",
+      "type": "string"
+     }
+    },
+    "required": [
+     "result"
+    ],
+    "title": "erddap_get_dataset_infoOutput",
+    "type": "object"
+   },
+   "icons": null,
+   "annotations": {
+    "title": null,
+    "readOnlyHint": true,
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true
+   },
+   "meta": null,
+   "execution": null
+  },
+  {
+   "name": "erddap_list_servers",
+   "title": null,
+   "description": "List known ERDDAP servers from the built-in registry.\n\nArgs:\n    region: Filter by region (e.g., 'US East Coast', 'Pacific', 'Global').\n    keyword: Filter by keyword matching name, focus, or region.\n",
+   "inputSchema": {
+    "properties": {
+     "region": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Region"
+     },
+     "keyword": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Keyword"
+     }
+    },
+    "title": "erddap_list_serversArguments",
+    "type": "object"
+   },
+   "outputSchema": {
+    "properties": {
+     "result": {
+      "title": "Result",
+      "type": "string"
+     }
+    },
+    "required": [
+     "result"
+    ],
+    "title": "erddap_list_serversOutput",
+    "type": "object"
+   },
+   "icons": null,
+   "annotations": {
+    "title": null,
+    "readOnlyHint": true,
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": false
+   },
+   "meta": null,
+   "execution": null
+  },
+  {
+   "name": "erddap_search_datasets",
+   "title": null,
+   "description": "Search for datasets on an ERDDAP server using free-text search.\n\nArgs:\n    search_for: Search terms (e.g., 'sea surface temperature', 'chlorophyll', 'wind').\n    server_url: ERDDAP server URL (default: CoastWatch West Coast).\n    protocol: Filter by protocol \u2014 'griddap' or 'tabledap' (optional).\n    items_per_page: Number of results per page (default 20, max 1000).\n    page: Page number for pagination (default 1).\n",
+   "inputSchema": {
+    "properties": {
+     "search_for": {
+      "title": "Search For",
+      "type": "string"
+     },
+     "server_url": {
+      "default": "https://coastwatch.pfeg.noaa.gov/erddap",
+      "title": "Server Url",
+      "type": "string"
+     },
+     "protocol": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Protocol"
+     },
+     "items_per_page": {
+      "default": 20,
+      "title": "Items Per Page",
+      "type": "integer"
+     },
+     "page": {
+      "default": 1,
+      "title": "Page",
+      "type": "integer"
+     }
+    },
+    "required": [
+     "search_for"
+    ],
+    "title": "erddap_search_datasetsArguments",
+    "type": "object"
+   },
+   "outputSchema": {
+    "properties": {
+     "result": {
+      "title": "Result",
+      "type": "string"
+     }
+    },
+    "required": [
+     "result"
+    ],
+    "title": "erddap_search_datasetsOutput",
+    "type": "object"
+   },
+   "icons": null,
+   "annotations": {
+    "title": null,
+    "readOnlyHint": true,
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true
+   },
+   "meta": null,
+   "execution": null
+  },
+  {
+   "name": "erddap_get_all_datasets",
+   "title": null,
+   "description": "List all datasets available on a specific ERDDAP server.\n\nArgs:\n    server_url: ERDDAP server URL (default: CoastWatch West Coast).\n    protocol: Filter by protocol \u2014 'griddap' or 'tabledap' (optional).\n    institution: Filter by institution name (optional, case-insensitive).\n    search_text: Filter by text in title or summary (optional, case-insensitive).\n    limit: Maximum number of datasets to return (default 50).\n    offset: Number of datasets to skip for pagination (default 0).\n",
+   "inputSchema": {
+    "properties": {
+     "server_url": {
+      "default": "https://coastwatch.pfeg.noaa.gov/erddap",
+      "title": "Server Url",
+      "type": "string"
+     },
+     "protocol": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Protocol"
+     },
+     "institution": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Institution"
+     },
+     "search_text": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Search Text"
+     },
+     "limit": {
+      "default": 50,
+      "title": "Limit",
+      "type": "integer"
+     },
+     "offset": {
+      "default": 0,
+      "title": "Offset",
+      "type": "integer"
+     }
+    },
+    "title": "erddap_get_all_datasetsArguments",
+    "type": "object"
+   },
+   "outputSchema": {
+    "properties": {
+     "result": {
+      "title": "Result",
+      "type": "string"
+     }
+    },
+    "required": [
+     "result"
+    ],
+    "title": "erddap_get_all_datasetsOutput",
+    "type": "object"
+   },
+   "icons": null,
+   "annotations": {
+    "title": null,
+    "readOnlyHint": true,
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true
+   },
+   "meta": null,
+   "execution": null
+  },
+  {
+   "name": "erddap_get_tabledap_data",
+   "title": null,
+   "description": "Retrieve tabular data from an ERDDAP tabledap dataset with constraint filtering.\n\nArgs:\n    server_url: ERDDAP server URL (e.g., 'https://coastwatch.pfeg.noaa.gov/erddap').\n    dataset_id: ERDDAP dataset identifier.\n    variables: List of variable names to retrieve (default: all).\n    constraints: Dict of constraints, e.g. {\"time>=\": \"2024-01-01\", \"latitude>=\": 38.0, \"station=\": \"46013\"}.\n    limit: Maximum number of rows to return (default 1000).\n    response_format: Output format \u2014 'markdown' (default) or 'json'.\n    max_records: Cap on JSON rows returned (default 2000). The first\n        max_records rows are kept and the JSON flags any truncation.\n        (Markdown is already capped at 100 rows.)\n",
+   "inputSchema": {
+    "properties": {
+     "server_url": {
+      "title": "Server Url",
+      "type": "string"
+     },
+     "dataset_id": {
+      "title": "Dataset Id",
+      "type": "string"
+     },
+     "variables": {
+      "anyOf": [
+       {
+        "items": {
+         "type": "string"
+        },
+        "type": "array"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Variables"
+     },
+     "constraints": {
+      "anyOf": [
+       {
+        "additionalProperties": {
+         "anyOf": [
+          {
+           "type": "string"
+          },
+          {
+           "type": "integer"
+          },
+          {
+           "type": "number"
+          }
+         ]
+        },
+        "type": "object"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Constraints"
+     },
+     "limit": {
+      "default": 1000,
+      "title": "Limit",
+      "type": "integer"
+     },
+     "response_format": {
+      "default": "markdown",
+      "enum": [
+       "markdown",
+       "json"
+      ],
+      "title": "Response Format",
+      "type": "string"
+     },
+     "max_records": {
+      "default": 2000,
+      "title": "Max Records",
+      "type": "integer"
+     }
+    },
+    "required": [
+     "server_url",
+     "dataset_id"
+    ],
+    "title": "erddap_get_tabledap_dataArguments",
+    "type": "object"
+   },
+   "outputSchema": {
+    "properties": {
+     "result": {
+      "title": "Result",
+      "type": "string"
+     }
+    },
+    "required": [
+     "result"
+    ],
+    "title": "erddap_get_tabledap_dataOutput",
+    "type": "object"
+   },
+   "icons": null,
+   "annotations": {
+    "title": null,
+    "readOnlyHint": true,
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true
+   },
+   "meta": null,
+   "execution": null
+  }
+ ],
+ "finished_at": "2026-11-06T06:47:43+00:00",
+ "http": {
+  "requests": 0,
+  "replay_misses": 0,
+  "network_blocked": 1,
+  "log": "http_log.jsonl"
+ },
+ "valid": false
+}

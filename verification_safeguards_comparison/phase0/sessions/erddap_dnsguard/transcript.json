@@ -1,12 +1,12 @@
 {
  "session_id": "phase0_erddap_replay_dnsguard",
  "arm": "phase0",
- "started_at": "2026-11-06T05:59:42+00:00",
+ "started_at": "2026-11-06T06:47:06+00:00",
  "network_probe": {
   "1.1.1.1:443": "CONNECTED",
-  "1.1.1.1:443_seconds": 0.009,
+  "1.1.1.1:443_seconds": 0.007,
   "8.8.8.8:53": "CONNECTED",
-  "8.8.8.8:53_seconds": 0.011
+  "8.8.8.8:53_seconds": 0.014
  },
  "server_command": [
   "/tmp/claude-1000/-mnt-d-ocean-mcp/349682ef-6680-4b65-946b-8dddc1d96a0d/scratchpad/envs/erddap/bin/python",
@@ -38,22 +38,22 @@
    "call_id": "unarchived_host",
    "tool": "erddap_get_dataset_info",
    "arguments": {
-    "server_url": "https://coastwatch.pfeg.noaa.gov/erddap",
-    "dataset_id": "jplMURSST41"
+    "server_url": "https://erddap.secoora.org/erddap",
+    "dataset_id": "not_archived"
    },
-   "sent_at": "2026-11-06T05:59:43+00:00",
-   "received_at": "2026-11-06T05:59:43+00:00",
+   "sent_at": "2026-11-06T06:47:07+00:00",
+   "received_at": "2026-11-06T06:47:07+00:00",
    "is_error": false,
    "content": [
     {
      "type": "text",
-     "text": "Blocked for security: Could not resolve host 'coastwatch.pfeg.noaa.gov': [Errno -2] ocean-replay: DNS for 'coastwatch.pfeg.noaa.gov' is not archived Only public http(s) ERDDAP servers are allowed; use erddap_list_servers to see known servers.",
+     "text": "Blocked for security: Could not resolve host 'erddap.secoora.org': [Errno -2] ocean-replay: DNS for 'erddap.secoora.org' is not archived Only public http(s) ERDDAP servers are allowed; use erddap_list_servers to see known servers.",
      "annotations": null,
      "meta": null
     }
    ],
    "structured_content": {
-    "result": "Blocked for security: Could not resolve host 'coastwatch.pfeg.noaa.gov': [Errno -2] ocean-replay: DNS for 'coastwatch.pfeg.noaa.gov' is not archived Only public http(s) ERDDAP servers are allowed; use erddap_list_servers to see known servers."
+    "result": "Blocked for security: Could not resolve host 'erddap.secoora.org': [Errno -2] ocean-replay: DNS for 'erddap.secoora.org' is not archived Only public http(s) ERDDAP servers are allowed; use erddap_list_servers to see known servers."
    }
   }
  ],
@@ -589,7 +589,7 @@
    "execution": null
   }
  ],
- "finished_at": "2026-11-06T05:59:43+00:00",
+ "finished_at": "2026-11-06T06:47:07+00:00",
  "http": {
   "requests": 0,
   "replay_misses": 0,

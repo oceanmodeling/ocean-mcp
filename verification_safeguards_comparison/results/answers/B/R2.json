@@ -1,0 +1,45 @@
+{
+ "task_id": "R2",
+ "arm": "B",
+ "status": "answered",
+ "action": "proceed",
+ "values": {
+  "min_m": -0.109007
+ },
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {
+  "model_datum": {
+   "value": "LMSL",
+   "source": "NOAA documentation: NOMADS STOFS-Global product description (station output referenced to LMSL)"
+  },
+  "units": {
+   "value": "m",
+   "source": "zeta:units attribute"
+  }
+ },
+ "texts": [
+  "[B-Q1] Excluded records at BISM2 SOUS41 8571421 MD Bishops Head: {'fill_or_nonfinite': 0, 'declared_dry_value': 0, 'beyond_physical_bound': 47, 'of_which_no_data_magnitude': 47}; distinct excluded values [-99998.6].",
+  "[B-D1] The file label {'standard_name': 'sea_surface_height_above_geoid', 'long_name': 'water surface elevation above geoid'} names no datum ('geoid' is a generic surface); the datum LMSL is taken from NOAA documentation for version 3.1.0."
+ ],
+ "exclusions": [
+  {
+   "what": "model_records",
+   "count": 47,
+   "names": [],
+   "reason": "beyond_physical_bound"
+  }
+ ],
+ "evidence": {
+  "valid": 1813,
+  "inputs": [
+   {
+    "archive": "base",
+    "entry": "e0001",
+    "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20261030/stofs_2d_glo.t12z.points.cwl.nc",
+    "sha256": "f1ed4e592982fc5974d5356ba06a90c00bdb41ead0308163221a54b018746c23",
+    "why": "url"
+   }
+  ]
+ }
+}
