@@ -1,15 +1,19 @@
 # WP1: scientific-safeguards comparison (Ocean-MCP)
 
-**Status: Phase 1 complete (design frozen; arms A and B run and graded). Arms C and D have not been
-run on any task.**
+**Status: complete (Phases 0 to 3).** The results and the proposed manuscript text are in `REPORT.md`.
 
 | Step | Commit |
 |---|---|
 | Design freeze: tasks, references, grader | `5d84c13` |
-| Arms A and B: code and outputs; amendment A1 | see `git log` (second commit on `eval/safeguards-comparison`) |
+| Arms A and B: code and outputs; amendment A1 | `96fd7f8` |
+| Phase 2 start: amendment A2 (sensitivity) and the rule-3 validation, before arms C and D | `53d0f3f` |
+| Arms C and D, grading, report | the commit that adds `REPORT.md` |
 
-- `DESIGN.md`: the frozen design (Phase 0 mechanism, arms, tasks, references and their sources, grading).
-- `references/AMENDMENTS.md`: the post-freeze amendment record.
+Arms A and B and the gradings run with no Ocean-MCP package importable. Arms C and D are real MCP
+stdio sessions in replay mode.
+
+- `DESIGN.md`: the frozen design.
+- `references/AMENDMENTS.md`: amendments A1 (a reference bug) and A2 (sensitivity).
 
 ## Layout
 

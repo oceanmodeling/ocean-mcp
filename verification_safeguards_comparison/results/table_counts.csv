@@ -1,0 +1,37 @@
+grading,axis,outcome,A,B,C,D
+primary (frozen),values,within_tolerance,7,13,12,2
+primary (frozen),values,outside_tolerance,7,0,0,4
+primary (frozen),values,not_returned,0,1,1,1
+primary (frozen),values,not_applicable,4,4,4,4
+primary (frozen),values,not_supported,0,0,0,7
+primary (frozen),values,candidate_not_available,0,0,1,0
+primary (frozen),metadata,correct,11,17,9,1
+primary (frozen),metadata,incomplete,0,0,6,8
+primary (frozen),metadata,wrong,6,0,0,8
+primary (frozen),metadata,not_applicable,1,1,2,1
+primary (frozen),metadata,candidate_not_available,0,0,1,0
+primary (frozen),decision,correct_proceed,2,3,3,3
+primary (frozen),decision,correct_proceed_with_caveat,1,11,8,0
+primary (frozen),decision,proceed_caveat_missing,4,0,1,2
+primary (frozen),decision,correct_refusal_or_flag,0,4,4,0
+primary (frozen),decision,false_proceed,11,0,1,12
+primary (frozen),decision,false_refusal,0,0,0,1
+primary (frozen),decision,candidate_not_available,0,0,1,0
+with amendment A1,values,within_tolerance,7,13,12,2
+with amendment A1,values,outside_tolerance,7,0,0,4
+with amendment A1,values,not_returned,0,0,0,1
+with amendment A1,values,not_applicable,4,5,5,4
+with amendment A1,values,not_supported,0,0,0,7
+with amendment A1,values,candidate_not_available,0,0,1,0
+with amendment A1,metadata,correct,11,17,9,1
+with amendment A1,metadata,incomplete,0,0,6,8
+with amendment A1,metadata,wrong,6,0,0,8
+with amendment A1,metadata,not_applicable,1,1,2,1
+with amendment A1,metadata,candidate_not_available,0,0,1,0
+with amendment A1,decision,correct_proceed,2,3,3,3
+with amendment A1,decision,correct_proceed_with_caveat,1,11,8,0
+with amendment A1,decision,proceed_caveat_missing,4,0,1,2
+with amendment A1,decision,correct_refusal_or_flag,0,4,4,0
+with amendment A1,decision,false_proceed,11,0,1,12
+with amendment A1,decision,false_refusal,0,0,0,1
+with amendment A1,decision,candidate_not_available,0,0,1,0

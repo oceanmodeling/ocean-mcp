@@ -1,0 +1,33 @@
+{
+ "session_id": "wp1_C_R6",
+ "arm": "C",
+ "server": {
+  "python": "/tmp/claude-1000/-mnt-d-ocean-mcp/349682ef-6680-4b65-946b-8dddc1d96a0d/scratchpad/envs/stofs030/bin/python",
+  "module": "stofs_mcp",
+  "mode": "replay",
+  "archives": [
+   "/mnt/d/ocean-mcp/.claude/worktrees/safeguards-comparison/verification_safeguards_comparison/data/archive/base"
+  ],
+  "dists": [
+   "stofs-mcp",
+   "mcp",
+   "httpx"
+  ]
+ },
+ "calls": [
+  {
+   "call_id": "R6_C_0",
+   "tool": "stofs_get_point_forecast",
+   "arguments": {
+    "latitude": 42.3539,
+    "longitude": -71.0503,
+    "model": "3d_atlantic",
+    "product": "cwl",
+    "cycle_date": "2026-02-18",
+    "cycle_hour": "12",
+    "max_distance_km": 50.0,
+    "response_format": "json"
+   }
+  }
+ ]
+}

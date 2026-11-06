@@ -1,0 +1,18 @@
+[11/06/26 16:09:24] INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[11/06/26 16:09:25] INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-gestofs-pds.s3.amazona                
+                             ws.com/stofs_2d_glo.20261030/stofs_                
+                             2d_glo.t12z.points.cwl.nc "HTTP/1.1                
+                             200 OK"                                            
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8443                
+                             970&product=water_level&datum=MSL&u                
+                             nits=metric&time_zone=gmt&format=js                
+                             on&begin_date=20261030+12%3A06&end_                
+                             date=20261101+12%3A00&application=s                
+                             tofs_mcp "HTTP/1.1 200 OK"                         
+[ocean-replay] replay summary: {"served": 2, "recorded": 0, "miss": 0, "network_blocked": 0}

@@ -8,7 +8,7 @@
  },
  "network_probe": {
   "1.1.1.1:443": "refused: OSError: [Errno 101] Network is unreachable",
-  "1.1.1.1:443_seconds": 0.001,
+  "1.1.1.1:443_seconds": 0.002,
   "8.8.8.8:53": "refused: OSError: [Errno 101] Network is unreachable",
   "8.8.8.8:53_seconds": 0.0
  },

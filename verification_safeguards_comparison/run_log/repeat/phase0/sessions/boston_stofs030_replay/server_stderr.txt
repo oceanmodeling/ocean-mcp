@@ -1,4 +1,4 @@
-[11/06/26 06:47:37] INFO     Processing request of type            server.py:733
+[11/06/26 16:08:59] INFO     Processing request of type            server.py:733
                              ListToolsRequest                                   
                     INFO     Processing request of type            server.py:733
                              CallToolRequest                                    
@@ -32,7 +32,7 @@
                              tofs_mcp "HTTP/1.1 200 OK"                         
                     INFO     Processing request of type            server.py:733
                              CallToolRequest                                    
-[11/06/26 06:47:38] INFO     HTTP Request: GET                   _client.py:1740
+                    INFO     HTTP Request: GET                   _client.py:1740
                              https://noaa-gestofs-pds.s3.amazona                
                              ws.com/stofs_2d_glo.20261030/stofs_                
                              2d_glo.t12z.points.cwl.nc "HTTP/1.1                
@@ -47,7 +47,7 @@
                              tofs_mcp "HTTP/1.1 200 OK"                         
                     INFO     Processing request of type            server.py:733
                              CallToolRequest                                    
-                    INFO     HTTP Request: GET                   _client.py:1740
+[11/06/26 16:09:00] INFO     HTTP Request: GET                   _client.py:1740
                              https://noaa-nos-stofs3d-pds.s3.ama                
                              zonaws.com/STOFS-3D-Atl/stofs_3d_at                
                              l.20261030/stofs_3d_atl.t12z.points                

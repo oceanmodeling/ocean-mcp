@@ -1,0 +1,58 @@
+{
+ "task_id": "R4b",
+ "arm": "C",
+ "status": "answered",
+ "action": "proceed",
+ "values": {
+  "n": 480,
+  "bias_m": -0.0354,
+  "rmse_m": 0.2111,
+  "mae_m": 0.1852,
+  "r": 0.9959
+ },
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {
+  "model_datum": {
+   "value": "LMSL",
+   "source": "file metadata: zeta:standard_name=sea_surface_height_above_msl"
+  },
+  "product_version": {
+   "value": "stofs.v3.1.4",
+   "source": "tool datum_provenance.product_version"
+  },
+  "obs_datum": {
+   "value": "MSL",
+   "source": "tool response field coops_datum (CO-OPS request datum)"
+  },
+  "units": {
+   "value": "m",
+   "source": "tool response field units"
+  }
+ },
+ "texts": [
+  "datum_note: STOFS datum: LMSL (file metadata: zeta:standard_name=sea_surface_height_above_msl) | CO-OPS datum: MSL. No vertical transformation is applied. Matching labels do not guarantee identical realizations or epochs, so a mean offset (bias) alone does not show whether its cause is the reference or the model."
+ ],
+ "exclusions": [],
+ "evidence": {
+  "call_ids": [
+   "R4b_C_0"
+  ],
+  "window": {
+   "comparison_start": "2026-08-17 12:06",
+   "comparison_end": "2026-08-19 12:00",
+   "window_lead_hours": [
+    0.1,
+    48.0
+   ],
+   "hours_to_compare": null
+  },
+  "session": "wp1_C_R4b",
+  "packages": {
+   "python": "3.13.12",
+   "stofs-mcp": "0.3.0",
+   "mcp": "1.30.0",
+   "httpx": "0.28.1"
+  }
+ }
+}

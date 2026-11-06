@@ -1,0 +1,62 @@
+{
+ "task_id": "R3",
+ "arm": "D",
+ "status": "answered",
+ "action": "proceed",
+ "values": {
+  "top": [
+   {
+    "station": "UJ816 SOUS00 SA816",
+    "max_m": 136.201
+   },
+   {
+    "station": "UJ852 SOUS00 SA852",
+    "max_m": 5.053
+   },
+   {
+    "station": "ZZZZZ SOUS45 ber0014 AK Naknek River Ent #13",
+    "max_m": 4.919
+   },
+   {
+    "station": "UH166 SOUS00 GL040 Broome Australia brom",
+    "max_m": 4.577
+   },
+   {
+    "station": "ZZZZZ SOUS45 9465374 AK Dillingham",
+    "max_m": 4.559
+   }
+  ],
+  "station": "UJ816 SOUS00 SA816",
+  "max_m": 136.201
+ },
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {
+  "model_datum": {
+   "value": "LMSL",
+   "source": null
+  },
+  "product_version": {
+   "value": null,
+   "source": null
+  },
+  "units": {
+   "value": null,
+   "source": null
+  }
+ },
+ "texts": [],
+ "exclusions": [],
+ "evidence": {
+  "call_ids": [
+   "R3_D_0"
+  ],
+  "session": "wp1_D_R3",
+  "packages": {
+   "python": "3.13.12",
+   "stofs-mcp": "0.2.0",
+   "mcp": "1.30.0",
+   "httpx": "0.28.1"
+  }
+ }
+}

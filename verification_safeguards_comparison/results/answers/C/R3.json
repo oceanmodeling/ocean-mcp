@@ -1,0 +1,89 @@
+{
+ "task_id": "R3",
+ "arm": "C",
+ "status": "answered",
+ "action": "proceed",
+ "values": {
+  "top": [
+   {
+    "station": "UJ852 SOUS00 SA852",
+    "max_m": 5.053
+   },
+   {
+    "station": "ZZZZZ SOUS45 ber0014 AK Naknek River Ent #13",
+    "max_m": 4.919
+   },
+   {
+    "station": "UH166 SOUS00 GL040 Broome Australia brom",
+    "max_m": 4.577
+   },
+   {
+    "station": "ZZZZZ SOUS45 9465374 AK Dillingham",
+    "max_m": 4.559
+   },
+   {
+    "station": "ZZZZZ SOUS45 9465261 AK Clarks Point Nushagak Bay",
+    "max_m": 4.39
+   }
+  ],
+  "station": "UJ852 SOUS00 SA852",
+  "max_m": 5.053
+ },
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {
+  "model_datum": {
+   "value": "LMSL",
+   "source": "NOAA documentation (STOFS_2D_GLOBAL V3.1.0: NOMADS STOFS-Global description (archived 2026-11-04): station and gridded output referenced to LMSL); file label zeta:standard_name=sea_surface_height_above_geoid names no specific datum"
+  },
+  "product_version": {
+   "value": "STOFS_2D_GLOBAL V3.1.0",
+   "source": "tool datum_provenance.product_version"
+  },
+  "units": {
+   "value": null,
+   "source": null
+  }
+ },
+ "texts": [],
+ "exclusions": [
+  {
+   "what": "stations",
+   "count": 1,
+   "names": [
+    "UJ816 SOUS00 SA816"
+   ],
+   "reason": "{\"implausible\": 1860}"
+  },
+  {
+   "what": "model_values",
+   "count": 4539,
+   "names": [],
+   "reason": "masked_or_fill"
+  },
+  {
+   "what": "model_values",
+   "count": 162,
+   "names": [],
+   "reason": "sentinel"
+  },
+  {
+   "what": "model_values",
+   "count": 1860,
+   "names": [],
+   "reason": "implausible"
+  }
+ ],
+ "evidence": {
+  "call_ids": [
+   "R3_C_0"
+  ],
+  "session": "wp1_C_R3",
+  "packages": {
+   "python": "3.13.12",
+   "stofs-mcp": "0.3.0",
+   "mcp": "1.30.0",
+   "httpx": "0.28.1"
+  }
+ }
+}

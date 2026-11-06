@@ -1,0 +1,62 @@
+{
+ "task_id": "R1a",
+ "arm": "D",
+ "status": "answered",
+ "action": "proceed",
+ "values": {
+  "top": [
+   {
+    "station": "LAMV3 SOUS41 9751381 VI Lameshur Bay, St John",
+    "max_m": 9999999.582
+   },
+   {
+    "station": "XXXXX XXXXXX 9752235 PR Culebra",
+    "max_m": 9999999.55
+   },
+   {
+    "station": "ESPP4 SOUS41 9752695 PR Esperanza, Vieques Island",
+    "max_m": 9999999.523
+   },
+   {
+    "station": "LTBV3 SOUS41 9751401 VI Lime Tree Bay",
+    "max_m": 9999999.444
+   },
+   {
+    "station": "CHSV3 SOUS41 9751364 VI Christiansted Harbor, St C",
+    "max_m": 9999999.411
+   }
+  ],
+  "station": "LAMV3 SOUS41 9751381 VI Lameshur Bay, St John",
+  "max_m": 9999999.582
+ },
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {
+  "model_datum": {
+   "value": "NAVD88",
+   "source": null
+  },
+  "product_version": {
+   "value": null,
+   "source": null
+  },
+  "units": {
+   "value": null,
+   "source": null
+  }
+ },
+ "texts": [],
+ "exclusions": [],
+ "evidence": {
+  "call_ids": [
+   "R1a_D_0"
+  ],
+  "session": "wp1_D_R1a",
+  "packages": {
+   "python": "3.13.12",
+   "stofs-mcp": "0.2.0",
+   "mcp": "1.30.0",
+   "httpx": "0.28.1"
+  }
+ }
+}

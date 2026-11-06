@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-06T06:31:50+00:00",
+ "generated_at": "2026-11-06T16:08:28+00:00",
  "note": "sha256 identifies the archived bytes; it does not guarantee that an upstream object is immutable. CO-OPS 2026-10-29..11-01 observations were preliminary (q=p) when archived. Entries with source 'synthetic' are controlled mutations. 'seeded' entries were copied from earlier packages, whose manifests recorded their retrieval.",
  "depends_on": {
   "wp0_manifest": {
@@ -653,6 +653,36 @@
    "mutation": "zeta:standard_name 'sea_surface_height_above_msl' -> 'sea_surface_height_above_mean_sea_level' (CF standard name); zeta:long_name 'water surface elevation above msl' -> 'water surface elevation above mean sea level'",
    "label": "SYNTHETIC: controlled mutation of a real NOAA file",
    "note": null
+  },
+  {
+   "archive": "data/archive/validation_slice",
+   "entry": "e0001",
+   "kind": "exact",
+   "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8443970&product=water_level&datum=MSL&units=metric&time_zone=gmt&format=json&begin_date=20260817+12%3A06&end_date=20260819+12%3A00&application=stofs_mcp",
+   "http_status": 200,
+   "bytes": 36255,
+   "sha256": "527d5660351e7e1f41cb05b0959030be371f5af981d43eab33894f6df5b155bd",
+   "body_file": "bodies/527d5660351e7e1f41cb05b0959030be371f5af981d43eab33894f6df5b155bd.json",
+   "body_present": true,
+   "source": "recorded",
+   "retrieved_at": "2026-11-06T15:58:54+00:00",
+   "input_name": "validation_coops_8443970_MSL_20260817T1206_20260819T1200",
+   "tasks": null,
+   "origin_file": null,
+   "origin_sha256": null,
+   "mutation": null,
+   "label": null,
+   "note": "rule-3 validation only; not used by any task"
+  },
+  {
+   "archive": "data/archive/validation_slice",
+   "dns_answers_recorded": {
+    "api.tidesandcurrents.noaa.gov": [
+     "52.44.89.212",
+     "52.6.149.12",
+     "98.84.75.111"
+    ]
+   }
   }
  ]
 }

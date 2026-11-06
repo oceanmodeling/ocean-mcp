@@ -1,0 +1,884 @@
+{
+ "session_id": "wp1_D_R1a",
+ "arm": "D",
+ "started_at": "2026-11-06T16:09:35+00:00",
+ "network_probe": {
+  "1.1.1.1:443": "refused: OSError: [Errno 101] Network is unreachable",
+  "1.1.1.1:443_seconds": 0.001,
+  "8.8.8.8:53": "refused: OSError: [Errno 101] Network is unreachable",
+  "8.8.8.8:53_seconds": 0.0
+ },
+ "server_command": [
+  "/tmp/claude-1000/-mnt-d-ocean-mcp/349682ef-6680-4b65-946b-8dddc1d96a0d/scratchpad/envs/stofs020/bin/python",
+  "-I",
+  "/mnt/d/ocean-mcp/.claude/worktrees/safeguards-comparison/verification_safeguards_comparison/replay/ocean_replay_launcher.py",
+  "--mode",
+  "replay",
+  "--log",
+  "/mnt/d/ocean-mcp/.claude/worktrees/safeguards-comparison/verification_safeguards_comparison/run_log/sessions/D/R1a/http_log.jsonl",
+  "--archive",
+  "/mnt/d/ocean-mcp/.claude/worktrees/safeguards-comparison/verification_safeguards_comparison/data/archive/base",
+  "-m",
+  "stofs_mcp"
+ ],
+ "server_env": {
+  "PATH": "/usr/bin:/bin",
+  "HOME": "/mnt/d/ocean-mcp/.claude/worktrees/safeguards-comparison/verification_safeguards_comparison/run_log/sessions/D/R1a",
+  "TZ": "UTC",
+  "LANG": "C.UTF-8"
+ },
+ "packages": {
+  "python": "3.13.12",
+  "stofs-mcp": "0.2.0",
+  "mcp": "1.30.0",
+  "httpx": "0.28.1"
+ },
+ "calls": [
+  {
+   "call_id": "R1a_D_0",
+   "tool": "stofs_get_max_water_level",
+   "arguments": {
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-30",
+    "cycle_hour": "12",
+    "top_n": 5,
+    "response_format": "json"
+   },
+   "sent_at": "2026-11-06T16:09:36+00:00",
+   "received_at": "2026-11-06T16:09:36+00:00",
+   "is_error": false,
+   "content": [
+    {
+     "type": "text",
+     "text": "{\n  \"model\": \"3d_atlantic\",\n  \"cycle_date\": \"20261030\",\n  \"cycle_hour\": \"12\",\n  \"datum\": \"NAVD88\",\n  \"top_stations\": [\n    {\n      \"station\": \"LAMV3 SOUS41 9751381 VI Lameshur Bay, St John\",\n      \"max_wl\": 9999999.582,\n      \"lat\": 18.3182,\n      \"lon\": -64.7242\n    },\n    {\n      \"station\": \"XXXXX XXXXXX 9752235 PR Culebra\",\n      \"max_wl\": 9999999.55,\n      \"lat\": 18.3009,\n      \"lon\": -65.3025\n    },\n    {\n      \"station\": \"ESPP4 SOUS41 9752695 PR Esperanza, Vieques Island\",\n      \"max_wl\": 9999999.523,\n      \"lat\": 18.0939,\n      \"lon\": -65.4714\n    },\n    {\n      \"station\": \"LTBV3 SOUS41 9751401 VI Lime Tree Bay\",\n      \"max_wl\": 9999999.444,\n      \"lat\": 17.6947,\n      \"lon\": -64.7538\n    },\n    {\n      \"station\": \"CHSV3 SOUS41 9751364 VI Christiansted Harbor, St C\",\n      \"max_wl\": 9999999.411,\n      \"lat\": 17.7477,\n      \"lon\": -64.6984\n    }\n  ]\n}",
+     "annotations": null,
+     "meta": null
+    }
+   ],
+   "structured_content": {
+    "result": "{\n  \"model\": \"3d_atlantic\",\n  \"cycle_date\": \"20261030\",\n  \"cycle_hour\": \"12\",\n  \"datum\": \"NAVD88\",\n  \"top_stations\": [\n    {\n      \"station\": \"LAMV3 SOUS41 9751381 VI Lameshur Bay, St John\",\n      \"max_wl\": 9999999.582,\n      \"lat\": 18.3182,\n      \"lon\": -64.7242\n    },\n    {\n      \"station\": \"XXXXX XXXXXX 9752235 PR Culebra\",\n      \"max_wl\": 9999999.55,\n      \"lat\": 18.3009,\n      \"lon\": -65.3025\n    },\n    {\n      \"station\": \"ESPP4 SOUS41 9752695 PR Esperanza, Vieques Island\",\n      \"max_wl\": 9999999.523,\n      \"lat\": 18.0939,\n      \"lon\": -65.4714\n    },\n    {\n      \"station\": \"LTBV3 SOUS41 9751401 VI Lime Tree Bay\",\n      \"max_wl\": 9999999.444,\n      \"lat\": 17.6947,\n      \"lon\": -64.7538\n    },\n    {\n      \"station\": \"CHSV3 SOUS41 9751364 VI Christiansted Harbor, St C\",\n      \"max_wl\": 9999999.411,\n      \"lat\": 17.7477,\n      \"lon\": -64.6984\n    }\n  ]\n}"
+   }
+  }
+ ],
+ "initialize": {
+  "meta": null,
+  "protocolVersion": "2025-11-25",
+  "capabilities": {
+   "experimental": {},
+   "logging": null,
+   "prompts": {
+    "listChanged": false
+   },
+   "resources": {
+    "subscribe": false,
+    "listChanged": false
+   },
+   "tools": {
+    "listChanged": false
+   },
+   "completions": null,
+   "tasks": null
+  },
+  "serverInfo": {
+   "name": "stofs_mcp",
+   "title": null,
+   "version": "1.30.0",
+   "websiteUrl": null,
+   "icons": null
+  },
+  "instructions": null
+ },
+ "tools": [
+  {
+   "name": "stofs_list_cycles",
+   "title": null,
+   "description": "List available STOFS forecast cycles on AWS S3 for a given date range.\n\nChecks AWS S3 for available station NetCDF files to determine which\nforecast cycles have been published.\n\nArgs:\n    model: 'two_global' (4x daily, global) or '3d_atlantic' (1x daily, US East/Gulf).\n    date: Specific date in YYYY-MM-DD format. Default: today UTC.\n    num_days: Number of past days to check (1\u20137). Default: 2.\n",
+   "inputSchema": {
+    "$defs": {
+     "STOFSModel": {
+      "description": "STOFS operational model components.",
+      "enum": [
+       "2d_global",
+       "3d_atlantic"
+      ],
+      "title": "STOFSModel",
+      "type": "string"
+     }
+    },
+    "properties": {
+     "model": {
+      "$ref": "#/$defs/STOFSModel",
+      "default": "2d_global"
+     },
+     "date": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Date"
+     },
+     "num_days": {
+      "default": 2,
+      "title": "Num Days",
+      "type": "integer"
+     }
+    },
+    "title": "stofs_list_cyclesArguments",
+    "type": "object"
+   },
+   "outputSchema": {
+    "properties": {
+     "result": {
+      "title": "Result",
+      "type": "string"
+     }
+    },
+    "required": [
+     "result"
+    ],
+    "title": "stofs_list_cyclesOutput",
+    "type": "object"
+   },
+   "icons": null,
+   "annotations": {
+    "title": null,
+    "readOnlyHint": true,
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true
+   },
+   "meta": null,
+   "execution": null
+  },
+  {
+   "name": "stofs_get_system_info",
+   "title": null,
+   "description": "Get STOFS system metadata \u2014 model specifications, datums, cycle schedule.\n\nArgs:\n    model: '2d_global', '3d_atlantic', or None for both. Default: None.\n    include_stations: If True, include the full station registry. Default: False.\n",
+   "inputSchema": {
+    "$defs": {
+     "STOFSModel": {
+      "description": "STOFS operational model components.",
+      "enum": [
+       "2d_global",
+       "3d_atlantic"
+      ],
+      "title": "STOFSModel",
+      "type": "string"
+     }
+    },
+    "properties": {
+     "model": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/STOFSModel"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     },
+     "include_stations": {
+      "default": false,
+      "title": "Include Stations",
+      "type": "boolean"
+     }
+    },
+    "title": "stofs_get_system_infoArguments",
+    "type": "object"
+   },
+   "outputSchema": {
+    "properties": {
+     "result": {
+      "title": "Result",
+      "type": "string"
+     }
+    },
+    "required": [
+     "result"
+    ],
+    "title": "stofs_get_system_infoOutput",
+    "type": "object"
+   },
+   "icons": null,
+   "annotations": {
+    "title": null,
+    "readOnlyHint": true,
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": false
+   },
+   "meta": null,
+   "execution": null
+  },
+  {
+   "name": "stofs_list_stations",
+   "title": null,
+   "description": "List STOFS output stations, optionally filtered by location, state, or region.\n\nUses the built-in station registry (~50 key CO-OPS stations). For the\ncomplete dynamic list, the station NetCDF file must be downloaded.\n\nArgs:\n    model: '2d_global' or '3d_atlantic'.\n    near_lat: Filter to stations near this latitude.\n    near_lon: Filter to stations near this longitude.\n    radius_km: Search radius in km when near_lat/near_lon provided (default 100).\n    state: Filter by US state abbreviation (e.g., 'NY', 'FL').\n    region: Filter by region ('east_coast', 'gulf', 'west_coast', 'alaska', 'hawaii', 'puerto_rico').\n    limit: Max stations to return (default 20).\n",
+   "inputSchema": {
+    "$defs": {
+     "Region": {
+      "description": "Geographic regions for station filtering.",
+      "enum": [
+       "east_coast",
+       "gulf",
+       "west_coast",
+       "alaska",
+       "hawaii",
+       "puerto_rico"
+      ],
+      "title": "Region",
+      "type": "string"
+     },
+     "STOFSModel": {
+      "description": "STOFS operational model components.",
+      "enum": [
+       "2d_global",
+       "3d_atlantic"
+      ],
+      "title": "STOFSModel",
+      "type": "string"
+     }
+    },
+    "properties": {
+     "model": {
+      "$ref": "#/$defs/STOFSModel",
+      "default": "2d_global"
+     },
+     "near_lat": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Near Lat"
+     },
+     "near_lon": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Near Lon"
+     },
+     "radius_km": {
+      "default": 100.0,
+      "title": "Radius Km",
+      "type": "number"
+     },
+     "state": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "State"
+     },
+     "region": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/Region"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     },
+     "limit": {
+      "default": 20,
+      "title": "Limit",
+      "type": "integer"
+     }
+    },
+    "title": "stofs_list_stationsArguments",
+    "type": "object"
+   },
+   "outputSchema": {
+    "properties": {
+     "result": {
+      "title": "Result",
+      "type": "string"
+     }
+    },
+    "required": [
+     "result"
+    ],
+    "title": "stofs_list_stationsOutput",
+    "type": "object"
+   },
+   "icons": null,
+   "annotations": {
+    "title": null,
+    "readOnlyHint": true,
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true
+   },
+   "meta": null,
+   "execution": null
+  },
+  {
+   "name": "stofs_get_station_forecast",
+   "title": null,
+   "description": "Get STOFS water level forecast time series at a specific CO-OPS station.\n\nDownloads the station NetCDF file from AWS S3 (~2\u201310 MB) and extracts\nthe full forecast time series for the specified station.\n\nArgs:\n    station_id: CO-OPS station ID (e.g., '8518750' for The Battery, NY).\n    model: '2d_global' (global, 4x daily) or '3d_atlantic' (US East/Gulf, 1x daily).\n    product: 'cwl' (combined), 'htp' (tidal only), 'swl' (surge only).\n             Note: 3D-Atlantic only supports 'cwl'.\n    cycle_date: Date in YYYY-MM-DD format. Default: latest available.\n    cycle_hour: Cycle hour '00', '06', '12', '18'. Default: latest available.\n    response_format: 'markdown' (default) or 'json'.\n",
+   "inputSchema": {
+    "$defs": {
+     "STOFSModel": {
+      "description": "STOFS operational model components.",
+      "enum": [
+       "2d_global",
+       "3d_atlantic"
+      ],
+      "title": "STOFSModel",
+      "type": "string"
+     },
+     "STOFSProduct": {
+      "description": "STOFS station output products (2D-Global only; 3D only has CWL).",
+      "enum": [
+       "cwl",
+       "htp",
+       "swl"
+      ],
+      "title": "STOFSProduct",
+      "type": "string"
+     }
+    },
+    "properties": {
+     "station_id": {
+      "title": "Station Id",
+      "type": "string"
+     },
+     "model": {
+      "$ref": "#/$defs/STOFSModel",
+      "default": "2d_global"
+     },
+     "product": {
+      "$ref": "#/$defs/STOFSProduct",
+      "default": "cwl"
+     },
+     "cycle_date": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Cycle Date"
+     },
+     "cycle_hour": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Cycle Hour"
+     },
+     "response_format": {
+      "default": "markdown",
+      "enum": [
+       "markdown",
+       "json"
+      ],
+      "title": "Response Format",
+      "type": "string"
+     }
+    },
+    "required": [
+     "station_id"
+    ],
+    "title": "stofs_get_station_forecastArguments",
+    "type": "object"
+   },
+   "outputSchema": {
+    "properties": {
+     "result": {
+      "title": "Result",
+      "type": "string"
+     }
+    },
+    "required": [
+     "result"
+    ],
+    "title": "stofs_get_station_forecastOutput",
+    "type": "object"
+   },
+   "icons": null,
+   "annotations": {
+    "title": null,
+    "readOnlyHint": true,
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true
+   },
+   "meta": null,
+   "execution": null
+  },
+  {
+   "name": "stofs_get_point_forecast",
+   "title": null,
+   "description": "Get STOFS forecast at an arbitrary lat/lon by finding the nearest station.\n\nDownloads the station file and finds the closest STOFS output point to\nthe requested location.\n\nArgs:\n    latitude: Target latitude in decimal degrees.\n    longitude: Target longitude in decimal degrees.\n    model: '2d_global' or '3d_atlantic'.\n    product: 'cwl', 'htp', or 'swl' (3D only supports 'cwl').\n    cycle_date: Date in YYYY-MM-DD format. Default: latest.\n    cycle_hour: Cycle hour '00', '06', '12', '18'. Default: latest.\n    max_distance_km: Maximum search radius to nearest station (default 50 km).\n    response_format: 'markdown' or 'json'.\n",
+   "inputSchema": {
+    "$defs": {
+     "STOFSModel": {
+      "description": "STOFS operational model components.",
+      "enum": [
+       "2d_global",
+       "3d_atlantic"
+      ],
+      "title": "STOFSModel",
+      "type": "string"
+     },
+     "STOFSProduct": {
+      "description": "STOFS station output products (2D-Global only; 3D only has CWL).",
+      "enum": [
+       "cwl",
+       "htp",
+       "swl"
+      ],
+      "title": "STOFSProduct",
+      "type": "string"
+     }
+    },
+    "properties": {
+     "latitude": {
+      "title": "Latitude",
+      "type": "number"
+     },
+     "longitude": {
+      "title": "Longitude",
+      "type": "number"
+     },
+     "model": {
+      "$ref": "#/$defs/STOFSModel",
+      "default": "2d_global"
+     },
+     "product": {
+      "$ref": "#/$defs/STOFSProduct",
+      "default": "cwl"
+     },
+     "cycle_date": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Cycle Date"
+     },
+     "cycle_hour": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Cycle Hour"
+     },
+     "max_distance_km": {
+      "default": 50.0,
+      "title": "Max Distance Km",
+      "type": "number"
+     },
+     "response_format": {
+      "default": "markdown",
+      "enum": [
+       "markdown",
+       "json"
+      ],
+      "title": "Response Format",
+      "type": "string"
+     }
+    },
+    "required": [
+     "latitude",
+     "longitude"
+    ],
+    "title": "stofs_get_point_forecastArguments",
+    "type": "object"
+   },
+   "outputSchema": {
+    "properties": {
+     "result": {
+      "title": "Result",
+      "type": "string"
+     }
+    },
+    "required": [
+     "result"
+    ],
+    "title": "stofs_get_point_forecastOutput",
+    "type": "object"
+   },
+   "icons": null,
+   "annotations": {
+    "title": null,
+    "readOnlyHint": true,
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true
+   },
+   "meta": null,
+   "execution": null
+  },
+  {
+   "name": "stofs_get_max_water_level",
+   "title": null,
+   "description": "Get the stations with the highest predicted water levels in a STOFS cycle.\n\nComputes the maximum water level across all forecast timesteps for each\nstation, then returns the top N sorted by peak value. Uses station files\n(not the large gridded maxele file).\n\nArgs:\n    model: '2d_global' or '3d_atlantic'.\n    cycle_date: Date in YYYY-MM-DD format. Default: latest.\n    cycle_hour: Cycle hour. Default: latest.\n    top_n: Number of top stations to return (default 20).\n    region: Optional region filter ('east_coast', 'gulf', etc.).\n    response_format: 'markdown' or 'json'.\n",
+   "inputSchema": {
+    "$defs": {
+     "Region": {
+      "description": "Geographic regions for station filtering.",
+      "enum": [
+       "east_coast",
+       "gulf",
+       "west_coast",
+       "alaska",
+       "hawaii",
+       "puerto_rico"
+      ],
+      "title": "Region",
+      "type": "string"
+     },
+     "STOFSModel": {
+      "description": "STOFS operational model components.",
+      "enum": [
+       "2d_global",
+       "3d_atlantic"
+      ],
+      "title": "STOFSModel",
+      "type": "string"
+     }
+    },
+    "properties": {
+     "model": {
+      "$ref": "#/$defs/STOFSModel",
+      "default": "2d_global"
+     },
+     "cycle_date": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Cycle Date"
+     },
+     "cycle_hour": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Cycle Hour"
+     },
+     "top_n": {
+      "default": 20,
+      "title": "Top N",
+      "type": "integer"
+     },
+     "region": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/Region"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     },
+     "response_format": {
+      "default": "markdown",
+      "enum": [
+       "markdown",
+       "json"
+      ],
+      "title": "Response Format",
+      "type": "string"
+     }
+    },
+    "title": "stofs_get_max_water_levelArguments",
+    "type": "object"
+   },
+   "outputSchema": {
+    "properties": {
+     "result": {
+      "title": "Result",
+      "type": "string"
+     }
+    },
+    "required": [
+     "result"
+    ],
+    "title": "stofs_get_max_water_levelOutput",
+    "type": "object"
+   },
+   "icons": null,
+   "annotations": {
+    "title": null,
+    "readOnlyHint": true,
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true
+   },
+   "meta": null,
+   "execution": null
+  },
+  {
+   "name": "stofs_get_gridded_forecast",
+   "title": null,
+   "description": "[CURRENTLY UNAVAILABLE \u2014 NOMADS OPeNDAP retired Oct 2025, NWS SCN 25-81] Get STOFS forecast at any lat/lon from the regular gridded product via OPeNDAP.\n\nUnlike stofs_get_station_forecast (limited to ~385 fixed CO-OPS stations),\nthis tool queries the STOFS regular-grid product interpolated onto structured\nlat/lon grids and served via NOMADS OPeNDAP. Only the requested grid cell\nis downloaded \u2014 no large file transfer required.\n\nCoverage: US East Coast, Gulf, West Coast, Alaska, Hawaii, Puerto Rico, Guam.\nResolution: ~2.5 km (conus/hawaii/guam), ~1.25 km (Puerto Rico), ~6 km (Alaska).\n\nNote: NOMADS OPeNDAP was RETIRED in October 2025 (NWS Service Change Notice\n25-81), so this tool currently returns a retirement notice rather than data.\nUse stofs_get_point_forecast / stofs_get_station_forecast instead (station-\nbased, reliable AWS S3). It is kept so the retirement is reported clearly,\nand so it resumes working automatically if NOMADS ever restores the service.\n\nArgs:\n    latitude: Target latitude in decimal degrees.\n    longitude: Target longitude in decimal degrees.\n    model: '2d_global' or '3d_atlantic'.\n    variable: OPeNDAP variable name. Auto-detected if None.\n              Common names: 'etcwlsfc' (combined WL), 'etsrgsfc' (surge only).\n    cycle_date: Date in YYYY-MM-DD format. Default: latest available.\n    cycle_hour: Cycle hour '00', '06', '12', '18'. Default: latest.\n    response_format: 'markdown' or 'json'.\n",
+   "inputSchema": {
+    "$defs": {
+     "STOFSModel": {
+      "description": "STOFS operational model components.",
+      "enum": [
+       "2d_global",
+       "3d_atlantic"
+      ],
+      "title": "STOFSModel",
+      "type": "string"
+     }
+    },
+    "properties": {
+     "latitude": {
+      "title": "Latitude",
+      "type": "number"
+     },
+     "longitude": {
+      "title": "Longitude",
+      "type": "number"
+     },
+     "model": {
+      "$ref": "#/$defs/STOFSModel",
+      "default": "2d_global"
+     },
+     "variable": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Variable"
+     },
+     "cycle_date": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Cycle Date"
+     },
+     "cycle_hour": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Cycle Hour"
+     },
+     "response_format": {
+      "default": "markdown",
+      "enum": [
+       "markdown",
+       "json"
+      ],
+      "title": "Response Format",
+      "type": "string"
+     }
+    },
+    "required": [
+     "latitude",
+     "longitude"
+    ],
+    "title": "stofs_get_gridded_forecastArguments",
+    "type": "object"
+   },
+   "outputSchema": {
+    "properties": {
+     "result": {
+      "title": "Result",
+      "type": "string"
+     }
+    },
+    "required": [
+     "result"
+    ],
+    "title": "stofs_get_gridded_forecastOutput",
+    "type": "object"
+   },
+   "icons": null,
+   "annotations": {
+    "title": null,
+    "readOnlyHint": true,
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true
+   },
+   "meta": null,
+   "execution": null
+  },
+  {
+   "name": "stofs_compare_with_observations",
+   "title": null,
+   "description": "Compare STOFS forecast against CO-OPS observed water levels at a station.\n\nDownloads the STOFS station file, fetches CO-OPS observations for the\noverlapping period, and aligns the two series. The response leads with a\nsummary \u2014 observed and forecast peak (value and time), peak error, peak\ntiming error, bias, RMSE \u2014 followed by the aligned series. Statistics always\nuse every 6-minute point; the returned series is hourly unless\nfull_resolution is set.\n\nThe comparison window starts at the beginning of the station file, which is\nthe nowcast 6 hours before the cycle time. To cover an event N hours after\nthe cycle time, set hours_to_compare to at least N + 6.\n\nArgs:\n    station_id: CO-OPS station ID (e.g., '8518750' for The Battery, NY).\n    model: '2d_global' or '3d_atlantic'.\n    cycle_date: Date in YYYY-MM-DD format. Default: latest.\n    cycle_hour: Cycle hour '00', '06', '12', '18'. Default: latest.\n    hours_to_compare: Hours from the start of the file (default 24, max 96).\n    full_resolution: Return every 6-minute point instead of hourly points.\n    max_points: Maximum series points to return (default 2000).\n    response_format: 'markdown' or 'json'.\n",
+   "inputSchema": {
+    "$defs": {
+     "STOFSModel": {
+      "description": "STOFS operational model components.",
+      "enum": [
+       "2d_global",
+       "3d_atlantic"
+      ],
+      "title": "STOFSModel",
+      "type": "string"
+     }
+    },
+    "properties": {
+     "station_id": {
+      "title": "Station Id",
+      "type": "string"
+     },
+     "model": {
+      "$ref": "#/$defs/STOFSModel",
+      "default": "2d_global"
+     },
+     "cycle_date": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Cycle Date"
+     },
+     "cycle_hour": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Cycle Hour"
+     },
+     "hours_to_compare": {
+      "default": 24,
+      "title": "Hours To Compare",
+      "type": "integer"
+     },
+     "full_resolution": {
+      "default": false,
+      "title": "Full Resolution",
+      "type": "boolean"
+     },
+     "max_points": {
+      "default": 2000,
+      "title": "Max Points",
+      "type": "integer"
+     },
+     "response_format": {
+      "default": "markdown",
+      "enum": [
+       "markdown",
+       "json"
+      ],
+      "title": "Response Format",
+      "type": "string"
+     }
+    },
+    "required": [
+     "station_id"
+    ],
+    "title": "stofs_compare_with_observationsArguments",
+    "type": "object"
+   },
+   "outputSchema": {
+    "properties": {
+     "result": {
+      "title": "Result",
+      "type": "string"
+     }
+    },
+    "required": [
+     "result"
+    ],
+    "title": "stofs_compare_with_observationsOutput",
+    "type": "object"
+   },
+   "icons": null,
+   "annotations": {
+    "title": null,
+    "readOnlyHint": true,
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true
+   },
+   "meta": null,
+   "execution": null
+  }
+ ],
+ "finished_at": "2026-11-06T16:09:36+00:00",
+ "http": {
+  "requests": 1,
+  "replay_misses": 0,
+  "network_blocked": 0,
+  "log": "http_log.jsonl"
+ },
+ "valid": true
+}

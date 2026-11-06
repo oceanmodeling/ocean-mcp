@@ -1,0 +1,34 @@
+{
+ "task_id": "R7",
+ "arm": "D",
+ "status": "answered",
+ "action": "proceed",
+ "values": {
+  "max_wvht_m": 99.0,
+  "time": "2024-01-01 00:00"
+ },
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {
+  "units": {
+   "value": null,
+   "source": null
+  }
+ },
+ "texts": [],
+ "exclusions": [],
+ "evidence": {
+  "call_ids": [
+   "R7_D_0"
+  ],
+  "returned_records": 5270,
+  "records_field": 5270,
+  "session": "wp1_D_R7",
+  "packages": {
+   "python": "3.13.12",
+   "ww3-mcp": "0.1.2",
+   "mcp": "1.30.0",
+   "httpx": "0.28.1"
+  }
+ }
+}

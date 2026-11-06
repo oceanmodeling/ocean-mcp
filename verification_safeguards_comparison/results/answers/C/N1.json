@@ -1,0 +1,58 @@
+{
+ "task_id": "N1",
+ "arm": "C",
+ "status": "answered",
+ "action": "proceed",
+ "values": {
+  "n": 480,
+  "bias_m": -0.0005,
+  "rmse_m": 0.123,
+  "mae_m": 0.1,
+  "r": 0.9934
+ },
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {
+  "model_datum": {
+   "value": "LMSL",
+   "source": "NOAA documentation (STOFS_2D_GLOBAL V3.1.0: NOMADS STOFS-Global description (archived 2026-11-04): station and gridded output referenced to LMSL); file label zeta:standard_name=sea_surface_height_above_geoid names no specific datum"
+  },
+  "product_version": {
+   "value": "STOFS_2D_GLOBAL V3.1.0",
+   "source": "tool datum_provenance.product_version"
+  },
+  "obs_datum": {
+   "value": "MSL",
+   "source": "tool response field coops_datum (CO-OPS request datum)"
+  },
+  "units": {
+   "value": "m",
+   "source": "tool response field units"
+  }
+ },
+ "texts": [
+  "datum_note: STOFS datum: LMSL (NOAA documentation (STOFS_2D_GLOBAL V3.1.0: NOMADS STOFS-Global description (archived 2026-11-04): station and gridded output referenced to LMSL); file label zeta:standard_name=sea_surface_height_above_geoid names no specific datum) | CO-OPS datum: MSL. No vertical transformation is applied. Matching labels do not guarantee identical realizations or epochs, so a mean offset (bias) alone does not show whether its cause is the reference or the model."
+ ],
+ "exclusions": [],
+ "evidence": {
+  "call_ids": [
+   "N1_C_0"
+  ],
+  "window": {
+   "comparison_start": "2026-10-30 12:06",
+   "comparison_end": "2026-11-01 12:00",
+   "window_lead_hours": [
+    0.1,
+    48.0
+   ],
+   "hours_to_compare": null
+  },
+  "session": "wp1_C_N1",
+  "packages": {
+   "python": "3.13.12",
+   "stofs-mcp": "0.3.0",
+   "mcp": "1.30.0",
+   "httpx": "0.28.1"
+  }
+ }
+}

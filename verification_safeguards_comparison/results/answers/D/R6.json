@@ -1,0 +1,26 @@
+{
+ "task_id": "R6",
+ "arm": "D",
+ "status": "refused",
+ "action": "refuse",
+ "values": {},
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {},
+ "texts": [
+  "No STOFS station found within 50.0 km of (42.3539, -71.0503).\n\nSuggestions:\n- Increase max_distance_km\n- Try model='2d_global' which has ~385 stations (vs ~108 for 3D)\n- Use stofs_get_gridded_forecast for any lat/lon (uses OPeNDAP regular grid)\n- Verify the coordinates are in a coastal area"
+ ],
+ "exclusions": [],
+ "evidence": {
+  "call_ids": [
+   "R6_D_0"
+  ],
+  "session": "wp1_D_R6",
+  "packages": {
+   "python": "3.13.12",
+   "stofs-mcp": "0.2.0",
+   "mcp": "1.30.0",
+   "httpx": "0.28.1"
+  }
+ }
+}

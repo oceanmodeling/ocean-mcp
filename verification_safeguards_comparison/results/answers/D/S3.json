@@ -1,0 +1,53 @@
+{
+ "task_id": "S3",
+ "arm": "D",
+ "status": "answered",
+ "action": "proceed",
+ "values": {
+  "n": 541,
+  "bias_m": -0.0028,
+  "rmse_m": 0.1164,
+  "mae_m": 0.0912,
+  "r": 0.9939
+ },
+ "nearest_equivalent": true,
+ "nearest_equivalent_note": "stofs-mcp 0.2.0 has no lead-time window; its window starts at the file start (cycle - 6 h). hours_to_compare=54 is the smallest value whose window contains 0 < lead <= 48 h; it also includes the 6 h nowcast and the record at lead 48.1 h.",
+ "metadata": {
+  "model_datum": {
+   "value": "LMSL",
+   "source": null
+  },
+  "product_version": {
+   "value": null,
+   "source": null
+  },
+  "obs_datum": {
+   "value": "MSL",
+   "source": "tool response field coops_datum (CO-OPS request datum)"
+  },
+  "units": {
+   "value": "m",
+   "source": "tool response field units"
+  }
+ },
+ "texts": [],
+ "exclusions": [],
+ "evidence": {
+  "call_ids": [
+   "S3_D_0"
+  ],
+  "window": {
+   "comparison_start": "2026-10-30 06:06",
+   "comparison_end": "2026-11-01 12:06",
+   "window_lead_hours": null,
+   "hours_to_compare": null
+  },
+  "session": "wp1_D_S3",
+  "packages": {
+   "python": "3.13.12",
+   "stofs-mcp": "0.2.0",
+   "mcp": "1.30.0",
+   "httpx": "0.28.1"
+  }
+ }
+}

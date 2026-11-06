@@ -85,4 +85,5 @@ python3 -I "$V/grader/grade.py" "$V" --arms A,B,C,D > /dev/null
 python3 -I "$V/grader/grade_amended.py" "$V" --arms A,B,C,D
 python3 -I "$V/grader/grade_sensitivity.py" --selftest | tail -1
 python3 -I "$V/grader/grade_sensitivity.py" "$V" --arms A,B,C,D
+python3 -I "$V/tools/build_report_tables.py" "$V"
 say "done; compare with the committed results: git -C \"$V\" diff --stat -- results/"

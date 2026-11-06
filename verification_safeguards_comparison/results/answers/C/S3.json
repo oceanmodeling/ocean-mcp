@@ -1,0 +1,31 @@
+{
+ "task_id": "S3",
+ "arm": "C",
+ "status": "refused",
+ "action": "refuse",
+ "values": {},
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {
+  "model_datum": {
+   "value": "undetermined",
+   "source": null
+  }
+ },
+ "texts": [
+  "No comparison: the vertical datum of the STOFS values for station 8443970 could not be established. The file names no specific vertical datum and no documented default applies: STOFS_2D_GLOBAL V4.0.0 is not a version whose station datum is documented (documented: STOFS_2D_GLOBAL V3.1, STOFS_2D_GLOBAL V2.1); STOFS-3D changed its station datum at a version boundary, so no default is assumed. Values are not paired with any CO-OPS datum. Datum attributes: {\"zeta:standard_name\": \"sea_surface_height_above_geoid\", \"zeta:long_name\": \"water surface elevation above geoid\"}."
+ ],
+ "exclusions": [],
+ "evidence": {
+  "call_ids": [
+   "S3_C_0"
+  ],
+  "session": "wp1_C_S3",
+  "packages": {
+   "python": "3.13.12",
+   "stofs-mcp": "0.3.0",
+   "mcp": "1.30.0",
+   "httpx": "0.28.1"
+  }
+ }
+}

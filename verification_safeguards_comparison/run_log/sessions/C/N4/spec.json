@@ -1,0 +1,45 @@
+{
+ "session_id": "wp1_C_N4",
+ "arm": "C",
+ "server": {
+  "python": "/tmp/claude-1000/-mnt-d-ocean-mcp/349682ef-6680-4b65-946b-8dddc1d96a0d/scratchpad/envs/erddap/bin/python",
+  "module": "erddap_mcp",
+  "mode": "replay",
+  "archives": [
+   "/mnt/d/ocean-mcp/.claude/worktrees/safeguards-comparison/verification_safeguards_comparison/data/archive/base"
+  ],
+  "dists": [
+   "erddap-mcp",
+   "mcp",
+   "httpx"
+  ]
+ },
+ "calls": [
+  {
+   "call_id": "N4_C_0",
+   "tool": "erddap_get_griddap_data",
+   "arguments": {
+    "server_url": "https://coastwatch.pfeg.noaa.gov/erddap",
+    "dataset_id": "jplMURSST41",
+    "variables": [
+     "analysed_sst"
+    ],
+    "time_range": [
+     "2024-07-15T09:00:00Z",
+     "2024-07-15T09:00:00Z"
+    ],
+    "latitude_range": [
+     40.8,
+     42.0
+    ],
+    "longitude_range": [
+     -72.2,
+     -70.8
+    ],
+    "stride": 1,
+    "response_format": "json",
+    "max_records": 30000
+   }
+  }
+ ]
+}

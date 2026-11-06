@@ -1,0 +1,34 @@
+{
+ "session_id": "wp1_D_S1",
+ "arm": "D",
+ "server": {
+  "python": "/tmp/claude-1000/-mnt-d-ocean-mcp/349682ef-6680-4b65-946b-8dddc1d96a0d/scratchpad/envs/stofs020/bin/python",
+  "module": "stofs_mcp",
+  "mode": "replay",
+  "archives": [
+   "/mnt/d/ocean-mcp/.claude/worktrees/safeguards-comparison/verification_safeguards_comparison/data/archive/synthetic/S1",
+   "/mnt/d/ocean-mcp/.claude/worktrees/safeguards-comparison/verification_safeguards_comparison/data/archive/base"
+  ],
+  "dists": [
+   "stofs-mcp",
+   "mcp",
+   "httpx"
+  ]
+ },
+ "calls": [
+  {
+   "call_id": "S1_D_0",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8443970",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-30",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "full_resolution": true,
+    "max_points": 2000,
+    "response_format": "json"
+   }
+  }
+ ]
+}

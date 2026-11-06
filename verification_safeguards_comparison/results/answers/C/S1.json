@@ -1,0 +1,31 @@
+{
+ "task_id": "S1",
+ "arm": "C",
+ "status": "refused",
+ "action": "refuse",
+ "values": {},
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {
+  "model_datum": {
+   "value": "undetermined",
+   "source": null
+  }
+ },
+ "texts": [
+  "No comparison: the vertical datum of the STOFS values for station 8443970 could not be established. The file names no specific vertical datum and no documented default applies: only STOFS-2D-Global files have a documented default datum. Values are not paired with any CO-OPS datum. Datum attributes: {}."
+ ],
+ "exclusions": [],
+ "evidence": {
+  "call_ids": [
+   "S1_C_0"
+  ],
+  "session": "wp1_C_S1",
+  "packages": {
+   "python": "3.13.12",
+   "stofs-mcp": "0.3.0",
+   "mcp": "1.30.0",
+   "httpx": "0.28.1"
+  }
+ }
+}
