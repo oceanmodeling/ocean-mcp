@@ -1,0 +1,585 @@
+{
+  "manifest_version": 1,
+  "work_package": "WP0 focused release readiness (Ocean-MCP manuscript)",
+  "generated_at_utc": "2026-11-06T05:22:38+00:00",
+  "run_window_utc": {
+    "first_server_start": "2026-11-06T04:51:33.573409+00:00",
+    "last_live_call": "2026-11-06T05:09:02.129625+00:00"
+  },
+  "run_date_local": "2026-11-05 (America/New_York); 2026-11-06 UTC",
+  "release_candidate": {
+    "description": "origin/main 53fe506 for 11 packages, plus stofs-mcp from fix/stofs-release-prep and vdatum-mcp tests from test/vdatum-convert-coverage",
+    "composite_tree_note": "The two branches change only servers/stofs-mcp and servers/vdatum-mcp respectively; no merged commit exists yet."
+  },
+  "sources": [
+    {
+      "ref": "origin/main",
+      "branch": "main (remote-tracking origin/main, last fetched 2026-11-02 23:15 -0500)",
+      "commit": "53fe5069e053ae9fc648648413674cced70a55ca",
+      "commit_date": "2026-10-19T23:54:58-04:00",
+      "materialized_as": "git archive snapshot (clean by construction)",
+      "tree_clean": true,
+      "used_for": "task 2 for 11 packages; PyPI version comparison; stale-metadata scan"
+    },
+    {
+      "ref": "fix/stofs-release-prep",
+      "branch": "fix/stofs-release-prep",
+      "commit": "db234f7d6f62ba7c7c7e8838fe449c5c864694d2",
+      "stacked_on": [
+        {
+          "branch": "fix/stofs-datum-hardening",
+          "commit": "31e7f6a71e6ea2468c963159982e257f53e763a4"
+        },
+        {
+          "branch": "fix/stofs-versioned-datum",
+          "commit": "69e721f9a3b04854185751b7bb06082872f6314f"
+        }
+      ],
+      "worktree": ".claude/worktrees/stofs-release (0 tracked modifications, 0 untracked entries at start)",
+      "materialized_as": "git archive snapshot (clean by construction)",
+      "tree_clean": true,
+      "used_for": "stofs-mcp 0.3.0 wheel (task 1, 3) and task 2 for stofs-mcp"
+    },
+    {
+      "ref": "test/vdatum-convert-coverage",
+      "branch": "test/vdatum-convert-coverage",
+      "commit": "071c16f295ec053d4fbb4ea41c6a70b1c08d6d4b",
+      "materialized_as": "git archive snapshot (clean by construction)",
+      "tree_clean": true,
+      "used_for": "task 2 for vdatum-mcp (tests only; src identical to origin/main)"
+    },
+    {
+      "ref": "PyPI",
+      "used_for": "task 1 and task 3.2 for 12 packages (exact versions in packages[])"
+    }
+  ],
+  "main_checkout_at_start": {
+    "path": "/mnt/d/ocean-mcp",
+    "branch": "fix/stofs-compare-window-default",
+    "head": "b562bf41a0ed1c56895a97052a7930bde387567c",
+    "note": "not used as a source; untracked files only"
+  },
+  "worktrees_at_start": [
+    {
+      "path": "/mnt/d/ocean-mcp",
+      "branch": "fix/stofs-compare-window-default",
+      "head": "b562bf41a0ed1c56895a97052a7930bde387567c",
+      "status_at_start": {
+        "tracked_modifications": 0,
+        "untracked_entries": 69
+      }
+    },
+    {
+      "path": "/mnt/d/ocean-mcp/.claude/worktrees/stofs-hardening",
+      "branch": "fix/stofs-datum-hardening",
+      "head": "31e7f6a71e6ea2468c963159982e257f53e763a4",
+      "status_at_start": {
+        "tracked_modifications": 0,
+        "untracked_entries": 0
+      }
+    },
+    {
+      "path": "/mnt/d/ocean-mcp/.claude/worktrees/stofs-release",
+      "branch": "fix/stofs-release-prep",
+      "head": "db234f7d6f62ba7c7c7e8838fe449c5c864694d2",
+      "status_at_start": {
+        "tracked_modifications": 0,
+        "untracked_entries": 0
+      }
+    },
+    {
+      "path": "/mnt/d/ocean-mcp/.claude/worktrees/stofs-v31-boston",
+      "branch": "docs/stofs-v31-boston-example",
+      "head": "933000dc76cc3057dc4ccd768ee96ca4fc594924",
+      "status_at_start": {
+        "tracked_modifications": 0,
+        "untracked_entries": 0
+      }
+    },
+    {
+      "path": "/mnt/d/ocean-mcp/.claude/worktrees/stofs-v31-boston-v2",
+      "branch": "docs/stofs-v31-boston-example-v2",
+      "head": "57e853ea4e20cd720cbc818a77d1798be884fc42",
+      "status_at_start": {
+        "tracked_modifications": 0,
+        "untracked_entries": 0
+      }
+    }
+  ],
+  "worktrees_added_during_run_by_another_process": [
+    {
+      "path": "/mnt/d/ocean-mcp/.claude/worktrees/ian-cross-server",
+      "branch": "docs/ian-cross-server",
+      "head": "53fe5069e053ae9fc648648413674cced70a55ca",
+      "note": "not present at the start of the WP0 run and not created by it"
+    }
+  ],
+  "packages": [
+    {
+      "name": "coops-mcp",
+      "version_installed": "0.1.1",
+      "tool_count": 12,
+      "tool_names": [
+        "coops_find_nearest_stations",
+        "coops_get_currents",
+        "coops_get_datums",
+        "coops_get_extreme_water_levels",
+        "coops_get_flood_stats",
+        "coops_get_meteorological",
+        "coops_get_peak_storm_events",
+        "coops_get_sea_level_trends",
+        "coops_get_station",
+        "coops_get_tide_predictions",
+        "coops_get_water_levels",
+        "coops_list_stations"
+      ],
+      "server_info_reported": {
+        "name": "coops_mcp",
+        "version": "1.30.0"
+      },
+      "install_source": {
+        "type": "PyPI",
+        "version": "0.1.1",
+        "files_sha256": {
+          "coops_mcp-0.1.1-py3-none-any.whl": "f9630bc8bf7e024aff0ade1ec2e9a696487e3fdccc1e2b9860a6c5e64846f210",
+          "coops_mcp-0.1.1.tar.gz": "dfb6bd5d6687df6b9f0f335bdad8ccb3340dddc4e94bf47ffc780ca568865a9b"
+        },
+        "release_tag": "coops-mcp-v0.1.1",
+        "release_tag_commit": "f8d88a2e1575af27569244ca17040fc6cd9f28c7",
+        "origin_main_pyproject_version": "0.1.1"
+      },
+      "test_source": {
+        "ref": "origin/main",
+        "commit": "53fe5069e053ae9fc648648413674cced70a55ca"
+      }
+    },
+    {
+      "name": "ndbc-mcp",
+      "version_installed": "0.1.2",
+      "tool_count": 8,
+      "tool_names": [
+        "ndbc_compare_stations",
+        "ndbc_find_nearest_stations",
+        "ndbc_get_daily_summary",
+        "ndbc_get_latest_observation",
+        "ndbc_get_observations",
+        "ndbc_get_station",
+        "ndbc_get_wave_summary",
+        "ndbc_list_stations"
+      ],
+      "server_info_reported": {
+        "name": "ndbc_mcp",
+        "version": "1.30.0"
+      },
+      "install_source": {
+        "type": "PyPI",
+        "version": "0.1.2",
+        "files_sha256": {
+          "ndbc_mcp-0.1.2-py3-none-any.whl": "0ad49f38aa4822bdfa03be5fe3be381d28b6998c417ac475f5f2184af35c6817",
+          "ndbc_mcp-0.1.2.tar.gz": "7a4ccd18e15f56f1863a363258348f725f000078fe6eee1f70d77b9f57467da1"
+        },
+        "release_tag": "ndbc-mcp-v0.1.2",
+        "release_tag_commit": "f08c2f5e00a970fd404a959f2173b6ac74a4d215",
+        "origin_main_pyproject_version": "0.1.2"
+      },
+      "test_source": {
+        "ref": "origin/main",
+        "commit": "53fe5069e053ae9fc648648413674cced70a55ca"
+      }
+    },
+    {
+      "name": "nhc-mcp",
+      "version_installed": "0.1.1",
+      "tool_count": 5,
+      "tool_names": [
+        "nhc_get_active_storms",
+        "nhc_get_best_track",
+        "nhc_get_forecast_track",
+        "nhc_get_storm_watches_warnings",
+        "nhc_search_storms"
+      ],
+      "server_info_reported": {
+        "name": "nhc_mcp",
+        "version": "1.30.0"
+      },
+      "install_source": {
+        "type": "PyPI",
+        "version": "0.1.1",
+        "files_sha256": {
+          "nhc_mcp-0.1.1-py3-none-any.whl": "34bd7bb5b2b1dc6995d20572acff5afc47b198d69570b93bfd5e037035811c25",
+          "nhc_mcp-0.1.1.tar.gz": "674475a7a8a13fea727576ae86a8eb912ed3c03875575f174c7a33b1e333686e"
+        },
+        "release_tag": "nhc-mcp-v0.1.1",
+        "release_tag_commit": "5e45c628c8f86c33dfffdc098b82a5b7cf2f0dbd",
+        "origin_main_pyproject_version": "0.1.1"
+      },
+      "test_source": {
+        "ref": "origin/main",
+        "commit": "53fe5069e053ae9fc648648413674cced70a55ca"
+      }
+    },
+    {
+      "name": "recon-mcp",
+      "version_installed": "0.1.3",
+      "tool_count": 6,
+      "tool_names": [
+        "recon_get_fixes",
+        "recon_get_hdobs",
+        "recon_get_sfmr",
+        "recon_get_vdms",
+        "recon_list_missions",
+        "recon_list_sfmr"
+      ],
+      "server_info_reported": {
+        "name": "recon_mcp",
+        "version": "1.30.0"
+      },
+      "install_source": {
+        "type": "PyPI",
+        "version": "0.1.3",
+        "files_sha256": {
+          "recon_mcp-0.1.3-py3-none-any.whl": "338a5a84ae70c8c0d38b47b6a2c2bfc13543dfb068c0085dd6a1075450d6a9e8",
+          "recon_mcp-0.1.3.tar.gz": "d7e37bc1eaccb549209ac7307d90088251321899a754184d120b37b1fa2850b6"
+        },
+        "release_tag": "recon-mcp-v0.1.3",
+        "release_tag_commit": "3b31effdcf44e27d5dff225a183f48c7ad9b760f",
+        "origin_main_pyproject_version": "0.1.3"
+      },
+      "test_source": {
+        "ref": "origin/main",
+        "commit": "53fe5069e053ae9fc648648413674cced70a55ca"
+      }
+    },
+    {
+      "name": "stofs-mcp",
+      "version_installed": "0.3.0",
+      "tool_count": 8,
+      "tool_names": [
+        "stofs_compare_with_observations",
+        "stofs_get_gridded_forecast",
+        "stofs_get_max_water_level",
+        "stofs_get_point_forecast",
+        "stofs_get_station_forecast",
+        "stofs_get_system_info",
+        "stofs_list_cycles",
+        "stofs_list_stations"
+      ],
+      "server_info_reported": {
+        "name": "stofs_mcp",
+        "version": "1.30.0"
+      },
+      "install_source": {
+        "type": "local wheel",
+        "built_from_ref": "fix/stofs-release-prep",
+        "commit": "db234f7d6f62ba7c7c7e8838fe449c5c864694d2",
+        "file": "stofs_mcp-0.3.0-py3-none-any.whl",
+        "sha256": "29fcb737d21f2782c3219955f6100e8559f80b22230dead4b056e006dc68afdd",
+        "built_with": "uv build (uv 0.10.4, CPython 3.13.12) from a git-archive snapshot"
+      },
+      "test_source": {
+        "ref": "fix/stofs-release-prep",
+        "commit": "db234f7d6f62ba7c7c7e8838fe449c5c864694d2"
+      }
+    },
+    {
+      "name": "ofs-mcp",
+      "version_installed": "0.1.2",
+      "tool_count": 6,
+      "tool_names": [
+        "ofs_compare_with_coops",
+        "ofs_find_models_for_location",
+        "ofs_get_forecast_at_point",
+        "ofs_get_model_info",
+        "ofs_list_cycles",
+        "ofs_list_models"
+      ],
+      "server_info_reported": {
+        "name": "ofs_mcp",
+        "version": "1.30.0"
+      },
+      "install_source": {
+        "type": "PyPI",
+        "version": "0.1.2",
+        "files_sha256": {
+          "ofs_mcp-0.1.2-py3-none-any.whl": "cde721fd56d706fd60a3fe21d2b8fce9dfb4300a9242397f0d7f2a5db396544d",
+          "ofs_mcp-0.1.2.tar.gz": "509759cd4b015112e77d313c57d8b50d05c289c56da6b6a55ab38a5a742f62a6"
+        },
+        "release_tag": "ofs-mcp-v0.1.2",
+        "release_tag_commit": "167c474e57fef446e7ea6e6e796df8851d82e27f",
+        "origin_main_pyproject_version": "0.1.2"
+      },
+      "test_source": {
+        "ref": "origin/main",
+        "commit": "53fe5069e053ae9fc648648413674cced70a55ca"
+      }
+    },
+    {
+      "name": "rtofs-mcp",
+      "version_installed": "0.1.3",
+      "tool_count": 8,
+      "tool_names": [
+        "rtofs_compare_with_observations",
+        "rtofs_get_area_forecast",
+        "rtofs_get_latest_time",
+        "rtofs_get_profile_forecast",
+        "rtofs_get_surface_forecast",
+        "rtofs_get_system_info",
+        "rtofs_get_transect",
+        "rtofs_list_datasets"
+      ],
+      "server_info_reported": {
+        "name": "rtofs_mcp",
+        "version": "1.30.0"
+      },
+      "install_source": {
+        "type": "PyPI",
+        "version": "0.1.3",
+        "files_sha256": {
+          "rtofs_mcp-0.1.3-py3-none-any.whl": "e07db65e35291ff5a1a97bb783b8e1a6ca21e955e640c5ef9ae3f76131d7d46a",
+          "rtofs_mcp-0.1.3.tar.gz": "69f776b84a09ba48a8d966632e1a9b5aa125c6522da3722bbba30b08b76b88ae"
+        },
+        "release_tag": "rtofs-mcp-v0.1.3",
+        "release_tag_commit": "0fccf15e17bfe38198acd24124c60aea28d7b275",
+        "origin_main_pyproject_version": "0.1.3"
+      },
+      "test_source": {
+        "ref": "origin/main",
+        "commit": "53fe5069e053ae9fc648648413674cced70a55ca"
+      }
+    },
+    {
+      "name": "ww3-mcp",
+      "version_installed": "0.1.2",
+      "tool_count": 9,
+      "tool_names": [
+        "ww3_compare_forecast_with_buoy",
+        "ww3_find_buoys",
+        "ww3_get_buoy_history",
+        "ww3_get_buoy_observations",
+        "ww3_get_forecast_at_point",
+        "ww3_get_point_snapshot",
+        "ww3_get_regional_summary",
+        "ww3_list_cycles",
+        "ww3_list_grids"
+      ],
+      "server_info_reported": {
+        "name": "ww3_mcp",
+        "version": "1.30.0"
+      },
+      "install_source": {
+        "type": "PyPI",
+        "version": "0.1.2",
+        "files_sha256": {
+          "ww3_mcp-0.1.2-py3-none-any.whl": "3797aef4f3659087861f57d3cc9ee3cd66654dd28153e6e4c5990725985dea92",
+          "ww3_mcp-0.1.2.tar.gz": "9f3e3a100e07b3b4435c89f411b1f3845693a05f21f51eb91e99e48b3d0b34c9"
+        },
+        "release_tag": "ww3-mcp-v0.1.2",
+        "release_tag_commit": "5e45c628c8f86c33dfffdc098b82a5b7cf2f0dbd",
+        "origin_main_pyproject_version": "0.1.2"
+      },
+      "test_source": {
+        "ref": "origin/main",
+        "commit": "53fe5069e053ae9fc648648413674cced70a55ca"
+      }
+    },
+    {
+      "name": "winds-mcp",
+      "version_installed": "0.1.2",
+      "tool_count": 8,
+      "tool_names": [
+        "winds_compare_stations",
+        "winds_find_nearest_stations",
+        "winds_get_daily_summary",
+        "winds_get_history",
+        "winds_get_latest_observation",
+        "winds_get_observations",
+        "winds_get_station",
+        "winds_list_stations"
+      ],
+      "server_info_reported": {
+        "name": "winds_mcp",
+        "version": "1.30.0"
+      },
+      "install_source": {
+        "type": "PyPI",
+        "version": "0.1.2",
+        "files_sha256": {
+          "winds_mcp-0.1.2-py3-none-any.whl": "816888f9071a53b9f40e9341b2ab0273ad793917571625703d7ad5c11f1ad4da",
+          "winds_mcp-0.1.2.tar.gz": "eb789f0b79fd98243fa0dc19ddd70dbd4be2d17739de5e950e3441b71c205d22"
+        },
+        "release_tag": "winds-mcp-v0.1.2",
+        "release_tag_commit": "f08c2f5e00a970fd404a959f2173b6ac74a4d215",
+        "origin_main_pyproject_version": "0.1.2"
+      },
+      "test_source": {
+        "ref": "origin/main",
+        "commit": "53fe5069e053ae9fc648648413674cced70a55ca"
+      }
+    },
+    {
+      "name": "usgs-mcp",
+      "version_installed": "0.1.1",
+      "tool_count": 10,
+      "tool_names": [
+        "usgs_find_nearest_sites",
+        "usgs_find_sites",
+        "usgs_get_daily_stats",
+        "usgs_get_daily_values",
+        "usgs_get_flood_status",
+        "usgs_get_hydrograph",
+        "usgs_get_instantaneous_values",
+        "usgs_get_monthly_stats",
+        "usgs_get_peak_streamflow",
+        "usgs_get_site_info"
+      ],
+      "server_info_reported": {
+        "name": "usgs_mcp",
+        "version": "1.30.0"
+      },
+      "install_source": {
+        "type": "PyPI",
+        "version": "0.1.1",
+        "files_sha256": {
+          "usgs_mcp-0.1.1-py3-none-any.whl": "dbae47099a63131d846fbcdd95d4697aeb7b4abb976b8939abbdb87865228650",
+          "usgs_mcp-0.1.1.tar.gz": "c9091d56857fd1ad586003fbeb0420d17f926588865a3aa18c96e309fedad213"
+        },
+        "release_tag": "usgs-mcp-v0.1.1",
+        "release_tag_commit": "5e45c628c8f86c33dfffdc098b82a5b7cf2f0dbd",
+        "origin_main_pyproject_version": "0.1.1"
+      },
+      "test_source": {
+        "ref": "origin/main",
+        "commit": "53fe5069e053ae9fc648648413674cced70a55ca"
+      }
+    },
+    {
+      "name": "goes-mcp",
+      "version_installed": "0.1.3",
+      "tool_count": 6,
+      "tool_names": [
+        "goes_get_available_times",
+        "goes_get_current_view",
+        "goes_get_image",
+        "goes_get_latest_image",
+        "goes_get_sector_image",
+        "goes_list_products"
+      ],
+      "server_info_reported": {
+        "name": "goes_mcp",
+        "version": "1.30.0"
+      },
+      "install_source": {
+        "type": "PyPI",
+        "version": "0.1.3",
+        "files_sha256": {
+          "goes_mcp-0.1.3-py3-none-any.whl": "329d6a621ccb02dd8c3d02c7870ea27456cfae970fea222e278b0f8809416e36",
+          "goes_mcp-0.1.3.tar.gz": "5314f5a906117774b9779411edeb2f2a57b7f22a065a1786478da5ab6941da17"
+        },
+        "release_tag": "goes-mcp-v0.1.3",
+        "release_tag_commit": "5e45c628c8f86c33dfffdc098b82a5b7cf2f0dbd",
+        "origin_main_pyproject_version": "0.1.3"
+      },
+      "test_source": {
+        "ref": "origin/main",
+        "commit": "53fe5069e053ae9fc648648413674cced70a55ca"
+      }
+    },
+    {
+      "name": "erddap-mcp",
+      "version_installed": "0.1.2",
+      "tool_count": 6,
+      "tool_names": [
+        "erddap_get_all_datasets",
+        "erddap_get_dataset_info",
+        "erddap_get_griddap_data",
+        "erddap_get_tabledap_data",
+        "erddap_list_servers",
+        "erddap_search_datasets"
+      ],
+      "server_info_reported": {
+        "name": "erddap_mcp",
+        "version": "1.30.0"
+      },
+      "install_source": {
+        "type": "PyPI",
+        "version": "0.1.2",
+        "files_sha256": {
+          "erddap_mcp-0.1.2-py3-none-any.whl": "b7a858c50f0b4841291eb6e9832a55a83046ffdadca02720d38ae76114db72df",
+          "erddap_mcp-0.1.2.tar.gz": "f5e1b9a21ba9ad9e1cff7f7e3e351561def3c51012bb2f17fcdf3e7d13b607ed"
+        },
+        "release_tag": "erddap-mcp-v0.1.2",
+        "release_tag_commit": "53fe5069e053ae9fc648648413674cced70a55ca",
+        "origin_main_pyproject_version": "0.1.2"
+      },
+      "test_source": {
+        "ref": "origin/main",
+        "commit": "53fe5069e053ae9fc648648413674cced70a55ca"
+      }
+    },
+    {
+      "name": "vdatum-mcp",
+      "version_installed": "0.1.1",
+      "tool_count": 2,
+      "tool_names": [
+        "vdatum_convert",
+        "vdatum_list_datums"
+      ],
+      "server_info_reported": {
+        "name": "vdatum_mcp",
+        "version": "1.30.0"
+      },
+      "install_source": {
+        "type": "PyPI",
+        "version": "0.1.1",
+        "files_sha256": {
+          "vdatum_mcp-0.1.1-py3-none-any.whl": "80f3f4ec22f331f37aa341300ea69a7722c7e840ec6d8efc5f45da4d7973fa40",
+          "vdatum_mcp-0.1.1.tar.gz": "e264a67a6ea263404e2cc6e17d374926dc6c8d62d2318e64c011d4eafc3489d5"
+        },
+        "release_tag": "vdatum-mcp-v0.1.1",
+        "release_tag_commit": "636f071c00db5eda693db091c084ae1469b6265f",
+        "origin_main_pyproject_version": "0.1.1"
+      },
+      "test_source": {
+        "ref": "test/vdatum-convert-coverage",
+        "commit": "071c16f295ec053d4fbb4ea41c6a70b1c08d6d4b"
+      }
+    }
+  ],
+  "mcp_sdk": {
+    "versions_seen_in_client_and_server_envs": [
+      "1.30.0"
+    ],
+    "pins_in_all_78_environment_freezes": [
+      "mcp==1.30.0"
+    ],
+    "note": "Every server reports the SDK version (1.30.0) as serverInfo.version, not its own package version"
+  },
+  "python": {
+    "3.11": {
+      "version": "3.11.14",
+      "executable": "/home/mjisan/.local/share/uv/python/cpython-3.11-linux-x86_64-gnu/bin/python3.11"
+    },
+    "3.12": {
+      "version": "3.12.3",
+      "executable": "/usr/bin/python3.12"
+    },
+    "3.13": {
+      "version": "3.13.12",
+      "executable": "/home/mjisan/.local/share/uv/python/cpython-3.13-linux-x86_64-gnu/bin/python3.13"
+    }
+  },
+  "toolchain": {
+    "uv": "uv 0.10.4",
+    "ruff": "0.15.2 (via uvx, as pinned in CI)",
+    "pytest": "9.2.0 (resolved by uv sync --group dev)",
+    "uv_lock": "not used: uv.lock is gitignored repo-wide, so dependencies were resolved fresh; full freezes in results/raw/freeze/"
+  },
+  "platform": {
+    "system": "Linux",
+    "release": "6.6.87.2-microsoft-standard-WSL2",
+    "machine": "x86_64",
+    "os": "Ubuntu 24.04.3 LTS",
+    "environment": "WSL2 on Windows",
+    "cpus": 16
+  }
+}

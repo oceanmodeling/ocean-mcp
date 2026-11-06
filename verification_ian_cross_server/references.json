@@ -1,0 +1,83 @@
+{
+ "created_by": "record_references.py",
+ "note": "Cited documents retrieved outside the MCP session. Not archived here; identified by URL and SHA-256.",
+ "nhc_tropical_cyclone_report": {
+  "citation": "Bucci, L., Alaka, L., Hagen, A., Delgado, S., Beven, J. Tropical Cyclone Report: Hurricane Ian (AL092022), 23-30 September 2022. National Hurricane Center. Original report dated 2 April 2023; revised 12 March 2026.",
+  "url": "https://www.nhc.noaa.gov/data/tcr/AL092022_Ian.pdf",
+  "retrieved_at_http_date": "Fri, 06 Nov 2026 05:24:07 GMT",
+  "last_modified": "Thu, 12 Mar 2026 20:11:39 GMT",
+  "bytes": 7049210,
+  "sha256": "804d2a867917d4ab157e5b2b1e444d21d306379a08d07ffd7059d157a4b15fce",
+  "pages": 72,
+  "quotations_verified": [
+   {
+    "page": 1,
+    "text": "Lisa Bucci, Laura Alaka, Andrew Hagen, Sandy Delgado, and Jack Beven",
+    "found": true
+   },
+   {
+    "page": 1,
+    "text": "12 March 2026",
+    "found": true
+   },
+   {
+    "page": 1,
+    "text": "Original report dated 2 April 2023.",
+    "found": true
+   },
+   {
+    "page": 4,
+    "text": "made landfall on the barrier island of Cayo Costa, Florida, at 1905 UTC 28 September with an intensity of 130 kt.",
+    "found": true
+   },
+   {
+    "page": 4,
+    "text": "at 2035 UTC, the center of Ian’s large eye made another landfall near Punta Gorda, Florida",
+    "found": true
+   },
+   {
+    "page": 21,
+    "text": "28 / 1905 26.7 82.2 941 130 Landfall near Cayo Costa, Florida",
+    "found": true
+   },
+   {
+    "page": 9,
+    "text": "The NOS tide gauge near downtown Fort Myers measured 7.26 ft above MHHW",
+    "found": true
+   }
+  ]
+ },
+ "coops_data_api_response_help": {
+  "url": "https://api.tidesandcurrents.noaa.gov/api/prod/responseHelp.html",
+  "retrieved_at_http_date": "Fri, 06 Nov 2026 05:24:09 GMT",
+  "last_modified": "Tue, 30 Jun 2026 17:01:28 GMT",
+  "bytes": 23254,
+  "sha256": "c934a7921f56b80bbd5b05701795357a97cb5cb3c692931c3d96e8194976ba69",
+  "quotations_verified": [
+   {
+    "text": "(I) A flag that when set to 1 indicates that the water level value has been inferred",
+    "found": true
+   },
+   {
+    "text": "(F) A flag that when set to 1 indicates that the flat tolerance limit was exceeded",
+    "found": true
+   },
+   {
+    "text": "(R) A flag that when set to 1 indicates that the rate of change tolerance limit was exceeded",
+    "found": true
+   },
+   {
+    "text": "(T) A flag that when set to 1 indicates that either the maximum or minimum expected water level height limit was exceeded",
+    "found": true
+   },
+   {
+    "text": "(O) Count of number of 1 second samples that fall outside a 3-sigma band about the mean",
+    "found": true
+   },
+   {
+    "text": "Quality Assurance/Quality Control level -- p = preliminary -- v = verified",
+    "found": true
+   }
+  ]
+ }
+}

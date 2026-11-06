@@ -1,0 +1,100 @@
+{
+  "created_by": "make_env.py",
+  "started_at": "2026-11-06T05:28:51+00:00",
+  "finished_at": "2026-11-06T05:28:55+00:00",
+  "env_dir": "/tmp/claude-1000/-mnt-d-ocean-mcp/0cd85e19-9f6a-4f1b-868d-92d9964fe1a2/scratchpad/wp2_env",
+  "python_requested": "3.13.12",
+  "python_actual": "3.13.12",
+  "uv_version": "uv 0.10.4",
+  "builder_platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "wheels": {
+    "nhc-mcp": {
+      "version": "0.1.1",
+      "pypi_metadata_url": "https://pypi.org/pypi/nhc-mcp/0.1.1/json",
+      "wheel_url": "https://files.pythonhosted.org/packages/82/98/467653e6514a023ce7f3a7c46a33ba071e0bf3ce7cde4321ef6104ee247b/nhc_mcp-0.1.1-py3-none-any.whl",
+      "wheel_filename": "nhc_mcp-0.1.1-py3-none-any.whl",
+      "pypi_upload_time": "2026-10-01T10:23:17.412317Z",
+      "pypi_sha256": "34bd7bb5b2b1dc6995d20572acff5afc47b198d69570b93bfd5e037035811c25",
+      "downloaded_sha256": "34bd7bb5b2b1dc6995d20572acff5afc47b198d69570b93bfd5e037035811c25",
+      "sha256_match": true,
+      "requires_dist": [
+        "httpx<1,>=0.27.0",
+        "mcp[cli]<2,>=1.0.0",
+        "pydantic<3,>=2.0.0"
+      ],
+      "local_path": "/tmp/claude-1000/-mnt-d-ocean-mcp/0cd85e19-9f6a-4f1b-868d-92d9964fe1a2/scratchpad/wp2_env.wheels/nhc-mcp/nhc_mcp-0.1.1-py3-none-any.whl"
+    },
+    "coops-mcp": {
+      "version": "0.1.1",
+      "pypi_metadata_url": "https://pypi.org/pypi/coops-mcp/0.1.1/json",
+      "wheel_url": "https://files.pythonhosted.org/packages/94/3e/e7214785a3134f6c032946a9ad0e420b20742ac9d3d1db4dd7de6dbf5dc6/coops_mcp-0.1.1-py3-none-any.whl",
+      "wheel_filename": "coops_mcp-0.1.1-py3-none-any.whl",
+      "pypi_upload_time": "2026-09-04T04:52:33.287016Z",
+      "pypi_sha256": "f9630bc8bf7e024aff0ade1ec2e9a696487e3fdccc1e2b9860a6c5e64846f210",
+      "downloaded_sha256": "f9630bc8bf7e024aff0ade1ec2e9a696487e3fdccc1e2b9860a6c5e64846f210",
+      "sha256_match": true,
+      "requires_dist": [
+        "httpx<1,>=0.27.0",
+        "mcp[cli]<2,>=1.0.0",
+        "pydantic<3,>=2.0.0"
+      ],
+      "local_path": "/tmp/claude-1000/-mnt-d-ocean-mcp/0cd85e19-9f6a-4f1b-868d-92d9964fe1a2/scratchpad/wp2_env.wheels/coops-mcp/coops_mcp-0.1.1-py3-none-any.whl"
+    }
+  },
+  "freeze": [
+    "annotated-doc==0.0.5",
+    "annotated-types==0.8.0",
+    "anyio==4.16.0",
+    "attrs==26.1.0",
+    "certifi==2026.10.23",
+    "cffi==2.1.1",
+    "click==8.5.0",
+    "coops-mcp @ file:///tmp/claude-1000/-mnt-d-ocean-mcp/0cd85e19-9f6a-4f1b-868d-92d9964fe1a2/scratchpad/wp2_env.wheels/coops-mcp/coops_mcp-0.1.1-py3-none-any.whl",
+    "cryptography==50.0.2",
+    "h11==0.16.0",
+    "httpcore==1.0.9",
+    "httpx==0.28.1",
+    "httpx-sse==0.4.3",
+    "idna==3.20",
+    "jsonschema==4.26.0",
+    "jsonschema-specifications==2025.9.1",
+    "markdown-it-py==4.2.0",
+    "mcp==1.30.0",
+    "mdurl==0.1.2",
+    "nhc-mcp @ file:///tmp/claude-1000/-mnt-d-ocean-mcp/0cd85e19-9f6a-4f1b-868d-92d9964fe1a2/scratchpad/wp2_env.wheels/nhc-mcp/nhc_mcp-0.1.1-py3-none-any.whl",
+    "pycparser==3.12",
+    "pydantic==2.14.3",
+    "pydantic-core==2.50.4",
+    "pydantic-settings==2.16.2",
+    "pygments==2.21.0",
+    "pyjwt==2.15.1",
+    "python-dotenv==1.2.4",
+    "python-multipart==0.0.33",
+    "referencing==0.37.0",
+    "rich==15.0.0",
+    "rpds-py==2026.9.1",
+    "shellingham==1.5.4",
+    "sse-starlette==3.6.0",
+    "starlette==1.10.0",
+    "typer==0.27.3",
+    "typing-extensions==4.16.0",
+    "typing-inspection==0.4.5",
+    "uvicorn==0.54.0"
+  ],
+  "installed_source_vs_repo": {
+    "nhc-mcp": {
+      "installed_tree_sha256": "b5a3b71a54970f57ee15c971058fa162383bd61bf251454216439c9872a94d72",
+      "repo_tree_sha256": "b5a3b71a54970f57ee15c971058fa162383bd61bf251454216439c9872a94d72",
+      "repo_commit": "53fe5069e053ae9fc648648413674cced70a55ca",
+      "identical": true,
+      "files_compared": 10
+    },
+    "coops-mcp": {
+      "installed_tree_sha256": "c8828f9984a2b98339924b4c9ea5605d7bed54657045cb609f0f0b328457b4fb",
+      "repo_tree_sha256": "c8828f9984a2b98339924b4c9ea5605d7bed54657045cb609f0f0b328457b4fb",
+      "repo_commit": "53fe5069e053ae9fc648648413674cced70a55ca",
+      "identical": true,
+      "files_compared": 12
+    }
+  }
+}
