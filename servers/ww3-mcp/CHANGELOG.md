@@ -10,6 +10,10 @@ Changes since 0.1.2 (`ww3-mcp-v0.1.2`, commit `5e45c62`). Three tools change: `w
   - For 41009 on 2026-11-09, `hours=24` returned 24 rows covering 3 h 50 min.
   - The comparison tool paired the forecast with that same short window. With `hours_to_compare=6` against the 18z cycle it found no overlapping observation at all.
   - Both tools now keep the rows whose timestamp lies within N hours before the latest row in the file (both ends included), whatever the interval: 145 rows (24 h) at 41009 and 46 at 44025.
+- **Forecast-observation pairing no longer depends on the host time zone.** `align_timeseries`, used by `ww3_compare_forecast_with_buoy`, parsed the UTC times as naive datetimes and called `.timestamp()`, which reads them as host-local time. On a host with daylight saving, two times on either side of the local clock change came out an hour apart, so pairs within the ±30 min tolerance were lost:
+  - **America/New_York host:** forecast 2026-11-01 02:00 against 41009's 01:50 row; the gap was computed as 70 minutes.
+  - **Europe/Berlin host:** the GFS-Wave valid time 2026-10-25 03:00 against the 02:50 row.
+  - **The fix:** parsed times are now UTC-aware before any arithmetic, as in stofs-mcp 0.3.0. On a UTC host the result is unchanged.
 
 - **Missing-value codes are no longer returned as measurements.** NDBC's historical annual files mark missing values with 9-filled codes, not the `MM` used in realtime files ([NDBC, Measurement Descriptions and Units](https://www.ndbc.noaa.gov/faq/measdes.shtml)). 0.1.2 parsed these files with the realtime parser, so the codes came back as data:
   - For buoy 41009 in 2024, 35,235 of the file's 52,692 rows (66.9%) carry WVHT `99.00`, and 0.1.2 read each as a 99.0 m wave height.
@@ -39,7 +43,7 @@ Changes since 0.1.2 (`ww3-mcp-v0.1.2`, commit `5e45c62`). Three tools change: `w
 `ww3_compare_forecast_with_buoy`:
 
 - **Observation window.** Its observations are the rows within `hours_to_compare` hours before the latest buoy row, selected by timestamp.
-- **Unchanged.** The forecast hours fetched (0 to `hours_to_compare`, every 3 h, from the latest cycle) and the pairing rule are unchanged. The pairing gives each forecast time the nearest observation with a WVHT within ±30 min; on a tie, the earlier row in the file wins (the newer observation).
+- **Unchanged.** The forecast hours fetched (0 to `hours_to_compare`, every 3 h, from the latest cycle) and the pairing rule are unchanged. The pairing gives each forecast time the nearest observation with a WVHT within ±30 min; on a tie, the earlier row in the file wins (the newer observation). Its time arithmetic is now in UTC, whatever the host time zone (see above).
 
 ### Output schema (JSON, `ww3_get_buoy_observations` and `ww3_compare_forecast_with_buoy`)
 

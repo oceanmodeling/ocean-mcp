@@ -517,3 +517,83 @@ class TestHandleWw3ErrorGrib:
         msg = handle_ww3_error(ValueError("bad latitude"))
         assert "ecCodes" not in msg
         assert "bad latitude" in msg
+
+
+# ============================================================================
+# align_timeseries is independent of the host time zone — real excerpts
+# around the 2026 US and EU clock changes, see fixtures/ndbc_realtime_SOURCES.md
+# ============================================================================
+
+_PAIRING_SCRIPT = r"""
+import json, sys
+from datetime import datetime
+from ww3_mcp.utils import align_timeseries, parse_ndbc_realtime
+
+fixture, forecast_times = sys.argv[1], json.loads(sys.argv[2])
+rows = [r for r in parse_ndbc_realtime(open(fixture).read()) if r.get("WVHT") is not None]
+t, f, o = align_timeseries(
+    forecast_times, [1.0] * len(forecast_times),
+    [r["timestamp"] for r in rows], [r["WVHT"] for r in rows],
+)
+july = datetime(2026, 7, 1, 12).astimezone().utcoffset().total_seconds() / 3600
+print(json.dumps({"pairs": [list(p) for p in zip(t, o)], "july_offset_h": july}))
+"""
+
+
+def _pairs_under_tz(tz: str, fixture: str, forecast_times: list[str]) -> dict:
+    """Run align_timeseries in a fresh interpreter whose host time zone is ``tz``."""
+    import json
+    import os
+    import subprocess
+    import sys
+
+    env = {**os.environ, "TZ": tz}
+    out = subprocess.run(
+        [
+            sys.executable,
+            "-c",
+            _PAIRING_SCRIPT,
+            str(FIXTURES_DIR / fixture),
+            json.dumps(forecast_times),
+        ],
+        env=env,
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+    return json.loads(out.stdout)
+
+
+class TestAlignTimeseriesHostTimezone:
+    """Pairs must not depend on the host time zone (both series are UTC)."""
+
+    @pytest.mark.parametrize(
+        ("fixture", "forecast_times", "expected"),
+        [
+            (
+                "ndbc_realtime_41009_us_changeover_excerpt.txt",
+                ["2026-11-01 00:00", "2026-11-01 02:00"],
+                [["2026-11-01 00:00", 2.7], ["2026-11-01 02:00", 2.6]],
+            ),
+            (
+                "ndbc_realtime_41009_eu_changeover_excerpt.txt",
+                ["2026-10-25 03:00"],
+                [["2026-10-25 03:00", 2.2]],
+            ),
+        ],
+    )
+    def test_identical_pairs_under_utc_new_york_and_berlin(
+        self, fixture, forecast_times, expected
+    ):
+        """UTC, America/New_York and Europe/Berlin hosts give the same pairs."""
+        results = {
+            tz: _pairs_under_tz(tz, fixture, forecast_times)
+            for tz in ("UTC", "America/New_York", "Europe/Berlin")
+        }
+        # Guard: an unknown TZ silently falls back to UTC, which would make
+        # this test pass vacuously. July offsets prove each zone took effect.
+        offsets = {tz: r["july_offset_h"] for tz, r in results.items()}
+        if offsets != {"UTC": 0.0, "America/New_York": -4.0, "Europe/Berlin": 2.0}:
+            pytest.skip(f"host time zone database unavailable: {offsets}")
+        for tz, r in results.items():
+            assert r["pairs"] == expected, tz
