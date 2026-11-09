@@ -686,6 +686,25 @@ Notes:
 
 ## 9. Preservation
 
+**WP1c (checked on 2026-11-09, after commit `3a3ccd3`):**
+
+- **Reproduction before v2.** `run_all.sh` reproduced every archived output byte for byte before
+  any v2 work: 53 valid sessions, and no tracked result, answer, reference or archive file differed
+  from `45c68df`. The log is in `verification_post_wp1/logs/run_all_wp1c_before_v2.log`.
+- **Reproduction after v2.** The extended `run_all.sh` (step 9: v2 self-tests, fairness check, v2
+  tables) then reproduced the sessions, the v1 grading and the v2 grading byte-identically to
+  `3a3ccd3`. The log is in `…/run_all_wp1c_with_v2.log`. Run logs carry new time stamps only; they
+  were restored to their committed versions.
+- **v1 untouched.** The v1 grader (`grader/*.py`), task definitions, references, arms, replay
+  archive, synthetic files, run logs and all v1 result files are byte-identical to `45c68df`. The
+  WP1c commits add only `grader/v2/`, 12 new `results/*v2*` files, and edits to `REPORT.md`,
+  `README.md` and `run_all.sh`.
+- **No remote operation.** Nothing was pushed, pulled, fetched, merged, rebased, tagged or
+  published. There are 44 tags and 0 stashes, `eval/safeguards-comparison` has no upstream, and
+  `origin/main` is still `53fe506`.
+- **No MCP session was added for WP1c.** The sessions run by `run_all.sh` replayed the archive
+  without network, as before.
+
 **WP1b (checked on 2026-11-09, before the commit that adds this revision):**
 
 - **Existing branches and worktrees:** all unchanged. The only new commits on an existing branch
