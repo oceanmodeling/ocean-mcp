@@ -66,3 +66,32 @@ Both are kept.
 - **Values:** not re-graded. They stay "not applicable", and the returned values are listed.
 - **Output:** `results/sensitivity_A2.{json,csv,md}`.
 - **Self-test:** `grade_sensitivity.py --selftest` (6 cases).
+
+## A3. R7: grade the maximum the response states as its answer (requested by the author)
+
+- **When recorded:** 2026-11-08, before arm C-post (WP1b) was run.
+- **Why it is needed.** The frozen R7 reading takes the maximum WVHT over the rows a response
+  returns (`grader/adapters.py`, `adapt_buoy_max`).
+  - **ww3-mcp 0.1.2:** the reading was adequate, because its returned rows were a stride through
+    the whole year.
+  - **ww3-mcp 0.1.3:** the reading misses the answer.
+    - The response states the whole-file maximum in its summary: 6.32 m at
+      2024-10-10 08:10 UTC.
+    - It returns the most recent `max_records` rows, and their highest value is 5.35 m (WP0b
+      REPORT §2).
+  - So the frozen reading does not read the maximum a response states as its answer.
+- **What it is:** a second grading of R7 for all arms. It changes nothing.
+  - **Frozen reading:** the maximum over the returned rows. It is reported first.
+  - **Amended reading:** the maximum the response reports as its answer to the task. This is a
+    numeric `summary.max` (with `summary.max_time`) when the response has one. Otherwise it is the
+    frozen reading, because the response states no other answer.
+  - **Arms A and B:** the value the script reports, the same both ways.
+  - **What stays frozen:** the grader, the adapters, the references, the tolerances and the
+    decision rules. The tool was not asked to return different rows.
+- **Output:** `results/r7_A3.{json,csv,md}`, with the triggering text for each grade.
+- **Script:** `grader/grade_r7_a3.py` (3 self-tests).
+- **Before C-post:** arms A, B, C and D are graded the same both ways:
+  - A: 99.0, false proceed;
+  - B: 6.32, correct;
+  - C: candidate not available;
+  - D: 99.0, false proceed.
