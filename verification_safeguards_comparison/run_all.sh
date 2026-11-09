@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 # Repeat the whole WP1 comparison offline: no request reaches NOAA or any data host.
 #
-#   ./run_all.sh                 # everything: Phase 0 proof, references, arms A-D, grading,
-#                                # then WP1b: arm C-post and its gradings
+#   ./run_all.sh                 # everything: Phase 0 proof, references, arms A-D, grading (v1),
+#                                # WP1b: arm C-post and its gradings, WP1c: grader v2 on all arms
 #   UNTIL=wp1 ./run_all.sh       # stop after the original WP1 run (arms A-D)
+#   UNTIL=wp1b ./run_all.sh      # stop after WP1b (arm C-post), before grader v2
 #   UNTIL=ab ./run_all.sh        # stop after arms A and B are graded (no MCP arm is run)
 #
 # Inputs come only from data/archive (identified by SHA-256 in data/manifest.json).
@@ -114,4 +115,10 @@ python3 -I "$V/grader/grade_sensitivity.py" "$V" --arms A,B,C,D > /dev/null   # 
 python3 -I "$V/grader/grade_r7_a3.py" --selftest | tail -1
 python3 -I "$V/grader/grade_r7_a3.py" "$V" --arms A,B,C,D,Cpost > /dev/null
 python3 -I "$V/tools/build_wp1b_tables.py" "$V" > /dev/null
+[ "$UNTIL" = "wp1b" ] && { say "stopped after WP1b (UNTIL=wp1b)"; exit 0; }
+
+say "9. WP1c: grader v2 (self-tests, fairness check, then grading of all five result sets)"
+python3 -I "$V/grader/v2/test_grade_v2.py" "$V" | tail -1
+python3 -I "$V/grader/v2/fairness_check.py" "$V" | tail -1   # exits non-zero, stopping the run, if it fails
+python3 -I "$V/grader/v2/build_tables_v2.py" "$V" > /dev/null
 say "done; compare with the committed results: git -C \"$V\" diff --stat -- results/"

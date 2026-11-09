@@ -11,7 +11,8 @@ Run on 2026-11-06, on branch `eval/safeguards-comparison` (local only), in workt
 | Arms C and D, grading, first report | `e74f02b` |
 | WP1b: amendment A3 (R7) | `fe1cac5` |
 | WP1b: arm C-post sessions and gradings | `03509ee` |
-| WP1b: this revision of the report | the commit that adds it |
+| WP1b: report revision | `45c68df` |
+| WP1c: grader v2 and this revision | the commit that adds `grader/v2/` |
 
 **WP1b (2026-11-08/09).** Three fixes were approved after WP1:
 
@@ -44,6 +45,16 @@ The design is in `DESIGN.md`. Amendments are in `references/AMENDMENTS.md`.
   0 misses. R7 arm C was not run, because no ww3-mcp 0.1.3 candidate existed (§7).
 - **The comparison repeats offline byte for byte.** `./run_all.sh` regenerated every one of the 105
   result and reference files identically.
+- **WP1c: grader v2** (§1.3a, `grader/v2/CHANGES.md`).
+  - **What it is:** a versioned correction of five documented defects of the frozen grader (v1),
+    applied identically to all five result sets.
+  - **What it leaves alone:** no task, reference, tolerance, category, arm or archived output was
+    changed, and v1 and its results stay in the record.
+  - **Fairness check:** passed. 14 cells change, all in arms C and C-post, and each traces to one
+    listed change. No cell of arms A, B or D changes.
+  - **Arm C-post under v2:** the reference decision in 18 of 18 rows and 13 of 13 values within
+    tolerance, the same as arm B.
+  - **Arm C (pre-fix) under v2:** 16 of 17 rows; R6, the silent coordinate correction, remains.
 - **WP1b: after the three approved fixes, arm C-post (0.3.0 post-fix) matches arm B on every
   decision when read plainly** (§1.5):
   - **Values:** 12 of 13 graded values are within tolerance under the frozen grader. R7 is the
@@ -184,6 +195,82 @@ Grades that are right but need context (`results/disagreements.md`):
   - The largest valid value in that subsample is 5.6 m, against 6.32 m for the year.
   - So a missing-value fix alone would not reach the reference value.
 
+### 1.3a Grader v2 (WP1c)
+
+Two reviews accept the comparison but not "read plainly" as the basis for a reported count. So
+the misreadings documented in §1.3 and §1.5, and the R7 answer selection of amendment A3, are
+corrected by a versioned grader, `grader/v2/`, applied identically to every arm.
+
+**v1 and its results are not changed.** v2 imports v1 and re-uses every rule, pattern and
+predicate. It differs in exactly five places (`grader/v2/CHANGES.md`), each written for any arm's
+output format:
+
+| # | Change | v1 behaviour that was a grader defect |
+|---|---|---|
+| 1 | The value-bound predicate tests only water-level (metre-valued, `_m`) fields. Counts, correlations, distances, SST and text are excluded by name | It flagged R2 because the adapter's `n_values` (1,813) exceeded 30 m |
+| 2 | A refusal that names the cause needs no datum-source field | It graded "datum could not be established" as incomplete for lacking a source that cannot exist |
+| 3 | Units given per column satisfy the requirement when the graded column (R7 `WVHT`, N4 `analysed_sst`) has the expected unit | It compared ww3-mcp 0.1.3's whole units map with "m" |
+| 4 | R7 exclusion counts are read under every key name any arm uses: v1's four, `excluded_counts`, `summary.missing`, and `missing_values.excluded_counts`, the latter two at the graded column | It missed ww3-mcp 0.1.3's report of 35,235 excluded values |
+| 5 | The R7 value is the maximum the response states as its answer (`summary.max`), otherwise the maximum over the returned rows (amendment A3) | It graded the 5,000-row sample (5.35 m) instead of the stated whole-file maximum (6.32 m) |
+
+**Unchanged:** task statements, references (both graders use the A1-amended references),
+tolerances, decision categories, caveat and cause patterns, arms and archive.
+
+**Fairness check** (`grader/v2/fairness_check.py`, `results/v2_fairness_check.json`). It was run
+before v2 was used:
+
+1. **Baseline:** recomputing v1 from the archived answers reproduces the published v1 grades.
+2. **Faithfulness:** v2 with all five changes switched off reproduces every v1 grade on every axis,
+   and every archived answer.
+3. **Attribution:** every cell that differs under v2 was re-graded with one change enabled at a
+   time. Each of the 14 changed cells is produced by exactly one change, and
+   0 are unexplained.
+
+There are also 17 self-tests (`grader/v2/test_grade_v2.py`), with controls. They check, for
+example, that a real −99,998.6 m level still fails, that a proceed still needs a datum source, and
+that a units map without the graded column is "not stated".
+
+**Changed cells per arm:**
+
+- **Arms A, B and D:** 0.
+- **Arm C:** 5, of which 2 are on the three graded axes and 3 in the strict-metadata column.
+- **Arm C-post:** 9, of which 5 are on the graded axes and 4 strict.
+
+| Arm | Task | Axis | v1 | v2 | Change |
+|---|---|---|---|---|---|
+| C | R2 | decision | false_proceed | correct_proceed_with_caveat | 1 |
+| C | S1 | metadata | incomplete | correct | 2 |
+| C | S1 | metadata_strict | incomplete | correct | 2 |
+| C | S2 | metadata_strict | incomplete | correct | 2 |
+| C | S3 | metadata_strict | incomplete | correct | 2 |
+| C-post | R2 | decision | false_proceed | correct_proceed_with_caveat | 1 |
+| C-post | R7 | values | outside_tolerance | within_tolerance | 5 |
+| C-post | R7 | metadata | wrong | correct | 3 |
+| C-post | R7 | metadata_strict | wrong | correct | 3 |
+| C-post | R7 | decision | proceed_caveat_missing | correct_proceed_with_caveat | 4 |
+| C-post | S1 | metadata | incomplete | correct | 2 |
+| C-post | S1 | metadata_strict | incomplete | correct | 2 |
+| C-post | S2 | metadata_strict | incomplete | correct | 2 |
+| C-post | S3 | metadata_strict | incomplete | correct | 2 |
+
+**The §1.3 and §1.5 disagreements are all resolved by these changes:**
+
+- R2 (C, C-post) by change 1;
+- S1 metadata (C, C-post) by change 2;
+- R7 metadata by change 3;
+- R7 decision by change 4;
+- R7 values by change 5.
+
+No disagreement remains between v2 and the outputs.
+
+**What the check does not show.** All five defects were found after the v1 grades were seen, and
+every misgraded cell was in an Ocean-MCP arm. The check proves traceability; it does not prove
+the absence of selection. Known lenient v1 grades (arm A on R5, arm D on R4a; §1.3 notes) are left
+as they were, and no systematic search was made for over-lenient grades.
+
+The v2 tables are in `results/table_per_task_v2.*`, `results/table_counts_v2.*`,
+`results/decision_evidence_v2.*`, `results/v1_vs_v2_diff.*` and `results/grades_v2.*`.
+
 ### 1.4 The exact text behind every decision grade
 
 Appendix A lists all 72 decision grades with the text that triggered each. Where a grade was given
@@ -264,43 +351,57 @@ Appendix B gives the triggering text for every C-post decision grade.
 
 ## 2. Counts per arm (18 rows each; no composite score)
 
-Primary grading. Under A1, values `not returned` becomes `not applicable` for S1 in arms B and C;
-nothing else changes. All tables are in `results/table_counts.{md,csv}`.
+**Graders v1 and v2, side by side, v1 first.**
 
-| Axis | Outcome | A | B | C | C-post (WP1b) | D |
-|---|---|---:|---:|---:|---:|---:|
-| Values | within tolerance | 7 | 13 | 12 | 12 (A3: 13) | 2 |
-| | outside tolerance | 7 | 0 | 0 | 1 (R7; A3: 0) | 4 |
-| | not returned | 0 | 1 (A1: 0) | 1 (A1: 0) | 1 (A1: 0) | 1 |
-| | not applicable | 4 | 4 (A1: 5) | 4 (A1: 5) | 4 (A1: 5) | 4 |
-| | **not supported** | 0 | 0 | 0 | 0 | **7** |
-| | candidate not available | 0 | 0 | 1 | 0 | 0 |
-| Metadata | correct | 11 | 17 | 9 | 14 | 1 |
-| | incomplete | 0 | 0 | 6 | 1 (S1, artefact) | 8 |
-| | wrong | 6 | 0 | 0 | 1 (R7, artefact) | 8 |
-| | not applicable / candidate not available | 1 / 0 | 1 / 0 | 2 / 1 | 2 / 0 | 1 / 0 |
-| Metadata, strict | correct / incomplete / wrong | 11 / 0 / 6 | 17 / 0 / 0 | 7 / 8 / 0 | 12 / 3 / 1 | 1 / 8 / 8 |
-| Decision | correct proceed | 2 | 3 | 3 | 3 | 3 |
-| | correct proceed with required caveat | 1 | 11 | 8 | 9 | 0 |
-| | correct refusal naming the cause | 0 | 4 | 4 | 4 | 0 |
-| | proceed, required caveat missing | 4 | 0 | 1 | 1 (R7, artefact; plain reading 0) | 2 |
-| | **false proceed** | **11** | **0** | **1** (plain reading 0) | **1** (R2, artefact; plain reading 0) | **12** |
-| | **false refusal** | **0** | **0** | **0** | **0** | **1** |
-| | candidate not available | 0 | 0 | 1 | 0 | 0 |
+- **v1** is the frozen grader. **v2** is the corrected grader (§1.3a).
+- **References:** both use the A1-amended references. The strictly frozen v1 grading, without A1,
+  differs only in S1 values for arms B, C and C-post ("not returned" instead of "not applicable");
+  it is in `results/grades_*` without the `_amended` suffix.
+- **Arm columns:**
+  - C is the pre-fix 0.3.0 candidate;
+  - C-post is the post-fix candidate (WP1b).
+- **No "read plainly" column under v2.** Every §1.3/§1.5 disagreement is resolved by a listed v2
+  change, and none remains.
 
-C-post counts are in `results/wp1b_counts.{md,csv}`.
+All tables are in `results/table_counts_v2.{md,csv}` (v1 and v2) and `results/table_counts.*`
+(v1, WP1).
+
+| Axis | Outcome | A v1 | A v2 | B v1 | B v2 | C v1 | C v2 | C-post v1 | C-post v2 | D v1 | D v2 |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Values | within tolerance | 7 | 7 | 13 | 13 | 12 | 12 | 12 | 13 | 2 | 2 |
+|  | outside tolerance | 7 | 7 | 0 | 0 | 0 | 0 | 1 | 0 | 4 | 4 |
+|  | not returned | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 1 |
+|  | not applicable | 4 | 4 | 5 | 5 | 5 | 5 | 5 | 5 | 4 | 4 |
+|  | **not supported** | **0** | **0** | **0** | **0** | **0** | **0** | **0** | **0** | **7** | **7** |
+|  | candidate not available | 0 | 0 | 0 | 0 | 1 | 1 | 0 | 0 | 0 | 0 |
+| Metadata | correct | 11 | 11 | 17 | 17 | 9 | 10 | 14 | 16 | 1 | 1 |
+|  | incomplete | 0 | 0 | 0 | 0 | 6 | 5 | 1 | 0 | 8 | 8 |
+|  | wrong | 6 | 6 | 0 | 0 | 0 | 0 | 1 | 0 | 8 | 8 |
+|  | not applicable / candidate not available | 1 / 0 | 1 / 0 | 1 / 0 | 1 / 0 | 2 / 1 | 2 / 1 | 2 / 0 | 2 / 0 | 1 / 0 | 1 / 0 |
+| Metadata, strict | correct / incomplete / wrong | 11 / 0 / 6 | 11 / 0 / 6 | 17 / 0 / 0 | 17 / 0 / 0 | 7 / 8 / 0 | 10 / 5 / 0 | 12 / 3 / 1 | 16 / 0 / 0 | 1 / 8 / 8 | 1 / 8 / 8 |
+| Decision | correct proceed | 2 | 2 | 3 | 3 | 3 | 3 | 3 | 3 | 3 | 3 |
+|  | correct proceed with required caveat | 1 | 1 | 11 | 11 | 8 | 9 | 9 | 11 | 0 | 0 |
+|  | correct refusal naming the cause | 0 | 0 | 4 | 4 | 4 | 4 | 4 | 4 | 0 | 0 |
+|  | proceed, required caveat missing | 4 | 4 | 0 | 0 | 1 | 1 | 1 | 0 | 2 | 2 |
+|  | **false proceed** | **11** | **11** | **0** | **0** | **1** | **0** | **1** | **0** | **12** | **12** |
+|  | **false refusal** | **0** | **0** | **0** | **0** | **0** | **0** | **0** | **0** | **1** | **1** |
+|  | candidate not available | 0 | 0 | 0 | 0 | 1 | 1 | 0 | 0 | 0 | 0 |
+| Decision | *all correct (sum of the three correct outcomes)* | 3 | 3 | 18 | 18 | 15 | 16 | 16 | 18 | 3 | 3 |
 
 Arm D's nearest-equivalent calls cover 10 rows, and their values are never scored. Seven of them
 are "not supported". For the other three (R1b, S2, S3) the reference is a refusal, so values are
 "not applicable".
 
-**Where arm C's metadata is "incomplete" (6 rows):**
+**Where arm C's metadata is "incomplete"** (6 rows under v1; 5 under v2, where change 2 resolves S1):
 
 - **The JSON names no units:**
   - stofs-mcp's max tool (R1a, R3);
   - its station tool (R2, R5);
   - erddap-mcp's griddap tool (N4).
-- **S1:** see §1.3.
+- **S1:** see §1.3. Under v2 this row is correct (change 2).
+
+**Arm C-post** has no incomplete or wrong metadata under v2. Under v1 it had S1 (incomplete) and
+R7 (wrong), resolved by changes 2 and 3.
 
 ## 3. Which rule each task needed, and where it lives
 
@@ -461,11 +562,19 @@ defect below is the WP1 text, with the WP1b outcome added.
   mcp 1.30.0.
 - **Replay does not test the network.** It serves identical bodies, but seeded entries carry
   synthetic HTTP headers, and latency, timeouts and retries are not exercised.
+- **Grader v2 was written after the v1 grades were known** (WP1c). Its five changes correct
+  documented misreadings, and all of them concerned Ocean-MCP arms. The fairness check shows that
+  every v1→v2 difference traces to one generic change and that no cell of arms A, B or D moved. It
+  does not show the changes are free of selection; no systematic search was made for v1 grades
+  that are too lenient. The v1 grades are reported first throughout.
 
-## 6. Proposed manuscript text (229 words) and table: revised in WP1b
+## 6. Proposed manuscript text (229 words) and table: revised in WP1c
 
-The text is revised because the release candidate's counts changed after the approved fixes. The
-WP1 version (208 words) is kept, superseded, in Appendix C.
+The text now reports grader v1 and grader v2 counts for every arm. Earlier versions are kept in
+the appendices:
+
+- WP1, 208 words: Appendix C;
+- WP1b, 229 words: Appendix D.
 
 > We compared four workflows on 18 predeclared task rows built from archived NOAA files: four
 > nominal tasks, seven defects present in real operational files and five labelled synthetic
@@ -478,37 +587,34 @@ WP1 version (208 words) is kept, superseded, in Appendix C.
 > NOAA documentation and physical bounds, made the reference decision in all 18 rows. The evaluation
 > exposed three defects in the Ocean-MCP release candidate, now fixed: an unreported coordinate
 > correction, missing units, and wave-height fill codes returned as data. After the fixes, the
-> candidate, run through MCP on the same archived bytes, returned every value within tolerance (R7
-> read from its stated maximum) and matched the validated workflow on all 18 decisions read plainly;
-> the frozen grader, misreading two responses, scores 16. The released stofs-mcp 0.2.0 made 12 false
-> proceeds. The safeguards are not beyond a careful script: Ocean-MCP's contribution is validated
-> checks made reusable through MCP. One author wrote every workflow; the task set is small.
+> candidate, run through MCP on the same archived bytes, made the reference decision in all 18 rows
+> under grader v2 and 16 under the frozen grader. Grader v2 corrects five documented grader defects,
+> was applied identically to all arms, and changed no task, reference or tolerance. Released
+> stofs-mcp 0.2.0 made 12 false proceeds under both. Ocean-MCP's contribution is validated checks
+> made reusable through MCP. One author wrote every workflow; the task set is small.
 
 **Table X.** Outcomes over 18 task rows (four nominal, nine real-file rows covering seven defects,
-five synthetic).
+five synthetic). Each cell gives the frozen grader v1 first, then grader v2.
 
-| Workflow | Values within tolerance / graded | Correct decisions | Caveat missing | False proceed | False refusal | Not run or not supported |
-|---|---:|---:|---:|---:|---:|---|
-| Basic Python | 7 / 14 | 3 | 4 | 11 | 0 | – |
-| Validated Python | 13 / 13 | 18 | 0 | 0 | 0 | – |
-| Ocean-MCP 0.3.0 candidate, before fixes (MCP) | 12 / 12 | 15 (16)ᵃ | 1 | 1 (0)ᵃ | 0 | R7: candidate not available |
-| Ocean-MCP 0.3.0 candidate, after fixes (MCP) | 12 / 13 (13 / 13)ᵇ | 16 (18)ᵃ | 1 (0)ᵃ | 1 (0)ᵃ | 0 | – |
-| stofs-mcp 0.2.0 (MCP) | 2 / 6 | 3 | 2 | 12 | 1 | 7 rows: values not supported |
+| Workflow | Values within tolerance / graded | Correct decisions | Caveat missing | False proceed | False refusal |
+|---|---|---|---|---|---|
+| Basic Python | 7/14 · 7/14 | 3 · 3 | 4 · 4 | 11 · 11 | 0 · 0 |
+| Validated Python | 13/13 · 13/13 | 18 · 18 | 0 · 0 | 0 · 0 | 0 · 0 |
+| Ocean-MCP 0.3.0 candidate, before fixesᵃ | 12/12 · 12/12 | 15 · 16 | 1 · 1 | 1 · 0 | 0 · 0 |
+| Ocean-MCP 0.3.0 candidate, after fixesᵇ | 12/13 · 13/13 | 16 · 18 | 1 · 0 | 1 · 0 | 0 · 0 |
+| stofs-mcp 0.2.0ᶜ | 2/6 · 2/6 | 3 · 3 | 2 · 2 | 12 · 12 | 1 · 1 |
 
 Notes:
 
-- **ᵃ Plain reading** (§1.3, §1.5):
-  - The grader scores R2 as a false proceed because it counts a record count as a water level.
-  - After the fixes, it also scores R7 as "caveat missing", because ww3-mcp 0.1.3 reports its
-    exclusions under key names the frozen adapter does not read.
-- **ᵇ Under amendment A3:** R7 is read from the maximum the response states.
-- **The "after fixes" row** combines three packages:
-  - stofs-mcp 0.3.0 with D1 and D2 (`52c7f46`);
-  - erddap-mcp 0.1.3 (`3834480`);
-  - ww3-mcp 0.1.3 (WP0b `148f84c`).
+- **ᵃ Before fixes:** R7 was not run, because no candidate wave tool existed.
+- **ᵇ After fixes:** the release candidate is stofs-mcp 0.3.0 with the coordinate and units fixes,
+  erddap-mcp 0.1.3 and ww3-mcp 0.1.3.
+- **ᶜ stofs-mcp 0.2.0:** in 7 rows its values are "not supported", because it has no lead-time
+  window.
 - **Correct decisions** count three outcomes: correct proceed, correct proceed with the required
   caveat, and correct refusal naming the cause.
-- **Values** are counted under amendment A1.
+- **Both graders** use the same references and tolerances. The five v2 corrections are listed in
+  §1.3a.
 
 ## 7. Phase 2 checks requested by the author
 
@@ -987,6 +1093,54 @@ five synthetic).
 Notes:
 
 - **ᵃ Plain reading.** The grader scores R2 as a false proceed because of a record count (§1.3).
+- **Correct decisions** count three outcomes: correct proceed, correct proceed with the required
+  caveat, and correct refusal naming the cause.
+- **Values** are counted under amendment A1.
+
+## Appendix D. Section 6 as proposed in WP1b (superseded by the WP1c revision)
+
+The text is revised because the release candidate's counts changed after the approved fixes. The
+WP1 version (208 words) is kept, superseded, in Appendix C.
+
+> We compared four workflows on 18 predeclared task rows built from archived NOAA files: four
+> nominal tasks, seven defects present in real operational files and five labelled synthetic
+> mutations. Each row was graded separately on values, metadata, and the decision to compare,
+> exclude or decline (Table X). Basic Python, with library defaults and one fixed documented datum
+> pairing, reproduced the nominal statistics but proceeded falsely in 11 rows. It ranked 10^7 m
+> no-data codes as the highest water levels, compared a NAVD88 cycle with mean-sea-level
+> observations, chose a station 1,772 km away because coordinates were stored reversed, and compared
+> files whose datum labels were missing or contradictory. A validated Python workflow, written from
+> NOAA documentation and physical bounds, made the reference decision in all 18 rows. The evaluation
+> exposed three defects in the Ocean-MCP release candidate, now fixed: an unreported coordinate
+> correction, missing units, and wave-height fill codes returned as data. After the fixes, the
+> candidate, run through MCP on the same archived bytes, returned every value within tolerance (R7
+> read from its stated maximum) and matched the validated workflow on all 18 decisions read plainly;
+> the frozen grader, misreading two responses, scores 16. The released stofs-mcp 0.2.0 made 12 false
+> proceeds. The safeguards are not beyond a careful script: Ocean-MCP's contribution is validated
+> checks made reusable through MCP. One author wrote every workflow; the task set is small.
+
+**Table X.** Outcomes over 18 task rows (four nominal, nine real-file rows covering seven defects,
+five synthetic).
+
+| Workflow | Values within tolerance / graded | Correct decisions | Caveat missing | False proceed | False refusal | Not run or not supported |
+|---|---:|---:|---:|---:|---:|---|
+| Basic Python | 7 / 14 | 3 | 4 | 11 | 0 | – |
+| Validated Python | 13 / 13 | 18 | 0 | 0 | 0 | – |
+| Ocean-MCP 0.3.0 candidate, before fixes (MCP) | 12 / 12 | 15 (16)ᵃ | 1 | 1 (0)ᵃ | 0 | R7: candidate not available |
+| Ocean-MCP 0.3.0 candidate, after fixes (MCP) | 12 / 13 (13 / 13)ᵇ | 16 (18)ᵃ | 1 (0)ᵃ | 1 (0)ᵃ | 0 | – |
+| stofs-mcp 0.2.0 (MCP) | 2 / 6 | 3 | 2 | 12 | 1 | 7 rows: values not supported |
+
+Notes:
+
+- **ᵃ Plain reading** (§1.3, §1.5):
+  - The grader scores R2 as a false proceed because it counts a record count as a water level.
+  - After the fixes, it also scores R7 as "caveat missing", because ww3-mcp 0.1.3 reports its
+    exclusions under key names the frozen adapter does not read.
+- **ᵇ Under amendment A3:** R7 is read from the maximum the response states.
+- **The "after fixes" row** combines three packages:
+  - stofs-mcp 0.3.0 with D1 and D2 (`52c7f46`);
+  - erddap-mcp 0.1.3 (`3834480`);
+  - ww3-mcp 0.1.3 (WP0b `148f84c`).
 - **Correct decisions** count three outcomes: correct proceed, correct proceed with the required
   caveat, and correct refusal naming the cause.
 - **Values** are counted under amendment A1.

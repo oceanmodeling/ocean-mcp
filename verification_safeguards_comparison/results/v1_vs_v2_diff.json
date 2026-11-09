@@ -1,0 +1,170 @@
+[
+ {
+  "task": "R2",
+  "arm": "C",
+  "axis": "decision",
+  "v1": "false_proceed",
+  "v2": "correct_proceed_with_caveat",
+  "changes": [
+   1
+  ],
+  "v1_trigger": "value beyond 30.0 m: ['n_values=1813']",
+  "v2_trigger": "count 47"
+ },
+ {
+  "task": "R2",
+  "arm": "Cpost",
+  "axis": "decision",
+  "v1": "false_proceed",
+  "v2": "correct_proceed_with_caveat",
+  "changes": [
+   1
+  ],
+  "v1_trigger": "value beyond 30.0 m: ['n_values=1813']",
+  "v2_trigger": "count 47"
+ },
+ {
+  "task": "R7",
+  "arm": "Cpost",
+  "axis": "values",
+  "v1": "outside_tolerance",
+  "v2": "within_tolerance",
+  "changes": [
+   5
+  ],
+  "v1_trigger": "",
+  "v2_trigger": ""
+ },
+ {
+  "task": "R7",
+  "arm": "Cpost",
+  "axis": "metadata",
+  "v1": "wrong",
+  "v2": "correct",
+  "changes": [
+   3
+  ],
+  "v1_trigger": "",
+  "v2_trigger": ""
+ },
+ {
+  "task": "R7",
+  "arm": "Cpost",
+  "axis": "metadata_strict",
+  "v1": "wrong",
+  "v2": "correct",
+  "changes": [
+   3
+  ],
+  "v1_trigger": "",
+  "v2_trigger": ""
+ },
+ {
+  "task": "R7",
+  "arm": "Cpost",
+  "axis": "decision",
+  "v1": "proceed_caveat_missing",
+  "v2": "correct_proceed_with_caveat",
+  "changes": [
+   4
+  ],
+  "v1_trigger": "no excluded_records",
+  "v2_trigger": "counts [35235, 35235]"
+ },
+ {
+  "task": "S1",
+  "arm": "C",
+  "axis": "metadata",
+  "v1": "incomplete",
+  "v2": "correct",
+  "changes": [
+   2
+  ],
+  "v1_trigger": "",
+  "v2_trigger": ""
+ },
+ {
+  "task": "S1",
+  "arm": "C",
+  "axis": "metadata_strict",
+  "v1": "incomplete",
+  "v2": "correct",
+  "changes": [
+   2
+  ],
+  "v1_trigger": "",
+  "v2_trigger": ""
+ },
+ {
+  "task": "S1",
+  "arm": "Cpost",
+  "axis": "metadata",
+  "v1": "incomplete",
+  "v2": "correct",
+  "changes": [
+   2
+  ],
+  "v1_trigger": "",
+  "v2_trigger": ""
+ },
+ {
+  "task": "S1",
+  "arm": "Cpost",
+  "axis": "metadata_strict",
+  "v1": "incomplete",
+  "v2": "correct",
+  "changes": [
+   2
+  ],
+  "v1_trigger": "",
+  "v2_trigger": ""
+ },
+ {
+  "task": "S2",
+  "arm": "C",
+  "axis": "metadata_strict",
+  "v1": "incomplete",
+  "v2": "correct",
+  "changes": [
+   2
+  ],
+  "v1_trigger": "",
+  "v2_trigger": ""
+ },
+ {
+  "task": "S2",
+  "arm": "Cpost",
+  "axis": "metadata_strict",
+  "v1": "incomplete",
+  "v2": "correct",
+  "changes": [
+   2
+  ],
+  "v1_trigger": "",
+  "v2_trigger": ""
+ },
+ {
+  "task": "S3",
+  "arm": "C",
+  "axis": "metadata_strict",
+  "v1": "incomplete",
+  "v2": "correct",
+  "changes": [
+   2
+  ],
+  "v1_trigger": "",
+  "v2_trigger": ""
+ },
+ {
+  "task": "S3",
+  "arm": "Cpost",
+  "axis": "metadata_strict",
+  "v1": "incomplete",
+  "v2": "correct",
+  "changes": [
+   2
+  ],
+  "v1_trigger": "",
+  "v2_trigger": ""
+ }
+]
