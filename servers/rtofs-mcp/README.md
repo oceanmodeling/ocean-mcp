@@ -34,7 +34,7 @@ pip install rtofs-mcp
 | `rtofs_get_profile_forecast` | 3D depth profile at a point (temp, salinity, currents vs depth) |
 | `rtofs_get_area_forecast` | Surface forecast for a bounding box (parallel point queries) |
 | `rtofs_get_transect` | Vertical transect between two points (parallel depth profiles) |
-| `rtofs_compare_with_observations` | Change at a point over the 24 h before a time (default: now) |
+| `rtofs_compare_forecast_times` | RTOFS values at one point at two times, the start and end of the 24 h before a time (default: now); no observations |
 
 ## Example Queries
 

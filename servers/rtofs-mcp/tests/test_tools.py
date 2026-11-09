@@ -314,7 +314,7 @@ class TestToolRegistration:
     """Verify all 8 tools are registered on the MCP server."""
 
     def test_all_tools_registered(self):
-        """All 8 RTOFS tools should be registered."""
+        """Exactly the 8 RTOFS tools are registered, no more and no fewer."""
         from rtofs_mcp.server import mcp
 
         tool_names = {t.name for t in mcp._tool_manager.list_tools()}
@@ -326,10 +326,25 @@ class TestToolRegistration:
             "rtofs_get_profile_forecast",
             "rtofs_get_area_forecast",
             "rtofs_get_transect",
-            "rtofs_compare_with_observations",
+            "rtofs_compare_forecast_times",
         }
-        for name in expected:
-            assert name in tool_names, f"Tool '{name}' not registered"
+        assert tool_names == expected
+
+    def test_old_compare_name_not_registered(self):
+        """The pre-0.1.4 name rtofs_compare_with_observations is gone, not aliased."""
+        from rtofs_mcp.server import mcp
+
+        tool_names = {t.name for t in mcp._tool_manager.list_tools()}
+        assert "rtofs_compare_with_observations" not in tool_names
+
+    def test_compare_description_says_no_observations(self):
+        """The compare tool's description opens by saying it uses no observations."""
+        from rtofs_mcp.server import mcp
+
+        tools = {t.name: t for t in mcp._tool_manager.list_tools()}
+        first_line = tools["rtofs_compare_forecast_times"].description.splitlines()[0]
+        assert "two forecast times at one location" in first_line
+        assert "no observations" in first_line
 
 
 def test_cap_series_json_caps_data():
@@ -385,10 +400,10 @@ class TestToolTimeWindows:
     @pytest.mark.asyncio
     @respx.mock
     async def test_compare_fetches_24h_before_present(self):
-        """rtofs_compare_with_observations asks only for the 24 h ending now."""
+        """rtofs_compare_forecast_times asks only for the 24 h ending now."""
         import json
 
-        from rtofs_mcp.tools.analysis import rtofs_compare_with_observations
+        from rtofs_mcp.tools.analysis import rtofs_compare_forecast_times
 
         csv_text = (
             "time,latitude,longitude,vertCoord,water_temp\n"
@@ -400,7 +415,7 @@ class TestToolTimeWindows:
         route = respx.get(url).mock(return_value=httpx.Response(200, text=csv_text))
         client = RTOFSClient()
         try:
-            out = await rtofs_compare_with_observations(
+            out = await rtofs_compare_forecast_times(
                 _mock_ctx(client),
                 latitude=35.0,
                 longitude=-65.0,
@@ -422,14 +437,14 @@ class TestToolTimeWindows:
     @respx.mock
     async def test_compare_window_ends_at_given_time(self):
         """A reference time becomes the end of the 24 h window."""
-        from rtofs_mcp.tools.analysis import rtofs_compare_with_observations
+        from rtofs_mcp.tools.analysis import rtofs_compare_forecast_times
 
         fixture_text = FIXTURES_DIR.joinpath("sst_timeseries.csv").read_text()
         url = f"{THREDDS_BASE}/ncss/{DATASETS['sst']['path']}"
         route = respx.get(url).mock(return_value=httpx.Response(200, text=fixture_text))
         client = RTOFSClient()
         try:
-            out = await rtofs_compare_with_observations(
+            out = await rtofs_compare_forecast_times(
                 _mock_ctx(client),
                 latitude=35.0,
                 longitude=-65.0,
