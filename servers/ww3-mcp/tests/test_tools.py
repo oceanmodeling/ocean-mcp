@@ -888,3 +888,159 @@ class TestRegionalSummarySeam:
         assert calls == [(330.0, 360.0), (0.0, 20.0)]
         # Union of both halves (3 + 3), not silently empty/errored.
         assert data["statistics"]["swh"]["n_points"] == 6
+
+
+# ============================================================================
+# Realtime window by timestamp — real excerpts, see
+# fixtures/ndbc_realtime_SOURCES.md for the source files and their SHA-256
+# ============================================================================
+
+NDBC_REALTIME_URL = "https://www.ndbc.noaa.gov/data/realtime2/"
+
+
+def mock_realtime(fixture: str) -> None:
+    """Serve a real realtime2 excerpt for any realtime2 URL."""
+    respx.get(url__startswith=NDBC_REALTIME_URL).mock(
+        return_value=httpx.Response(200, content=(FIXTURES_DIR / fixture).read_bytes())
+    )
+
+
+class TestWw3GetBuoyObservationsWindow:
+    """ww3_get_buoy_observations returns the requested hours, not a row count."""
+
+    @respx.mock
+    async def test_window_covers_the_requested_hours(self, client):
+        """41009 (10-min rows): hours=3 returns the 19 rows 23:00-02:00."""
+        from ww3_mcp.tools.buoy import ww3_get_buoy_observations
+
+        mock_realtime("ndbc_realtime_41009_excerpt.txt")
+        data = json.loads(
+            await ww3_get_buoy_observations(
+                make_ctx(client), "41009", hours=3, response_format="json"
+            )
+        )
+        obs = data["observations"]
+        assert len(obs) == data["returned"] == data["total"] == data["records"] == 19
+        assert obs[0]["timestamp"] == "2026-11-09 02:00"
+        assert obs[-1]["timestamp"] == "2026-11-08 23:00"
+        assert data["window"]["window_start"] == "2026-11-08 23:00"
+        assert data["window"]["typical_interval_minutes"] == 10
+        assert data["truncated"] is False
+        assert data["timezone"] == "UTC"
+
+    @respx.mock
+    async def test_station_with_another_reporting_interval(self, client):
+        """44025 (30-min rows with gaps): hours=6 returns the 12 rows in 6 h."""
+        from ww3_mcp.tools.buoy import ww3_get_buoy_observations
+
+        mock_realtime("ndbc_realtime_44025_excerpt.txt")
+        data = json.loads(
+            await ww3_get_buoy_observations(
+                make_ctx(client), "44025", hours=6, response_format="json"
+            )
+        )
+        assert data["total"] == 12
+        assert data["observations"][-1]["timestamp"] == "2026-11-08 19:40"
+        assert data["window"]["typical_interval_minutes"] == 30
+
+    @respx.mock
+    async def test_truncation_envelope_keeps_the_most_recent_rows(self, client):
+        """max_records caps the JSON rows, newest kept, with the envelope."""
+        from ww3_mcp.tools.buoy import ww3_get_buoy_observations
+
+        mock_realtime("ndbc_realtime_41009_excerpt.txt")
+        data = json.loads(
+            await ww3_get_buoy_observations(
+                make_ctx(client),
+                "41009",
+                hours=6,
+                response_format="json",
+                max_records=5,
+            )
+        )
+        assert data["truncated"] is True
+        assert data["returned"] == len(data["observations"]) == 5
+        assert data["total"] == 37  # 20:00 to 02:00 at 10 min, both ends included
+        assert "hint" in data
+        assert [o["timestamp"][-5:] for o in data["observations"]] == [
+            "02:00", "01:50", "01:40", "01:30", "01:20",
+        ]  # fmt: skip
+
+    @respx.mock
+    async def test_clamp_and_short_file_are_reported(self, client):
+        """A clamped hours value and a file shorter than the window are noted."""
+        from ww3_mcp.tools.buoy import ww3_get_buoy_observations
+
+        mock_realtime("ndbc_realtime_41009_excerpt.txt")
+        data = json.loads(
+            await ww3_get_buoy_observations(
+                make_ctx(client), "41009", hours=5000, response_format="json"
+            )
+        )
+        notes = " ".join(data["notes"])
+        assert "clamped to 1080" in notes
+        assert "reaches back only to 2026-11-08 19:10" in notes
+        assert data["window"]["covers_full_window"] is False
+
+    @respx.mock
+    async def test_markdown_states_the_window(self, client):
+        """Markdown names the window, its rows and the interval found."""
+        from ww3_mcp.tools.buoy import ww3_get_buoy_observations
+
+        mock_realtime("ndbc_realtime_41009_excerpt.txt")
+        result = await ww3_get_buoy_observations(make_ctx(client), "41009", hours=3)
+        assert (
+            "**Window**: 3 h before the latest row "
+            "(2026-11-08 23:00 to 2026-11-09 02:00 UTC): 19 rows, typically every 10 min"
+        ) in result
+        assert "rows valid" in result
+
+
+class TestCompareForecastWithBuoyWindow:
+    """ww3_compare_forecast_with_buoy gets the full observation window."""
+
+    @respx.mock
+    async def test_comparison_uses_the_full_observation_window(
+        self, client, monkeypatch
+    ):
+        """hours_to_compare=6 pairs 21:00 and 00:00; the old row rule paired none."""
+        from datetime import datetime, timedelta
+
+        from ww3_mcp.tools.forecast import ww3_compare_forecast_with_buoy
+
+        mock_realtime("ndbc_realtime_41009_excerpt.txt")
+
+        async def fake_cycle(grid, num_days=2):
+            return ("20261108", "18")
+
+        async def fake_download(grid, date, cycle, fhour, **kwargs):
+            return Path(f"/nonexistent/ww3-test-f{fhour:03d}.grib2")
+
+        def fake_extract(path, lat, lon):
+            fhour = int(Path(path).stem.split("-f")[-1])
+            valid = datetime(2026, 11, 8, 18) + timedelta(hours=fhour)
+            return {"valid_time": valid.strftime("%Y-%m-%d %H:%M"), "HTSGW": 1.5}
+
+        monkeypatch.setattr(client, "resolve_latest_cycle", fake_cycle)
+        monkeypatch.setattr(client, "download_grib_subset", fake_download)
+        monkeypatch.setattr("ww3_mcp.tools.forecast.extract_grib_point", fake_extract)
+
+        data = json.loads(
+            await ww3_compare_forecast_with_buoy(
+                make_ctx(client),
+                "41009",
+                28.5,
+                -80.2,
+                hours_to_compare=6,
+                response_format="json",
+            )
+        )
+        window = data["observation_window"]
+        assert window["window_start"] == "2026-11-08 20:00"
+        assert window["rows_in_window"] == 37
+        assert window["rows_with_wvht"] == 18
+        # 18:00 is outside the window; 21:00 pairs with 21:10 (tie with 20:50,
+        # first in file order wins); 00:00 pairs with 23:50.
+        assert data["comparison_times"] == ["2026-11-08 21:00", "2026-11-09 00:00"]
+        assert data["observed_values"] == [1.3, 1.6]
+        assert data["stats"]["n"] == 2

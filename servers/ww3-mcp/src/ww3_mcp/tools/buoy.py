@@ -18,6 +18,7 @@ from ..utils import (
     handle_ww3_error,
     parse_ndbc_historical,
     parse_ndbc_realtime,
+    select_recent_window,
     summarize_values,
 )
 
@@ -41,21 +42,31 @@ async def ww3_get_buoy_observations(
     station_id: str,
     hours: int = 24,
     response_format: Literal["markdown", "json"] = "markdown",
+    max_records: int = 2000,
 ) -> str:
     """Get recent wave observations from an NDBC buoy.
 
     Fetches realtime standard meteorological data from NDBC including wave
     height, dominant period, average period, mean wave direction, wind speed,
-    and wind direction. Data covers the last ~45 days at hourly intervals.
+    and wind direction. NDBC's realtime file holds about the last 45 days, at
+    the station's own reporting interval (e.g. 10 minutes at 41009, 30 at
+    44025; NDBC says most stations report hourly). The window is selected by
+    timestamp, so it covers the requested hours at any interval.
 
     Args:
         station_id: NDBC station ID (e.g., '41025', '46042', '44013').
-        hours: Number of recent hours to return (default 24, max 1080).
+        hours: Hours of observations to return, counted back from the latest
+            row in the file (default 24, max 1080).
         response_format: 'markdown' (default) or 'json'.
+        max_records: Cap on JSON rows returned (default 2000). Rows are
+            newest-first, so the most recent are kept, and the response flags
+            any truncation. The markdown summary covers the whole window.
     """
     try:
         client = _get_client(ctx)
+        hours_requested = hours
         hours = max(1, min(1080, hours))
+        max_records = max(1, max_records)
 
         raw_text = await client.fetch_ndbc_realtime(station_id)
         records = parse_ndbc_realtime(raw_text)
@@ -66,20 +77,67 @@ async def ww3_get_buoy_observations(
                 "Verify the station ID using ww3_find_buoys."
             )
 
-        # Limit to requested hours (data is hourly, newest first)
-        records = records[:hours]
-
-        if response_format == "json":
-            return json.dumps(
-                {
-                    "station_id": station_id,
-                    "records": len(records),
-                    "observations": records,
-                },
-                indent=2,
+        rows, window = select_recent_window(records, hours)
+        if not rows:
+            return (
+                f"No timestamped observations for NDBC station '{station_id}' "
+                f"({window['rows_in_file']} rows, none with a usable time)."
+            )
+        notes = []
+        if hours != hours_requested:
+            notes.append(
+                f"hours={hours_requested} was clamped to {hours} (allowed 1-1080)."
+            )
+        if not window["covers_full_window"]:
+            notes.append(
+                f"The file reaches back only to {window['oldest_time_in_file']} UTC, "
+                f"so the window is shorter than {hours} h."
             )
 
-        return format_wave_observation_table(records, station_id=station_id)
+        if response_format == "json":
+            returned = rows[:max_records]  # newest-first: keep the most recent
+            truncated = len(rows) > max_records
+            payload: dict = {
+                "station_id": station_id,
+                "timezone": "UTC",
+                "window": window,
+                "truncated": truncated,
+                "returned": len(returned),
+                "total": len(rows),
+            }
+            if truncated:
+                payload["hint"] = (
+                    f"Only the most recent {len(returned)} of the {len(rows)} rows in "
+                    "the window are returned; raise max_records or request fewer hours."
+                )
+            if notes:
+                payload["notes"] = notes
+            payload["records"] = len(returned)  # kept from 0.1.2: rows returned
+            payload["observations"] = returned
+            payload["retrieved_at"] = datetime.now(timezone.utc).isoformat(
+                timespec="seconds"
+            )
+            return json.dumps(payload, indent=2)
+
+        wvht = summarize_values(rows, "WVHT")
+        interval = window["typical_interval_minutes"]
+        summary_lines = [
+            f"**Window**: {hours} h before the latest row "
+            f"({window['window_start']} to {window['latest_time']} UTC): "
+            f"{len(rows):,} rows"
+            + (f", typically every {interval} min" if interval else ""),
+            (
+                f"**Wave height (WVHT)**: {wvht['valid']:,} of {len(rows):,} rows valid; "
+                f"max {wvht['max']:.2f} m at {wvht['max_time']} UTC; "
+                f"min {wvht['min']:.2f} m; mean {wvht['mean']:.2f} m"
+                if wvht["valid"]
+                else "**Wave height (WVHT)**: no valid value in the window"
+            ),
+        ]
+        summary_lines += [f"*{n}*" for n in notes]
+        return format_wave_observation_table(
+            rows, station_id=station_id, summary_lines=summary_lines
+        )
 
     except Exception as e:
         return handle_ww3_error(e, f"buoy {station_id}")

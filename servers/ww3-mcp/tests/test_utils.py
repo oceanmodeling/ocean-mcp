@@ -17,6 +17,7 @@ from ww3_mcp.utils import (
     parse_ndbc_realtime,
     parse_ndbc_stations_xml,
     compute_validation_stats,
+    select_recent_window,
     summarize_values,
 )
 
@@ -308,6 +309,75 @@ class TestSummarizeValues:
         s = summarize_values([{"WVHT": None, "timestamp": "2024-01-01 00:00"}], "WVHT")
         assert s["valid"] == 0
         assert s["max"] is None and s["mean"] is None and s["max_time"] is None
+
+
+# ============================================================================
+# Realtime window by timestamp — real excerpts, see
+# fixtures/ndbc_realtime_SOURCES.md for the source files and their SHA-256
+# ============================================================================
+
+
+def realtime_rows(name: str) -> list[dict]:
+    """Parse a realtime fixture with the package's realtime parser."""
+    return parse_ndbc_realtime((FIXTURES_DIR / name).read_text())
+
+
+class TestSelectRecentWindow:
+    """select_recent_window selects by timestamp, at any reporting interval."""
+
+    def test_10_minute_station_covers_the_requested_hours(self):
+        """41009 (10-min rows): 3 h is 19 rows from 23:00 to 02:00, not 3 rows."""
+        recs = realtime_rows("ndbc_realtime_41009_excerpt.txt")
+        rows, info = select_recent_window(recs, 3)
+        assert len(rows) == 19
+        assert rows[0]["timestamp"] == "2026-11-09 02:00"
+        assert rows[-1]["timestamp"] == "2026-11-08 23:00"
+        assert info["latest_time"] == "2026-11-09 02:00"
+        assert info["window_start"] == "2026-11-08 23:00"
+        assert info["typical_interval_minutes"] == 10
+        assert info["covers_full_window"] is True
+        # The 0.1.3 rule records[:hours] would have covered 20 minutes.
+        assert recs[2]["timestamp"] == "2026-11-09 01:40"
+
+    def test_30_minute_station_with_gaps(self):
+        """44025 (30-min rows, a 60-min gap): 6 h is the 12 rows in the window."""
+        recs = realtime_rows("ndbc_realtime_44025_excerpt.txt")
+        rows, info = select_recent_window(recs, 6)
+        assert [r["timestamp"][-5:] for r in rows] == [
+            "01:40", "01:10", "00:40", "00:10", "23:40", "23:10",
+            "22:40", "22:10", "21:40", "21:10", "20:40", "19:40",
+        ]  # fmt: skip
+        assert info["typical_interval_minutes"] == 30
+        assert info["window_start"] == "2026-11-08 19:40"
+
+    def test_window_longer_than_the_file_is_flagged(self):
+        """A window reaching past the oldest row is reported, not silently cut."""
+        recs = realtime_rows("ndbc_realtime_41009_excerpt.txt")
+        rows, info = select_recent_window(recs, 24)
+        assert len(rows) == len(recs) == 42
+        assert info["covers_full_window"] is False
+        assert info["oldest_time_in_file"] == "2026-11-08 19:10"
+
+    def test_reference_is_the_latest_timestamp_not_the_first_row(self):
+        """Reversing the row order gives the same window."""
+        recs = realtime_rows("ndbc_realtime_41009_excerpt.txt")
+        rows, _ = select_recent_window(list(reversed(recs)), 3)
+        assert sorted(r["timestamp"] for r in rows) == sorted(
+            r["timestamp"] for r in select_recent_window(recs, 3)[0]
+        )
+
+    def test_rows_without_a_timestamp_are_counted(self):
+        """Undated rows are left out of the window and counted."""
+        recs = realtime_rows("ndbc_realtime_41009_excerpt.txt") + [{"WVHT": 1.0}]
+        rows, info = select_recent_window(recs, 3)
+        assert len(rows) == 19
+        assert info["undated_rows"] == 1
+
+    def test_no_dated_rows(self):
+        """With no usable timestamp the window is empty."""
+        rows, info = select_recent_window([{"timestamp": ""}], 24)
+        assert rows == [] and info["rows_in_window"] == 0
+        assert info["latest_time"] is None
 
 
 # ============================================================================

@@ -5,7 +5,7 @@ from __future__ import annotations
 import math
 import os
 import xml.etree.ElementTree as ET
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -110,6 +110,79 @@ def parse_ndbc_realtime(text: str) -> list[dict[str, Any]]:
         records.append(record)
 
     return records
+
+
+def select_recent_window(
+    records: list[dict[str, Any]], hours: float
+) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    """Rows of an NDBC realtime file that fall within ``hours`` of its latest row.
+
+    NDBC realtime2 files hold about the last 45 days of rows, at each
+    station's own reporting interval. NDBC, "How can Realtime data be
+    retrieved", https://www.ndbc.noaa.gov/faq/rt_data_access.shtml (retrieved
+    2026-11-09): "Most stations report hourly ... You can determine the
+    reporting frequency of the station you are interested in by viewing the
+    Previous Observations on the Station Page." Real files differ: 41009
+    writes a row every 10 minutes and 44025 every 30. The window is therefore
+    taken from the rows' timestamps, never from a row count or an assumed
+    interval: a row is kept when ``latest - hours <= time <= latest``, where
+    ``latest`` is the newest timestamp in the file. Measuring from the newest
+    row rather than the wall clock means a delayed or archived file gives the
+    same window. File order is kept.
+
+    Args:
+        records: Parsed rows with a ``timestamp`` ("YYYY-MM-DD HH:MM", UTC).
+        hours: Length of the window in hours.
+
+    Returns:
+        (rows, info). ``info`` gives the reference (latest) time, the window
+        start, the rows in the file and in the window, rows without a usable
+        timestamp, the oldest row in the file, whether the file reaches back
+        to the window start, and the most common spacing between rows in the
+        window, in minutes (derived from the data).
+    """
+    fmt = "%Y-%m-%d %H:%M"
+    dated: list[tuple[datetime, dict[str, Any]]] = []
+    undated = 0
+    for r in records:
+        try:
+            dated.append((datetime.strptime(r.get("timestamp") or "", fmt), r))
+        except ValueError:
+            undated += 1
+    info: dict[str, Any] = {
+        "hours": hours,
+        "reference": "latest row in the file",
+        "rows_in_file": len(records),
+        "undated_rows": undated,
+    }
+    if not dated:
+        info.update(
+            latest_time=None,
+            window_start=None,
+            rows_in_window=0,
+            oldest_time_in_file=None,
+            covers_full_window=False,
+            typical_interval_minutes=None,
+        )
+        return [], info
+
+    latest = max(t for t, _ in dated)
+    start = latest - timedelta(hours=hours)
+    oldest = min(t for t, _ in dated)
+    window = [(t, r) for t, r in dated if start <= t <= latest]
+    times = sorted(t for t, _ in window)
+    gaps = [
+        int((b - a).total_seconds() // 60) for a, b in zip(times, times[1:]) if b > a
+    ]
+    info.update(
+        latest_time=latest.strftime(fmt),
+        window_start=start.strftime(fmt),
+        rows_in_window=len(window),
+        oldest_time_in_file=oldest.strftime(fmt),
+        covers_full_window=oldest <= start,
+        typical_interval_minutes=max(set(gaps), key=gaps.count) if gaps else None,
+    )
+    return [r for _, r in window], info
 
 
 # ---------------------------------------------------------------------------

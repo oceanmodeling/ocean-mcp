@@ -23,6 +23,7 @@ from ..utils import (
     handle_ww3_error,
     normalize_lon,
     parse_ndbc_realtime,
+    select_recent_window,
 )
 
 
@@ -451,7 +452,11 @@ async def ww3_compare_forecast_with_buoy(
         buoy_lat: Buoy latitude in decimal degrees.
         buoy_lon: Buoy longitude in decimal degrees.
         grid: Wave grid to use (default: 'global.0p25').
-        hours_to_compare: Hours of comparison (default 24, max 120).
+        hours_to_compare: Hours of comparison (default 24, max 120). Sets
+            both the forecast hours fetched (0 to hours_to_compare, every 3 h)
+            and the observation window: the buoy rows within this many hours
+            before its latest row, selected by timestamp at whatever interval
+            the station reports.
         response_format: 'markdown' (default) or 'json'.
     """
     tmp_paths: list[Path] = []
@@ -466,10 +471,14 @@ async def ww3_compare_forecast_with_buoy(
         if not obs_records:
             return f"No observation data available for NDBC station '{station_id}'."
 
-        # Filter to wave height observations
+        # Observation window by timestamp (rows come every 10 min at some
+        # stations, 30 or 60 at others); then keep rows with a wave height.
+        obs_window_rows, obs_window = select_recent_window(
+            obs_records, hours_to_compare
+        )
         obs_times = []
         obs_values = []
-        for r in obs_records[:hours_to_compare]:
+        for r in obs_window_rows:
             ts = r.get("timestamp", "")
             wvht = r.get("WVHT")
             if ts and wvht is not None:
@@ -537,6 +546,7 @@ async def ww3_compare_forecast_with_buoy(
         )
 
         stats = compute_validation_stats(aligned_fcst, aligned_obs)
+        obs_window["rows_with_wvht"] = len(obs_values)
 
         if response_format == "json":
             return json.dumps(
@@ -546,6 +556,7 @@ async def ww3_compare_forecast_with_buoy(
                     "buoy_lon": buoy_lon,
                     "grid": grid.value,
                     "cycle": f"{date_fmt} {cycle_str}z",
+                    "observation_window": obs_window,
                     "stats": stats,
                     "comparison_times": common_times,
                     "forecast_values": aligned_fcst,
@@ -566,6 +577,10 @@ async def ww3_compare_forecast_with_buoy(
             f"**Grid**: {grid.value} ({grid_info.get('resolution', '')})",
             f"**Cycle**: {date_fmt} {cycle_str}z",
             "**Variable**: Significant Wave Height (HTSGW vs WVHT)",
+            f"**Observations**: {len(obs_values)} rows with WVHT among the "
+            f"{obs_window['rows_in_window']} buoy rows from "
+            f"{obs_window['window_start']} to {obs_window['latest_time']} UTC "
+            f"({hours_to_compare} h before the latest row)",
             "",
         ]
 
