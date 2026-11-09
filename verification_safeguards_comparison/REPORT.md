@@ -8,7 +8,19 @@ Run on 2026-11-06, on branch `eval/safeguards-comparison` (local only), in workt
 | Design freeze | `5d84c13` |
 | Arms A and B | `96fd7f8` |
 | Phase 2 start and amendment A2 | `53d0f3f` |
-| This report | the commit that adds this file |
+| Arms C and D, grading, first report | `e74f02b` |
+| WP1b: amendment A3 (R7) | `fe1cac5` |
+| WP1b: arm C-post sessions and gradings | `03509ee` |
+| WP1b: this revision of the report | the commit that adds it |
+
+**WP1b (2026-11-08/09).** Three fixes were approved after WP1:
+
+- D1 and D2 in stofs-mcp 0.3.0, on `fix/stofs-post-wp1`;
+- D3 in erddap-mcp, on `fix/erddap-griddap-units`;
+- the ww3-mcp 0.1.3 history fix, from WP0b.
+
+Arm C was then rerun as **arm C-post (0.3.0 post-fix)**. The pre-fix results below are unchanged.
+The post-fix results are added in §1.5, and in the C-post columns of §2, §4 and §6.
 
 The design is in `DESIGN.md`. Amendments are in `references/AMENDMENTS.md`.
 
@@ -32,6 +44,20 @@ The design is in `DESIGN.md`. Amendments are in `references/AMENDMENTS.md`.
   0 misses. R7 arm C was not run, because no ww3-mcp 0.1.3 candidate existed (§7).
 - **The comparison repeats offline byte for byte.** `./run_all.sh` regenerated every one of the 105
   result and reference files identically.
+- **WP1b: after the three approved fixes, arm C-post (0.3.0 post-fix) matches arm B on every
+  decision when read plainly** (§1.5):
+  - **Values:** 12 of 13 graded values are within tolerance under the frozen grader. R7 is the
+    exception; under amendment A3, which reads the maximum the response states, it is within too
+    (13 of 13).
+  - **Decisions:** 16 of 18 match the reference under the frozen grader, and 18 of 18 when read
+    plainly. Two C-post responses are misread by the frozen adapters: R2 (as for arm C) and R7.
+  - **What changed from arm C**, only where the brief expected:
+    - R6 now reports its coordinate correction;
+    - N4, R1a, R2, R3 and R5 now state units;
+    - R7 now runs.
+  - **Sessions:** all 18 C-post sessions were valid, with no network and 0 misses.
+  - **Reproducibility:** `run_all.sh` reproduces both runs from freshly built environments,
+    byte-identically.
 
 ---
 
@@ -164,31 +190,105 @@ Appendix A lists all 72 decision grades with the text that triggered each. Where
 because something was absent, it gives the output's complete notes. Source:
 `results/decision_evidence.{md,csv}`.
 
+### 1.5 WP1b: arm C-post (Ocean-MCP 0.3.0 post-fix)
+
+**What arm C-post is.** It sends arm C's frozen calls, unchanged, through real MCP stdio sessions:
+
+- replay mode, inside `unshare -rn`;
+- the same archive stacks as Phase 2;
+- graded by the frozen grader and adapters, unchanged.
+
+Its packages are:
+
+- **stofs-mcp 0.3.0 post-fix:** `fix/stofs-post-wp1` `52c7f46`, wheel sha256 `ba4edc2e…be9a`;
+- **erddap-mcp 0.1.3:** `fix/erddap-griddap-units` `3834480`, wheel `b7c6d76b…9739`;
+- **ww3-mcp 0.1.3:** WP0b, `148f84c`, wheel `7d359c4f7bb85b7b604656d51cef60d699a8a7016f4969cfb3b41e7d6be1bf17`;
+- **coops-mcp 0.1.1:** as in arm C.
+
+All share one environment. Every other dependency is pinned to arm C's versions
+(`environment/cpost.{constraints,freeze}.txt`).
+
+**The ww3-mcp 0.1.3 wheel was present when WP1b started.** It is at
+`verification_ww3_history_fix/dist/`, with the sha256 above. It requested the same archived NDBC
+URL, so there was no replay miss.
+
+| Task | Arm C (pre-fix) | Arm C-post (post-fix) | Changed axes |
+|---|---|---|---|
+| N4 | within / incomplete / correct proceed | within / **correct** / correct proceed | metadata (units stated: `{"analysed_sst": "degree_C"}`) |
+| R1a | within / incomplete / correct proceed + caveat | within / **correct** / correct proceed + caveat | metadata (`units: "m"`) |
+| R2 | within / incomplete / FALSE PROCEED (artefact) | within / **correct** / FALSE PROCEED (same artefact, §1.3) | metadata |
+| R3 | within / incomplete / correct proceed + caveat | within / **correct** / correct proceed + caveat | metadata |
+| R5 | n/a / incomplete / correct proceed + caveat | n/a / **correct** / correct proceed + caveat | metadata |
+| R6 | within / n/a / proceed, caveat MISSING | within / n/a / **correct proceed + caveat** | decision |
+| R7 | candidate not available | OUTSIDE (frozen) / WRONG (artefact) / proceed, caveat MISSING (artefact) | all (now run) |
+| the other 11 | | identical | none |
+
+**Every change is one the brief expected.** No other task changed on any axis
+(`results/wp1b_C_vs_Cpost.{md,csv}`).
+
+**R6, the text that now triggers "correct proceed + caveat":**
+
+> `coordinate_warning: 105 of 108 station records in this file store latitude in x and longitude in y, the reverse of their attributes; their coordinates were swapped (rule: a record reading as latitude < 0 < longitude cannot lie in the STOFS-3D-Atlantic domain). This station's coordinates were corrected (stored x=42.3539103827, y=-71.0502859522).`
+
+**R7 graded two ways (amendment A3), frozen first** (`results/r7_A3.{md,csv,json}`):
+
+| Arm | Frozen: value used / grades (values, metadata, decision) | Amended: value used / grades |
+|---|---|---|
+| A | 99.0 / outside, correct, false proceed | 99.0 / same |
+| B | 6.32 / within, correct, correct proceed + caveat | 6.32 / same |
+| C (pre-fix) | candidate not available | candidate not available |
+| D | 99.0 / outside, incomplete, false proceed | 99.0 / same |
+| C-post | **5.35** / outside, wrong, caveat missing | **6.32** / **within**, wrong, caveat missing |
+
+The text that triggered each C-post R7 reading:
+
+- **Frozen:** `maximum WVHT over the 5000 returned rows = 5.35 (row time 2024-12-15 17:40)`.
+- **Amended:** `summary: {"units": "m", "covers": "all 52692 rows of the file", "missing": 35235, "valid": 17457, "max": 6.32, "max_time": "2024-10-10 08:10"}`.
+
+For every other arm the two readings agree.
+
+**Rows where a plain reading of C-post disagrees with the grader** (`results/wp1b_disagreements.md`).
+The grader is not changed:
+
+| Task | Axis | Grader | Plain reading | Triggering text and reason |
+|---|---|---|---|---|
+| R2 | decision | false proceed | correct proceed + caveat | As for arm C (§1.3): `value beyond 30.0 m: ['n_values=1813']`. The tool returned min −0.109 m and `excluded_model_records.sentinel = 47` |
+| S1 | metadata | incomplete | correct | As for arm C: `model_datum source not stated` for a datum the tool says "could not be established" |
+| R7 | metadata | wrong | correct | ww3-mcp 0.1.3 states units per column, `units = {"WVHT": "m", …}`, plus `summary.units = "m"`. The frozen adapter compares the whole map with "m" |
+| R7 | decision | caveat missing | correct proceed + caveat | Trigger `no excluded_records`. The response states `summary.missing = 35235`, and `missing_values` gives NDBC's rule (a field equal to its column's 9-filled code is returned as null and counted), the codes (`WVHT 99.00`) and the documentation URL. The frozen adapter looks only for top-level keys named `excluded`, `excluded_values`, `missing` or `excluded_records`. A3 concerns the value and does not change this axis |
+
+**A2 with C-post.** C-post refuses S2 and S3, naming the cause, as arm C does, so the frozen and
+lenient grades agree (`results/sensitivity_A2_with_Cpost.*`). The WP1 A2 files are unchanged.
+
+Appendix B gives the triggering text for every C-post decision grade.
+
 ## 2. Counts per arm (18 rows each; no composite score)
 
 Primary grading. Under A1, values `not returned` becomes `not applicable` for S1 in arms B and C;
 nothing else changes. All tables are in `results/table_counts.{md,csv}`.
 
-| Axis | Outcome | A | B | C | D |
-|---|---|---:|---:|---:|---:|
-| Values | within tolerance | 7 | 13 | 12 | 2 |
-| | outside tolerance | 7 | 0 | 0 | 4 |
-| | not returned | 0 | 1 (A1: 0) | 1 (A1: 0) | 1 |
-| | not applicable | 4 | 4 (A1: 5) | 4 (A1: 5) | 4 |
-| | **not supported** | 0 | 0 | 0 | **7** |
-| | candidate not available | 0 | 0 | 1 | 0 |
-| Metadata | correct | 11 | 17 | 9 | 1 |
-| | incomplete | 0 | 0 | 6 | 8 |
-| | wrong | 6 | 0 | 0 | 8 |
-| | not applicable / candidate not available | 1 / 0 | 1 / 0 | 2 / 1 | 1 / 0 |
-| Metadata, strict | correct / incomplete / wrong | 11 / 0 / 6 | 17 / 0 / 0 | 7 / 8 / 0 | 1 / 8 / 8 |
-| Decision | correct proceed | 2 | 3 | 3 | 3 |
-| | correct proceed with required caveat | 1 | 11 | 8 | 0 |
-| | correct refusal naming the cause | 0 | 4 | 4 | 0 |
-| | proceed, required caveat missing | 4 | 0 | 1 | 2 |
-| | **false proceed** | **11** | **0** | **1** (plain reading 0) | **12** |
-| | **false refusal** | **0** | **0** | **0** | **1** |
-| | candidate not available | 0 | 0 | 1 | 0 |
+| Axis | Outcome | A | B | C | C-post (WP1b) | D |
+|---|---|---:|---:|---:|---:|---:|
+| Values | within tolerance | 7 | 13 | 12 | 12 (A3: 13) | 2 |
+| | outside tolerance | 7 | 0 | 0 | 1 (R7; A3: 0) | 4 |
+| | not returned | 0 | 1 (A1: 0) | 1 (A1: 0) | 1 (A1: 0) | 1 |
+| | not applicable | 4 | 4 (A1: 5) | 4 (A1: 5) | 4 (A1: 5) | 4 |
+| | **not supported** | 0 | 0 | 0 | 0 | **7** |
+| | candidate not available | 0 | 0 | 1 | 0 | 0 |
+| Metadata | correct | 11 | 17 | 9 | 14 | 1 |
+| | incomplete | 0 | 0 | 6 | 1 (S1, artefact) | 8 |
+| | wrong | 6 | 0 | 0 | 1 (R7, artefact) | 8 |
+| | not applicable / candidate not available | 1 / 0 | 1 / 0 | 2 / 1 | 2 / 0 | 1 / 0 |
+| Metadata, strict | correct / incomplete / wrong | 11 / 0 / 6 | 17 / 0 / 0 | 7 / 8 / 0 | 12 / 3 / 1 | 1 / 8 / 8 |
+| Decision | correct proceed | 2 | 3 | 3 | 3 | 3 |
+| | correct proceed with required caveat | 1 | 11 | 8 | 9 | 0 |
+| | correct refusal naming the cause | 0 | 4 | 4 | 4 | 0 |
+| | proceed, required caveat missing | 4 | 0 | 1 | 1 (R7, artefact; plain reading 0) | 2 |
+| | **false proceed** | **11** | **0** | **1** (plain reading 0) | **1** (R2, artefact; plain reading 0) | **12** |
+| | **false refusal** | **0** | **0** | **0** | **0** | **1** |
+| | candidate not available | 0 | 0 | 1 | 0 | 0 |
+
+C-post counts are in `results/wp1b_counts.{md,csv}`.
 
 Arm D's nearest-equivalent calls cover 10 rows, and their values are never scored. Seven of them
 are "not supported". For the other three (R1b, S2, S3) the reference is a refusal, so values are
@@ -232,8 +332,21 @@ available to any MCP client.** For arm B, the same rule had to be written in the
 
 ## 4. Defects found
 
-**No fix was approved or applied.** All results above are from the code under test. Per the brief,
-each defect is reported with a proposed fix.
+**WP1 applied no fix.** Every result in §1.1 to §1.4 is from the code under test. WP1b then
+applied the approved fixes on separate branches, and arm C-post reran the tasks with them. The
+pre-fix results are kept unchanged. The post-fix results follow each defect below.
+
+| Defect | Fix (branch, commit, wheel sha256) | Task: pre-fix (arm C) → post-fix (arm C-post) |
+|---|---|---|
+| D1 silent coordinate repair | `fix/stofs-post-wp1` `52c7f46`, stofs-mcp 0.3.0 wheel `ba4edc2e…be9a` | R6 decision: proceed, caveat missing → **correct proceed with the required caveat** (values within both times) |
+| D2 no `units` in station/point/max JSON | same commit | metadata incomplete → **correct**: R1a, R2, R3, R5. R6 has no metadata requirement |
+| D3 no units in erddap griddap JSON | `fix/erddap-griddap-units` `2567537`, bumped to 0.1.3 in `3834480`, wheel `b7c6d76b…9739` | N4 metadata: incomplete → **correct** (`{"analysed_sst": "degree_C"}`) |
+| ww3 history (WP0 F1, WP1 defect 4) | WP0b, `fix/ww3-buoy-history-missing-codes` `148f84c`, ww3-mcp 0.1.3 wheel `7d359c4f…bf17` | R7: candidate not available → values outside under the frozen reading (5.35 m) and **within under A3** (6.32 m). Metadata "wrong" and decision "caveat missing" are grader misreadings (§1.5) |
+
+Tests and checks for the fixes are in `verification_post_wp1/REPORT.md`, in the main checkout,
+untracked. For stofs-mcp, 373 tests were collected and 373 passed on each of 3.11, 3.12 and 3.13;
+for erddap-mcp, 124 of 124. Both pass ruff check, ruff format and `uv build`. The text of each
+defect below is the WP1 text, with the WP1b outcome added.
 
 **In the 0.3.0 candidate (stofs-mcp at `db234f7`):**
 
@@ -246,16 +359,28 @@ each defect is reported with a proposed fix.
      raw_x, raw_y}` and a sentence in the JSON and markdown. Add a regression test on the
      2026-02-18 file.
    - **Pre-fix result:** R6 arm C, "proceed, caveat missing".
+   - **WP1b fix, as applied.**
+     - JSON gains `coordinate_warning` and `coordinate_provenance` beside the datum fields. They
+       give the rule, the number of records checked, corrected and undetermined, and the
+       station's own flag with its stored x and y.
+     - Markdown gains one line.
+     - A record that reads as neither orientation is reported as undetermined rather than guessed.
+   - **Post-fix result:** R6 arm C-post, "correct proceed with the required caveat".
 2. **No `units` field in the JSON** of `stofs_get_max_water_level`, `stofs_get_station_forecast`
    and `stofs_get_point_forecast`. `stofs_compare_with_observations` has one.
    - **Proposed fix.** Add `"units"` from `zeta:units`, defaulting to "m".
    - **Effect now:** metadata incomplete for R1a, R3 and R5 in arm C.
    - The same gap is in 0.2.0.
+   - **WP1b fix, as applied.** `"units"` from `zeta:units`, placed after `datum_provenance`.
+   - **Post-fix result:** metadata "correct" for R1a, R2, R3 and R5 in arm C-post.
 
 **Outside the candidate:**
 
 3. **erddap-mcp 0.1.2: no units in the griddap JSON** (N4, arms C and D). This was already noted
    in the second review D3. Proposed fix: carry ERDDAP's `columnUnits`.
+   - **WP1b fix, as applied.** The units are read from the dataset's info rows (its own metadata),
+     never hard-coded. `units_missing` lists any variable without a units attribute.
+   - **Post-fix result:** N4 metadata "correct" in arm C-post.
 4. **ww3-mcp 0.1.2: `ww3_get_buoy_history`** (R7, arm D). There are two problems:
    - The 9-fill codes come back as data (WP0 F1).
    - The history tool takes every 10th row and returns at most 5,000. It therefore cannot return
@@ -267,6 +392,21 @@ each defect is reported with a proposed fix.
    - compute summary statistics (max with its time, mean, valid count) over all rows before
      subsampling;
    - add the truncation envelope.
+
+   **WP0b fix, as applied (ww3-mcp 0.1.3).**
+   - The codes become `null`.
+   - The `summary` covers every row of the file: max 6.32 m at 2024-10-10 08:10, 35,235 missing.
+   - The tool returns the most recent `max_records` rows, with a truncation envelope.
+
+   **Post-fix result.** R7 arm C-post: the stated maximum is 6.32 m, within tolerance under A3.
+   The frozen reading of the returned rows gives 5.35 m.
+
+   **Newer wheel, not used.** A later ww3-mcp 0.1.3 wheel, `ff7cf07a…` from
+   `fix/ww3-realtime-row-interval`, another session's WP0c, is in `verification_ww3_interval_fix/dist/`.
+   - It was not used, because the WP1b brief names `7d359c4f…bf17`.
+   - Its `ww3_get_buoy_history`, `parse_ndbc_historical` and `summarize_values` are byte-identical
+     to those of the wheel used. Other files differ (the realtime tools).
+   - R7 was not run with it.
 5. **stofs-mcp 0.2.0 (released).** These are the version differences that 0.3.0 fixes. Arm D
    shows each of them:
    - STOFS-3D hard-coded as NAVD88 (N2, R4b, S1, S2, S5);
@@ -277,7 +417,13 @@ each defect is reported with a proposed fix.
    - no lead-time window.
 6. **My own frozen grader and references:**
    - the S1 values-kind bug, fixed by A1;
-   - the R2 `n_values` artefact and the S1 source rule, reported in §1.3 and not changed.
+   - the R2 `n_values` artefact and the S1 source rule, reported in §1.3 and not changed;
+   - two WP1b additions, reported in §1.5 and not changed:
+     - the R7 units-map reading;
+     - the R7 exclusion key names, which miss `summary.missing` and `missing_values`.
+
+   **The R7 value reading needed A3.** The frozen adapter takes the maximum over the returned
+   rows, which was adequate only for 0.1.2's whole-year stride.
 
 ## 5. Limitations
 
@@ -316,23 +462,27 @@ each defect is reported with a proposed fix.
 - **Replay does not test the network.** It serves identical bodies, but seeded entries carry
   synthetic HTTP headers, and latency, timeouts and retries are not exercised.
 
-## 6. Proposed manuscript text (208 words) and table
+## 6. Proposed manuscript text (229 words) and table: revised in WP1b
+
+The text is revised because the release candidate's counts changed after the approved fixes. The
+WP1 version (208 words) is kept, superseded, in Appendix C.
 
 > We compared four workflows on 18 predeclared task rows built from archived NOAA files: four
 > nominal tasks, seven defects present in real operational files and five labelled synthetic
 > mutations. Each row was graded separately on values, metadata, and the decision to compare,
-> exclude or decline (Table X). Basic Python, using xarray and pandas defaults with a fixed
-> documented datum pairing, reproduced the nominal statistics but proceeded falsely in 11 rows. It
-> ranked 10^7 m no-data codes as the highest water levels, compared a NAVD88 cycle with
-> mean-sea-level observations, chose a station 1,772 km away because coordinates were stored
-> reversed, and compared files whose datum labels were missing or contradictory. A validated
-> Python workflow, written from NOAA documentation and physical bounds, made the reference decision
-> in all 18 rows. Ocean-MCP 0.3.0, called through MCP stdio sessions on the same archived bytes,
-> matched every value it returned. It agreed with the validated workflow on 16 of 17 decisions when
-> its output is read plainly; it corrected the reversed coordinates without reporting the
-> correction. The released version 0.2.0 made 12 false proceeds. The safeguards are therefore not
-> beyond a careful script: Ocean-MCP's contribution is validated checks made reusable through MCP.
-> One author wrote every workflow, and the task set is small.
+> exclude or decline (Table X). Basic Python, with library defaults and one fixed documented datum
+> pairing, reproduced the nominal statistics but proceeded falsely in 11 rows. It ranked 10^7 m
+> no-data codes as the highest water levels, compared a NAVD88 cycle with mean-sea-level
+> observations, chose a station 1,772 km away because coordinates were stored reversed, and compared
+> files whose datum labels were missing or contradictory. A validated Python workflow, written from
+> NOAA documentation and physical bounds, made the reference decision in all 18 rows. The evaluation
+> exposed three defects in the Ocean-MCP release candidate, now fixed: an unreported coordinate
+> correction, missing units, and wave-height fill codes returned as data. After the fixes, the
+> candidate, run through MCP on the same archived bytes, returned every value within tolerance (R7
+> read from its stated maximum) and matched the validated workflow on all 18 decisions read plainly;
+> the frozen grader, misreading two responses, scores 16. The released stofs-mcp 0.2.0 made 12 false
+> proceeds. The safeguards are not beyond a careful script: Ocean-MCP's contribution is validated
+> checks made reusable through MCP. One author wrote every workflow; the task set is small.
 
 **Table X.** Outcomes over 18 task rows (four nominal, nine real-file rows covering seven defects,
 five synthetic).
@@ -341,12 +491,21 @@ five synthetic).
 |---|---:|---:|---:|---:|---:|---|
 | Basic Python | 7 / 14 | 3 | 4 | 11 | 0 | – |
 | Validated Python | 13 / 13 | 18 | 0 | 0 | 0 | – |
-| Ocean-MCP 0.3.0 (MCP) | 12 / 12 | 15 (16)ᵃ | 1 | 1 (0)ᵃ | 0 | R7: candidate not available |
+| Ocean-MCP 0.3.0 candidate, before fixes (MCP) | 12 / 12 | 15 (16)ᵃ | 1 | 1 (0)ᵃ | 0 | R7: candidate not available |
+| Ocean-MCP 0.3.0 candidate, after fixes (MCP) | 12 / 13 (13 / 13)ᵇ | 16 (18)ᵃ | 1 (0)ᵃ | 1 (0)ᵃ | 0 | – |
 | stofs-mcp 0.2.0 (MCP) | 2 / 6 | 3 | 2 | 12 | 1 | 7 rows: values not supported |
 
 Notes:
 
-- **ᵃ Plain reading.** The grader scores R2 as a false proceed because of a record count (§1.3).
+- **ᵃ Plain reading** (§1.3, §1.5):
+  - The grader scores R2 as a false proceed because it counts a record count as a water level.
+  - After the fixes, it also scores R7 as "caveat missing", because ww3-mcp 0.1.3 reports its
+    exclusions under key names the frozen adapter does not read.
+- **ᵇ Under amendment A3:** R7 is read from the maximum the response states.
+- **The "after fixes" row** combines three packages:
+  - stofs-mcp 0.3.0 with D1 and D2 (`52c7f46`);
+  - erddap-mcp 0.1.3 (`3834480`);
+  - ww3-mcp 0.1.3 (WP0b `148f84c`).
 - **Correct decisions** count three outcomes: correct proceed, correct proceed with the required
   caveat, and correct refusal naming the cause.
 - **Values** are counted under amendment A1.
@@ -400,15 +559,64 @@ Notes:
 |---|---|---|
 | C | stofs-mcp 0.3.0 (WP0 wheel `29fcb737…dafdd`), coops-mcp 0.1.1, erddap-mcp 0.1.2 | 17 |
 | D | stofs-mcp 0.2.0, coops-mcp 0.1.1, erddap-mcp 0.1.2, ww3-mcp 0.1.2 (all PyPI) | 18 |
+| C-post (WP1b) | stofs-mcp 0.3.0 post-fix (`ba4edc2e…be9a`), erddap-mcp 0.1.3 (`b7c6d76b…9739`), ww3-mcp 0.1.3 (`7d359c4f…bf17`), coops-mcp 0.1.1 | 18 |
 
-- All 35 sessions use mcp 1.30.0 and Python 3.13.12, and all were valid.
+- All 53 sessions (35 in WP1, 18 for C-post in WP1b) use mcp 1.30.0 and Python 3.13.12, and all
+  were valid.
 - The Phase 0 sessions are listed in `DESIGN.md` §1.
-- **Not run through MCP:** R7 arm C (no candidate).
-- `run_all.sh` repeated all sessions offline with identical answers and grades.
+- **Not run through MCP:** R7 for the pre-fix arm C, which had no candidate at Phase 2 start. R7
+  with the later ww3-mcp wheel `ff7cf07a…` was not run either.
+- **First repeat (WP1):** `run_all.sh` repeated all WP1 sessions offline with identical answers
+  and grades.
+- **WP1b repeat, after a WSL crash.** The crash wiped the scratch environments, so all eight
+  environments were rebuilt from `environment/*.freeze.txt` with uv-managed CPython 3.13.12. One
+  `run_all.sh` then reran:
+  - Phase 0, the references and arms A and B;
+  - arms C and D, with the Phase 2 start state of no ww3 candidate;
+  - arm C-post;
+  - all gradings and tables.
+  Every result, reference and synthetic file came out byte-identical to commit `03509ee`. The log
+  is in `verification_post_wp1/logs/run_all_repeat_after_crash.log` in the main checkout.
 
 ## 9. Preservation
 
-These checks were run after the last commit:
+**WP1b (checked on 2026-11-09, before the commit that adds this revision):**
+
+- **Existing branches and worktrees:** all unchanged. The only new commits on an existing branch
+  are the permitted ones on `eval/safeguards-comparison`, all under
+  `verification_safeguards_comparison/`.
+- **New branches, each in its own new worktree, none with an upstream:**
+  - `fix/stofs-post-wp1` (`52c7f46`, from `fix/stofs-release-prep` `db234f7`, changes only under
+    `servers/stofs-mcp/`);
+  - `fix/erddap-griddap-units` (`2567537`, `3834480`, from `origin/main` `53fe506`, changes only
+    under `servers/erddap-mcp/`).
+
+  The automatically set upstream of the erddap branch was removed.
+- **State checked:**
+  - main checkout `b562bf4`, no tracked changes;
+  - `fix/stofs-release-prep` `db234f7`, unchanged;
+  - 44 tags, 0 stashes.
+- **Checksums unchanged:**
+  - the Boston raw files;
+  - WP0's manifest and wheel;
+  - WP0b's ww3-mcp wheel;
+  - the manuscript DOCX.
+
+  Nothing under `verification_release_readiness/` or `verification_ww3_history_fix/` was edited.
+- **No remote operation:** nothing was pushed, pulled, fetched, merged, rebased, tagged or
+  published.
+- **Not this session's work:** these worktrees appeared during WP1b from other sessions:
+  - `readme-vdatum`;
+  - `ww3-history-fix`;
+  - `ww3-interval-fix` (now `4171783`);
+  - `rtofs-rename`;
+  - `usgs-nodata`.
+
+  This session did not touch them.
+- **Network use in WP1b:** none by any MCP session, and no NOAA download. The only downloads were
+  package installs from PyPI while building environments.
+
+**WP1, run after the WP1 commit:**
 
 - No existing branch, worktree or raw input was changed. In detail:
   - **Worktree HEADs:** `stofs-hardening 31e7f6a`, `stofs-release db234f7`,
@@ -682,3 +890,103 @@ Suggestions:
 **S5 / arm D: false_proceed**
 - trigger: `observation datum NAVD88 (required MSL)`
 
+## Appendix B. Arm C-post (WP1b): text behind every decision grade (primary grading)
+
+Generated from `results/wp1b_decision_evidence_Cpost.md`.
+
+Where a grade was given because something was absent, the output's complete notes and reported exclusions follow.
+
+**N1 / C-post: correct_proceed_with_caveat**
+- trigger: ` | CO-OPS datum: MSL. No vertical transformation is applied. Matching labels do not guarantee identical realizations or epochs, so a mean offset (bias) alone does not show w`
+
+**N2 / C-post: correct_proceed_with_caveat**
+- trigger: ` | CO-OPS datum: MSL. No vertical transformation is applied. Matching labels do not guarantee identical realizations or epochs, so a mean offset (bias) alone does not show w`
+
+**N3 / C-post: correct_proceed**
+- trigger: `obs MLLW / predictions MLLW`
+
+**N4 / C-post: correct_proceed**
+- trigger: (no text: correct proceed with no caveat required)
+
+**R1a / C-post: correct_proceed_with_caveat**
+- trigger: `named: 9751364, 9751401, 9751381, 9752695, 9752235`
+
+**R1b / C-post: correct_refusal_or_flag**
+- trigger: `No usable STOFS values for station 9751381 in this cycle: all 1200 records were excluded `
+
+**R2 / C-post: false_proceed**
+- trigger: `value beyond 30.0 m: ['n_values=1813']`
+
+**R3 / C-post: correct_proceed_with_caveat**
+- trigger: `named: SA816`
+
+**R4a / C-post: correct_proceed**
+- trigger: `observation datum NAVD88 (required NAVD88)`
+
+**R4b / C-post: correct_proceed_with_caveat**
+- trigger: ` | CO-OPS datum: MSL. No vertical transformation is applied. Matching labels do not guarantee identical realizations or epochs, so a mean offset (bias) alone does not show w`
+
+**R5 / C-post: correct_proceed_with_caveat**
+- trigger: `NOAA documentation (STOFS_2D_GLOBAL V3.1.0: NOMADS STOFS-Global description (archived 2026-11-04): station and gridded output referenced to LMSL); file label zeta:standard_name=sea_surface_height_above_geoid names no specific datum`
+
+**R6 / C-post: correct_proceed_with_caveat**
+- trigger: `coordinate_warning: 105 of 108 station records in this file store latitude in x and longitude in y, the reverse of their attributes; their coordinates were swapped (rule: a record reading as`
+
+**R7 / C-post: proceed_caveat_missing**
+- trigger: `no excluded_records`
+- output notes (complete): `hint: Only the most recent 5000 rows are returned (max_records, up to 5000). The summary statistics are computed over every row of the file.`
+- exclusions recorded by the frozen adapter: `[]`
+- A3 value trigger, frozen: `maximum WVHT over the 5000 returned rows = 5.35 (row time 2024-12-15 17:40)`
+- A3 value trigger, amended: `summary: {"units": "m", "covers": "all 52692 rows of the file", "missing": 35235, "valid": 17457, "max": 6.32, "max_time": "2024-10-10 08:10"}`
+
+**S1 / C-post: correct_refusal_or_flag**
+- trigger: `No comparison: the vertical datum of the STOFS values for station 8443970 could not be established. The file name`
+
+**S2 / C-post: correct_refusal_or_flag**
+- trigger: `alues for station 8443970 could not be established. The file's datum attributes contradict each other (zeta:standard_name=sea_surface_height_above_msl; zeta:long_name=wat`
+- A2 lenient: correct_refusal_or_flag (`alues for station 8443970 could not be established. The file's datum attributes contradict each other (zeta:standard_name=sea_surface_height_above_msl; zeta:long_name=wat`)
+
+**S3 / C-post: correct_refusal_or_flag**
+- trigger: `s no specific vertical datum and no documented default applies: STOFS_2D_GLOBAL V4.0.0 is not a version whose station datum is documented (documented: STOFS_2D_GLOB`
+- A2 lenient: correct_refusal_or_flag (`s no specific vertical datum and no documented default applies: STOFS_2D_GLOBAL V4.0.0 is not a version whose station datum is documented (documented: STOFS_2D_GLOB`)
+
+**S4 / C-post: correct_proceed_with_caveat**
+- trigger: `observation exclusions [2, 3]`
+
+**S5 / C-post: correct_proceed_with_caveat**
+- trigger: ` | CO-OPS datum: MSL. No vertical transformation is applied. Matching labels do not guarantee identical realizations or epochs, so a mean offset (bias) alone does not show w`
+
+## Appendix C. Section 6 as proposed in WP1 (superseded by the WP1b revision)
+
+> We compared four workflows on 18 predeclared task rows built from archived NOAA files: four
+> nominal tasks, seven defects present in real operational files and five labelled synthetic
+> mutations. Each row was graded separately on values, metadata, and the decision to compare,
+> exclude or decline (Table X). Basic Python, using xarray and pandas defaults with a fixed
+> documented datum pairing, reproduced the nominal statistics but proceeded falsely in 11 rows. It
+> ranked 10^7 m no-data codes as the highest water levels, compared a NAVD88 cycle with
+> mean-sea-level observations, chose a station 1,772 km away because coordinates were stored
+> reversed, and compared files whose datum labels were missing or contradictory. A validated
+> Python workflow, written from NOAA documentation and physical bounds, made the reference decision
+> in all 18 rows. Ocean-MCP 0.3.0, called through MCP stdio sessions on the same archived bytes,
+> matched every value it returned. It agreed with the validated workflow on 16 of 17 decisions when
+> its output is read plainly; it corrected the reversed coordinates without reporting the
+> correction. The released version 0.2.0 made 12 false proceeds. The safeguards are therefore not
+> beyond a careful script: Ocean-MCP's contribution is validated checks made reusable through MCP.
+> One author wrote every workflow, and the task set is small.
+
+**Table X.** Outcomes over 18 task rows (four nominal, nine real-file rows covering seven defects,
+five synthetic).
+
+| Workflow | Values within tolerance / graded | Correct decisions | Caveat missing | False proceed | False refusal | Not run or not supported |
+|---|---:|---:|---:|---:|---:|---|
+| Basic Python | 7 / 14 | 3 | 4 | 11 | 0 | – |
+| Validated Python | 13 / 13 | 18 | 0 | 0 | 0 | – |
+| Ocean-MCP 0.3.0 (MCP) | 12 / 12 | 15 (16)ᵃ | 1 | 1 (0)ᵃ | 0 | R7: candidate not available |
+| stofs-mcp 0.2.0 (MCP) | 2 / 6 | 3 | 2 | 12 | 1 | 7 rows: values not supported |
+
+Notes:
+
+- **ᵃ Plain reading.** The grader scores R2 as a false proceed because of a record count (§1.3).
+- **Correct decisions** count three outcomes: correct proceed, correct proceed with the required
+  caveat, and correct refusal naming the cause.
+- **Values** are counted under amendment A1.

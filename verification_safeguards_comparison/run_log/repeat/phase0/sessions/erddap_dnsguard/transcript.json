@@ -1,12 +1,12 @@
 {
  "session_id": "phase0_erddap_replay_dnsguard",
  "arm": "phase0",
- "started_at": "2026-11-09T02:47:58+00:00",
+ "started_at": "2026-11-09T02:52:15+00:00",
  "network_probe": {
   "1.1.1.1:443": "CONNECTED",
-  "1.1.1.1:443_seconds": 0.01,
+  "1.1.1.1:443_seconds": 0.007,
   "8.8.8.8:53": "CONNECTED",
-  "8.8.8.8:53_seconds": 0.012
+  "8.8.8.8:53_seconds": 0.014
  },
  "server_command": [
   "/tmp/claude-1000/-mnt-d-ocean-mcp/349682ef-6680-4b65-946b-8dddc1d96a0d/scratchpad/envs/erddap/bin/python",
@@ -41,8 +41,8 @@
     "server_url": "https://erddap.secoora.org/erddap",
     "dataset_id": "not_archived"
    },
-   "sent_at": "2026-11-09T02:47:58+00:00",
-   "received_at": "2026-11-09T02:47:58+00:00",
+   "sent_at": "2026-11-09T02:52:16+00:00",
+   "received_at": "2026-11-09T02:52:16+00:00",
    "is_error": false,
    "content": [
     {
@@ -589,7 +589,7 @@
    "execution": null
   }
  ],
- "finished_at": "2026-11-09T02:47:58+00:00",
+ "finished_at": "2026-11-09T02:52:16+00:00",
  "http": {
   "requests": 0,
   "replay_misses": 0,

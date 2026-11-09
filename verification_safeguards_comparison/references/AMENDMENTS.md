@@ -95,3 +95,8 @@ Both are kept.
   - B: 6.32, correct;
   - C: candidate not available;
   - D: 99.0, false proceed.
+- **With C-post (after WP1b):**
+  - **Frozen reading:** 5.35 m, from the 5,000 most recent rows, so outside tolerance.
+  - **Amended reading:** 6.32 m, from `summary.max`, so within tolerance.
+  - **Metadata and decision:** the same both ways. They are misread by the frozen adapter (units
+    map; exclusion key names), and reported as disagreements in REPORT §1.5.

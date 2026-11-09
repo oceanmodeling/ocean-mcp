@@ -7,13 +7,18 @@
 | Design freeze: tasks, references, grader | `5d84c13` |
 | Arms A and B: code and outputs; amendment A1 | `96fd7f8` |
 | Phase 2 start: amendment A2 (sensitivity) and the rule-3 validation, before arms C and D | `53d0f3f` |
-| Arms C and D, grading, report | the commit that adds `REPORT.md` |
+| Arms C and D, grading, report | `e74f02b` |
+| WP1b: amendment A3 (R7, both readings) | `fe1cac5` |
+| WP1b: arm C-post (0.3.0 post-fix) sessions and gradings | `03509ee` |
+| WP1b: report revision | the commit that adds the revised `REPORT.md` |
 
 Arms A and B and the gradings run with no Ocean-MCP package importable. Arms C and D are real MCP
 stdio sessions in replay mode.
 
 - `DESIGN.md`: the frozen design.
-- `references/AMENDMENTS.md`: amendments A1 (a reference bug) and A2 (sensitivity).
+- `references/AMENDMENTS.md`: amendments A1 (a reference bug), A2 (sensitivity) and A3 (R7 reading).
+- **WP1b** added arm C-post (`arms/C_post/`, `results/answers/Cpost/`, `results/wp1b_*`). Run
+  `UNTIL=wp1 ./run_all.sh` to reproduce only the original WP1 run.
 
 ## Layout
 

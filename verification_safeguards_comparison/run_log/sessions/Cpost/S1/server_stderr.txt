@@ -1,6 +1,6 @@
-[11/09/26 02:42:42] INFO     Processing request of type            server.py:733
+[11/09/26 02:54:06] INFO     Processing request of type            server.py:733
                              ListToolsRequest                                   
-[11/09/26 02:42:43] INFO     Processing request of type            server.py:733
+                    INFO     Processing request of type            server.py:733
                              CallToolRequest                                    
                     INFO     HTTP Request: GET                   _client.py:1740
                              https://noaa-nos-stofs3d-pds.s3.ama                
