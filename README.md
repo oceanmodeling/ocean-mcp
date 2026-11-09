@@ -23,12 +23,13 @@ A monorepo of independently installable MCP servers for ocean and coastal data w
 | [winds-mcp](servers/winds-mcp/) | [![PyPI](https://img.shields.io/pypi/v/winds-mcp)](https://pypi.org/project/winds-mcp/) | NWS surface wind observations from ASOS / AWOS stations |
 | [usgs-mcp](servers/usgs-mcp/) | [![PyPI](https://img.shields.io/pypi/v/usgs-mcp)](https://pypi.org/project/usgs-mcp/) | USGS Water Services — streamflow, NWS/NWPS flood status, peak events |
 | [goes-mcp](servers/goes-mcp/) | [![PyPI](https://img.shields.io/pypi/v/goes-mcp)](https://pypi.org/project/goes-mcp/) | NOAA GOES-18/19 satellite imagery — visible, infrared, water vapor |
+| [vdatum-mcp](servers/vdatum-mcp/) | [![PyPI](https://img.shields.io/pypi/v/vdatum-mcp)](https://pypi.org/project/vdatum-mcp/) | Vertical datum conversion — NAVD88, MLLW, MHHW, LMSL, xGEOID20b and more |
 | [adcirc-mcp](servers/adcirc-mcp/) | [![PyPI](https://img.shields.io/pypi/v/adcirc-mcp)](https://pypi.org/project/adcirc-mcp/) | ADCIRC model setup debugging, parameter lookup, config validation |
 | [schism-mcp](servers/schism-mcp/) | [![PyPI](https://img.shields.io/pypi/v/schism-mcp)](https://pypi.org/project/schism-mcp/) | SCHISM model setup debugging, parameter lookup, config validation |
 
 **No API keys required for the data servers** — all servers above use free, publicly available datasets. The exceptions are `hpc-system-mcp` and `ufs-runner-mcp` (below), which require actual NOAA RDHPCS cluster access and, in `ufs-runner-mcp`'s case, submit real Slurm jobs.
 
-Additional servers live in this repo but are not yet published to PyPI (install from source): `vdatum-mcp` (vertical datum conversion), `hpc-system-mcp` and `ufs-runner-mcp` (NOAA RDHPCS / UFS-Coastal HPC workflows — require cluster access), and `alert-mcp` (CO-OPS threshold alerting).
+Additional servers live in this repo but are not yet published to PyPI (install from source): `hpc-system-mcp` and `ufs-runner-mcp` (NOAA RDHPCS / UFS-Coastal HPC workflows — require cluster access), and `alert-mcp` (CO-OPS threshold alerting).
 
 There is also a 19th server in this repo, `nos-workflow-mcp`, which is experimental and still a work in progress (its full implementation lives on an unmerged branch — `main` carries only a minimal subset). It's intentionally left out of the table above and not yet ready for general use.
 
@@ -47,7 +48,7 @@ pip install coops-mcp
 pipx install coops-mcp
 ```
 
-Replace `coops-mcp` with any published server: `erddap-mcp`, `nhc-mcp`, `recon-mcp`, `stofs-mcp`, `ofs-mcp`, `rtofs-mcp`, `ww3-mcp`, `ndbc-mcp`, `winds-mcp`, `usgs-mcp`, `goes-mcp`, `adcirc-mcp`, `schism-mcp`.
+Replace `coops-mcp` with any published server: `erddap-mcp`, `nhc-mcp`, `recon-mcp`, `stofs-mcp`, `ofs-mcp`, `rtofs-mcp`, `ww3-mcp`, `ndbc-mcp`, `winds-mcp`, `usgs-mcp`, `goes-mcp`, `vdatum-mcp`, `adcirc-mcp`, `schism-mcp`.
 
 ### Install from source
 

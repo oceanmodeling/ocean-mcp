@@ -21,6 +21,16 @@ commit and attribution) rather than installed as an external dependency.
 ## Installation
 
 ```bash
+# Using uvx (recommended)
+uvx vdatum-mcp
+
+# Using pip
+pip install vdatum-mcp
+```
+
+From source, in `servers/vdatum-mcp/`:
+
+```bash
 pip install -e .
 ```
 
