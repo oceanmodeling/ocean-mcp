@@ -696,3 +696,79 @@ class TestReadPointSeries:
         """If no chunk can be read, the original error propagates."""
         with pytest.raises(RuntimeError, match="DAP failure"):
             _read_point_series(_FlakyVariable(30, bad_from=0), (0,), chunk=10)
+
+
+# ---------------------------------------------------------------------------
+# align_timeseries is independent of the host time zone — real CO-OPS excerpts
+# around the 2026 US and EU clock changes (tests/fixtures/coops_changeover_SOURCES.md)
+# ---------------------------------------------------------------------------
+
+_PAIRING_SCRIPT = r"""
+import json, sys
+from datetime import datetime
+from ofs_mcp.utils import align_timeseries
+
+fixture, model_times = sys.argv[1], json.loads(sys.argv[2])
+rows = [r for r in json.load(open(fixture))["data"] if r.get("v") not in (None, "")]
+t, m, o = align_timeseries(
+    model_times, [1.0] * len(model_times),
+    [r["t"] for r in rows], [float(r["v"]) for r in rows],
+)
+july = datetime(2026, 7, 1, 12).astimezone().utcoffset().total_seconds() / 3600
+print(json.dumps({"pairs": [list(p) for p in zip(t, o)], "july_offset_h": july}))
+"""
+
+_ZONES = {"UTC": 0.0, "America/New_York": -4.0, "Europe/Berlin": 2.0}
+
+
+def _pairs_under_tz(tz: str, fixture: str, model_times: list[str]) -> dict:
+    """Run align_timeseries in a fresh interpreter whose host time zone is ``tz``."""
+    import json
+    import os
+    import subprocess
+    import sys
+    from pathlib import Path
+
+    path = Path(__file__).parent / "fixtures" / fixture
+    out = subprocess.run(
+        [sys.executable, "-c", _PAIRING_SCRIPT, str(path), json.dumps(model_times)],
+        env={**os.environ, "TZ": tz},
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+    return json.loads(out.stdout)
+
+
+class TestAlignTimeseriesHostTimezone:
+    """Pairs must not depend on the host time zone (both series are UTC)."""
+
+    @pytest.mark.parametrize(
+        ("fixture", "model_times", "expected"),
+        [
+            (
+                "coops_8574680_us_changeover_excerpt.json",
+                ["2026-11-01 01:00", "2026-11-01 02:00"],
+                [["2026-11-01 01:00", 0.542], ["2026-11-01 02:00", 0.632]],
+            ),
+            (
+                "coops_8574680_eu_changeover_excerpt.json",
+                ["2026-10-25 02:00", "2026-10-25 03:00"],
+                [["2026-10-25 02:00", 0.65], ["2026-10-25 03:00", 0.611]],
+            ),
+        ],
+    )
+    def test_identical_pairs_under_utc_new_york_and_berlin(
+        self, fixture, model_times, expected
+    ):
+        """UTC, America/New_York and Europe/Berlin hosts give the same pairs."""
+        results = {}
+        for tz, july in _ZONES.items():
+            r = _pairs_under_tz(tz, fixture, model_times)
+            # An unknown TZ silently falls back to UTC, which would make this
+            # pass vacuously; the July offset proves the zone took effect.
+            if r["july_offset_h"] != july:
+                pytest.skip(f"time zone {tz} unavailable on this host")
+            results[tz] = r["pairs"]
+        for tz, pairs in results.items():
+            assert pairs == expected, tz
