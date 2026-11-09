@@ -51,6 +51,25 @@ def _get_data_variables_from_info(info_rows: list[dict]) -> list[str]:
     return variables
 
 
+def _units_from_info(info_rows: list[dict], names: list[str]) -> dict[str, str | None]:
+    """Each variable's ``units`` attribute from the dataset info rows (None if absent).
+
+    Only data variables are reported: ERDDAP's .json writes the time dimension as
+    ISO 8601 strings, so the metadata's time units would not describe the values.
+    """
+    units: dict[str, str | None] = {name: None for name in names}
+    for row in info_rows:
+        name = row.get("Variable Name", "")
+        if (
+            row.get("Row Type") == "attribute"
+            and row.get("Attribute Name") == "units"
+            and name in units
+        ):
+            value = str(row.get("Value", "")).strip()
+            units[name] = value or None
+    return units
+
+
 @mcp.tool(
     annotations=ToolAnnotations(
         readOnlyHint=True,
@@ -194,11 +213,14 @@ async def erddap_get_griddap_data(
 
         if response_format == "json":
             kept, env = cap_rows(rows, max_records)
+            units = _units_from_info(info_rows, variables)
             result = {
                 "server_url": server_url,
                 "dataset_id": dataset_id,
                 "dimensions": dim_names,
                 "variables": variables,
+                "units": units,
+                "units_missing": [name for name, u in units.items() if u is None],
                 **env,
                 "data": kept,
             }
