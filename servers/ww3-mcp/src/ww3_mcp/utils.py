@@ -9,6 +9,12 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
+from .models import (
+    NDBC_HISTORICAL_MISSING_CODES,
+    NDBC_HISTORICAL_RENAMES,
+    NDBC_STDMET_UNITS,
+)
+
 
 # ---------------------------------------------------------------------------
 # Haversine distance
@@ -104,6 +110,160 @@ def parse_ndbc_realtime(text: str) -> list[dict[str, Any]]:
         records.append(record)
 
     return records
+
+
+# ---------------------------------------------------------------------------
+# NDBC historical (annual) text parser
+# ---------------------------------------------------------------------------
+
+# Date/time columns: never checked against missing-value codes.
+_DATE_COLUMNS = frozenset({"YY", "MM", "DD", "hh", "mm"})
+
+
+def parse_ndbc_historical(text: str) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    """Parse an NDBC historical annual standard meteorological file.
+
+    Unlike realtime2 files, historical files mark missing values with a
+    column-specific 9-filled code (see NDBC_HISTORICAL_MISSING_CODES). Each
+    field's text is compared with its column's code before any number
+    conversion; a match becomes None and is counted. "MM" is also treated as
+    missing. Other fields are converted to numbers as in parse_ndbc_realtime.
+
+    Handles the header variants seen in NDBC's files: one header line
+    (``YY``/``YYYY``, ``WD``, ``BAR``, with or without a minute column) or a
+    ``#YY`` header followed by a ``#yr`` units line. Columns are renamed to
+    the current names (NDBC_HISTORICAL_RENAMES) and two-digit years are
+    expanded to 19YY.
+
+    Args:
+        text: Raw text of the historical file.
+
+    Returns:
+        (records, info). Each record maps column name to value (None when
+        missing) plus ``timestamp`` ("YYYY-MM-DD HH:MM", UTC). ``info`` holds
+        the detected format, the units, the number of data rows, malformed
+        rows skipped, and missing-value counts per column.
+
+    Raises:
+        ValueError: if the header lacks the date columns or WVHT, so the file
+            is not in a format this parser understands.
+    """
+    lines = [ln for ln in text.splitlines() if ln.strip()]
+    header: list[str] = []
+    for ln in lines:
+        if ln.split()[0].isdigit():
+            break
+        header.append(ln)
+    if not header:
+        raise ValueError(
+            "Unrecognised NDBC historical file: no header line before the data."
+        )
+
+    raw_columns = header[0].lstrip("#").split()
+    columns = [NDBC_HISTORICAL_RENAMES.get(c, c) for c in raw_columns]
+    required = {"YY", "MM", "DD", "hh", "WVHT"}
+    if not required.issubset(columns):
+        raise ValueError(
+            "Unrecognised NDBC historical file format: header "
+            f"{' '.join(raw_columns)!r} lacks {sorted(required - set(columns))}."
+        )
+
+    units: dict[str, str] = {}
+    units_source = "NDBC units line of current historical files (file has none)"
+    if len(header) > 1:
+        unit_tokens = header[1].lstrip("#").split()
+        if len(unit_tokens) == len(columns):
+            units = {
+                c: u for c, u in zip(columns, unit_tokens) if c not in _DATE_COLUMNS
+            }
+            units_source = "the file's units line"
+    if not units:
+        units = {c: NDBC_STDMET_UNITS[c] for c in columns if c in NDBC_STDMET_UNITS}
+
+    missing = {c: 0 for c in columns if c not in _DATE_COLUMNS}
+    malformed = 0
+    two_digit_year = False
+    records: list[dict[str, Any]] = []
+    for ln in lines[len(header) :]:
+        parts = ln.split()
+        if len(parts) != len(columns):
+            malformed += 1
+            continue
+        record: dict[str, Any] = {}
+        row_missing: list[str] = []
+        for col, tok in zip(columns, parts):
+            if col not in _DATE_COLUMNS and (
+                tok == "MM" or NDBC_HISTORICAL_MISSING_CODES.get(col) == tok
+            ):
+                record[col] = None
+                row_missing.append(col)
+                continue
+            try:
+                record[col] = float(tok) if "." in tok else int(tok)
+            except ValueError:
+                record[col] = tok
+        yr = record["YY"]
+        if isinstance(yr, int) and yr < 100:
+            two_digit_year = True
+            yr = record["YY"] = 1900 + yr
+        try:
+            record["timestamp"] = (
+                f"{int(yr):04d}-{int(record['MM']):02d}-{int(record['DD']):02d} "
+                f"{int(record['hh']):02d}:{int(record.get('mm', 0)):02d}"
+            )
+        except (TypeError, ValueError):
+            malformed += 1
+            continue
+        for col in row_missing:  # count only rows that are kept
+            missing[col] += 1
+        records.append(record)
+
+    info = {
+        "header_lines": len(header),
+        "columns": columns,
+        "renamed": {r: c for r, c in zip(raw_columns, columns) if r != c},
+        "two_digit_year": two_digit_year,
+        "minute_column": "mm" in columns,
+        "units": units,
+        "units_source": units_source,
+        "data_rows": len(records),
+        "malformed_rows_skipped": malformed,
+        "missing_counts": missing,
+    }
+    return records, info
+
+
+def summarize_values(records: list[dict[str, Any]], key: str) -> dict[str, Any]:
+    """Summary statistics of one column over every record with a value.
+
+    Returns the count of valid values, min, max, the time of the first
+    maximum, how many rows share the maximum, and the mean (3 decimals).
+    Statistics are None when no record has a value.
+    """
+    vals = [
+        (r[key], r.get("timestamp"))
+        for r in records
+        if isinstance(r.get(key), (int, float)) and not isinstance(r.get(key), bool)
+    ]
+    if not vals:
+        return {
+            "valid": 0,
+            "min": None,
+            "max": None,
+            "max_time": None,
+            "max_count": 0,
+            "mean": None,
+        }
+    numbers = [v for v, _ in vals]
+    vmax = max(numbers)
+    return {
+        "valid": len(numbers),
+        "min": min(numbers),
+        "max": vmax,
+        "max_time": next(t for v, t in vals if v == vmax),
+        "max_count": numbers.count(vmax),
+        "mean": round(sum(numbers) / len(numbers), 3),
+    }
 
 
 # ---------------------------------------------------------------------------
@@ -340,8 +500,16 @@ def format_wave_observation_table(
     records: list[dict[str, Any]],
     station_id: str = "",
     max_rows: int = 100,
+    summary_lines: list[str] | None = None,
+    footer: str | None = None,
 ) -> str:
-    """Format NDBC buoy observations as a markdown table."""
+    """Format NDBC buoy observations as a markdown table.
+
+    By default the wave-height summary is computed from ``records``. Pass
+    ``summary_lines`` to print a summary computed elsewhere (for example over
+    a whole file of which ``records`` is only a part), and ``footer`` for a
+    line placed directly under the table.
+    """
     lines: list[str] = []
 
     if station_id:
@@ -354,7 +522,10 @@ def format_wave_observation_table(
 
     # Collect wave height values for stats
     wvht_vals = [r["WVHT"] for r in records if r.get("WVHT") is not None]
-    if wvht_vals:
+    if summary_lines is not None:
+        lines.extend(summary_lines)
+        lines.append("")
+    elif wvht_vals:
         lines.append(
             f"**Wave Height**: min {min(wvht_vals):.1f} m, "
             f"max {max(wvht_vals):.1f} m, "
@@ -388,6 +559,8 @@ def format_wave_observation_table(
         lines.append(f"| {ts} | {wvht} | {dpd} | {apd} | {mwd} | {wspd} | {wdir} |")
 
     lines.append("")
+    if footer:
+        lines.append(footer)
     lines.append("*Data from NOAA NDBC.*")
     return "\n".join(lines)
 

@@ -4,18 +4,34 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import pytest
+
+from ww3_mcp.models import NDBC_HISTORICAL_MISSING_CODES
 from ww3_mcp.utils import (
     denormalize_lon,
     format_wave_observation_table,
     handle_ww3_error,
     haversine,
     normalize_lon,
+    parse_ndbc_historical,
     parse_ndbc_realtime,
     parse_ndbc_stations_xml,
     compute_validation_stats,
+    summarize_values,
 )
 
 FIXTURES_DIR = Path(__file__).parent / "fixtures"
+
+
+def read_fixture_exact(name: str) -> str:
+    """Read a fixture without newline translation (keeps CRLF line endings)."""
+    with open(FIXTURES_DIR / name, encoding="ascii", newline="") as f:
+        return f.read()
+
+
+def by_time(records: list[dict]) -> dict[str, dict]:
+    """Index parsed records by timestamp (last row wins on duplicates)."""
+    return {r["timestamp"]: r for r in records}
 
 
 # ============================================================================
@@ -130,6 +146,168 @@ class TestParseNdbcRealtime:
         """Parsing text with only headers and no data should return empty."""
         text = "#YY  MM DD hh mm WDIR\n#yr  mo dy hr mn deg\n"
         assert parse_ndbc_realtime(text) == []
+
+
+# ============================================================================
+# NDBC historical (annual) text parser — real excerpts, see
+# fixtures/ndbc_history_SOURCES.md for the source files and their SHA-256
+# ============================================================================
+
+
+class TestParseNdbcHistorical:
+    """Tests for the historical-file parser and its missing-value codes."""
+
+    def test_every_missing_code_becomes_none(self):
+        """Each column's 9-filled code (real 41009h2024 lines) parses to None."""
+        records, _ = parse_ndbc_historical(
+            read_fixture_exact("ndbc_history_41009h2024_excerpt.txt")
+        )
+        rows = by_time(records)
+        all_missing = rows["2024-01-15 08:00"]  # source line 2067
+        for col in NDBC_HISTORICAL_MISSING_CODES:
+            if col == "WTMP":
+                continue  # WTMP is valid (22.5) on this line
+            assert all_missing[col] is None, col
+        assert all_missing["WTMP"] == 22.5
+        assert rows["2024-01-01 11:20"]["WTMP"] is None  # source line 71: 999.0
+
+    def test_genuine_values_near_a_code_are_kept(self):
+        """Real values that look like codes (999.0 hPa, 99 degT, 9.09 s) are kept."""
+        records, _ = parse_ndbc_historical(
+            read_fixture_exact("ndbc_history_41009h2024_excerpt.txt")
+        )
+        rows = by_time(records)
+        assert rows["2024-02-05 18:40"]["PRES"] == 999.9
+        assert rows["2024-10-10 02:00"]["PRES"] == 999.0
+        assert rows["2024-10-10 02:10"]["PRES"] == 999.0
+        assert rows["2024-01-05 19:40"]["WDIR"] == 99
+        assert rows["2024-01-11 21:00"]["WDIR"] == 9
+        assert rows["2024-01-06 14:10"]["MWD"] == 99
+        assert rows["2024-01-02 05:40"]["WSPD"] == 9.9
+        assert rows["2024-01-02 15:50"]["DEWP"] == 9.0
+        assert rows["2024-10-10 08:10"]["DPD"] == 9.09
+        assert rows["2024-10-10 08:10"]["WVHT"] == 6.32
+
+    def test_no_code_survives_as_a_number(self):
+        """No parsed WVHT equals 99.0 and no PRES equals 9999.0."""
+        records, _ = parse_ndbc_historical(
+            read_fixture_exact("ndbc_history_41009h2024_excerpt.txt")
+        )
+        assert all(r["WVHT"] != 99.0 for r in records)
+        assert all(r["PRES"] != 9999.0 for r in records)
+
+    def test_missing_counts_and_units_from_the_file(self):
+        """Missing values are counted per column; units come from the units line."""
+        records, info = parse_ndbc_historical(
+            read_fixture_exact("ndbc_history_41009h2024_excerpt.txt")
+        )
+        assert info["data_rows"] == len(records) == 16
+        assert info["malformed_rows_skipped"] == 0
+        assert info["missing_counts"]["WVHT"] == 8
+        assert info["missing_counts"]["PRES"] == 1
+        assert info["missing_counts"]["WTMP"] == 1
+        assert info["missing_counts"]["VIS"] == 16
+        assert info["units"]["WVHT"] == "m"
+        assert info["units"]["PRES"] == "hPa"
+        assert info["units_source"] == "the file's units line"
+
+    def test_first_data_row_is_kept(self):
+        """The first data row is data, not a second header line."""
+        records, info = parse_ndbc_historical(
+            read_fixture_exact("ndbc_history_41009h2024_excerpt.txt")
+        )
+        assert info["header_lines"] == 2
+        assert records[0]["timestamp"] == "2024-01-01 00:00"
+
+    def test_1998_format_two_digit_year_old_names_crlf(self):
+        """1998: one header line, YY=98, WD/BAR, no minute column, CRLF endings."""
+        records, info = parse_ndbc_historical(
+            read_fixture_exact("ndbc_history_41009h1998_excerpt.txt")
+        )
+        assert info["header_lines"] == 1
+        assert info["two_digit_year"] is True
+        assert info["minute_column"] is False
+        assert info["renamed"] == {"WD": "WDIR", "BAR": "PRES"}
+        assert len(records) == 5
+        assert records[0]["timestamp"] == "1998-01-01 00:00"
+        assert records[0]["WVHT"] == 1.76  # first data row kept
+        assert records[1]["timestamp"] == "1998-01-01 00:00"  # two rows per hour
+        missing = records[2]
+        assert missing["WVHT"] is None and missing["PRES"] is None
+        assert missing["WDIR"] is None and missing["WSPD"] is None
+        assert records[4]["PRES"] == 999.9  # genuine pressure kept
+        assert info["units_source"].startswith("NDBC units line")
+
+    @pytest.mark.parametrize(
+        ("fixture", "minute_column", "first", "second"),
+        [
+            (
+                "ndbc_history_41009h2003_excerpt.txt",
+                False,
+                "2003-01-01 00:00",
+                "2003-01-12 03:00",
+            ),
+            (
+                "ndbc_history_41009h2006_excerpt.txt",
+                True,
+                "2006-01-01 00:00",
+                "2006-01-15 10:00",
+            ),
+        ],
+    )
+    def test_yyyy_header_formats(self, fixture, minute_column, first, second):
+        """2003 and 2006: YYYY header, with and without a minute column."""
+        records, info = parse_ndbc_historical(read_fixture_exact(fixture))
+        assert info["renamed"]["YYYY"] == "YY"
+        assert info["minute_column"] is minute_column
+        assert [r["timestamp"] for r in records] == [first, second]
+        assert records[1]["WVHT"] is None
+        assert records[0]["WVHT"] is not None
+
+    def test_realtime_mm_is_still_missing(self):
+        """An 'MM' field (realtime convention) is also treated as missing."""
+        records, info = parse_ndbc_historical(
+            (FIXTURES_DIR / "ndbc_realtime.txt").read_text()
+        )
+        assert len(records) == 5
+        assert all(r["VIS"] is None for r in records)
+        assert info["missing_counts"]["VIS"] == 5
+
+    def test_unrecognised_header_raises(self):
+        """A header without the date columns or WVHT is a clear ValueError."""
+        with pytest.raises(ValueError, match="Unrecognised NDBC historical file"):
+            parse_ndbc_historical("STN DATE VALUE\n41009 20240101 1.2\n")
+
+    def test_malformed_rows_are_counted_and_skipped(self):
+        """A row with the wrong number of fields is skipped and counted."""
+        text = read_fixture_exact("ndbc_history_41009h2006_excerpt.txt")
+        records, info = parse_ndbc_historical(text + "2006 01 15 10\n")
+        assert len(records) == 2
+        assert info["malformed_rows_skipped"] == 1
+
+
+class TestSummarizeValues:
+    """Tests for summarize_values."""
+
+    def test_summary_over_all_valid_rows(self):
+        """Max, its time, count at max, and mean are taken over every valid row."""
+        records, _ = parse_ndbc_historical(
+            read_fixture_exact("ndbc_history_41009h2024_excerpt.txt")
+        )
+        s = summarize_values(records, "WVHT")
+        valid = [0.47, 0.94, 1.39, 2.08, 1.35, 3.69, 6.32, 0.68]  # fixture WVHT
+        assert s["valid"] == len(valid) == 8
+        assert s["max"] == 6.32
+        assert s["max_time"] == "2024-10-10 08:10"
+        assert s["max_count"] == 1
+        assert s["min"] == 0.47
+        assert s["mean"] == round(sum(valid) / len(valid), 3)
+
+    def test_no_valid_values(self):
+        """With no valid value every statistic is None and the count is 0."""
+        s = summarize_values([{"WVHT": None, "timestamp": "2024-01-01 00:00"}], "WVHT")
+        assert s["valid"] == 0
+        assert s["max"] is None and s["mean"] is None and s["max_time"] is None
 
 
 # ============================================================================

@@ -100,6 +100,69 @@ NDBC_COLUMNS = [
 # Wave-relevant NDBC columns for our tools
 NDBC_WAVE_COLUMNS = ["WVHT", "DPD", "APD", "MWD", "WDIR", "WSPD"]
 
+# NDBC historical (annual) standard meteorological files mark missing values
+# differently from realtime2 files. NDBC, "Measurement Descriptions and Units",
+# https://www.ndbc.noaa.gov/faq/measdes.shtml (retrieved 2026-11-09):
+#   "Missing data in the Realtime files are denoted by "MM" while a variable
+#   number of 9's are used to denote missing data in the Historical files,
+#   depending on the data type (for example: 999.0 99.0)."
+# The page gives examples, not a per-column list. Each column's code below is
+# the all-9 value in that column's field format, as it appears in NDBC's own
+# files (checked column by column in the 41009 files for 1998, 2003, 2006 and
+# 2024). The field text is compared exactly, so genuine values that merely
+# look similar are kept: PRES 999.0 hPa, MWD 99 degT, DPD 9.09 s, WSPD 9.9 m/s.
+NDBC_HISTORICAL_MISSING_CODES: dict[str, str] = {
+    "WDIR": "999",
+    "WSPD": "99.0",
+    "GST": "99.0",
+    "WVHT": "99.00",
+    "DPD": "99.00",
+    "APD": "99.00",
+    "MWD": "999",
+    "PRES": "9999.0",
+    "ATMP": "999.0",
+    "WTMP": "999.0",
+    "DEWP": "999.0",
+    "VIS": "99.0",
+    "TIDE": "99.00",
+}
+
+# Older historical files use other column headings. The same NDBC page lists
+# them ("Discontinued Measurement Abbreviations"; PRES is "labeled BAR in
+# Historical files"). Older files also head the year column YYYY (seen in the
+# 2003 and 2006 files) or write a two-digit year under YY (the 1998 file).
+NDBC_HISTORICAL_RENAMES: dict[str, str] = {
+    "YYYY": "YY",
+    "WD": "WDIR",
+    "DIR": "WDIR",
+    "SPD": "WSPD",
+    "GSP": "GST",
+    "BAR": "PRES",
+    "BARO": "PRES",
+    "H0": "WVHT",
+    "DOMPD": "DPD",
+    "AVP": "APD",
+}
+
+# Units as written in the units line of current historical files (e.g. 2024).
+# Used only when a file has no units line (the 1998, 2003 and 2006 files have
+# none).
+NDBC_STDMET_UNITS: dict[str, str] = {
+    "WDIR": "degT",
+    "WSPD": "m/s",
+    "GST": "m/s",
+    "WVHT": "m",
+    "DPD": "sec",
+    "APD": "sec",
+    "MWD": "degT",
+    "PRES": "hPa",
+    "ATMP": "degC",
+    "WTMP": "degC",
+    "DEWP": "degC",
+    "VIS": "mi",
+    "TIDE": "ft",
+}
+
 # GFS-Wave grid registry
 WAVE_GRIDS: dict[str, dict] = {
     "global.0p16": {

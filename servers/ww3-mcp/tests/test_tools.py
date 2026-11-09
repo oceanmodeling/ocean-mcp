@@ -423,6 +423,145 @@ class TestWw3GetBuoyHistory:
         assert "404" in result or "not found" in result.lower()
 
 
+NDBC_HISTORY_URL = "https://www.ndbc.noaa.gov/view_text_file.php"
+
+
+def mock_history(fixture: str) -> None:
+    """Serve a real-file excerpt (bytes as stored, CRLF kept) for the history URL."""
+    respx.get(url__startswith=NDBC_HISTORY_URL).mock(
+        return_value=httpx.Response(200, content=(FIXTURES_DIR / fixture).read_bytes())
+    )
+
+
+class TestWw3GetBuoyHistoryMissingCodesAndSummary:
+    """ww3_get_buoy_history on real 41009 excerpts (fixtures/ndbc_history_SOURCES.md)."""
+
+    @respx.mock
+    async def test_summary_covers_every_row_not_the_returned_rows(self, client):
+        """The WVHT summary is over all valid rows, even when few rows are returned."""
+        from ww3_mcp.tools.buoy import ww3_get_buoy_history
+
+        mock_history("ndbc_history_41009h2024_excerpt.txt")
+        result = await ww3_get_buoy_history(
+            make_ctx(client), "41009", 2024, max_records=3, response_format="json"
+        )
+        data = json.loads(result)
+        assert [o["timestamp"] for o in data["observations"]] == [
+            "2024-12-31 23:30",
+            "2024-12-31 23:40",
+            "2024-12-31 23:50",
+        ]
+        returned_max = max(
+            o["WVHT"] for o in data["observations"] if o["WVHT"] is not None
+        )
+        assert returned_max == 0.68
+        summary = data["summary"]
+        assert summary["max"] == 6.32
+        assert summary["max_time"] == "2024-10-10 08:10"
+        assert summary["valid"] == 8
+        assert summary["missing"] == 8
+        assert summary["units"] == "m"
+        assert summary["covers"] == "all 16 rows of the file"
+        assert data["rows_in_file"] == 16
+
+    @respx.mock
+    async def test_record_cap_and_truncation_envelope(self, client):
+        """At most max_records rows come back, with truncated/returned/total/hint."""
+        from ww3_mcp.tools.buoy import ww3_get_buoy_history
+
+        mock_history("ndbc_history_41009h2024_excerpt.txt")
+        ctx = make_ctx(client)
+        capped = json.loads(
+            await ww3_get_buoy_history(
+                ctx, "41009", 2024, max_records=3, response_format="json"
+            )
+        )
+        assert len(capped["observations"]) == capped["returned"] == 3
+        assert capped["records"] == 3
+        assert capped["truncated"] is True
+        assert capped["total"] == 16
+        assert "hint" in capped
+        assert "most recent 3 of 16 rows" in capped["row_selection"]
+
+        full = json.loads(
+            await ww3_get_buoy_history(
+                ctx, "41009", 2024, max_records=100, response_format="json"
+            )
+        )
+        assert full["truncated"] is False
+        assert full["returned"] == full["total"] == len(full["observations"]) == 16
+        assert "hint" not in full
+
+    @respx.mock
+    async def test_missing_codes_are_null_and_counted(self, client):
+        """No 9-filled code reaches the caller as a value; each one is counted."""
+        from ww3_mcp.tools.buoy import ww3_get_buoy_history
+
+        mock_history("ndbc_history_41009h2024_excerpt.txt")
+        data = json.loads(
+            await ww3_get_buoy_history(
+                make_ctx(client), "41009", 2024, max_records=100, response_format="json"
+            )
+        )
+        obs = data["observations"]
+        assert all(o["WVHT"] != 99.0 for o in obs)
+        assert all(o["PRES"] != 9999.0 for o in obs)
+        assert sum(o["WVHT"] is None for o in obs) == 8
+        mv = data["missing_values"]
+        assert mv["excluded_counts"]["WVHT"] == 8
+        assert mv["codes"]["WVHT"] == "99.00"
+        assert mv["documentation"] == "https://www.ndbc.noaa.gov/faq/measdes.shtml"
+        assert data["units"]["WVHT"] == "m"
+        assert data["timezone"] == "UTC"
+        assert "retrieved_at" in data
+
+    @respx.mock
+    async def test_markdown_summary_over_whole_file(self, client):
+        """Markdown states the whole-file maximum and which rows the table shows."""
+        from ww3_mcp.tools.buoy import ww3_get_buoy_history
+
+        mock_history("ndbc_history_41009h2024_excerpt.txt")
+        result = await ww3_get_buoy_history(
+            make_ctx(client), "41009", 2024, max_records=3
+        )
+        assert "max 6.32 m at 2024-10-10 08:10 UTC" in result
+        assert "8 of 16 rows valid" in result
+        assert "WVHT 8" in result  # missing values excluded, with counts
+        assert "Showing the most recent 3 of 16 rows" in result
+        assert "| 99.0 |" not in result
+
+    @respx.mock
+    async def test_older_file_format_through_the_tool(self, client):
+        """A 1998 file (YY, WD/BAR, no minutes, CRLF) gives real timestamps."""
+        from ww3_mcp.tools.buoy import ww3_get_buoy_history
+
+        mock_history("ndbc_history_41009h1998_excerpt.txt")
+        data = json.loads(
+            await ww3_get_buoy_history(
+                make_ctx(client), "41009", 1998, max_records=100, response_format="json"
+            )
+        )
+        assert data["observations"][0]["timestamp"] == "1998-01-01 00:00"
+        assert data["file_format"]["two_digit_year"] is True
+        assert data["file_format"]["renamed"] == {"WD": "WDIR", "BAR": "PRES"}
+        assert "no minute column" in data["time_note"]
+        assert data["summary"]["max"] == 5.05
+        assert data["summary"]["max_time"] == "1998-02-03 10:00"
+
+    @respx.mock
+    async def test_404_names_the_missing_annual_file(self, client):
+        """HTTP 404 explains that the annual file does not exist (yet)."""
+        from ww3_mcp.tools.buoy import ww3_get_buoy_history
+
+        respx.get(url__startswith=NDBC_HISTORY_URL).mock(
+            return_value=httpx.Response(404, text="Unable to access data file")
+        )
+        result = await ww3_get_buoy_history(make_ctx(client), "41009", 2026)
+        assert "No NDBC historical annual file" in result
+        assert "41009h2026.txt.gz" in result
+        assert "404" in result
+
+
 # ============================================================================
 # Test: client methods
 # ============================================================================
