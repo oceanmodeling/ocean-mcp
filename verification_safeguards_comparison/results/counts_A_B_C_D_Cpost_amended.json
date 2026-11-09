@@ -1,0 +1,124 @@
+{
+ "A": {
+  "values": {
+   "within_tolerance": 7,
+   "outside_tolerance": 7,
+   "not_applicable": 4
+  },
+  "metadata": {
+   "correct": 11,
+   "wrong": 6,
+   "not_applicable": 1
+  },
+  "metadata_strict": {
+   "correct": 11,
+   "wrong": 6,
+   "not_applicable": 1
+  },
+  "decision": {
+   "proceed_caveat_missing": 4,
+   "correct_proceed": 2,
+   "false_proceed": 11,
+   "correct_proceed_with_caveat": 1
+  }
+ },
+ "B": {
+  "values": {
+   "within_tolerance": 13,
+   "not_applicable": 5
+  },
+  "metadata": {
+   "correct": 17,
+   "not_applicable": 1
+  },
+  "metadata_strict": {
+   "correct": 17,
+   "not_applicable": 1
+  },
+  "decision": {
+   "correct_proceed_with_caveat": 11,
+   "correct_proceed": 3,
+   "correct_refusal_or_flag": 4
+  }
+ },
+ "C": {
+  "values": {
+   "within_tolerance": 12,
+   "not_applicable": 5,
+   "candidate_not_available": 1
+  },
+  "metadata": {
+   "correct": 9,
+   "incomplete": 6,
+   "not_applicable": 2,
+   "candidate_not_available": 1
+  },
+  "metadata_strict": {
+   "correct": 7,
+   "incomplete": 8,
+   "not_applicable": 2,
+   "candidate_not_available": 1
+  },
+  "decision": {
+   "correct_proceed_with_caveat": 8,
+   "correct_proceed": 3,
+   "correct_refusal_or_flag": 4,
+   "false_proceed": 1,
+   "proceed_caveat_missing": 1,
+   "candidate_not_available": 1
+  }
+ },
+ "D": {
+  "values": {
+   "not_supported": 7,
+   "within_tolerance": 2,
+   "outside_tolerance": 4,
+   "not_applicable": 4,
+   "not_returned": 1
+  },
+  "metadata": {
+   "incomplete": 8,
+   "wrong": 8,
+   "correct": 1,
+   "not_applicable": 1
+  },
+  "metadata_strict": {
+   "incomplete": 8,
+   "wrong": 8,
+   "correct": 1,
+   "not_applicable": 1
+  },
+  "decision": {
+   "proceed_caveat_missing": 2,
+   "false_proceed": 12,
+   "correct_proceed": 3,
+   "false_refusal": 1
+  }
+ },
+ "Cpost": {
+  "values": {
+   "within_tolerance": 12,
+   "not_applicable": 5,
+   "outside_tolerance": 1
+  },
+  "metadata": {
+   "correct": 14,
+   "not_applicable": 2,
+   "wrong": 1,
+   "incomplete": 1
+  },
+  "metadata_strict": {
+   "correct": 12,
+   "not_applicable": 2,
+   "wrong": 1,
+   "incomplete": 3
+  },
+  "decision": {
+   "correct_proceed_with_caveat": 9,
+   "correct_proceed": 3,
+   "correct_refusal_or_flag": 4,
+   "false_proceed": 1,
+   "proceed_caveat_missing": 1
+  }
+ }
+}

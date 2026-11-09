@@ -67,6 +67,15 @@ def main() -> int:
         },
         "entries": entries,
     }
+    wheels = vdir / "arms/C_post/wheels.json"
+    if wheels.exists():  # WP1b: the packages of arm C-post
+        for w in json.loads(wheels.read_text())["wheels"]:
+            out["depends_on"][f"cpost_{w['package']}_wheel"] = {
+                "path": str(Path(w["path"]).relative_to(repo)), "version": w["version"],
+                "built_from": w["built_from"], "sha256": sha256(Path(w["path"]))}
+    out = {
+        **out,
+    }
     (vdir / "data/manifest.json").write_text(json.dumps(out, indent=1) + "\n")
     print(f"{sum(1 for e in entries if 'sha256' in e)} entries; mismatches: {bad or 'none'}")
     return 1 if bad else 0

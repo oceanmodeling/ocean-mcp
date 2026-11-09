@@ -1,0 +1,36 @@
+{
+ "session_id": "wp1b_Cpost_R1a",
+ "arm": "Cpost",
+ "server": {
+  "python": "/tmp/claude-1000/-mnt-d-ocean-mcp/349682ef-6680-4b65-946b-8dddc1d96a0d/scratchpad/envs/cpost/bin/python",
+  "module": "stofs_mcp",
+  "mode": "replay",
+  "archives": [
+   "/mnt/d/ocean-mcp/.claude/worktrees/safeguards-comparison/verification_safeguards_comparison/data/archive/base"
+  ],
+  "dists": [
+   "stofs-mcp",
+   "coops-mcp",
+   "erddap-mcp",
+   "ww3-mcp",
+   "mcp",
+   "httpx",
+   "numpy",
+   "netCDF4",
+   "xarray"
+  ]
+ },
+ "calls": [
+  {
+   "call_id": "R1a_C_0",
+   "tool": "stofs_get_max_water_level",
+   "arguments": {
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-30",
+    "cycle_hour": "12",
+    "top_n": 5,
+    "response_format": "json"
+   }
+  }
+ ]
+}
