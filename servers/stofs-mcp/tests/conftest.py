@@ -1,6 +1,8 @@
 """Shared fixtures for stofs-mcp tests."""
 
+import json
 from datetime import datetime
+from pathlib import Path
 
 import pytest
 
@@ -127,3 +129,94 @@ def six_minute_times(start: str, n: int) -> list[str]:
         (t0 + timedelta(minutes=6 * (i + 1))).strftime("%Y-%m-%d %H:%M")
         for i in range(n)
     ]
+
+
+# ---------------------------------------------------------------------------
+# Verbatim excerpt of the real 2026-02-18 12z STOFS-3D-Atlantic station file
+# (see fixtures/stofs3d_20260218_t12z_excerpt_SOURCES.md for its SHA-256).
+# ---------------------------------------------------------------------------
+FEB_2026_EXCERPT = (
+    Path(__file__).parent / "fixtures" / "stofs3d_20260218_t12z_excerpt.json"
+)
+FEB_REVERSED = ("8410140", "8443970")  # Eastport, Boston: x holds the latitude
+FEB_AS_LABELLED = (
+    "8721604",
+    "8767816",
+    "8771972",
+)  # Trident Pier, Lake Charles, San Luis Pass
+
+
+@pytest.fixture
+def feb_excerpt():
+    """The excerpt as a dict (stations with raw x, y and zeta)."""
+    return json.loads(FEB_2026_EXCERPT.read_text())
+
+
+@pytest.fixture
+def feb_excerpt_nc(tmp_path, feb_excerpt):
+    """Factory writing a station NetCDF from the excerpt, keeping the real
+    attributes and stored (raw) coordinates.
+
+    ``feb_excerpt_nc(ids=None, extra=())``: ``ids`` selects stations by CO-OPS
+    ID (default: all five); ``extra`` appends SYNTHETIC records given as
+    (name, x, y), with the first station's zeta series.
+    """
+    import netCDF4
+    import numpy as np
+
+    counter = {"n": 0}
+
+    def _write(ids=None, extra=()):
+        rows = [
+            s
+            for s in feb_excerpt["stations"]
+            if ids is None or any(i in s["name"].split() for i in ids)
+        ]
+        rows += [
+            {"name": n, "x": x, "y": y, "zeta": feb_excerpt["stations"][0]["zeta"]}
+            for n, x, y in extra
+        ]
+        counter["n"] += 1
+        path = tmp_path / f"feb_excerpt_{counter['n']}.nc"
+        nc = netCDF4.Dataset(str(path), "w")
+        try:
+            for key, value in feb_excerpt["global_attributes"].items():
+                setattr(nc, key, value)
+            n_t = len(feb_excerpt["time"]["values"])
+            nc.createDimension("time", n_t)
+            nc.createDimension("station", len(rows))
+            nc.createDimension("namelen", 50)
+            t = nc.createVariable("time", "f8", ("time",))
+            t.units = feb_excerpt["time"]["units"]
+            t[:] = feb_excerpt["time"]["values"]
+            names = nc.createVariable("station_name", "S1", ("station", "namelen"))
+            chars = np.full((len(rows), 50), b"", dtype="S1")
+            for i, r in enumerate(rows):
+                chars[i, : len(r["name"])] = [bytes([c]) for c in r["name"].encode()]
+            names[:] = chars
+            x = nc.createVariable("x", "f8", ("station",))
+            x.long_name, x.standard_name, x.units = (
+                "longitude",
+                "longitude",
+                "degrees_east",
+            )
+            x[:] = [r["x"] for r in rows]
+            y = nc.createVariable("y", "f8", ("station",))
+            y.long_name, y.standard_name, y.units = (
+                "latitude",
+                "latitude",
+                "degrees_north",
+            )
+            y[:] = [r["y"] for r in rows]
+            attrs = dict(feb_excerpt["zeta_attributes"])
+            z = nc.createVariable(
+                "zeta", "f8", ("time", "station"), fill_value=attrs.pop("_FillValue")
+            )
+            for key, value in attrs.items():
+                setattr(z, key, value)
+            z[:] = np.array([r["zeta"] for r in rows], dtype=float).T
+        finally:
+            nc.close()
+        return path
+
+    return _write

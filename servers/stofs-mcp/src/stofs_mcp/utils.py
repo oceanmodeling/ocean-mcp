@@ -471,30 +471,183 @@ def datum_markdown_lines(datum_info: dict[str, Any]) -> list[str]:
     return lines
 
 
-def unswap_station_coords(
+COORDINATE_RULE_3D = (
+    "STOFS-3D-Atlantic stations all lie north of the equator and west of "
+    "Greenwich: a record whose y (labelled latitude) is negative and x "
+    "(labelled longitude) positive is stored reversed and is swapped; a record "
+    "that reads as neither orientation (coordinates of the same sign, zero or "
+    "not finite) is left undetermined and not used for location"
+)
+COORDINATE_RULE_NOT_APPLIED = (
+    "not applied: only STOFS-3D-Atlantic files are checked; for STOFS-2D-Global "
+    "a southern-hemisphere, eastern-hemisphere record can be a real station"
+)
+_MAX_NAMED_STATIONS = 10
+
+
+def check_station_coords(
     model: str | None,
     lats: list[float],
     lons: list[float],
-) -> tuple[list[float], list[float]]:
-    """Repair STOFS-3D-Atlantic rows whose latitude and longitude are swapped.
+) -> tuple[list[float], list[float], dict[str, Any]]:
+    """Repair STOFS-3D-Atlantic records whose latitude and longitude are
+    swapped, and report what was done.
 
     STOFS-3D-Atlantic v2.1 station files (cycles before 2026-08-17 12z) store
     latitude in ``x`` and longitude in ``y`` for most rows (105 of 108),
     although the attributes say the opposite; v3.1 files are correct. The 3D
     domain lies entirely north of the equator and west of Greenwich, so a row
-    reading as latitude < 0 < longitude must be swapped. The rule applies only
-    to 3d_atlantic: for 2D-Global such a row can be a real station (e.g.
+    reading as latitude < 0 < longitude must be swapped. A row that reads as
+    neither orientation cannot be placed without guessing; its coordinates are
+    returned as NaN and the row is reported as undetermined. The rule applies
+    only to 3d_atlantic: for 2D-Global such a row can be a real station (e.g.
     Australia).
+
+    Returns:
+        (lats, lons, info). ``info`` holds ``checked``, ``rule``,
+        ``n_stations``, the indices ``corrected`` and ``undetermined``, and
+        ``raw`` (the stored (y, x) pairs, i.e. (labelled lat, labelled lon)).
     """
+    raw = [(float(a), float(b)) for a, b in zip(lats, lons)]
+    info: dict[str, Any] = {
+        "checked": model == "3d_atlantic",
+        "rule": COORDINATE_RULE_3D
+        if model == "3d_atlantic"
+        else COORDINATE_RULE_NOT_APPLIED,
+        "n_stations": len(raw),
+        "corrected": [],
+        "undetermined": [],
+        "raw": raw,
+    }
     if model != "3d_atlantic":
-        return lats, lons
+        return lats, lons, info
     fixed_lats, fixed_lons = [], []
-    for lat, lon in zip(lats, lons):
-        if lat < 0 < lon:
+    for i, (lat, lon) in enumerate(raw):
+        if lat > 0 > lon:
+            pass  # as labelled: north of the equator, west of Greenwich
+        elif lat < 0 < lon:
             lat, lon = lon, lat
+            info["corrected"].append(i)
+        else:
+            lat, lon = math.nan, math.nan
+            info["undetermined"].append(i)
         fixed_lats.append(lat)
         fixed_lons.append(lon)
+    return fixed_lats, fixed_lons, info
+
+
+def unswap_station_coords(
+    model: str | None,
+    lats: list[float],
+    lons: list[float],
+) -> tuple[list[float], list[float]]:
+    """The repaired coordinates of check_station_coords, without the report."""
+    fixed_lats, fixed_lons, _ = check_station_coords(model, lats, lons)
     return fixed_lats, fixed_lons
+
+
+def _named(indices: list[int], names: list[str] | None) -> list[str]:
+    names = names or []
+    return [
+        names[i].strip() if i < len(names) else str(i)
+        for i in indices[:_MAX_NAMED_STATIONS]
+    ]
+
+
+def coordinate_provenance(
+    info: dict[str, Any] | None,
+    station_idx: int | None = None,
+    station_names: list[str] | None = None,
+) -> dict[str, Any]:
+    """JSON-ready report of the coordinate check (the station, point and max
+    tools emit it, beside datum_provenance)."""
+    info = info or {
+        "checked": False,
+        "rule": COORDINATE_RULE_NOT_APPLIED,
+        "n_stations": 0,
+        "corrected": [],
+        "undetermined": [],
+        "raw": [],
+    }
+    out: dict[str, Any] = {
+        "checked": info["checked"],
+        "rule": info["rule"],
+        "stations_in_file": info["n_stations"],
+        "stations_corrected": len(info["corrected"]),
+        "stations_undetermined": len(info["undetermined"]),
+        "undetermined_stations": _named(info["undetermined"], station_names),
+    }
+    if station_idx is not None and station_idx < len(info["raw"]):
+        stored_y, stored_x = info["raw"][station_idx]
+        out["station"] = {
+            "corrected": station_idx in info["corrected"],
+            "undetermined": station_idx in info["undetermined"],
+            "stored_x": stored_x,
+            "stored_y": stored_y,
+        }
+    return out
+
+
+def coordinate_warning(
+    info: dict[str, Any] | None,
+    station_idx: int | None = None,
+    station_names: list[str] | None = None,
+) -> str | None:
+    """One-sentence statement of any coordinate correction, or None."""
+    if not info or not info["checked"]:
+        return None
+    n_fix, n_und = len(info["corrected"]), len(info["undetermined"])
+    if not n_fix and not n_und:
+        return None
+    parts = []
+    if n_fix:
+        parts.append(
+            f"{n_fix} of {info['n_stations']} station records in this file store "
+            "latitude in x and longitude in y, the reverse of their attributes; "
+            "their coordinates were swapped (rule: a record reading as latitude "
+            "< 0 < longitude cannot lie in the STOFS-3D-Atlantic domain)."
+        )
+    if n_und:
+        names = ", ".join(_named(info["undetermined"], station_names))
+        more = " …" if n_und > _MAX_NAMED_STATIONS else ""
+        parts.append(
+            f"{n_und} station record(s) read as neither orientation, so their "
+            f"position is undetermined and they are not used for location: "
+            f"{names}{more}."
+        )
+    if station_idx is not None and station_idx < len(info["raw"]):
+        stored_y, stored_x = info["raw"][station_idx]
+        if station_idx in info["corrected"]:
+            parts.append(
+                f"This station's coordinates were corrected (stored x={stored_x}, "
+                f"y={stored_y})."
+            )
+        elif station_idx in info["undetermined"]:
+            parts.append(
+                f"This station's position is undetermined (stored x={stored_x}, "
+                f"y={stored_y})."
+            )
+    return " ".join(parts)
+
+
+def coordinate_markdown_lines(
+    info: dict[str, Any] | None,
+    station_idx: int | None = None,
+    station_names: list[str] | None = None,
+) -> list[str]:
+    """Markdown metadata line for a coordinate correction (empty if none)."""
+    warning = coordinate_warning(info, station_idx, station_names)
+    return [f"⚠️ Coordinate warning: {warning}"] if warning else []
+
+
+def zeta_units(zeta_var: Any) -> str:
+    """Units of the water-level variable, from its ``units`` attribute.
+
+    STOFS station files declare ``m``; if the attribute is missing, the value
+    the comparison tool assumes ("m") is returned.
+    """
+    units = getattr(zeta_var, "units", None)
+    return str(units).strip() if units not in (None, "") else "m"
 
 
 EXCLUSION_REASONS = ("masked_or_fill", "nonfinite", "sentinel", "implausible")
@@ -596,7 +749,10 @@ def parse_station_netcdf(
         Dict with keys:
             - 'station_names': list of all station ID strings
             - 'lats': list of latitudes
-            - 'lons': list of longitudes
+            - 'lons': list of longitudes (both after the STOFS-3D coordinate
+              check; an undetermined record's are NaN)
+            - 'coordinate_check': the check_station_coords report, or None
+            - 'units': units of the water-level variable (zeta_units)
             - 'n_stations': total station count
             - 'n_times': total time steps
             - 'datum': datum named by the zeta metadata ('NAVD88', 'LMSL',
@@ -655,8 +811,9 @@ def parse_station_netcdf(
                 float(v) for v in np.array(nc.variables[lon_var_name][:]).ravel()
             )
 
+        coordinate_check = None
         if lats and lons:
-            lats, lons = unswap_station_coords(model, lats, lons)
+            lats, lons, coordinate_check = check_station_coords(model, lats, lons)
 
         n_stations = len(station_names) or (len(lats) if lats else 0)
         n_times = len(nc.variables[time_var_name])
@@ -668,6 +825,8 @@ def parse_station_netcdf(
             "station_names": station_names,
             "lats": lats,
             "lons": lons,
+            "coordinate_check": coordinate_check,
+            "units": zeta_units(nc.variables[zeta_var_name]),
             "n_stations": n_stations,
             "n_times": n_times,
             "datum": dm["datum"],

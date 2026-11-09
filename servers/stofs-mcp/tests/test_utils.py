@@ -1185,3 +1185,141 @@ class TestAuditMinorFindings:
             dumps_strict({"a": np.array([1.5, np.nan]), "b": np.zeros((1, 2))})
         )
         assert out == {"a": [1.5, None], "b": [[0.0, 0.0]]}
+
+
+# ---------------------------------------------------------------------------
+# Coordinate check with provenance (WP1 defect D1), on a verbatim excerpt of
+# the real 2026-02-18 12z STOFS-3D-Atlantic file (sha256 d13345a3...33b5)
+# ---------------------------------------------------------------------------
+
+
+class TestCheckStationCoordsRealExcerpt:
+    """check_station_coords repairs reversed records and reports what it did."""
+
+    @staticmethod
+    def _coords(excerpt, ids):
+        rows = [
+            s for s in excerpt["stations"] if any(i in s["name"].split() for i in ids)
+        ]
+        # parse order: lats come from y, lons from x
+        return [r["y"] for r in rows], [r["x"] for r in rows], rows
+
+    def test_reversed_records_are_swapped_and_reported(self, feb_excerpt):
+        """Eastport and Boston store latitude in x: both are swapped and counted."""
+        from stofs_mcp.utils import check_station_coords, coordinate_warning
+
+        from .conftest import FEB_REVERSED
+
+        lats, lons, rows = self._coords(feb_excerpt, FEB_REVERSED)
+        fixed_lats, fixed_lons, info = check_station_coords("3d_atlantic", lats, lons)
+        assert fixed_lats == [r["x"] for r in rows]
+        assert fixed_lons == [r["y"] for r in rows]
+        assert info["corrected"] == [0, 1] and info["undetermined"] == []
+        warning = coordinate_warning(info, 1)
+        assert warning.startswith("2 of 2 station records")
+        assert "This station's coordinates were corrected" in warning
+
+    def test_records_as_labelled_are_unchanged_and_not_reported(self, feb_excerpt):
+        """The file's three correctly ordered records are kept, with no warning."""
+        from stofs_mcp.utils import (
+            check_station_coords,
+            coordinate_provenance,
+            coordinate_warning,
+        )
+
+        from .conftest import FEB_AS_LABELLED
+
+        lats, lons, _ = self._coords(feb_excerpt, FEB_AS_LABELLED)
+        fixed_lats, fixed_lons, info = check_station_coords("3d_atlantic", lats, lons)
+        assert (fixed_lats, fixed_lons) == (lats, lons)
+        assert coordinate_warning(info) is None
+        prov = coordinate_provenance(info, 0)
+        assert prov["checked"] is True
+        assert prov["stations_corrected"] == 0
+        assert prov["station"]["corrected"] is False
+
+    def test_mixed_set_reports_counts_and_station_level_detail(self, feb_excerpt):
+        """All five excerpt records: 2 corrected, 3 kept, each station's stored values kept."""
+        from stofs_mcp.utils import (
+            check_station_coords,
+            coordinate_provenance,
+            coordinate_warning,
+        )
+
+        lats, lons, rows = self._coords(
+            feb_excerpt, ("8410140", "8443970", "8721604", "8767816", "8771972")
+        )
+        fixed_lats, fixed_lons, info = check_station_coords("3d_atlantic", lats, lons)
+        assert len(info["corrected"]) == 2 and len(info["undetermined"]) == 0
+        assert all(
+            15 < la < 47 and -100 < lo < -60 for la, lo in zip(fixed_lats, fixed_lons)
+        )
+        prov = coordinate_provenance(info, 1)
+        assert prov["stations_in_file"] == 5 and prov["stations_corrected"] == 2
+        assert prov["station"] == {
+            "corrected": True,
+            "undetermined": False,
+            "stored_x": rows[1]["x"],
+            "stored_y": rows[1]["y"],
+        }
+        assert coordinate_warning(info, 2).startswith("2 of 5 station records")
+        assert "This station" not in coordinate_warning(info, 2)
+
+    def test_undetermined_orientation_is_reported_not_guessed(self, feb_excerpt):
+        """SYNTHETIC record: x and y both positive read as neither orientation."""
+        from stofs_mcp.utils import check_station_coords, coordinate_warning
+
+        lats, lons, _ = self._coords(feb_excerpt, ("8443970",))
+        lats.append(71.05)  # synthetic: same sign as x, not a real record
+        lons.append(42.35)
+        fixed_lats, fixed_lons, info = check_station_coords("3d_atlantic", lats, lons)
+        assert info["undetermined"] == [1]
+        assert math.isnan(fixed_lats[1]) and math.isnan(fixed_lons[1])
+        warning = coordinate_warning(info, 1, ["Boston", "SYNTHETIC"])
+        assert "undetermined" in warning and "SYNTHETIC" in warning
+        assert "This station's position is undetermined" in warning
+
+    def test_2d_global_is_not_checked(self):
+        """2D-Global keeps a southern-hemisphere station and reports that no check applies."""
+        from stofs_mcp.utils import (
+            check_station_coords,
+            coordinate_provenance,
+            coordinate_warning,
+        )
+
+        lats, lons, info = check_station_coords("2d_global", [-33.85], [151.23])
+        assert (lats, lons) == ([-33.85], [151.23])
+        assert coordinate_warning(info) is None
+        assert coordinate_provenance(info)["checked"] is False
+        assert coordinate_provenance(info)["rule"].startswith("not applied")
+
+    def test_unswap_wrapper_still_returns_repaired_coordinates(self, feb_excerpt):
+        """unswap_station_coords keeps its signature and result."""
+        from .conftest import FEB_REVERSED
+
+        lats, lons, rows = self._coords(feb_excerpt, FEB_REVERSED)
+        assert unswap_station_coords("3d_atlantic", lats, lons) == (
+            [r["x"] for r in rows],
+            [r["y"] for r in rows],
+        )
+
+
+class TestZetaUnits:
+    """zeta_units reads the water-level variable's units attribute (WP1 defect D2)."""
+
+    def test_reads_the_attribute(self):
+        """The attribute is returned as written."""
+        from types import SimpleNamespace
+
+        from stofs_mcp.utils import zeta_units
+
+        assert zeta_units(SimpleNamespace(units="m")) == "m"
+        assert zeta_units(SimpleNamespace(units="ft")) == "ft"
+
+    def test_missing_attribute_defaults_to_metres(self):
+        """Without the attribute, the value the comparison tool assumes is used."""
+        from types import SimpleNamespace
+
+        from stofs_mcp.utils import zeta_units
+
+        assert zeta_units(SimpleNamespace()) == "m"

@@ -36,7 +36,11 @@ from ..utils import (
     exclusion_masks,
     resolve_station_datum,
     read_datum_metadata,
-    unswap_station_coords,
+    check_station_coords,
+    coordinate_markdown_lines,
+    coordinate_provenance,
+    coordinate_warning,
+    zeta_units,
 )
 
 
@@ -168,6 +172,17 @@ async def stofs_get_station_forecast(
                     "datum_source": datum_info["datum_source"],
                     "datum_warning": datum_info["datum_warning"] or None,
                     "datum_provenance": datum_provenance(datum_info),
+                    "units": data.get("units") or "m",
+                    "coordinate_warning": coordinate_warning(
+                        data.get("coordinate_check"),
+                        data.get("station_idx"),
+                        data.get("station_names"),
+                    ),
+                    "coordinate_provenance": coordinate_provenance(
+                        data.get("coordinate_check"),
+                        data.get("station_idx"),
+                        data.get("station_names"),
+                    ),
                     "excluded_model_records": data.get("excluded_model_records"),
                     "lat": data.get("lat"),
                     "lon": data.get("lon"),
@@ -187,6 +202,11 @@ async def stofs_get_station_forecast(
                 f"Product: {product_label}",
                 f"Cycle: {date_str[:4]}-{date_str[4:6]}-{date_str[6:]} {hour_str}z",
                 *datum_markdown_lines(datum_info),
+                *coordinate_markdown_lines(
+                    data.get("coordinate_check"),
+                    data.get("station_idx"),
+                    data.get("station_names"),
+                ),
                 f"Lat/Lon: {data.get('lat', '?')}, {data.get('lon', '?')}",
             ],
         )
@@ -305,6 +325,13 @@ async def stofs_get_point_forecast(
                     "datum_source": datum_info["datum_source"],
                     "datum_warning": datum_info["datum_warning"] or None,
                     "datum_provenance": datum_provenance(datum_info),
+                    "units": data.get("units") or "m",
+                    "coordinate_warning": coordinate_warning(
+                        meta.get("coordinate_check"), nearest_idx, station_names
+                    ),
+                    "coordinate_provenance": coordinate_provenance(
+                        meta.get("coordinate_check"), nearest_idx, station_names
+                    ),
                     "excluded_model_records": data.get("excluded_model_records"),
                     "times": times,
                     "values": values,
@@ -320,6 +347,9 @@ async def stofs_get_point_forecast(
                 f"Distance to nearest station: {distance_km:.1f} km",
                 f"Cycle: {date_str[:4]}-{date_str[4:6]}-{date_str[6:]} {hour_str}z",
                 *datum_markdown_lines(datum_info),
+                *coordinate_markdown_lines(
+                    meta.get("coordinate_check"), nearest_idx, station_names
+                ),
             ],
         )
 
@@ -395,6 +425,7 @@ async def stofs_get_max_water_level(
 
             datum_meta = read_datum_metadata(nc, zeta_var_name)
             zeta_var = nc.variables[zeta_var_name]
+            units = zeta_units(zeta_var)
             raw_zeta, masks = exclusion_masks(zeta_var, zeta_var[:])
             invalid = np.zeros(raw_zeta.shape, dtype=bool)
             for m in masks.values():
@@ -420,7 +451,7 @@ async def stofs_get_max_water_level(
         finally:
             nc.close()
 
-        lats, lons = unswap_station_coords(model.value, lats, lons)
+        lats, lons, coord_check = check_station_coords(model.value, lats, lons)
 
         n_stations = zeta.shape[1] if zeta.ndim == 2 else 0
         if n_stations == 0:
@@ -509,6 +540,13 @@ async def stofs_get_max_water_level(
                     "datum_source": datum_info["datum_source"],
                     "datum_warning": datum_info["datum_warning"] or None,
                     "datum_provenance": datum_provenance(datum_info),
+                    "units": units,
+                    "coordinate_warning": coordinate_warning(
+                        coord_check, None, station_names
+                    ),
+                    "coordinate_provenance": coordinate_provenance(
+                        coord_check, None, station_names
+                    ),
                     "excluded_values": excluded_values,
                     "excluded_stations": excluded_stations,
                     "top_stations": rows,
@@ -526,6 +564,8 @@ async def stofs_get_max_water_level(
         ]
         if datum_info["datum_warning"]:
             lines.insert(2, f"⚠️ **Datum warning**: {datum_info['datum_warning']}")
+        for line in coordinate_markdown_lines(coord_check, None, station_names):
+            lines.insert(len(lines) - 1, line)
         if region:
             lines[1] += f" | **Region**: {region.value}"
 

@@ -2594,3 +2594,239 @@ async def test_resolve_latest_cycle_ttl_zero_disables_cache():
     finally:
         await c.close()
     assert route.call_count == 2
+
+
+# ---------------------------------------------------------------------------
+# WP1 defects D1 (coordinate provenance) and D2 (units in JSON), on station
+# files written from the verbatim 2026-02-18 12z STOFS-3D excerpt
+# ---------------------------------------------------------------------------
+
+
+def _client_for(path):
+    from unittest.mock import AsyncMock
+
+    client = STOFSClient(backoff_factor=0)
+    client.download_netcdf = AsyncMock(return_value=path)
+    return client
+
+
+class TestCoordinateProvenance:
+    """The station, point and max tools say when coordinates were corrected."""
+
+    @pytest.mark.asyncio
+    async def test_point_tool_reports_correction_for_boston(self, feb_excerpt_nc):
+        """Boston is found at 0 km and the JSON names the correction and its rule."""
+        from stofs_mcp.tools.forecast import stofs_get_point_forecast
+
+        out = await stofs_get_point_forecast(
+            make_ctx(_client_for(feb_excerpt_nc())),
+            latitude=42.3539,
+            longitude=-71.0503,
+            model=STOFSModel.ATLANTIC_3D,
+            cycle_date="2026-02-18",
+            cycle_hour="12",
+            response_format="json",
+        )
+        parsed = json.loads(out)
+        assert "8443970" in parsed["nearest_station"]
+        assert parsed["distance_km"] == pytest.approx(0.0, abs=0.01)
+        assert parsed["coordinate_warning"].startswith("2 of 5 station records")
+        assert (
+            "This station's coordinates were corrected" in parsed["coordinate_warning"]
+        )
+        prov = parsed["coordinate_provenance"]
+        assert prov["checked"] is True and prov["stations_corrected"] == 2
+        assert prov["station"]["corrected"] is True
+        assert prov["station"]["stored_x"] == pytest.approx(42.3539103827)
+        assert prov["station"]["stored_y"] == pytest.approx(-71.0502859522)
+        assert (
+            "latitude < 0 < longitude" in prov["rule"]
+            or "west of Greenwich" in prov["rule"]
+        )
+
+    @pytest.mark.asyncio
+    async def test_point_tool_markdown_has_one_coordinate_line(self, feb_excerpt_nc):
+        """Markdown carries exactly one coordinate-warning line."""
+        from stofs_mcp.tools.forecast import stofs_get_point_forecast
+
+        out = await stofs_get_point_forecast(
+            make_ctx(_client_for(feb_excerpt_nc())),
+            latitude=42.3539,
+            longitude=-71.0503,
+            model=STOFSModel.ATLANTIC_3D,
+            cycle_date="2026-02-18",
+            cycle_hour="12",
+        )
+        assert sum("Coordinate warning" in line for line in out.splitlines()) == 1
+
+    @pytest.mark.asyncio
+    async def test_point_tool_station_stored_as_labelled(self, feb_excerpt_nc):
+        """Trident Pier is stored correctly: the file-level count is given, not a station correction."""
+        from stofs_mcp.tools.forecast import stofs_get_point_forecast
+
+        out = await stofs_get_point_forecast(
+            make_ctx(_client_for(feb_excerpt_nc())),
+            latitude=28.4157,
+            longitude=-80.5934,
+            model=STOFSModel.ATLANTIC_3D,
+            cycle_date="2026-02-18",
+            cycle_hour="12",
+            response_format="json",
+        )
+        parsed = json.loads(out)
+        assert "8721604" in parsed["nearest_station"]
+        assert parsed["coordinate_provenance"]["station"]["corrected"] is False
+        assert "This station" not in parsed["coordinate_warning"]
+
+    @pytest.mark.asyncio
+    async def test_station_tool_without_reversed_records(self, feb_excerpt_nc):
+        """A file whose records are all as labelled: no warning, zero corrections."""
+        from stofs_mcp.tools.forecast import stofs_get_station_forecast
+
+        from .conftest import FEB_AS_LABELLED
+
+        out = await stofs_get_station_forecast(
+            make_ctx(_client_for(feb_excerpt_nc(FEB_AS_LABELLED))),
+            station_id="8767816",
+            model=STOFSModel.ATLANTIC_3D,
+            cycle_date="2026-02-18",
+            cycle_hour="12",
+            response_format="json",
+        )
+        parsed = json.loads(out)
+        assert parsed["coordinate_warning"] is None
+        assert parsed["coordinate_provenance"]["stations_corrected"] == 0
+        assert parsed["coordinate_provenance"]["station"]["corrected"] is False
+
+    @pytest.mark.asyncio
+    async def test_station_tool_reports_reversed_station(self, feb_excerpt_nc):
+        """Boston's own record is named as corrected, with its stored values."""
+        from stofs_mcp.tools.forecast import stofs_get_station_forecast
+
+        out = await stofs_get_station_forecast(
+            make_ctx(_client_for(feb_excerpt_nc())),
+            station_id="8443970",
+            model=STOFSModel.ATLANTIC_3D,
+            cycle_date="2026-02-18",
+            cycle_hour="12",
+            response_format="json",
+        )
+        parsed = json.loads(out)
+        assert (parsed["lat"], parsed["lon"]) == (
+            pytest.approx(42.3539103827),
+            pytest.approx(-71.0502859522),
+        )
+        assert parsed["coordinate_provenance"]["station"]["corrected"] is True
+
+    @pytest.mark.asyncio
+    async def test_max_tool_reports_file_level_counts(self, feb_excerpt_nc):
+        """The max tool reports how many records were corrected, in JSON and markdown."""
+        from stofs_mcp.tools.forecast import stofs_get_max_water_level
+
+        # each tool call deletes its downloaded file, so every call gets its own copy
+        parsed = json.loads(
+            await stofs_get_max_water_level(
+                make_ctx(_client_for(feb_excerpt_nc())),
+                model=STOFSModel.ATLANTIC_3D,
+                cycle_date="2026-02-18",
+                cycle_hour="12",
+                response_format="json",
+            )
+        )
+        assert parsed["coordinate_provenance"]["stations_corrected"] == 2
+        assert parsed["coordinate_warning"].startswith("2 of 5 station records")
+        md = await stofs_get_max_water_level(
+            make_ctx(_client_for(feb_excerpt_nc())),
+            model=STOFSModel.ATLANTIC_3D,
+            cycle_date="2026-02-18",
+            cycle_hour="12",
+        )
+        assert sum("Coordinate warning" in line for line in md.splitlines()) == 1
+
+    @pytest.mark.asyncio
+    async def test_undetermined_record_is_not_used_for_location(self, feb_excerpt_nc):
+        """SYNTHETIC record that reads as neither orientation is never chosen as nearest."""
+        from stofs_mcp.tools.forecast import stofs_get_point_forecast
+
+        # stored x=42.35, y=71.05: read as labelled it would sit at 71.05 N, 42.35 E,
+        # exactly at the query point; read reversed it would sit at 42.35 S
+        path = feb_excerpt_nc(
+            ("8443970",), extra=[("SYNTHETIC 0000000 both positive", 42.35, 71.05)]
+        )
+        out = await stofs_get_point_forecast(
+            make_ctx(_client_for(path)),
+            latitude=71.05,
+            longitude=42.35,
+            model=STOFSModel.ATLANTIC_3D,
+            cycle_date="2026-02-18",
+            cycle_hour="12",
+            max_distance_km=50.0,
+            response_format="json",
+        )
+        assert out.startswith("No STOFS station found within 50.0 km")
+
+    @pytest.mark.asyncio
+    async def test_2d_station_reports_no_check(self, station_nc):
+        """2D-Global: coordinate_provenance says no check applies, warning is None."""
+        from stofs_mcp.tools.forecast import stofs_get_station_forecast
+
+        from .conftest import GLOBAL_2D, ZETA_2D
+
+        path = station_nc(
+            ZETA_2D, "2026-10-30 06:00", [0.1, 0.2], global_attrs=GLOBAL_2D
+        )
+        parsed = json.loads(
+            await stofs_get_station_forecast(
+                make_ctx(_client_for(path)),
+                station_id="8443970",
+                model=STOFSModel.GLOBAL_2D,
+                cycle_date="2026-10-30",
+                cycle_hour="06",
+                response_format="json",
+            )
+        )
+        assert parsed["coordinate_warning"] is None
+        assert parsed["coordinate_provenance"]["checked"] is False
+
+
+class TestUnitsInJson:
+    """The max, station and point tools state units in JSON (WP1 defect D2)."""
+
+    @pytest.mark.asyncio
+    async def test_station_point_and_max_state_units(self, feb_excerpt_nc):
+        """All three report the zeta:units of the file ('m'), at top level beside the datum."""
+        from stofs_mcp.tools.forecast import (
+            stofs_get_max_water_level,
+            stofs_get_point_forecast,
+            stofs_get_station_forecast,
+        )
+
+        # each tool call deletes its downloaded file, so every call gets its own copy
+        common = dict(
+            model=STOFSModel.ATLANTIC_3D,
+            cycle_date="2026-02-18",
+            cycle_hour="12",
+            response_format="json",
+        )
+        station = json.loads(
+            await stofs_get_station_forecast(
+                make_ctx(_client_for(feb_excerpt_nc())), station_id="8443970", **common
+            )
+        )
+        point = json.loads(
+            await stofs_get_point_forecast(
+                make_ctx(_client_for(feb_excerpt_nc())),
+                latitude=42.3539,
+                longitude=-71.0503,
+                **common,
+            )
+        )
+        peak = json.loads(
+            await stofs_get_max_water_level(
+                make_ctx(_client_for(feb_excerpt_nc())), **common
+            )
+        )
+        for parsed in (station, point, peak):
+            assert parsed["units"] == "m"
+            keys = list(parsed)
+            assert keys.index("units") == keys.index("datum_provenance") + 1

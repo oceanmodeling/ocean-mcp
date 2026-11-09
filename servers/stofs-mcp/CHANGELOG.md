@@ -26,6 +26,8 @@ Changes since 0.2.0 (`stofs-mcp-v0.2.0`, commit `5e45c62`). This release changes
   - |value| ≥ 10⁴ m is a `sentinel`;
   - 50 m ≤ |value| < 10⁴ m is `implausible` (the rationale is in `models.py`; e.g. STOFS-2D station SA816 reports 90–136 m).
 - **Swapped coordinates repaired.** In pre-v3.1 STOFS-3D files, 105 of 108 rows store latitude in `x`. Point lookup and region filtering failed for those cycles.
+- **Coordinate corrections are reported** (WP1 finding D1). The station, point and max tools now say when the STOFS-3D coordinate check swapped records: how many, by what rule, and whether the station returned was one of them, with its stored values. Before, the correction was silent.
+  - A record that reads as neither orientation is not guessed. Its position is reported as undetermined, it is not used for location, and its latitude and longitude are `null`. This happens when the coordinates have the same sign, are zero or are not finite; no real file checked so far contains such a record.
 - **Non-finite values.** NaN, ±Inf, masked and fill values are excluded and counted, never replaced by zero. JSON never contains `NaN` or `Infinity`.
 - **Pairing.** One-to-one: exact timestamps first, then the nearest unused observation within 3 min, with ties going to the earlier one. Arithmetic is in UTC. 0.2.0 could pair one observation with two model times, and its results depended on the host timezone.
 
@@ -53,6 +55,11 @@ Changes since 0.2.0 (`stofs-mcp-v0.2.0`, commit `5e45c62`). This release changes
   - `datum_provenance`: datum, resolution, comparable, source, warning, documented_datum, product_version, raw attributes.
 - **Added, station and point tools:** `excluded_model_records`, with counts for `masked_or_fill`, `nonfinite`, `sentinel` and `implausible`.
 - **Added, `stofs_get_max_water_level`:** `excluded_values`, `excluded_stations`.
+- **Added, `stofs_get_station_forecast`, `stofs_get_point_forecast` and `stofs_get_max_water_level`** (WP1 findings D1, D2), placed after `datum_provenance`:
+  - `units`, from the file's `zeta:units` (`"m"` in every STOFS station file; `"m"` if the attribute is missing, as the comparison tool assumes);
+  - `coordinate_warning`, one sentence or null;
+  - `coordinate_provenance`, with `checked`, `rule`, `stations_in_file`, `stations_corrected`, `stations_undetermined` and `undetermined_stations`. The station and point tools add `station` (`corrected`, `undetermined`, `stored_x`, `stored_y`).
+- **Markdown, the same three tools:** one "Coordinate warning" line when a correction was made or a record is undetermined.
 - **Added, `stofs_compare_with_observations`:**
   - `cycle_time`, `window_lead_hours`, `statistics_by_segment` (nowcast/forecast);
   - `window` (definition, file start, requested end, model-available and matched spans, excluded records);
@@ -71,7 +78,8 @@ Changes since 0.2.0 (`stofs-mcp-v0.2.0`, commit `5e45c62`). This release changes
 
 - `stofs_mcp.models.MODEL_DATUMS` and `COOPS_VALIDATION_DATUMS` keep their 0.2.0 values but emit a `DeprecationWarning`. They are wrong for STOFS-3D cycles from 2026-08-17 12z, and no tool uses them. Use `utils.resolve_station_datum()` / `models.documented_station_datum()` and `COOPS_DATUM_FOR_MODEL_DATUM` instead. Planned removal: 1.0.
 - New public helpers: `classify_datum_label`, `read_datum_metadata`, `resolve_station_datum`, `documented_fallback`, `datum_provenance`, `valid_values`, `exclusion_masks`, `value_exclusion_reason`, `match_timeseries`, `dumps_strict`, `unswap_station_coords`.
-- `parse_station_netcdf()` returns extra keys (datum classification, `product`, `n_records`, `excluded_model_records`) and accepts `model=`.
+- `parse_station_netcdf()` returns extra keys (datum classification, `product`, `n_records`, `excluded_model_records`, `coordinate_check`, `units`) and accepts `model=`.
+- New helpers for the coordinate report and units: `check_station_coords`, `coordinate_provenance`, `coordinate_warning`, `coordinate_markdown_lines`, `zeta_units`. `unswap_station_coords` keeps its signature; a record that reads as neither orientation now comes back as NaN instead of unchanged.
 - `align_timeseries()` keeps its signature, but pairing is now one-to-one.
 
 ### Known limitations
