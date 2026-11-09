@@ -513,3 +513,183 @@ class TestRetryTransport:
         finally:
             await c.close()
         assert route.call_count == 1
+
+
+# ============================================================================
+# USGS no-data value (-999999) is excluded from statistics — real excerpt,
+# see fixtures/iv_15290000_ice_SOURCE.md for the source and its SHA-256
+# ============================================================================
+
+ICE_FIXTURE = "iv_15290000_ice_excerpt.json"
+ICE_VALID = [140.0, 138.0, 138.0, 140.0, 99.9, 99.9, 99.9, 98.5]
+
+
+def _ice_iv(n_values: int | None = None) -> dict:
+    """The real 15290000 excerpt; optionally only its first n readings."""
+    data = load_json_fixture(ICE_FIXTURE)
+    if n_values is not None:
+        vs = data["value"]["timeSeries"][0]["values"][0]
+        vs["value"] = vs["value"][:n_values]
+    return data
+
+
+class TestScreenSeriesValues:
+    """screen_series_values splits valid readings from no-data ones."""
+
+    def test_no_data_readings_are_excluded_and_counted(self):
+        """The six -999999 readings (qualifier Ice) are excluded and counted."""
+        from usgs_mcp.models import screen_series_values
+
+        ts = _ice_iv()["value"]["timeSeries"][0]
+        valid, info = screen_series_values(ts)
+        assert [v["value"] for v in valid] == ICE_VALID
+        assert info["no_data_value"] == -999999.0
+        assert info["readings"] == 14
+        assert info["valid"] == 8
+        assert info["excluded"] == {
+            "no_data_value": 6,
+            "non_numeric": 0,
+            "non_finite": 0,
+        }
+        assert info["excluded_qualifiers"] == {"P,Ice": 6}
+        assert info["latest"]["excluded_reason"] == "no_data_value"
+        assert info["latest"]["datetime"] == "2026-11-08T17:15:00.000-09:00"
+
+    def test_non_numeric_and_non_finite_are_counted(self):
+        """Blank and NaN readings are excluded with their own reasons."""
+        from usgs_mcp.models import screen_series_values
+
+        ts = _ice_iv(4)["value"]["timeSeries"][0]
+        ts["values"][0]["value"] += [
+            {"value": "", "qualifiers": ["P"], "dateTime": "x1"},
+            {"value": "NaN", "qualifiers": ["P"], "dateTime": "x2"},
+        ]
+        valid, info = screen_series_values(ts)
+        assert len(valid) == 4
+        assert info["excluded"]["non_numeric"] == 1
+        assert info["excluded"]["non_finite"] == 1
+
+
+class TestHydrographNoData:
+    """usgs_get_hydrograph statistics use valid readings only."""
+
+    def _mock(self, iv):
+        respx.get(f"{USGS_BASE_URL}/iv/").mock(
+            return_value=httpx.Response(200, json=iv)
+        )
+        respx.get(f"{USGS_BASE_URL}/stat/").mock(
+            return_value=httpx.Response(200, text=load_fixture("daily_stats.rdb"))
+        )
+
+    @respx.mock
+    @pytest.mark.asyncio
+    async def test_statistics_exclude_the_no_data_value(self, ctx):
+        """min/max/mean over the 8 valid readings; current is null, not -999999."""
+        self._mock(_ice_iv())
+        data = json.loads(
+            await usgs_get_hydrograph(
+                ctx, site_number="15290000", response_format="json"
+            )
+        )
+        assert data["current_cfs"] is None
+        assert data["min_cfs"] == 98.5
+        assert data["max_cfs"] == 140.0
+        assert data["mean_cfs"] == round(sum(ICE_VALID) / len(ICE_VALID), 1)
+        assert data["num_readings"] == 8
+        assert data["readings_total"] == 14
+        assert data["excluded_readings"]["no_data_value"] == 6
+        assert data["excluded_qualifiers"] == {"P,Ice": 6}
+        assert data["last_valid_cfs"] == 98.5
+        assert data["last_valid_time"] == "2026-11-06T11:00:00.000-09:00"
+        assert "not a measurement" in data["current_note"]
+        assert data.get("pct_of_median") is None
+        assert -999999.0 not in (data["min_cfs"], data["max_cfs"], data["mean_cfs"])
+
+    @respx.mock
+    @pytest.mark.asyncio
+    async def test_markdown_states_the_exclusion(self, ctx):
+        """Markdown reports valid/total readings and that current is no data."""
+        self._mock(_ice_iv())
+        result = await usgs_get_hydrograph(ctx, site_number="15290000")
+        assert "8 valid of 14" in result
+        assert "6 USGS no-data value (-999999.0)" in result
+        assert "P,Ice x6" in result
+        assert "| Current | no data" in result
+        assert "| Last valid | 98.5" in result
+        assert "-999999.0 ft3/s" not in result
+
+    @respx.mock
+    @pytest.mark.asyncio
+    async def test_latest_valid_reading_is_current(self, ctx):
+        """Before freeze-up (first 8 readings) current is the latest reading."""
+        self._mock(_ice_iv(8))
+        data = json.loads(
+            await usgs_get_hydrograph(
+                ctx, site_number="15290000", response_format="json"
+            )
+        )
+        assert data["current_cfs"] == 98.5
+        assert data["excluded_readings"]["no_data_value"] == 0
+        assert "current_note" not in data
+
+
+class TestFloodStatusNoData:
+    """usgs_get_flood_status never treats -999999 as the current flow."""
+
+    def _mock_usgs(self):
+        respx.get(f"{USGS_BASE_URL}/iv/").mock(
+            return_value=httpx.Response(200, json=_ice_iv())
+        )
+        respx.get(USGS_PEAK_URL).mock(
+            return_value=httpx.Response(200, text=load_fixture("peak_streamflow.rdb"))
+        )
+        respx.get(f"{USGS_BASE_URL}/stat/").mock(
+            return_value=httpx.Response(200, text=load_fixture("daily_stats.rdb"))
+        )
+
+    @respx.mock
+    @pytest.mark.asyncio
+    async def test_nws_point_current_flow_is_null(self, ctx):
+        """NWS status stands; current flow and its ratios are null with a note."""
+        self._mock_usgs()
+        respx.get(f"{NWPS_GAUGE_URL}/15290000").mock(
+            return_value=httpx.Response(200, json=_nwps_gauge(2.45, "no_flooding"))
+        )
+        data = json.loads(
+            await usgs_get_flood_status(
+                ctx, site_number="15290000", response_format="json"
+            )
+        )
+        assert data["status"] == "No Flooding"
+        assert data["current_flow_cfs"] is None
+        assert data.get("pct_of_median") is None
+        assert data.get("pct_of_peak") is None
+        assert "not a measurement" in data["current_flow_note"]
+        assert data["readings_excluded_last_24h"]["no_data_value"] == 6
+
+    @respx.mock
+    @pytest.mark.asyncio
+    async def test_non_nws_point_is_unknown_not_below_normal(self, ctx):
+        """Without NWS stage, a no-data reading gives 'Unknown', not a flow label."""
+        self._mock_usgs()
+        respx.get(f"{NWPS_GAUGE_URL}/15290000").mock(return_value=httpx.Response(404))
+        data = json.loads(
+            await usgs_get_flood_status(
+                ctx, site_number="15290000", response_format="json"
+            )
+        )
+        assert data["status"] == "Unknown"
+        assert data["current_flow_cfs"] is None
+        assert "flow_vs_median_ratio" not in data
+
+    @respx.mock
+    @pytest.mark.asyncio
+    async def test_markdown_current_flow_says_no_data(self, ctx):
+        """Markdown shows 'no data' instead of -999,999.0 cfs."""
+        self._mock_usgs()
+        respx.get(f"{NWPS_GAUGE_URL}/15290000").mock(
+            return_value=httpx.Response(200, json=_nwps_gauge(2.45, "no_flooding"))
+        )
+        result = await usgs_get_flood_status(ctx, site_number="15290000")
+        assert "**Current Flow**: no data" in result
+        assert "-999,999" not in result
