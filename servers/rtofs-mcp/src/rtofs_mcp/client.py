@@ -7,6 +7,8 @@ import csv
 import io
 import math
 import random
+import re
+from datetime import datetime, timedelta, timezone
 from typing import Any
 
 import httpx
@@ -231,70 +233,91 @@ class RTOFSClient:
         except Exception:
             return False
 
-    async def get_dataset_time_range(self, dataset_key: str) -> dict[str, str] | None:
-        """Get the time range of a THREDDS dataset using DAS attributes.
+    async def get_dataset_time_range(self, dataset_key: str) -> dict[str, Any]:
+        """Read a dataset's first and last times from its THREDDS time coordinate.
+
+        Two small OPeNDAP requests: the DAS, for the units of ``time`` (and of
+        ``time_run``, the FMRC run times, when the dataset has it), then the
+        ASCII values of those coordinates. The first and last times are the
+        smallest and largest valid values of ``time``.
 
         Returns:
-            Dict with 'first' and 'last' ISO time strings, or None on failure.
+            Dict with 'first' and 'last' (ISO 8601 UTC), 'n_time_steps',
+            'time_step_hours' (None unless the spacing is uniform),
+            'latest_run' (ISO 8601 UTC, or None without ``time_run``),
+            'time_units', 'thredds_path' and 'source_url'.
+
+        Raises:
+            RTOFSAPIError: Unknown dataset, HTTP failure, or a response whose
+                time coordinate cannot be read.
         """
         ds = DATASETS.get(dataset_key)
         if not ds:
-            return None
+            raise RTOFSAPIError(f"Unknown dataset key '{dataset_key}'")
 
-        # Use a minimal NCSS query for time bounds
-        first_var = next(iter(ds["variables"]))
-        url = self.build_ncss_url(ds["path"])
-
+        base = f"{THREDDS_BASE}/dodsC/{ds['path']}"
         client = await self._get_client()
         try:
-            # Query earliest time
-            params = {
-                "var": first_var,
-                "latitude": "0",
-                "longitude": "0",
-                "time_start": "1900-01-01T00:00:00Z",
-                "time_end": "1900-01-02T00:00:00Z",
-                "accept": "csv",
-            }
-            await client.get(url, params=params, timeout=30.0)
+            das = await client.get(f"{base}.das", timeout=30.0)
+            das.raise_for_status()
+            time_attrs = _parse_das_attributes(das.text, "time")
+            run_attrs = _parse_das_attributes(das.text, "time_run")
+            if "units" not in time_attrs:
+                raise RTOFSAPIError(
+                    f"the DAS of {ds['path']} has no units for 'time' — "
+                    "the dataset layout may have changed; check it on HYCOM THREDDS"
+                )
+            names = ["time"] + (["time_run"] if "units" in run_attrs else [])
+            source_url = f"{base}.ascii?{','.join(names)}"
+            values = await client.get(source_url, timeout=30.0)
+            values.raise_for_status()
+        except httpx.HTTPStatusError as e:
+            raise RTOFSAPIError(
+                f"THREDDS OPeNDAP request failed (HTTP {e.response.status_code}) "
+                f"for {ds['path']} — try again later or check rtofs_list_datasets"
+            ) from e
+        except httpx.TimeoutException as e:
+            raise RTOFSAPIError(
+                f"THREDDS OPeNDAP request timed out for {ds['path']} — try again later"
+            ) from e
+        except httpx.TransportError as e:
+            raise RTOFSAPIError(
+                f"could not reach HYCOM THREDDS ({type(e).__name__}) — try again later"
+            ) from e
 
-            # Parse the DAS to find actual time range
-            das_url = f"{THREDDS_BASE}/dodsC/{ds['path']}.das"
-            das_response = await client.get(das_url, timeout=15.0)
-            das_response.raise_for_status()
-
-            das_text = das_response.text
-            # Extract time_origin from DAS
-            time_origin = None
-            for line in das_text.split("\n"):
-                if "time_origin" in line:
-                    # String time_origin "2026-03-02 12:00:00";
-                    parts = line.split('"')
-                    if len(parts) >= 2:
-                        time_origin = parts[1].strip()
-                        break
-
-            if not time_origin:
-                return None
-
-            # Also get latest by querying the most recent time
-            params_last = {
-                "var": first_var,
-                "latitude": "0",
-                "longitude": "0",
-                "time": "present",
-                "accept": "csv",
-            }
-            resp_last = await client.get(url, params=params_last, timeout=30.0)
-            if resp_last.status_code == 200:
-                rows = _parse_csv(resp_last.text)
-                if rows:
-                    last_time = rows[-1].get("time", "")
-                    return {"first": time_origin, "last": last_time}
-
-            return {"first": time_origin, "last": "present"}
-        except Exception:
-            return None
+        arrays = _parse_opendap_ascii(values.text)
+        times = [
+            _cf_time_to_datetime(v, time_attrs["units"], time_attrs.get("calendar"))
+            for v in arrays.get("time", [])
+            if math.isfinite(v)
+        ]
+        if not times:
+            raise RTOFSAPIError(
+                f"no valid values in the time coordinate of {ds['path']} — "
+                "the dataset may be updating; try again later"
+            )
+        times.sort()
+        steps = {
+            round((b - a).total_seconds() / 3600, 6) for a, b in zip(times, times[1:])
+        }
+        latest_run = None
+        if "time_run" in arrays:
+            runs = [
+                _cf_time_to_datetime(v, run_attrs["units"], run_attrs.get("calendar"))
+                for v in arrays["time_run"]
+                if math.isfinite(v)
+            ]
+            latest_run = _iso_utc(max(runs)) if runs else None
+        return {
+            "first": _iso_utc(times[0]),
+            "last": _iso_utc(times[-1]),
+            "n_time_steps": len(times),
+            "time_step_hours": steps.pop() if len(steps) == 1 else None,
+            "latest_run": latest_run,
+            "time_units": time_attrs["units"],
+            "thredds_path": ds["path"],
+            "source_url": source_url,
+        }
 
     async def close(self) -> None:
         """Close the HTTP client."""
@@ -325,6 +348,103 @@ def _time_params(
     if time_end:
         return [("time_end", time_end), ("time_duration", duration)]
     return [("time_start", time_start or "present"), ("time_duration", duration)]
+
+
+# CF time units as served in the DAS, e.g. "hours since 2026-10-30 12:00:00.000 UTC"
+# (time, time_run) or "hours since 2026-10-30T12:00:00Z" (time_offset).
+_CF_UNITS_RE = re.compile(
+    r"^\s*(?P<unit>seconds?|minutes?|hours?|days?)\s+since\s+"
+    r"(?P<date>\d{4}-\d{1,2}-\d{1,2})"
+    r"(?:[ T](?P<h>\d{1,2}):(?P<m>\d{2})(?::(?P<s>\d{1,2}(?:\.\d+)?))?)?"
+    r"\s*(?P<tz>Z|UTC|GMT|[+-]00:?00)?\s*$",
+    re.IGNORECASE,
+)
+_GREGORIAN_CALENDARS = {"standard", "gregorian", "proleptic_gregorian"}
+
+
+def _parse_das_attributes(das_text: str, variable: str) -> dict[str, str]:
+    """Return the String attributes of one variable's block in an OPeNDAP DAS.
+
+    A block looks like ``    time {`` ... ``String units "hours since ...";``
+    ... ``    }``. Returns {} when the variable has no block.
+    """
+    attrs: dict[str, str] = {}
+    inside = False
+    for line in das_text.splitlines():
+        stripped = line.strip()
+        if not inside:
+            inside = stripped == f"{variable} {{"
+            continue
+        if stripped == "}":
+            break
+        m = re.match(r'String\s+(\w+)\s+"(.*)";$', stripped)
+        if m:
+            attrs[m.group(1)] = m.group(2)
+    return attrs
+
+
+def _parse_opendap_ascii(text: str) -> dict[str, list[float]]:
+    """Parse an OPeNDAP ``.ascii`` response for one-dimensional variables.
+
+    After the DDS and the dashed separator line, each variable is a header
+    ``name[N]`` followed by N comma-separated values. Checks that each
+    variable has N values.
+    """
+    parts = re.split(r"^-{3,}\s*$", text, maxsplit=1, flags=re.MULTILINE)
+    if len(parts) != 2:
+        raise RTOFSAPIError(f"unexpected OPeNDAP ASCII response: {text[:200]!r}")
+    body = parts[1]
+    arrays: dict[str, list[float]] = {}
+    expected: dict[str, int] = {}
+    current: str | None = None
+    for line in body.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        header = re.fullmatch(r"(\w+)\[(\d+)\]", line)
+        if header:
+            current = header.group(1)
+            expected[current] = int(header.group(2))
+            arrays[current] = []
+            continue
+        if current is None:
+            raise RTOFSAPIError(f"unexpected OPeNDAP ASCII line: {line[:200]!r}")
+        try:
+            arrays[current].extend(float(v) for v in line.split(",") if v.strip())
+        except ValueError as e:
+            raise RTOFSAPIError(f"non-numeric value for '{current}': {e}") from e
+    for name, n in expected.items():
+        if len(arrays[name]) != n:
+            raise RTOFSAPIError(
+                f"OPeNDAP ASCII '{name}' declares {n} values but has {len(arrays[name])}"
+            )
+    return arrays
+
+
+def _cf_time_to_datetime(value: float, units: str, calendar: str | None) -> datetime:
+    """Convert one CF time value ("<unit> since <UTC date>") to an aware datetime."""
+    if calendar and calendar.lower() not in _GREGORIAN_CALENDARS:
+        raise RTOFSAPIError(f"unsupported time calendar '{calendar}'")
+    m = _CF_UNITS_RE.match(units)
+    if not m:
+        raise RTOFSAPIError(f"unsupported time units '{units}'")
+    year, month, day = (int(x) for x in m.group("date").split("-"))
+    seconds = float(m.group("s") or 0)
+    origin = datetime(
+        year,
+        month,
+        day,
+        int(m.group("h") or 0),
+        int(m.group("m") or 0),
+        tzinfo=timezone.utc,
+    ) + timedelta(seconds=seconds)
+    unit = m.group("unit").lower().rstrip("s") + "s"
+    return origin + timedelta(**{unit: value})
+
+
+def _iso_utc(t: datetime) -> str:
+    """Format an aware UTC datetime as 'YYYY-MM-DDTHH:MM:SSZ'."""
+    return t.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
 def _parse_csv(text: str) -> list[dict[str, Any]]:

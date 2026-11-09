@@ -58,7 +58,8 @@ async def rtofs_get_transect(
         lat_end: Ending latitude.
         lon_end: Ending longitude.
         variable: One of: temperature, salinity, u, v. Default: 'temperature'.
-        time: Time in ISO format. Default: latest ('present').
+        time: Time in ISO format; THREDDS returns the nearest time step.
+              Default: the step nearest the current time ('present').
         n_points: Number of profile points along the transect (2–20). Default: 10.
         response_format: 'markdown' (default) or 'json'.
     """

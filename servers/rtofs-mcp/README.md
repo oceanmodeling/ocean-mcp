@@ -29,7 +29,7 @@ pip install rtofs-mcp
 | --- | --- |
 | `rtofs_get_system_info` | RTOFS overview — resolution, variables, coverage (no HTTP) |
 | `rtofs_list_datasets` | List HYCOM THREDDS datasets with live availability check |
-| `rtofs_get_latest_time` | Query latest forecast time from THREDDS |
+| `rtofs_get_latest_time` | First and last available times of a dataset, from its THREDDS time coordinate |
 | `rtofs_get_surface_forecast` | Surface time series at a point (SST, SSS, currents, SSH) |
 | `rtofs_get_profile_forecast` | 3D depth profile at a point (temp, salinity, currents vs depth) |
 | `rtofs_get_area_forecast` | Surface forecast for a bounding box (parallel point queries) |
