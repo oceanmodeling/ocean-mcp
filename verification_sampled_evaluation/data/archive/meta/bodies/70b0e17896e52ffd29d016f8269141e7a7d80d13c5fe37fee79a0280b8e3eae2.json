@@ -1,0 +1,101 @@
+{
+  "accepted": "Oct 06 2011",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 1.429
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 1.339
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 0.925
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 0.907
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 0.919
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 0.475
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 0.422
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 1.007
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.864
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.09
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.053
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 4.643
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 11.17
+    }
+  ],
+  "LAT": 0.277,
+  "LATdate": "20161115",
+  "LATtime": "23:54",
+  "HAT": 1.62,
+  "HATdate": "20031124",
+  "HATtime": "16:48",
+  "min": -0.246,
+  "mindate": "20050309",
+  "mintime": "11:24",
+  "max": 2.376,
+  "maxdate": "20060212",
+  "maxtime": "16:48",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "05/01/2005 - 04/30/2007"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8461490 New London, CT",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8512735/datums.json"
+}

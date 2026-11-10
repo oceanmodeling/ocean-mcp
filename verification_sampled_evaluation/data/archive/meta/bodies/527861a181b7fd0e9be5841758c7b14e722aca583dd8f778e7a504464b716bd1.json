@@ -1,0 +1,106 @@
+{
+  "accepted": "Apr 17 2003",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 7.438
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 7.306
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 5.591
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 5.582
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 5.596
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 3.858
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 3.744
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 3.694
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 3.447
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.132
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.114
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 3.343
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 9.826
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 5.65
+    }
+  ],
+  "LAT": 3.0990002,
+  "LATdate": "20161116",
+  "LATtime": "23:12",
+  "HAT": 8.098001,
+  "HATdate": "20161116",
+  "HATtime": "16:36",
+  "min": null,
+  "mindate": "",
+  "mintime": "",
+  "max": null,
+  "maxdate": "",
+  "maxtime": "",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "07/01/1999 - 08/31/1999"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8413320 Bar Harbor, ME",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8412581/datums.json"
+}

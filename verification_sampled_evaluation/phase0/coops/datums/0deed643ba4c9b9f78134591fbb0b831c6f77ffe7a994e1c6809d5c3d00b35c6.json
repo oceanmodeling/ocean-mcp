@@ -1,0 +1,96 @@
+{
+  "accepted": "Sep 08 2017",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "PRVD02",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 1.294
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 1.292
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 1.192
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 1.193
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 1.191
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 1.094
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 1.091
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.204
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.198
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.003
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.003
+    },
+    {
+      "name": "PRVD02",
+      "description": "Puerto Rico Vertical Datum of 2002",
+      "value": 1.176
+    }
+  ],
+  "LAT": 0.959162,
+  "LATdate": "20260518",
+  "LATtime": "16:48",
+  "HAT": 1.405162,
+  "HATdate": "20050818",
+  "HATtime": "01:36",
+  "min": 0.823,
+  "mindate": "19680611",
+  "mintime": "11:30",
+  "max": 1.892,
+  "maxdate": "19790831",
+  "maxtime": "03:00",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "01/01/1983 - 12/31/2001"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9759110/datums.json"
+}

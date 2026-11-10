@@ -1,0 +1,36 @@
+{
+ "format": "ocean-replay-archive/1",
+ "dns": {},
+ "entries": [
+  {
+   "id": "t0001",
+   "kind": "coops_nodata_template",
+   "key": {
+    "method": "TEMPLATE",
+    "scheme": "",
+    "host": "",
+    "port": null,
+    "path": "coops-no-data",
+    "params": []
+   },
+   "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8725110&product=water_level&units=metric&time_zone=gmt&format=json&application=ocean_mcp_wp5&datum=MSL&begin_date=20261001&end_date=20261003",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/json;charset=UTF-8"
+     ]
+    ],
+    "body_file": "bodies/500bdf8b7540e3b178fa94711e95e7bd7633578dac4778da5faed9dc45cbfb0f.json",
+    "body_sha256": "500bdf8b7540e3b178fa94711e95e7bd7633578dac4778da5faed9dc45cbfb0f",
+    "bytes": 115
+   },
+   "provenance": {
+    "source": "noaa_fetch phase0 probe",
+    "retrieved_at": "2026-11-10T03:47:01.091+00:00",
+    "note": "byte-identical to the answer for 8443970 MSL 2026-11-20..21 (Phase 0)"
+   }
+  }
+ ]
+}

@@ -1,0 +1,97 @@
+{
+  "accepted": "Nov 23 2020",
+  "superseded": "",
+  "epoch": "2002-2006",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 1.188
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 1.179
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 1.051
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 1.056
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 1.065
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 0.932
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 0.915
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.273
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.247
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.009
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.017
+    }
+  ],
+  "LAT": 0.59200007,
+  "LATdate": "20070118",
+  "LATtime": "19:42",
+  "HAT": 1.4150001,
+  "HATdate": "20251012",
+  "HATtime": "10:42",
+  "min": 0.282,
+  "mindate": "20220117",
+  "mintime": "01:00",
+  "max": 3.25,
+  "maxdate": "20170826",
+  "maxtime": "09:00",
+  "disclaimers": {
+    "disclaimers": [
+      {
+        "name": "Texas Coastal Ocean Observation Network",
+        "text": "These data and associated tidal datums are derived from the Texas Coastal Ocean Observation Network (TCOON), a state-wide coastal observing system. Leveling information used to verify vertical positioning for navigational purposes may not meet NOS standards. Subsequent review of these data based upon field inspections may result in revisions. Data users are cautioned before using these data for critical decisions such as those that concern physical or public safety."
+      }
+    ],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "08/01/2015 - 07/31/2016",
+    "02/01/2017 - 01/31/2019"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8773701 Port O'Connor, TX",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8773259/datums.json"
+}

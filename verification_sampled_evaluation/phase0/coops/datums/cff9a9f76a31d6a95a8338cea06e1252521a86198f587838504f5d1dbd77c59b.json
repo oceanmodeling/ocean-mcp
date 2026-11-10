@@ -1,0 +1,106 @@
+{
+  "accepted": "Jan 12 2016",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 11.813
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 11.776
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 11.556
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 11.569
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 11.567
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 11.361
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 11.299
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.514
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.415
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.037
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.062
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 2.28
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 8.8
+    }
+  ],
+  "LAT": 11.165,
+  "LATdate": "20140203",
+  "LATtime": "11:06",
+  "HAT": 11.967,
+  "HATdate": "20021107",
+  "HATtime": "03:36",
+  "min": null,
+  "mindate": "",
+  "mintime": "",
+  "max": null,
+  "maxdate": "",
+  "maxtime": "",
+  "disclaimers": {
+    "disclaimers": [
+      {
+        "name": "NOTICE OF PROVISIONAL DATUM",
+        "text": "These datums and any data referred to said datum are PROVISIONAL and subject to revision until they have been thoroughly reviewed and received final approval.  Subsequent review based on field inspections and additional measurements may result in revisions to the data and datums.  Data users are cautioned to consider the conditional nature of this information before using it for critical decisions such as those that concern physical or public safety. Only after meeting all standards for quality control assurance will the datums be classified as Accepted Datums."
+      }
+    ],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "07/01/2015 - 08/31/2015"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "9491094 Red Dog Dock, AK",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9469833/datums.json"
+}

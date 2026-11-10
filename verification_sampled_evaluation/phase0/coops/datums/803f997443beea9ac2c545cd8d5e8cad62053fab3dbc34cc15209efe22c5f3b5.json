@@ -1,0 +1,108 @@
+{
+  "accepted": "Nov 06 2020",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 3.772
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 3.75
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 3.431
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 3.44
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 3.431
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 3.129
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 3.089
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.682
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.622
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.021
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.039
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 1.604
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 7.82
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 3.703
+    }
+  ],
+  "LAT": 2.869,
+  "LATdate": "20140131",
+  "LATtime": "07:48",
+  "HAT": 4.07,
+  "HATdate": "20331009",
+  "HATtime": "14:18",
+  "min": 2.697,
+  "mindate": "19940329",
+  "mintime": "21:42",
+  "max": 4.86,
+  "maxdate": "20170910",
+  "maxtime": "17:00",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "01/01/1994 - 12/31/2013",
+    "02/01/2015 - 01/31/2016",
+    "04/01/2016 - 03/31/2019"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8724580 Key West, FL",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8723214/datums.json"
+}

@@ -1,0 +1,101 @@
+{
+  "accepted": "Aug 19 2020",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 6.921
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 6.813
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 5.643
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 5.618
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 5.682
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 4.423
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 4.364
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 2.558
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 2.39
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.109
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.059
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 7.449
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 2.48
+    }
+  ],
+  "LAT": 4.102,
+  "LATdate": "20320116",
+  "LATtime": "05:00",
+  "HAT": 7.3170004,
+  "HATdate": "20160507",
+  "HATtime": "07:30",
+  "min": 3.33,
+  "mindate": "20150216",
+  "mintime": "05:00",
+  "max": 8.392,
+  "maxdate": "20210902",
+  "maxtime": "07:18",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "10/01/2002 - 09/30/2018"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8545240 Philadelphia, PA",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8548989/datums.json"
+}

@@ -1,0 +1,91 @@
+{
+  "accepted": "Aug 03 2020",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 9.32
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 9.294
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 9.07
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 9.072
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 9.066
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 8.849
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 8.82
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.5
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.445
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.026
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.029
+    }
+  ],
+  "LAT": 8.458,
+  "LATdate": "20050110",
+  "LATtime": "16:06",
+  "HAT": 9.571,
+  "HATdate": "20071029",
+  "HATtime": "06:06",
+  "min": 7.608,
+  "mindate": "20200916",
+  "mintime": "14:54",
+  "max": 10.7,
+  "maxdate": "20171008",
+  "maxtime": "08:00",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "07/01/2011 - 06/30/2019"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8737048 Mobile State Docks, AL",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8735391/datums.json"
+}

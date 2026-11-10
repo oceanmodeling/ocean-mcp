@@ -1,0 +1,107 @@
+{
+  "accepted": "Feb 08 2021",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 0.196
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 0.176
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": -0.101
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": -0.096
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": -0.075
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": -0.37
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": -0.399
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.596
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.547
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.02
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.029
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 2.84
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 9.174
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": -0.002
+    }
+  ],
+  "LAT": -0.616,
+  "LATdate": "20360213",
+  "LATtime": "10:06",
+  "HAT": 0.52500004,
+  "HATdate": "20321018",
+  "HATtime": "14:18",
+  "min": -0.941,
+  "mindate": "20040414",
+  "mintime": "17:36",
+  "max": 1.686,
+  "maxdate": "20170911",
+  "maxtime": "16:54",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "04/01/2002 - 03/31/2005",
+    "02/01/2015 - 01/31/2017"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8720218 Mayport (Bar Pilots Dock), FL",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8720226/datums.json"
+}

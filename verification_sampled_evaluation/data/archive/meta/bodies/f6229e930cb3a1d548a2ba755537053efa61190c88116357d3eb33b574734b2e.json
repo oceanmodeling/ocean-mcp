@@ -1,0 +1,96 @@
+{
+  "accepted": "Oct 19 2011",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 1.688
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 1.629
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 1.377
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 1.407
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 1.404
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 1.185
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 1.066
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.622
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.444
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.059
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.119
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 1.252
+    }
+  ],
+  "LAT": 0.605,
+  "LATdate": "20050110",
+  "LATtime": "14:36",
+  "HAT": 1.98,
+  "HATdate": "20071027",
+  "HATtime": "23:24",
+  "min": -0.131,
+  "mindate": "19840228",
+  "mintime": "19:24",
+  "max": 4.513,
+  "maxdate": "20080913",
+  "maxtime": "10:48",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "01/01/1997 - 12/31/2001"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8771510/datums.json"
+}

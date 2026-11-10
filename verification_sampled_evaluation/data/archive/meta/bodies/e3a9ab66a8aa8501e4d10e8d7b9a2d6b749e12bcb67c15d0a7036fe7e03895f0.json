@@ -1,0 +1,103 @@
+{
+  "accepted": "May 17 2021",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 1.587
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 1.467
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 1.061
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 1.045
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 1.009
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 0.623
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 0.536
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 1.051
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.843
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.12
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.087
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": -0.17
+    }
+  ],
+  "LAT": 0.22199994,
+  "LATdate": "20061223",
+  "LATtime": "19:18",
+  "HAT": 2.118,
+  "HATdate": "20230705",
+  "HATtime": "20:30",
+  "min": 0.034,
+  "mindate": "20161111",
+  "mintime": "03:36",
+  "max": 4.527,
+  "maxdate": "20220917",
+  "maxtime": "20:00",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "07/01/2011 - 08/31/2011",
+    "08/01/2016 - 01/31/2017",
+    "06/01/2017 - 07/31/2017",
+    "10/01/2017 - 10/31/2017",
+    "12/01/2017 - 12/31/2017",
+    "07/01/2018 - 10/31/2018",
+    "12/01/2018 - 12/31/2018",
+    "07/01/2019 - 08/31/2019"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "9468756 Nome, Norton Sound, AK",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9468333/datums.json"
+}

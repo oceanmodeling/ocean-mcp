@@ -1,0 +1,101 @@
+{
+  "accepted": "Mar 02 2016",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 6.614
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 6.33
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 4.556
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 4.861
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 4.825
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 3.393
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 2.498
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 4.116
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 2.936
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.284
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.895
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 0.987
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 7.35
+    }
+  ],
+  "LAT": 1.0599997,
+  "LATdate": "20260615",
+  "LATtime": "19:24",
+  "HAT": 7.406,
+  "HATdate": "20140103",
+  "HATtime": "15:12",
+  "min": null,
+  "mindate": "",
+  "mintime": "",
+  "max": null,
+  "maxdate": "",
+  "maxtime": "",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "09/01/2015 - 11/30/2015"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "9446484 Tacoma, WA",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9446291/datums.json"
+}

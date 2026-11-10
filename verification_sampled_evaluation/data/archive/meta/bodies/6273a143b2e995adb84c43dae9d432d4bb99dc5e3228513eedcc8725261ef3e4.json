@@ -1,0 +1,91 @@
+{
+  "accepted": "Dec 04 2008",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "PRVD02",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 9.943
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 9.94
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 9.837
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 9.838
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 9.836
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 9.737
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 9.731
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.212
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.202
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.004
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.006
+    }
+  ],
+  "LAT": 9.6050005,
+  "LATdate": "20250528",
+  "LATtime": "16:18",
+  "HAT": 10.074,
+  "HATdate": "20050915",
+  "HATtime": "00:36",
+  "min": 9.563,
+  "mindate": "20040507",
+  "mintime": "18:12",
+  "max": 10.167,
+  "maxdate": "20031018",
+  "maxtime": "22:06",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "04/01/2001 - 09/30/2004"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "9759110 Magueyes Island, PR",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9758053/datums.json"
+}

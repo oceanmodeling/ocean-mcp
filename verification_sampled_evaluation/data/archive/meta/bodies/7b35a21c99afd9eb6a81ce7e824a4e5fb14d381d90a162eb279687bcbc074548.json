@@ -1,0 +1,101 @@
+{
+  "accepted": "May 24 2005",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 2.671
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 2.567
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 2.298
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 2.278
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 2.286
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 1.989
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 1.925
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.746
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.578
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.105
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.063
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 2.332
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 9.146
+    }
+  ],
+  "LAT": 1.754,
+  "LATdate": "20320114",
+  "LATtime": "10:12",
+  "HAT": 2.883,
+  "HATdate": "20260518",
+  "HATtime": "15:18",
+  "min": 0.664,
+  "mindate": "19801225",
+  "mintime": "18:24",
+  "max": 4.011,
+  "maxdate": "19790906",
+  "maxtime": "07:30",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "01/01/1979 - 12/31/1991"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8574680 Baltimore, MD",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8574070/datums.json"
+}

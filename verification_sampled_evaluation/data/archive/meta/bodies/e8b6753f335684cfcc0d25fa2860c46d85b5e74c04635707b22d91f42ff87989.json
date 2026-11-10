@@ -1,0 +1,101 @@
+{
+  "accepted": "Jun 16 2006",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 1.795
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 1.753
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 1.628
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 1.622
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 1.62
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 1.49
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 1.462
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.333
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.263
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.041
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.029
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 6.78
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 0.55
+    }
+  ],
+  "LAT": 1.354,
+  "LATdate": "20180107",
+  "LATtime": "04:36",
+  "HAT": 1.8280001,
+  "HATdate": "20381129",
+  "HATtime": "20:30",
+  "min": null,
+  "mindate": "",
+  "mintime": "",
+  "max": null,
+  "maxdate": "",
+  "maxtime": "",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "07/25/2005 - 08/31/2005"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "9468756 Nome, Norton Sound, AK",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9469338/datums.json"
+}

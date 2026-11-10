@@ -1,0 +1,125 @@
+{
+  "accepted": "Apr 02 2024",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 1.527
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 1.38
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 1.037
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 0.999
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 0.998
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 0.618
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 0.548
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.979
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.762
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.147
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.071
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 0.071
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 7.876
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": -1.297
+    },
+    {
+      "name": "CRD_OFFSET",
+      "description": "Columbia River Datum offset",
+      "value": 0.006
+    }
+  ],
+  "LAT": 0.329,
+  "LATdate": "20270901",
+  "LATtime": "20:18",
+  "HAT": 1.796,
+  "HATdate": "20031222",
+  "HATtime": "23:24",
+  "min": -0.091,
+  "mindate": "20030921",
+  "mintime": "20:48",
+  "max": 4.676,
+  "maxdate": "20170330",
+  "maxtime": "18:48",
+  "disclaimers": {
+    "disclaimers": [
+      {
+        "name": "Columbia River Datum",
+        "text": "<a href=\"https://tidesandcurrents.noaa.gov/crd.html\">Columbia River Datum (CRD)</a> is the adopted fixed low water reference plane for this area. CRD is a U.S. Army Corps of Engineers non-tidal datum defined at distinct river miles relative to NAVD88, and is used as chart datum above river mile 23 on the Columbia River. Datums are computed using observations from the low river stages of the year, generally August through October due to the masking of the tidal signal from strong seasonal river runoff during other portions of the year. Depending on river flow, water levels can be significantly higher than Columbia River Datum. As of 2014, the U.S. Army Corps of Engineers provided updated offsets for CRD that have been applied to this station. Station Datum (STND) is no longer set equal to CRD."
+      }
+    ],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "08/01/2002 - 11/30/2002",
+    "07/01/2003 - 11/30/2003",
+    "07/01/2004 - 11/30/2004",
+    "08/01/2005 - 10/31/2005",
+    "08/01/2006 - 10/31/2006",
+    "08/01/2007 - 11/30/2007",
+    "08/01/2008 - 10/31/2008",
+    "08/01/2009 - 10/31/2009",
+    "08/01/2010 - 10/31/2010",
+    "09/01/2011 - 12/31/2011"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "9439040 Astoria, OR",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9439201/datums.json"
+}

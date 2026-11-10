@@ -1,0 +1,106 @@
+{
+  "accepted": "Jul 12 2017",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 3.309
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 3.093
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 2.036
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 2.12
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 2.098
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 1.146
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 0.763
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 2.546
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 1.947
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.216
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.383
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 8.846
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 2.307
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 0.78
+    }
+  ],
+  "LAT": 0.062000036,
+  "LATdate": "20220714",
+  "LATtime": "15:12",
+  "HAT": 4.006,
+  "HATdate": "20031223",
+  "HATtime": "20:12",
+  "min": -0.219,
+  "mindate": "19890206",
+  "mintime": "02:48",
+  "max": 4.322,
+  "maxdate": "20111124",
+  "maxtime": "19:24",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "05/01/2012 - 04/30/2014"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "9439040 Astoria, OR",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9439011/datums.json"
+}

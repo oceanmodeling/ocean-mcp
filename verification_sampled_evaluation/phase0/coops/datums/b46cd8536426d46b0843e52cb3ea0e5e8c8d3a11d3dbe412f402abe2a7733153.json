@@ -1,0 +1,97 @@
+{
+  "accepted": "Apr 17 2003",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 1.428
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 1.414
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 1.224
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 1.224
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 1.222
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 1.033
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 1.019
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.409
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.381
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.014
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.014
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 1.189
+    }
+  ],
+  "LAT": 0.661,
+  "LATdate": "20050110",
+  "LATtime": "13:54",
+  "HAT": 1.676,
+  "HATdate": "20251011",
+  "HATtime": "05:06",
+  "min": 0.335,
+  "mindate": "19891224",
+  "mintime": "04:42",
+  "max": 3.17,
+  "maxdate": "19951004",
+  "maxtime": "20:36",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "01/01/1983 - 12/31/1997",
+    "01/01/1999 - 12/31/2001"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8729108/datums.json"
+}

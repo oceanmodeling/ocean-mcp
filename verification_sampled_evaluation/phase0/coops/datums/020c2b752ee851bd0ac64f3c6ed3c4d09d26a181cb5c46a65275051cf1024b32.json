@@ -1,0 +1,102 @@
+{
+  "accepted": "May 08 2025",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 8.95
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 8.84
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 8.289
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 8.266
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 8.298
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 7.693
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 7.629
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 1.32
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 1.147
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.11
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.064
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 6.319
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 0.703
+    }
+  ],
+  "LAT": 7.392,
+  "LATdate": "20320212",
+  "LATtime": "13:36",
+  "HAT": 9.2630005,
+  "HATdate": "20390607",
+  "HATtime": "06:06",
+  "min": 6.645,
+  "mindate": "20230204",
+  "mintime": "12:00",
+  "max": 10.149,
+  "maxdate": "20240113",
+  "maxtime": "20:06",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "01/01/2019 - 12/31/2019",
+    "01/01/2021 - 12/31/2022"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8518750 The Battery, NY",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8518962/datums.json"
+}

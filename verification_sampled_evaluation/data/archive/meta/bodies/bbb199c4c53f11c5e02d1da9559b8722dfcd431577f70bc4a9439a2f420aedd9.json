@@ -1,0 +1,91 @@
+{
+  "accepted": "Feb 27 2018",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 7.065
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 7.036
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 6.83
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 6.829
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 6.825
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 6.621
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 6.594
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.47
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.416
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.028
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.026
+    }
+  ],
+  "LAT": 6.204,
+  "LATdate": "20230120",
+  "LATtime": "12:18",
+  "HAT": 7.336,
+  "HATdate": "20251011",
+  "HATtime": "04:54",
+  "min": 6.036,
+  "mindate": "20090205",
+  "mintime": "10:36",
+  "max": 8.93,
+  "maxdate": "20171008",
+  "maxtime": "06:06",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "05/01/2008 - 04/30/2017"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8741533 Pascagoula NOAA Lab, MS",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8741041/datums.json"
+}

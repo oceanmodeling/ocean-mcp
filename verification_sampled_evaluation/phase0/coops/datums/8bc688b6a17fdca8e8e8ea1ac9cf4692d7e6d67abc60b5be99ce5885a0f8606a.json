@@ -1,0 +1,101 @@
+{
+  "accepted": "Jun 16 2004",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 2.112
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 2.06
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 1.551
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 1.551
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 1.604
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 1.042
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 0.99
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 1.122
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 1.018
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.052
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.052
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 2.951
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 9.89
+    }
+  ],
+  "LAT": 0.82799995,
+  "LATdate": "20140131",
+  "LATtime": "09:48",
+  "HAT": 2.378,
+  "HATdate": "20291009",
+  "HATtime": "16:18",
+  "min": null,
+  "mindate": "",
+  "mintime": "",
+  "max": null,
+  "maxdate": "",
+  "maxtime": "",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "06/01/1975 - 12/31/1975"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8662746 WINYAH BAY, SOUTH ISLAND PLANTATION, SC",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8661703/datums.json"
+}

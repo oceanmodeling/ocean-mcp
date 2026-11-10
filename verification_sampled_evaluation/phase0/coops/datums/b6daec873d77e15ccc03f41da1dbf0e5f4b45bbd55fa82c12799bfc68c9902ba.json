@@ -1,0 +1,96 @@
+{
+  "accepted": "Nov 16 2020",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 8.016
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 7.986
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 7.753
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 7.757
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 7.755
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 7.528
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 7.491
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.525
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.458
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.03
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.037
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 7.628
+    }
+  ],
+  "LAT": 7.1470003,
+  "LATdate": "20050110",
+  "LATtime": "16:36",
+  "HAT": 8.241,
+  "HATdate": "20260519",
+  "HATtime": "19:30",
+  "min": 6.766,
+  "mindate": "20180117",
+  "mintime": "17:06",
+  "max": 9.502,
+  "maxdate": "20171008",
+  "maxtime": "09:48",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "12/01/2011 - 11/30/2018"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8737048 Mobile State Docks, AL",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8737138/datums.json"
+}

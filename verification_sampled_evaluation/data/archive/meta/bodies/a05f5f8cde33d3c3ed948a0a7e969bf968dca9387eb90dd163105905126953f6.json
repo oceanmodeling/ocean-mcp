@@ -1,0 +1,102 @@
+{
+  "accepted": "May 03 2004",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 1.966
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 1.89
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 1.363
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 1.347
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 1.27
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 0.804
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 0.76
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 1.206
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 1.086
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.076
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.044
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 0.504
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 6.304
+    }
+  ],
+  "LAT": 0.43,
+  "LATdate": "20150220",
+  "LATtime": "19:30",
+  "HAT": 2.295,
+  "HATdate": "20331009",
+  "HATtime": "13:00",
+  "min": null,
+  "mindate": "",
+  "mintime": "",
+  "max": null,
+  "maxdate": "",
+  "maxtime": "",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "06/01/1976 - 07/31/1976",
+    "09/01/1976 - 10/31/1976"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8452660 Newport, RI",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8447712/datums.json"
+}

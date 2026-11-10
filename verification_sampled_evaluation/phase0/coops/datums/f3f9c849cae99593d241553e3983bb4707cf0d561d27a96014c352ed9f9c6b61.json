@@ -1,0 +1,106 @@
+{
+  "accepted": "Apr 17 2003",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 2.964
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 2.76
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 2.085
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 2.164
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 2.152
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 1.567
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 1.206
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 1.758
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 1.193
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.204
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.361
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 6.68
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 0.33
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 1.214
+    }
+  ],
+  "LAT": 0.543,
+  "LATdate": "20080604",
+  "LATtime": "13:12",
+  "HAT": 3.4720001,
+  "HATdate": "20261224",
+  "HATtime": "17:48",
+  "min": 0.387,
+  "mindate": "19880119",
+  "mintime": "17:18",
+  "max": 3.81,
+  "maxdate": "19980206",
+  "maxtime": "14:36",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "01/01/1983 - 12/31/2001"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9415020/datums.json"
+}

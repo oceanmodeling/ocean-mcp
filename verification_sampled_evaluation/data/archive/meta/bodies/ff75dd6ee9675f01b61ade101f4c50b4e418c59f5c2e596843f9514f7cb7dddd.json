@@ -1,0 +1,91 @@
+{
+  "accepted": "Dec 11 2007",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 1.415
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 1.356
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 1.259
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 1.245
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 1.248
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 1.134
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 1.104
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.311
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.221
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.059
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.031
+    }
+  ],
+  "LAT": 0.989,
+  "LATdate": "20270127",
+  "LATtime": "04:24",
+  "HAT": 1.462,
+  "HATdate": "20151030",
+  "HATtime": "21:00",
+  "min": null,
+  "mindate": "",
+  "mintime": "",
+  "max": null,
+  "maxdate": "",
+  "maxtime": "",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "09/01/2007 - 09/30/2007"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "9491094 Red Dog Dock, AK",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9469439/datums.json"
+}

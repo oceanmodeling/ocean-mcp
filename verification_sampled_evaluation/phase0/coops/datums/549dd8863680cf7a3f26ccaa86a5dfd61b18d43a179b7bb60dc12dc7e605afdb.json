@@ -1,0 +1,101 @@
+{
+  "accepted": "Jun 07 2013",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 0.888
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 0.865
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 0.785
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 0.789
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 0.783
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 0.713
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 0.683
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.205
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.152
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.022
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.03
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 10.52
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 4.24
+    }
+  ],
+  "LAT": 0.468,
+  "LATdate": "20330402",
+  "LATtime": "06:06",
+  "HAT": 1.16,
+  "HATdate": "20320727",
+  "HATtime": "13:54",
+  "min": null,
+  "mindate": "",
+  "mintime": "",
+  "max": null,
+  "maxdate": "",
+  "maxtime": "",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "07/06/2004 - 08/04/2004"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "9491094 Red Dog Dock, AK",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9491873/datums.json"
+}

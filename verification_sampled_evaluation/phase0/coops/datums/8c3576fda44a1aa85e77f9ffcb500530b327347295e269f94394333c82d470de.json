@@ -1,0 +1,115 @@
+{
+  "accepted": "Aug 13 2018",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 0.633
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 0.514
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": -0.088
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": -0.123
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": -0.099
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": -0.761
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": -0.811
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 1.445
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 1.276
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.119
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.05
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 0.828
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 7.057
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 0.0
+    }
+  ],
+  "LAT": -1.147,
+  "LATdate": "20280212",
+  "LATtime": "08:18",
+  "HAT": 0.949,
+  "HATdate": "20291107",
+  "HATtime": "13:48",
+  "min": -1.67,
+  "mindate": "20180106",
+  "mintime": "10:54",
+  "max": 1.601,
+  "maxdate": "20181027",
+  "maxtime": "15:06",
+  "disclaimers": {
+    "disclaimers": [
+      {
+        "name": "USGS Stations",
+        "text": "Data collected from 2017 and beyond are from United States Geological Survey (USGS) water level stations that are subject to NOAA's National Ocean Service (NOS) routine quality assurance procedures on a monthly basis with data available for the previous month. For access to the real-time data at this location visit USGS at: <a href='https://nwis.waterdata.usgs.gov/nwis/uv?site_no=01411360'>https://nwis.waterdata.usgs.gov/nwis/uv?site_no=01411360</a>."
+      },
+      {
+        "name": "NOTICE OF PROVISIONAL DATUM",
+        "text": "These datums and any data referred to said datum are PROVISIONAL and subject to revision until they have been thoroughly reviewed and received final approval.  Subsequent review based on field inspections and additional measurements may result in revisions to the data and datums.  Data users are cautioned to consider the conditional nature of this information before using it for critical decisions such as those that concern physical or public safety. Only after meeting all standards for quality control assurance will the datums be classified as Accepted Datums."
+      }
+    ],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "01/01/2017 - 12/31/2017"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8557380 Lewes, DE",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8535581/datums.json"
+}

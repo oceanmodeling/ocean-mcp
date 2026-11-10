@@ -1,0 +1,102 @@
+{
+  "accepted": "Oct 30 2020",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 12.095
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 11.831
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 10.497
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 10.697
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 10.682
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 9.563
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 8.9
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 3.196
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 2.268
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.264
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.664
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 7.257
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 1.095
+    }
+  ],
+  "LAT": 7.846,
+  "LATdate": "20260616",
+  "LATtime": "01:00",
+  "HAT": 12.943,
+  "HATdate": "20381130",
+  "HATtime": "23:18",
+  "min": 7.521,
+  "mindate": "20081213",
+  "mintime": "13:12",
+  "max": 13.61,
+  "maxdate": "20211210",
+  "maxtime": "04:36",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "07/01/2007 - 06/30/2010",
+    "09/01/2010 - 08/31/2016"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "9459450 Sand Point, AK",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9463502/datums.json"
+}

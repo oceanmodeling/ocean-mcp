@@ -1,0 +1,97 @@
+{
+  "accepted": "Mar 09 2020",
+  "superseded": "",
+  "epoch": "2002-2006",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 3.698
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 3.694
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 3.589
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 3.589
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 3.601
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 3.485
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 3.479
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.219
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.209
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.004
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.006
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 3.362
+    }
+  ],
+  "LAT": 3.193,
+  "LATdate": "20230121",
+  "LATtime": "17:30",
+  "HAT": 3.924,
+  "HATdate": "20251012",
+  "HATtime": "09:36",
+  "min": 2.971,
+  "mindate": "20220116",
+  "mintime": "22:12",
+  "max": 4.747,
+  "maxdate": "20240708",
+  "maxtime": "11:24",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "06/01/2015 - 05/31/2016",
+    "10/01/2016 - 09/30/2018"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8775792 Packery Channel, TX",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8773701/datums.json"
+}

@@ -1,0 +1,111 @@
+{
+  "accepted": "Jul 05 2022",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 0.36
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 0.306
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 0.019
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 0.012
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 0.015
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": -0.281
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": -0.321
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.682
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.588
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.055
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.039
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 4.441
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 11.118
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 0.054
+    }
+  ],
+  "LAT": -0.517,
+  "LATdate": "20140131",
+  "LATtime": "11:12",
+  "HAT": 0.548,
+  "HATdate": "20291009",
+  "HATtime": "17:42",
+  "min": -0.776,
+  "mindate": "20221224",
+  "mintime": "17:18",
+  "max": 1.324,
+  "maxdate": "20221001",
+  "maxtime": "09:12",
+  "disclaimers": {
+    "disclaimers": [
+      {
+        "name": "USGS Stations",
+        "text": "Data collected from 2017 and beyond are from United States Geological Survey (USGS) water level stations that are subject to NOAA's National Ocean Service (NOS) routine quality assurance procedures on a monthly basis with data available for the previous month. For access to the real-time data at this location visit USGS at: <a href='https://nwis.waterdata.usgs.gov/nwis/uv?site_no=02042770'>https://nwis.waterdata.usgs.gov/nwis/uv?site_no=02042770</a>."
+      }
+    ],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "12/01/2018 - 11/30/2019"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8638610 Sewells Point, VA",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8637712/datums.json"
+}

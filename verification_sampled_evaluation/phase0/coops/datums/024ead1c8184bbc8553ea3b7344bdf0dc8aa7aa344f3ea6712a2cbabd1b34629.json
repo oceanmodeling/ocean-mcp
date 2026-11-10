@@ -1,0 +1,98 @@
+{
+  "accepted": "Sep 26 2011",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 1.072
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 1.04
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 0.924
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 0.931
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 0.931
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 0.822
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 0.775
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.297
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.218
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.032
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.047
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 1.182
+    }
+  ],
+  "LAT": 0.592,
+  "LATdate": "20060322",
+  "LATtime": "04:48",
+  "HAT": 1.267,
+  "HATdate": "20071029",
+  "HATtime": "06:54",
+  "min": 0.454,
+  "mindate": "19710204",
+  "mintime": "10:30",
+  "max": 2.839,
+  "maxdate": "20051024",
+  "maxtime": "15:42",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "01/01/1983 - 12/31/1987",
+    "01/01/1989 - 12/31/1991",
+    "01/01/1994 - 12/31/2001"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8724580 Key West, FL",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8723970/datums.json"
+}

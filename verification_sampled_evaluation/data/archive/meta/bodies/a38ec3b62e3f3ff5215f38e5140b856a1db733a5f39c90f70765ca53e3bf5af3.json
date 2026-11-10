@@ -1,0 +1,101 @@
+{
+  "accepted": "Jul 17 2024",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 4.583
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 4.475
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 3.529
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 3.504
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 3.539
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 2.533
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 2.475
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 2.108
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 1.942
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.108
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.058
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 1.553
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 7.458
+    }
+  ],
+  "LAT": 1.9940001,
+  "LATdate": "20370201",
+  "LATtime": "08:00",
+  "HAT": 5.093,
+  "HATdate": "20331009",
+  "HATtime": "14:18",
+  "min": 1.89,
+  "mindate": "20230221",
+  "mintime": "13:12",
+  "max": 5.723,
+  "maxdate": "20221110",
+  "maxtime": "21:00",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "10/01/2022 - 09/30/2023"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8720030 Fernandina Beach, FL",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8679598/datums.json"
+}

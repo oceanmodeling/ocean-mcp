@@ -1,0 +1,454 @@
+#!/bin/bash 
+
+
+################################################################################
+#  name: stofs_3d_atl_create_obc_3d_th_dynamic_adjust.sh                       #
+#  This script retrieves observational water level daa; calculate model bias,  #
+#  derived the bias corrections and applies them to the open ocean boundary    #
+#  water levels in a netCDF file.                                              #
+#  Remarks:                                                                    #
+#                                                         Septempber 2025      #
+################################################################################
+
+
+# ---------------------------> Begin ...
+set -x
+
+  fn_this_script="stofs_3d_atl_obc_dynamic_adjust.sh"
+
+  echo "${fn_this_script} started "
+
+
+  pgmout=`pwd`/${fn_this_script}.$$
+  rm -f $pgmout
+
+
+  echo "module list in ${fn_this_script}"
+  module list
+  echo; echo
+
+
+# ---------------------------> directory/file names
+  dir_wk=${DATA}/obc_wl_adj/
+
+  mkdir -p $dir_wk
+  cd $dir_wk
+  rm -rf ${dir_wk:?}/*
+
+
+  # (1) cp rotofs-th.nc without DA_adj from rerun
+  # (2) work over it
+  # (3) create sub-dir: NPZ dir
+
+   
+  # ----------> Prepare required input static files:
+ 
+  # para.nml
+    ln -sf ${COMOUTrerun}/stofs_3d_atl.t12z.param.nml  param.nml_cycle_today 
+   
+
+    # create nml_cycle_yesterday 
+      PDYHH_NCAST_BEGIN_cyc_y=$($NDATE -24 ${PDYHH_NCAST_BEGIN})
+      start_yyyy_y=${PDYHH_NCAST_BEGIN_cyc_y:0:4}
+      start_mm_y=${PDYHH_NCAST_BEGIN_cyc_y:4:2}
+      start_dd_y=${PDYHH_NCAST_BEGIN_cyc_y:6:2}
+
+
+      fn_nml_cyc_yesterday=param.nml_cyc_yesterday
+      rm -f ${fn_nml_cyc_yesterday}
+
+      cat param.nml_cycle_today | sed "s/start_year = .*/start_year = $start_yyyy_y/"  | sed "s/start_month = .*/start_month = $start_mm_y/"  \
+            | sed "s/start_day = .*/start_day = $start_dd_y/" > ${fn_nml_cyc_yesterday}
+
+
+      ln -sf ${fn_nml_cyc_yesterday} param.nml
+
+      echo $PDYHH_NCAST_BEGIN_cyc_y, $start_yyyy_y, $start_mm_y, $start_dd_y 
+
+
+  # ----------> non_adj: 
+    fn_rtofs_th_nc_non_adj=${COMOUTrerun}/stofs_3d_atl.t12z.elev2dth_non_adj.nc
+
+    cp -fa ${fn_rtofs_th_nc_non_adj}   ./
+
+    # station.in
+      ln -sf $FIXstofs3d/${RUN}_station.in  station.in          
+
+
+  # -------->  reformat wl obs data
+    # JESTOFS_OFFSET:export dataTankPath=${dataTankPath:-$DCOMROOT/} # real-time
+
+    dir_datatank_base=$DCOMROOT
+    
+    dir_datatank_postfix='coops_waterlvlobs'
+
+
+    dir_today_datatank=${dir_datatank_base}/${PDYHH_FCAST_BEGIN:0:8}/${dir_datatank_postfix}
+    dir_prev_datatank=${dir_datatank_base}/${PDYHH_NCAST_BEGIN:0:8}/${dir_datatank_postfix}
+
+    if [ -d $dir_today_datatank ]; then 
+       DIR_src_data=${dir_today_datatank}
+
+    else
+       DIR_src_data=${dir_prev_datatank}
+
+    fi    
+
+
+    list_staID=(8670870 8665530 8661070 8658163 8651370 8632200 8557380 8536110 8534720 8531680 8452660)
+
+    list_lon=(-80.90303 -79.923615 -78.9183 -77.7867 -75.7467 -75.9884 -75.11928 -74.96 -74.41805 -74.0094 -71.32614)
+    list_lat=(32.034695 32.780834 33.655 34.213306 36.1833 37.1652 38.782833 38.9683 39.356667 40.4669 41.504333)
+
+    str_headLine_csv='date_time,water_level,lon,lat'
+
+    mkdir -p navd_PR
+    cd navd_PR
+
+    rm  -f *.csv
+
+  let k=0
+  for a in ${list_staID[@]}; do
+
+    echo processing station=${DIR_src_data}/${a}.xml
+
+    cp -pf ${DIR_src_data}/${a}.xml .
+
+
+    echo k=${k}
+    lon_k=${list_lon[$k]}
+    lat_k=${list_lat[$k]}
+
+    let k=$k+1
+
+    str_lon_lat="$lon_k,$lat_k"
+
+    rm -f ${a}.csv_tmp
+
+    cat ${DIR_src_data}/${a}.xml | awk -v str_lon_lat="$lon_k,$lat_k"  -F' ' '{print $4  " " $5 ":00," $6 "," str_lon_lat }'  > ${a}.csv_tmp1
+
+
+
+    echo "$str_headLine_csv" | cat - ${a}.csv_tmp1 > "noaa_el_"${a}"_navd.csv"
+
+
+  done
+
+  mkdir -p dir_tmp
+  mv *.xml dir_tmp
+  mv *_tmp1 dir_tmp
+
+   
+  # --------------------> create npz file
+
+    fn_elev2dth_non_adj=${RUN}.${cycle}.elev2dth_non_adj.nc       # stofs_3d_atl.t12z.elev2dth_non_adj.nc
+    fn_elev2dth_non_adj_fullPath=${COMOUTrerun}/${fn_elev2dth_non_adj}
+
+    fn_elev2dth_std_name=${RUN}.${cycle}.elev2dth.nc
+ 
+    #fn_avg_bias_prev=stofs_3d_atl.${cycle}.avg_bias
+    #fn_avg_bias_prev_fullPath=${COMOUT_PREV}/rerun}/stofs_3d_atl.${cycle}.avg_bias
+
+
+   cd $dir_wk
+
+   ln -sf ${USHstofs3d}/pysh/pylibs .
+
+
+   fn_station_bp=${FIXstofs3d}/stofs_3d_atl_obc_adjust_station.bp  # format as station.in; station list: as *_msl_geoid.bp
+   ln -sf ${fn_station_bp} station.bp
+
+
+   #fn_msl_geoid_11_sta_obc_adj=${FIXstofs3d}/OBC_stofs_3d_atl_obc_adjust_msl_geoid.bp
+   fn_msl_geoid_11_sta_obc_adj=${FIXstofs3d}/stofs_3d_atl_obc_adjust_msl_geoid.bp
+   ln -sf  ${fn_msl_geoid_11_sta_obc_adj} diff.bp
+
+   python ${USHstofs3d}/pysh/create_npz_NOAA.py
+
+     if [ ! -f noaa_navd.npz ]; then
+        echo "noaa_navd.npz was not created"
+        echo "No adjustment is applied"
+        echo       
+
+        cp -pf ${fn_elev2dth_non_adj_fullPath}  ${COMOUTrerun}/${fn_elev2dth_std_name}
+
+    
+        msg_warning="Real-time water level observation data not available. Backup plan implemented."
+        echo -e "WARNING: ${msg_warning}"
+
+        email_content="${msg_warning}"
+        email_subject="WARNING: Real-time water level observation data not available. Backup plan implemented."
+        echo "${email_content}" | mail.py -v -s "${email_subject}"
+  
+
+       # return
+       exit 0 
+
+     fi    
+
+ 
+  # -------------------->  
+  # python derive_bias.py 2024-10-08 --duration 2 20241009 20241010
+
+    # Dan: date_time,water_level,lon,lat
+    # 2024-10-08 00:00:00,-0.04,-80.90303,32.034695 
+     
+    #python obc_create_npz_NOAA.py
+
+    # derive_bias.py : Derive bias based converted npz & previous archive staout_1
+    #    data inputs: station.in, staout_1, param.nml, diff.bp
+
+
+    # ----------> generated today's avg_bias:
+
+    echo; echo COMOUT_PREV=${COMOUT_PREV}; echo
+
+    fn_staout_1_prev_cyc=${COMOUT_PREV}/staout_1
+    
+    # check staout_1 status
+      FILESIZE_staout=10000
+
+      if [ -f $fn_staout_1_prev_cyc ]; then
+         filesize=`wc -c $fn_staout_1_prev_cyc | awk '{print $1}' `
+
+         if [ $filesize -ge $FILESIZE_staout ]; then
+            ln -sf ${fn_staout_1_prev_cyc} .
+
+         else
+            echo "average_bias_${PDYHH_FCAST_BEGIN:0:8} is not generated due to staout_1 (small file size)"
+            flag_file_average_bias_today=0
+ 
+         fi
+      fi   
+
+    yyyymmdd_prev=${PDYHH_NCAST_BEGIN:0:8}
+    yyyymmdd_today=${PDYHH_FCAST_BEGIN:0:8}
+   
+    #PDYHH_FCAST_BEGIN_plus_1=$($NDATE +24 ${PDYHH_FCAST_BEGIN})
+    #yyyymmdd_tomorrow=${PDYHH_FCAST_BEGIN_plus_1:0:8}
+
+    
+    yyyymmdd_prev_dash_fmt=${yyyymmdd_prev:0:4}-${yyyymmdd_prev:4:2}-${yyyymmdd_prev:6:2}
+
+    echo $yyyymmdd_prev_dash_fmt, $yyyymmdd_today, $yyyymmdd_tomorrow    
+ 
+
+    ln -sf  ${USHstofs3d}/pysh/pylibs .
+   
+    # output: average_bias_today, size~2-6 bytes
+    # PDYHH_NCAST_BEGIN_cyc_y 
+
+    yyyymmdd_yesterday_Ncast_dash_fmt=${PDYHH_NCAST_BEGIN_cyc_y:0:4}-${PDYHH_NCAST_BEGIN_cyc_y:4:2}-${PDYHH_NCAST_BEGIN_cyc_y:6:2}
+
+    echo
+    echo python derive_bias.py ${yyyymmdd_yesterday_Ncast_dash_fmt}  --duration 2 \"dummy_str\" \"today\"
+    python ${USHstofs3d}/pysh/derive_bias.py ${yyyymmdd_yesterday_Ncast_dash_fmt}  --duration 2 "dummy_str" "today"
+
+       fn_avg_bias_today_p=average_bias_today # output of derive_bias.py
+       ln -sf average_bias_today  average_bias_today_output_adj_p 
+      
+       cp -Lf average_bias_today_output_adj_p  ${COMOUTrerun} 
+
+       PDYHH_today=$PDYHH
+       
+     
+
+
+    # export COMROOT=${COMROOT:-${ROOT}/com/stofs/v3.1}
+    PDYHH_prev=$($NDATE -24 $PDYHH)
+
+
+    # fn_avg_bias_prev=${dir_rerun_prev}/stofs_3d_atl.${cycle}.avg_bias
+    # fn_avg_bias_today_p=${dir_rerun_today}/stofs_3d_atl.${cycle}.avg_bias
+
+
+    # ---------> Apply the bias to obc_th.nc
+    # fn_elev2dth_non_adj=${dir_rerun_today}/stofs_3d_atl.${cycle}.elev2dth_non_adj.nc       # stofs_3d_atl.t12z.elev2dth_non_adj.nc           
+
+    #fn_elev2dth_non_adj=${RUN}.${cycle}.elev2dth_non_adj.nc       # stofs_3d_atl.t12z.elev2dth_non_adj.nc
+    #fn_elev2dth_non_adj_fullPath=${COMOUTrerun}/${fn_elev2dth_non_adj}
+
+    fn_avg_bias_prev=stofs_3d_atl.${cycle}.avg_bias
+    fn_avg_bias_prev_fullPath=${COMOUT_PREV}/rerun/stofs_3d_atl.${cycle}.avg_bias 
+
+
+    # adj txt of previous day 
+    # if [ -f $fn_avg_bias_prev_fullPath ] && [ -s $fn_avg_bias_prev_fullPath ] && [ $(stat -c %s "fn_avg_bias_prev_fullPath") -gt "1" ]; then
+
+     flag_fn_avg_bias_prev=0
+     if [ -f $fn_avg_bias_prev_fullPath ]; then
+       filesize=`wc -c $fn_avg_bias_prev_fullPath | awk '{print $1}' `       
+
+       if [ $filesize -gt 1 ]; then
+         flag_fn_avg_bias_prev=1
+       fi  
+
+     fi
+
+    echo flag_fn_avg_bias_prev=${flag_fn_avg_bias_prev}
+    
+    # today's non adj elev2dth.nc
+    cp -f ${COMOUTrerun}/${fn_elev2dth_non_adj}  .
+    
+    cp ${fn_elev2dth_non_adj}  ${fn_elev2dth_non_adj}_0
+    ncatted -a units,time,c,c,'seconds since 2020-1-1 00:00 UTC' ${fn_elev2dth_non_adj}_0
+    cdo inttime,2020-01-01,00:00:00,1hour ${fn_elev2dth_non_adj}_0  ${fn_elev2dth_non_adj}_1
+
+    ncatted -a units,time,d,, ${fn_elev2dth_non_adj}_1
+
+    ncap2 -s "time_step=time_step-time_step+float(3600)" -O ${fn_elev2dth_non_adj}_1  ${fn_elev2dth_non_adj}_hrly_0
+
+   
+
+    # --------> add bias correction
+
+    # double check adj0.txt & adj_p.txt
+      flag_adj0=0
+      adj0=0.0
+
+      if [[ ! -r "${fn_avg_bias_prev_fullPath}" ]]; then
+          echo "${fn_avg_bias_prev_fullPath} is not readable or does not exist; adj0=0 is assigned."
+          flag_adj0=1
+	  adj0=0.0
+
+      else
+          #flag_adj0=`egrep -Eq  '^[+-]?[0-9]+$' ${fn_avg_bias_prev_fullPath}`          
+          str_rtn_adj0=`grep -i "nan" ${fn_avg_bias_prev_fullPath}`
+
+	  if [ -z "$str_rtn_adj0" ]; then
+	      flag_adj0=1
+	      adj0=$(cat ${fn_avg_bias_prev_fullPath})             
+	      echo "${fn_avg_bias_prev_fullPath}: non-nan"  
+	   else
+		   
+              flag_adj0=1
+	      echo "${fn_avg_bias_prev_fullPath}: nan; adj0=0 is assigned."
+	      adj0=0.0
+	  fi
+   
+      fi
+
+          echo
+	  echo "flag_adj0=${flag_adj0}"
+          echo " adj0=${adj0}"
+	  echo
+
+       ln -sf ${fn_avg_bias_prev_fullPath}  adj0.txt_src
+
+    
+      flag_adj_p=0
+      adj_p=0.0
+      if [[ ! -r "${fn_avg_bias_today_p}" ]]; then
+         echo "${fn_avg_bias_today_p} is not readable or does not exist; adp_p=0 is assigned."
+         flag_adj_p=1
+	 adj_p=0.0
+
+      else
+          str_rtn_adj_p=`grep -i "nan" ${fn_avg_bias_today_p}`
+
+          if [ -z "$str_rtn_adj_p" ]; then
+	     flag_adj_p=1
+	     echo "${fn_avg_bias_today_p}: non-nan"
+	     adj_p=$(cat ${fn_avg_bias_today_p})
+     
+          else
+	     flag_adj_p=1
+             echo "${fn_avg_bias_today_p}: nan; adj_p=0 is assigned."
+             adj_p=0.0
+
+          fi
+      fi
+
+          echo
+	  echo "flag_adj_p=${flag_adj_p}"
+          echo " adj_p=${adj_p}:"
+          echo
+
+
+    #if [ $flag_adj0 -eq 1 ]  &&  [ $flag_adj_p -eq 1 ]; then
+    
+
+       #cp -f ${fn_avg_bias_prev_fullPath} adj0.txt
+       #ln -sf ${fn_avg_bias_prev_fullPath}  adj0.txt_src
+       #adj0=$(cat adj0.txt)
+
+       #cp -f ${fn_avg_bias_today_p} adj1.txt
+       #adj1=$(cat adj1.txt)
+
+       #adj_p=$(cat ${fn_avg_bias_today_p}) 
+
+
+       # CMMB-I
+       # adj1=$(echo "$adj0 + $adj_p" | bc)
+        adj1=$adj_p
+
+
+         # archive adj1
+         fn_std_average_bias_today=${RUN}.${cycle}.avg_bias
+      
+
+         fn_adj1=adj1.txt
+         rm -f ${fn_adj1}
+         echo  ${adj1} > ${fn_adj1}
+         ln -sf ${fn_adj1}  ${fn_std_average_bias_today}
+         cp -f ${fn_adj1} ${COMOUTrerun}/${fn_std_average_bias_today}
+
+
+       sum_adj_0_1=$(echo "$adj0 + $adj1" | bc) 
+       avg_adj_0_1=$(echo "scale=5; $sum_adj_0_1 / 2" | bc -l)
+
+ 
+       str_summary_1="adj0=${adj0}, adj_p=${adj_p}, adj1=${adj1}"  
+       str_summary_2="sum_adj_0_1=${sum_adj_0_1}, avg_adj_0_1=${avg_adj_0_1}"
+       echo 
+       echo ${str_summary_1}
+       echo ${str_summary_2}
+       echo 
+
+       
+       ncap2 -O -s "time_series(0,:,:,:)=time_series(0,:,:,:)-float($adj0)"  ${fn_elev2dth_non_adj}_hrly_0  ${fn_elev2dth_non_adj}_hrly_1
+
+       ncap2 -O -s "time_series(1,:,:,:)=time_series(1,:,:,:)-float($avg_adj_0_1)" ${fn_elev2dth_non_adj}_hrly_1  ${fn_elev2dth_non_adj}_hrly_2
+       ncap2 -O -s "time_series(2:,:,:,:)=time_series(2:,:,:,:)-float($adj1)" ${fn_elev2dth_non_adj}_hrly_2 ${fn_elev2dth_non_adj}_hrly_fnl
+
+
+       #rm -f ./elev2D.th.nc.hrly[0-1]
+
+       ln -sf ${fn_elev2dth_non_adj}_hrly_fnl  ${fn_elev2dth_std_name}
+       cp -pf ${fn_elev2dth_non_adj}_hrly_fnl  ${COMOUTrerun}/${fn_elev2dth_std_name}
+
+       echo "bias adjustment is applied" 
+ 
+    #else
+    
+    #  echo "No bias adjustment is applied due to lack of adj0.txt or adj1.txt" 
+    #  cp -f ${COMOUTrerun}/${fn_elev2dth_non_adj}  ${COMOUTrerun}/${fn_elev2dth_std_name}      # ${}/${fn_elev2dth_non_adj}         
+
+    #fi
+
+
+    export err=$?
+    if [ $err -eq 0 ]; then
+       msg=`echo $fn_this_script completed normally`
+       echo $msg; echo $msg >> $pgmout
+
+    else
+       msg=`echo $fn_this_script did not complete normally`
+       echo $msg; echo $msg >> $pgmout
+
+    fi
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+

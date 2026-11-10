@@ -1,0 +1,91 @@
+{
+  "accepted": "Sep 14 2017",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 4.312
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 4.27
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 4.028
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 4.068
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 4.057
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 3.866
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 3.745
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.566
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.404
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.042
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.12
+    }
+  ],
+  "LAT": 3.3370001,
+  "LATdate": "20050110",
+  "LATtime": "13:54",
+  "HAT": 4.525,
+  "HATdate": "20071027",
+  "HATtime": "23:00",
+  "min": 3.13,
+  "mindate": "20180101",
+  "mintime": "20:24",
+  "max": 5.909,
+  "maxdate": "20201010",
+  "maxtime": "05:30",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "04/01/2015 - 03/31/2017"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8770570 Sabine Pass North, TX",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8764314/datums.json"
+}

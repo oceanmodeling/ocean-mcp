@@ -1,0 +1,101 @@
+{
+  "accepted": "Apr 13 2020",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 4.423
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 4.392
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 4.221
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 4.235
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 4.245
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 4.078
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 4.02
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.404
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.314
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.031
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.058
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 4.224
+    }
+  ],
+  "LAT": 3.672,
+  "LATdate": "20230121",
+  "LATtime": "19:18",
+  "HAT": 4.6229997,
+  "HATdate": "20071003",
+  "HATtime": "11:54",
+  "min": 3.288,
+  "mindate": "20220117",
+  "mintime": "00:06",
+  "max": 5.743,
+  "maxdate": "20170830",
+  "maxtime": "14:42",
+  "disclaimers": {
+    "disclaimers": [
+      {
+        "name": "Texas Coastal Ocean Observation Network",
+        "text": "These data and associated tidal datums are derived from the Texas Coastal Ocean Observation Network (TCOON), a state-wide coastal observing system. Leveling information used to verify vertical positioning for navigational purposes may not meet NOS standards. Subsequent review of these data based upon field inspections may result in revisions. Data users are cautioned before using these data for critical decisions such as those that concern physical or public safety."
+      }
+    ],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "01/01/2017 - 12/31/2018"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8770971 Rollover Pass, TX",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8770808/datums.json"
+}

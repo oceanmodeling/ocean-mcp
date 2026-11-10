@@ -1,0 +1,98 @@
+{
+  "accepted": "Nov 03 2020",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 8.656
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 8.633
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 8.444
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 8.442
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 8.434
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 8.251
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 8.231
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.425
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.382
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.023
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.02
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 8.393
+    }
+  ],
+  "LAT": 7.919,
+  "LATdate": "20050206",
+  "LATtime": "10:36",
+  "HAT": 8.934,
+  "HATdate": "20071029",
+  "HATtime": "02:36",
+  "min": 7.529,
+  "mindate": "19891224",
+  "mintime": "09:42",
+  "max": 10.741,
+  "maxdate": "19951005",
+  "maxtime": "03:12",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "04/01/1992 - 03/31/1997",
+    "07/01/1998 - 06/30/2007",
+    "10/01/2013 - 09/30/2019"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8729108 Panama City, FL",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8729210/datums.json"
+}

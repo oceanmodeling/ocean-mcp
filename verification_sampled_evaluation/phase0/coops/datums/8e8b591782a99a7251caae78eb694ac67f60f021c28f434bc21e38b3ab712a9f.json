@@ -1,0 +1,103 @@
+{
+  "accepted": "Oct 23 2017",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 1.843
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 1.814
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 1.617
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 1.629
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 1.636
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 1.444
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 1.39
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.453
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.37
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.029
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.054
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 1.379
+    }
+  ],
+  "LAT": 0.95100003,
+  "LATdate": "20060129",
+  "LATtime": "20:42",
+  "HAT": 2.088,
+  "HATdate": "20260517",
+  "HATtime": "16:36",
+  "min": 0.39,
+  "mindate": "19960119",
+  "mintime": "19:18",
+  "max": 3.446,
+  "maxdate": "20170827",
+  "maxtime": "20:30",
+  "disclaimers": {
+    "disclaimers": [
+      {
+        "name": "Texas Coastal Ocean Observation Network",
+        "text": "These data and associated tidal datums are derived from the Texas Coastal Ocean Observation Network (TCOON), a state-wide coastal observing system. Leveling information used to verify vertical positioning for navigational purposes may not meet NOS standards. Subsequent review of these data based upon field inspections may result in revisions. Data users are cautioned before using these data for critical decisions such as those that concern physical or public safety."
+      }
+    ],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "08/01/1995 - 07/31/1996",
+    "01/01/2001 - 12/31/2002",
+    "01/01/2016 - 12/31/2016"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8770613 Morgans Point, Barbours Cut, TX",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8770733/datums.json"
+}

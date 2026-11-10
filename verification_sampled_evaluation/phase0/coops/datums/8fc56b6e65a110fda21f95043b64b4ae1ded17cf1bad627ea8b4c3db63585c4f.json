@@ -1,0 +1,101 @@
+{
+  "accepted": "Jul 20 2004",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 2.769
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 2.691
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 2.236
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 2.216
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 2.222
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 1.741
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 1.703
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 1.066
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.95
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.078
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.038
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 0.327
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 6.671
+    }
+  ],
+  "LAT": null,
+  "LATdate": "",
+  "LATtime": "",
+  "HAT": null,
+  "HATdate": "",
+  "HATtime": "",
+  "min": null,
+  "mindate": "",
+  "mintime": "",
+  "max": null,
+  "maxdate": "",
+  "maxtime": "",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "06/01/1982 - 06/30/1982"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8638863 Chesapeake Bay Bridge Tunnel, VA",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8638999/datums.json"
+}

@@ -1,0 +1,97 @@
+{
+  "accepted": "Sep 26 2019",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 8.659
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 8.611
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 8.406
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 8.403
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 8.404
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 8.195
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 8.153
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.506
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.416
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.047
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.042
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 8.375
+    }
+  ],
+  "LAT": 7.7990003,
+  "LATdate": "20050110",
+  "LATtime": "13:24",
+  "HAT": 8.932,
+  "HATdate": "20071029",
+  "HATtime": "04:06",
+  "min": 7.595,
+  "mindate": "20180130",
+  "mintime": "14:24",
+  "max": 10.747,
+  "maxdate": "20201029",
+  "maxtime": "03:54",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "12/01/2011 - 11/30/2012",
+    "07/01/2013 - 06/30/2018"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8741533 Pascagoula NOAA Lab, MS",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8739803/datums.json"
+}

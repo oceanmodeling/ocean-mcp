@@ -1,0 +1,109 @@
+{
+  "accepted": "Aug 19 2020",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 7.105
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 7.0
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 6.421
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 6.393
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 6.396
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 5.786
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 5.738
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 1.367
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 1.214
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.105
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.048
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 12.317
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 6.156
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 6.579
+    }
+  ],
+  "LAT": 5.324,
+  "LATdate": "20320212",
+  "LATtime": "06:48",
+  "HAT": 7.5699997,
+  "HATdate": "20111027",
+  "HATtime": "12:00",
+  "min": 4.932,
+  "mindate": "20090108",
+  "mintime": "03:00",
+  "max": 8.339,
+  "maxdate": "20180914",
+  "maxtime": "14:54",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "10/01/2004 - 09/30/2008",
+    "09/01/2009 - 08/31/2011",
+    "06/01/2012 - 05/31/2013",
+    "10/01/2013 - 09/30/2018"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8656483 Beaufort, Duke Marine Lab, NC",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8658163/datums.json"
+}

@@ -1,0 +1,107 @@
+{
+  "accepted": "Jun 17 2020",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 12.324
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 12.166
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 11.507
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 11.562
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 11.561
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 10.957
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 10.69
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 1.634
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 1.209
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.158
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.267
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 9.528
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 3.334
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 10.515
+    }
+  ],
+  "LAT": 10.205,
+  "LATdate": "20251206",
+  "LATtime": "04:12",
+  "HAT": 12.657,
+  "HATdate": "20400113",
+  "HATtime": "20:06",
+  "min": 10.371,
+  "mindate": "20220518",
+  "mintime": "22:06",
+  "max": 13.029,
+  "maxdate": "20170113",
+  "maxtime": "01:36",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "03/01/2014 - 02/28/2015",
+    "11/01/2015 - 10/31/2019"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "9415144 Port Chicago, CA",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9415102/datums.json"
+}

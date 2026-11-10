@@ -1,0 +1,102 @@
+{
+  "accepted": "Sep 27 2012",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 6.283
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 6.095
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 4.97
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 5.068
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 5.085
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 4.041
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 3.658
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 2.625
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 2.053
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.188
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.384
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 8.327
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 2.092
+    }
+  ],
+  "LAT": 3.047,
+  "LATdate": "20040604",
+  "LATtime": "15:36",
+  "HAT": 6.749,
+  "HATdate": "20261224",
+  "HATtime": "19:48",
+  "min": null,
+  "mindate": "",
+  "mintime": "",
+  "max": null,
+  "maxdate": "",
+  "maxtime": "",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "02/01/2011 - 02/28/2011",
+    "04/01/2011 - 07/31/2011"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "9414750 Alameda, CA",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9414509/datums.json"
+}

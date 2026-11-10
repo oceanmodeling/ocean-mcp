@@ -1,0 +1,96 @@
+{
+  "accepted": "Jul 30 2020",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 4.557
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 4.541
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 4.333
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 4.335
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 4.331
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 4.129
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 4.11
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.447
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.412
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.016
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.019
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 4.307
+    }
+  ],
+  "LAT": 3.75,
+  "LATdate": "20050110",
+  "LATtime": "16:00",
+  "HAT": 4.825,
+  "HATdate": "20251011",
+  "HATtime": "06:54",
+  "min": 3.562,
+  "mindate": "20180117",
+  "mintime": "16:54",
+  "max": 5.728,
+  "maxdate": "20171008",
+  "maxtime": "07:12",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "08/01/2011 - 07/31/2018"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8735180 Dauphin Island, AL",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8735523/datums.json"
+}

@@ -1,0 +1,103 @@
+{
+  "accepted": "Apr 10 2018",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 2.616
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 2.435
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 1.267
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 1.357
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 1.402
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 0.278
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": -0.081
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 2.699
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 2.156
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.182
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.361
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 8.618
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 2.596
+    }
+  ],
+  "LAT": -0.71000004,
+  "LATdate": "20040604",
+  "LATtime": "16:06",
+  "HAT": 3.058,
+  "HATdate": "20251204",
+  "HATtime": "19:12",
+  "min": -0.671,
+  "mindate": "19840217",
+  "mintime": "19:30",
+  "max": 3.658,
+  "maxdate": "19831203",
+  "maxtime": "12:12",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "04/01/2011 - 03/31/2012",
+    "07/01/2014 - 06/30/2016",
+    "11/01/2016 - 10/31/2017"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "9414523 Redwood City, CA",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9414575/datums.json"
+}

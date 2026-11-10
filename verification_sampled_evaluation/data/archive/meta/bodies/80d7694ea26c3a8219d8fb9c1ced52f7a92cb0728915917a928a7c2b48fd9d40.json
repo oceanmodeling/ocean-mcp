@@ -1,0 +1,96 @@
+{
+  "accepted": "Jul 06 2020",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 7.448
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 7.42
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 7.244
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 7.264
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 7.268
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 7.109
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 7.039
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.409
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.311
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.029
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.07
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 7.233
+    }
+  ],
+  "LAT": 6.743,
+  "LATdate": "20230121",
+  "LATtime": "19:30",
+  "HAT": 7.57,
+  "HATdate": "20241020",
+  "HATtime": "04:36",
+  "min": 6.12,
+  "mindate": "20220116",
+  "mintime": "23:06",
+  "max": 8.817,
+  "maxdate": "20200827",
+  "maxtime": "11:00",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "09/01/2010 - 08/31/2019"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8767816 Lake Charles, LA",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8767961/datums.json"
+}

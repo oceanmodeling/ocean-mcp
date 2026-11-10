@@ -1,0 +1,108 @@
+{
+  "accepted": "Sep 29 2020",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 3.701
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 3.475
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 2.307
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 2.407
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 2.398
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 1.34
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 0.914
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 2.786
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 2.136
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.225
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.425
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 8.559
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 2.08
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 1.257
+    }
+  ],
+  "LAT": 0.065999985,
+  "LATdate": "20000702",
+  "LATtime": "14:48",
+  "HAT": 4.373,
+  "HATdate": "20031223",
+  "HATtime": "20:00",
+  "min": -0.186,
+  "mindate": "20080507",
+  "mintime": "15:36",
+  "max": 4.922,
+  "maxdate": "20220104",
+  "maxtime": "01:30",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "01/01/2007 - 12/31/2009",
+    "10/01/2010 - 09/30/2014",
+    "07/01/2015 - 06/30/2019"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "9440910 Toke Point, WA",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9441102/datums.json"
+}

@@ -1,0 +1,98 @@
+{
+  "accepted": "Mar 23 2018",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "PRVD02",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 8.16
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 8.155
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 8.048
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 8.05
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 8.054
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 7.945
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 7.935
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.225
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.21
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.005
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.01
+    },
+    {
+      "name": "PRVD02",
+      "description": "Puerto Rico Vertical Datum of 2002",
+      "value": 8.033
+    }
+  ],
+  "LAT": 7.785,
+  "LATdate": "20260518",
+  "LATtime": "17:24",
+  "HAT": 8.274,
+  "HATdate": "20050818",
+  "HATtime": "00:54",
+  "min": 7.75,
+  "mindate": "20060128",
+  "mintime": "02:54",
+  "max": 8.549,
+  "maxdate": "20220919",
+  "maxtime": "00:30",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "04/01/2007 - 03/31/2009",
+    "09/01/2010 - 08/31/2012",
+    "03/01/2015 - 02/28/2017"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "9751639 Charlotte Amalie, VI",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9752695/datums.json"
+}

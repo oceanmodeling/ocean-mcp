@@ -1,0 +1,1688 @@
+1687                 ! ATL 128 + PAC 96 + MIC 90 + UHSLC Fast Delivery 244 + NWS 275 + ALTIMs 854	
+meeast 8410140 2.958 ! 8410140 Eastport ME
+mecutl 8411060 2.192 ! 8411060 Cutler Farris Wharf ME
+mebarh 8413320 1.728 ! 8413320 Bar Harbor ME
+meport 8418150 1.506 ! 8418150 Portland ME
+mewell 8419317 1.454 ! 8419317 Wells ME
+nhfort 8423898 1.430 ! 8423898 Fort Point NH
+mabost 8443970 1.586 ! 8443970 Boston MA
+mafall 8447386 0.672 ! 8447386 Fall River MA
+mawood 8447930 0.299 ! 8447930 Woods Hole MA
+manant 8449130 0.539 ! 8449130 Nantucket Island MA
+rinewp 8452660 0.529 ! 8452660 Newport RI
+riconi 8452944 0.642 ! 8452944 Conimicut Light RI
+riprov 8454000 0.685 ! 8454000 Providence RI
+riquon 8454049 0.566 ! 8454049 Quonset Point RI
+ctnewl 8461490 0.468 ! 8461490 New London CT
+ctnewh 8465705 1.012 ! 8465705 New Haven CT
+ctbrid 8467150 1.104 ! 8467150 Bridgeport CT
+nymont 8510560 0.377 ! 8510560 Montauk NY
+nyking 8516945 1.185 ! 8516945 Kings Point NY
+nytheb 8518750 0.783 ! 8518750 The Battery NY
+nyberg 8519483 0.846 ! 8519483 Bergen Point West Reach NY
+njsand 8531680 0.785 ! 8531680 Sandy Hook NJ
+njatla 8534720 0.675 ! 8534720 Atlantic City NJ
+njcape 8536110 0.783 ! 8536110 Cape May NJ
+njship 8537121 0.932 ! 8537121 Ship John Shoal NJ
+njtaco 8538886 1.109 ! 8538886 Tacony-Palmyra Bridge NJ
+njburl 8539094 1.215 ! 8539094 Burlington, Delaware River NJ
+pamarc 8540433 0.954 ! 8540433 Marcus Hook PA
+paphil 8545240 1.063 ! 8545240 Philadelphia PA
+panewb 8548989 1.313 ! 8548989 Newbold PA
+dedela 8551762 0.901 ! 8551762 Delaware City DE
+dereed 8551910 0.890 ! 8551910 Reedy Point DE
+delewe 8557380 0.680 ! 8557380 Lewes DE
+mdocea 8570283 0.390 ! 8570283 Ocean City Inlet MD
+mdbish 8571421 0.307 ! 8571421 Bishops Head MD
+mdcamb 8571892 0.310 ! 8571892 Cambridge MD
+mdtolc 8573364 0.254 ! 8573364 Tolchester Beach MD
+mdches 8573927 0.475 ! 8573927 Chesapeake City MD
+mdbalt 8574680 0.244 ! 8574680 Baltimore MD
+mdanna 8575512 0.219 ! 8575512 Annapolis MD
+mdsolo 8577330 0.231 ! 8577330 Solomons Island MD
+dcwash 8594900 0.472 ! 8594900 Washington DC
+vakipt 8632200 0.434 ! 8632200 Kiptopeke VA
+varapp 8632837 0.287 ! 8632837 Rappahannock Light VA
+valewi 8635750 0.231 ! 8635750 Lewisetta VA
+vawind 8636580 0.214 ! 8636580 Windmill Point VA
+vayork 8637689 0.378 ! 8637689 Yorktown USCG Training Center VA
+vasewe 8638610 0.412 ! 8638610 Sewells Point VA
+vaches 8638863 0.431 ! 8638863 Chesapeake Bay Bridge Tunnel VA
+vamone 8639348 0.478 ! 8639348 Money Point VA
+ncduck 8651370 0.539 ! 8651370 Duck NC
+ncoreg 8652587 0.177 ! 8652587 Oregon Inlet Marina NC
+ncuscg 8654467 0.092 ! 8654467 USCG Station Hatteras NC
+ncbeau 8656483 0.521 ! 8656483 Beaufort, Duke Marine Lab NC
+ncwilm 8658120 0.743 ! 8658120 Wilmington NC
+ncwrig 8658163 0.622 ! 8658163 Wrightsville Beach NC
+scspri 8661070 0.826 ! 8661070 Springmaid Pier SC
+scoyst 8662245 0.816 ! 8662245 Oyster Landing (N Inlet Estuary) SC
+scchar 8665530 0.890 ! 8665530 Charleston SC
+gafort 8670870 1.164 ! 8670870 Fort Pulaski GA
+flfern 8720030 1.004 ! 8720030 Fernandina Beach FL
+flmayp 8720218 0.753 ! 8720218 Mayport (Bar Pilots Dock) FL
+fli-29 8720357 0.163 ! 8720357 I-295 Buckman Bridge FL
+fltrid 8721604 0.573 ! 8721604 Trident Pier, Port Canaveral FL
+fllake 8722670 0.460 ! 8722670 Lake Worth Pier, Atlantic Ocean FL
+flvirg 8723214 0.335 ! 8723214 Virginia Key, Biscayne Bay FL
+flvaca 8723970 0.156 ! 8723970 Vaca Key, Florida Bay FL
+flkeyw 8724580 0.272 ! 8724580 Key West FL
+flnapl 8725114 0.502 ! 8725114 Naples, Gulf Coast FL
+flfort 8725520 0.193 ! 8725520 Fort Myers FL
+flport 8726384 0.355 ! 8726384 Port Manatee FL
+flstpe 8726520 0.366 ! 8726520 St. Petersburg, Tampa Bay FL
+floldp 8726607 0.391 ! 8726607 Old Port Tampa FL
+flmcka 8726667 0.440 ! 8726667 Mckay Bay Entrance FL
+flclea 8726724 0.452 ! 8726724 Clearwater Beach FL
+flceda 8727520 0.621 ! 8727520 Cedar Key FL
+flapal 8728690 0.277 ! 8728690 Apalachicola FL
+flpana 8729108 0.203 ! 8729108 Panama City FL
+flpanb 8729210 0.200 ! 8729210 Panama City Beach FL
+aldaup 8735180 0.172 ! 8735180 Dauphin Island AL
+aldogr 8735391 0.235 ! 8735391 Dog River Bridge AL
+almobi 8737048 0.247 ! 8737048 Mobile State Docks AL
+msbayw 8747437 0.266 ! 8747437 Bay Waveland Yacht Club MS
+lapilo 8760721 0.143 ! 8760721 Pilottown LA
+lapist 8760922 0.183 ! 8760922 ots Station LA
+lashel 8761305 0.223 ! 8761305 Shell Beach LA
+lanewc 8761927 0.075 ! 8761927 New Canal Station LA
+laport 8762075 0.198 ! 8762075 Port Fourchon, Belle Pass LA
+laberw 8764044 0.092 ! 8764044 Berwick, Atchafalaya River LA
+lalawm 8764227 0.255 ! 8764227 LAWMA, Amerada Pass LA
+txpoar 8770475 0.184 ! 8770475 Port Arthur TX
+txrain 8770520 0.177 ! 8770520 Rainbow Bridge TX
+txsabi 8770570 0.293 ! 8770570 Sabine Pass North TX
+txmorg 8770613 0.217 ! 8770613 Morgans Point, Barbours Cut TX
+txmanc 8770777 0.278 ! 8770777 Manchester TX
+txtexa 8770822 0.000 ! 8770822 Texas Point, Sabine Pass TX
+txroll 8770971 0.227 ! 8770971 Rollover Pass TX
+txeagl 8771013 0.182 ! 8771013 Eagle Point, Galveston Bay TX
+txgabe 8771341 0.296 ! 8771341 Galveston Bay Entrance, North Jetty TX
+txgap2 8771450 0.252 ! 8771450 Galveston Pier 21 TX
+txfree 8772447 0.296 ! 8772447 Freeport TX
+txsead 8773037 0.057 ! 8773037 Seadrift TX
+txpola 8773259 0.145 ! 8773259 Port Lavaca TX
+txpooc 8773701 0.129 ! 8773701 Port O'Connor TX
+txcopa 8774513 0.062 ! 8774513 Copano Bay TX
+txrock 8774770 0.058 ! 8774770 Rockport TX
+txpoa1 8775237 0.199 ! 8775237 Port Aransas TX
+txpoin 8775283 0.101 ! 8775283 Port Ingleside TX
+txussl 8775296 0.108 ! 8775296 USS Lexington, Corpus Christi Bay TX
+txpack 8775792 0.057 ! 8775792 Packery Channel TX
+txbobh 8775870 0.282 ! 8775870 Bob Hall Pier, Corpus Christi TX
+txspic 8779748 0.237 ! 8779748 South Padre Island CG Station TX
+txpois 8779770 0.248 ! 8779770 Port Isabel TX
+vichri 9751364 0.115 ! 9751364 Christiansted Harbor, St Croix VI
+vilame 9751381 0.118 ! 9751381 Lameshur Bay, St John VI
+vilime 9751401 0.112 ! 9751401 Lime Tree Bay VI
+vichar 9751639 0.114 ! 9751639 Charlotte Amalie VI
+prisab 9752619 0.179 ! 9752619 Isabel Segunda, Vieques Island PR
+prespe 9752695 0.120 ! 9752695 Esperanza, Vieques Island PR
+prfaja 9753216 0.221 ! 9753216 Fajardo PR
+pryabu 9754228 0.107 ! 9754228 Yabucoa Harbor PR
+prsanj 9755371 0.234 ! 9755371 San Juan, La Puntilla, San Juan Bay PR
+prarec 9757809 0.252 ! 9757809 Arecibo PR
+prpenu 9758053 0.105 ! 9758053 Penuelas (Punta Guayanilla) PR
+prmagu 9759110 0.100 ! 9759110 Magueyes Island PR
+prmaya 9759394 0.190 ! 9759394 Mayaguez PR
+prmona 9759938 0.126 ! 9759938 Mona Island PR
+abbarb 9761115 0.133 ! 9761115 Barbuda AB
+casand 9410170 0.897 ! 9410170 San Diego CA
+calajo 9410230 0.832 ! 9410230 La Jolla CA
+caange 9410647 0.800 ! 9410647 Angels Gate CA
+calsan 9410660 0.861 ! 9410660 Los Angeles CA
+calapj 9410665 0.861 ! 9410665 Los Angeles Pier J CA
+calap4 9410666 0.861 ! 9410666 Los Angeles Pier 400 CA
+casamo 9410840 0.849 ! 9410840 Santa Monica CA
+casaba 9411340 0.851 ! 9411340 Santa Barbara CA
+cagavi 9411399 0.837 ! 9411399 Gaviota State Park, Pacific Ocean CA
+caoilp 9411406 0.830 ! 9411406 Oil Platform Harvest CA
+caport 9412110 0.853 ! 9412110 Port San Luis CA
+camans 9412802 0.835 ! 9412802 Mansfield Cone CA
+camont 9413450 0.862 ! 9413450 Monterey CA
+casafr 9414290 0.951 ! 9414290 San Francisco CA
+casafp 9414311 0.951 ! 9414311 San Francisco Pier 1 CA
+caredw 9414523 0.976 ! 9414523 Redwood City CA
+cacoyo 9414575 1.483 ! 9414575 Coyote Creek CA
+caalam 9414750 1.051 ! 9414750 Alameda CA
+caoami 9414769 1.023 ! 9414769 Oakland Middle Harbor CA
+caoabe 9414776 1.022 ! 9414776 Oakland Berth 34 CA
+capopo 9414847 1.021 ! 9414847 Point Potrero Richmond CA
+carich 9414863 0.994 ! 9414863 Richmond CA
+caboli 9414958 0.681 ! 9414958 Bolinas, Bolinas Lagoon CA
+capobe 9415020 0.946 ! 9415020 Point Reyes CA
+capino 9415056 1.014 ! 9415056 Pinole Point, San Pablo Bay CA
+camart 9415102 0.874 ! 9415102 Martinez-Amorco Pier CA
+cadavi 9415141 0.874 ! 9415141 Davis Point CA
+capoch 9415144 0.781 ! 9415144 Port Chicago CA
+casono 9415338 0.826 ! 9415338 Sonoma Creek Entrance CA
+cagree 9416409 0.813 ! 9416409 Green Cove CA
+caaren 9416841 0.957 ! 9416841 Arena Cove CA
+canort 9418767 1.128 ! 9418767 North Spit CA
+cacres 9419750 1.130 ! 9419750 Crescent City CA
+capyra 9419945 1.211 ! 9419945 Pyramid Point CA
+orpoor 9431647 1.199 ! 9431647 Port Orford OR
+orchar 9432780 1.244 ! 9432780 Charleston OR
+orsobe 9435380 1.358 ! 9435380 South Beach OR
+orgari 9437540 1.372 ! 9437540 Garibaldi OR
+orhamm 9439011 1.335 ! 9439011 Hammond OR
+orasto 9439040 1.373 ! 9439040 Astoria OR
+waskam 9440569 1.138 ! 9440569 Skamokawa WA
+watoke 9440910 1.458 ! 9440910 Toke Point WA
+wawepo 9441102 1.484 ! 9441102 Westport WA
+walapu 9442396 1.393 ! 9442396 La Push, Quillayute River WA
+waneah 9443090 1.315 ! 9443090 Neah Bay WA
+wapoan 9444090 1.294 ! 9444090 Port Angeles WA
+wapoto 9444900 1.522 ! 9444900 Port Townsend WA
+wataco 9446484 2.085 ! 9446484 Tacoma WA
+waseat 9447130 2.024 ! 9447130 Seattle WA
+washil 9447214 1.817 ! 9447214 Shilshole Bay GPS Buoy WA
+wacher 9449424 1.610 ! 9449424 Cherry Point WA
+wafrid 9449880 1.387 ! 9449880 Friday Harbor WA
+akketc 9450460 2.458 ! 9450460 Ketchikan AK
+akpoal 9451054 1.747 ! 9451054 Port Alexander AK
+aksitk 9451600 1.165 ! 9451600 Sitka AK
+akjune 9452210 2.617 ! 9452210 Juneau AK
+akskag 9452400 2.693 ! 9452400 Skagway, Taiya Inlet AK
+akelfi 9452634 1.747 ! 9452634 Elfin Cove AK
+akyaku 9453220 1.615 ! 9453220 Yakutat, Yakutat Bay AK
+akcord 9454050 2.056 ! 9454050 Cordova AK
+akvald 9454240 1.979 ! 9454240 Valdez AK
+aksewa 9455090 1.694 ! 9455090 Seward AK
+akseld 9455500 2.912 ! 9455500 Seldovia AK
+akniki 9455760 3.442 ! 9455760 Nikiski AK
+akanch 9455920 4.335 ! 9455920 Anchorage AK
+akkodi 9457292 1.372 ! 9457292 Kodiak Island AK
+akalit 9457804 1.884 ! 9457804 Alitak AK
+aksand 9459450 1.181 ! 9459450 Sand Point AK
+akking 9459881 1.124 ! 9459881 King Cove AK
+akadak 9461380 0.650 ! 9461380 Adak Island AK
+akatka 9461710 0.599 ! 9461710 Atka AK
+akniko 9462450 0.691 ! 9462450 Nikolski AK
+akunal 9462620 0.635 ! 9462620 Unalaska AK
+hinawi 1611400 0.252 ! 1611400 Nawiliwili HI
+hihono 1612340 0.251 ! 1612340 Honolulu HI
+himoku 1612480 0.320 ! 1612480 Mokuoloe HI
+hikahu 1615680 0.339 ! 1615680 Kahului, Kahului Harbor HI
+hikawa 1617433 0.280 ! 1617433 Kawaihae HI
+hihilo 1617760 0.349 ! 1617760 Hilo, Hilo Bay, Kuhio Bay HI
+ussand 1619910 0.196 ! 1619910 Sand Island, Midway Islands US
+caimpe 0000010 0.000 ! 0000010 Imperial Beach CA
+cadelm 0000011 0.000 ! 0000011 Del Mar CA
+caseal 0000012 0.000 ! 0000012 Seal Beach CA
+orwald 0000013 0.000 ! 0000013 Waldport OR 
+orbeav 0000014 0.000 ! 0000014 Beaver Creek OR
+orlibe 0000015 0.000 ! 0000015 Lincoln Beach OR
+orlici 0000016 0.000 ! 0000016 Lincoln City OR
+ornesk 0000017 0.000 ! 0000017 Neskowin Beach OR 
+orpaci 0000018 0.000 ! 0000018 Pacific City OR
+orrock 0000020 0.000 ! 0000020 Rockaway Beach OR
+orcann 0000021 0.000 ! 0000021 Cannon Beach OR
+orseas 0000022 0.000 ! 0000022 Seaside OR 
+wachin 0000023 0.000 ! 0000023 Chinook WA 
+walong 0000024 0.000 ! 0000024 Long Beach WA
+waocea 0000025 0.000 ! 0000025 Ocean Park WA
+wanort 0000026 0.000 ! 0000026 North Cove WA
+usapra 1630000 0.419 ! 1630000 Apra Harbor, Guam US
+uspago 1631428 0.309 ! 1631428 Pago Bay, Guam US
+uspapa 1770000 0.393 ! 1770000 Pago Pago, American Samoa US
+uskwaj 1820000 0.567 ! 1820000 Kwajalein, Marshall Islands US
+uswake 1890000 0.346 ! 1890000 Wake Island, Pacific Ocean US
+sgmala 0000006 0.000 ! 0000006 Malakal Palau UHSLC Gauge SG
+sgyapf 0000007 0.000 ! 0000007 Yap FSM UHSLC Gauge SG
+sgpofs 0000008 0.000 ! 0000008 Pohnpei FSM UHSLC Gauge SG
+sgsaip 0000009 0.000 ! 0000009 Saipan N Marianas UHSLC Gauge SG
+sgmoen 0000010 0.000 ! 0000010 Moen I Chuuk, FSM Historic CO-OPS Tide Gauge, SG
+sgguas 0000011 0.000 ! 0000011 Guam South (Cocos) Guam, Marianas Major Island/Warning Point SG
+sgguan 0000012 0.000 ! 0000012 Guam North (Ritidian) Guam, Marianas Major Island/Warning Point SG
+sgrote 0000013 0.000 ! 0000013 Rota East (Sinapalu) Rota, Marianas Major Island/Warning Point SG
+sgrotw 0000014 0.000 ! 0000014 Rota West (Songsong) Rota, Marianas Major Island/Warning Point SG
+sgtine 0000015 0.000 ! 0000015 Tinian East Tinian, Marianas Major Island/Warning Point SG
+sgtinw 0000016 0.000 ! 0000016 Tinian West (San Jose) Tinian, Marianas Major Island/Warning Point SG
+sgsaie 0000017 0.000 ! 0000017 Saipan East (Kagman) Saipan, Marianas Major Island/Warning Point SG
+sgsaiw 0000018 0.000 ! 0000018 Saipan West (Garapan) Saipan, Marianas Major Island/Warning Point SG
+sgsain 0000019 0.000 ! 0000019 Saipan North Saipan, Marianas Major Island/Warning Point SG
+sgeasm 0000020 0.000 ! 0000020 East Melekeok Palau Major Island/Warning Point SG
+sgnger 0000021 0.000 ! 0000021 Ngeremlengui West Palau Major Island/Warning Point SG
+sgyape 0000022 0.000 ! 0000022 Yap East Yap, FSM Major Island/Warning Point SG
+sgyaps 0000023 0.000 ! 0000023 Yap South (Colonia) Yap, FSM Major Island/Warning Point SG
+sgyapw 0000024 0.000 ! 0000024 Yap West (Airport) Yap, FSM Major Island/Warning Point SG
+sgyapn 0000025 0.000 ! 0000025 Yap North Yap, FSM Major Island/Warning Point SG
+sgchue 0000026 0.000 ! 0000026 Chuuk Lagoon East Chuuk, FSM Major Island/Warning Point SG
+sgchun 0000027 0.000 ! 0000027 Chuuk Lagoon North Chuuk, FSM Major Island/Warning Point SG
+sgchuw 0000028 0.000 ! 0000028 Chuuk Lagoon West Chuuk, FSM Major Island/Warning Point SG
+sgpohn 0000029 0.000 ! 0000029 Pohnpei North Pohnpei, FSM Major Island/Warning Point SG
+sgpohe 0000030 0.000 ! 0000030 Pohnpei East Pohnpei, FSM Major Island/Warning Point SG
+sgpohs 0000031 0.000 ! 0000031 Pohnpei South Pohnpei, FSM Major Island/Warning Point SG
+sgpohw 0000032 0.000 ! 0000032 Pohnpei West Pohnpei, FSM Major Island/Warning Point SG
+sgkosn 0000033 0.000 ! 0000033 Kosrae North (Airport) Kosrae, FSM Major Island/Warning Point SG
+sgkosw 0000034 0.000 ! 0000034 Kosrae West (Walung) Kosrae, FSM Major Island/Warning Point SG
+sgkoss 0000035 0.000 ! 0000035 Kosrae South (Utwa Ma) Kosrae, FSM Major Island/Warning Point SG
+sgkose 0000036 0.000 ! 0000036 Kosrae East (Malem) Kosrae, FSM Major Island/Warning Point SG
+sgmaje 0000037 0.000 ! 0000037 Majuro East Marshall Islands Major Island/Warning Point SG
+sgmajs 0000038 0.000 ! 0000038 Majuro South (Airport) Marshall Islands Major Island/Warning Point SG
+sgmajw 0000039 0.000 ! 0000039 Majuro West Marshall Islands Major Island/Warning Point SG
+sgmajn 0000040 0.000 ! 0000040 Majuro North Marshall Islands Major Island/Warning Point SG
+sgagri 0000041 0.000 ! 0000041 Agrihan West Mariana Islands Warning Point SG
+sgpaga 0000042 0.000 ! 0000042 Pagan East Mariana Islands Warning Point SG
+sgkaya 0000043 0.000 ! 0000043 Kayangel North Palau Warning Point SG
+sgpele 0000044 0.000 ! 0000044 Peleliu East Palau Warning Point SG
+sgpelw 0000045 0.000 ! 0000045 Peleliu West Palau Warning Point SG
+sgange 0000046 0.000 ! 0000046 Angaur East Palau Warning Point SG
+sgangw 0000047 0.000 ! 0000047 Angaur West Palau Warning Point SG
+sgangs 0000048 0.000 ! 0000048 Angaur South Palau Warning Point SG
+sgsone 0000049 0.000 ! 0000049 Sonsorol Northeast Palau Warning Point SG
+sgsose 0000050 0.000 ! 0000050 Sonsorol Southeast Palau Warning Point SG
+sgsonw 0000051 0.000 ! 0000051 Sonsorol Northwest Palau Warning Point SG
+sgsosw 0000052 0.000 ! 0000052 Sonsorol Southwest Palau Warning Point SG
+sgnguw 0000053 0.000 ! 0000053 Ngulu West Yap, FSM Warning Point SG
+sgngue 0000054 0.000 ! 0000054 Ngulu East Yap, FSM Warning Point SG
+sgulit 0000055 0.000 ! 0000055 Ulithi East (Airport) Yap, FSM Warning Point SG
+sgfais 0000056 0.000 ! 0000056 Fais East(Airport) Yap, FSM Warning Point SG
+sgfaea 0000057 0.000 ! 0000057 Faraulep East Yap, FSM Warning Point SG
+sgwole 0000058 0.000 ! 0000058 Woleai East Yap, FSM Warning Point SG
+sgsata 0000059 0.000 ! 0000059 Satawal East Yap, FSM Warning Point SG
+sgpulu 0000060 0.000 ! 0000060 Puluwat East Chuuk, FSM Warning Point SG
+sgulul 0000061 0.000 ! 0000061 Ulul East Chuuk, FSM Warning Point SG
+sgfana 0000062 0.000 ! 0000062 Fananu East Chuuk, FSM Warning Point SG
+sglosa 0000063 0.000 ! 0000063 Losap East Chuuk, FSM Warning Point SG
+sgluku 0000064 0.000 ! 0000064 Lukunor East Chuuk, FSM Warning Point SG
+sgsapw 0000065 0.000 ! 0000065 Sapwuafik (Ngatik) East Pohnpei, FSM Warning Point SG
+sgpaki 0000066 0.000 ! 0000066 Pakin East Pohnpei, FSM Warning Point SG
+sgmoki 0000067 0.000 ! 0000067 Mokil East Pohnpei, FSM Warning Point SG
+sgping 0000068 0.000 ! 0000068 Pingelap East Pohnpei, FSM Warning Point SG
+sgenew 0000069 0.000 ! 0000069 Enewetak East Marshall Islands Warning Point SG
+sgutir 0000070 0.000 ! 0000070 Utirik East (Airport) Marshall Islands Warning Point SG
+sgwotj 0000071 0.000 ! 0000071 Wotje East (Airport) Marshall Islands Warning Point SG
+sgujae 0000072 0.000 ! 0000072 Ujae East (Airport) Marshall Islands Warning Point SG
+sgkwaj 0000073 0.000 ! 0000073 Kwajalein East (Airport) Marshall Islands Warning Point SG
+sgaili 0000074 0.000 ! 0000074 Ailinglaplap East (Airport) Marshall Islands Warning Point SG
+sgjalu 0000075 0.000 ! 0000075 Jaluit East (Airport) Marshall Islands Warning Point SG
+sgmili 0000076 0.000 ! 0000076 Mili East Marshall Islands Warning Point SG
+sgwake 0000077 0.000 ! 0000077 Wake East Wake Island Populated Island SG
+sgwakw 0000078 0.000 ! 0000078 Wake West Wake Island Populated Island SG
+sgeura 0000079 0.000 ! 0000079 Eurapik East Yap, FSM Populated Island SG
+sgifal 0000080 0.000 ! 0000080 Ifalik East Yap, FSM Populated Island SG
+sglamo 0000081 0.000 ! 0000081 Lamotrek East Yap, FSM Populated Island SG
+sgorol 0000082 0.000 ! 0000082 Oroluk East Pohnpei, FSM Populated Island SG
+sgnuea 0000083 0.000 ! 0000083 Nukuoro East Pohnpei, FSM Populated Island SG
+sg66km 0000084 0.000 ! 0000084 66 Km North from Kapingamarangi West Pohnpei(-205.28 1.08), FSM Populated Island SG
+sgroin 0000085 0.000 ! 0000085 Roi Namur East (Airport) Marshall Islands Populated Island SG
+sgebee 0000086 0.000 ! 0000086 Ebeye East Marshall Islands Populated Island SG
+sgebew 0000087 0.000 ! 0000087 Ebeye West Marshall Islands Populated Island SG
+sgebon 0000088 0.000 ! 0000088 Ebon East Marshall Islands Populated Island SG
+sgarno 0000089 0.000 ! 0000089 Arno East Marshall Islands Populated Island SG
+sg62km 0000090 0.000 ! 0000090 62 Km ENE from Helen Reef (-228.185 3.014) SG
+sgtara GL00113 0.000 ! GL00113 Tarawa Bairiki Kiribati SG
+sgbalt GL00169 0.000 ! GL00169 Baltra Ecuador SG
+sgnaur GL00114 0.000 ! GL00114 Nauru Nauru SG
+sghoni GL00066 0.000 ! GL00066 Honiara Solomon Islands SG
+sgchki GL00146 0.000 ! GL00146 Christmas Kiribati SG
+sgkant GL00145 0.000 ! GL00145 Kanton Kiribati SG
+sgfren GL00107 0.000 ! GL00107 French Frigate US SG
+sgpape GL00140 0.000 ! GL00140 Papeete France SG
+sgriki GL00138 0.000 ! GL00138 Rikitea France SG
+sghiva GL00000 0.000 ! GL00000 Hiva Oa France SG
+sgsuva GL00122 0.000 ! GL00122 Suva Fiji SG
+sgnoum GL00123 0.000 ! GL00123 Noumea France SG
+sgjuan GL00176 0.000 ! GL00176 Juan Fernandez Chile SG
+sgeasc GL00137 0.000 ! GL00137 Easter Chile SG
+sgraro GL00139 0.000 ! GL00139 Rarotonga Cook Islands SG
+sgpenr GL00143 0.000 ! GL00143 Penrhyn Cook Islands SG
+sgfuna GL00121 0.000 ! GL00121 Funafuti Tuvalu SG
+sgkapi GL00117 0.000 ! GL00117 Kapingamarangi Micronesia SG
+sgsacr GL00000 0.000 ! GL00000 Santa Cruz Ecuador SG
+sgnuhi GL00142 0.000 ! GL00142 Nuku Hiva France SG
+sgbitu GL00069 0.000 ! GL00069 Bitung Indonesia SG
+sgcabo GL00161 0.000 ! GL00161 Cabo San Lucas Mexico SG
+sgsanf GL00177 0.000 ! GL00177 San Felix Chile SG
+sgnual GL00125 0.000 ! GL00125 Nuku'alofa Tonga SG
+sgdutc GL00102 0.000 ! GL00102 Dutch Harbor AK US SG
+sgpais GL00000 0.000 ! GL00000 Palmyra Island US SG
+sgpovi GL00348 0.000 ! GL00348 Port Vila Vanuatu SG
+sgchic GL00103 0.000 ! GL00103 Chichijima Japan SG
+sgmina GL00104 0.000 ! GL00104 Minamitorishima Japan SG
+sgjohn GL00109 0.000 ! GL00109 Johnston US SG
+sgwell GL00101 0.000 ! GL00101 Wellington New Zealand SG
+sgbluf GL00129 0.000 ! GL00129 Bluff New Zealand SG
+sgchat GL00128 0.000 ! GL00128 Chatham New Zealand SG
+sganto GL00174 0.000 ! GL00174 Antofagasta Chile SG
+sgvalp GL00175 0.000 ! GL00175 Valparaiso Chile SG
+sgacaj GL00182 0.000 ! GL00182 Acajutla El Salvador SG
+sgaric GL00000 0.000 ! GL00000 Arica Chile SG
+sglobo GL00000 0.000 ! GL00000 Lobos de Afuera Peru SG
+sgquep GL00167 0.000 ! GL00167 Quepos Costa Rica SG
+sgcald GL00000 0.000 ! GL00000 Caldera Chile SG
+sgsoco GL00162 0.000 ! GL00162 Socorro Mexico SG
+sglall GL00172 0.000 ! GL00172 La Libertad Ecuador SG
+sgtala GL00000 0.000 ! GL00000 Talara Peru SG
+sgcall GL00173 0.000 ! GL00173 Callao Peru SG
+sgmata GL00000 0.000 ! GL00000 Matarani Peru SG
+sgmomb GL00008 0.000 ! GL00008 Mombasa Kenya SG
+sgpolo GL00018 0.000 ! GL00018 Port Louis Mauritius SG
+sgdieg GL00026 0.000 ! GL00026 Diego Garcia UK SG
+sgrodr GL00019 0.000 ! GL00019 Rodrigues Mauritius SG
+sgpada GL00045 0.000 ! GL00045 Padang Indonesia SG
+sgmale GL00028 0.000 ! GL00028 Male Maldives SG
+sgganm GL00027 0.000 ! GL00027 Gan Maldives SG
+sgmusc GL00000 0.000 ! GL00000 Muscat Oman SG
+sgmasi GL00000 0.000 ! GL00000 Masirah Oman SG
+sgsala GL00004 0.000 ! GL00004 Salalah Oman SG
+sgcolo GL00033 0.000 ! GL00033 Colombo Sri Lanka SG
+sghani GL00000 0.000 ! GL00000 Hanimaadhoo Maldives SG
+sgkomi GL00000 0.000 ! GL00000 Ko Miang Thailand SG
+sgdjib GL00002 0.000 ! GL00002 Djibouti Djibouti SG
+sgptla GL00339 0.000 ! GL00339 Pt. La Rue Seychelles SG
+sgsibo GL00000 0.000 ! GL00000 Sibolga Indonesia SG
+sgsaba GL00347 0.000 ! GL00347 Sabang Indonesia SG
+sgchit GL00036 0.000 ! GL00036 Chittagong Bangladesh SG
+sgprig GL00000 0.000 ! GL00000 Prigi Indonesia SG
+sgjask GL00000 0.000 ! GL00000 Jask IranSG
+sgsyow GL00095 0.000 ! GL00095 Syowa Antarctica Antarctica SG
+sgthev GL00308 0.000 ! GL00308 Thevenard AustraliaSG
+sgposa GL00055 0.000 ! GL00055 Portland S.Aus. Australia SG
+sgcase GL00278 0.000 ! GL00278 Casey Australia SG
+sgambo GL00068 0.000 ! GL00068 Ambon Indonesia SG
+sglang GL00000 0.000 ! GL00000 Langkawi Malaysia SG
+sgkara GL00030 0.000 ! GL00030 Karachi Pakistan SG
+sgkota GL00042 0.000 ! GL00042 Ko Taphao Noi Thailand SG
+sglamu GL00000 0.000 ! GL00000 Lamu Kenya SG
+sgzanz GL00297 0.000 ! GL00297 Zanzibar Tanzania SG
+sgmini GL00029 0.000 ! GL00029 Minicoy India SG
+sgdzao GL00096 0.000 ! GL00096 Dzaoudzi France SG
+sgvish GL00035 0.000 ! GL00035 Vishakhapatnam India SG
+sgcili GL00291 0.000 ! GL00291 Cilicap Indonesia SG
+sgbeno GL00049 0.000 ! GL00049 Benoa Indonesia SG
+sgreun GL00017 0.000 ! GL00017 Reunion France SG
+sgbroo GL00040 0.000 ! GL00040 Broome Australia SG
+sgcarn GL00052 0.000 ! GL00052 Carnarvon AustraliaSG
+sgdarw GL00062 0.000 ! GL00062 Darwin Australia SG
+sgporh GL00051 0.000 ! GL00051 Port Hedland Australia SG
+sgchau GL00047 0.000 ! GL00047 Christmas Australia SG
+sgcoau GL00046 0.000 ! GL00046 Cocos AustraliaSG
+sgaden GL00000 0.000 ! GL00000 Aden Yemen, SG
+sgdavi GL00277 0.000 ! GL00277 Davis Australia SG
+sgcoch GL00032 0.000 ! GL00032 Cochin India SG
+sgfrem GL00053 0.000 ! GL00053 Fremantle Australia SG
+sgesau GL00054 0.000 ! GL00054 Esperance Australia SG
+sgmaws GL00022 0.000 ! GL00022 Mawson Australia SG
+sgcroz GL00021 0.000 ! GL00021 Crozet France SG
+sgsapa GL00024 0.000 ! GL00024 Saint Paul France SG
+sgkerg GL00023 0.000 ! GL00023 Kerguelen France SG
+sgdurb GL00013 0.000 ! GL00013 Durban South Africa SG
+sgpoel GL00076 0.000 ! GL00076 Port Elizabeth South Africa SG
+sgdumo GL00131 0.000 ! GL00131 Dumon d'Urville Antarctica SG
+sgpemb GL00011 0.000 ! GL00011 Pemba Mozambique SG
+sgceut GL00249 0.000 ! GL00249 Ceuta Spain SG
+sgcasc GL00246 0.000 ! GL00246 Cascais Portugal SG
+sgflor GL00244 0.000 ! GL00244 Flores Santa Cruz Portugal SG
+sgpont GL00245 0.000 ! GL00245 Ponta Delgada Portugal SG
+sglasp GL00251 0.000 ! GL00251 Las Palmas Spain SG
+sgfunc GL00250 0.000 ! GL00250 Funchal Portugal SG
+sgwalv GL00314 0.000 ! GL00314 Walvis Bay Namibia SG
+sgsimo GL00268 0.000 ! GL00268 Simon's Town South Africa SG
+sgdaka GL00253 0.000 ! GL00253 Dakar Senegal SG
+sgsaot GL00260 0.000 ! GL00260 Sao Tome Sao Tome and Principe SG
+sgcaye GL00202 0.000 ! GL00202 Cayenne France SG
+sgtako GL00335 0.000 ! GL00335 Takoradi Ghana, SG
+sglago GL00259 0.000 ! GL00259 Lagos Nigeria SG
+sgpoin GL00261 0.000 ! GL00261 Pointe Noire Congo SG
+sgpaca GL00329 0.000 ! GL00329 Palmeira Cabo Verde SG
+sgsett GL00211 0.000 ! GL00211 Settlement Point Bahamas SG
+sgberm GL00221 0.000 ! GL00221 Bermuda UK SG
+sgchar GL00000 0.000 ! GL00000 Charleston SC US SG
+sgcris GL00208 0.000 ! GL00208 Cristobal Panama SG
+sglimo GL00000 0.000 ! GL00000 Limon Costa Rica SG
+sgfofe GL00000 0.000 ! GL00000 Fort de France France SG
+sgpoau GL00000 0.000 ! GL00000 Port-aux-basques Canada SG
+sgchur GL00000 0.000 ! GL00000 Churchill Canada SG
+sghali GL00222 0.000 ! GL00222 Halifax Canada SG
+sgstjo GL00223 0.000 ! GL00223 St. John's Canada SG
+sgilha GL00195 0.000 ! GL00195 Ilha Fiscal, RJ Brazil SG
+sgcana GL00194 0.000 ! GL00194 Cananeia Brazil SG
+sgfobr GL00336 0.000 ! GL00336 Fortaleza Brazil SG
+sgpude GL00190 0.000 ! GL00190 Puerto Deseado Argentina SG
+sgreyk GL00229 0.000 ! GL00229 Reykjavik Iceland SG
+sggibr GL00248 0.000 ! GL00248 Gibraltar UK SG
+sgpost GL00305 0.000 ! GL00305 Port Stanley UK SG
+sgasce GL00263 0.000 ! GL00263 Ascension UK SG
+sgsthe GL00264 0.000 ! GL00264 St. Helena UK SG
+sglerw GL00236 0.000 ! GL00236 Lerwick UK SG
+sgnewl GL00241 0.000 ! GL00241 Newlyn Cornwalld UK SG
+sgstor GL00238 0.000 ! GL00238 Stornoway UK SG
+sgqaqo GL00344 0.000 ! GL00344 Qaqortoq Denmark SG
+sgbalb GL00168 0.000 ! GL00168 Balboa Panama SG
+sgacap GL00267 0.000 ! GL00267 Acapulco Gro. Mexico SG
+sgense GL00000 0.000 ! GL00000 Ensenada MexicoSG
+sgkola GL00039 0.000 ! GL00039 Ko Lak Thailand SG
+sghong GL00077 0.000 ! GL00077 Hong Kong Hong Kong SG
+sgbris GL00058 0.000 ! GL00058 Brisbane Australia SG
+sgbund GL00059 0.000 ! GL00059 Bundaberg Australia SG
+sgfode GL00057 0.000 ! GL00057 Fort Denison Australia SG
+sgtown GL00060 0.000 ! GL00060 Townsville Australia SG
+sgspri GL00056 0.000 ! GL00056 Spring Bay AustraliaSG
+sgboob GL00061 0.000 ! GL00061 Booby Island Australia SG
+sgkaoh GL00000 0.000 ! GL00000 Kaohsiung China SG
+sgkeel GL00000 0.000 ! GL00000 Keelung China SG
+sgnaka GL00000 0.000 ! GL00000 Nakano Shima Japan SG
+sgabas GL00327 0.000 ! GL00327 Abashiri Japan SG
+sghama GL00326 0.000 ! GL00326 Hamada Japan, SG
+sgtoya GL00325 0.000 ! GL00325 Toyama Japan SG
+sgkus1 GL00089 0.000 ! GL00089 Kushiro Japan SG
+sgofun GL00087 0.000 ! GL00087 Ofunato Japan SG
+sgmera GL00086 0.000 ! GL00086 Mera Japan SG
+sgkus2 GL00085 0.000 ! GL00085 Kushimoto Japan, SG
+sgabur GL00082 0.000 ! GL00082 Aburatsu Japan SG
+sgnaha GL00081 0.000 ! GL00081 Naha Japan SG
+sgmais GL00000 0.000 ! GL00000 Maisaka Japan SG
+sgnaze GL00000 0.000 ! GL00000 Naze Japan SG
+sgwakk GL00324 0.000 ! GL00324 Wakkanai Japan SG
+sgnaga GL00083 0.000 ! GL00083 Nagasaki Japan SG
+sgnish GL00000 0.000 ! GL00000 Nishinoomote Japan SG
+sghako GL00088 0.000 ! GL00088 Hakodate Japan SG
+sgishi GL00000 0.000 ! GL00000 Ishigaki Japan SG
+sgmani GL00073 0.000 ! GL00073 Manila Philippines SG
+sglega GL00072 0.000 ! GL00072 Legaspi Philippines SG
+sgdava GL00071 0.000 ! GL00071 Davao Philippines SG
+sgquin GL00075 0.000 ! GL00075 Qui Nhon Viet Nam SG
+sgsubi GL00000 0.000 ! GL00000 Subic Bay Philippines SG
+sgvung GL00000 0.000 ! GL00000 Vung Tau Viet Nam SG
+sgcois GL00000 0.000 ! GL00000 Cocos Island Costa Rica SG
+sgmanz GL00163 0.000 ! GL00163 Manzanillo Mexico SG
+sglord GL00148 0.000 ! GL00148 Lord Howe Australia SG
+sglomb GL00331 0.000 ! GL00331 Lombrum Papua New Guinea SG
+sglaut GL00000 0.000 ! GL00000 Lautoka Fiji SG
+sgjack GL00000 0.000 ! GL00000 Jackson New Zealand SG
+sgtale GL00000 0.000 ! GL00000 Tanjung Lesung Indonesia SG
+sgsade GL00000 0.000 ! GL00000 Sadeng Indonesia SG
+sgwaik GL00346 0.000 ! GL00346 Waikelo Indonesia SG
+sglemb GL00000 0.000 ! GL00000 Lembar Indonesia SG
+sgsaum GL00000 0.000 ! GL00000 Saumlaki Indonesia SG
+sgprin GL00155 0.000 ! GL00155 Prince Rupert Canada SG
+sgbamf GL00000 0.000 ! GL00000 Bamfield Canada SG
+sgtofi GL00156 0.000 ! GL00156 Tofino Canada SG
+sgbarb GL00000 0.000 ! GL00000 Barbers Point HI US SG
+sgkaum GL00000 0.000 ! GL00000 Kaumalapau HI US SG
+sgprud GL00151 0.000 ! GL00151 Prudhoe Bay AK US SG
+sgnome GL00074 0.000 ! GL00074 Nome AK US SG
+sgushu GL00181 0.000 ! GL00181 Ushuaia Argentina SG
+sgesar GL00185 0.000 ! GL00185 Esperanza Argentina SG
+sgcurr GL00000 0.000 ! GL00000 Currimao Philippines SG
+sgluba GL00000 0.000 ! GL00000 Lubang PhilippinesSG
+sgmacq GL00130 0.000 ! GL00130 Macquarie Is. Australia SG
+sgpumo GL00178 0.000 ! GL00178 Puerto Montt Chile SG
+sgtapa GL00044 0.000 ! GL00044 Tanjong Pagar Singapore SG
+sgfaan GL00188 0.000 ! GL00188 Faraday Antarctica SG
+sgsalv GL00334 0.000 ! GL00334 Salvador, USCGS Brazil SG
+sgmard GL00192 0.000 ! GL00192 Mar del Plata Argentina SG
+sgpuma GL00191 0.000 ! GL00191 Puerto Madryn Argentina SG
+sgsana GL00000 0.000 ! GL00000 San Andres Colombia SG
+sgsama GL00000 0.000 ! GL00000 Santa Marta Colombia SG
+sgelpo GL00000 0.000 ! GL00000 El Porvenir Panama SG
+sgpupl GL00000 0.000 ! GL00000 Puerto Plata Dominican Republic SG
+sgrose GL00000 0.000 ! GL00000 Roseau Dominica SG
+sgpric GL00000 0.000 ! GL00000 Prickley Bay Grenada SG
+sgpopr GL00209 0.000 ! GL00209 Portu-Prince Haiti SG
+sgande GL00322 0.000 ! GL00322 Andenes Norway SG
+sghonn GL00000 0.000 ! GL00000 Honningsvag Norway SG
+sgmalo GL00000 0.000 ! GL00000 Maloy Norway SG
+sgrorv GL00234 0.000 ! GL00234 Rorvik Norway SG
+sgtreg GL00321 0.000 ! GL00321 Tregde Norway SG
+sgvard GL00323 0.000 ! GL00323 Vardo Norway SG
+sgnoua GL00000 0.000 ! GL00000 Nouakchott Mauritania SG
+sgalex GL00349 0.000 ! GL00349 Alexandria Egypt SG
+sgthul GL00343 0.000 ! GL00343 Thule (Pituffik) Denmark SG
+sgitto GL00315 0.000 ! GL00315 Ittoqqortoormiit Denmark SG
+sgposo GL00350 0.000 ! GL00350 Port Sonara Cameroon SG
+sgsmog GL00000 0.000 ! GL00000 Smogen Sweden SG
+sggote GL00233 0.000 ! GL00233 Goteborgorsh. Sweden SG
+sgnuuk GL00225 0.000 ! GL00225 Nuuk Denmark SG
+sgbres GL00242 0.000 ! GL00242 Brest France SG
+sgmars GL00205 0.000 ! GL00205 Marseille France SG
+sgcuxh GL00284 0.000 ! GL00284 Cuxhaven Germany SG
+sgstoc GL00341 0.000 ! GL00341 Stockholm Sweden SG
+sgtrie GL00340 0.000 ! GL00340 Trieste Italy SG
+sglaco GL00243 0.000 ! GL00243 La Coruna Spain SG
+sgnain GL00224 0.000 ! GL00224 Nain Canada SG
+sgmali GL00239 0.000 ! GL00239 Malin Head Ireland SG
+sgcast GL00330 0.000 ! GL00330 Castletownsend Ireland SG
+sgaler GL00333 0.000 ! GL00333 Alert Canada SG
+sgbull GL00000 0.000 ! GL00000 Bullen Bay Curacao SG
+sginha GL00010 0.000 ! GL00010 Inhambane Mozambique SG
+sgmoul GL00141 0.000 ! GL00141 Moulmein Myanmar SG
+sgakya GL00037 0.000 ! GL00037 Akyab (Sittwe) Myanmar SG
+sgpobl GL00038 0.000 ! GL00038 Port Blair India SG
+sgtelu GL00000 0.000 ! GL00000 Telukdalam Indonesia SG
+sgmeul GL00000 0.000 ! GL00000 Meulaboh Indonesia SG
+sgchab GL00337 0.000 ! GL00337 Chabahar Iran SG
+sgmari GL00020 0.000 ! GL00020 Marion Island South Africa SG
+sgmtwa GL00009 0.000 ! GL00009 Mtwara Tanzania SG
+pmepet 8410834 3.130 ! 8410834 Pettegrove Point, Dochet Island ME
+meshop 8411696 1.948 ! 8411696 Shoppee Point, Englishman Bay ME
+memilb 8412581 1.853 ! 8412581 Milbridge ME
+medeer Est0011 1.652 ! Est0011 Deer Isle ME
+mecast 8414672 1.704 ! 8414672 Castine ME
+mefor1 8414721 1.704 ! 8414721 Fort Point ME
+mepulp 8414888 1.634 ! 8414888 Pulpit Harbor, Penobscot Bay ME
+merock 8415490 1.625 ! 8415490 Rockland ME
+methom 8415709 1.509 ! 8415709 Thomaston ME
+mewal1 8416731 1.539 ! 8416731 Walpole, Damariscotta River ME
+mewisc 8416921 1.542 ! 8416921 Wiscasset ME
+meaugu Est7134 0.972 ! Est7134 Augusta ME
+megard 8417134 1.024 ! 8417134 Gardiner ME
+mehunn 8417177 1.399 ! 8417177 Hunniwell Point ME
+mebath 8417227 1.134 ! 8417227 Bath ME
+machat 8447435 0.777 ! 8447435 Chatham MA
+maprov 8446121 1.533 ! 8446121 Provincetown MA
+mepohe 8418031 0.460 ! 8418031 Portland Head Light Station ME
+mepine 8418445 1.451 ! 8418445 Pine Point ME
+mecamp 8418606 1.469 ! 8418606 Camp Ellis, Saco River ME
+mekenn 8418911 1.466 ! 8418911 Kennebunkport, Kennebunk River ME
+masand 8447180 1.433 ! 8447180 Sandwich MA
+mecape 8419399 1.436 ! 8419399 Cape Neddick ME
+mawing Est0038 0.576 ! Est0038 Wings Neck MA
+mabuzz 8447270 0.546 ! 8447270 Buzzards Bay MA
+maglou 8441841 1.454 ! 8441841 Gloucester Harbor MA
+mascit 8445138 1.490 ! 8445138 Scituate, Scituate Harbor MA
+meseav 8419870 1.359 ! 8419870 Seavey Island ME
+nhhamp 8429489 1.375 ! 8429489 Hampton Harbor NH
+manewb 8447712 0.512 ! 8447712 New Bedford, Clarks Point MA
+maamel 8443662 1.597 ! 8443662 Amelia Earhart Dam, Mystic River MA
+ribloc 8459681 0.421 ! 8459681 Block Island RI
+riwatc 8458694 0.457 ! 8458694 Watch Hill Point RI
+nymain Est0029 0.439 ! Est0029 Main Beach E Hampton NY
+nyorie 8511671 0.463 ! 8511671 Orient Harbor NY
+ctsayb 8462752 0.561 ! 8462752 Saybrook Point CT
+ctesse 8462925 0.518 ! 8462925 Essex CT
+nyponq 8512451 0.463 ! 8512451 Ponquogue Point NY
+nymatt 8512668 0.826 ! 8512668 Mattituck Inlet, Long Island NY
+nysout 8512735 0.500 ! 8512735 South Jamesport NY
+nymori 8513388 0.363 ! 8513388 Moriches Cgs, Moriches Bay NY
+nyport 8514560 1.073 ! 8514560 Port Jefferson NY
+nywest Est0026 0.219 ! Est0026 West Sayville NY
+nybaby 8515421 0.223 ! 8515421 Babylon NY
+nygres Est0009 0.226 ! Est0009 Great South Bay At Lindenhurst NY
+ctstam 8469198 1.173 ! 8469198 Stamford Harbor CT
+nypoin 8516402 0.683 ! 8516402 Point Lookout NY
+nyglen 8516614 1.183 ! 8516614 Glen Cove Yacht Club, Long Island NY
+nyryeb 8518091 1.189 ! 8518091 Rye Beach, Amusement Park NY
+nyeast Esta614 1.183 ! Esta614 East Creek Sands Point NY
+nyatla 8516881 0.722 ! 8516881 Atlantic Beach NY
+nymott 8516925 0.884 ! 8516925 Motts Basin NY
+nywill 8516990 1.183 ! 8516990 Willets Point NY
+nybarr 8517394 0.829 ! 8517394 Barren Island, Rockaway Inlet NY
+nytarr 8518919 0.610 ! 8518919 Tarrytown NY
+njseab 8531804 0.576 ! 8531804 Sea Bright NJ
+njmana Nd32591 0.610 ! Nd32591 Manasquan (8632591 Nd) NJ
+njmant 8532786 0.055 ! 8532786 Mantoloking, Barnegat Bay NJ
+njseas Est0006 0.131 ! Est0006 Seaside Heights NJ
+njcoat 8533055 0.061 ! 8533055 Coates Point, Barnegat Bay NJ
+njbarn 8533615 0.354 ! 8533615 Barnegat Inlet (Inside) NJ
+njpoin 8530743 0.884 ! 8530743 Point No Point, Passaic River NJ
+nygrek Est0027 0.704 ! Est0027 Great Kills Harbor NY
+njwaac 8531592 0.750 ! 8531592 Waackaack Ck, Raritan Bay NJ
+njware 8533541 0.052 ! 8533541 Waretown Barnegat Bay NJ
+njsoar 8531232 0.863 ! 8531232 S Amboy Raritan River NJ
+njgreb 8534319 0.472 ! 8534319 Great Bay, Shooting Thorofare NJ
+njabse 8534638 0.707 ! 8534638 Absecon Channal NJ
+njatl2 Est4836 0.619 ! Est4836 Atlantic City NJ
+njlong 8534836 0.619 ! 8534836 Longport, Risely Channel NJ
+njgree 8534975 0.628 ! 8534975 Great Egg Harbor Bay NJ
+njingr 8535419 0.677 ! 8535419 Ingram Thorofare NJ
+njston 8535581 0.713 ! 8535581 Stone Harbor, Great Channel NJ
+njcap2 8535901 0.692 ! 8535901 Cape May Harbor NJ
+njbiva 8536889 0.893 ! 8536889 Bivale NJ
+deindi 8558690 0.451 ! 8558690 Indian River Inlet DE
+pabrid 8546252 1.094 ! 8546252 Bridesburg PA
+debran 8555889 0.796 ! 8555889 Brandywine Shoal Light DE
+demurd 8555388 0.671 ! 8555388 Murderkill River Entrance DE
+vawall 8630440 0.408 ! 8630440 Wallops Island VA
+ncroda 8653215 0.131 ! 8653215 Rodanthe, Pamlico Sound NC
+dewilm 8550714 0.911 ! 8550714 Wilmington, Christina R. Ent. DE
+nccape 8654400 0.494 ! 8654400 Cape Hatteras Fishing Pier NC
+vasaxi 8633777 0.381 ! 8633777 Saxis, Starling Creek VA
+mdcris 8571091 0.305 ! 8571091 Crisfield MD
+vagask 8632869 0.314 ! 8632869 Gaskins Pt., Occohannock Creek VA
+ncenge Est0024 0.088 ! Est0024 Engelhard NC
+ncocra 8654792 0.158 ! 8654792 Ocracoke Island NC
+vatang 8633532 0.259 ! 8633532 Tangier Island VA
+ncsoal Est0022 0.009 ! Est0022 South Alligator River NC
+vacbbt 8638901 0.448 ! 8638901 CBBT, Chesapeake Channel VA
+mdhavr 8574070 0.360 ! 8574070 Havre De Grace MD
+valynn Est0035 0.375 ! Est0035 Lynnhaven Inlet VA
+nccolu Est0016 0.018 ! Est0016 Columbia NC
+mdotte Est0004 0.189 ! Est0004 Otter Point MD
+ncceda Est0014 0.021 ! Est0014 Cedar Island NC
+vaoldp 8638288 0.344 ! 8638288 Old Point Comfort VA
+mdpoin 8578002 0.238 ! 8578002 Point Lookout, Potomac River MD
+ncswan Est0023 0.046 ! Est0023 Swanquarter NC
+mdbowl Est0005 0.158 ! Est0005 Bowleys Quarters MD
+mdcove 8577188 0.192 ! 8577188 Cove Point MD
+vabrow 8637444 0.393 ! 8637444 Browns Bay VA
+mdstra Est0037 0.247 ! Est0037 Straits Point MD
+mdcheb 8576363 0.210 ! 8576363 Chesapeake Beach MD
+mdpine 8578240 0.247 ! 8578240 Piney Point MD
+vaholl 8638409 0.619 ! 8638409 Hollidays Point (Kings Highway Bridge) VA
+varagg 8635485 0.277 ! 8635485 Ragged Point, Coles Neck VA
+ncbelh Est0018 0.070 ! Est0018 Belhaven NC
+mdbene 8579135 0.357 ! 8579135 Benedict MD
+ncorie Est0013 0.052 ! Est0013 Oriental NC
+ncwest Est0015 0.040 ! Est0015 Westover NC
+ncmore 8656502 0.524 ! 8656502 Morehead City Harbor, Harbor Channel NC
+mdcolt 8578465 0.287 ! 8578465 Colton Point MD
+vajame 8637712 0.326 ! 8637712 Jamestown Wharf VA
+vacolo 8635150 0.296 ! 8635150 Colonial Beach, Potomac River VA
+dcbell 8590111 0.543 ! 8590111 Bellevue DC
+vaalex 8634214 0.439 ! 8634214 Alexandria VA
+ncnewb Est0019 0.091 ! Est0019 New Bern NC
+vadahl 8635027 0.287 ! 8635027 Dahlgren VA
+mdmars 8579629 0.390 ! 8579629 Marshall Hall MD
+ncbogu Est0025 0.561 ! Est0025 Bogue Inlet NC
+mdindi 8579381 0.308 ! 8579381 Indian Head MD
+valees Est0036 0.226 ! Est0036 Leesylvania Park VA
+vaquan 8634689 0.262 ! 8634689 Quantico VA
+vaaqui 8634858 0.229 ! 8634858 Aquia Creek VA
+ncocea 8657419 0.689 ! 8657419 Ocean City, Fishing Pier NC
+ncsout 8659084 0.707 ! 8659084 Southport NC
+nchold Est0017 0.610 ! Est0017 Holden Beach NC
+ncsuns 8659897 0.814 ! 8659897 Sunset Beach NC
+scnixo 8660166 0.658 ! 8660166 Nixon Crossroads, Little River SC
+scsand 8661703 0.613 ! 8661703 Sandy Island, Thoroughfare Creek SC
+schagl 8661991 0.607 ! 8661991 Hagley, Waccamaw River SC
+scwacc 8662931 0.607 ! 8662931 Waccamaw River Entrance SC
+scsout 8662549 0.613 ! 8662549 South Island Ferry, Winyah Bay SC
+scpete 8667425 1.076 ! 8667425 Peters Point, St. Pierre Creek SC
+scbeau 8667999 1.317 ! 8667999 Beaufort SC
+gaoldt 8675365 0.972 ! 8675365 Old Tea Kettle Creek (Daymark 173) GA
+flracy 8720625 0.194 ! 8720625 Racy Point, St Johns River FL
+fldame 8720219 0.567 ! 8720219 Dames Point FL
+flredb 8720503 0.165 ! 8720503 Red Bay Point, St Johns River FL
+flsout 8720226 0.323 ! 8720226 Southbank Riverwalk, St Johns River FL
+flpens 8729840 0.189 ! 8729840 Pensacola FL
+alcoas 8736897 0.256 ! 8736897 Coast Guard Sector Mobile AL
+alchic 8737138 0.262 ! 8737138 Chickasaw Creek AL
+msdock 8741041 0.232 ! 8741041 Dock E, Port Of Pascagoula MS
+mspasc 8741533 0.232 ! 8741533 Pascagoula Noaa Lab MS
+lagran 8761724 0.165 ! 8761724 Grand Isle LA
+laeuge 8764314 0.311 ! 8764314 Eugene Island, North of, Atchafalaya Bay LA
+lafres 8766072 0.363 ! 8766072 Freshwater Canal Locks LA
+lalake 8767816 0.238 ! 8767816 Lake Charles LA
+labulk 8767961 0.229 ! 8767961 Bulk Terminal LA
+lacalc 8768094 0.341 ! 8768094 Calcasieu Pass LA
+txhigh 8770808 0.226 ! 8770808 High Island TX
+txgapp 8771510 0.338 ! 8771510 Galveston Pleasure Pier TX
+txgarb 8771486 0.229 ! 8771486 Galveston Railroad Bridge TX
+txlync 8770733 0.247 ! 8770733 Lynchburg Landing TX
+txsanl 8771972 0.210 ! 8771972 San Luis Pass TX
+txmata 8773767 0.226 ! 8773767 Matagorda Bay Entrance Channel TX
+txaran 8775241 0.253 ! 8775241 Aransas, Aransas Pass TX
+txpoa2 8775270 0.280 ! 8775270 Port Aransas, H. Caldwell Pier TX
+txspib 8779749 0.265 ! 8779749 Spi Brazos Santiago TX
+txsopa 8779750 0.268 ! 8779750 South Padre Island, Brazos Santiago Pass TX
+txreal 8779280 0.093 ! 8779280 Realitos Peninsula TX
+txnuec 8775244 0.109 ! 8775244 Nueces Bay TX
+ca175n Ep46412 0.744 ! Ep46412 175 Nm W San Diego CA
+casant 9413745 0.856 ! 9413745 Santa Cruz, Monterey Bay CA
+cadumb 9414509 1.426 ! 9414509 Dumbarton Bridge CA
+camare 9415218 0.936 ! 9415218 Mare Island CA
+caoakl 9414764 1.012 ! 9414764 Oakland Inner Harbor CA
+capill 9414131 0.911 ! 9414131 Pillar Point Harbor CA
+waswin 9448682 1.536 ! 9448682 Swinomish WA
+wagree 9447883 2.015 ! 9447883 Green Bank WA
+wawaun 9446291 2.329 ! 9446291 Wauna WA
+wayoma 9446705 2.350 ! 9446705 Yoman Point, Anderson Island WA
+wavanc 9440083 0.411 ! 9440083 Vancouver WA
+orsthe 9439201 0.454 ! 9439201 St Helens OR
+waarmi 9449932 1.420 ! 9449932 Armitage Island WA
+watele 9449988 1.113 ! 9449988 Telegraph Bay WA
+warosa 9449711 0.381 ! 9449711 Rosario (9449711 Nd) WA
+waupri 9449911 1.408 ! 9449911 Upright Head WA
+walon2 9440422 0.625 ! 9440422 Longview WA
+wawald 9449746 1.487 ! 9449746 Waldron Island WA
+cabode 9415625 0.969 ! 9415625 Bodega Harbor Entrance CA
+wakana 9449856 1.338 ! 9449856 Kanaka Bay, San Juan Island WA
+wapoin 9449639 1.719 ! 9449639 Point Roberts WA
+orwaun 9439099 1.036 ! 9439099 Wauna OR
+canoyo 9417426 0.896 ! 9417426 Noyo Harbor CA
+orcasc 9436381 1.097 ! 9436381 Cascade Head, Salmon River OR
+wacape 9440581 1.311 ! 9440581 Cape Disappointment WA
+cashel 9418024 1.006 ! 9418024 Shelter Cove CA
+ordepo 9435827 1.347 ! 9435827 Depoe Bay OR
+wajett 9440572 1.396 ! 9440572 Jetty A, Columbia River WA
+caarca 9418851 1.143 ! 9418851 Arcata Wharf CA
+catrin 9419059 1.100 ! 9419059 Trinidad Harbor CA
+wataho Nd41644 0.771 ! Nd41644 Tahola (9441644 Nd) WA
+ca150n Ep46411 0.911 ! Ep46411 150 Nm W Mendocino Bay CA
+or230n Ep46404 0.226 ! Ep46404 230 Nm W Astoria OR
+or210n Ep46407 1.061 ! Ep46407 210 Nm W Coos Bay OR
+wa300n Ep46419 1.353 ! Ep46419 300 Nm Wnw Seattle WA
+akwran Goa0002 0.000 ! Goa0002 Wrangell AK
+akcrai 9450551 1.628 ! 9450551 Craig AK
+akgust Goa0001 1.597 ! Goa0001 Gustavus AK
+ak188n Ep46410 1.487 ! Ep46410 188 Nm Sse Cordova AK
+akprud 9497645 0.104 ! 9497645 Prudhoe Bay AK
+ak210n Ep46409 1.341 ! Ep46409 210 Nm Se Kodiak AK
+akpoib Ber0001 0.055 ! Ber0001 Point Barrow AK
+ak186n Ep46403 1.042 ! Ep46403 186 Nm Se Shumagin Island AK
+aknakn Ber0014 3.368 ! Ber0014 Naknek River Ent #13 AK
+akegeg Ber0015 2.874 ! Ber0015 Egegik River Ent AK
+aksnag 9465374 3.304 ! 9465374 Snag Point, Dillingham AK
+akclar 9465261 3.344 ! 9465261 Clarks Point, Nushagak Bay AK
+akprot 9465056 2.865 ! 9465056 Protection Point, Nushagak Bay AK
+akpo16 Ber0016 2.323 ! Ber0016 Port Heiden AK
+akpo19 Ber0019 1.853 ! Ber0019 Port Heiden AK
+akto17 Ber0017 1.042 ! Ber0017 Togiak AK
+akto38 Ber0038 0.722 ! Ber0038 Togiak AK
+akpomo 9463502 1.783 ! 9463502 Port Moller AK
+akuna2 9468333 0.472 ! 9468333 Unalakleet AK
+akkoyu Ber0027 0.052 ! Ber0027 Koyuk AK
+aknels Ber0029 1.481 ! Ber0029 Nelson Lagoon AK
+akshak 9468691 0.509 ! 9468691 Shaktoolik AK
+akgobe Ber0013 1.061 ! Ber0013 Goodnews Bay Ent AK
+akplat 9465396 1.170 ! 9465396 Platinum AK
+akstmi 9468132 0.594 ! 9468132 St. Michael, Norton Sound AK
+akpopo Ber0010 1.262 ! Ber0010 Popokamute AK
+akeekc Ber0012 1.439 ! Ber0012 Eek Channel Off Quinhagak AK
+aksteb Ber0037 0.201 ! Ber0037 Stebbins AK
+akdeer 9469751 0.290 ! 9469751 Deering AK
+akcaro Ber0003 0.232 ! Ber0003 Carolyn Is Golovnin Bay AK
+akcakr 9490571 0.070 ! 9490571 Cape Krusenstern AK
+akfals Ber0025 0.698 ! Ber0025 False Pass AK
+akgood 9469833 0.268 ! 9469833 Goodhope Bay AK
+ak220n Ep46402 0.814 ! Ep46402 220 Nm Sse Dutch Harbor AK
+akredd 9491094 0.149 ! 9491094 Red Dog Dock AK
+akcaes 9490096 0.162 ! 9490096 Cape Espenberg, Kotzebue Sound AK
+akkiva 9491253 0.134 ! 9491253 Kivalina AK
+akkawa Ber0005 0.293 ! Ber0005 Kawanak Pass Ent Yukon R AK
+aknome 9468756 0.250 ! 9468756 Nome, Norton Sound AK
+akeast 9466012 1.149 ! 9466012 Eastern Nunivak Island AK
+akakut Ber0020 0.680 ! Ber0020 Akutan AK
+akmeko 9466217 1.180 ! 9466217 Mekoryuk, Mekoryuk River Entrance AK
+akcali Ber0021 0.052 ! Ber0021 Cape Lisburne AK
+akpocl Ber0002 1.390 ! Ber0002 Port Clarence AK
+akpoih 9491873 0.101 ! 9491873 Point Hope AK
+akpois 9469237 0.223 ! 9469237 Point Spencer, Port Clarence AK
+aklost 9469338 0.158 ! 9469338 Lost River, Seward Peninsula AK
+aktinc 9469439 0.143 ! 9469439 Tin City, Bering Sea AK
+akouts 9469515 0.146 ! 9469515 Outside Lopp Lagoon AK
+akdiom Ber0023 0.125 ! Ber0023 Diomede AK
+ak212n Ep46408 0.655 ! Ep46408 212 Nm S Umnak Island AK
+akvill 9464212 0.573 ! 9464212 Village Cove, St Paul Island AK
+aksavo 9468258 0.390 ! 9468258 Savoonga AK
+akstlr Ber0008 0.186 ! Ber0008 St Lrnce Niyrakpak Lagn Ent AK
+ak243n Ep46413 0.533 ! Ep46413 243 Nm Sse Adak Island AK
+ak170n Ep21414 0.491 ! Ep21414 170 Nm Sse Amchitka AK
+ncwate Unknown 0.000 ! Unknown Waterfront Park At Edenton NC
+ncmari Unknown 0.000 ! Unknown Mariners Wharf Park At Elizabeth City NC
+vaware Unknown 0.000 ! Unknown Ware River At Ware River Yacht Club Near Naxera VA
+vaeliz Unknown 0.000 ! Unknown Elizabeth River At Midtown Tunnel VA
+nccacr Unknown 0.000 ! Unknown Cape Creek At Fessenden Center In Buxton NC
+ncshal Unknown 0.000 ! Unknown Shallowbag Bay At Manteo NC
+meboot 8416828 0.000 ! 8416828 Boothbay Harbor ME
+mearro Unknown 0.000 ! Unknown Arrowsic ME
+mecamd Unknown 0.000 ! Unknown Camden ME
+mewal2 8416731 1.540 ! 8416731 Walpole, Damariscotta River ME
+mefor2 8414721 1.710 ! 8414721 Fort Point ME
+melinc Unknown 0.000 ! Unknown Lincolnville ME
+flsopo 8722956 0.432 ! 8722956 South Port Everglades FL
+scwiny Unknown 0.000 ! Unknown Winyah Bay Bottom SC
+flalaf Unknown 0.000 ! Unknown Alafia River At Us 41 At Gibsonville FL
+wabrem 9445958 2.071 ! 9445958 Bremerton
+gaking 8679598 1.064 ! 8679598 GA Kings Bay MSF Pier
+watemc 9440357 0.507 ! 9440357 WA TEMCO Kalama Terminal
+ncboso nc30029 0.000 ! nc30029 NC Bogue Sound at Emerald Isle
+ncwhoa nc30057 0.000 ! nc30057 NC White Oak River at SWANSBORO
+SA001  SA001   0.000 ! SA001   Satellite Altimetry Station 001
+SA002  SA002   0.000 ! SA002   Satellite Altimetry Station 002
+SA003  SA003   0.000 ! SA003   Satellite Altimetry Station 003
+SA004  SA004   0.000 ! SA004   Satellite Altimetry Station 004
+SA005  SA005   0.000 ! SA005   Satellite Altimetry Station 005
+SA006  SA006   0.000 ! SA006   Satellite Altimetry Station 006
+SA007  SA007   0.000 ! SA007   Satellite Altimetry Station 007
+SA008  SA008   0.000 ! SA008   Satellite Altimetry Station 008
+SA009  SA009   0.000 ! SA009   Satellite Altimetry Station 009
+SA010  SA010   0.000 ! SA010   Satellite Altimetry Station 010
+SA011  SA011   0.000 ! SA011   Satellite Altimetry Station 011
+SA012  SA012   0.000 ! SA012   Satellite Altimetry Station 012
+SA013  SA013   0.000 ! SA013   Satellite Altimetry Station 013
+SA014  SA014   0.000 ! SA014   Satellite Altimetry Station 014
+SA015  SA015   0.000 ! SA015   Satellite Altimetry Station 015
+SA016  SA016   0.000 ! SA016   Satellite Altimetry Station 016
+SA017  SA017   0.000 ! SA017   Satellite Altimetry Station 017
+SA018  SA018   0.000 ! SA018   Satellite Altimetry Station 018
+SA019  SA019   0.000 ! SA019   Satellite Altimetry Station 019
+SA020  SA020   0.000 ! SA020   Satellite Altimetry Station 020
+SA021  SA021   0.000 ! SA021   Satellite Altimetry Station 021
+SA022  SA022   0.000 ! SA022   Satellite Altimetry Station 022
+SA023  SA023   0.000 ! SA023   Satellite Altimetry Station 023
+SA024  SA024   0.000 ! SA024   Satellite Altimetry Station 024
+SA025  SA025   0.000 ! SA025   Satellite Altimetry Station 025
+SA026  SA026   0.000 ! SA026   Satellite Altimetry Station 026
+SA027  SA027   0.000 ! SA027   Satellite Altimetry Station 027
+SA028  SA028   0.000 ! SA028   Satellite Altimetry Station 028
+SA029  SA029   0.000 ! SA029   Satellite Altimetry Station 029
+SA030  SA030   0.000 ! SA030   Satellite Altimetry Station 030
+SA031  SA031   0.000 ! SA031   Satellite Altimetry Station 031
+SA032  SA032   0.000 ! SA032   Satellite Altimetry Station 032
+SA033  SA033   0.000 ! SA033   Satellite Altimetry Station 033
+SA034  SA034   0.000 ! SA034   Satellite Altimetry Station 034
+SA035  SA035   0.000 ! SA035   Satellite Altimetry Station 035
+SA036  SA036   0.000 ! SA036   Satellite Altimetry Station 036
+SA037  SA037   0.000 ! SA037   Satellite Altimetry Station 037
+SA038  SA038   0.000 ! SA038   Satellite Altimetry Station 038
+SA039  SA039   0.000 ! SA039   Satellite Altimetry Station 039
+SA040  SA040   0.000 ! SA040   Satellite Altimetry Station 040
+SA041  SA041   0.000 ! SA041   Satellite Altimetry Station 041
+SA042  SA042   0.000 ! SA042   Satellite Altimetry Station 042
+SA043  SA043   0.000 ! SA043   Satellite Altimetry Station 043
+SA044  SA044   0.000 ! SA044   Satellite Altimetry Station 044
+SA045  SA045   0.000 ! SA045   Satellite Altimetry Station 045
+SA046  SA046   0.000 ! SA046   Satellite Altimetry Station 046
+SA047  SA047   0.000 ! SA047   Satellite Altimetry Station 047
+SA048  SA048   0.000 ! SA048   Satellite Altimetry Station 048
+SA049  SA049   0.000 ! SA049   Satellite Altimetry Station 049
+SA050  SA050   0.000 ! SA050   Satellite Altimetry Station 050
+SA051  SA051   0.000 ! SA051   Satellite Altimetry Station 051
+SA052  SA052   0.000 ! SA052   Satellite Altimetry Station 052
+SA053  SA053   0.000 ! SA053   Satellite Altimetry Station 053
+SA054  SA054   0.000 ! SA054   Satellite Altimetry Station 054
+SA055  SA055   0.000 ! SA055   Satellite Altimetry Station 055
+SA056  SA056   0.000 ! SA056   Satellite Altimetry Station 056
+SA057  SA057   0.000 ! SA057   Satellite Altimetry Station 057
+SA058  SA058   0.000 ! SA058   Satellite Altimetry Station 058
+SA059  SA059   0.000 ! SA059   Satellite Altimetry Station 059
+SA060  SA060   0.000 ! SA060   Satellite Altimetry Station 060
+SA061  SA061   0.000 ! SA061   Satellite Altimetry Station 061
+SA062  SA062   0.000 ! SA062   Satellite Altimetry Station 062
+SA063  SA063   0.000 ! SA063   Satellite Altimetry Station 063
+SA064  SA064   0.000 ! SA064   Satellite Altimetry Station 064
+SA065  SA065   0.000 ! SA065   Satellite Altimetry Station 065
+SA066  SA066   0.000 ! SA066   Satellite Altimetry Station 066
+SA067  SA067   0.000 ! SA067   Satellite Altimetry Station 067
+SA068  SA068   0.000 ! SA068   Satellite Altimetry Station 068
+SA069  SA069   0.000 ! SA069   Satellite Altimetry Station 069
+SA070  SA070   0.000 ! SA070   Satellite Altimetry Station 070
+SA071  SA071   0.000 ! SA071   Satellite Altimetry Station 071
+SA072  SA072   0.000 ! SA072   Satellite Altimetry Station 072
+SA073  SA073   0.000 ! SA073   Satellite Altimetry Station 073
+SA074  SA074   0.000 ! SA074   Satellite Altimetry Station 074
+SA075  SA075   0.000 ! SA075   Satellite Altimetry Station 075
+SA076  SA076   0.000 ! SA076   Satellite Altimetry Station 076
+SA077  SA077   0.000 ! SA077   Satellite Altimetry Station 077
+SA078  SA078   0.000 ! SA078   Satellite Altimetry Station 078
+SA079  SA079   0.000 ! SA079   Satellite Altimetry Station 079
+SA080  SA080   0.000 ! SA080   Satellite Altimetry Station 080
+SA081  SA081   0.000 ! SA081   Satellite Altimetry Station 081
+SA082  SA082   0.000 ! SA082   Satellite Altimetry Station 082
+SA083  SA083   0.000 ! SA083   Satellite Altimetry Station 083
+SA084  SA084   0.000 ! SA084   Satellite Altimetry Station 084
+SA085  SA085   0.000 ! SA085   Satellite Altimetry Station 085
+SA086  SA086   0.000 ! SA086   Satellite Altimetry Station 086
+SA087  SA087   0.000 ! SA087   Satellite Altimetry Station 087
+SA088  SA088   0.000 ! SA088   Satellite Altimetry Station 088
+SA089  SA089   0.000 ! SA089   Satellite Altimetry Station 089
+SA090  SA090   0.000 ! SA090   Satellite Altimetry Station 090
+SA091  SA091   0.000 ! SA091   Satellite Altimetry Station 091
+SA092  SA092   0.000 ! SA092   Satellite Altimetry Station 092
+SA093  SA093   0.000 ! SA093   Satellite Altimetry Station 093
+SA094  SA094   0.000 ! SA094   Satellite Altimetry Station 094
+SA095  SA095   0.000 ! SA095   Satellite Altimetry Station 095
+SA096  SA096   0.000 ! SA096   Satellite Altimetry Station 096
+SA097  SA097   0.000 ! SA097   Satellite Altimetry Station 097
+SA098  SA098   0.000 ! SA098   Satellite Altimetry Station 098
+SA099  SA099   0.000 ! SA099   Satellite Altimetry Station 099
+SA100  SA100   0.000 ! SA100   Satellite Altimetry Station 100
+SA101  SA101   0.000 ! SA101   Satellite Altimetry Station 101
+SA102  SA102   0.000 ! SA102   Satellite Altimetry Station 102
+SA103  SA103   0.000 ! SA103   Satellite Altimetry Station 103
+SA104  SA104   0.000 ! SA104   Satellite Altimetry Station 104
+SA105  SA105   0.000 ! SA105   Satellite Altimetry Station 105
+SA106  SA106   0.000 ! SA106   Satellite Altimetry Station 106
+SA107  SA107   0.000 ! SA107   Satellite Altimetry Station 107
+SA108  SA108   0.000 ! SA108   Satellite Altimetry Station 108
+SA109  SA109   0.000 ! SA109   Satellite Altimetry Station 109
+SA110  SA110   0.000 ! SA110   Satellite Altimetry Station 110
+SA111  SA111   0.000 ! SA111   Satellite Altimetry Station 111
+SA112  SA112   0.000 ! SA112   Satellite Altimetry Station 112
+SA113  SA113   0.000 ! SA113   Satellite Altimetry Station 113
+SA114  SA114   0.000 ! SA114   Satellite Altimetry Station 114
+SA115  SA115   0.000 ! SA115   Satellite Altimetry Station 115
+SA116  SA116   0.000 ! SA116   Satellite Altimetry Station 116
+SA117  SA117   0.000 ! SA117   Satellite Altimetry Station 117
+SA118  SA118   0.000 ! SA118   Satellite Altimetry Station 118
+SA119  SA119   0.000 ! SA119   Satellite Altimetry Station 119
+SA120  SA120   0.000 ! SA120   Satellite Altimetry Station 120
+SA121  SA121   0.000 ! SA121   Satellite Altimetry Station 121
+SA122  SA122   0.000 ! SA122   Satellite Altimetry Station 122
+SA123  SA123   0.000 ! SA123   Satellite Altimetry Station 123
+SA124  SA124   0.000 ! SA124   Satellite Altimetry Station 124
+SA125  SA125   0.000 ! SA125   Satellite Altimetry Station 125
+SA126  SA126   0.000 ! SA126   Satellite Altimetry Station 126
+SA127  SA127   0.000 ! SA127   Satellite Altimetry Station 127
+SA128  SA128   0.000 ! SA128   Satellite Altimetry Station 128
+SA129  SA129   0.000 ! SA129   Satellite Altimetry Station 129
+SA130  SA130   0.000 ! SA130   Satellite Altimetry Station 130
+SA131  SA131   0.000 ! SA131   Satellite Altimetry Station 131
+SA132  SA132   0.000 ! SA132   Satellite Altimetry Station 132
+SA133  SA133   0.000 ! SA133   Satellite Altimetry Station 133
+SA134  SA134   0.000 ! SA134   Satellite Altimetry Station 134
+SA135  SA135   0.000 ! SA135   Satellite Altimetry Station 135
+SA136  SA136   0.000 ! SA136   Satellite Altimetry Station 136
+SA137  SA137   0.000 ! SA137   Satellite Altimetry Station 137
+SA138  SA138   0.000 ! SA138   Satellite Altimetry Station 138
+SA139  SA139   0.000 ! SA139   Satellite Altimetry Station 139
+SA140  SA140   0.000 ! SA140   Satellite Altimetry Station 140
+SA141  SA141   0.000 ! SA141   Satellite Altimetry Station 141
+SA142  SA142   0.000 ! SA142   Satellite Altimetry Station 142
+SA143  SA143   0.000 ! SA143   Satellite Altimetry Station 143
+SA144  SA144   0.000 ! SA144   Satellite Altimetry Station 144
+SA145  SA145   0.000 ! SA145   Satellite Altimetry Station 145
+SA146  SA146   0.000 ! SA146   Satellite Altimetry Station 146
+SA147  SA147   0.000 ! SA147   Satellite Altimetry Station 147
+SA148  SA148   0.000 ! SA148   Satellite Altimetry Station 148
+SA149  SA149   0.000 ! SA149   Satellite Altimetry Station 149
+SA150  SA150   0.000 ! SA150   Satellite Altimetry Station 150
+SA151  SA151   0.000 ! SA151   Satellite Altimetry Station 151
+SA152  SA152   0.000 ! SA152   Satellite Altimetry Station 152
+SA153  SA153   0.000 ! SA153   Satellite Altimetry Station 153
+SA154  SA154   0.000 ! SA154   Satellite Altimetry Station 154
+SA155  SA155   0.000 ! SA155   Satellite Altimetry Station 155
+SA156  SA156   0.000 ! SA156   Satellite Altimetry Station 156
+SA157  SA157   0.000 ! SA157   Satellite Altimetry Station 157
+SA158  SA158   0.000 ! SA158   Satellite Altimetry Station 158
+SA159  SA159   0.000 ! SA159   Satellite Altimetry Station 159
+SA160  SA160   0.000 ! SA160   Satellite Altimetry Station 160
+SA161  SA161   0.000 ! SA161   Satellite Altimetry Station 161
+SA162  SA162   0.000 ! SA162   Satellite Altimetry Station 162
+SA163  SA163   0.000 ! SA163   Satellite Altimetry Station 163
+SA164  SA164   0.000 ! SA164   Satellite Altimetry Station 164
+SA165  SA165   0.000 ! SA165   Satellite Altimetry Station 165
+SA166  SA166   0.000 ! SA166   Satellite Altimetry Station 166
+SA167  SA167   0.000 ! SA167   Satellite Altimetry Station 167
+SA168  SA168   0.000 ! SA168   Satellite Altimetry Station 168
+SA169  SA169   0.000 ! SA169   Satellite Altimetry Station 169
+SA170  SA170   0.000 ! SA170   Satellite Altimetry Station 170
+SA171  SA171   0.000 ! SA171   Satellite Altimetry Station 171
+SA172  SA172   0.000 ! SA172   Satellite Altimetry Station 172
+SA173  SA173   0.000 ! SA173   Satellite Altimetry Station 173
+SA174  SA174   0.000 ! SA174   Satellite Altimetry Station 174
+SA175  SA175   0.000 ! SA175   Satellite Altimetry Station 175
+SA176  SA176   0.000 ! SA176   Satellite Altimetry Station 176
+SA177  SA177   0.000 ! SA177   Satellite Altimetry Station 177
+SA178  SA178   0.000 ! SA178   Satellite Altimetry Station 178
+SA179  SA179   0.000 ! SA179   Satellite Altimetry Station 179
+SA180  SA180   0.000 ! SA180   Satellite Altimetry Station 180
+SA181  SA181   0.000 ! SA181   Satellite Altimetry Station 181
+SA182  SA182   0.000 ! SA182   Satellite Altimetry Station 182
+SA183  SA183   0.000 ! SA183   Satellite Altimetry Station 183
+SA184  SA184   0.000 ! SA184   Satellite Altimetry Station 184
+SA185  SA185   0.000 ! SA185   Satellite Altimetry Station 185
+SA186  SA186   0.000 ! SA186   Satellite Altimetry Station 186
+SA187  SA187   0.000 ! SA187   Satellite Altimetry Station 187
+SA188  SA188   0.000 ! SA188   Satellite Altimetry Station 188
+SA189  SA189   0.000 ! SA189   Satellite Altimetry Station 189
+SA190  SA190   0.000 ! SA190   Satellite Altimetry Station 190
+SA191  SA191   0.000 ! SA191   Satellite Altimetry Station 191
+SA192  SA192   0.000 ! SA192   Satellite Altimetry Station 192
+SA193  SA193   0.000 ! SA193   Satellite Altimetry Station 193
+SA194  SA194   0.000 ! SA194   Satellite Altimetry Station 194
+SA195  SA195   0.000 ! SA195   Satellite Altimetry Station 195
+SA196  SA196   0.000 ! SA196   Satellite Altimetry Station 196
+SA197  SA197   0.000 ! SA197   Satellite Altimetry Station 197
+SA198  SA198   0.000 ! SA198   Satellite Altimetry Station 198
+SA199  SA199   0.000 ! SA199   Satellite Altimetry Station 199
+SA200  SA200   0.000 ! SA200   Satellite Altimetry Station 200
+SA201  SA201   0.000 ! SA201   Satellite Altimetry Station 201
+SA202  SA202   0.000 ! SA202   Satellite Altimetry Station 202
+SA203  SA203   0.000 ! SA203   Satellite Altimetry Station 203
+SA204  SA204   0.000 ! SA204   Satellite Altimetry Station 204
+SA205  SA205   0.000 ! SA205   Satellite Altimetry Station 205
+SA206  SA206   0.000 ! SA206   Satellite Altimetry Station 206
+SA207  SA207   0.000 ! SA207   Satellite Altimetry Station 207
+SA208  SA208   0.000 ! SA208   Satellite Altimetry Station 208
+SA209  SA209   0.000 ! SA209   Satellite Altimetry Station 209
+SA210  SA210   0.000 ! SA210   Satellite Altimetry Station 210
+SA211  SA211   0.000 ! SA211   Satellite Altimetry Station 211
+SA212  SA212   0.000 ! SA212   Satellite Altimetry Station 212
+SA213  SA213   0.000 ! SA213   Satellite Altimetry Station 213
+SA214  SA214   0.000 ! SA214   Satellite Altimetry Station 214
+SA215  SA215   0.000 ! SA215   Satellite Altimetry Station 215
+SA216  SA216   0.000 ! SA216   Satellite Altimetry Station 216
+SA217  SA217   0.000 ! SA217   Satellite Altimetry Station 217
+SA218  SA218   0.000 ! SA218   Satellite Altimetry Station 218
+SA219  SA219   0.000 ! SA219   Satellite Altimetry Station 219
+SA220  SA220   0.000 ! SA220   Satellite Altimetry Station 220
+SA221  SA221   0.000 ! SA221   Satellite Altimetry Station 221
+SA222  SA222   0.000 ! SA222   Satellite Altimetry Station 222
+SA223  SA223   0.000 ! SA223   Satellite Altimetry Station 223
+SA224  SA224   0.000 ! SA224   Satellite Altimetry Station 224
+SA225  SA225   0.000 ! SA225   Satellite Altimetry Station 225
+SA226  SA226   0.000 ! SA226   Satellite Altimetry Station 226
+SA227  SA227   0.000 ! SA227   Satellite Altimetry Station 227
+SA228  SA228   0.000 ! SA228   Satellite Altimetry Station 228
+SA229  SA229   0.000 ! SA229   Satellite Altimetry Station 229
+SA230  SA230   0.000 ! SA230   Satellite Altimetry Station 230
+SA231  SA231   0.000 ! SA231   Satellite Altimetry Station 231
+SA232  SA232   0.000 ! SA232   Satellite Altimetry Station 232
+SA233  SA233   0.000 ! SA233   Satellite Altimetry Station 233
+SA234  SA234   0.000 ! SA234   Satellite Altimetry Station 234
+SA235  SA235   0.000 ! SA235   Satellite Altimetry Station 235
+SA236  SA236   0.000 ! SA236   Satellite Altimetry Station 236
+SA237  SA237   0.000 ! SA237   Satellite Altimetry Station 237
+SA238  SA238   0.000 ! SA238   Satellite Altimetry Station 238
+SA239  SA239   0.000 ! SA239   Satellite Altimetry Station 239
+SA240  SA240   0.000 ! SA240   Satellite Altimetry Station 240
+SA241  SA241   0.000 ! SA241   Satellite Altimetry Station 241
+SA242  SA242   0.000 ! SA242   Satellite Altimetry Station 242
+SA243  SA243   0.000 ! SA243   Satellite Altimetry Station 243
+SA244  SA244   0.000 ! SA244   Satellite Altimetry Station 244
+SA245  SA245   0.000 ! SA245   Satellite Altimetry Station 245
+SA246  SA246   0.000 ! SA246   Satellite Altimetry Station 246
+SA247  SA247   0.000 ! SA247   Satellite Altimetry Station 247
+SA248  SA248   0.000 ! SA248   Satellite Altimetry Station 248
+SA249  SA249   0.000 ! SA249   Satellite Altimetry Station 249
+SA250  SA250   0.000 ! SA250   Satellite Altimetry Station 250
+SA251  SA251   0.000 ! SA251   Satellite Altimetry Station 251
+SA252  SA252   0.000 ! SA252   Satellite Altimetry Station 252
+SA253  SA253   0.000 ! SA253   Satellite Altimetry Station 253
+SA254  SA254   0.000 ! SA254   Satellite Altimetry Station 254
+SA255  SA255   0.000 ! SA255   Satellite Altimetry Station 255
+SA256  SA256   0.000 ! SA256   Satellite Altimetry Station 256
+SA257  SA257   0.000 ! SA257   Satellite Altimetry Station 257
+SA258  SA258   0.000 ! SA258   Satellite Altimetry Station 258
+SA259  SA259   0.000 ! SA259   Satellite Altimetry Station 259
+SA260  SA260   0.000 ! SA260   Satellite Altimetry Station 260
+SA261  SA261   0.000 ! SA261   Satellite Altimetry Station 261
+SA262  SA262   0.000 ! SA262   Satellite Altimetry Station 262
+SA263  SA263   0.000 ! SA263   Satellite Altimetry Station 263
+SA264  SA264   0.000 ! SA264   Satellite Altimetry Station 264
+SA265  SA265   0.000 ! SA265   Satellite Altimetry Station 265
+SA266  SA266   0.000 ! SA266   Satellite Altimetry Station 266
+SA267  SA267   0.000 ! SA267   Satellite Altimetry Station 267
+SA268  SA268   0.000 ! SA268   Satellite Altimetry Station 268
+SA269  SA269   0.000 ! SA269   Satellite Altimetry Station 269
+SA270  SA270   0.000 ! SA270   Satellite Altimetry Station 270
+SA271  SA271   0.000 ! SA271   Satellite Altimetry Station 271
+SA272  SA272   0.000 ! SA272   Satellite Altimetry Station 272
+SA273  SA273   0.000 ! SA273   Satellite Altimetry Station 273
+SA274  SA274   0.000 ! SA274   Satellite Altimetry Station 274
+SA275  SA275   0.000 ! SA275   Satellite Altimetry Station 275
+SA276  SA276   0.000 ! SA276   Satellite Altimetry Station 276
+SA277  SA277   0.000 ! SA277   Satellite Altimetry Station 277
+SA278  SA278   0.000 ! SA278   Satellite Altimetry Station 278
+SA279  SA279   0.000 ! SA279   Satellite Altimetry Station 279
+SA280  SA280   0.000 ! SA280   Satellite Altimetry Station 280
+SA281  SA281   0.000 ! SA281   Satellite Altimetry Station 281
+SA282  SA282   0.000 ! SA282   Satellite Altimetry Station 282
+SA283  SA283   0.000 ! SA283   Satellite Altimetry Station 283
+SA284  SA284   0.000 ! SA284   Satellite Altimetry Station 284
+SA285  SA285   0.000 ! SA285   Satellite Altimetry Station 285
+SA286  SA286   0.000 ! SA286   Satellite Altimetry Station 286
+SA287  SA287   0.000 ! SA287   Satellite Altimetry Station 287
+SA288  SA288   0.000 ! SA288   Satellite Altimetry Station 288
+SA289  SA289   0.000 ! SA289   Satellite Altimetry Station 289
+SA290  SA290   0.000 ! SA290   Satellite Altimetry Station 290
+SA291  SA291   0.000 ! SA291   Satellite Altimetry Station 291
+SA292  SA292   0.000 ! SA292   Satellite Altimetry Station 292
+SA293  SA293   0.000 ! SA293   Satellite Altimetry Station 293
+SA294  SA294   0.000 ! SA294   Satellite Altimetry Station 294
+SA295  SA295   0.000 ! SA295   Satellite Altimetry Station 295
+SA296  SA296   0.000 ! SA296   Satellite Altimetry Station 296
+SA297  SA297   0.000 ! SA297   Satellite Altimetry Station 297
+SA298  SA298   0.000 ! SA298   Satellite Altimetry Station 298
+SA299  SA299   0.000 ! SA299   Satellite Altimetry Station 299
+SA300  SA300   0.000 ! SA300   Satellite Altimetry Station 300
+SA301  SA301   0.000 ! SA301   Satellite Altimetry Station 301
+SA302  SA302   0.000 ! SA302   Satellite Altimetry Station 302
+SA303  SA303   0.000 ! SA303   Satellite Altimetry Station 303
+SA304  SA304   0.000 ! SA304   Satellite Altimetry Station 304
+SA305  SA305   0.000 ! SA305   Satellite Altimetry Station 305
+SA306  SA306   0.000 ! SA306   Satellite Altimetry Station 306
+SA307  SA307   0.000 ! SA307   Satellite Altimetry Station 307
+SA308  SA308   0.000 ! SA308   Satellite Altimetry Station 308
+SA309  SA309   0.000 ! SA309   Satellite Altimetry Station 309
+SA310  SA310   0.000 ! SA310   Satellite Altimetry Station 310
+SA311  SA311   0.000 ! SA311   Satellite Altimetry Station 311
+SA312  SA312   0.000 ! SA312   Satellite Altimetry Station 312
+SA313  SA313   0.000 ! SA313   Satellite Altimetry Station 313
+SA314  SA314   0.000 ! SA314   Satellite Altimetry Station 314
+SA315  SA315   0.000 ! SA315   Satellite Altimetry Station 315
+SA316  SA316   0.000 ! SA316   Satellite Altimetry Station 316
+SA317  SA317   0.000 ! SA317   Satellite Altimetry Station 317
+SA318  SA318   0.000 ! SA318   Satellite Altimetry Station 318
+SA319  SA319   0.000 ! SA319   Satellite Altimetry Station 319
+SA320  SA320   0.000 ! SA320   Satellite Altimetry Station 320
+SA321  SA321   0.000 ! SA321   Satellite Altimetry Station 321
+SA322  SA322   0.000 ! SA322   Satellite Altimetry Station 322
+SA323  SA323   0.000 ! SA323   Satellite Altimetry Station 323
+SA324  SA324   0.000 ! SA324   Satellite Altimetry Station 324
+SA325  SA325   0.000 ! SA325   Satellite Altimetry Station 325
+SA326  SA326   0.000 ! SA326   Satellite Altimetry Station 326
+SA327  SA327   0.000 ! SA327   Satellite Altimetry Station 327
+SA328  SA328   0.000 ! SA328   Satellite Altimetry Station 328
+SA329  SA329   0.000 ! SA329   Satellite Altimetry Station 329
+SA330  SA330   0.000 ! SA330   Satellite Altimetry Station 330
+SA331  SA331   0.000 ! SA331   Satellite Altimetry Station 331
+SA332  SA332   0.000 ! SA332   Satellite Altimetry Station 332
+SA333  SA333   0.000 ! SA333   Satellite Altimetry Station 333
+SA334  SA334   0.000 ! SA334   Satellite Altimetry Station 334
+SA335  SA335   0.000 ! SA335   Satellite Altimetry Station 335
+SA336  SA336   0.000 ! SA336   Satellite Altimetry Station 336
+SA337  SA337   0.000 ! SA337   Satellite Altimetry Station 337
+SA338  SA338   0.000 ! SA338   Satellite Altimetry Station 338
+SA339  SA339   0.000 ! SA339   Satellite Altimetry Station 339
+SA340  SA340   0.000 ! SA340   Satellite Altimetry Station 340
+SA341  SA341   0.000 ! SA341   Satellite Altimetry Station 341
+SA342  SA342   0.000 ! SA342   Satellite Altimetry Station 342
+SA343  SA343   0.000 ! SA343   Satellite Altimetry Station 343
+SA344  SA344   0.000 ! SA344   Satellite Altimetry Station 344
+SA345  SA345   0.000 ! SA345   Satellite Altimetry Station 345
+SA346  SA346   0.000 ! SA346   Satellite Altimetry Station 346
+SA347  SA347   0.000 ! SA347   Satellite Altimetry Station 347
+SA348  SA348   0.000 ! SA348   Satellite Altimetry Station 348
+SA349  SA349   0.000 ! SA349   Satellite Altimetry Station 349
+SA350  SA350   0.000 ! SA350   Satellite Altimetry Station 350
+SA351  SA351   0.000 ! SA351   Satellite Altimetry Station 351
+SA352  SA352   0.000 ! SA352   Satellite Altimetry Station 352
+SA353  SA353   0.000 ! SA353   Satellite Altimetry Station 353
+SA354  SA354   0.000 ! SA354   Satellite Altimetry Station 354
+SA355  SA355   0.000 ! SA355   Satellite Altimetry Station 355
+SA356  SA356   0.000 ! SA356   Satellite Altimetry Station 356
+SA357  SA357   0.000 ! SA357   Satellite Altimetry Station 357
+SA358  SA358   0.000 ! SA358   Satellite Altimetry Station 358
+SA359  SA359   0.000 ! SA359   Satellite Altimetry Station 359
+SA360  SA360   0.000 ! SA360   Satellite Altimetry Station 360
+SA361  SA361   0.000 ! SA361   Satellite Altimetry Station 361
+SA362  SA362   0.000 ! SA362   Satellite Altimetry Station 362
+SA363  SA363   0.000 ! SA363   Satellite Altimetry Station 363
+SA364  SA364   0.000 ! SA364   Satellite Altimetry Station 364
+SA365  SA365   0.000 ! SA365   Satellite Altimetry Station 365
+SA366  SA366   0.000 ! SA366   Satellite Altimetry Station 366
+SA367  SA367   0.000 ! SA367   Satellite Altimetry Station 367
+SA368  SA368   0.000 ! SA368   Satellite Altimetry Station 368
+SA369  SA369   0.000 ! SA369   Satellite Altimetry Station 369
+SA370  SA370   0.000 ! SA370   Satellite Altimetry Station 370
+SA371  SA371   0.000 ! SA371   Satellite Altimetry Station 371
+SA372  SA372   0.000 ! SA372   Satellite Altimetry Station 372
+SA373  SA373   0.000 ! SA373   Satellite Altimetry Station 373
+SA374  SA374   0.000 ! SA374   Satellite Altimetry Station 374
+SA375  SA375   0.000 ! SA375   Satellite Altimetry Station 375
+SA376  SA376   0.000 ! SA376   Satellite Altimetry Station 376
+SA377  SA377   0.000 ! SA377   Satellite Altimetry Station 377
+SA378  SA378   0.000 ! SA378   Satellite Altimetry Station 378
+SA379  SA379   0.000 ! SA379   Satellite Altimetry Station 379
+SA380  SA380   0.000 ! SA380   Satellite Altimetry Station 380
+SA381  SA381   0.000 ! SA381   Satellite Altimetry Station 381
+SA382  SA382   0.000 ! SA382   Satellite Altimetry Station 382
+SA383  SA383   0.000 ! SA383   Satellite Altimetry Station 383
+SA384  SA384   0.000 ! SA384   Satellite Altimetry Station 384
+SA385  SA385   0.000 ! SA385   Satellite Altimetry Station 385
+SA386  SA386   0.000 ! SA386   Satellite Altimetry Station 386
+SA387  SA387   0.000 ! SA387   Satellite Altimetry Station 387
+SA388  SA388   0.000 ! SA388   Satellite Altimetry Station 388
+SA389  SA389   0.000 ! SA389   Satellite Altimetry Station 389
+SA390  SA390   0.000 ! SA390   Satellite Altimetry Station 390
+SA391  SA391   0.000 ! SA391   Satellite Altimetry Station 391
+SA392  SA392   0.000 ! SA392   Satellite Altimetry Station 392
+SA393  SA393   0.000 ! SA393   Satellite Altimetry Station 393
+SA394  SA394   0.000 ! SA394   Satellite Altimetry Station 394
+SA395  SA395   0.000 ! SA395   Satellite Altimetry Station 395
+SA396  SA396   0.000 ! SA396   Satellite Altimetry Station 396
+SA397  SA397   0.000 ! SA397   Satellite Altimetry Station 397
+SA398  SA398   0.000 ! SA398   Satellite Altimetry Station 398
+SA399  SA399   0.000 ! SA399   Satellite Altimetry Station 399
+SA400  SA400   0.000 ! SA400   Satellite Altimetry Station 400
+SA401  SA401   0.000 ! SA401   Satellite Altimetry Station 401
+SA402  SA402   0.000 ! SA402   Satellite Altimetry Station 402
+SA403  SA403   0.000 ! SA403   Satellite Altimetry Station 403
+SA404  SA404   0.000 ! SA404   Satellite Altimetry Station 404
+SA405  SA405   0.000 ! SA405   Satellite Altimetry Station 405
+SA406  SA406   0.000 ! SA406   Satellite Altimetry Station 406
+SA407  SA407   0.000 ! SA407   Satellite Altimetry Station 407
+SA408  SA408   0.000 ! SA408   Satellite Altimetry Station 408
+SA409  SA409   0.000 ! SA409   Satellite Altimetry Station 409
+SA410  SA410   0.000 ! SA410   Satellite Altimetry Station 410
+SA411  SA411   0.000 ! SA411   Satellite Altimetry Station 411
+SA412  SA412   0.000 ! SA412   Satellite Altimetry Station 412
+SA413  SA413   0.000 ! SA413   Satellite Altimetry Station 413
+SA414  SA414   0.000 ! SA414   Satellite Altimetry Station 414
+SA415  SA415   0.000 ! SA415   Satellite Altimetry Station 415
+SA416  SA416   0.000 ! SA416   Satellite Altimetry Station 416
+SA417  SA417   0.000 ! SA417   Satellite Altimetry Station 417
+SA418  SA418   0.000 ! SA418   Satellite Altimetry Station 418
+SA419  SA419   0.000 ! SA419   Satellite Altimetry Station 419
+SA420  SA420   0.000 ! SA420   Satellite Altimetry Station 420
+SA421  SA421   0.000 ! SA421   Satellite Altimetry Station 421
+SA422  SA422   0.000 ! SA422   Satellite Altimetry Station 422
+SA423  SA423   0.000 ! SA423   Satellite Altimetry Station 423
+SA424  SA424   0.000 ! SA424   Satellite Altimetry Station 424
+SA425  SA425   0.000 ! SA425   Satellite Altimetry Station 425
+SA426  SA426   0.000 ! SA426   Satellite Altimetry Station 426
+SA427  SA427   0.000 ! SA427   Satellite Altimetry Station 427
+SA428  SA428   0.000 ! SA428   Satellite Altimetry Station 428
+SA429  SA429   0.000 ! SA429   Satellite Altimetry Station 429
+SA430  SA430   0.000 ! SA430   Satellite Altimetry Station 430
+SA431  SA431   0.000 ! SA431   Satellite Altimetry Station 431
+SA432  SA432   0.000 ! SA432   Satellite Altimetry Station 432
+SA433  SA433   0.000 ! SA433   Satellite Altimetry Station 433
+SA434  SA434   0.000 ! SA434   Satellite Altimetry Station 434
+SA435  SA435   0.000 ! SA435   Satellite Altimetry Station 435
+SA436  SA436   0.000 ! SA436   Satellite Altimetry Station 436
+SA437  SA437   0.000 ! SA437   Satellite Altimetry Station 437
+SA438  SA438   0.000 ! SA438   Satellite Altimetry Station 438
+SA439  SA439   0.000 ! SA439   Satellite Altimetry Station 439
+SA440  SA440   0.000 ! SA440   Satellite Altimetry Station 440
+SA441  SA441   0.000 ! SA441   Satellite Altimetry Station 441
+SA442  SA442   0.000 ! SA442   Satellite Altimetry Station 442
+SA443  SA443   0.000 ! SA443   Satellite Altimetry Station 443
+SA444  SA444   0.000 ! SA444   Satellite Altimetry Station 444
+SA445  SA445   0.000 ! SA445   Satellite Altimetry Station 445
+SA446  SA446   0.000 ! SA446   Satellite Altimetry Station 446
+SA447  SA447   0.000 ! SA447   Satellite Altimetry Station 447
+SA448  SA448   0.000 ! SA448   Satellite Altimetry Station 448
+SA449  SA449   0.000 ! SA449   Satellite Altimetry Station 449
+SA450  SA450   0.000 ! SA450   Satellite Altimetry Station 450
+SA451  SA451   0.000 ! SA451   Satellite Altimetry Station 451
+SA452  SA452   0.000 ! SA452   Satellite Altimetry Station 452
+SA453  SA453   0.000 ! SA453   Satellite Altimetry Station 453
+SA454  SA454   0.000 ! SA454   Satellite Altimetry Station 454
+SA455  SA455   0.000 ! SA455   Satellite Altimetry Station 455
+SA456  SA456   0.000 ! SA456   Satellite Altimetry Station 456
+SA457  SA457   0.000 ! SA457   Satellite Altimetry Station 457
+SA458  SA458   0.000 ! SA458   Satellite Altimetry Station 458
+SA459  SA459   0.000 ! SA459   Satellite Altimetry Station 459
+SA460  SA460   0.000 ! SA460   Satellite Altimetry Station 460
+SA461  SA461   0.000 ! SA461   Satellite Altimetry Station 461
+SA462  SA462   0.000 ! SA462   Satellite Altimetry Station 462
+SA463  SA463   0.000 ! SA463   Satellite Altimetry Station 463
+SA464  SA464   0.000 ! SA464   Satellite Altimetry Station 464
+SA465  SA465   0.000 ! SA465   Satellite Altimetry Station 465
+SA466  SA466   0.000 ! SA466   Satellite Altimetry Station 466
+SA467  SA467   0.000 ! SA467   Satellite Altimetry Station 467
+SA468  SA468   0.000 ! SA468   Satellite Altimetry Station 468
+SA469  SA469   0.000 ! SA469   Satellite Altimetry Station 469
+SA470  SA470   0.000 ! SA470   Satellite Altimetry Station 470
+SA471  SA471   0.000 ! SA471   Satellite Altimetry Station 471
+SA472  SA472   0.000 ! SA472   Satellite Altimetry Station 472
+SA473  SA473   0.000 ! SA473   Satellite Altimetry Station 473
+SA474  SA474   0.000 ! SA474   Satellite Altimetry Station 474
+SA475  SA475   0.000 ! SA475   Satellite Altimetry Station 475
+SA476  SA476   0.000 ! SA476   Satellite Altimetry Station 476
+SA477  SA477   0.000 ! SA477   Satellite Altimetry Station 477
+SA478  SA478   0.000 ! SA478   Satellite Altimetry Station 478
+SA479  SA479   0.000 ! SA479   Satellite Altimetry Station 479
+SA480  SA480   0.000 ! SA480   Satellite Altimetry Station 480
+SA481  SA481   0.000 ! SA481   Satellite Altimetry Station 481
+SA482  SA482   0.000 ! SA482   Satellite Altimetry Station 482
+SA483  SA483   0.000 ! SA483   Satellite Altimetry Station 483
+SA484  SA484   0.000 ! SA484   Satellite Altimetry Station 484
+SA485  SA485   0.000 ! SA485   Satellite Altimetry Station 485
+SA486  SA486   0.000 ! SA486   Satellite Altimetry Station 486
+SA487  SA487   0.000 ! SA487   Satellite Altimetry Station 487
+SA488  SA488   0.000 ! SA488   Satellite Altimetry Station 488
+SA489  SA489   0.000 ! SA489   Satellite Altimetry Station 489
+SA490  SA490   0.000 ! SA490   Satellite Altimetry Station 490
+SA491  SA491   0.000 ! SA491   Satellite Altimetry Station 491
+SA492  SA492   0.000 ! SA492   Satellite Altimetry Station 492
+SA493  SA493   0.000 ! SA493   Satellite Altimetry Station 493
+SA494  SA494   0.000 ! SA494   Satellite Altimetry Station 494
+SA495  SA495   0.000 ! SA495   Satellite Altimetry Station 495
+SA496  SA496   0.000 ! SA496   Satellite Altimetry Station 496
+SA497  SA497   0.000 ! SA497   Satellite Altimetry Station 497
+SA498  SA498   0.000 ! SA498   Satellite Altimetry Station 498
+SA499  SA499   0.000 ! SA499   Satellite Altimetry Station 499
+SA500  SA500   0.000 ! SA500   Satellite Altimetry Station 500
+SA501  SA501   0.000 ! SA501   Satellite Altimetry Station 501
+SA502  SA502   0.000 ! SA502   Satellite Altimetry Station 502
+SA503  SA503   0.000 ! SA503   Satellite Altimetry Station 503
+SA504  SA504   0.000 ! SA504   Satellite Altimetry Station 504
+SA505  SA505   0.000 ! SA505   Satellite Altimetry Station 505
+SA506  SA506   0.000 ! SA506   Satellite Altimetry Station 506
+SA507  SA507   0.000 ! SA507   Satellite Altimetry Station 507
+SA508  SA508   0.000 ! SA508   Satellite Altimetry Station 508
+SA509  SA509   0.000 ! SA509   Satellite Altimetry Station 509
+SA510  SA510   0.000 ! SA510   Satellite Altimetry Station 510
+SA511  SA511   0.000 ! SA511   Satellite Altimetry Station 511
+SA512  SA512   0.000 ! SA512   Satellite Altimetry Station 512
+SA513  SA513   0.000 ! SA513   Satellite Altimetry Station 513
+SA514  SA514   0.000 ! SA514   Satellite Altimetry Station 514
+SA515  SA515   0.000 ! SA515   Satellite Altimetry Station 515
+SA516  SA516   0.000 ! SA516   Satellite Altimetry Station 516
+SA517  SA517   0.000 ! SA517   Satellite Altimetry Station 517
+SA518  SA518   0.000 ! SA518   Satellite Altimetry Station 518
+SA519  SA519   0.000 ! SA519   Satellite Altimetry Station 519
+SA520  SA520   0.000 ! SA520   Satellite Altimetry Station 520
+SA521  SA521   0.000 ! SA521   Satellite Altimetry Station 521
+SA522  SA522   0.000 ! SA522   Satellite Altimetry Station 522
+SA523  SA523   0.000 ! SA523   Satellite Altimetry Station 523
+SA524  SA524   0.000 ! SA524   Satellite Altimetry Station 524
+SA525  SA525   0.000 ! SA525   Satellite Altimetry Station 525
+SA526  SA526   0.000 ! SA526   Satellite Altimetry Station 526
+SA527  SA527   0.000 ! SA527   Satellite Altimetry Station 527
+SA528  SA528   0.000 ! SA528   Satellite Altimetry Station 528
+SA529  SA529   0.000 ! SA529   Satellite Altimetry Station 529
+SA530  SA530   0.000 ! SA530   Satellite Altimetry Station 530
+SA531  SA531   0.000 ! SA531   Satellite Altimetry Station 531
+SA532  SA532   0.000 ! SA532   Satellite Altimetry Station 532
+SA533  SA533   0.000 ! SA533   Satellite Altimetry Station 533
+SA534  SA534   0.000 ! SA534   Satellite Altimetry Station 534
+SA535  SA535   0.000 ! SA535   Satellite Altimetry Station 535
+SA536  SA536   0.000 ! SA536   Satellite Altimetry Station 536
+SA537  SA537   0.000 ! SA537   Satellite Altimetry Station 537
+SA538  SA538   0.000 ! SA538   Satellite Altimetry Station 538
+SA539  SA539   0.000 ! SA539   Satellite Altimetry Station 539
+SA540  SA540   0.000 ! SA540   Satellite Altimetry Station 540
+SA541  SA541   0.000 ! SA541   Satellite Altimetry Station 541
+SA542  SA542   0.000 ! SA542   Satellite Altimetry Station 542
+SA543  SA543   0.000 ! SA543   Satellite Altimetry Station 543
+SA544  SA544   0.000 ! SA544   Satellite Altimetry Station 544
+SA545  SA545   0.000 ! SA545   Satellite Altimetry Station 545
+SA546  SA546   0.000 ! SA546   Satellite Altimetry Station 546
+SA547  SA547   0.000 ! SA547   Satellite Altimetry Station 547
+SA548  SA548   0.000 ! SA548   Satellite Altimetry Station 548
+SA549  SA549   0.000 ! SA549   Satellite Altimetry Station 549
+SA550  SA550   0.000 ! SA550   Satellite Altimetry Station 550
+SA551  SA551   0.000 ! SA551   Satellite Altimetry Station 551
+SA552  SA552   0.000 ! SA552   Satellite Altimetry Station 552
+SA553  SA553   0.000 ! SA553   Satellite Altimetry Station 553
+SA554  SA554   0.000 ! SA554   Satellite Altimetry Station 554
+SA555  SA555   0.000 ! SA555   Satellite Altimetry Station 555
+SA556  SA556   0.000 ! SA556   Satellite Altimetry Station 556
+SA557  SA557   0.000 ! SA557   Satellite Altimetry Station 557
+SA558  SA558   0.000 ! SA558   Satellite Altimetry Station 558
+SA559  SA559   0.000 ! SA559   Satellite Altimetry Station 559
+SA560  SA560   0.000 ! SA560   Satellite Altimetry Station 560
+SA561  SA561   0.000 ! SA561   Satellite Altimetry Station 561
+SA562  SA562   0.000 ! SA562   Satellite Altimetry Station 562
+SA563  SA563   0.000 ! SA563   Satellite Altimetry Station 563
+SA564  SA564   0.000 ! SA564   Satellite Altimetry Station 564
+SA565  SA565   0.000 ! SA565   Satellite Altimetry Station 565
+SA566  SA566   0.000 ! SA566   Satellite Altimetry Station 566
+SA567  SA567   0.000 ! SA567   Satellite Altimetry Station 567
+SA568  SA568   0.000 ! SA568   Satellite Altimetry Station 568
+SA569  SA569   0.000 ! SA569   Satellite Altimetry Station 569
+SA570  SA570   0.000 ! SA570   Satellite Altimetry Station 570
+SA571  SA571   0.000 ! SA571   Satellite Altimetry Station 571
+SA572  SA572   0.000 ! SA572   Satellite Altimetry Station 572
+SA573  SA573   0.000 ! SA573   Satellite Altimetry Station 573
+SA574  SA574   0.000 ! SA574   Satellite Altimetry Station 574
+SA575  SA575   0.000 ! SA575   Satellite Altimetry Station 575
+SA576  SA576   0.000 ! SA576   Satellite Altimetry Station 576
+SA577  SA577   0.000 ! SA577   Satellite Altimetry Station 577
+SA578  SA578   0.000 ! SA578   Satellite Altimetry Station 578
+SA579  SA579   0.000 ! SA579   Satellite Altimetry Station 579
+SA580  SA580   0.000 ! SA580   Satellite Altimetry Station 580
+SA581  SA581   0.000 ! SA581   Satellite Altimetry Station 581
+SA582  SA582   0.000 ! SA582   Satellite Altimetry Station 582
+SA583  SA583   0.000 ! SA583   Satellite Altimetry Station 583
+SA584  SA584   0.000 ! SA584   Satellite Altimetry Station 584
+SA585  SA585   0.000 ! SA585   Satellite Altimetry Station 585
+SA586  SA586   0.000 ! SA586   Satellite Altimetry Station 586
+SA587  SA587   0.000 ! SA587   Satellite Altimetry Station 587
+SA588  SA588   0.000 ! SA588   Satellite Altimetry Station 588
+SA589  SA589   0.000 ! SA589   Satellite Altimetry Station 589
+SA590  SA590   0.000 ! SA590   Satellite Altimetry Station 590
+SA591  SA591   0.000 ! SA591   Satellite Altimetry Station 591
+SA592  SA592   0.000 ! SA592   Satellite Altimetry Station 592
+SA593  SA593   0.000 ! SA593   Satellite Altimetry Station 593
+SA594  SA594   0.000 ! SA594   Satellite Altimetry Station 594
+SA595  SA595   0.000 ! SA595   Satellite Altimetry Station 595
+SA596  SA596   0.000 ! SA596   Satellite Altimetry Station 596
+SA597  SA597   0.000 ! SA597   Satellite Altimetry Station 597
+SA598  SA598   0.000 ! SA598   Satellite Altimetry Station 598
+SA599  SA599   0.000 ! SA599   Satellite Altimetry Station 599
+SA600  SA600   0.000 ! SA600   Satellite Altimetry Station 600
+SA601  SA601   0.000 ! SA601   Satellite Altimetry Station 601
+SA602  SA602   0.000 ! SA602   Satellite Altimetry Station 602
+SA603  SA603   0.000 ! SA603   Satellite Altimetry Station 603
+SA604  SA604   0.000 ! SA604   Satellite Altimetry Station 604
+SA605  SA605   0.000 ! SA605   Satellite Altimetry Station 605
+SA606  SA606   0.000 ! SA606   Satellite Altimetry Station 606
+SA607  SA607   0.000 ! SA607   Satellite Altimetry Station 607
+SA608  SA608   0.000 ! SA608   Satellite Altimetry Station 608
+SA609  SA609   0.000 ! SA609   Satellite Altimetry Station 609
+SA610  SA610   0.000 ! SA610   Satellite Altimetry Station 610
+SA611  SA611   0.000 ! SA611   Satellite Altimetry Station 611
+SA612  SA612   0.000 ! SA612   Satellite Altimetry Station 612
+SA613  SA613   0.000 ! SA613   Satellite Altimetry Station 613
+SA614  SA614   0.000 ! SA614   Satellite Altimetry Station 614
+SA615  SA615   0.000 ! SA615   Satellite Altimetry Station 615
+SA616  SA616   0.000 ! SA616   Satellite Altimetry Station 616
+SA617  SA617   0.000 ! SA617   Satellite Altimetry Station 617
+SA618  SA618   0.000 ! SA618   Satellite Altimetry Station 618
+SA619  SA619   0.000 ! SA619   Satellite Altimetry Station 619
+SA620  SA620   0.000 ! SA620   Satellite Altimetry Station 620
+SA621  SA621   0.000 ! SA621   Satellite Altimetry Station 621
+SA622  SA622   0.000 ! SA622   Satellite Altimetry Station 622
+SA623  SA623   0.000 ! SA623   Satellite Altimetry Station 623
+SA624  SA624   0.000 ! SA624   Satellite Altimetry Station 624
+SA625  SA625   0.000 ! SA625   Satellite Altimetry Station 625
+SA626  SA626   0.000 ! SA626   Satellite Altimetry Station 626
+SA627  SA627   0.000 ! SA627   Satellite Altimetry Station 627
+SA628  SA628   0.000 ! SA628   Satellite Altimetry Station 628
+SA629  SA629   0.000 ! SA629   Satellite Altimetry Station 629
+SA630  SA630   0.000 ! SA630   Satellite Altimetry Station 630
+SA631  SA631   0.000 ! SA631   Satellite Altimetry Station 631
+SA632  SA632   0.000 ! SA632   Satellite Altimetry Station 632
+SA633  SA633   0.000 ! SA633   Satellite Altimetry Station 633
+SA634  SA634   0.000 ! SA634   Satellite Altimetry Station 634
+SA635  SA635   0.000 ! SA635   Satellite Altimetry Station 635
+SA636  SA636   0.000 ! SA636   Satellite Altimetry Station 636
+SA637  SA637   0.000 ! SA637   Satellite Altimetry Station 637
+SA638  SA638   0.000 ! SA638   Satellite Altimetry Station 638
+SA639  SA639   0.000 ! SA639   Satellite Altimetry Station 639
+SA640  SA640   0.000 ! SA640   Satellite Altimetry Station 640
+SA641  SA641   0.000 ! SA641   Satellite Altimetry Station 641
+SA642  SA642   0.000 ! SA642   Satellite Altimetry Station 642
+SA643  SA643   0.000 ! SA643   Satellite Altimetry Station 643
+SA644  SA644   0.000 ! SA644   Satellite Altimetry Station 644
+SA645  SA645   0.000 ! SA645   Satellite Altimetry Station 645
+SA646  SA646   0.000 ! SA646   Satellite Altimetry Station 646
+SA647  SA647   0.000 ! SA647   Satellite Altimetry Station 647
+SA648  SA648   0.000 ! SA648   Satellite Altimetry Station 648
+SA649  SA649   0.000 ! SA649   Satellite Altimetry Station 649
+SA650  SA650   0.000 ! SA650   Satellite Altimetry Station 650
+SA651  SA651   0.000 ! SA651   Satellite Altimetry Station 651
+SA652  SA652   0.000 ! SA652   Satellite Altimetry Station 652
+SA653  SA653   0.000 ! SA653   Satellite Altimetry Station 653
+SA654  SA654   0.000 ! SA654   Satellite Altimetry Station 654
+SA655  SA655   0.000 ! SA655   Satellite Altimetry Station 655
+SA656  SA656   0.000 ! SA656   Satellite Altimetry Station 656
+SA657  SA657   0.000 ! SA657   Satellite Altimetry Station 657
+SA658  SA658   0.000 ! SA658   Satellite Altimetry Station 658
+SA659  SA659   0.000 ! SA659   Satellite Altimetry Station 659
+SA660  SA660   0.000 ! SA660   Satellite Altimetry Station 660
+SA661  SA661   0.000 ! SA661   Satellite Altimetry Station 661
+SA662  SA662   0.000 ! SA662   Satellite Altimetry Station 662
+SA663  SA663   0.000 ! SA663   Satellite Altimetry Station 663
+SA664  SA664   0.000 ! SA664   Satellite Altimetry Station 664
+SA665  SA665   0.000 ! SA665   Satellite Altimetry Station 665
+SA666  SA666   0.000 ! SA666   Satellite Altimetry Station 666
+SA667  SA667   0.000 ! SA667   Satellite Altimetry Station 667
+SA668  SA668   0.000 ! SA668   Satellite Altimetry Station 668
+SA669  SA669   0.000 ! SA669   Satellite Altimetry Station 669
+SA670  SA670   0.000 ! SA670   Satellite Altimetry Station 670
+SA671  SA671   0.000 ! SA671   Satellite Altimetry Station 671
+SA672  SA672   0.000 ! SA672   Satellite Altimetry Station 672
+SA673  SA673   0.000 ! SA673   Satellite Altimetry Station 673
+SA674  SA674   0.000 ! SA674   Satellite Altimetry Station 674
+SA675  SA675   0.000 ! SA675   Satellite Altimetry Station 675
+SA676  SA676   0.000 ! SA676   Satellite Altimetry Station 676
+SA677  SA677   0.000 ! SA677   Satellite Altimetry Station 677
+SA678  SA678   0.000 ! SA678   Satellite Altimetry Station 678
+SA679  SA679   0.000 ! SA679   Satellite Altimetry Station 679
+SA680  SA680   0.000 ! SA680   Satellite Altimetry Station 680
+SA681  SA681   0.000 ! SA681   Satellite Altimetry Station 681
+SA682  SA682   0.000 ! SA682   Satellite Altimetry Station 682
+SA683  SA683   0.000 ! SA683   Satellite Altimetry Station 683
+SA684  SA684   0.000 ! SA684   Satellite Altimetry Station 684
+SA685  SA685   0.000 ! SA685   Satellite Altimetry Station 685
+SA686  SA686   0.000 ! SA686   Satellite Altimetry Station 686
+SA687  SA687   0.000 ! SA687   Satellite Altimetry Station 687
+SA688  SA688   0.000 ! SA688   Satellite Altimetry Station 688
+SA689  SA689   0.000 ! SA689   Satellite Altimetry Station 689
+SA690  SA690   0.000 ! SA690   Satellite Altimetry Station 690
+SA691  SA691   0.000 ! SA691   Satellite Altimetry Station 691
+SA692  SA692   0.000 ! SA692   Satellite Altimetry Station 692
+SA693  SA693   0.000 ! SA693   Satellite Altimetry Station 693
+SA694  SA694   0.000 ! SA694   Satellite Altimetry Station 694
+SA695  SA695   0.000 ! SA695   Satellite Altimetry Station 695
+SA696  SA696   0.000 ! SA696   Satellite Altimetry Station 696
+SA697  SA697   0.000 ! SA697   Satellite Altimetry Station 697
+SA698  SA698   0.000 ! SA698   Satellite Altimetry Station 698
+SA699  SA699   0.000 ! SA699   Satellite Altimetry Station 699
+SA700  SA700   0.000 ! SA700   Satellite Altimetry Station 700
+SA701  SA701   0.000 ! SA701   Satellite Altimetry Station 701
+SA702  SA702   0.000 ! SA702   Satellite Altimetry Station 702
+SA703  SA703   0.000 ! SA703   Satellite Altimetry Station 703
+SA704  SA704   0.000 ! SA704   Satellite Altimetry Station 704
+SA705  SA705   0.000 ! SA705   Satellite Altimetry Station 705
+SA706  SA706   0.000 ! SA706   Satellite Altimetry Station 706
+SA707  SA707   0.000 ! SA707   Satellite Altimetry Station 707
+SA708  SA708   0.000 ! SA708   Satellite Altimetry Station 708
+SA709  SA709   0.000 ! SA709   Satellite Altimetry Station 709
+SA710  SA710   0.000 ! SA710   Satellite Altimetry Station 710
+SA711  SA711   0.000 ! SA711   Satellite Altimetry Station 711
+SA712  SA712   0.000 ! SA712   Satellite Altimetry Station 712
+SA713  SA713   0.000 ! SA713   Satellite Altimetry Station 713
+SA714  SA714   0.000 ! SA714   Satellite Altimetry Station 714
+SA715  SA715   0.000 ! SA715   Satellite Altimetry Station 715
+SA716  SA716   0.000 ! SA716   Satellite Altimetry Station 716
+SA717  SA717   0.000 ! SA717   Satellite Altimetry Station 717
+SA718  SA718   0.000 ! SA718   Satellite Altimetry Station 718
+SA719  SA719   0.000 ! SA719   Satellite Altimetry Station 719
+SA720  SA720   0.000 ! SA720   Satellite Altimetry Station 720
+SA721  SA721   0.000 ! SA721   Satellite Altimetry Station 721
+SA722  SA722   0.000 ! SA722   Satellite Altimetry Station 722
+SA723  SA723   0.000 ! SA723   Satellite Altimetry Station 723
+SA724  SA724   0.000 ! SA724   Satellite Altimetry Station 724
+SA725  SA725   0.000 ! SA725   Satellite Altimetry Station 725
+SA726  SA726   0.000 ! SA726   Satellite Altimetry Station 726
+SA727  SA727   0.000 ! SA727   Satellite Altimetry Station 727
+SA728  SA728   0.000 ! SA728   Satellite Altimetry Station 728
+SA729  SA729   0.000 ! SA729   Satellite Altimetry Station 729
+SA730  SA730   0.000 ! SA730   Satellite Altimetry Station 730
+SA731  SA731   0.000 ! SA731   Satellite Altimetry Station 731
+SA732  SA732   0.000 ! SA732   Satellite Altimetry Station 732
+SA733  SA733   0.000 ! SA733   Satellite Altimetry Station 733
+SA734  SA734   0.000 ! SA734   Satellite Altimetry Station 734
+SA735  SA735   0.000 ! SA735   Satellite Altimetry Station 735
+SA736  SA736   0.000 ! SA736   Satellite Altimetry Station 736
+SA737  SA737   0.000 ! SA737   Satellite Altimetry Station 737
+SA738  SA738   0.000 ! SA738   Satellite Altimetry Station 738
+SA739  SA739   0.000 ! SA739   Satellite Altimetry Station 739
+SA740  SA740   0.000 ! SA740   Satellite Altimetry Station 740
+SA741  SA741   0.000 ! SA741   Satellite Altimetry Station 741
+SA742  SA742   0.000 ! SA742   Satellite Altimetry Station 742
+SA743  SA743   0.000 ! SA743   Satellite Altimetry Station 743
+SA744  SA744   0.000 ! SA744   Satellite Altimetry Station 744
+SA745  SA745   0.000 ! SA745   Satellite Altimetry Station 745
+SA746  SA746   0.000 ! SA746   Satellite Altimetry Station 746
+SA747  SA747   0.000 ! SA747   Satellite Altimetry Station 747
+SA748  SA748   0.000 ! SA748   Satellite Altimetry Station 748
+SA749  SA749   0.000 ! SA749   Satellite Altimetry Station 749
+SA750  SA750   0.000 ! SA750   Satellite Altimetry Station 750
+SA751  SA751   0.000 ! SA751   Satellite Altimetry Station 751
+SA752  SA752   0.000 ! SA752   Satellite Altimetry Station 752
+SA753  SA753   0.000 ! SA753   Satellite Altimetry Station 753
+SA754  SA754   0.000 ! SA754   Satellite Altimetry Station 754
+SA755  SA755   0.000 ! SA755   Satellite Altimetry Station 755
+SA756  SA756   0.000 ! SA756   Satellite Altimetry Station 756
+SA757  SA757   0.000 ! SA757   Satellite Altimetry Station 757
+SA758  SA758   0.000 ! SA758   Satellite Altimetry Station 758
+SA759  SA759   0.000 ! SA759   Satellite Altimetry Station 759
+SA760  SA760   0.000 ! SA760   Satellite Altimetry Station 760
+SA761  SA761   0.000 ! SA761   Satellite Altimetry Station 761
+SA762  SA762   0.000 ! SA762   Satellite Altimetry Station 762
+SA763  SA763   0.000 ! SA763   Satellite Altimetry Station 763
+SA764  SA764   0.000 ! SA764   Satellite Altimetry Station 764
+SA765  SA765   0.000 ! SA765   Satellite Altimetry Station 765
+SA766  SA766   0.000 ! SA766   Satellite Altimetry Station 766
+SA767  SA767   0.000 ! SA767   Satellite Altimetry Station 767
+SA768  SA768   0.000 ! SA768   Satellite Altimetry Station 768
+SA769  SA769   0.000 ! SA769   Satellite Altimetry Station 769
+SA770  SA770   0.000 ! SA770   Satellite Altimetry Station 770
+SA771  SA771   0.000 ! SA771   Satellite Altimetry Station 771
+SA772  SA772   0.000 ! SA772   Satellite Altimetry Station 772
+SA773  SA773   0.000 ! SA773   Satellite Altimetry Station 773
+SA774  SA774   0.000 ! SA774   Satellite Altimetry Station 774
+SA775  SA775   0.000 ! SA775   Satellite Altimetry Station 775
+SA776  SA776   0.000 ! SA776   Satellite Altimetry Station 776
+SA777  SA777   0.000 ! SA777   Satellite Altimetry Station 777
+SA778  SA778   0.000 ! SA778   Satellite Altimetry Station 778
+SA779  SA779   0.000 ! SA779   Satellite Altimetry Station 779
+SA780  SA780   0.000 ! SA780   Satellite Altimetry Station 780
+SA781  SA781   0.000 ! SA781   Satellite Altimetry Station 781
+SA782  SA782   0.000 ! SA782   Satellite Altimetry Station 782
+SA783  SA783   0.000 ! SA783   Satellite Altimetry Station 783
+SA784  SA784   0.000 ! SA784   Satellite Altimetry Station 784
+SA785  SA785   0.000 ! SA785   Satellite Altimetry Station 785
+SA786  SA786   0.000 ! SA786   Satellite Altimetry Station 786
+SA787  SA787   0.000 ! SA787   Satellite Altimetry Station 787
+SA788  SA788   0.000 ! SA788   Satellite Altimetry Station 788
+SA789  SA789   0.000 ! SA789   Satellite Altimetry Station 789
+SA790  SA790   0.000 ! SA790   Satellite Altimetry Station 790
+SA791  SA791   0.000 ! SA791   Satellite Altimetry Station 791
+SA792  SA792   0.000 ! SA792   Satellite Altimetry Station 792
+SA793  SA793   0.000 ! SA793   Satellite Altimetry Station 793
+SA794  SA794   0.000 ! SA794   Satellite Altimetry Station 794
+SA795  SA795   0.000 ! SA795   Satellite Altimetry Station 795
+SA796  SA796   0.000 ! SA796   Satellite Altimetry Station 796
+SA797  SA797   0.000 ! SA797   Satellite Altimetry Station 797
+SA798  SA798   0.000 ! SA798   Satellite Altimetry Station 798
+SA799  SA799   0.000 ! SA799   Satellite Altimetry Station 799
+SA800  SA800   0.000 ! SA800   Satellite Altimetry Station 800
+SA801  SA801   0.000 ! SA801   Satellite Altimetry Station 801
+SA802  SA802   0.000 ! SA802   Satellite Altimetry Station 802
+SA803  SA803   0.000 ! SA803   Satellite Altimetry Station 803
+SA804  SA804   0.000 ! SA804   Satellite Altimetry Station 804
+SA805  SA805   0.000 ! SA805   Satellite Altimetry Station 805
+SA806  SA806   0.000 ! SA806   Satellite Altimetry Station 806
+SA807  SA807   0.000 ! SA807   Satellite Altimetry Station 807
+SA808  SA808   0.000 ! SA808   Satellite Altimetry Station 808
+SA809  SA809   0.000 ! SA809   Satellite Altimetry Station 809
+SA810  SA810   0.000 ! SA810   Satellite Altimetry Station 810
+SA811  SA811   0.000 ! SA811   Satellite Altimetry Station 811
+SA812  SA812   0.000 ! SA812   Satellite Altimetry Station 812
+SA813  SA813   0.000 ! SA813   Satellite Altimetry Station 813
+SA814  SA814   0.000 ! SA814   Satellite Altimetry Station 814
+SA815  SA815   0.000 ! SA815   Satellite Altimetry Station 815
+SA816  SA816   0.000 ! SA816   Satellite Altimetry Station 816
+SA817  SA817   0.000 ! SA817   Satellite Altimetry Station 817
+SA818  SA818   0.000 ! SA818   Satellite Altimetry Station 818
+SA819  SA819   0.000 ! SA819   Satellite Altimetry Station 819
+SA820  SA820   0.000 ! SA820   Satellite Altimetry Station 820
+SA821  SA821   0.000 ! SA821   Satellite Altimetry Station 821
+SA822  SA822   0.000 ! SA822   Satellite Altimetry Station 822
+SA823  SA823   0.000 ! SA823   Satellite Altimetry Station 823
+SA824  SA824   0.000 ! SA824   Satellite Altimetry Station 824
+SA825  SA825   0.000 ! SA825   Satellite Altimetry Station 825
+SA826  SA826   0.000 ! SA826   Satellite Altimetry Station 826
+SA827  SA827   0.000 ! SA827   Satellite Altimetry Station 827
+SA828  SA828   0.000 ! SA828   Satellite Altimetry Station 828
+SA829  SA829   0.000 ! SA829   Satellite Altimetry Station 829
+SA830  SA830   0.000 ! SA830   Satellite Altimetry Station 830
+SA831  SA831   0.000 ! SA831   Satellite Altimetry Station 831
+SA832  SA832   0.000 ! SA832   Satellite Altimetry Station 832
+SA833  SA833   0.000 ! SA833   Satellite Altimetry Station 833
+SA834  SA834   0.000 ! SA834   Satellite Altimetry Station 834
+SA835  SA835   0.000 ! SA835   Satellite Altimetry Station 835
+SA836  SA836   0.000 ! SA836   Satellite Altimetry Station 836
+SA837  SA837   0.000 ! SA837   Satellite Altimetry Station 837
+SA838  SA838   0.000 ! SA838   Satellite Altimetry Station 838
+SA839  SA839   0.000 ! SA839   Satellite Altimetry Station 839
+SA840  SA840   0.000 ! SA840   Satellite Altimetry Station 840
+SA841  SA841   0.000 ! SA841   Satellite Altimetry Station 841
+SA842  SA842   0.000 ! SA842   Satellite Altimetry Station 842
+SA843  SA843   0.000 ! SA843   Satellite Altimetry Station 843
+SA844  SA844   0.000 ! SA844   Satellite Altimetry Station 844
+SA845  SA845   0.000 ! SA845   Satellite Altimetry Station 845
+SA846  SA846   0.000 ! SA846   Satellite Altimetry Station 846
+SA847  SA847   0.000 ! SA847   Satellite Altimetry Station 847
+SA848  SA848   0.000 ! SA848   Satellite Altimetry Station 848
+SA849  SA849   0.000 ! SA849   Satellite Altimetry Station 849
+SA850  SA850   0.000 ! SA850   Satellite Altimetry Station 850
+SA851  SA851   0.000 ! SA851   Satellite Altimetry Station 851
+SA852  SA852   0.000 ! SA852   Satellite Altimetry Station 852
+SA853  SA853   0.000 ! SA853   Satellite Altimetry Station 853
+SA854  SA854   0.000 ! SA854   Satellite Altimetry Station 854

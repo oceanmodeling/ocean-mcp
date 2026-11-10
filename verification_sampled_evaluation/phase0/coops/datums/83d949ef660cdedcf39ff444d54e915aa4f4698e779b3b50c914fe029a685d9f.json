@@ -1,0 +1,101 @@
+{
+  "accepted": "Oct 19 2010",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 4.297
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 4.158
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 2.761
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 2.742
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 2.758
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 1.325
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 1.225
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 3.072
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 2.832
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.139
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.101
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 3.831
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 10.008
+    }
+  ],
+  "LAT": 0.5869999,
+  "LATdate": "20340420",
+  "LATtime": "11:06",
+  "HAT": 4.902,
+  "HATdate": "20340519",
+  "HATtime": "04:24",
+  "min": null,
+  "mindate": "",
+  "mintime": "",
+  "max": null,
+  "maxdate": "",
+  "maxtime": "",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "04/01/2010 - 07/31/2010"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8443970 Boston, MA",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8446121/datums.json"
+}

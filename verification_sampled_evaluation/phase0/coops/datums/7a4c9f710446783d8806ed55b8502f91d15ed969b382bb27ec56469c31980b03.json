@@ -1,0 +1,101 @@
+{
+  "accepted": "May 06 2004",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 1.945
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 1.822
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 1.285
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 1.246
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 1.244
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 0.67
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 0.625
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 1.32
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 1.152
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.123
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.045
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 0.333
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 6.645
+    }
+  ],
+  "LAT": 0.33799994,
+  "LATdate": "20150220",
+  "LATtime": "20:00",
+  "HAT": 2.262,
+  "HATdate": "20111028",
+  "HATtime": "13:30",
+  "min": -0.134,
+  "mindate": "19780307",
+  "mintime": "00:30",
+  "max": 2.856,
+  "maxdate": "19771014",
+  "maxtime": "08:54",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "06/01/1977 - 05/31/1978"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8557380 Lewes, DE",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8534836/datums.json"
+}

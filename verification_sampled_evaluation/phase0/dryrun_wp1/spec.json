@@ -1,0 +1,70 @@
+{
+ "session_id": "dryrun_wp1_files",
+ "server": {
+  "python": "/mnt/d/ocean-mcp/.claude/worktrees/sampled-evaluation/verification_sampled_evaluation/.envs/stofs030post/bin/python",
+  "module": "stofs_mcp",
+  "archives": [
+   "/mnt/d/ocean-mcp/.claude/worktrees/safeguards-comparison/verification_safeguards_comparison/data/archive/base",
+   "/mnt/d/ocean-mcp/.claude/worktrees/sampled-evaluation/verification_sampled_evaluation/data/archive/templates"
+  ],
+  "dists": [
+   "stofs-mcp",
+   "mcp",
+   "httpx"
+  ]
+ },
+ "calls": [
+  {
+   "call_id": "3d_20261030_8443970",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8443970",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-30",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 48,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261030_9751381",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9751381",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-30",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 48,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20261030_8443970",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8443970",
+    "model": "2d_global",
+    "cycle_date": "2026-10-30",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 48,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20261030_8571421",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8571421",
+    "model": "2d_global",
+    "cycle_date": "2026-10-30",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 48,
+    "response_format": "json"
+   }
+  }
+ ]
+}

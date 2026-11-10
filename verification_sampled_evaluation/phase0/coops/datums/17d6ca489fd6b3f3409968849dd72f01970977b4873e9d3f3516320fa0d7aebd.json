@@ -1,0 +1,106 @@
+{
+  "accepted": "May 21 2003",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 3.061
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 2.95
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 1.862
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 1.842
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 1.844
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 0.734
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 0.663
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 2.398
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 2.216
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.11
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.072
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 3.696
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 10.335
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 1.928
+    }
+  ],
+  "LAT": 0.09200001,
+  "LATdate": "20360114",
+  "LATtime": "23:18",
+  "HAT": 3.649,
+  "HATdate": "20331009",
+  "HATtime": "16:24",
+  "min": null,
+  "mindate": "",
+  "mintime": "",
+  "max": null,
+  "maxdate": "",
+  "maxtime": "",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "06/01/1990 - 08/31/1990"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8518490 NEW ROCHELLE, NY",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8516614/datums.json"
+}

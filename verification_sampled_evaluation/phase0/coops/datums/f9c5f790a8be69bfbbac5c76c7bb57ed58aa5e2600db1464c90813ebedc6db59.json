@@ -1,0 +1,108 @@
+{
+  "accepted": "May 08 2020",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 1.944
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 1.882
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 1.452
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 1.454
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 1.435
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 1.026
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 0.961
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.983
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.856
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.061
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.065
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 3.041
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 9.531
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 1.448
+    }
+  ],
+  "LAT": 0.75299996,
+  "LATdate": "20190123",
+  "LATtime": "11:30",
+  "HAT": 2.105,
+  "HATdate": "20280920",
+  "HATtime": "03:54",
+  "min": -0.177,
+  "mindate": "19750405",
+  "mintime": "06:18",
+  "max": 3.6,
+  "maxdate": "20030919",
+  "maxtime": "13:18",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "05/01/1981 - 04/30/1983",
+    "04/01/2004 - 03/31/2012",
+    "01/01/2013 - 12/31/2017"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8551910 Reedy Point, DE",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8573927/datums.json"
+}

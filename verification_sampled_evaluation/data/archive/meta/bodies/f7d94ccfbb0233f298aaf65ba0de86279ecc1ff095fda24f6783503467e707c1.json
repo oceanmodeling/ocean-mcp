@@ -1,0 +1,91 @@
+{
+  "accepted": "Nov 22 2011",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 5.518
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 5.458
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 5.239
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 5.252
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 5.253
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 5.046
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 4.961
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.557
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.413
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.06
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.085
+    }
+  ],
+  "LAT": 4.819,
+  "LATdate": "20100203",
+  "LATtime": "11:18",
+  "HAT": 5.6419997,
+  "HATdate": "20191030",
+  "HATtime": "03:36",
+  "min": null,
+  "mindate": "",
+  "mintime": "",
+  "max": null,
+  "maxdate": "",
+  "maxtime": "",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "07/01/2011 - 08/31/2011"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "9468756 Nome, Norton Sound, AK",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9469751/datums.json"
+}

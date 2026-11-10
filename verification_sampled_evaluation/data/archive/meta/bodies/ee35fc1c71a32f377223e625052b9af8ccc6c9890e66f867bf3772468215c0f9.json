@@ -1,0 +1,101 @@
+{
+  "accepted": "Oct 14 2011",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 8.331
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 8.279
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 8.046
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 8.039
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 8.047
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 7.8
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 7.76
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.571
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.479
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.052
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.04
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 2.88
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 9.49
+    }
+  ],
+  "LAT": 7.699,
+  "LATdate": "20330303",
+  "LATtime": "23:06",
+  "HAT": 8.434999,
+  "HATdate": "20031124",
+  "HATtime": "15:12",
+  "min": null,
+  "mindate": "",
+  "mintime": "",
+  "max": null,
+  "maxdate": "",
+  "maxtime": "",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "06/01/2007 - 09/30/2007"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8636580 Windmill Point, VA",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8632837/datums.json"
+}

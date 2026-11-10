@@ -1,0 +1,96 @@
+{
+  "accepted": "Dec 22 2023",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 0.083
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 0.058
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": -0.038
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": -0.03
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": -0.031
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": -0.119
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": -0.16
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.243
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.178
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.025
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.041
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": -0.006
+    }
+  ],
+  "LAT": -0.208,
+  "LATdate": "20140131",
+  "LATtime": "22:00",
+  "HAT": 0.155,
+  "HATdate": "20240920",
+  "HATtime": "04:06",
+  "min": null,
+  "mindate": "",
+  "mintime": "",
+  "max": null,
+  "maxdate": "",
+  "maxtime": "",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "07/01/2023 - 07/31/2023"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8652587 Oregon Inlet Marina, NC",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8653215/datums.json"
+}

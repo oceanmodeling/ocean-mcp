@@ -1,0 +1,106 @@
+{
+  "accepted": "Mar 16 2012",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "PRVD02",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 7.274
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 7.176
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 7.006
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 6.987
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 6.99
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 6.798
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 6.738
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.536
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.378
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.097
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.061
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 0.075
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 6.377
+    }
+  ],
+  "LAT": 6.574,
+  "LATdate": "20250527",
+  "LATtime": "17:48",
+  "HAT": 7.463,
+  "HATdate": "20251106",
+  "HATtime": "13:00",
+  "min": 6.503,
+  "mindate": "20090427",
+  "mintime": "19:12",
+  "max": 7.549,
+  "maxdate": "20101008",
+  "maxtime": "12:48",
+  "disclaimers": {
+    "disclaimers": [
+      {
+        "name": "NOTICE OF PROVISIONAL DATUM",
+        "text": "These datums and any data referred to said datum are PROVISIONAL and subject to revision until they have been thoroughly reviewed and received final approval.  Subsequent review based on field inspections and additional measurements may result in revisions to the data and datums.  Data users are cautioned to consider the conditional nature of this information before using it for critical decisions such as those that concern physical or public safety. Only after meeting all standards for quality control assurance will the datums be classified as Accepted Datums."
+      }
+    ],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "05/01/2010 - 04/30/2011"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "9755371 San Juan, La Puntilla, San Juan Bay, PR",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9757809/datums.json"
+}

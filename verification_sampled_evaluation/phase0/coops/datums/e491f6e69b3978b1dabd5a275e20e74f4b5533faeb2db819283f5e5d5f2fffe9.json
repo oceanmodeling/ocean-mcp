@@ -1,0 +1,105 @@
+{
+  "accepted": "Aug 26 2020",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 7.664
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 7.566
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 6.639
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 6.627
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 6.629
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 5.688
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 5.614
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 2.05
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 1.878
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.098
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.074
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 3.791
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 10.031
+    }
+  ],
+  "LAT": 5.205,
+  "LATdate": "20140131",
+  "LATtime": "22:30",
+  "HAT": 8.095,
+  "HATdate": "20331009",
+  "HATtime": "16:18",
+  "min": 4.628,
+  "mindate": "20180106",
+  "mintime": "01:24",
+  "max": 9.346,
+  "maxdate": "20121030",
+  "maxtime": "01:30",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "11/01/1999 - 10/31/2009",
+    "09/01/2010 - 08/31/2011",
+    "02/01/2012 - 01/31/2015",
+    "05/01/2015 - 04/30/2016",
+    "08/01/2016 - 07/31/2019"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8467150 Bridgeport, CT",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8465705/datums.json"
+}

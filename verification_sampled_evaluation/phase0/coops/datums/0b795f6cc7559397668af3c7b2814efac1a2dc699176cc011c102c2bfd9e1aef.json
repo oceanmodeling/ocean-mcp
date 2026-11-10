@@ -1,0 +1,101 @@
+{
+  "accepted": "Jul 12 2023",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 7.041
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 6.768
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 5.256
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 5.554
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 5.547
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 4.34
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 3.47
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 3.571
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 2.428
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.273
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.87
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 0.527
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 6.839
+    }
+  ],
+  "LAT": 2.064,
+  "LATdate": "20260615",
+  "LATtime": "18:54",
+  "HAT": 7.764,
+  "HATdate": "20010111",
+  "HATtime": "15:00",
+  "min": 2.223,
+  "mindate": "20211206",
+  "mintime": "12:48",
+  "max": 8.21,
+  "maxdate": "20221227",
+  "maxtime": "21:48",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "09/01/2021 - 08/31/2022"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "9447130 Seattle, WA",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9445958/datums.json"
+}

@@ -1,0 +1,91 @@
+{
+  "accepted": "Jul 25 2022",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 0.138
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 0.137
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 0.049
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 0.048
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 0.05
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": -0.04
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": -0.039
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.178
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.178
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.001
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.0
+    }
+  ],
+  "LAT": -0.207,
+  "LATdate": "20050121",
+  "LATtime": "21:30",
+  "HAT": 0.331,
+  "HATdate": "20251010",
+  "HATtime": "13:54",
+  "min": -0.67,
+  "mindate": "20160210",
+  "mintime": "02:30",
+  "max": 1.476,
+  "maxdate": "20200608",
+  "maxtime": "03:48",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "05/01/2015 - 04/30/2020"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8761927 New Canal Station, LA",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8762483/datums.json"
+}

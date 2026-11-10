@@ -1,0 +1,102 @@
+{
+  "accepted": "May 21 2021",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 7.451
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 7.316
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 6.505
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 6.467
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 6.486
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 5.618
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 5.559
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 1.892
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 1.698
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.135
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.059
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 2.385
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 9.08
+    }
+  ],
+  "LAT": 5.162,
+  "LATdate": "20320212",
+  "LATtime": "09:42",
+  "HAT": 7.803,
+  "HATdate": "20111027",
+  "HATtime": "14:36",
+  "min": 4.662,
+  "mindate": "20100104",
+  "mintime": "00:00",
+  "max": 8.483,
+  "maxdate": "20121221",
+  "maxtime": "09:30",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "05/01/2003 - 04/30/2008",
+    "12/01/2009 - 11/30/2020"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8551762 Delaware City, DE",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8537121/datums.json"
+}
