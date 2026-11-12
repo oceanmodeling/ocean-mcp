@@ -1,0 +1,152 @@
+{
+ "3d_post_all": {
+  "n_stations": 122,
+  "slope": -0.009384564651732525,
+  "slope_ci": [
+   -0.5170221617628138,
+   0.18728043970340463
+  ],
+  "intercept": -0.0040383731153605515,
+  "intercept_ci": [
+   -0.04841515352750417,
+   0.11183899574847798
+  ],
+  "theil_sen": {
+   "slope": -0.21821560416089772,
+   "intercept": 0.0681837789688541
+  },
+  "carried_fraction_ci": [
+   -0.19363148609475425,
+   0.4452454200461777
+  ],
+  "slope_reading": "inconclusive",
+  "verdict": "inconclusive (slope)",
+  "verdict_cluster_bootstrap": "inconclusive (slope)",
+  "level_test_mean_bias_plus_offset": 0.2089879027323701
+ },
+ "3d_post_without_8764044": {
+  "n_stations": 121,
+  "slope": -0.15664193390145242,
+  "slope_ci": [
+   -0.6576697943042628,
+   0.2923328452538363
+  ],
+  "intercept": 0.02875632301137732,
+  "intercept_ci": [
+   -0.0713312892376159,
+   0.14159776416186812
+  ],
+  "theil_sen": {
+   "slope": -0.2620668798149819,
+   "intercept": 0.08044320701800697
+  },
+  "carried_fraction_ci": [
+   -0.2833735004467776,
+   0.5671491461232154
+  ],
+  "slope_reading": "inconclusive",
+  "verdict": "inconclusive (slope)",
+  "verdict_cluster_bootstrap": "inconclusive (slope)",
+  "level_test_mean_bias_plus_offset": 0.2147319495159438
+ },
+ "3d_pre_all": {
+  "n_stations": 94,
+  "slope": -0.7162041964438726,
+  "slope_ci": [
+   -1.0563063740234324,
+   -0.5013711038661075
+  ],
+  "intercept": 0.010154658269356603,
+  "intercept_ci": [
+   -0.02186378371832271,
+   0.06720430411307869
+  ],
+  "theil_sen": {
+   "slope": -0.8447191400707421,
+   "intercept": 0.0199513198282521
+  },
+  "carried_fraction_ci": [
+   -0.12853918063574085,
+   0.38469369716773744
+  ],
+  "slope_reading": "minus_one",
+  "verdict": "supports H-epoch (slope ~ -1, no uniform level carried)",
+  "verdict_cluster_bootstrap": "inconclusive (slope)",
+  "level_test_mean_bias_plus_offset": 0.054341815317286914
+ },
+ "3d_pre_without_8764044": {
+  "n_stations": 93,
+  "slope": -0.822833170476542,
+  "slope_ci": [
+   -1.1322431469037462,
+   -0.5268226083566444
+  ],
+  "intercept": 0.02783582985565447,
+  "intercept_ci": [
+   -0.01855508627675993,
+   0.07933216922116881
+  ],
+  "theil_sen": {
+   "slope": -0.9038258049685155,
+   "intercept": 0.025688015701013672
+  },
+  "carried_fraction_ci": [
+   -0.10798490395286267,
+   0.45885773189652707
+  ],
+  "slope_reading": "minus_one",
+  "verdict": "supports H-epoch (slope ~ -1, no uniform level carried)",
+  "verdict_cluster_bootstrap": "inconclusive (slope)",
+  "level_test_mean_bias_plus_offset": 0.055998097296204696
+ },
+ "2d_noanomaly_same_stations_all": {
+  "n_stations": 114,
+  "slope": -0.818854925323304,
+  "slope_ci": [
+   -1.2759264549099871,
+   -0.7428032204764973
+  ],
+  "intercept": -0.07580259174720333,
+  "intercept_ci": [
+   -0.09386914588452837,
+   0.02671844817358756
+  ],
+  "theil_sen": {
+   "slope": -1.1121817088164347,
+   "intercept": -0.02006280724000159
+  },
+  "carried_fraction_ci": [
+   -0.37827915398197665,
+   0.1068121660303208
+  ],
+  "slope_reading": "minus_one",
+  "verdict": "supports H-epoch (slope ~ -1, no uniform level carried)",
+  "verdict_cluster_bootstrap": "supports H-epoch (slope ~ -1, no uniform level carried)",
+  "level_test_mean_bias_plus_offset": -0.03690987094221368
+ },
+ "2d_noanomaly_same_stations_without_8764044": {
+  "n_stations": 113,
+  "slope": -1.0825359792004012,
+  "slope_ci": [
+   -1.3348678179559776,
+   -0.8589715565363517
+  ],
+  "intercept": -0.017046704646773853,
+  "intercept_ci": [
+   -0.06658002885114105,
+   0.03940458957334277
+  ],
+  "theil_sen": {
+   "slope": -1.1441233115971623,
+   "intercept": -0.012194969296907832
+  },
+  "carried_fraction_ci": [
+   -0.2662987317988231,
+   0.15658672353153483
+  ],
+  "slope_reading": "minus_one",
+  "verdict": "supports H-epoch (slope ~ -1, no uniform level carried)",
+  "verdict_cluster_bootstrap": "supports H-epoch (slope ~ -1, no uniform level carried)",
+  "level_test_mean_bias_plus_offset": -0.03525108337853288
+ }
+}

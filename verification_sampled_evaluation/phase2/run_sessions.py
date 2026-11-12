@@ -49,11 +49,23 @@ def main() -> int:
         order = [s for s in order if s.parent.name in a.only]
     log = PKG / "run_log/sessions_run.jsonl"
     started = time.time()
+    # resume: sessions already finished validly (logged with exit 0 and a transcript) are skipped
+    done = set()
+    if log.exists():
+        for line in log.read_text().splitlines():
+            r = json.loads(line)
+            if r.get("exit") == 0 and (PKG / "run_log/sessions" / Path(r["spec"]).parent.name / Path(r["spec"]).stem / "transcript.json.gz").exists():
+                done.add(r["spec"])
+    calls = {s: len(json.loads(s.read_text())["calls"]) for s in order}
+    proj_p = PKG / "run_log/runtime_projection.json"
+    if proj_p.exists():  # the projection is written once, after the first stofs030 2D session
+        rest = [s for s in order if str(s.relative_to(PKG)) not in done]
+        print(json.dumps({"resume": True, "already_done": len(done), "to_run": len(rest)}), flush=True)
+        return run_rest(rest, a, log, started)
     first = order[0]
     res0 = one(first)  # the first session alone, for the run-time projection
     with open(log, "a") as fh:
         fh.write(json.dumps(res0) + "\n")
-    calls = {s: len(json.loads(s.read_text())["calls"]) for s in order}
     per_call = res0["seconds"] / max(1, calls[first])
     total_calls = sum(calls.values())
     proj = {"written_utc": utc(), "first_session": res0["spec"], "first_session_seconds": res0["seconds"],
@@ -67,9 +79,13 @@ def main() -> int:
     if res0["exit"] != 0 and not a.keep_going:
         print("STOP: first session invalid", flush=True)
         return 3
+    return run_rest(order[1:], a, log, started)
+
+
+def run_rest(rest, a, log, started) -> int:
     bad = 0
     with cf.ThreadPoolExecutor(max_workers=a.jobs) as ex:
-        for res in ex.map(one, order[1:]):
+        for res in ex.map(one, rest):
             with open(log, "a") as fh:
                 fh.write(json.dumps(res) + "\n")
             print(json.dumps({k: res.get(k) for k in ("spec", "exit", "seconds", "valid", "calls", "replay_misses")}), flush=True)

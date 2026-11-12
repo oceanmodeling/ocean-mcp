@@ -1,0 +1,12 @@
+[
+ {
+  "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260816/stofs_3d_atl.t12z.points.cwl.nc",
+  "sha256": "f78e84ef18ae35083c7efe83c26df4c907d7359fb397155e1c2d748001d02462",
+  "path": "data/raw/models/f78e84ef18ae35083c7efe83c26df4c907d7359fb397155e1c2d748001d02462.nc"
+ },
+ {
+  "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260817/stofs_3d_atl.t12z.points.cwl.nc",
+  "sha256": "f47962fa8504ef4017e5a858603fa8ee0894546524e125ec38025e1fe05289c4",
+  "path": "data/raw/models/f47962fa8504ef4017e5a858603fa8ee0894546524e125ec38025e1fe05289c4.nc"
+ }
+]

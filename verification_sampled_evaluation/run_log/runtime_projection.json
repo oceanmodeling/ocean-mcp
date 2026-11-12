@@ -1,0 +1,13 @@
+{
+ "written_utc": "2026-11-12T03:29:55+00:00",
+ "first_session": "run_log/specs/stofs030/2d_20260601.json",
+ "first_session_seconds": 132.8,
+ "first_session_calls": 371,
+ "seconds_per_call": 0.358,
+ "sessions": 121,
+ "total_calls": 30783,
+ "jobs": 3,
+ "projected_total_seconds_serial": 11019,
+ "projected_wall_seconds": 3673,
+ "assumption": "every call costs as much as a 2D 0.3.0 call (3D files are smaller, so this is an upper bound for them)"
+}

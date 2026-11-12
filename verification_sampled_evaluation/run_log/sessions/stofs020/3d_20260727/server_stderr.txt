@@ -1,0 +1,1593 @@
+[11/12/26 05:34:18] INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[11/12/26 05:34:19] INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8410                
+                             140&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8411                
+                             060&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[11/12/26 05:34:20] INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8418                
+                             150&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+[11/12/26 05:34:19] INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8443                
+                             970&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8447                
+                             386&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8447                
+                             435&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8447                
+                             930&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[11/12/26 05:34:20] INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8452                
+                             660&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8454                
+                             000&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8454                
+                             049&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8461                
+                             490&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8467                
+                             150&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+[11/12/26 05:34:21] INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8510                
+                             560&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8516                
+                             945&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8518                
+                             750&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8531                
+                             680&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8534                
+                             720&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+[11/12/26 05:34:22] INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8536                
+                             110&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8540                
+                             433&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8545                
+                             240&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8551                
+                             910&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8557                
+                             380&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8570                
+                             283&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+[11/12/26 05:34:23] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8571                
+                             421&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8571                
+                             892&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8573                
+                             364&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8573                
+                             927&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8574                
+                             680&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+[11/12/26 05:34:24] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8575                
+                             512&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8577                
+                             330&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8594                
+                             900&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8632                
+                             200&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8635                
+                             027&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[11/12/26 05:34:25] INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8635                
+                             750&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8636                
+                             580&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8637                
+                             689&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8638                
+                             610&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8651                
+                             370&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[11/12/26 05:34:26] INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8652                
+                             587&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8654                
+                             467&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8656                
+                             483&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8658                
+                             120&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8658                
+                             163&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+[11/12/26 05:34:27] INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8661                
+                             070&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8662                
+                             245&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8665                
+                             530&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8670                
+                             870&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8720                
+                             030&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8720                
+                             218&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+[11/12/26 05:34:28] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8720                
+                             219&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8720                
+                             226&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8721                
+                             604&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8722                
+                             670&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8722                
+                             956&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+[11/12/26 05:34:29] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8723                
+                             214&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8723                
+                             970&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8724                
+                             580&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8725                
+                             110&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8725                
+                             520&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+[11/12/26 05:34:30] INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8726                
+                             384&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8726                
+                             520&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8726                
+                             607&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8726                
+                             667&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8726                
+                             724&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8727                
+                             520&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+[11/12/26 05:34:31] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8728                
+                             690&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8729                
+                             108&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8729                
+                             210&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8729                
+                             840&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8735                
+                             180&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+[11/12/26 05:34:32] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8736                
+                             897&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8737                
+                             048&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8737                
+                             138&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8741                
+                             533&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8747                
+                             437&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[11/12/26 05:34:33] INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8761                
+                             305&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8761                
+                             927&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8764                
+                             044&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8764                
+                             227&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8766                
+                             072&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[11/12/26 05:34:34] INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8767                
+                             816&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8767                
+                             961&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8768                
+                             094&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8770                
+                             475&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8770                
+                             520&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+[11/12/26 05:34:35] INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8770                
+                             613&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8770                
+                             777&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8770                
+                             808&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8770                
+                             822&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8770                
+                             971&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+[11/12/26 05:34:36] INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8771                
+                             341&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8771                
+                             450&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8771                
+                             486&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8771                
+                             972&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8773                
+                             037&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+[11/12/26 05:34:37] INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8773                
+                             701&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8773                
+                             767&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8774                
+                             770&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8775                
+                             237&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8775                
+                             241&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8775                
+                             244&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[11/12/26 05:34:38] INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8775                
+                             296&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8775                
+                             792&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8779                
+                             748&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8779                
+                             749&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-nos-stofs3d-pds.s3.ama                
+                             zonaws.com/STOFS-3D-Atl/stofs_3d_at                
+                             l.20260727/stofs_3d_atl.t12z.points                
+                             .cwl.nc "HTTP/1.1 200 OK"                          
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8779                
+                             770&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20260726+12%3A06&end                
+                             _date=20260729+12%3A06&application=                
+                             stofs_mcp "HTTP/1.1 200 OK"                        
+[ocean-replay] replay summary: {"served": 212, "recorded": 0, "miss": 0, "network_blocked": 0}

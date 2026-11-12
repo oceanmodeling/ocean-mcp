@@ -9,7 +9,9 @@ data/archive/refonly/bodies/
 phase0/coops/b34a6a56c4c0be623b3de3a3cac8632770d55207ef66b0f8dc927e80952a28e9.json
 phase0/docs/nonnoaa/*.docx
 run_log/fetch_state/noaa.lock
-run_log/sessions/**/transcript.json.gz
 run_log/sessions/**/http_log.jsonl
 data/raw/
 .ruff_cache/
+# large regenerable outputs: gzip copies are committed
+reference/results/*/cases.jsonl
+results/study1/outcomes.jsonl

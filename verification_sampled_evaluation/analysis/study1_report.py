@@ -56,7 +56,7 @@ def defects(c) -> list[str]:
     n = c["statistics"].get("n", 0)
     if c["expected"]["expected"] == "compare" and n < 0.8 * 497:
         d.append("obs_pairs_below_80pct")
-    return d
+    return sorted(set(d))  # one entry per defect per case
 
 
 def write_csv(name, rows, fields):

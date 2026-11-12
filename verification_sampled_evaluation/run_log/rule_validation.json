@@ -69,5 +69,19 @@
    37952
   ],
   "identical": true
+ },
+ {
+  "rule": "5",
+  "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8653215&product=water_level&datum=MSL&units=metric&time_zone=gmt&format=json&begin_date=20260907+12%3A06&end_date=20260909+13%3A42&application=stofs_mcp",
+  "replay_rule": "5_empty_slice",
+  "replay_status": 200,
+  "live_status": 200,
+  "replay_sha256": "500bdf8b7540e3b178fa94711e95e7bd7633578dac4778da5faed9dc45cbfb0f",
+  "live_sha256": "500bdf8b7540e3b178fa94711e95e7bd7633578dac4778da5faed9dc45cbfb0f",
+  "bytes": [
+   115,
+   115
+  ],
+  "identical": true
  }
 ]

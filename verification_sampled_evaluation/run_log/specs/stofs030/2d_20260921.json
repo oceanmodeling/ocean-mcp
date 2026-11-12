@@ -1,0 +1,4871 @@
+{
+ "session_id": "stofs030_2d_20260921",
+ "server": {
+  "python": "/mnt/d/ocean-mcp/.claude/worktrees/sampled-evaluation/verification_sampled_evaluation/.envs/stofs030post/bin/python",
+  "module": "stofs_mcp",
+  "archives": [
+   "/mnt/d/ocean-mcp/.claude/worktrees/sampled-evaluation/verification_sampled_evaluation/data/archive/models",
+   "/mnt/d/ocean-mcp/.claude/worktrees/sampled-evaluation/verification_sampled_evaluation/data/archive/coops",
+   "/mnt/d/ocean-mcp/.claude/worktrees/sampled-evaluation/verification_sampled_evaluation/data/archive/meta",
+   "/mnt/d/ocean-mcp/.claude/worktrees/sampled-evaluation/verification_sampled_evaluation/data/archive/templates"
+  ],
+  "dists": [
+   "stofs-mcp",
+   "mcp",
+   "httpx",
+   "netCDF4",
+   "numpy"
+  ]
+ },
+ "calls": [
+  {
+   "call_id": "2d_20260921_1611400",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "1611400",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_1612340",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "1612340",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_1612480",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "1612480",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_1615680",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "1615680",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_1617433",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "1617433",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_1617760",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "1617760",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_1619910",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "1619910",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_1630000",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "1630000",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_1631428",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "1631428",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_1770000",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "1770000",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_1820000",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "1820000",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_1890000",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "1890000",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8410140",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8410140",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8410834",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8410834",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8411060",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8411060",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8412581",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8412581",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8413320",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8413320",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8414721",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8414721",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8414888",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8414888",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8415490",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8415490",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8415709",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8415709",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8416731",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8416731",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8416921",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8416921",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8417134",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8417134",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8417177",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8417177",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8417227",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8417227",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8418031",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8418031",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8418150",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8418150",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8418445",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8418445",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8418606",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8418606",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8418911",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8418911",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8419317",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8419317",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8419399",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8419399",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8419870",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8419870",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8423898",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8423898",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8441841",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8441841",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8443662",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8443662",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8443970",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8443970",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8445138",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8445138",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8446121",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8446121",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8447180",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8447180",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8447270",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8447270",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8447386",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8447386",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8447435",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8447435",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8447712",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8447712",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8447930",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8447930",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8449130",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8449130",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8452660",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8452660",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8452944",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8452944",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8454000",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8454000",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8454049",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8454049",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8458694",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8458694",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8459681",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8459681",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8461490",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8461490",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8465705",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8465705",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8467150",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8467150",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8469198",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8469198",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8510560",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8510560",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8511671",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8511671",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8512451",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8512451",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8512668",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8512668",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8512735",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8512735",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8513388",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8513388",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8514560",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8514560",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8516402",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8516402",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8516614",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8516614",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8516881",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8516881",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8516945",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8516945",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8516990",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8516990",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8518091",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8518091",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8518750",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8518750",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8519483",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8519483",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8530743",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8530743",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8531232",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8531232",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8531592",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8531592",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8531680",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8531680",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8531804",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8531804",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8532786",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8532786",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8533055",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8533055",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8533541",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8533541",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8533615",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8533615",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8534319",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8534319",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8534638",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8534638",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8534720",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8534720",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8534836",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8534836",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8534975",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8534975",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8535419",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8535419",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8535581",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8535581",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8535901",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8535901",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8536110",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8536110",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8536889",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8536889",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8537121",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8537121",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8538886",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8538886",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8539094",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8539094",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8540433",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8540433",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8545240",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8545240",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8546252",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8546252",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8548989",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8548989",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8550714",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8550714",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8551762",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8551762",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8551910",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8551910",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8555388",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8555388",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8555889",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8555889",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8557380",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8557380",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8558690",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8558690",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8570283",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8570283",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8571091",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8571091",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8571421",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8571421",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8571892",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8571892",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8573364",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8573364",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8573927",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8573927",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8574070",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8574070",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8574680",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8574680",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8575512",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8575512",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8576363",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8576363",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8577188",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8577188",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8577330",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8577330",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8578002",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8578002",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8578240",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8578240",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8594900",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8594900",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8632200",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8632200",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8632837",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8632837",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8632869",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8632869",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8633532",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8633532",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8633777",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8633777",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8635027",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8635027",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8635150",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8635150",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8635750",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8635750",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8636580",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8636580",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8637689",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8637689",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8637712",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8637712",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8638610",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8638610",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8638863",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8638863",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8638901",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8638901",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8639348",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8639348",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8651370",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8651370",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8652587",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8652587",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8653215",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8653215",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8654400",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8654400",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8654467",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8654467",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8656483",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8656483",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8656502",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8656502",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8657419",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8657419",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8658120",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8658120",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8658163",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8658163",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8659084",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8659084",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8659897",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8659897",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8660166",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8660166",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8661070",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8661070",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8661703",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8661703",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8661991",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8661991",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8662245",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8662245",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8662549",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8662549",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8662931",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8662931",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8665530",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8665530",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8667425",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8667425",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8667999",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8667999",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8670870",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8670870",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8679598",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8679598",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8720030",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8720030",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8720218",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8720218",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8720219",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8720219",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8720226",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8720226",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8720357",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8720357",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8720503",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8720503",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8720625",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8720625",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8721604",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8721604",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8722670",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8722670",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8722956",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8722956",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8723214",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8723214",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8723970",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8723970",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8724580",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8724580",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8725114",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8725114",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8725520",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8725520",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8726384",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8726384",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8726520",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8726520",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8726607",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8726607",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8726667",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8726667",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8726724",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8726724",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8727520",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8727520",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8728690",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8728690",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8729108",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8729108",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8729210",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8729210",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8729840",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8729840",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8735180",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8735180",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8735391",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8735391",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8736897",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8736897",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8737048",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8737048",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8737138",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8737138",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8741041",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8741041",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8741533",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8741533",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8747437",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8747437",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8760721",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8760721",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8760922",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8760922",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8761305",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8761305",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8761724",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8761724",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8761927",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8761927",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8762075",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8762075",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8764044",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8764044",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8764227",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8764227",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8764314",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8764314",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8766072",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8766072",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8767816",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8767816",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8767961",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8767961",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8768094",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8768094",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8770475",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8770475",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8770520",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8770520",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8770570",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8770570",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8770613",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8770613",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8770733",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8770733",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8770777",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8770777",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8770808",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8770808",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8770822",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8770822",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8770971",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8770971",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8771013",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8771013",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8771341",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8771341",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8771450",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8771450",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8771486",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8771486",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8771510",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8771510",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8771972",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8771972",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8772447",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8772447",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8773037",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8773037",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8773259",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8773259",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8773701",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8773701",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8773767",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8773767",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8774513",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8774513",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8774770",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8774770",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8775237",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8775237",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8775241",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8775241",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8775244",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8775244",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8775270",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8775270",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8775283",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8775283",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8775296",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8775296",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8775792",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8775792",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8775870",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8775870",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8779280",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8779280",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8779748",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8779748",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8779749",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8779749",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8779750",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8779750",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_8779770",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8779770",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9410170",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9410170",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9410230",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9410230",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9410660",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9410660",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9410840",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9410840",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9411340",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9411340",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9411399",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9411399",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9411406",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9411406",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9412110",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9412110",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9412802",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9412802",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9413450",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9413450",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9414131",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9414131",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9414290",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9414290",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9414509",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9414509",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9414523",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9414523",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9414575",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9414575",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9414750",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9414750",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9414764",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9414764",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9414863",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9414863",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9414958",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9414958",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9415020",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9415020",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9415056",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9415056",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9415102",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9415102",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9415144",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9415144",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9415218",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9415218",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9415338",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9415338",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9416409",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9416409",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9416841",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9416841",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9417426",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9417426",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9418024",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9418024",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9418767",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9418767",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9419059",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9419059",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9419750",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9419750",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9419945",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9419945",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9431647",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9431647",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9432780",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9432780",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9435380",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9435380",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9435827",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9435827",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9436381",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9436381",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9437540",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9437540",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9439011",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9439011",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9439040",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9439040",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9439099",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9439099",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9439201",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9439201",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9440083",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9440083",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9440357",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9440357",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9440422",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9440422",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9440569",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9440569",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9440572",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9440572",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9440581",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9440581",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9440910",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9440910",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9441102",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9441102",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9441644",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9441644",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9442396",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9442396",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9443090",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9443090",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9444090",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9444090",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9444900",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9444900",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9445958",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9445958",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9446291",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9446291",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9446484",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9446484",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9446705",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9446705",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9447130",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9447130",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9447883",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9447883",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9448682",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9448682",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9449424",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9449424",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9449639",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9449639",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9449746",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9449746",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9449856",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9449856",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9449880",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9449880",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9449911",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9449911",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9449932",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9449932",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9449988",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9449988",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9450460",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9450460",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9450551",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9450551",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9451054",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9451054",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9451600",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9451600",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9452210",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9452210",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9452400",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9452400",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9452634",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9452634",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9453220",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9453220",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9454050",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9454050",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9454240",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9454240",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9455090",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9455090",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9455500",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9455500",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9455760",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9455760",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9455920",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9455920",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9457292",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9457292",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9457804",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9457804",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9459450",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9459450",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9459881",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9459881",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9461380",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9461380",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9461710",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9461710",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9462450",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9462450",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9462620",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9462620",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9463502",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9463502",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9464212",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9464212",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9465056",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9465056",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9465261",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9465261",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9465374",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9465374",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9465396",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9465396",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9466012",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9466012",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9466217",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9466217",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9468132",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9468132",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9468258",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9468258",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9468333",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9468333",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9468691",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9468691",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9468756",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9468756",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9469237",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9469237",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9469338",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9469338",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9469439",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9469439",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9469515",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9469515",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9469751",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9469751",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9469833",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9469833",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9490096",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9490096",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9490571",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9490571",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9491094",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9491094",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9491253",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9491253",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9491873",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9491873",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9497645",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9497645",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9751364",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9751364",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9751381",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9751381",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9751401",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9751401",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9751639",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9751639",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9752619",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9752619",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9752695",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9752695",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9753216",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9753216",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9754228",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9754228",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9755371",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9755371",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9757809",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9757809",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9758053",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9758053",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9759110",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9759110",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9759394",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9759394",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9759938",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9759938",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "2d_20260921_9761115",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9761115",
+    "model": "2d_global",
+    "cycle_date": "2026-09-21",
+    "cycle_hour": "12",
+    "lead_start_hours": 0,
+    "lead_end_hours": 49.7,
+    "response_format": "json"
+   }
+  }
+ ]
+}

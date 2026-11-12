@@ -1,0 +1,12 @@
+defect,cases,stations,files,correct_comparison,correct_refusal,refusal_reason_differs,false_refusal,undetected_problem,not_eligible,other_discrepancy,invalid_session,not_run
+identity_duplicate_id,146,6,45,72,,,,,74,,,
+model_code_like_series,122,9,44,47,75,,,,,,,
+model_fill_series,196,12,30,1,30,,,,165,,,
+model_fill_window,147,10,30,,30,,,,117,,,
+model_implausible_series,122,9,44,47,75,,,,,,,
+model_implausible_window,103,8,38,28,75,,,,,,,
+obs_flagged,3117,226,60,3116,,,,,,1,,
+obs_missing,94,41,27,76,2,,,,15,1,,
+obs_no_valid_obs_in_window,5143,169,60,,,,,,5143,,,
+obs_paired_datum_not_published,465,15,45,,,,,,465,,,
+obs_pairs_below_80pct,23,5,19,23,,,,,,,,

@@ -170,3 +170,16 @@ could be produced for the 15 station–datum combinations.
 
 **Also reported:** a "provisional datum" disclaimer in the observations for these stations and
 dates. The reference reads only `data`, so its records are unaffected.
+- **N6. Report builder.** `study1_report.defects()` first counted one defect twice per case
+  (paired datum not published: 930 instead of 465). It now counts each defect once per case.
+  The grading was unaffected.
+- **N7. Post hoc diagnostic (not pre-registered).** `analysis/posthoc_leverage.py` reruns the
+  frozen regression without the one riverine leverage station, 8764044. It is reported beside
+  the frozen results (REPORT.md §2.8) and never instead of them.
+- **N8. Serial runs.** The controlling session crashed twice while jobs ran in parallel, and the
+  second crash restarted WSL. All later jobs ran one at a time at low priority. `run_all.sh`
+  now defaults to one session at a time, and `run_sessions.py` resumes past sessions that are
+  already complete. Partial outputs from the crashes were deleted and rerun; no result comes
+  from a partial run.
+- **N9. Rule 5 live check.** Rule 5 was used 11 times in the sessions, so its live check was
+  made (one request; the total is 4,012 of the 4,298 cap).

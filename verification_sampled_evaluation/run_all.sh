@@ -3,7 +3,7 @@
 #
 #   ./run_all.sh                  # everything (sessions take hours)
 #   SESSIONS=skip ./run_all.sh    # reuse the archived session transcripts; redo all analysis
-#   JOBS=4 ./run_all.sh           # parallel replay sessions (default 4)
+#   JOBS=1 ./run_all.sh           # replay sessions at a time (default 1)
 #
 # Inputs: data/archive/{models,coops,refonly,meta,templates} (bodies identified by SHA-256 in each
 # index.json), data/raw/vdatum_grids (A1), and the WP1 archive for the pre-freeze self-test.
@@ -16,7 +16,7 @@ REPO="${REPO:-$(git -C "$V" worktree list --porcelain | awk '/^worktree /{print 
 WP1="$REPO/.claude/worktrees/safeguards-comparison/verification_safeguards_comparison/data/archive/base"
 ENVS="$V/.envs"
 PY="${PYTHON:-$(uv python find 3.13.12)}"
-JOBS="${JOBS:-4}"
+JOBS="${JOBS:-1}"   # serial by default: parallel sessions crashed this host twice
 WHEEL="$REPO/verification_post_wp1/dist/stofs_mcp-0.3.0-py3-none-any.whl"
 WHEEL_SHA=ba4edc2e05a527f33785bc9fcabd0d313bc57ccabed8373e50376462d297be9a
 say() { printf '\n== %s\n' "$*"; }
@@ -67,7 +67,7 @@ python3 -I "$V/phase2/check_blocks.py"
 if [ "${SESSIONS:-run}" != "skip" ]; then
   say "6. MCP sessions in replay mode (unshare -rn), $JOBS at a time"
   "$R" -I "$V/phase2/build_sessions.py" "$V/reference/results/w49_7/cases.jsonl"
-  python3 -I "$V/phase2/run_sessions.py" --jobs "$JOBS"
+  nice -n 19 python3 -I "$V/phase2/run_sessions.py" --jobs "${JOBS}"
 fi
 
 say "7. Study 1 grading and tables"
@@ -77,8 +77,9 @@ say "7. Study 1 grading and tables"
 say "8. Study 2, Study 3, human check"
 "$R" -I "$V/analysis/study2_run.py"
 "$R" -I "$V/analysis/study2_tables.py"
+"$R" -I "$V/analysis/posthoc_leverage.py" > /dev/null   # post hoc, labelled as such in REPORT.md 2.8
 "$R" -I "$V/analysis/study3_boston.py" > /dev/null
 "$R" -I "$V/human_check/draw.py" > /dev/null
 
 say "9. regenerated results against the committed checksums"
-sha256sum -c "$V/results/SHA256SUMS" --quiet && echo "all results reproduced"
+(cd "$V" && sha256sum -c results/SHA256SUMS --quiet) && echo "all results reproduced"

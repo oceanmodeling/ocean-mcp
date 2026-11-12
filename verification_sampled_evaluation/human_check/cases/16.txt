@@ -1,0 +1,9 @@
+case 16
+product 3d  cycle 2026-09-28 12:00 UTC  station 8573364  record 'TCBM2 SOUS41 8573364 MD Tolchester Beach'
+file https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260928/stofs_3d_atl.t12z.points.cwl.nc
+sha256 7d86d2bea6a45b7f0b90caff60a65c099fbf8e321a54ff035d2be5551051c6b5
+
+zeta attributes: {"_FillValue": "-99999.0", "long_name": "water surface elevation above msl", "standard_name": "sea_surface_height_above_msl", "units": "m"}
+global attributes: {"title": "SCHISM Model output", "source": "SCHISM model output version v10", "references": "http://ccrm.vims.edu/schismweb/", "history": "Mon Sep 28 18:05:17 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v3.1.5/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_xgeoid_to_msl.nco staout_timeseries_2026-09-27-12.nc staout_timeseries_2026-09-27-12_msl.nc", "NCO": "netCDF Operators version 5.0.6 (Homepage = http://nco.sf.net, Code = http://github.com/nco/nco)"}
+
+CO-OPS datums (metadata API): epoch 1983-2001, values (m above station datum): {"STND": 0.0, "MHHW": 1.569, "MHW": 1.474, "DTL": 1.304, "MTL": 1.289, "MSL": 1.295, "MLW": 1.105, "MLLW": 1.04, "GT": 0.529, "MN": 0.369, "DHQ": 0.095, "DLQ": 0.065, "HWI": 11.941, "LWI": 5.893, "NAVD88": 1.337}

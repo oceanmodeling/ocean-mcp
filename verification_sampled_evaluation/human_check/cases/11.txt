@@ -1,0 +1,9 @@
+case 11
+product 3d  cycle 2026-09-28 12:00 UTC  station 8779749  record 'BZST2 SOUS42 8779749 TX SPI Brazos Santiago'
+file https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260928/stofs_3d_atl.t12z.points.cwl.nc
+sha256 7d86d2bea6a45b7f0b90caff60a65c099fbf8e321a54ff035d2be5551051c6b5
+
+zeta attributes: {"_FillValue": "-99999.0", "long_name": "water surface elevation above msl", "standard_name": "sea_surface_height_above_msl", "units": "m"}
+global attributes: {"title": "SCHISM Model output", "source": "SCHISM model output version v10", "references": "http://ccrm.vims.edu/schismweb/", "history": "Mon Sep 28 18:05:17 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v3.1.5/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_xgeoid_to_msl.nco staout_timeseries_2026-09-27-12.nc staout_timeseries_2026-09-27-12_msl.nc", "NCO": "netCDF Operators version 5.0.6 (Homepage = http://nco.sf.net, Code = http://github.com/nco/nco)"}
+
+CO-OPS datums (metadata API): epoch 1983-2001, values (m above station datum): {"STND": 0.0, "MHHW": 7.837, "MHW": 7.817, "DTL": 7.613, "MTL": 7.628, "MSL": 7.654, "MLW": 7.439, "MLLW": 7.388, "GT": 0.449, "MN": 0.379, "DHQ": 0.02, "DLQ": 0.051, "NAVD88": 7.763}
