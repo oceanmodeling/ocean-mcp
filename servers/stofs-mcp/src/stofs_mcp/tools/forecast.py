@@ -38,6 +38,8 @@ from ..utils import (
     read_datum_metadata,
     check_station_coords,
     coordinate_markdown_lines,
+    station_match_markdown_lines,
+    station_match_warning,
     coordinate_provenance,
     coordinate_warning,
     zeta_units,
@@ -173,6 +175,7 @@ async def stofs_get_station_forecast(
                     "datum_warning": datum_info["datum_warning"] or None,
                     "datum_provenance": datum_provenance(datum_info),
                     "units": data.get("units") or "m",
+                    "station_warning": station_match_warning(data),
                     "coordinate_warning": coordinate_warning(
                         data.get("coordinate_check"),
                         data.get("station_idx"),
@@ -207,6 +210,7 @@ async def stofs_get_station_forecast(
                     data.get("station_idx"),
                     data.get("station_names"),
                 ),
+                *station_match_markdown_lines(data),
                 f"Lat/Lon: {data.get('lat', '?')}, {data.get('lon', '?')}",
             ],
         )

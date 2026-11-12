@@ -14,6 +14,7 @@ from ..client import STOFSClient
 from ..models import (
     PLAUSIBLE_WATER_LEVEL_M,
     COOPS_DATUM_FOR_MODEL_DATUM,
+    COOPS_TIDAL_DATUMS,
     STOFSModel,
     get_model_label,
 )
@@ -30,6 +31,7 @@ from ..utils import (
     describe_exclusions,
     dumps_strict,
     resolve_station_datum,
+    station_match_warning,
     value_exclusion_reason,
 )
 
@@ -449,6 +451,7 @@ async def stofs_compare_with_observations(
                 )
 
         model_label = get_model_label(model.value, date_str)
+        station_warning = station_match_warning(stofs_data, stofs_times_clipped)
         datum_note = (
             f"STOFS datum: **{stofs_datum}** ({datum_info['datum_source']}) | "
             f"CO-OPS datum: **{coops_datum}**. No vertical transformation is "
@@ -456,6 +459,13 @@ async def stofs_compare_with_observations(
             "or epochs, so a mean offset (bias) alone does not show whether its "
             "cause is the reference or the model."
         )
+        if coops_datum in COOPS_TIDAL_DATUMS:
+            datum_note += (
+                f" The CO-OPS {coops_datum} datum is defined on a tidal-datum epoch "
+                "(1983–2001 at most stations); recent mean sea level may differ from "
+                "it, so a mean bias includes that difference unless the model carries "
+                "present-day mean level. The station's epoch is not checked here."
+            )
         if datum_info["datum_warning"]:
             datum_note += f" Warning: {datum_info['datum_warning']}"
 
@@ -477,6 +487,7 @@ async def stofs_compare_with_observations(
         if response_format == "json":
             result = {
                 "station_id": station_id,
+                "station_warning": station_warning,
                 "model": model.value,
                 "model_label": model_label,
                 "cycle_date": date_str,
@@ -567,6 +578,7 @@ async def stofs_compare_with_observations(
             f"(lead {lead_start:+.1f} h to {lead_end:+.1f} h from the cycle time; "
             f"{hours_note})",
             f"⚠️  {datum_note}",
+            *([f"⚠️  Station warning: {station_warning}"] if station_warning else []),
             "",
             "### Peak Water Level",
             "| | Value | Time (UTC) |",

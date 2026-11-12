@@ -66,13 +66,35 @@ Changes since 0.2.0 (`stofs-mcp-v0.2.0`, commit `5e45c62`). This release changes
   - `lead_window_hours` and `coverage_note` (when a lead window is used);
   - `hours_to_compare_requested` (when clamped);
   - `stofs_datum_source`, `datum_provenance`, `datum_note`;
-  - `statistics.max_abs_error`, `statistics.n_excluded_nonfinite`.
+  - `statistics.max_abs_error`, `statistics.n_excluded_nonfinite`;
+  - `alignment`, an object with the method and the exact, nearest, unmatched, bad-time and duplicate counts (0.2.0 had no such key);
+  - `observation_quality`, with record, status, flag and exclusion counts and a `matched` sub-object (0.2.0 had no such key);
+  - `station_warning`, one sentence or null (see "WP5 fixes" below).
 - **Changed, `stofs_compare_with_observations`:**
-  - `alignment` is now an object (method and exact/nearest/unmatched/bad-time/duplicate counts), not a string.
-  - `observation_quality` has more keys, including a `matched` sub-object, and its counts can differ from 0.2.0's.
   - `statistics.correlation` is `null` for a constant series (0.2.0 emitted `NaN`).
   - `hours_to_compare` is `null` when a lead window is used.
   - `statistics.peak_error` is kept as a legacy alias of `max_abs_error`, which is max |model − observed|. It is not the error in the peak water level; that is `summary.peak_error_m`.
+
+### WP5 fixes (from the sampled evaluation of 15,197 station-cycles)
+
+- **CO-OPS rejections are reported with CO-OPS's message.** When the CO-OPS Data API rejects a
+  request with a JSON error (for example HTTP 400 "There is no MSL for the station: …" or "The
+  supported Datum values are: …"), `fetch_coops_observations` raises `ValueError` with that
+  message, so `stofs_compare_with_observations` answers "Could not fetch CO-OPS observations:
+  CO-OPS API error: <message>". Before, the HTTP error reached the generic handler, which blamed
+  the S3 bucket and suggested a retry (465 cases in the sampled evaluation).
+- **Duplicated station identifiers are reported.** When more than one record of a station file
+  matches the requested identifier, the first is still used, and `stofs_compare_with_observations`
+  and `stofs_get_station_forecast` add `station_warning` (JSON) and a "Station warning" line
+  (Markdown). They name the matching records, the one used, and the largest absolute difference
+  between their valid values: in the comparison window for the comparison, and over the series
+  for the station forecast. In real STOFS-2D-Global files, 8414721 sits on "Fort Point, ME" and
+  "Frankfort, ME", whose values differ by up to 0.15 m.
+- **The tidal-datum epoch in the datum note.** When observations are requested on a CO-OPS tidal
+  datum (MSL, MLLW, …), `datum_note` adds that the datum is defined on a tidal-datum epoch (1983–2001
+  at most stations), that recent mean sea level may differ from it, and that a mean bias includes
+  that difference unless the model carries present-day mean level. The station's epoch is not
+  fetched or checked.
 
 ### Python API
 

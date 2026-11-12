@@ -640,6 +640,57 @@ def coordinate_markdown_lines(
     return [f"⚠️ Coordinate warning: {warning}"] if warning else []
 
 
+def station_match_warning(
+    data: dict[str, Any], window_times: list[str] | None = None
+) -> str | None:
+    """One sentence when the requested identifier matches more than one record, else None.
+
+    The first matching record is the one used. For every other record the sentence gives
+    the largest absolute difference from it over the times where both have valid values,
+    within ``window_times`` (the comparison window) when given, else over the series.
+    """
+    records = data.get("matching_records") or []
+    if len(records) < 2:
+        return None
+    keep = set(window_times) if window_times is not None else None
+    used = {
+        t: v
+        for t, v in zip(data.get("times", []), data.get("values", []))
+        if keep is None or t in keep
+    }
+    scope = (
+        "in the comparison window" if window_times is not None else "over the series"
+    )
+    parts = []
+    for rec in data.get("duplicate_records", []):
+        diffs = [
+            abs(used[t] - v) for t, v in zip(rec["times"], rec["values"]) if t in used
+        ]
+        parts.append(
+            f"'{rec['name']}' (record {rec['index']}): "
+            + (
+                f"largest absolute difference {max(diffs):.3f} m {scope} "
+                f"({len(diffs)} common valid times)"
+                if diffs
+                else f"no common valid time {scope}"
+            )
+        )
+    first = records[0]
+    return (
+        f"Station identifier '{data.get('station_id')}' matches {len(records)} records "
+        f"in this file; the first, '{first['name']}' (record {first['index']}), is used. "
+        "Other matching records: " + "; ".join(parts) + "."
+    )
+
+
+def station_match_markdown_lines(
+    data: dict[str, Any], window_times: list[str] | None = None
+) -> list[str]:
+    """Markdown metadata line for a duplicated identifier (empty if none)."""
+    warning = station_match_warning(data, window_times)
+    return [f"⚠️ Station warning: {warning}"] if warning else []
+
+
 def zeta_units(zeta_var: Any) -> str:
     """Units of the water-level variable, from its ``units`` attribute.
 
@@ -840,12 +891,14 @@ def parse_station_netcdf(
         if station_id is None:
             return result
 
-        # --- Find station index ---
-        station_idx = None
-        for i, name in enumerate(station_names):
-            if station_id in name or name.strip() == station_id:
-                station_idx = i
-                break
+        # --- Find station index (the first matching record is used; every match is
+        # recorded so that a duplicated identifier can be reported) ---
+        matching = [
+            i
+            for i, name in enumerate(station_names)
+            if station_id in name or name.strip() == station_id
+        ]
+        station_idx = matching[0] if matching else None
 
         if station_idx is None:
             raise ValueError(
@@ -876,6 +929,26 @@ def parse_station_netcdf(
                 times_out.append(t_str)
                 values_out.append(round(float(v), 4))
 
+        # Other records carrying the same identifier: their valid values, so the
+        # tools can say how much the records differ (station_match_warning).
+        duplicate_records = []
+        for j in matching[1:]:
+            d_data, d_invalid, _ = valid_values(zeta, zeta[:, j])
+            duplicate_records.append(
+                {
+                    "index": j,
+                    "name": station_names[j],
+                    "times": [
+                        t for t, bad in zip(time_strings, d_invalid.tolist()) if not bad
+                    ],
+                    "values": [
+                        round(float(v), 4)
+                        for v, bad in zip(d_data.tolist(), d_invalid.tolist())
+                        if not bad
+                    ],
+                }
+            )
+
         station_lat = lats[station_idx] if station_idx < len(lats) else None
         station_lon = lons[station_idx] if station_idx < len(lons) else None
 
@@ -891,6 +964,10 @@ def parse_station_netcdf(
                 "model_end": time_strings[-1] if time_strings else "",
                 "n_records": len(time_strings),
                 "excluded_model_records": excluded,
+                "matching_records": [
+                    {"index": i, "name": station_names[i]} for i in matching
+                ],
+                "duplicate_records": duplicate_records,
             }
         )
         return result

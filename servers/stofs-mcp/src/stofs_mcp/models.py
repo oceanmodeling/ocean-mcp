@@ -126,6 +126,14 @@ COOPS_DATUM_FOR_MODEL_DATUM = {
     "MLLW": "MLLW",
 }
 
+# CO-OPS datums that are tidal datums: each is computed over a tidal-datum epoch
+# (the National Tidal Datum Epoch 1983-2001 at most stations; a recent five-year
+# epoch at stations with anomalous relative sea-level trends). Recent mean sea level
+# can differ from such a datum, so a mean model-observation bias includes that
+# difference unless the model carries present-day mean level. NAVD (NAVD88) is a
+# geodetic datum and is not listed.
+COOPS_TIDAL_DATUMS = frozenset({"MSL", "MLLW", "MLW", "MTL", "DTL", "MHW", "MHHW"})
+
 # --- Water-level validity bounds (metres) ------------------------------------
 #
 # NOAA station files encode missing data with sentinels that are sometimes

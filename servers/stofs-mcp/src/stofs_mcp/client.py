@@ -172,6 +172,20 @@ class STOFSClient:
             "application": "stofs_mcp",
         }
         response = await client.get(COOPS_API_BASE, params=params)
+        if response.status_code != 200:
+            # CO-OPS explains a rejected request in a JSON error document (e.g. HTTP 400
+            # "There is no MSL for the station: ..." or "The supported Datum values are:
+            # ..."). Report that message instead of a bare HTTP error, which the tools'
+            # generic handler would attribute to the S3 bucket.
+            message = None
+            try:
+                err = response.json().get("error")
+                if isinstance(err, dict):
+                    message = str(err.get("message") or "").strip() or None
+            except (ValueError, AttributeError):
+                message = None
+            if message:
+                raise ValueError(f"CO-OPS API error: {message}")
         response.raise_for_status()
         data = response.json()
         if "error" in data:
