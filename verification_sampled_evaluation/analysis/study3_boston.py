@@ -99,6 +99,9 @@ def main() -> int:  # pragma: no cover - run in Phase 2
     out = {
         "n": int(len(tm)), "best_lag_min_0p1_grid": tau, "best_lag_6min_grid": float(six[k]),
         "best_lag_parabolic_vertex_min": vertex,
+        "lag_convention": "tau: the model value at t - tau is compared with the observation at t; "
+                          "tau < 0 means the model is late (model lags the observations by -tau minutes)",
+        "model_lags_observations_by_min": -tau,
         "rmse": {
             "raw": rm(e0),
             "mean_removed": rm(e0 - e0.mean()),

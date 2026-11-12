@@ -1,0 +1,12 @@
+{
+ "started_utc": "2026-11-10T04:45:24+00:00",
+ "branch_head": "8a7318df30af619c7e75d8bc162a7ccca919bb24",
+ "design_freeze": "2ea1e00",
+ "amendments": "8a7318d",
+ "answers": {
+  "Q1": "include",
+  "Q2": "default"
+ },
+ "phase0_requests": 483,
+ "budget_cap_phase2": 4298
+}

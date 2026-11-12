@@ -95,3 +95,78 @@ For station 8443970, every sampled cycle, both products and the 2D `noanomaly` o
 
 After the first 2D session of stofs-mcp 0.3.0, the elapsed time and the projected total run
 time are written to `run_log/`.
+
+## Implementation notes during Phase 2 (no rule, threshold or result changes)
+
+- **N1. Human-check plots.** They show the observed series on both MSL and NAVD wherever CO-OPS
+  has them, not only on the reference's paired datum, so the plot does not reveal the reference
+  pairing. The frozen sampling functions (`non_routine`, `draw`) are unchanged.
+- **N2. Memory.** `archive_io.CoopsObs.release()` drops parsed master documents between files
+  (classify) and between stations (Study 2 O29). Results do not depend on it; the WP1 self-test
+  was rerun after the change (8/8).
+- **N3. Study 3 lag sign.** The output gains `lag_convention` and
+  `model_lags_observations_by_min` (= −τ); the computation is unchanged.
+- **N4. A1 grids.**
+  - The two grids were fetched in full through the logged fetcher (2 requests, from the retry
+    reserve): GEOID18 at 16,742,155 B, sha256 `fa9a407a…`; LMSL ITRF2020 at 55,534,954 B,
+    sha256 `345ac0f7…`.
+  - They are hard-linked under their `.tif` names for PROJ.
+  - The offline Boston value equals the Boston package's bit for bit (0.09173215948229796 m).
+- **N5. Report parser for coops-mcp.** A datum counts as "listed" only when it has a numeric
+  value in the tool's table.
+
+## Amendment A5: a second CO-OPS wording for an unpublished datum (2026-11-10)
+
+**When:** after the CO-OPS download finished, before any reference classification, MCP session
+or grading of sampled data.
+
+**Evidence** (`run_log/a5_evidence.json`):
+- For 14 stations, CO-OPS answered `datum=MSL` with HTTP 400
+  `{"error": {"message":"There is no MSL for the station: <id>"}}`, and for 8531232 also
+  `datum=NAVD` with "There is no NAVD for the station: 8531232". These are 2D-only stations
+  that publish no datums.
+- The body was byte-identical across every requested date range: 7 ranges for each MSL case, 6
+  for the NAVD case.
+- Phase 0 had seen only the other wording, " The supported Datum values are: …", for which
+  DESIGN.md §5.2 rule 4a and `archive_io.CoopsObs` were written.
+
+**Effect under the frozen rules:** these answers were archived as `coops_error_other` (an
+acquisition gap). Classification would stop at the first such station, and no Study 1 result
+could be produced for the 15 station–datum combinations.
+
+**Change:**
+- An HTTP 400 answer whose message starts with "There is no " followed by a datum name and " for
+  the station" is treated as an unpublished-datum answer, like rule 4a. This applies in the
+  reference (`archive_io.CoopsObs`, so the case is "not eligible: paired datum not published"),
+  in the replay (`wp5_launcher.py` rule 4a) and in the archive indexing.
+- **Effect:** these cases now stop being acquisition gaps. No other case is affected.
+- **The frozen result for them is "classification stopped"**, and it is kept by being reported:
+  REPORT.md lists these cases.
+
+## Amendment A6: CO-OPS masters with a trailing "disclaimers" key (2026-11-10)
+
+**When:** after the CO-OPS download, before any classification, session or grading.
+
+**Evidence:**
+- Three Louisiana stations on the modified 2012–2016 epoch (8760721, 8760922, 8762075) have a
+  newest MSL block (B6, 2026-10-18 onward) that ends `],"disclaimers": [{ "name": "Provisional
+  Datum","content": "These datums and any data referred to said datum are provisional …"}]}`
+  instead of `]}`.
+- The WP1 serializer cannot reproduce this tail, so WP1 rule 3 refused to slice these masters:
+  3 of 2,293 failed the pre-flight round trip (`run_log/archives_check.json`, first run).
+- Their requests (cycles 2026-10-19, 10-26 and 11-02, both products) would have been replay
+  misses.
+
+**Change** (`replay/wp5_launcher.py`):
+- A master is also accepted when the WP1 serialization of its metadata and records, followed by
+  its own raw tail from the `]` that closes `data`, equals its bytes exactly (the same byte-exact
+  proof as WP1).
+- Its slices are the WP1 serialization of the kept records followed by that same raw tail.
+- Masters without extra keys are handled exactly as before.
+- After the change, all 2,293 data masters pass.
+
+**Validation:** one live tool-shaped request for 8762075 is compared byte for byte
+(`run_log/rule_validation.json`).
+
+**Also reported:** a "provisional datum" disclaimer in the observations for these stations and
+dates. The reference reads only `data`, so its records are unaffected.

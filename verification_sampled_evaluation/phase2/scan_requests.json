@@ -1,0 +1,487 @@
+{
+ "files": [
+  {
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260601/stofs_2d_glo.t12z.points.cwl.nc",
+   "version": "2.1.0",
+   "n_records": 1688,
+   "n_ids": 371,
+   "title": "STOFS_2D_GLOBAL.V2.1.0     ! NCPROJ - PROJECT TITLE",
+   "history_head": "PRODUCTION                 ! NCHIST - PROJECT HISTORY"
+  },
+  {
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260608/stofs_2d_glo.t12z.points.cwl.nc",
+   "version": "2.1.0",
+   "n_records": 1688,
+   "n_ids": 371,
+   "title": "STOFS_2D_GLOBAL.V2.1.0     ! NCPROJ - PROJECT TITLE",
+   "history_head": "PRODUCTION                 ! NCHIST - PROJECT HISTORY"
+  },
+  {
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260615/stofs_2d_glo.t12z.points.cwl.nc",
+   "version": "2.1.0",
+   "n_records": 1688,
+   "n_ids": 371,
+   "title": "STOFS_2D_GLOBAL.V2.1.0     ! NCPROJ - PROJECT TITLE",
+   "history_head": "PRODUCTION                 ! NCHIST - PROJECT HISTORY"
+  },
+  {
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260622/stofs_2d_glo.t12z.points.cwl.nc",
+   "version": "2.1.0",
+   "n_records": 1688,
+   "n_ids": 371,
+   "title": "STOFS_2D_GLOBAL.V2.1.0     ! NCPROJ - PROJECT TITLE",
+   "history_head": "PRODUCTION                 ! NCHIST - PROJECT HISTORY"
+  },
+  {
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260629/stofs_2d_glo.t12z.points.cwl.nc",
+   "version": "2.1.0",
+   "n_records": 1688,
+   "n_ids": 371,
+   "title": "STOFS_2D_GLOBAL.V2.1.0     ! NCPROJ - PROJECT TITLE",
+   "history_head": "PRODUCTION                 ! NCHIST - PROJECT HISTORY"
+  },
+  {
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260706/stofs_2d_glo.t12z.points.cwl.nc",
+   "version": "2.1.0",
+   "n_records": 1688,
+   "n_ids": 371,
+   "title": "STOFS_2D_GLOBAL.V2.1.0     ! NCPROJ - PROJECT TITLE",
+   "history_head": "PRODUCTION                 ! NCHIST - PROJECT HISTORY"
+  },
+  {
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260713/stofs_2d_glo.t12z.points.cwl.nc",
+   "version": "2.1.0",
+   "n_records": 1688,
+   "n_ids": 371,
+   "title": "STOFS_2D_GLOBAL.V2.1.0     ! NCPROJ - PROJECT TITLE",
+   "history_head": "PRODUCTION                 ! NCHIST - PROJECT HISTORY"
+  },
+  {
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260720/stofs_2d_glo.t12z.points.cwl.nc",
+   "version": "2.1.0",
+   "n_records": 1688,
+   "n_ids": 371,
+   "title": "STOFS_2D_GLOBAL.V2.1.0     ! NCPROJ - PROJECT TITLE",
+   "history_head": "PRODUCTION                 ! NCHIST - PROJECT HISTORY"
+  },
+  {
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260727/stofs_2d_glo.t12z.points.cwl.nc",
+   "version": "2.1.0",
+   "n_records": 1688,
+   "n_ids": 371,
+   "title": "STOFS_2D_GLOBAL.V2.1.0     ! NCPROJ - PROJECT TITLE",
+   "history_head": "PRODUCTION                 ! NCHIST - PROJECT HISTORY"
+  },
+  {
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260803/stofs_2d_glo.t12z.points.cwl.nc",
+   "version": "2.1.0",
+   "n_records": 1688,
+   "n_ids": 371,
+   "title": "STOFS_2D_GLOBAL.V2.1.0     ! NCPROJ - PROJECT TITLE",
+   "history_head": "PRODUCTION                 ! NCHIST - PROJECT HISTORY"
+  },
+  {
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260810/stofs_2d_glo.t12z.points.cwl.nc",
+   "version": "2.1.0",
+   "n_records": 1688,
+   "n_ids": 371,
+   "title": "STOFS_2D_GLOBAL.V2.1.0     ! NCPROJ - PROJECT TITLE",
+   "history_head": "PRODUCTION                 ! NCHIST - PROJECT HISTORY"
+  },
+  {
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260813/stofs_2d_glo.t12z.points.cwl.nc",
+   "version": "2.1.0",
+   "n_records": 1688,
+   "n_ids": 371,
+   "title": "STOFS_2D_GLOBAL.V2.1.0     ! NCPROJ - PROJECT TITLE",
+   "history_head": "PRODUCTION                 ! NCHIST - PROJECT HISTORY"
+  },
+  {
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260814/stofs_2d_glo.t12z.points.cwl.nc",
+   "version": "2.1.0",
+   "n_records": 1688,
+   "n_ids": 371,
+   "title": "STOFS_2D_GLOBAL.V2.1.0     ! NCPROJ - PROJECT TITLE",
+   "history_head": "PRODUCTION                 ! NCHIST - PROJECT HISTORY"
+  },
+  {
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260815/stofs_2d_glo.t12z.points.cwl.nc",
+   "version": "2.1.0",
+   "n_records": 1688,
+   "n_ids": 371,
+   "title": "STOFS_2D_GLOBAL.V2.1.0     ! NCPROJ - PROJECT TITLE",
+   "history_head": "PRODUCTION                 ! NCHIST - PROJECT HISTORY"
+  },
+  {
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260816/stofs_2d_glo.t12z.points.cwl.nc",
+   "version": "3.1.0",
+   "n_records": 1687,
+   "n_ids": 373,
+   "title": "STOFS_2D_GLOBAL.V3.1.0     ! NCPROJ - PROJECT TITLE",
+   "history_head": "PRODUCTION                 ! NCHIST - PROJECT HISTORY"
+  },
+  {
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260817/stofs_2d_glo.t12z.points.cwl.nc",
+   "version": "3.1.0",
+   "n_records": 1687,
+   "n_ids": 373,
+   "title": "STOFS_2D_GLOBAL.V3.1.0     ! NCPROJ - PROJECT TITLE",
+   "history_head": "PRODUCTION                 ! NCHIST - PROJECT HISTORY"
+  },
+  {
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260818/stofs_2d_glo.t12z.points.cwl.nc",
+   "version": "3.1.0",
+   "n_records": 1687,
+   "n_ids": 373,
+   "title": "STOFS_2D_GLOBAL.V3.1.0     ! NCPROJ - PROJECT TITLE",
+   "history_head": "PRODUCTION                 ! NCHIST - PROJECT HISTORY"
+  },
+  {
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260819/stofs_2d_glo.t12z.points.cwl.nc",
+   "version": "3.1.0",
+   "n_records": 1687,
+   "n_ids": 373,
+   "title": "STOFS_2D_GLOBAL.V3.1.0     ! NCPROJ - PROJECT TITLE",
+   "history_head": "PRODUCTION                 ! NCHIST - PROJECT HISTORY"
+  },
+  {
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260820/stofs_2d_glo.t12z.points.cwl.nc",
+   "version": "3.1.0",
+   "n_records": 1687,
+   "n_ids": 373,
+   "title": "STOFS_2D_GLOBAL.V3.1.0     ! NCPROJ - PROJECT TITLE",
+   "history_head": "PRODUCTION                 ! NCHIST - PROJECT HISTORY"
+  },
+  {
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260824/stofs_2d_glo.t12z.points.cwl.nc",
+   "version": "3.1.0",
+   "n_records": 1687,
+   "n_ids": 373,
+   "title": "STOFS_2D_GLOBAL.V3.1.0     ! NCPROJ - PROJECT TITLE",
+   "history_head": "PRODUCTION                 ! NCHIST - PROJECT HISTORY"
+  },
+  {
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260831/stofs_2d_glo.t12z.points.cwl.nc",
+   "version": "3.1.0",
+   "n_records": 1687,
+   "n_ids": 373,
+   "title": "STOFS_2D_GLOBAL.V3.1.0     ! NCPROJ - PROJECT TITLE",
+   "history_head": "PRODUCTION                 ! NCHIST - PROJECT HISTORY"
+  },
+  {
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260907/stofs_2d_glo.t12z.points.cwl.nc",
+   "version": "3.1.0",
+   "n_records": 1687,
+   "n_ids": 373,
+   "title": "STOFS_2D_GLOBAL.V3.1.0     ! NCPROJ - PROJECT TITLE",
+   "history_head": "PRODUCTION                 ! NCHIST - PROJECT HISTORY"
+  },
+  {
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260914/stofs_2d_glo.t12z.points.cwl.nc",
+   "version": "3.1.0",
+   "n_records": 1687,
+   "n_ids": 373,
+   "title": "STOFS_2D_GLOBAL.V3.1.0     ! NCPROJ - PROJECT TITLE",
+   "history_head": "PRODUCTION                 ! NCHIST - PROJECT HISTORY"
+  },
+  {
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260921/stofs_2d_glo.t12z.points.cwl.nc",
+   "version": "3.1.0",
+   "n_records": 1687,
+   "n_ids": 373,
+   "title": "STOFS_2D_GLOBAL.V3.1.0     ! NCPROJ - PROJECT TITLE",
+   "history_head": "PRODUCTION                 ! NCHIST - PROJECT HISTORY"
+  },
+  {
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260928/stofs_2d_glo.t12z.points.cwl.nc",
+   "version": "3.1.0",
+   "n_records": 1687,
+   "n_ids": 373,
+   "title": "STOFS_2D_GLOBAL.V3.1.0     ! NCPROJ - PROJECT TITLE",
+   "history_head": "PRODUCTION                 ! NCHIST - PROJECT HISTORY"
+  },
+  {
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20261005/stofs_2d_glo.t12z.points.cwl.nc",
+   "version": "3.1.0",
+   "n_records": 1687,
+   "n_ids": 373,
+   "title": "STOFS_2D_GLOBAL.V3.1.0     ! NCPROJ - PROJECT TITLE",
+   "history_head": "PRODUCTION                 ! NCHIST - PROJECT HISTORY"
+  },
+  {
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20261012/stofs_2d_glo.t12z.points.cwl.nc",
+   "version": "3.1.0",
+   "n_records": 1687,
+   "n_ids": 373,
+   "title": "STOFS_2D_GLOBAL.V3.1.0     ! NCPROJ - PROJECT TITLE",
+   "history_head": "PRODUCTION                 ! NCHIST - PROJECT HISTORY"
+  },
+  {
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20261019/stofs_2d_glo.t12z.points.cwl.nc",
+   "version": "3.1.0",
+   "n_records": 1687,
+   "n_ids": 373,
+   "title": "STOFS_2D_GLOBAL.V3.1.0     ! NCPROJ - PROJECT TITLE",
+   "history_head": "PRODUCTION                 ! NCHIST - PROJECT HISTORY"
+  },
+  {
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20261026/stofs_2d_glo.t12z.points.cwl.nc",
+   "version": "3.1.0",
+   "n_records": 1687,
+   "n_ids": 373,
+   "title": "STOFS_2D_GLOBAL.V3.1.0     ! NCPROJ - PROJECT TITLE",
+   "history_head": "PRODUCTION                 ! NCHIST - PROJECT HISTORY"
+  },
+  {
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20261102/stofs_2d_glo.t12z.points.cwl.nc",
+   "version": "3.1.0",
+   "n_records": 1687,
+   "n_ids": 373,
+   "title": "STOFS_2D_GLOBAL.V3.1.0     ! NCPROJ - PROJECT TITLE",
+   "history_head": "PRODUCTION                 ! NCHIST - PROJECT HISTORY"
+  },
+  {
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260601/stofs_3d_atl.t12z.points.cwl.nc",
+   "version": "2.1.18",
+   "n_records": 108,
+   "n_ids": 106,
+   "title": "SCHISM Model output",
+   "history_head": "Mon Jun  1 18:06:40 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v2.1.18/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_x"
+  },
+  {
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260608/stofs_3d_atl.t12z.points.cwl.nc",
+   "version": "2.1.18",
+   "n_records": 108,
+   "n_ids": 106,
+   "title": "SCHISM Model output",
+   "history_head": "Mon Jun  8 18:06:25 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v2.1.18/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_x"
+  },
+  {
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260615/stofs_3d_atl.t12z.points.cwl.nc",
+   "version": "2.1.18",
+   "n_records": 108,
+   "n_ids": 106,
+   "title": "SCHISM Model output",
+   "history_head": "Mon Jun 15 18:07:26 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v2.1.18/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_x"
+  },
+  {
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260622/stofs_3d_atl.t12z.points.cwl.nc",
+   "version": "2.1.18",
+   "n_records": 108,
+   "n_ids": 106,
+   "title": "SCHISM Model output",
+   "history_head": "Mon Jun 22 18:07:15 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v2.1.18/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_x"
+  },
+  {
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260629/stofs_3d_atl.t12z.points.cwl.nc",
+   "version": "2.1.18",
+   "n_records": 108,
+   "n_ids": 106,
+   "title": "SCHISM Model output",
+   "history_head": "Mon Jun 29 18:06:42 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v2.1.18/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_x"
+  },
+  {
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260706/stofs_3d_atl.t12z.points.cwl.nc",
+   "version": "2.1.18",
+   "n_records": 108,
+   "n_ids": 106,
+   "title": "SCHISM Model output",
+   "history_head": "Mon Jul  6 18:06:54 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v2.1.18/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_x"
+  },
+  {
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260713/stofs_3d_atl.t12z.points.cwl.nc",
+   "version": "2.1.18",
+   "n_records": 108,
+   "n_ids": 106,
+   "title": "SCHISM Model output",
+   "history_head": "Mon Jul 13 18:06:51 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v2.1.18/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_x"
+  },
+  {
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260720/stofs_3d_atl.t12z.points.cwl.nc",
+   "version": "2.1.18",
+   "n_records": 108,
+   "n_ids": 106,
+   "title": "SCHISM Model output",
+   "history_head": "Mon Jul 20 18:07:35 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v2.1.18/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_x"
+  },
+  {
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260727/stofs_3d_atl.t12z.points.cwl.nc",
+   "version": "2.1.18",
+   "n_records": 108,
+   "n_ids": 106,
+   "title": "SCHISM Model output",
+   "history_head": "Mon Jul 27 18:05:54 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v2.1.18/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_x"
+  },
+  {
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260803/stofs_3d_atl.t12z.points.cwl.nc",
+   "version": "2.1.18",
+   "n_records": 108,
+   "n_ids": 106,
+   "title": "SCHISM Model output",
+   "history_head": "Mon Aug  3 18:06:46 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v2.1.18/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_x"
+  },
+  {
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260810/stofs_3d_atl.t12z.points.cwl.nc",
+   "version": "2.1.18",
+   "n_records": 108,
+   "n_ids": 106,
+   "title": "SCHISM Model output",
+   "history_head": "Mon Aug 10 18:07:16 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v2.1.18/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_x"
+  },
+  {
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260813/stofs_3d_atl.t12z.points.cwl.nc",
+   "version": "2.1.18",
+   "n_records": 108,
+   "n_ids": 106,
+   "title": "SCHISM Model output",
+   "history_head": "Thu Aug 13 18:07:19 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v2.1.18/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_x"
+  },
+  {
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260814/stofs_3d_atl.t12z.points.cwl.nc",
+   "version": "2.1.18",
+   "n_records": 108,
+   "n_ids": 106,
+   "title": "SCHISM Model output",
+   "history_head": "Fri Aug 14 18:07:27 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v2.1.18/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_x"
+  },
+  {
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260815/stofs_3d_atl.t12z.points.cwl.nc",
+   "version": "2.1.18",
+   "n_records": 108,
+   "n_ids": 106,
+   "title": "SCHISM Model output",
+   "history_head": "Sat Aug 15 18:06:57 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v2.1.18/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_x"
+  },
+  {
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260816/stofs_3d_atl.t12z.points.cwl.nc",
+   "version": "2.1.18",
+   "n_records": 108,
+   "n_ids": 106,
+   "title": "SCHISM Model output",
+   "history_head": "Sun Aug 16 18:07:26 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v2.1.18/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_x"
+  },
+  {
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260817/stofs_3d_atl.t12z.points.cwl.nc",
+   "version": "3.1.4",
+   "n_records": 166,
+   "n_ids": 163,
+   "title": "SCHISM Model output",
+   "history_head": "Mon Aug 17 18:04:43 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v3.1.4/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_xg"
+  },
+  {
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260818/stofs_3d_atl.t12z.points.cwl.nc",
+   "version": "3.1.5",
+   "n_records": 166,
+   "n_ids": 163,
+   "title": "SCHISM Model output",
+   "history_head": "Tue Aug 18 18:04:36 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v3.1.5/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_xg"
+  },
+  {
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260819/stofs_3d_atl.t12z.points.cwl.nc",
+   "version": "3.1.5",
+   "n_records": 166,
+   "n_ids": 163,
+   "title": "SCHISM Model output",
+   "history_head": "Wed Aug 19 18:05:03 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v3.1.5/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_xg"
+  },
+  {
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260820/stofs_3d_atl.t12z.points.cwl.nc",
+   "version": "3.1.5",
+   "n_records": 166,
+   "n_ids": 163,
+   "title": "SCHISM Model output",
+   "history_head": "Thu Aug 20 18:04:47 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v3.1.5/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_xg"
+  },
+  {
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260824/stofs_3d_atl.t12z.points.cwl.nc",
+   "version": "3.1.5",
+   "n_records": 166,
+   "n_ids": 163,
+   "title": "SCHISM Model output",
+   "history_head": "Mon Aug 24 18:04:47 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v3.1.5/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_xg"
+  },
+  {
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260831/stofs_3d_atl.t12z.points.cwl.nc",
+   "version": "3.1.5",
+   "n_records": 166,
+   "n_ids": 163,
+   "title": "SCHISM Model output",
+   "history_head": "Mon Aug 31 18:05:08 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v3.1.5/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_xg"
+  },
+  {
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260907/stofs_3d_atl.t12z.points.cwl.nc",
+   "version": "3.1.5",
+   "n_records": 166,
+   "n_ids": 163,
+   "title": "SCHISM Model output",
+   "history_head": "Mon Sep  7 18:05:54 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v3.1.5/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_xg"
+  },
+  {
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260914/stofs_3d_atl.t12z.points.cwl.nc",
+   "version": "3.1.5",
+   "n_records": 166,
+   "n_ids": 163,
+   "title": "SCHISM Model output",
+   "history_head": "Mon Sep 14 19:30:13 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v3.1.5/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_xg"
+  },
+  {
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260921/stofs_3d_atl.t12z.points.cwl.nc",
+   "version": "3.1.5",
+   "n_records": 166,
+   "n_ids": 163,
+   "title": "SCHISM Model output",
+   "history_head": "Mon Sep 21 18:04:24 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v3.1.5/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_xg"
+  },
+  {
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260928/stofs_3d_atl.t12z.points.cwl.nc",
+   "version": "3.1.5",
+   "n_records": 166,
+   "n_ids": 163,
+   "title": "SCHISM Model output",
+   "history_head": "Mon Sep 28 18:05:17 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v3.1.5/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_xg"
+  },
+  {
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20261005/stofs_3d_atl.t12z.points.cwl.nc",
+   "version": "3.1.5",
+   "n_records": 166,
+   "n_ids": 163,
+   "title": "SCHISM Model output",
+   "history_head": "Mon Oct  5 18:03:40 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v3.1.5/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_xg"
+  },
+  {
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20261012/stofs_3d_atl.t12z.points.cwl.nc",
+   "version": "3.1.5",
+   "n_records": 166,
+   "n_ids": 163,
+   "title": "SCHISM Model output",
+   "history_head": "Mon Oct 12 18:04:37 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v3.1.5/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_xg"
+  },
+  {
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20261019/stofs_3d_atl.t12z.points.cwl.nc",
+   "version": "3.1.5",
+   "n_records": 166,
+   "n_ids": 163,
+   "title": "SCHISM Model output",
+   "history_head": "Mon Oct 19 18:03:55 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v3.1.5/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_xg"
+  },
+  {
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20261026/stofs_3d_atl.t12z.points.cwl.nc",
+   "version": "3.1.6",
+   "n_records": 166,
+   "n_ids": 163,
+   "title": "SCHISM Model output",
+   "history_head": "Mon Oct 26 18:03:42 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v3.1.6/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_xg"
+  },
+  {
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20261102/stofs_3d_atl.t12z.points.cwl.nc",
+   "version": "3.1.7",
+   "n_records": 166,
+   "n_ids": 163,
+   "title": "SCHISM Model output",
+   "history_head": "Mon Nov  2 18:04:10 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v3.1.7/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_xg"
+  }
+ ],
+ "new_ids": {},
+ "out_of_block_020": [],
+ "datums_known_unpublished": {}
+}

@@ -43,6 +43,8 @@ sys.path.insert(0, str(HERE))
 import ocean_replay_launcher as L  # noqa: E402
 
 UNSUPPORTED_PREFIX = "The supported Datum values are"
+import re  # noqa: E402
+NO_DATUM = re.compile(r"^There is no [A-Za-z0-9]+ for the station")  # amendment A5
 NODATA_SHA256 = "500bdf8b7540e3b178fa94711e95e7bd7633578dac4778da5faed9dc45cbfb0f"
 _wp1_coops_slice = L.Engine.coops_slice
 
@@ -110,13 +112,53 @@ def coops_slice(self, url: str):
                 msg = json.loads(body)["error"]["message"].strip()
             except Exception:
                 continue
-            if msg.startswith(UNSUPPORTED_PREFIX):
+            if msg.startswith(UNSUPPORTED_PREFIX) or NO_DATUM.match(msg):
                 return body, {"wp5_rule": "4a_unsupported_datum", "master_id": e["id"],
                               "master_sha256": e["response"]["body_sha256"]}, arc, e
     return None
 
 
 L.Engine.coops_slice = coops_slice
+
+
+# --- amendment A6: CO-OPS documents with extra top-level keys after "data" ----------------
+# Some masters end with `],"disclaimers": [...]}` instead of `]}`. The WP1 serializer cannot
+# reproduce that tail, so WP1 rule 3 refuses to slice them. Here the tail is kept verbatim:
+# a master is accepted only if (WP1 serialization of its metadata and records, without the
+# closing "]}\n") + (its raw tail starting at the "]" that closes "data") equals its bytes
+# exactly; a slice is then the WP1 serialization of the kept records + the same raw tail.
+_wp1_serialize = L.coops_serialize
+_wp1_verified = L.Archive.verified_master
+_TAILS: dict[int, bytes] = {}
+
+
+def coops_serialize(doc: dict) -> bytes:
+    body = _wp1_serialize(doc)
+    tail = _TAILS.get(id(doc["metadata"]))
+    if tail is None:
+        return body
+    return body[:-3] + tail  # body ends with b"]}\n"
+
+
+def verified_master(self, entry: dict) -> dict:
+    try:
+        return _wp1_verified(self, entry)
+    except L.ReplayMiss:
+        raw = self.body_bytes(entry)
+        doc = json.loads(raw)
+        prefix = _wp1_serialize(doc)[:-3]
+        if not (raw.startswith(prefix) and raw[len(prefix):len(prefix) + 1] == b"]"):
+            raise
+        _TAILS[id(doc["metadata"])] = raw[len(prefix):]
+        if coops_serialize(doc) != raw:
+            del _TAILS[id(doc["metadata"])]
+            raise
+        self._verified_masters[entry["id"]] = doc
+        return doc
+
+
+L.coops_serialize = coops_serialize
+L.Archive.verified_master = verified_master
 
 if __name__ == "__main__":
     L.main()

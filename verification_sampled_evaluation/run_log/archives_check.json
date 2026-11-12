@@ -1,0 +1,43 @@
+{
+ "models": {
+  "entries": 90,
+  "kinds": {
+   "exact": 90
+  },
+  "duplicate_keys": 0,
+  "masters_failing_round_trip": []
+ },
+ "coops": {
+  "entries": 3541,
+  "kinds": {
+   "coops_master": 2293,
+   "coops_error_master": 1248
+  },
+  "duplicate_keys": 0,
+  "masters_failing_round_trip": []
+ },
+ "refonly": {
+  "entries": 374,
+  "kinds": {
+   "exact": 374
+  },
+  "duplicate_keys": 0,
+  "masters_failing_round_trip": []
+ },
+ "meta": {
+  "entries": 389,
+  "kinds": {
+   "exact": 389
+  },
+  "duplicate_keys": 0,
+  "masters_failing_round_trip": []
+ },
+ "templates": {
+  "entries": 1,
+  "kinds": {
+   "coops_nodata_template": 1
+  },
+  "duplicate_keys": 0,
+  "masters_failing_round_trip": []
+ }
+}

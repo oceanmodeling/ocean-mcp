@@ -334,6 +334,7 @@ def main() -> int:
             open(out / "files.jsonl", "w") as ff:
         for f in files:
             cases, band, info = classify_file(f, act, his, datums, obs, a.lead_start, a.lead_end)
+            obs.release()  # memory only
             for c in cases:
                 fc.write(json.dumps(c, sort_keys=True) + "\n")
             for b in band:

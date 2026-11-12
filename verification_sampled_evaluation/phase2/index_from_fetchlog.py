@@ -12,6 +12,7 @@ Usage: python -I index_from_fetchlog.py ARCHIVE_DIR --tag TAG [--tag TAG] [--kin
 import argparse
 import hashlib
 import json
+import re
 import os
 import shutil
 import sys
@@ -35,7 +36,8 @@ def kind_for(url: str, body: bytes, mode: str) -> str:
         if "data" in d and "error" not in d:
             return "coops_master"
         msg = str((d.get("error") or {}).get("message", "")).strip()
-        if hashlib.sha256(body).hexdigest() == NODATA_SHA256 or msg.startswith("The supported Datum values are"):
+        if (hashlib.sha256(body).hexdigest() == NODATA_SHA256 or msg.startswith("The supported Datum values are")
+                or re.match(r"^There is no [A-Za-z0-9]+ for the station", msg)):  # amendment A5
             return "coops_error_master"
         return "coops_error_other"  # an acquisition failure: never served, never read as a fact
     return "exact"

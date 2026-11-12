@@ -75,6 +75,7 @@ def model_files(arcs: list[Archive]) -> list[dict]:
 
 NODATA_SHA256 = "500bdf8b7540e3b178fa94711e95e7bd7633578dac4778da5faed9dc45cbfb0f"  # Phase 0 probe
 UNSUPPORTED_PREFIX = "The supported Datum values are"
+NO_DATUM = re.compile(r"^There is no [A-Za-z0-9]+ for the station")  # amendment A5
 
 
 class CoopsObs:
@@ -113,12 +114,19 @@ class CoopsObs:
             m["doc"] = json.loads(m["archive"].body(m["entry"]))
         return m["doc"]
 
+    def release(self, keep_station: str | None = None) -> None:
+        """Drop parsed master documents (memory only; results do not depend on it)."""
+        for (sid, _d), v in self.masters.items():
+            if sid != keep_station:
+                for m in v:
+                    m["doc"] = None
+
     def _answer(self, m: dict) -> str:
         doc = self._doc(m)
         if "data" in doc and "error" not in doc:
             return "data"
         msg = str((doc.get("error") or {}).get("message", "")).strip()
-        if m["entry"]["response"]["status"] == 400 and msg.startswith(UNSUPPORTED_PREFIX):
+        if m["entry"]["response"]["status"] == 400 and (msg.startswith(UNSUPPORTED_PREFIX) or NO_DATUM.match(msg)):
             return "unsupported_datum"
         if m["entry"]["response"]["body_sha256"] == NODATA_SHA256:
             return "no_data"
