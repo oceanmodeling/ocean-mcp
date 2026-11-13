@@ -1,0 +1,9 @@
+Using CPython 3.12.3 interpreter at: /usr/bin/python3.12
+Creating virtual environment at: /mnt/d/ocean-mcp-wp7-scratch/taskC/env-py3.12
+Resolved 53 packages in 3ms
+  × Failed to download `pydantic-core==2.50.4`
+  ╰─▶ Network connectivity is disabled, but the
+      requested data wasn't found in the cache for:
+      `https://files.pythonhosted.org/packages/91/23/e0c6e3cd09a0ac809953fea698c816b9f03bf0b35b6820c9553e4f5d85a8/pydantic_core-2.50.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl`
+  help: `pydantic-core` (v2.50.4) was included because `stofs-mcp` (v0.3.0)
+        depends on `pydantic` (v2.14.3) which depends on `pydantic-core`

@@ -1,0 +1,30 @@
+{
+ "wheel": "post-WP5 stofs-mcp 0.3.0",
+ "class_counts": {
+  "correct_comparison": 9948,
+  "not_eligible": 5143,
+  "correct_refusal": 105,
+  "other_discrepancy": 1
+ },
+ "class_counts_order_9948_105_0_0_0_5143_1": [
+  9948,
+  105,
+  0,
+  0,
+  0,
+  5143,
+  1
+ ],
+ "misattributed_before": 465,
+ "now_carry_coops_message": 465,
+ "cases_with_station_warning": 72,
+ "duplicate_id_cases": 146,
+ "duplicate_id_cases_with_warning": 72,
+ "duplicate_id_cases_by_class": {
+  "not_eligible": 74,
+  "correct_comparison": 72
+ },
+ "warnings_outside_duplicate_cases": 0,
+ "class_or_sublabel_changes": 465,
+ "class_changes": 0
+}
