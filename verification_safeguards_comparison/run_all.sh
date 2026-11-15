@@ -2,7 +2,8 @@
 # Repeat the whole WP1 comparison offline: no request reaches NOAA or any data host.
 #
 #   ./run_all.sh                 # everything: Phase 0 proof, references, arms A-D, grading (v1),
-#                                # WP1b: arm C-post and its gradings, WP1c: grader v2 on all arms
+#                                # WP1b: arm C-post and its gradings, WP1c: grader v2 on all arms,
+#                                # then manuscript Table 4 (results/table4.{md,json})
 #   UNTIL=wp1 ./run_all.sh       # stop after the original WP1 run (arms A-D)
 #   UNTIL=wp1b ./run_all.sh      # stop after WP1b (arm C-post), before grader v2
 #   UNTIL=ab ./run_all.sh        # stop after arms A and B are graded (no MCP arm is run)
@@ -121,4 +122,11 @@ say "9. WP1c: grader v2 (self-tests, fairness check, then grading of all five re
 python3 -I "$V/grader/v2/test_grade_v2.py" "$V" | tail -1
 python3 -I "$V/grader/v2/fairness_check.py" "$V" | tail -1   # exits non-zero, stopping the run, if it fails
 python3 -I "$V/grader/v2/build_tables_v2.py" "$V" > /dev/null
+
+say "10. manuscript Table 4 from the v1 and v2 grades (read-only over results/)"
+# Reads results/grades_*.json, tasks/tasks.json and the arm D R7 session; writes only the two
+# files below. Stops the run if its cross-checks against results/table_counts_v2.csv fail.
+python3 -I "$V/tools/make_table4.py" "$V" --json "$V/results/table4.json" > "$V/results/table4.md"
+grep -q 'counts reproduce results/table_counts_v2.csv ([0-9]* cells): yes' "$V/results/table4.md"
+grep -q 'served body is the frozen input = True' "$V/results/table4.md"
 say "done; compare with the committed results: git -C \"$V\" diff --stat -- results/"
