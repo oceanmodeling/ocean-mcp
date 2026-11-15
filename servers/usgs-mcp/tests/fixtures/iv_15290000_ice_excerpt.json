@@ -1,0 +1,268 @@
+{
+  "name": "ns1:timeSeriesResponseType",
+  "declaredType": "org.cuahsi.waterml.TimeSeriesResponseType",
+  "scope": "javax.xml.bind.JAXBElement$GlobalScope",
+  "value": {
+    "queryInfo": {
+      "queryURL": "http://waterservices.usgs.gov/nwis/iv/format=json&sites=15290000&parameterCd=00060&period=P30D",
+      "criteria": {
+        "locationParam": "[ALL:15290000]",
+        "variableParam": "[00060]",
+        "parameter": []
+      },
+      "note": [
+        {
+          "value": "[ALL:15290000]",
+          "title": "filter:sites"
+        },
+        {
+          "value": "[mode=PERIOD, period=P30D, modifiedSince=null]",
+          "title": "filter:timeRange"
+        },
+        {
+          "value": "methodIds=[ALL]",
+          "title": "filter:methodId"
+        },
+        {
+          "value": "2026-11-09T02:40:18.280Z",
+          "title": "requestDT"
+        },
+        {
+          "value": "e696a770-dbe6-11f1-9181-2cea7f58f5ca",
+          "title": "requestId"
+        },
+        {
+          "value": "Provisional data are subject to revision. Go to http://waterdata.usgs.gov/nwis/help/?provisional for more information.",
+          "title": "disclaimer"
+        },
+        {
+          "value": "vaas01",
+          "title": "server"
+        }
+      ]
+    },
+    "timeSeries": [
+      {
+        "sourceInfo": {
+          "siteName": "L SUSITNA R NR PALMER AK",
+          "siteCode": [
+            {
+              "value": "15290000",
+              "network": "NWIS",
+              "agencyCode": "USGS"
+            }
+          ],
+          "timeZoneInfo": {
+            "defaultTimeZone": {
+              "zoneOffset": "-09:00",
+              "zoneAbbreviation": "AKST"
+            },
+            "daylightSavingsTimeZone": {
+              "zoneOffset": "-08:00",
+              "zoneAbbreviation": "AKDT"
+            },
+            "siteUsesDaylightSavingsTime": true
+          },
+          "geoLocation": {
+            "geogLocation": {
+              "srs": "EPSG:4326",
+              "latitude": 61.7097358,
+              "longitude": -149.2319635
+            },
+            "localSiteXY": []
+          },
+          "note": [],
+          "siteType": [],
+          "siteProperty": [
+            {
+              "value": "ST",
+              "name": "siteTypeCd"
+            },
+            {
+              "value": "19020505",
+              "name": "hucCd"
+            },
+            {
+              "value": "02",
+              "name": "stateCd"
+            },
+            {
+              "value": "02170",
+              "name": "countyCd"
+            }
+          ]
+        },
+        "variable": {
+          "variableCode": [
+            {
+              "value": "00060",
+              "network": "NWIS",
+              "vocabulary": "NWIS:UnitValues",
+              "variableID": 45807197,
+              "default": true
+            }
+          ],
+          "variableName": "Streamflow, ft&#179;/s",
+          "variableDescription": "Discharge, cubic feet per second",
+          "valueType": "Derived Value",
+          "unit": {
+            "unitCode": "ft3/s"
+          },
+          "options": {
+            "option": [
+              {
+                "name": "Statistic",
+                "optionCode": "00000"
+              }
+            ]
+          },
+          "note": [],
+          "noDataValue": -999999.0,
+          "variableProperty": [],
+          "oid": "45807197"
+        },
+        "values": [
+          {
+            "value": [
+              {
+                "value": "140",
+                "qualifiers": [
+                  "P"
+                ],
+                "dateTime": "2026-10-09T17:45:00.000-08:00"
+              },
+              {
+                "value": "138",
+                "qualifiers": [
+                  "P"
+                ],
+                "dateTime": "2026-10-09T18:00:00.000-08:00"
+              },
+              {
+                "value": "138",
+                "qualifiers": [
+                  "P"
+                ],
+                "dateTime": "2026-10-09T18:15:00.000-08:00"
+              },
+              {
+                "value": "140",
+                "qualifiers": [
+                  "P"
+                ],
+                "dateTime": "2026-10-09T18:30:00.000-08:00"
+              },
+              {
+                "value": "99.9",
+                "qualifiers": [
+                  "P"
+                ],
+                "dateTime": "2026-11-06T10:15:00.000-09:00"
+              },
+              {
+                "value": "99.9",
+                "qualifiers": [
+                  "P"
+                ],
+                "dateTime": "2026-11-06T10:30:00.000-09:00"
+              },
+              {
+                "value": "99.9",
+                "qualifiers": [
+                  "P"
+                ],
+                "dateTime": "2026-11-06T10:45:00.000-09:00"
+              },
+              {
+                "value": "98.5",
+                "qualifiers": [
+                  "P"
+                ],
+                "dateTime": "2026-11-06T11:00:00.000-09:00"
+              },
+              {
+                "value": "-999999",
+                "qualifiers": [
+                  "P",
+                  "Ice"
+                ],
+                "dateTime": "2026-11-06T11:15:00.000-09:00"
+              },
+              {
+                "value": "-999999",
+                "qualifiers": [
+                  "P",
+                  "Ice"
+                ],
+                "dateTime": "2026-11-06T11:30:00.000-09:00"
+              },
+              {
+                "value": "-999999",
+                "qualifiers": [
+                  "P",
+                  "Ice"
+                ],
+                "dateTime": "2026-11-06T11:45:00.000-09:00"
+              },
+              {
+                "value": "-999999",
+                "qualifiers": [
+                  "P",
+                  "Ice"
+                ],
+                "dateTime": "2026-11-06T12:00:00.000-09:00"
+              },
+              {
+                "value": "-999999",
+                "qualifiers": [
+                  "P",
+                  "Ice"
+                ],
+                "dateTime": "2026-11-08T17:00:00.000-09:00"
+              },
+              {
+                "value": "-999999",
+                "qualifiers": [
+                  "P",
+                  "Ice"
+                ],
+                "dateTime": "2026-11-08T17:15:00.000-09:00"
+              }
+            ],
+            "qualifier": [
+              {
+                "qualifierCode": "Ice",
+                "qualifierDescription": "Value is affected by ice at the measurement site.",
+                "qualifierID": 0,
+                "network": "NWIS",
+                "vocabulary": "uv_rmk_cd"
+              },
+              {
+                "qualifierCode": "P",
+                "qualifierDescription": "Provisional data subject to revision.",
+                "qualifierID": 1,
+                "network": "NWIS",
+                "vocabulary": "uv_rmk_cd"
+              }
+            ],
+            "qualityControlLevel": [],
+            "method": [
+              {
+                "methodDescription": "",
+                "methodID": 1539
+              }
+            ],
+            "source": [],
+            "offset": [],
+            "sample": [],
+            "censorCode": []
+          }
+        ],
+        "name": "USGS:15290000:00060:00000"
+      }
+    ]
+  },
+  "nil": false,
+  "globalScope": true,
+  "typeSubstituted": false
+}

@@ -6,7 +6,7 @@ from mcp.server.fastmcp import Context
 from mcp.types import ToolAnnotations
 
 from ..client import USGSClient
-from ..models import format_parameter
+from ..models import describe_exclusions, format_parameter, screen_series_values
 from ..server import mcp
 
 
@@ -324,18 +324,21 @@ async def usgs_get_hydrograph(
         if not values:
             return f"No instantaneous data found for site {site_number}."
 
-        # Compute summary stats
-        numeric_vals = []
-        for v in values:
-            try:
-                numeric_vals.append(float(v["value"]))
-            except (ValueError, TypeError):
-                pass
+        # Summary stats over valid readings only: readings equal to the
+        # series' declared noDataValue (-999999, e.g. qualifier Ice) are not
+        # measurements and are excluded and counted (see models.py).
+        ts = iv_data["value"]["timeSeries"][0]
+        valid, screen = screen_series_values(ts)
+        if not valid:
+            return (
+                f"No valid numeric data for site {site_number}: "
+                f"{screen['readings']:,} readings, {describe_exclusions(screen)}."
+            )
+        numeric_vals = [v["value"] for v in valid]
+        latest = screen["latest"]
 
-        if not numeric_vals:
-            return f"No valid numeric data for site {site_number}."
-
-        current = numeric_vals[-1]
+        # "Current" is the latest reading only if it is a measurement.
+        current = None if latest["excluded_reason"] else numeric_vals[-1]
         min_val = min(numeric_vals)
         max_val = max(numeric_vals)
         mean_val = sum(numeric_vals) / len(numeric_vals)
@@ -362,7 +365,20 @@ async def usgs_get_hydrograph(
             "mean_cfs": round(mean_val, 1),
             "trend": trend,
             "num_readings": len(numeric_vals),
+            "readings_total": screen["readings"],
+            "excluded_readings": screen["excluded"],
+            "no_data_value": screen["no_data_value"],
         }
+        if screen["excluded_qualifiers"]:
+            result["excluded_qualifiers"] = screen["excluded_qualifiers"]
+        if current is None:
+            result["current_note"] = (
+                f"The latest reading ({latest['datetime']}) is not a measurement "
+                f"(value {latest['value']}, qualifiers {latest['qualifiers'] or 'none'}); "
+                "current_cfs is null and min/max/mean exclude it."
+            )
+            result["last_valid_cfs"] = numeric_vals[-1]
+            result["last_valid_time"] = valid[-1]["datetime"]
 
         # Fetch median stats if requested
         median_value = None
@@ -396,12 +412,15 @@ async def usgs_get_hydrograph(
                             break
                     if median_value is not None:
                         result["median_cfs"] = median_value
-                        pct = (
-                            ((current - median_value) / median_value * 100)
-                            if median_value > 0
-                            else 0
-                        )
-                        result["pct_of_median"] = round(pct, 1)
+                        if current is not None:
+                            pct = (
+                                ((current - median_value) / median_value * 100)
+                                if median_value > 0
+                                else 0
+                            )
+                            result["pct_of_median"] = round(pct, 1)
+                        else:
+                            result["pct_of_median"] = None
             except Exception:
                 pass  # Median stats are best-effort
 
@@ -412,11 +431,23 @@ async def usgs_get_hydrograph(
 
         lines = [f"## Hydrograph Summary — Site {site_number}"]
         lines.append(f"**Period**: Last {days} days")
-        lines.append(f"**Readings**: {len(numeric_vals)}")
+        lines.append(
+            f"**Readings**: {len(numeric_vals):,} valid of {screen['readings']:,} "
+            f"(excluded: {describe_exclusions(screen)})"
+        )
         lines.append("")
         lines.append("| Metric | Value |")
         lines.append("|--------|-------|")
-        lines.append(f"| Current | {current:.1f} {unit} |")
+        if current is not None:
+            lines.append(f"| Current | {current:.1f} {unit} |")
+        else:
+            lines.append(
+                f"| Current | no data: latest reading {latest['datetime']} is "
+                f"{latest['value']} (qualifiers {latest['qualifiers'] or 'none'}) |"
+            )
+            lines.append(
+                f"| Last valid | {numeric_vals[-1]:.1f} {unit} ({valid[-1]['datetime']}) |"
+            )
         lines.append(f"| Minimum | {min_val:.1f} {unit} |")
         lines.append(f"| Maximum | {max_val:.1f} {unit} |")
         lines.append(f"| Mean | {mean_val:.1f} {unit} |")
@@ -424,8 +455,10 @@ async def usgs_get_hydrograph(
 
         if median_value is not None:
             lines.append(f"| Historical Median | {median_value:.1f} {unit} |")
-            pct = result.get("pct_of_median", 0)
-            if pct > 0:
+            pct = result.get("pct_of_median")
+            if pct is None:
+                lines.append("| vs. Median | not computed (no current measurement) |")
+            elif pct > 0:
                 lines.append(f"| vs. Median | {pct:+.1f}% (above normal) |")
             else:
                 lines.append(f"| vs. Median | {pct:+.1f}% (below normal) |")

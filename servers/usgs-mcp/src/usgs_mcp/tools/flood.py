@@ -5,6 +5,7 @@ from mcp.server.fastmcp import Context
 from mcp.types import ToolAnnotations
 
 from ..client import USGSClient
+from ..models import screen_series_values
 from ..server import mcp
 
 
@@ -228,13 +229,15 @@ async def usgs_get_flood_status(
         if not all_vals:
             return f"No current readings for site {site_number}."
 
-        latest = all_vals[-1]
-        try:
-            current_flow = float(latest.get("value", "0"))
-        except (ValueError, TypeError):
+        # The latest reading is the current flow only if it is a measurement:
+        # USGS writes the series' noDataValue (-999999) with a qualifier such
+        # as Ice when there is none (see models.screen_series_values).
+        _, screen = screen_series_values(ts)
+        latest = screen["latest"]
+        current_time = latest["datetime"]
+        current_flow = None if latest["excluded_reason"] else float(latest["value"])
+        if latest["excluded_reason"] == "non_numeric" and screen["valid"] == 0:
             return f"Error: Could not parse current flow value for site {site_number}."
-
-        current_time = latest.get("dateTime", "")
 
         # Fetch peak history
         peak_flow = None
@@ -286,7 +289,7 @@ async def usgs_get_flood_status(
         # Streamflow anomaly vs the daily median — context in both paths, and
         # the *labelled status only* when the site has no NWS flood stage.
         anomaly = None
-        if median_flow and median_flow > 0:
+        if current_flow is not None and median_flow and median_flow > 0:
             ratio = current_flow / median_flow
             if ratio > 5.0:
                 anomaly = "Much Above Normal"
@@ -309,7 +312,7 @@ async def usgs_get_flood_status(
             flood_source = "USGS flow anomaly (not NWS flood stage)"
 
         pct_of_peak = None
-        if peak_flow and peak_flow > 0:
+        if current_flow is not None and peak_flow and peak_flow > 0:
             pct_of_peak = round(current_flow / peak_flow * 100, 1)
 
         result = {
@@ -320,6 +323,13 @@ async def usgs_get_flood_status(
             "status": status,
             "flood_source": flood_source,
         }
+        if current_flow is None:
+            result["current_flow_note"] = (
+                f"The latest reading ({current_time}) is not a measurement (value "
+                f"{latest['value']}, qualifiers {latest['qualifiers'] or 'none'}), so "
+                "current flow and every flow ratio below are null."
+            )
+            result["readings_excluded_last_24h"] = screen["excluded"]
         if nws is not None:
             result["nws_lid"] = nws["lid"]
             result["nws_flood_category"] = nws["category"]
@@ -334,13 +344,15 @@ async def usgs_get_flood_status(
                 "point). 'status' is a streamflow anomaly vs the daily median, "
                 "not flood stage."
             )
-            if median_flow and median_flow > 0:
+            if current_flow is not None and median_flow and median_flow > 0:
                 result["flow_vs_median_ratio"] = round(current_flow / median_flow, 2)
 
         if median_flow is not None:
             result["median_flow_cfs"] = median_flow
             result["pct_of_median"] = (
-                round(current_flow / median_flow * 100, 1) if median_flow > 0 else None
+                round(current_flow / median_flow * 100, 1)
+                if current_flow is not None and median_flow > 0
+                else None
             )
         if peak_flow is not None:
             result["peak_of_record_cfs"] = peak_flow
@@ -369,7 +381,13 @@ async def usgs_get_flood_status(
                 )
         else:
             lines.append(f"**Status**: **{status}**")
-        lines.append(f"**Current Flow**: {current_flow:,.1f} {unit}")
+        if current_flow is not None:
+            lines.append(f"**Current Flow**: {current_flow:,.1f} {unit}")
+        else:
+            lines.append(
+                f"**Current Flow**: no data — latest reading is {latest['value']} "
+                f"(qualifiers {latest['qualifiers'] or 'none'}), not a measurement"
+            )
         lines.append(f"**As of**: {current_time}")
         lines.append("")
 
