@@ -1,0 +1,3116 @@
+{
+ "stations": [
+  {
+   "id": "1611400",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "1612340",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "1612480",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "1615680",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "1617433",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "1617760",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "1619910",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "1630000",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "1631428",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "1770000",
+   "in3d": false,
+   "epoch": "0000-0000",
+   "ec": "unknown",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "1820000",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "1890000",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8410140",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8410834",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8411060",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8412581",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8413320",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8414721",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8414888",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8415490",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8415709",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8416731",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8416921",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8417134",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8417177",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8417227",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8418031",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8418150",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8418445",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8418606",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8418911",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8419317",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8419399",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8419870",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8423898",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8441841",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8443662",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8443970",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8445138",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8446121",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8447180",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8447270",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8447386",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8447435",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8447712",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8447930",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8449130",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8452660",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8452944",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8454000",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8454049",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8458694",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8459681",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8461490",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8465705",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8467150",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8469198",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8510560",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8511671",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8512451",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8512668",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8512735",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8513388",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8514560",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8516402",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8516614",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8516881",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8516945",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8516990",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8518091",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8518750",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8518962",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8519483",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8530743",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8531232",
+   "in3d": true,
+   "epoch": null,
+   "ec": "none",
+   "msl": false,
+   "navd": false
+  },
+  {
+   "id": "8531592",
+   "in3d": false,
+   "epoch": null,
+   "ec": "none",
+   "msl": false,
+   "navd": false
+  },
+  {
+   "id": "8531680",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8531804",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8532786",
+   "in3d": false,
+   "epoch": null,
+   "ec": "none",
+   "msl": false,
+   "navd": false
+  },
+  {
+   "id": "8533055",
+   "in3d": false,
+   "epoch": null,
+   "ec": "none",
+   "msl": false,
+   "navd": false
+  },
+  {
+   "id": "8533541",
+   "in3d": false,
+   "epoch": null,
+   "ec": "none",
+   "msl": false,
+   "navd": false
+  },
+  {
+   "id": "8533615",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8534319",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8534638",
+   "in3d": false,
+   "epoch": null,
+   "ec": "none",
+   "msl": false,
+   "navd": false
+  },
+  {
+   "id": "8534720",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8534836",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8534975",
+   "in3d": false,
+   "epoch": null,
+   "ec": "none",
+   "msl": false,
+   "navd": false
+  },
+  {
+   "id": "8535419",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8535581",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8535901",
+   "in3d": false,
+   "epoch": null,
+   "ec": "none",
+   "msl": false,
+   "navd": false
+  },
+  {
+   "id": "8536110",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8536889",
+   "in3d": false,
+   "epoch": null,
+   "ec": "none",
+   "msl": false,
+   "navd": false
+  },
+  {
+   "id": "8537121",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8538886",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8539094",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8540433",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8545240",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8546252",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8548989",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8550714",
+   "in3d": false,
+   "epoch": null,
+   "ec": "none",
+   "msl": false,
+   "navd": false
+  },
+  {
+   "id": "8551762",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8551910",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8555388",
+   "in3d": false,
+   "epoch": null,
+   "ec": "none",
+   "msl": false,
+   "navd": false
+  },
+  {
+   "id": "8555889",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8557380",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8558690",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8570283",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8571091",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8571421",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8571892",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8573364",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8573927",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8574070",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8574680",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8575512",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8576363",
+   "in3d": false,
+   "epoch": null,
+   "ec": "none",
+   "msl": false,
+   "navd": false
+  },
+  {
+   "id": "8577188",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8577330",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8578002",
+   "in3d": false,
+   "epoch": null,
+   "ec": "none",
+   "msl": false,
+   "navd": false
+  },
+  {
+   "id": "8578240",
+   "in3d": false,
+   "epoch": null,
+   "ec": "none",
+   "msl": false,
+   "navd": false
+  },
+  {
+   "id": "8594900",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8631044",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8632200",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8632837",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8632869",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8633532",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8633777",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8635027",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8635150",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8635750",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8636580",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8637689",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8637712",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8638610",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8638863",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8638901",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8638999",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8639348",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8651370",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8652587",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8653215",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8654400",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8654467",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8656483",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8656502",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8657419",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8658120",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8658163",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8659084",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8659897",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8660166",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8661070",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8661703",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8661991",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8662245",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8662549",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8662931",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8665530",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8667425",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8667999",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8670870",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8679598",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8720030",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8720215",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8720218",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8720219",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8720226",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8720357",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8720503",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8720625",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8721604",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8722670",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8722956",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8723214",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8723970",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8724580",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8725110",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8725114",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8725520",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8726384",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8726520",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8726607",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8726667",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8726724",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8727520",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8728690",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8729108",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8729210",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8729840",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8732828",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8735180",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8735391",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8735523",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8736897",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8737048",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8737138",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8738043",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8739803",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8740166",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8741041",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8741533",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8747437",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8760721",
+   "in3d": true,
+   "epoch": "2012-2016",
+   "ec": "modified_5yr",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8760922",
+   "in3d": true,
+   "epoch": "2012-2016",
+   "ec": "modified_5yr",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8761305",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8761724",
+   "in3d": true,
+   "epoch": "2012-2016",
+   "ec": "modified_5yr",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8761927",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8762075",
+   "in3d": false,
+   "epoch": "2012-2016",
+   "ec": "modified_5yr",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8762483",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8764044",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8764227",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8764314",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8766072",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8767816",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8767961",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8768094",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8770475",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8770520",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8770570",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8770613",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8770733",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8770777",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8770808",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8770822",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8770971",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8771013",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8771341",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8771450",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8771486",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8771510",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8771972",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8772447",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8772471",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8772985",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8773037",
+   "in3d": true,
+   "epoch": "2002-2006",
+   "ec": "modified_5yr",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8773146",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8773259",
+   "in3d": true,
+   "epoch": "2002-2006",
+   "ec": "modified_5yr",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8773701",
+   "in3d": true,
+   "epoch": "2002-2006",
+   "ec": "modified_5yr",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8773767",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8774230",
+   "in3d": true,
+   "epoch": "2002-2006",
+   "ec": "modified_5yr",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8774513",
+   "in3d": false,
+   "epoch": "2002-2006",
+   "ec": "modified_5yr",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8774770",
+   "in3d": true,
+   "epoch": "2002-2006",
+   "ec": "modified_5yr",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8775237",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8775241",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8775244",
+   "in3d": true,
+   "epoch": "2002-2006",
+   "ec": "modified_5yr",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8775270",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8775283",
+   "in3d": false,
+   "epoch": "2002-2006",
+   "ec": "modified_5yr",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8775296",
+   "in3d": true,
+   "epoch": "2002-2006",
+   "ec": "modified_5yr",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8775792",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8775870",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8779280",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "8779748",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8779749",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8779750",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "8779770",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9410170",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9410230",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9410660",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9410840",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9411340",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9411399",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9411406",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9412110",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9412802",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9413450",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9414131",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9414290",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9414509",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9414523",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9414575",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9414750",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9414764",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9414863",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9414958",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9415020",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9415056",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9415102",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9415144",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9415218",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9415338",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9416409",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9416841",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9417426",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9418024",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9418767",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9419059",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9419750",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9419945",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9431647",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9432780",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9435380",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9435827",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9436381",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9437540",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9439011",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9439040",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9439099",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9439201",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9440083",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9440357",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9440422",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9440569",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9440572",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9440581",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9440910",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9441102",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9441644",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": false,
+   "navd": false
+  },
+  {
+   "id": "9442396",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9443090",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9444090",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9444900",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9445958",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9446291",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9446484",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9446705",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9447130",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9447883",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9448682",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9449424",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9449639",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9449746",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9449856",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9449880",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9449911",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9449932",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9449988",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9450460",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9450551",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9451054",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9451600",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9452210",
+   "in3d": false,
+   "epoch": "2012-2016",
+   "ec": "modified_5yr",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9452400",
+   "in3d": false,
+   "epoch": "2012-2016",
+   "ec": "modified_5yr",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9452634",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9453220",
+   "in3d": false,
+   "epoch": "2012-2016",
+   "ec": "modified_5yr",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9454050",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9454240",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9455090",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9455500",
+   "in3d": false,
+   "epoch": "2012-2016",
+   "ec": "modified_5yr",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9455760",
+   "in3d": false,
+   "epoch": "2012-2016",
+   "ec": "modified_5yr",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9455920",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9457292",
+   "in3d": false,
+   "epoch": "2012-2016",
+   "ec": "modified_5yr",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9457804",
+   "in3d": false,
+   "epoch": "2012-2016",
+   "ec": "modified_5yr",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9459450",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9459881",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9461380",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9461710",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9462450",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9462620",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9463502",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9464212",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9465056",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9465261",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9465374",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9465396",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9466012",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9466217",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9468132",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9468258",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9468333",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9468691",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9468756",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": true
+  },
+  {
+   "id": "9469237",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9469338",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9469439",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9469515",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9469751",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9469833",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9490096",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9490571",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9491094",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9491253",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9491873",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9497645",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9751364",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9751381",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9751401",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9751639",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9752235",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9752619",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9752695",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9753216",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9754228",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9755371",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9757809",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9758053",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9759110",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9759394",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9759938",
+   "in3d": true,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  },
+  {
+   "id": "9761115",
+   "in3d": false,
+   "epoch": "1983-2001",
+   "ec": "NTDE_1983_2001",
+   "msl": true,
+   "navd": false
+  }
+ ]
+}

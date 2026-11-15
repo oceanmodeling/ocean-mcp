@@ -1,0 +1,108 @@
+{
+  "accepted": "Dec 09 2019",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 6.105
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 5.967
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 3.886
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 3.878
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 3.859
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 1.789
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 1.667
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 4.439
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 4.178
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.138
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.122
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 3.253
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 9.508
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 3.96
+    }
+  ],
+  "LAT": 0.80999994,
+  "LATdate": "20330401",
+  "LATtime": "10:30",
+  "HAT": 7.017,
+  "HATdate": "20161115",
+  "HATtime": "15:42",
+  "min": 0.723,
+  "mindate": "20140131",
+  "mintime": "02:12",
+  "max": 7.417,
+  "maxdate": "20200410",
+  "maxtime": "08:42",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "07/01/2011 - 06/30/2012",
+    "07/01/2013 - 06/30/2014",
+    "07/01/2015 - 06/30/2017"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8413320 Bar Harbor, ME",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8411060/datums.json"
+}

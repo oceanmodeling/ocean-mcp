@@ -1,0 +1,105 @@
+{
+  "accepted": "May 06 2020",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 7.048
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 6.972
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 6.349
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 6.337
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 6.292
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 5.702
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 5.65
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 1.397
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 1.271
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.075
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.051
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 0.459
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 5.88
+    }
+  ],
+  "LAT": 5.336,
+  "LATdate": "20370302",
+  "LATtime": "06:00",
+  "HAT": 7.4659996,
+  "HATdate": "20331009",
+  "HATtime": "13:06",
+  "min": 4.799,
+  "mindate": "20010211",
+  "mintime": "20:54",
+  "max": 8.393,
+  "maxdate": "20121029",
+  "maxtime": "23:18",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "08/01/2001 - 07/31/2009",
+    "05/01/2010 - 04/30/2012",
+    "06/01/2012 - 05/31/2013",
+    "09/01/2013 - 08/31/2014",
+    "04/01/2015 - 03/31/2018"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8454000 Providence, RI",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8452944/datums.json"
+}

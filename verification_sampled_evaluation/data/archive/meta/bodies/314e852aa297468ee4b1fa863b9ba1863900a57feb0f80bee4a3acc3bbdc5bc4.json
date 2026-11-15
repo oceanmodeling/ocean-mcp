@@ -1,0 +1,102 @@
+{
+  "accepted": "Jun 12 2020",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 7.56
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 7.496
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 7.072
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 7.061
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 7.062
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 6.626
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 6.584
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.976
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.87
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.064
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.041
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 1.805
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 8.028
+    }
+  ],
+  "LAT": 6.3269997,
+  "LATdate": "20140201",
+  "LATtime": "09:06",
+  "HAT": 7.85,
+  "HATdate": "20291009",
+  "HATtime": "15:06",
+  "min": 5.777,
+  "mindate": "19980102",
+  "mintime": "10:42",
+  "max": 9.2,
+  "maxdate": "20091113",
+  "maxtime": "00:12",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "01/01/1998 - 12/31/2016",
+    "05/01/2017 - 04/30/2019"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8638610 Sewells Point, VA",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8639348/datums.json"
+}

@@ -1,0 +1,108 @@
+{
+  "accepted": "Mar 24 2020",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "GUVD04",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 7.952
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 7.917
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 7.688
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 7.747
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 7.734
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 7.577
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 7.424
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.529
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.34
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.035
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.154
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 9.59
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 3.41
+    },
+    {
+      "name": "GUVD04",
+      "description": "Guam Vertical Datum of 2004",
+      "value": 7.664
+    }
+  ],
+  "LAT": 7.1870003,
+  "LATdate": "20251206",
+  "LATtime": "16:42",
+  "HAT": 8.075,
+  "HATdate": "20270122",
+  "HATtime": "07:30",
+  "min": 7.048,
+  "mindate": "20041225",
+  "mintime": "15:30",
+  "max": 8.69,
+  "maxdate": "20041020",
+  "maxtime": "08:18",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "02/01/2005 - 01/31/2006",
+    "02/01/2009 - 01/31/2011",
+    "04/01/2016 - 03/31/2018"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "1630000 Apra Harbor, Guam, United States of America",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/1631428/datums.json"
+}

@@ -1,0 +1,108 @@
+{
+  "accepted": "Oct 27 2020",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 2.461
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 2.359
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 1.852
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 1.954
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 1.941
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 1.549
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 1.242
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 1.219
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.81
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.102
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.307
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 2.549
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 8.555
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 1.421
+    }
+  ],
+  "LAT": 0.63199997,
+  "LATdate": "20260615",
+  "LATtime": "20:42",
+  "HAT": 3.0,
+  "HATdate": "20260101",
+  "HATtime": "22:24",
+  "min": 0.376,
+  "mindate": "20081213",
+  "mintime": "08:30",
+  "max": 3.353,
+  "maxdate": "20230123",
+  "maxtime": "06:06",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "12/01/2008 - 11/30/2009",
+    "08/01/2010 - 07/31/2012",
+    "01/01/2013 - 12/31/2018"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "9462620 Unalaska, AK",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9462450/datums.json"
+}

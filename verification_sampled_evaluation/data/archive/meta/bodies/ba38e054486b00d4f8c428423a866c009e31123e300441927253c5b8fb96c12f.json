@@ -1,0 +1,106 @@
+{
+  "accepted": "Jun 12 2003",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 2.036
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 1.948
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 1.408
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 1.386
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 1.393
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 0.824
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 0.78
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 1.256
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 1.124
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.088
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.044
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 1.31
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 8.05
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 1.442
+    }
+  ],
+  "LAT": null,
+  "LATdate": "",
+  "LATtime": "",
+  "HAT": null,
+  "HATdate": "",
+  "HATtime": "",
+  "min": 0.29,
+  "mindate": "19770205",
+  "mintime": "16:18",
+  "max": 2.408,
+  "maxdate": "19770531",
+  "maxtime": "19:36",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "01/01/1977 - 12/31/1977"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8665530 Charleston, SC",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8662549/datums.json"
+}

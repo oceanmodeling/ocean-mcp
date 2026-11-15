@@ -1,0 +1,106 @@
+{
+  "accepted": "Apr 17 2003",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 3.568
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 3.361
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 2.543
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 2.624
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 2.617
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 1.888
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 1.517
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 2.052
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 1.473
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.208
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.371
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 7.339
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 1.042
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 1.594
+    }
+  ],
+  "LAT": null,
+  "LATdate": "",
+  "LATtime": "",
+  "HAT": null,
+  "HATdate": "",
+  "HATtime": "",
+  "min": 0.7041,
+  "mindate": "19741230",
+  "mintime": "00:00",
+  "max": 4.6848,
+  "maxdate": "19830126",
+  "maxtime": "00:00",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "09/01/1983 - 08/31/1987"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "9419750 Crescent City, CA",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9419059/datums.json"
+}

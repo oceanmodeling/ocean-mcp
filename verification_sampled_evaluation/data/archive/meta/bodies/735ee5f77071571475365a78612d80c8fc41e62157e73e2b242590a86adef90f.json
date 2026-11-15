@@ -1,0 +1,112 @@
+{
+  "accepted": "Feb 02 2018",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 0.458
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 0.356
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": -0.05
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": -0.079
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": -0.084
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": -0.515
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": -0.558
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 1.017
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.872
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.102
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.043
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 0.905
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 7.026
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 0.0
+    }
+  ],
+  "LAT": -0.773,
+  "LATdate": "20140131",
+  "LATtime": "07:00",
+  "HAT": 0.66,
+  "HATdate": "20291009",
+  "HATtime": "14:00",
+  "min": -1.196,
+  "mindate": "20190122",
+  "mintime": "12:30",
+  "max": 1.447,
+  "maxdate": "20181027",
+  "maxtime": "19:00",
+  "disclaimers": {
+    "disclaimers": [
+      {
+        "name": "USGS Stations",
+        "text": "Data collected from 2017 and beyond are from United States Geological Survey (USGS) water level stations that are subject to NOAA's National Ocean Service (NOS) routine quality assurance procedures on a monthly basis with data available for the previous month. For access to the real-time data at this location visit USGS at: <a href='https://nwis.waterdata.usgs.gov/nwis/uv?site_no=01409335'>https://nwis.waterdata.usgs.gov/nwis/uv?site_no=01409335</a>."
+      }
+    ],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "01/01/2017 - 04/30/2017",
+    "06/01/2017 - 09/30/2017"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8534720 Atlantic City, NJ",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8534319/datums.json"
+}

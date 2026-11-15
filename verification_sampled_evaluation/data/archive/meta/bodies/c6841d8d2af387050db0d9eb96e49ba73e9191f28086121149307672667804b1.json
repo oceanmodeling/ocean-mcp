@@ -1,0 +1,101 @@
+{
+  "accepted": "Jun 23 2004",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 2.509
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 2.411
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 1.797
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 1.771
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 1.774
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 1.132
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 1.084
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 1.425
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 1.279
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.098
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.047
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 12.209
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 5.949
+    }
+  ],
+  "LAT": null,
+  "LATdate": "",
+  "LATtime": "",
+  "HAT": null,
+  "HATdate": "",
+  "HATtime": "",
+  "min": null,
+  "mindate": "",
+  "mintime": "",
+  "max": null,
+  "maxdate": "",
+  "maxtime": "",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "06/01/1973 - 11/30/1973"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8658120 Wilmington, NC",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8657419/datums.json"
+}

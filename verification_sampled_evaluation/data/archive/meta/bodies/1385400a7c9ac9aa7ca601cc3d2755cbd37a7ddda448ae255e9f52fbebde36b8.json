@@ -1,0 +1,101 @@
+{
+  "accepted": "Nov 18 2010",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 8.658
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 8.51
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 5.532
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 5.527
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 5.535
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 2.544
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 2.406
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 6.252
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 5.966
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.147
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.138
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 3.444
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 9.892
+    }
+  ],
+  "LAT": 1.3509998,
+  "LATdate": "20160409",
+  "LATtime": "11:18",
+  "HAT": 9.7630005,
+  "HATdate": "20161115",
+  "HATtime": "15:54",
+  "min": null,
+  "mindate": "",
+  "mintime": "",
+  "max": null,
+  "maxdate": "",
+  "maxtime": "",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "04/01/2010 - 10/31/2010"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8410140 Eastport, ME",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8410834/datums.json"
+}

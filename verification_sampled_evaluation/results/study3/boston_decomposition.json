@@ -1,0 +1,49 @@
+{
+ "n": 480,
+ "best_lag_min_0p1_grid": -13.999999999999346,
+ "best_lag_6min_grid": -12.0,
+ "best_lag_parabolic_vertex_min": -13.97090445408701,
+ "lag_convention": "tau: the model value at t - tau is compared with the observation at t; tau < 0 means the model is late (model lags the observations by -tau minutes)",
+ "model_lags_observations_by_min": 13.999999999999346,
+ "rmse": {
+  "raw": 0.24555257562124647,
+  "mean_removed": 0.19961812592431347,
+  "lag_removed_only": 0.20493694146523045,
+  "amplitude_removed_only": 0.19999444583190928,
+  "mean_and_lag_removed": 0.15219519158759964,
+  "mean_lag_and_amplitude_removed": 0.07555955148999703
+ },
+ "amplitude_scale_alpha_after_lag": 0.8892547178792973,
+ "amplitude_scale_alpha_no_lag": 0.8809527678884915,
+ "flags": {
+  "O": 110,
+  "F": 0,
+  "R": 0,
+  "L": 0
+ },
+ "flagged_any": 110,
+ "table3_flagged_removed": {
+  "n": 370,
+  "bias": -0.13900409116792503,
+  "rmse": 0.24033699738326172,
+  "mae": 0.20441150262145283,
+  "max_abs_error": 0.5111299957084656,
+  "model_mean": 0.035285098021264165,
+  "obs_mean": 0.17428918918918915,
+  "model_sd": 1.0594341629856137,
+  "obs_sd": 0.9346626101155389,
+  "r": 0.9884510792149015
+ },
+ "table3_all": {
+  "n": 480,
+  "bias": -0.14299885033346535,
+  "rmse": 0.24555257562124633,
+  "mae": 0.20860631475231273,
+  "max_abs_error": 0.5351339957084656,
+  "model_mean": 0.058988649666534464,
+  "obs_mean": 0.20198750000000004,
+  "model_sd": 1.1967692277156874,
+  "obs_sd": 1.0635279105460356,
+  "r": 0.9913206350537719
+ }
+}

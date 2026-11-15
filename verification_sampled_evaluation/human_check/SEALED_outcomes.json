@@ -1,0 +1,633 @@
+[
+ {
+  "k": 1,
+  "case_id": "2d_20260615_8443970",
+  "stratum": "random",
+  "reference_expected": {
+   "expected": "compare",
+   "reasons": [],
+   "refusal_also_acceptable": false
+  },
+  "reference_datum": "LMSL",
+  "reference_statistics": {
+   "bias": -0.006245725553319913,
+   "mae": 0.10365196136820926,
+   "max_abs_error": 0.37266,
+   "model_mean": 0.2339997472837022,
+   "model_sd": 1.205938310134826,
+   "n": 497,
+   "obs_mean": 0.24024547283702213,
+   "obs_sd": 1.2982258146019208,
+   "r": 0.9972680694526398,
+   "rmse": 0.13080560217344556
+  },
+  "tool_class": "correct_comparison",
+  "tool_sub": "",
+  "tool_response_head": "{\n  \"station_id\": \"8443970\",\n  \"model\": \"2d_global\",\n  \"model_label\": \"STOFS-2D-Global\",\n  \"cycle_date\": \"20260615\",\n  \"cycle_hour\": \"12\",\n  \"stofs_datum\": \"LMSL\",\n  \"stofs_datum_source\": \"NOAA documentation (STOFS_2D_GLOBAL V2.1.0: NWS SCN 26-51: the v3.1 upgrade lists no change to the 2D station datum, so v2.1 shares the documented v3.1 LMSL reference (inference)); file label zeta:standard_name=sea_surface_height_above_geoid names no specific datum\",\n  \"datum_provenance\": {\n    \"datum\": \"LMSL\",\n    \"resolution\": \"documented_fallback\",\n    \"comparable\": true,\n    \"source\": \"NOAA documentation (STOFS_2D_GLOBAL V2.1.0: NWS SCN 26-51: the v3.1 upgrade lists no change to the 2D station datum, so v2.1 shares the documented v3.1 LMSL reference (inference)); file label zeta:standard_name=sea_sur"
+ },
+ {
+  "k": 2,
+  "case_id": "2d_20260831_8535901",
+  "stratum": "non_routine",
+  "reference_expected": {
+   "expected": "not_eligible",
+   "reasons": [
+    "paired_datum_not_published",
+    "no_valid_obs_in_window"
+   ]
+  },
+  "reference_datum": "LMSL",
+  "reference_statistics": {
+   "n": 0
+  },
+  "tool_class": "not_eligible",
+  "tool_sub": "declined, other reason (http_error)",
+  "tool_response_head": "HTTP 400 error (2d_global). The STOFS S3 bucket may be temporarily unavailable. Please try again."
+ },
+ {
+  "k": 3,
+  "case_id": "3d_20260824_8725110",
+  "stratum": "non_routine",
+  "reference_expected": {
+   "expected": "not_eligible",
+   "reasons": [
+    "no_valid_obs_in_window"
+   ]
+  },
+  "reference_datum": "LMSL",
+  "reference_statistics": {
+   "n": 0
+  },
+  "tool_class": "not_eligible",
+  "tool_sub": "declined, reason matches",
+  "tool_response_head": "Could not fetch CO-OPS observations: CO-OPS API error: No data was found. This product may not be offered at this station at the requested time.\n\nPossible reasons:\n- Station may not have real-time data for this period\n- The period may be in the future (forecast only, no observations yet)\n- Try a cycle from 24\u201348 hours ago for the nowcast period"
+ },
+ {
+  "k": 4,
+  "case_id": "2d_20260818_8722670",
+  "stratum": "random",
+  "reference_expected": {
+   "expected": "compare",
+   "reasons": [],
+   "refusal_also_acceptable": false
+  },
+  "reference_datum": "LMSL",
+  "reference_statistics": {
+   "bias": 0.057131040503018114,
+   "mae": 0.07095666541247485,
+   "max_abs_error": 0.1820716,
+   "model_mean": 0.18670045700201207,
+   "model_sd": 0.20387558062810804,
+   "n": 497,
+   "obs_mean": 0.12956941649899398,
+   "obs_sd": 0.23210863452180971,
+   "r": 0.9593308829826853,
+   "rmse": 0.08893869058321602
+  },
+  "tool_class": "correct_comparison",
+  "tool_sub": "",
+  "tool_response_head": "{\n  \"station_id\": \"8722670\",\n  \"model\": \"2d_global\",\n  \"model_label\": \"STOFS-2D-Global\",\n  \"cycle_date\": \"20260818\",\n  \"cycle_hour\": \"12\",\n  \"stofs_datum\": \"LMSL\",\n  \"stofs_datum_source\": \"NOAA documentation (STOFS_2D_GLOBAL V3.1.0: NOMADS STOFS-Global description (archived 2026-11-04): station and gridded output referenced to LMSL); file label zeta:standard_name=sea_surface_height_above_geoid names no specific datum\",\n  \"datum_provenance\": {\n    \"datum\": \"LMSL\",\n    \"resolution\": \"documented_fallback\",\n    \"comparable\": true,\n    \"source\": \"NOAA documentation (STOFS_2D_GLOBAL V3.1.0: NOMADS STOFS-Global description (archived 2026-11-04): station and gridded output referenced to LMSL); file label zeta:standard_name=sea_surface_height_above_geoid names no specific datum\",\n    \"warning\": nul"
+ },
+ {
+  "k": 5,
+  "case_id": "2d_20260727_8447270",
+  "stratum": "random",
+  "reference_expected": {
+   "expected": "not_eligible",
+   "reasons": [
+    "no_valid_obs_in_window"
+   ]
+  },
+  "reference_datum": "LMSL",
+  "reference_statistics": {
+   "n": 0
+  },
+  "tool_class": "not_eligible",
+  "tool_sub": "declined, reason matches",
+  "tool_response_head": "Could not fetch CO-OPS observations: CO-OPS API error: No data was found. This product may not be offered at this station at the requested time.\n\nPossible reasons:\n- Station may not have real-time data for this period\n- The period may be in the future (forecast only, no observations yet)\n- Try a cycle from 24\u201348 hours ago for the nowcast period"
+ },
+ {
+  "k": 6,
+  "case_id": "2d_20260720_8449130",
+  "stratum": "random",
+  "reference_expected": {
+   "expected": "compare",
+   "reasons": [],
+   "refusal_also_acceptable": false
+  },
+  "reference_datum": "LMSL",
+  "reference_statistics": {
+   "bias": 0.01202209046277666,
+   "mae": 0.0677688094969819,
+   "max_abs_error": 0.15683000000000002,
+   "model_mean": 0.22909653714285713,
+   "model_sd": 0.3218730920460942,
+   "n": 497,
+   "obs_mean": 0.21707444668008047,
+   "obs_sd": 0.30501622559827035,
+   "r": 0.9705887113520877,
+   "rmse": 0.07876344511532998
+  },
+  "tool_class": "correct_comparison",
+  "tool_sub": "",
+  "tool_response_head": "{\n  \"station_id\": \"8449130\",\n  \"model\": \"2d_global\",\n  \"model_label\": \"STOFS-2D-Global\",\n  \"cycle_date\": \"20260720\",\n  \"cycle_hour\": \"12\",\n  \"stofs_datum\": \"LMSL\",\n  \"stofs_datum_source\": \"NOAA documentation (STOFS_2D_GLOBAL V2.1.0: NWS SCN 26-51: the v3.1 upgrade lists no change to the 2D station datum, so v2.1 shares the documented v3.1 LMSL reference (inference)); file label zeta:standard_name=sea_surface_height_above_geoid names no specific datum\",\n  \"datum_provenance\": {\n    \"datum\": \"LMSL\",\n    \"resolution\": \"documented_fallback\",\n    \"comparable\": true,\n    \"source\": \"NOAA documentation (STOFS_2D_GLOBAL V2.1.0: NWS SCN 26-51: the v3.1 upgrade lists no change to the 2D station datum, so v2.1 shares the documented v3.1 LMSL reference (inference)); file label zeta:standard_name=sea_sur"
+ },
+ {
+  "k": 7,
+  "case_id": "2d_20260803_8720625",
+  "stratum": "random",
+  "reference_expected": {
+   "expected": "not_eligible",
+   "reasons": [
+    "no_valid_obs_in_window"
+   ]
+  },
+  "reference_datum": "LMSL",
+  "reference_statistics": {
+   "n": 0
+  },
+  "tool_class": "not_eligible",
+  "tool_sub": "declined, reason matches",
+  "tool_response_head": "Could not fetch CO-OPS observations: CO-OPS API error: No data was found. This product may not be offered at this station at the requested time.\n\nPossible reasons:\n- Station may not have real-time data for this period\n- The period may be in the future (forecast only, no observations yet)\n- Try a cycle from 24\u201348 hours ago for the nowcast period"
+ },
+ {
+  "k": 8,
+  "case_id": "2d_20260814_9449424",
+  "stratum": "random",
+  "reference_expected": {
+   "expected": "compare",
+   "reasons": [],
+   "refusal_also_acceptable": false
+  },
+  "reference_datum": "LMSL",
+  "reference_statistics": {
+   "bias": 0.022088862032193162,
+   "mae": 0.1152968664587525,
+   "max_abs_error": 0.30156000000000005,
+   "model_mean": -0.0020439347484909453,
+   "model_sd": 0.9326769314544632,
+   "n": 497,
+   "obs_mean": -0.02413279678068411,
+   "obs_sd": 0.8375728170217246,
+   "r": 0.9944681393985193,
+   "rmse": 0.1348166226372176
+  },
+  "tool_class": "correct_comparison",
+  "tool_sub": "",
+  "tool_response_head": "{\n  \"station_id\": \"9449424\",\n  \"model\": \"2d_global\",\n  \"model_label\": \"STOFS-2D-Global\",\n  \"cycle_date\": \"20260814\",\n  \"cycle_hour\": \"12\",\n  \"stofs_datum\": \"LMSL\",\n  \"stofs_datum_source\": \"NOAA documentation (STOFS_2D_GLOBAL V2.1.0: NWS SCN 26-51: the v3.1 upgrade lists no change to the 2D station datum, so v2.1 shares the documented v3.1 LMSL reference (inference)); file label zeta:standard_name=sea_surface_height_above_geoid names no specific datum\",\n  \"datum_provenance\": {\n    \"datum\": \"LMSL\",\n    \"resolution\": \"documented_fallback\",\n    \"comparable\": true,\n    \"source\": \"NOAA documentation (STOFS_2D_GLOBAL V2.1.0: NWS SCN 26-51: the v3.1 upgrade lists no change to the 2D station datum, so v2.1 shares the documented v3.1 LMSL reference (inference)); file label zeta:standard_name=sea_sur"
+ },
+ {
+  "k": 9,
+  "case_id": "3d_20261102_8720215",
+  "stratum": "non_routine",
+  "reference_expected": {
+   "expected": "not_eligible",
+   "reasons": [
+    "no_valid_obs_in_window"
+   ]
+  },
+  "reference_datum": "LMSL",
+  "reference_statistics": {
+   "n": 0
+  },
+  "tool_class": "not_eligible",
+  "tool_sub": "declined, reason matches",
+  "tool_response_head": "Could not fetch CO-OPS observations: CO-OPS API error: No data was found. This product may not be offered at this station at the requested time.\n\nPossible reasons:\n- Station may not have real-time data for this period\n- The period may be in the future (forecast only, no observations yet)\n- Try a cycle from 24\u201348 hours ago for the nowcast period"
+ },
+ {
+  "k": 10,
+  "case_id": "2d_20260831_8764044",
+  "stratum": "random",
+  "reference_expected": {
+   "expected": "compare",
+   "reasons": [],
+   "refusal_also_acceptable": false
+  },
+  "reference_datum": "LMSL",
+  "reference_statistics": {
+   "bias": -0.0341290807444668,
+   "mae": 0.06499919784708248,
+   "max_abs_error": 0.175087,
+   "model_mean": -0.07603652541247485,
+   "model_sd": 0.14218370097741928,
+   "n": 497,
+   "obs_mean": -0.04190744466800805,
+   "obs_sd": 0.10358359353686043,
+   "r": 0.877282872487462,
+   "rmse": 0.07918013191359694
+  },
+  "tool_class": "correct_comparison",
+  "tool_sub": "",
+  "tool_response_head": "{\n  \"station_id\": \"8764044\",\n  \"model\": \"2d_global\",\n  \"model_label\": \"STOFS-2D-Global\",\n  \"cycle_date\": \"20260831\",\n  \"cycle_hour\": \"12\",\n  \"stofs_datum\": \"LMSL\",\n  \"stofs_datum_source\": \"NOAA documentation (STOFS_2D_GLOBAL V3.1.0: NOMADS STOFS-Global description (archived 2026-11-04): station and gridded output referenced to LMSL); file label zeta:standard_name=sea_surface_height_above_geoid names no specific datum\",\n  \"datum_provenance\": {\n    \"datum\": \"LMSL\",\n    \"resolution\": \"documented_fallback\",\n    \"comparable\": true,\n    \"source\": \"NOAA documentation (STOFS_2D_GLOBAL V3.1.0: NOMADS STOFS-Global description (archived 2026-11-04): station and gridded output referenced to LMSL); file label zeta:standard_name=sea_surface_height_above_geoid names no specific datum\",\n    \"warning\": nul"
+ },
+ {
+  "k": 11,
+  "case_id": "3d_20260928_8779749",
+  "stratum": "random",
+  "reference_expected": {
+   "expected": "compare",
+   "reasons": [],
+   "refusal_also_acceptable": false
+  },
+  "reference_datum": "LMSL",
+  "reference_statistics": {
+   "bias": 0.14899934400913764,
+   "mae": 0.14899934400913764,
+   "max_abs_error": 0.24609987934434893,
+   "model_mean": 0.38289874038740723,
+   "model_sd": 0.1395057174403114,
+   "n": 497,
+   "obs_mean": 0.23389939637826962,
+   "obs_sd": 0.17256569605914174,
+   "r": 0.9676126562925346,
+   "rmse": 0.15764880630293931
+  },
+  "tool_class": "correct_comparison",
+  "tool_sub": "",
+  "tool_response_head": "{\n  \"station_id\": \"8779749\",\n  \"model\": \"3d_atlantic\",\n  \"model_label\": \"STOFS-3D-Atlantic\",\n  \"cycle_date\": \"20260928\",\n  \"cycle_hour\": \"12\",\n  \"stofs_datum\": \"LMSL\",\n  \"stofs_datum_source\": \"file metadata: zeta:standard_name=sea_surface_height_above_msl\",\n  \"datum_provenance\": {\n    \"datum\": \"LMSL\",\n    \"resolution\": \"file_metadata\",\n    \"comparable\": true,\n    \"source\": \"file metadata: zeta:standard_name=sea_surface_height_above_msl\",\n    \"warning\": null,\n    \"documented_datum\": \"LMSL\",\n    \"product_version\": \"stofs.v3.1.5\",\n    \"attributes\": {\n      \"zeta:standard_name\": \"sea_surface_height_above_msl\",\n      \"zeta:long_name\": \"water surface elevation above msl\"\n    }\n  },\n  \"coops_datum\": \"MSL\",\n  \"datum_note\": \"STOFS datum: LMSL (file metadata: zeta:standard_name=sea_surface_height_ab"
+ },
+ {
+  "k": 12,
+  "case_id": "2d_20260907_8726667",
+  "stratum": "non_routine",
+  "reference_expected": {
+   "expected": "not_eligible",
+   "reasons": [
+    "no_valid_obs_in_window"
+   ]
+  },
+  "reference_datum": "LMSL",
+  "reference_statistics": {
+   "n": 0
+  },
+  "tool_class": "not_eligible",
+  "tool_sub": "declined, reason matches",
+  "tool_response_head": "Could not fetch CO-OPS observations: CO-OPS API error: No data was found. This product may not be offered at this station at the requested time.\n\nPossible reasons:\n- Station may not have real-time data for this period\n- The period may be in the future (forecast only, no observations yet)\n- Try a cycle from 24\u201348 hours ago for the nowcast period"
+ },
+ {
+  "k": 13,
+  "case_id": "2d_20260818_8658163",
+  "stratum": "random",
+  "reference_expected": {
+   "expected": "compare",
+   "reasons": [],
+   "refusal_also_acceptable": false
+  },
+  "reference_datum": "LMSL",
+  "reference_statistics": {
+   "bias": -0.010573360885311871,
+   "mae": 0.08287587995975855,
+   "max_abs_error": 0.31411,
+   "model_mean": 0.20292965722334005,
+   "model_sd": 0.2855635634284753,
+   "n": 497,
+   "obs_mean": 0.2135030181086519,
+   "obs_sd": 0.3322687400049129,
+   "r": 0.9475480209159989,
+   "rmse": 0.11066553406248315
+  },
+  "tool_class": "correct_comparison",
+  "tool_sub": "",
+  "tool_response_head": "{\n  \"station_id\": \"8658163\",\n  \"model\": \"2d_global\",\n  \"model_label\": \"STOFS-2D-Global\",\n  \"cycle_date\": \"20260818\",\n  \"cycle_hour\": \"12\",\n  \"stofs_datum\": \"LMSL\",\n  \"stofs_datum_source\": \"NOAA documentation (STOFS_2D_GLOBAL V3.1.0: NOMADS STOFS-Global description (archived 2026-11-04): station and gridded output referenced to LMSL); file label zeta:standard_name=sea_surface_height_above_geoid names no specific datum\",\n  \"datum_provenance\": {\n    \"datum\": \"LMSL\",\n    \"resolution\": \"documented_fallback\",\n    \"comparable\": true,\n    \"source\": \"NOAA documentation (STOFS_2D_GLOBAL V3.1.0: NOMADS STOFS-Global description (archived 2026-11-04): station and gridded output referenced to LMSL); file label zeta:standard_name=sea_surface_height_above_geoid names no specific datum\",\n    \"warning\": nul"
+ },
+ {
+  "k": 14,
+  "case_id": "2d_20260907_9432780",
+  "stratum": "random",
+  "reference_expected": {
+   "expected": "compare",
+   "reasons": [],
+   "refusal_also_acceptable": false
+  },
+  "reference_datum": "LMSL",
+  "reference_statistics": {
+   "bias": 0.038978945452716296,
+   "mae": 0.04858010682092555,
+   "max_abs_error": 0.13421700000000003,
+   "model_mean": 0.0767656657746479,
+   "model_sd": 0.7623363194600941,
+   "n": 497,
+   "obs_mean": 0.03778672032193159,
+   "obs_sd": 0.7593694002929774,
+   "r": 0.9981157709183137,
+   "rmse": 0.06090732230686556
+  },
+  "tool_class": "correct_comparison",
+  "tool_sub": "",
+  "tool_response_head": "{\n  \"station_id\": \"9432780\",\n  \"model\": \"2d_global\",\n  \"model_label\": \"STOFS-2D-Global\",\n  \"cycle_date\": \"20260907\",\n  \"cycle_hour\": \"12\",\n  \"stofs_datum\": \"LMSL\",\n  \"stofs_datum_source\": \"NOAA documentation (STOFS_2D_GLOBAL V3.1.0: NOMADS STOFS-Global description (archived 2026-11-04): station and gridded output referenced to LMSL); file label zeta:standard_name=sea_surface_height_above_geoid names no specific datum\",\n  \"datum_provenance\": {\n    \"datum\": \"LMSL\",\n    \"resolution\": \"documented_fallback\",\n    \"comparable\": true,\n    \"source\": \"NOAA documentation (STOFS_2D_GLOBAL V3.1.0: NOMADS STOFS-Global description (archived 2026-11-04): station and gridded output referenced to LMSL); file label zeta:standard_name=sea_surface_height_above_geoid names no specific datum\",\n    \"warning\": nul"
+ },
+ {
+  "k": 15,
+  "case_id": "2d_20260818_8441841",
+  "stratum": "non_routine",
+  "reference_expected": {
+   "expected": "not_eligible",
+   "reasons": [
+    "no_valid_obs_in_window"
+   ]
+  },
+  "reference_datum": "LMSL",
+  "reference_statistics": {
+   "n": 0
+  },
+  "tool_class": "not_eligible",
+  "tool_sub": "declined, reason matches",
+  "tool_response_head": "Could not fetch CO-OPS observations: CO-OPS API error: No data was found. This product may not be offered at this station at the requested time.\n\nPossible reasons:\n- Station may not have real-time data for this period\n- The period may be in the future (forecast only, no observations yet)\n- Try a cycle from 24\u201348 hours ago for the nowcast period"
+ },
+ {
+  "k": 16,
+  "case_id": "3d_20260928_8573364",
+  "stratum": "random",
+  "reference_expected": {
+   "expected": "compare",
+   "reasons": [],
+   "refusal_also_acceptable": false
+  },
+  "reference_datum": "LMSL",
+  "reference_statistics": {
+   "bias": -0.111391338641757,
+   "mae": 0.111391338641757,
+   "max_abs_error": 0.20682460586509704,
+   "model_mean": 0.2496670114588466,
+   "model_sd": 0.15132418641859968,
+   "n": 497,
+   "obs_mean": 0.3610583501006036,
+   "obs_sd": 0.15963257174986256,
+   "r": 0.9830539154215799,
+   "rmse": 0.11530727621411857
+  },
+  "tool_class": "correct_comparison",
+  "tool_sub": "",
+  "tool_response_head": "{\n  \"station_id\": \"8573364\",\n  \"model\": \"3d_atlantic\",\n  \"model_label\": \"STOFS-3D-Atlantic\",\n  \"cycle_date\": \"20260928\",\n  \"cycle_hour\": \"12\",\n  \"stofs_datum\": \"LMSL\",\n  \"stofs_datum_source\": \"file metadata: zeta:standard_name=sea_surface_height_above_msl\",\n  \"datum_provenance\": {\n    \"datum\": \"LMSL\",\n    \"resolution\": \"file_metadata\",\n    \"comparable\": true,\n    \"source\": \"file metadata: zeta:standard_name=sea_surface_height_above_msl\",\n    \"warning\": null,\n    \"documented_datum\": \"LMSL\",\n    \"product_version\": \"stofs.v3.1.5\",\n    \"attributes\": {\n      \"zeta:standard_name\": \"sea_surface_height_above_msl\",\n      \"zeta:long_name\": \"water surface elevation above msl\"\n    }\n  },\n  \"coops_datum\": \"MSL\",\n  \"datum_note\": \"STOFS datum: LMSL (file metadata: zeta:standard_name=sea_surface_height_ab"
+ },
+ {
+  "k": 17,
+  "case_id": "2d_20260601_8638901",
+  "stratum": "random",
+  "reference_expected": {
+   "expected": "compare",
+   "reasons": [],
+   "refusal_also_acceptable": false
+  },
+  "reference_datum": "LMSL",
+  "reference_statistics": {
+   "bias": -0.01448855038028169,
+   "mae": 0.05667452808651912,
+   "max_abs_error": 0.17375400000000002,
+   "model_mean": 0.31196617798993964,
+   "model_sd": 0.2639902536822538,
+   "n": 497,
+   "obs_mean": 0.3264547283702213,
+   "obs_sd": 0.28851340762790045,
+   "r": 0.9754428581241777,
+   "rmse": 0.0674690982467946
+  },
+  "tool_class": "correct_comparison",
+  "tool_sub": "",
+  "tool_response_head": "{\n  \"station_id\": \"8638901\",\n  \"model\": \"2d_global\",\n  \"model_label\": \"STOFS-2D-Global\",\n  \"cycle_date\": \"20260601\",\n  \"cycle_hour\": \"12\",\n  \"stofs_datum\": \"LMSL\",\n  \"stofs_datum_source\": \"NOAA documentation (STOFS_2D_GLOBAL V2.1.0: NWS SCN 26-51: the v3.1 upgrade lists no change to the 2D station datum, so v2.1 shares the documented v3.1 LMSL reference (inference)); file label zeta:standard_name=sea_surface_height_above_geoid names no specific datum\",\n  \"datum_provenance\": {\n    \"datum\": \"LMSL\",\n    \"resolution\": \"documented_fallback\",\n    \"comparable\": true,\n    \"source\": \"NOAA documentation (STOFS_2D_GLOBAL V2.1.0: NWS SCN 26-51: the v3.1 upgrade lists no change to the 2D station datum, so v2.1 shares the documented v3.1 LMSL reference (inference)); file label zeta:standard_name=sea_sur"
+ },
+ {
+  "k": 18,
+  "case_id": "2d_20261019_8551910",
+  "stratum": "random",
+  "reference_expected": {
+   "expected": "not_eligible",
+   "reasons": [
+    "no_valid_obs_in_window"
+   ]
+  },
+  "reference_datum": "LMSL",
+  "reference_statistics": {
+   "n": 0
+  },
+  "tool_class": "not_eligible",
+  "tool_sub": "declined, reason matches",
+  "tool_response_head": "Could not fetch CO-OPS observations: CO-OPS API error: No data was found. This product may not be offered at this station at the requested time.\n\nPossible reasons:\n- Station may not have real-time data for this period\n- The period may be in the future (forecast only, no observations yet)\n- Try a cycle from 24\u201348 hours ago for the nowcast period"
+ },
+ {
+  "k": 19,
+  "case_id": "2d_20260803_8416731",
+  "stratum": "random",
+  "reference_expected": {
+   "expected": "not_eligible",
+   "reasons": [
+    "no_valid_obs_in_window"
+   ]
+  },
+  "reference_datum": "LMSL",
+  "reference_statistics": {
+   "n": 0
+  },
+  "tool_class": "not_eligible",
+  "tool_sub": "declined, reason matches",
+  "tool_response_head": "Could not fetch CO-OPS observations: CO-OPS API error: No data was found. This product may not be offered at this station at the requested time.\n\nPossible reasons:\n- Station may not have real-time data for this period\n- The period may be in the future (forecast only, no observations yet)\n- Try a cycle from 24\u201348 hours ago for the nowcast period"
+ },
+ {
+  "k": 20,
+  "case_id": "3d_20260831_9759938",
+  "stratum": "random",
+  "reference_expected": {
+   "expected": "compare",
+   "reasons": [],
+   "refusal_also_acceptable": false
+  },
+  "reference_datum": "LMSL",
+  "reference_statistics": {
+   "bias": -0.21942537301058854,
+   "mae": 0.21942537301058854,
+   "max_abs_error": 0.28926598950958254,
+   "model_mean": 0.005051488156413459,
+   "model_sd": 0.05508672212030118,
+   "n": 497,
+   "obs_mean": 0.224476861167002,
+   "obs_sd": 0.08048157348005688,
+   "r": 0.94199949007619,
+   "rmse": 0.2220510738151822
+  },
+  "tool_class": "correct_comparison",
+  "tool_sub": "",
+  "tool_response_head": "{\n  \"station_id\": \"9759938\",\n  \"model\": \"3d_atlantic\",\n  \"model_label\": \"STOFS-3D-Atlantic\",\n  \"cycle_date\": \"20260831\",\n  \"cycle_hour\": \"12\",\n  \"stofs_datum\": \"LMSL\",\n  \"stofs_datum_source\": \"file metadata: zeta:standard_name=sea_surface_height_above_msl\",\n  \"datum_provenance\": {\n    \"datum\": \"LMSL\",\n    \"resolution\": \"file_metadata\",\n    \"comparable\": true,\n    \"source\": \"file metadata: zeta:standard_name=sea_surface_height_above_msl\",\n    \"warning\": null,\n    \"documented_datum\": \"LMSL\",\n    \"product_version\": \"stofs.v3.1.5\",\n    \"attributes\": {\n      \"zeta:standard_name\": \"sea_surface_height_above_msl\",\n      \"zeta:long_name\": \"water surface elevation above msl\"\n    }\n  },\n  \"coops_datum\": \"MSL\",\n  \"datum_note\": \"STOFS datum: LMSL (file metadata: zeta:standard_name=sea_surface_height_ab"
+ },
+ {
+  "k": 21,
+  "case_id": "2d_20260727_8441841",
+  "stratum": "non_routine",
+  "reference_expected": {
+   "expected": "not_eligible",
+   "reasons": [
+    "no_valid_obs_in_window"
+   ]
+  },
+  "reference_datum": "LMSL",
+  "reference_statistics": {
+   "n": 0
+  },
+  "tool_class": "not_eligible",
+  "tool_sub": "declined, reason matches",
+  "tool_response_head": "Could not fetch CO-OPS observations: CO-OPS API error: No data was found. This product may not be offered at this station at the requested time.\n\nPossible reasons:\n- Station may not have real-time data for this period\n- The period may be in the future (forecast only, no observations yet)\n- Try a cycle from 24\u201348 hours ago for the nowcast period"
+ },
+ {
+  "k": 22,
+  "case_id": "2d_20260727_8415490",
+  "stratum": "random",
+  "reference_expected": {
+   "expected": "not_eligible",
+   "reasons": [
+    "no_valid_obs_in_window"
+   ]
+  },
+  "reference_datum": "LMSL",
+  "reference_statistics": {
+   "n": 0
+  },
+  "tool_class": "not_eligible",
+  "tool_sub": "declined, reason matches",
+  "tool_response_head": "Could not fetch CO-OPS observations: CO-OPS API error: No data was found. This product may not be offered at this station at the requested time.\n\nPossible reasons:\n- Station may not have real-time data for this period\n- The period may be in the future (forecast only, no observations yet)\n- Try a cycle from 24\u201348 hours ago for the nowcast period"
+ },
+ {
+  "k": 23,
+  "case_id": "2d_20261102_8720625",
+  "stratum": "non_routine",
+  "reference_expected": {
+   "expected": "not_eligible",
+   "reasons": [
+    "no_valid_obs_in_window"
+   ]
+  },
+  "reference_datum": "LMSL",
+  "reference_statistics": {
+   "n": 0
+  },
+  "tool_class": "not_eligible",
+  "tool_sub": "declined, reason matches",
+  "tool_response_head": "Could not fetch CO-OPS observations: CO-OPS API error: No data was found. This product may not be offered at this station at the requested time.\n\nPossible reasons:\n- Station may not have real-time data for this period\n- The period may be in the future (forecast only, no observations yet)\n- Try a cycle from 24\u201348 hours ago for the nowcast period"
+ },
+ {
+  "k": 24,
+  "case_id": "2d_20260713_8441841",
+  "stratum": "random",
+  "reference_expected": {
+   "expected": "not_eligible",
+   "reasons": [
+    "no_valid_obs_in_window"
+   ]
+  },
+  "reference_datum": "LMSL",
+  "reference_statistics": {
+   "n": 0
+  },
+  "tool_class": "not_eligible",
+  "tool_sub": "declined, reason matches",
+  "tool_response_head": "Could not fetch CO-OPS observations: CO-OPS API error: No data was found. This product may not be offered at this station at the requested time.\n\nPossible reasons:\n- Station may not have real-time data for this period\n- The period may be in the future (forecast only, no observations yet)\n- Try a cycle from 24\u201348 hours ago for the nowcast period"
+ },
+ {
+  "k": 25,
+  "case_id": "2d_20260820_9415218",
+  "stratum": "random",
+  "reference_expected": {
+   "expected": "not_eligible",
+   "reasons": [
+    "no_valid_obs_in_window"
+   ]
+  },
+  "reference_datum": "LMSL",
+  "reference_statistics": {
+   "n": 0
+  },
+  "tool_class": "not_eligible",
+  "tool_sub": "declined, reason matches",
+  "tool_response_head": "Could not fetch CO-OPS observations: CO-OPS API error: No data was found. This product may not be offered at this station at the requested time.\n\nPossible reasons:\n- Station may not have real-time data for this period\n- The period may be in the future (forecast only, no observations yet)\n- Try a cycle from 24\u201348 hours ago for the nowcast period"
+ },
+ {
+  "k": 26,
+  "case_id": "2d_20260907_8772447",
+  "stratum": "random",
+  "reference_expected": {
+   "expected": "not_eligible",
+   "reasons": [
+    "no_valid_obs_in_window"
+   ]
+  },
+  "reference_datum": "LMSL",
+  "reference_statistics": {
+   "n": 0
+  },
+  "tool_class": "not_eligible",
+  "tool_sub": "declined, reason matches",
+  "tool_response_head": "Could not fetch CO-OPS observations: CO-OPS API error: No data was found. This product may not be offered at this station at the requested time.\n\nPossible reasons:\n- Station may not have real-time data for this period\n- The period may be in the future (forecast only, no observations yet)\n- Try a cycle from 24\u201348 hours ago for the nowcast period"
+ },
+ {
+  "k": 27,
+  "case_id": "2d_20260820_9449932",
+  "stratum": "non_routine",
+  "reference_expected": {
+   "expected": "not_eligible",
+   "reasons": [
+    "no_valid_obs_in_window"
+   ]
+  },
+  "reference_datum": "LMSL",
+  "reference_statistics": {
+   "n": 0
+  },
+  "tool_class": "not_eligible",
+  "tool_sub": "declined, reason matches",
+  "tool_response_head": "Could not fetch CO-OPS observations: CO-OPS API error: No data was found. This product may not be offered at this station at the requested time.\n\nPossible reasons:\n- Station may not have real-time data for this period\n- The period may be in the future (forecast only, no observations yet)\n- Try a cycle from 24\u201348 hours ago for the nowcast period"
+ },
+ {
+  "k": 28,
+  "case_id": "2d_20260817_8533055",
+  "stratum": "non_routine",
+  "reference_expected": {
+   "expected": "not_eligible",
+   "reasons": [
+    "paired_datum_not_published",
+    "no_valid_obs_in_window"
+   ]
+  },
+  "reference_datum": "LMSL",
+  "reference_statistics": {
+   "n": 0
+  },
+  "tool_class": "not_eligible",
+  "tool_sub": "declined, other reason (http_error)",
+  "tool_response_head": "HTTP 400 error (2d_global). The STOFS S3 bucket may be temporarily unavailable. Please try again."
+ },
+ {
+  "k": 29,
+  "case_id": "2d_20260810_9752619",
+  "stratum": "non_routine",
+  "reference_expected": {
+   "expected": "not_eligible",
+   "reasons": [
+    "no_valid_obs_in_window"
+   ]
+  },
+  "reference_datum": "LMSL",
+  "reference_statistics": {
+   "n": 0
+  },
+  "tool_class": "not_eligible",
+  "tool_sub": "declined, reason matches",
+  "tool_response_head": "Could not fetch CO-OPS observations: CO-OPS API error: No data was found. This product may not be offered at this station at the requested time.\n\nPossible reasons:\n- Station may not have real-time data for this period\n- The period may be in the future (forecast only, no observations yet)\n- Try a cycle from 24\u201348 hours ago for the nowcast period"
+ },
+ {
+  "k": 30,
+  "case_id": "2d_20260629_8533055",
+  "stratum": "random",
+  "reference_expected": {
+   "expected": "not_eligible",
+   "reasons": [
+    "paired_datum_not_published",
+    "no_valid_obs_in_window"
+   ]
+  },
+  "reference_datum": "LMSL",
+  "reference_statistics": {
+   "n": 0
+  },
+  "tool_class": "not_eligible",
+  "tool_sub": "declined, other reason (http_error)",
+  "tool_response_head": "HTTP 400 error (2d_global). The STOFS S3 bucket may be temporarily unavailable. Please try again."
+ }
+]

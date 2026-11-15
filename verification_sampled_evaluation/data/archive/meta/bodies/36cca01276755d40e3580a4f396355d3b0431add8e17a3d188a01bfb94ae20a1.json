@@ -1,0 +1,99 @@
+{
+  "accepted": "Aug 04 2021",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 1.265
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 1.224
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 0.992
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 0.993
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 0.994
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 0.762
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 0.718
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.547
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.461
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.042
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.045
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 0.967
+    }
+  ],
+  "LAT": 0.31700003,
+  "LATdate": "20050110",
+  "LATtime": "15:24",
+  "HAT": 1.5380001,
+  "HATdate": "20251011",
+  "HATtime": "07:00",
+  "min": -0.482,
+  "mindate": "19850902",
+  "mintime": "11:36",
+  "max": 4.035,
+  "maxdate": "20080901",
+  "maxtime": "20:12",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "07/01/2007 - 06/30/2011",
+    "08/01/2011 - 07/31/2012",
+    "10/01/2013 - 09/30/2015",
+    "02/01/2016 - 01/31/2018"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8741533 Pascagoula NOAA Lab, MS",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8747437/datums.json"
+}

@@ -1,0 +1,98 @@
+{
+  "accepted": "Apr 13 2020",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 8.923
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 8.88
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 8.672
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 8.69
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 8.695
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 8.499
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 8.421
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.502
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.381
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.042
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.078
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 8.605
+    }
+  ],
+  "LAT": 8.017,
+  "LATdate": "20230121",
+  "LATtime": "14:12",
+  "HAT": 9.184999,
+  "HATdate": "20071029",
+  "HATtime": "01:00",
+  "min": 7.6,
+  "mindate": "20100322",
+  "mintime": "06:30",
+  "max": 10.677,
+  "maxdate": "20080912",
+  "maxtime": "18:42",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "12/01/2006 - 11/30/2007",
+    "10/01/2008 - 09/30/2014",
+    "02/01/2015 - 01/31/2018"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8771450 Galveston Pier 21, TX",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8772447/datums.json"
+}

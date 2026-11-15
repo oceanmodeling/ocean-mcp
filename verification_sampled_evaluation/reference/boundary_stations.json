@@ -1,0 +1,79 @@
+{
+ "status": "identified from NOAA operational code (stofs.v3.1.7; v3.1.6 not served)",
+ "sources": [
+  {
+   "url": "https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/stofs.v3.1.7/ush/stofs_3d_atl/pysh/derive_bias.py",
+   "path": "phase0/docs/f51cb9d64c9f8a989d357a0b82894261ffd2798fe3c559c2be26c700b434bc74.bin",
+   "quote": "STA_LIST = ['8670870', '8665530', '8661070', '8658163', '8651370', '8632200', '8557380', '8536110', '8534720', '8531680', '8452660']"
+  },
+  {
+   "url": "https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/stofs.v3.1.7/ush/stofs_3d_atl/stofs_3d_atl_create_obc_3d_th_dynamic_adjust.sh",
+   "path": "phase0/docs/20487efbd53554cbc6d7eb054a4fdd40c4a7f63e17ee9d7bc285702d3af43212.bin",
+   "quote": "list_staID=(8670870 8665530 8661070 8658163 8651370 8632200 8557380 8536110 8534720 8531680 8452660)"
+  },
+  {
+   "url": "https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/stofs.v3.1.7/fix/stofs_3d_atl/stofs_3d_atl_obc_adjust_msl_geoid.bp",
+   "path": "phase0/docs/d0c4e3c2e611cb611a398f4459db9a99c37ca7b74a439899ec1f4617d4cf2149.bin",
+   "quote": "per-station MSL-xGEOID20b constants (column 4) for the same 11 IDs"
+  }
+ ],
+ "caveat": "code version v3.1.7 (files dated 2026-10-23); the sampled files name v3.1.4 and v3.1.6, whose code is not served (404)",
+ "note": "SCN 26-51 says Duck (8651370) and Springmaid Pier (8661070) are removed from the station output, but both are in the archived v3.1 station NetCDF files of 2026-08-17 and 2026-10-30 (166 records), and both remain in the bias list",
+ "stations": [
+  {
+   "id": "8670870",
+   "name": "Fort Pulaski, GA",
+   "msl_minus_xgeoid_constant_m": -0.294
+  },
+  {
+   "id": "8665530",
+   "name": "Charleston, SC",
+   "msl_minus_xgeoid_constant_m": -0.325
+  },
+  {
+   "id": "8661070",
+   "name": "Springmaid Pier, SC",
+   "msl_minus_xgeoid_constant_m": -0.345
+  },
+  {
+   "id": "8658163",
+   "name": "Wrightsville Beach, NC",
+   "msl_minus_xgeoid_constant_m": -0.41
+  },
+  {
+   "id": "8651370",
+   "name": "Duck, NC",
+   "msl_minus_xgeoid_constant_m": -0.43263
+  },
+  {
+   "id": "8632200",
+   "name": "Kiptopeke, VA",
+   "msl_minus_xgeoid_constant_m": -0.42797
+  },
+  {
+   "id": "8557380",
+   "name": "Lewes, DE",
+   "msl_minus_xgeoid_constant_m": -0.47288
+  },
+  {
+   "id": "8536110",
+   "name": "Cape May, NJ",
+   "msl_minus_xgeoid_constant_m": -0.5239
+  },
+  {
+   "id": "8534720",
+   "name": "Atlantic City, NJ",
+   "msl_minus_xgeoid_constant_m": -0.42123
+  },
+  {
+   "id": "8531680",
+   "name": "Sandy Hook, NJ",
+   "msl_minus_xgeoid_constant_m": -0.451
+  },
+  {
+   "id": "8452660",
+   "name": "Newport, RI",
+   "msl_minus_xgeoid_constant_m": -0.45
+  }
+ ]
+}

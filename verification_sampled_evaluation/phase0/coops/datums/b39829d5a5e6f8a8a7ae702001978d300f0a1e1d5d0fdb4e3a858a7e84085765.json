@@ -1,0 +1,106 @@
+{
+  "accepted": "Mar 25 2004",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 1.663
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 1.58
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 1.206
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 1.187
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 1.206
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 0.794
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 0.749
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.914
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.786
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.083
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.045
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 1.26
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 7.719
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 1.302
+    }
+  ],
+  "LAT": null,
+  "LATdate": "",
+  "LATtime": "",
+  "HAT": null,
+  "HATdate": "",
+  "HATtime": "",
+  "min": null,
+  "mindate": "",
+  "mintime": "",
+  "max": null,
+  "maxdate": "",
+  "maxtime": "",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "08/01/1962 - 08/31/1962"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8461490 New London, CT",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8458694/datums.json"
+}

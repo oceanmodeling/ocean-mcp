@@ -1,0 +1,101 @@
+{
+  "accepted": "Aug 20 2020",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 3.751
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 3.535
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 2.483
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 2.584
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 2.589
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 1.633
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 1.215
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 2.536
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 1.902
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.216
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.418
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 8.589
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 2.09
+    }
+  ],
+  "LAT": 0.42599988,
+  "LATdate": "20220615",
+  "LATtime": "15:12",
+  "HAT": 4.394,
+  "HATdate": "20031223",
+  "HATtime": "20:00",
+  "min": 0.158,
+  "mindate": "20071126",
+  "mintime": "02:54",
+  "max": 4.899,
+  "maxdate": "20220104",
+  "maxtime": "01:30",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "05/01/2007 - 04/30/2019"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "9439040 Astoria, OR",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9437540/datums.json"
+}

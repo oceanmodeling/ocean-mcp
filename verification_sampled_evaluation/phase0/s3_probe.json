@@ -1,0 +1,2399 @@
+{
+ "weekly": [
+  "2026-06-01",
+  "2026-06-08",
+  "2026-06-15",
+  "2026-06-22",
+  "2026-06-29",
+  "2026-07-06",
+  "2026-07-13",
+  "2026-07-20",
+  "2026-07-27",
+  "2026-08-03",
+  "2026-08-10",
+  "2026-08-17",
+  "2026-08-24",
+  "2026-08-31",
+  "2026-09-07",
+  "2026-09-14",
+  "2026-09-21",
+  "2026-09-28",
+  "2026-10-05",
+  "2026-10-12",
+  "2026-10-19",
+  "2026-10-26",
+  "2026-11-02"
+ ],
+ "daily": [
+  "2026-08-13",
+  "2026-08-14",
+  "2026-08-15",
+  "2026-08-16",
+  "2026-08-17",
+  "2026-08-18",
+  "2026-08-19",
+  "2026-08-20"
+ ],
+ "results": [
+  {
+   "product": "3d",
+   "date": "2026-06-01",
+   "status": 200,
+   "sha256": "f21baa132f13cd82c124d532100ef1ba0547568f10ca6c29cc52e1df7b964881",
+   "path": "phase0/s3_listings/f21baa132f13cd82c124d532100ef1ba0547568f10ca6c29cc52e1df7b964881.xml",
+   "objects": [
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260601/stofs_3d_atl.t12z.points.autoval.cwl.nc",
+     "size": 5509463,
+     "last_modified": "2026-06-12T18:31:32.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260601/stofs_3d_atl.t12z.points.cwl.nc",
+     "size": 5509661,
+     "last_modified": "2026-06-01T19:53:24.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260601/stofs_3d_atl.t12z.points.cwl.shef",
+     "size": 220663,
+     "last_modified": "2026-06-01T19:53:24.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260601/stofs_3d_atl.t12z.points.cwl.temp.salt.vel.nc",
+     "size": 5509661,
+     "last_modified": "2026-06-01T19:53:24.000Z"
+    }
+   ]
+  },
+  {
+   "product": "2d",
+   "date": "2026-06-01",
+   "status": 200,
+   "sha256": "56189422d721978c03b43cecb9d2d6480986b061e4db67abcfae947155e43dca",
+   "path": "phase0/s3_listings/56189422d721978c03b43cecb9d2d6480986b061e4db67abcfae947155e43dca.xml",
+   "objects": [
+    {
+     "key": "stofs_2d_glo.20260601/stofs_2d_glo.t12z.points.autoval.cwl.nc",
+     "size": 12483240,
+     "last_modified": "2026-06-01T19:49:22.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260601/stofs_2d_glo.t12z.points.cwl.nc",
+     "size": 25246800,
+     "last_modified": "2026-06-01T18:30:51.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260601/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+     "size": 23260408,
+     "last_modified": "2026-06-01T18:30:52.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260601/stofs_2d_glo.t12z.points.cwl.shef",
+     "size": 1829043,
+     "last_modified": "2026-06-01T18:30:53.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260601/stofs_2d_glo.t12z.points.cwl.vel.nc",
+     "size": 41892793,
+     "last_modified": "2026-06-01T18:30:53.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260601/stofs_2d_glo.t12z.points.htp.nc",
+     "size": 23238063,
+     "last_modified": "2026-06-01T18:30:54.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260601/stofs_2d_glo.t12z.points.htp.shef",
+     "size": 1829040,
+     "last_modified": "2026-06-01T18:30:55.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260601/stofs_2d_glo.t12z.points.swl.nc",
+     "size": 23144356,
+     "last_modified": "2026-06-01T18:30:55.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260601/stofs_2d_glo.t12z.points.swl.shef",
+     "size": 1829044,
+     "last_modified": "2026-06-01T18:30:55.000Z"
+    }
+   ]
+  },
+  {
+   "product": "3d",
+   "date": "2026-06-08",
+   "status": 200,
+   "sha256": "531671d55f39ee5bbdcd9e85cd5faa2f869ef02ce4228f3da5bbf45e9cc5509e",
+   "path": "phase0/s3_listings/531671d55f39ee5bbdcd9e85cd5faa2f869ef02ce4228f3da5bbf45e9cc5509e.xml",
+   "objects": [
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260608/stofs_3d_atl.t12z.points.autoval.cwl.nc",
+     "size": 5509783,
+     "last_modified": "2026-06-12T14:10:07.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260608/stofs_3d_atl.t12z.points.cwl.nc",
+     "size": 5509661,
+     "last_modified": "2026-06-08T19:52:07.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260608/stofs_3d_atl.t12z.points.cwl.shef",
+     "size": 220663,
+     "last_modified": "2026-06-08T19:52:07.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260608/stofs_3d_atl.t12z.points.cwl.temp.salt.vel.nc",
+     "size": 5509661,
+     "last_modified": "2026-06-08T19:52:07.000Z"
+    }
+   ]
+  },
+  {
+   "product": "2d",
+   "date": "2026-06-08",
+   "status": 200,
+   "sha256": "42c39aeab42250fddf46adaef3b3fa1c1228d7d539bfd148e1954f5338c07b08",
+   "path": "phase0/s3_listings/42c39aeab42250fddf46adaef3b3fa1c1228d7d539bfd148e1954f5338c07b08.xml",
+   "objects": [
+    {
+     "key": "stofs_2d_glo.20260608/stofs_2d_glo.t12z.points.autoval.cwl.nc",
+     "size": 12483240,
+     "last_modified": "2026-06-08T19:49:23.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260608/stofs_2d_glo.t12z.points.cwl.nc",
+     "size": 25246800,
+     "last_modified": "2026-06-08T18:29:30.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260608/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+     "size": 23281668,
+     "last_modified": "2026-06-08T18:29:30.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260608/stofs_2d_glo.t12z.points.cwl.shef",
+     "size": 1829043,
+     "last_modified": "2026-06-08T18:29:31.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260608/stofs_2d_glo.t12z.points.cwl.vel.nc",
+     "size": 41875667,
+     "last_modified": "2026-06-08T18:29:31.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260608/stofs_2d_glo.t12z.points.htp.nc",
+     "size": 23275218,
+     "last_modified": "2026-06-08T18:29:31.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260608/stofs_2d_glo.t12z.points.htp.shef",
+     "size": 1829040,
+     "last_modified": "2026-06-08T18:29:32.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260608/stofs_2d_glo.t12z.points.swl.nc",
+     "size": 23106084,
+     "last_modified": "2026-06-08T18:29:32.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260608/stofs_2d_glo.t12z.points.swl.shef",
+     "size": 1829044,
+     "last_modified": "2026-06-08T18:29:33.000Z"
+    }
+   ]
+  },
+  {
+   "product": "3d",
+   "date": "2026-06-15",
+   "status": 200,
+   "sha256": "2470af2b493474a0191e9cbf5d70ebf15eb3df4befe5adcd418a2e0c4d9e7510",
+   "path": "phase0/s3_listings/2470af2b493474a0191e9cbf5d70ebf15eb3df4befe5adcd418a2e0c4d9e7510.xml",
+   "objects": [
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260615/stofs_3d_atl.t12z.points.autoval.cwl.nc",
+     "size": 5509783,
+     "last_modified": "2026-06-15T22:45:06.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260615/stofs_3d_atl.t12z.points.cwl.nc",
+     "size": 5509661,
+     "last_modified": "2026-06-15T19:53:18.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260615/stofs_3d_atl.t12z.points.cwl.shef",
+     "size": 220663,
+     "last_modified": "2026-06-15T19:53:18.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260615/stofs_3d_atl.t12z.points.cwl.temp.salt.vel.nc",
+     "size": 5509661,
+     "last_modified": "2026-06-15T19:53:18.000Z"
+    }
+   ]
+  },
+  {
+   "product": "2d",
+   "date": "2026-06-15",
+   "status": 200,
+   "sha256": "033645b240e641a5aeeb6bcb7bcc8b86af702985716a86301d2615d264791ccb",
+   "path": "phase0/s3_listings/033645b240e641a5aeeb6bcb7bcc8b86af702985716a86301d2615d264791ccb.xml",
+   "objects": [
+    {
+     "key": "stofs_2d_glo.20260615/stofs_2d_glo.t12z.points.autoval.cwl.nc",
+     "size": 12483240,
+     "last_modified": "2026-06-15T19:49:30.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260615/stofs_2d_glo.t12z.points.cwl.nc",
+     "size": 25246800,
+     "last_modified": "2026-06-15T18:29:23.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260615/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+     "size": 23298959,
+     "last_modified": "2026-06-15T18:29:23.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260615/stofs_2d_glo.t12z.points.cwl.shef",
+     "size": 1829043,
+     "last_modified": "2026-06-15T18:29:24.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260615/stofs_2d_glo.t12z.points.cwl.vel.nc",
+     "size": 41883559,
+     "last_modified": "2026-06-15T18:29:24.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260615/stofs_2d_glo.t12z.points.htp.nc",
+     "size": 23278233,
+     "last_modified": "2026-06-15T18:29:24.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260615/stofs_2d_glo.t12z.points.htp.shef",
+     "size": 1829040,
+     "last_modified": "2026-06-15T18:29:25.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260615/stofs_2d_glo.t12z.points.swl.nc",
+     "size": 23103030,
+     "last_modified": "2026-06-15T18:29:25.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260615/stofs_2d_glo.t12z.points.swl.shef",
+     "size": 1829044,
+     "last_modified": "2026-06-15T18:29:26.000Z"
+    }
+   ]
+  },
+  {
+   "product": "3d",
+   "date": "2026-06-22",
+   "status": 200,
+   "sha256": "66d133790afe5095fce1fe3d3182003483e0e1d22c75688634da4a88e8e96405",
+   "path": "phase0/s3_listings/66d133790afe5095fce1fe3d3182003483e0e1d22c75688634da4a88e8e96405.xml",
+   "objects": [
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260622/stofs_3d_atl.t12z.points.autoval.cwl.nc",
+     "size": 5509783,
+     "last_modified": "2026-07-01T01:02:07.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260622/stofs_3d_atl.t12z.points.cwl.nc",
+     "size": 5509661,
+     "last_modified": "2026-06-22T19:51:32.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260622/stofs_3d_atl.t12z.points.cwl.shef",
+     "size": 220663,
+     "last_modified": "2026-06-22T19:51:32.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260622/stofs_3d_atl.t12z.points.cwl.temp.salt.vel.nc",
+     "size": 5509661,
+     "last_modified": "2026-06-22T19:51:33.000Z"
+    }
+   ]
+  },
+  {
+   "product": "2d",
+   "date": "2026-06-22",
+   "status": 200,
+   "sha256": "d6e848ecd90554210f2d5e2e10e35ba3fbb6bffeb50b05348d450c6b9305157a",
+   "path": "phase0/s3_listings/d6e848ecd90554210f2d5e2e10e35ba3fbb6bffeb50b05348d450c6b9305157a.xml",
+   "objects": [
+    {
+     "key": "stofs_2d_glo.20260622/stofs_2d_glo.t12z.points.autoval.cwl.nc",
+     "size": 12483240,
+     "last_modified": "2026-06-22T19:49:19.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260622/stofs_2d_glo.t12z.points.cwl.nc",
+     "size": 25246800,
+     "last_modified": "2026-06-22T18:29:36.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260622/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+     "size": 23266083,
+     "last_modified": "2026-06-22T18:29:36.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260622/stofs_2d_glo.t12z.points.cwl.shef",
+     "size": 1829043,
+     "last_modified": "2026-06-22T18:29:37.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260622/stofs_2d_glo.t12z.points.cwl.vel.nc",
+     "size": 41888187,
+     "last_modified": "2026-06-22T18:29:37.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260622/stofs_2d_glo.t12z.points.htp.nc",
+     "size": 23256257,
+     "last_modified": "2026-06-22T18:29:37.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260622/stofs_2d_glo.t12z.points.htp.shef",
+     "size": 1829040,
+     "last_modified": "2026-06-22T18:29:38.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260622/stofs_2d_glo.t12z.points.swl.nc",
+     "size": 23085999,
+     "last_modified": "2026-06-22T18:29:39.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260622/stofs_2d_glo.t12z.points.swl.shef",
+     "size": 1829044,
+     "last_modified": "2026-06-22T18:29:39.000Z"
+    }
+   ]
+  },
+  {
+   "product": "3d",
+   "date": "2026-06-29",
+   "status": 200,
+   "sha256": "23d7390c3248a01654cf40417bf18bc0d5fbfef254311d00f4f59df15eaeccc5",
+   "path": "phase0/s3_listings/23d7390c3248a01654cf40417bf18bc0d5fbfef254311d00f4f59df15eaeccc5.xml",
+   "objects": [
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260629/stofs_3d_atl.t12z.points.autoval.cwl.nc",
+     "size": 5509783,
+     "last_modified": "2026-07-01T00:01:07.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260629/stofs_3d_atl.t12z.points.cwl.nc",
+     "size": 5509661,
+     "last_modified": "2026-06-29T20:17:46.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260629/stofs_3d_atl.t12z.points.cwl.shef",
+     "size": 220663,
+     "last_modified": "2026-06-29T20:17:46.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260629/stofs_3d_atl.t12z.points.cwl.temp.salt.vel.nc",
+     "size": 5509661,
+     "last_modified": "2026-06-29T20:17:46.000Z"
+    }
+   ]
+  },
+  {
+   "product": "2d",
+   "date": "2026-06-29",
+   "status": 200,
+   "sha256": "40e057ed7ebcb7f481ca780a02957a8a55fd01f554f6e85d05ca3a5c8841baf1",
+   "path": "phase0/s3_listings/40e057ed7ebcb7f481ca780a02957a8a55fd01f554f6e85d05ca3a5c8841baf1.xml",
+   "objects": [
+    {
+     "key": "stofs_2d_glo.20260629/stofs_2d_glo.t12z.points.autoval.cwl.nc",
+     "size": 12483240,
+     "last_modified": "2026-06-29T19:49:45.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260629/stofs_2d_glo.t12z.points.cwl.nc",
+     "size": 25246800,
+     "last_modified": "2026-06-29T18:29:08.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260629/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+     "size": 23281740,
+     "last_modified": "2026-06-29T18:29:08.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260629/stofs_2d_glo.t12z.points.cwl.shef",
+     "size": 1829043,
+     "last_modified": "2026-06-29T18:29:09.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260629/stofs_2d_glo.t12z.points.cwl.vel.nc",
+     "size": 41881133,
+     "last_modified": "2026-06-29T18:29:09.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260629/stofs_2d_glo.t12z.points.htp.nc",
+     "size": 23258907,
+     "last_modified": "2026-06-29T18:29:09.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260629/stofs_2d_glo.t12z.points.htp.shef",
+     "size": 1829040,
+     "last_modified": "2026-06-29T18:29:10.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260629/stofs_2d_glo.t12z.points.swl.nc",
+     "size": 23097642,
+     "last_modified": "2026-06-29T18:29:10.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260629/stofs_2d_glo.t12z.points.swl.shef",
+     "size": 1829044,
+     "last_modified": "2026-06-29T18:29:10.000Z"
+    }
+   ]
+  },
+  {
+   "product": "3d",
+   "date": "2026-07-06",
+   "status": 200,
+   "sha256": "275cab1df30f15dd02a04c6658c195659302d30117d0afc70d8eccd695a71b5a",
+   "path": "phase0/s3_listings/275cab1df30f15dd02a04c6658c195659302d30117d0afc70d8eccd695a71b5a.xml",
+   "objects": [
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260706/stofs_3d_atl.t12z.points.autoval.cwl.nc",
+     "size": 5509783,
+     "last_modified": "2026-07-06T22:45:06.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260706/stofs_3d_atl.t12z.points.cwl.nc",
+     "size": 5509661,
+     "last_modified": "2026-07-06T19:56:54.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260706/stofs_3d_atl.t12z.points.cwl.shef",
+     "size": 220663,
+     "last_modified": "2026-07-06T19:56:54.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260706/stofs_3d_atl.t12z.points.cwl.temp.salt.vel.nc",
+     "size": 5509661,
+     "last_modified": "2026-07-06T19:56:54.000Z"
+    }
+   ]
+  },
+  {
+   "product": "2d",
+   "date": "2026-07-06",
+   "status": 200,
+   "sha256": "4909a7090a645aaee9ad7e50c414ac7e9c398715ed6dda6f8120510ad2062548",
+   "path": "phase0/s3_listings/4909a7090a645aaee9ad7e50c414ac7e9c398715ed6dda6f8120510ad2062548.xml",
+   "objects": [
+    {
+     "key": "stofs_2d_glo.20260706/stofs_2d_glo.t12z.points.autoval.cwl.nc",
+     "size": 12483240,
+     "last_modified": "2026-07-06T19:49:11.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260706/stofs_2d_glo.t12z.points.cwl.nc",
+     "size": 25246800,
+     "last_modified": "2026-07-06T18:29:35.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260706/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+     "size": 23280962,
+     "last_modified": "2026-07-06T18:29:37.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260706/stofs_2d_glo.t12z.points.cwl.shef",
+     "size": 1829043,
+     "last_modified": "2026-07-06T18:29:38.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260706/stofs_2d_glo.t12z.points.cwl.vel.nc",
+     "size": 41892262,
+     "last_modified": "2026-07-06T18:29:39.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260706/stofs_2d_glo.t12z.points.htp.nc",
+     "size": 23265665,
+     "last_modified": "2026-07-06T18:29:40.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260706/stofs_2d_glo.t12z.points.htp.shef",
+     "size": 1829040,
+     "last_modified": "2026-07-06T18:29:42.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260706/stofs_2d_glo.t12z.points.swl.nc",
+     "size": 23122726,
+     "last_modified": "2026-07-06T18:29:42.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260706/stofs_2d_glo.t12z.points.swl.shef",
+     "size": 1829044,
+     "last_modified": "2026-07-06T18:29:43.000Z"
+    }
+   ]
+  },
+  {
+   "product": "3d",
+   "date": "2026-07-13",
+   "status": 200,
+   "sha256": "13266a44915776d69bb72b455da3cbd2068d027ac21dfdc3530c3d598baf48bb",
+   "path": "phase0/s3_listings/13266a44915776d69bb72b455da3cbd2068d027ac21dfdc3530c3d598baf48bb.xml",
+   "objects": [
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260713/stofs_3d_atl.t12z.points.cwl.nc",
+     "size": 5509661,
+     "last_modified": "2026-07-13T19:50:37.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260713/stofs_3d_atl.t12z.points.cwl.shef",
+     "size": 220663,
+     "last_modified": "2026-07-13T19:50:37.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260713/stofs_3d_atl.t12z.points.cwl.temp.salt.vel.nc",
+     "size": 5509661,
+     "last_modified": "2026-07-13T19:50:37.000Z"
+    }
+   ]
+  },
+  {
+   "product": "2d",
+   "date": "2026-07-13",
+   "status": 200,
+   "sha256": "3ed8e215cd1d7c7075d17df7edcb8c240b339c61b33b2e0a8ae40da8a0b9b8de",
+   "path": "phase0/s3_listings/3ed8e215cd1d7c7075d17df7edcb8c240b339c61b33b2e0a8ae40da8a0b9b8de.xml",
+   "objects": [
+    {
+     "key": "stofs_2d_glo.20260713/stofs_2d_glo.t12z.points.autoval.cwl.nc",
+     "size": 12483240,
+     "last_modified": "2026-07-13T19:49:22.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260713/stofs_2d_glo.t12z.points.cwl.nc",
+     "size": 25246800,
+     "last_modified": "2026-07-13T18:29:20.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260713/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+     "size": 23308750,
+     "last_modified": "2026-07-13T18:29:20.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260713/stofs_2d_glo.t12z.points.cwl.shef",
+     "size": 1829043,
+     "last_modified": "2026-07-13T18:29:21.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260713/stofs_2d_glo.t12z.points.cwl.vel.nc",
+     "size": 41876144,
+     "last_modified": "2026-07-13T18:29:21.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260713/stofs_2d_glo.t12z.points.htp.nc",
+     "size": 23294196,
+     "last_modified": "2026-07-13T18:29:21.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260713/stofs_2d_glo.t12z.points.htp.shef",
+     "size": 1829040,
+     "last_modified": "2026-07-13T18:29:23.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260713/stofs_2d_glo.t12z.points.swl.nc",
+     "size": 23071370,
+     "last_modified": "2026-07-13T18:29:23.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260713/stofs_2d_glo.t12z.points.swl.shef",
+     "size": 1829044,
+     "last_modified": "2026-07-13T18:29:23.000Z"
+    }
+   ]
+  },
+  {
+   "product": "3d",
+   "date": "2026-07-20",
+   "status": 200,
+   "sha256": "c94594cf6a99e7cfc7976f5b8b0bde996efc16fa66eedc7a09ef06338b643969",
+   "path": "phase0/s3_listings/c94594cf6a99e7cfc7976f5b8b0bde996efc16fa66eedc7a09ef06338b643969.xml",
+   "objects": [
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260720/stofs_3d_atl.t12z.points.cwl.nc",
+     "size": 5509661,
+     "last_modified": "2026-07-20T19:51:07.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260720/stofs_3d_atl.t12z.points.cwl.shef",
+     "size": 220663,
+     "last_modified": "2026-07-20T19:51:07.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260720/stofs_3d_atl.t12z.points.cwl.temp.salt.vel.nc",
+     "size": 5509661,
+     "last_modified": "2026-07-20T19:51:07.000Z"
+    }
+   ]
+  },
+  {
+   "product": "2d",
+   "date": "2026-07-20",
+   "status": 200,
+   "sha256": "b9b5e5661cf33dd3b4d2e442d6a626653f8321c2c8b83dc48c7738785d75cd43",
+   "path": "phase0/s3_listings/b9b5e5661cf33dd3b4d2e442d6a626653f8321c2c8b83dc48c7738785d75cd43.xml",
+   "objects": [
+    {
+     "key": "stofs_2d_glo.20260720/stofs_2d_glo.t12z.points.autoval.cwl.nc",
+     "size": 12483240,
+     "last_modified": "2026-07-20T19:49:21.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260720/stofs_2d_glo.t12z.points.cwl.nc",
+     "size": 25246800,
+     "last_modified": "2026-07-20T18:29:22.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260720/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+     "size": 23255308,
+     "last_modified": "2026-07-20T18:29:22.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260720/stofs_2d_glo.t12z.points.cwl.shef",
+     "size": 1829043,
+     "last_modified": "2026-07-20T18:29:23.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260720/stofs_2d_glo.t12z.points.cwl.vel.nc",
+     "size": 41924456,
+     "last_modified": "2026-07-20T18:29:24.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260720/stofs_2d_glo.t12z.points.htp.nc",
+     "size": 23241499,
+     "last_modified": "2026-07-20T18:29:24.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260720/stofs_2d_glo.t12z.points.htp.shef",
+     "size": 1829040,
+     "last_modified": "2026-07-20T18:29:25.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260720/stofs_2d_glo.t12z.points.swl.nc",
+     "size": 23120484,
+     "last_modified": "2026-07-20T18:29:25.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260720/stofs_2d_glo.t12z.points.swl.shef",
+     "size": 1829044,
+     "last_modified": "2026-07-20T18:29:25.000Z"
+    }
+   ]
+  },
+  {
+   "product": "3d",
+   "date": "2026-07-27",
+   "status": 200,
+   "sha256": "3d9c60f8a047c6a7e91ccbb56ce7f8d5e2f30eafa8c8dc23527366e85aab1eda",
+   "path": "phase0/s3_listings/3d9c60f8a047c6a7e91ccbb56ce7f8d5e2f30eafa8c8dc23527366e85aab1eda.xml",
+   "objects": [
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260727/stofs_3d_atl.t12z.points.cwl.nc",
+     "size": 5509661,
+     "last_modified": "2026-07-27T19:48:26.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260727/stofs_3d_atl.t12z.points.cwl.shef",
+     "size": 220663,
+     "last_modified": "2026-07-27T19:48:26.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260727/stofs_3d_atl.t12z.points.cwl.temp.salt.vel.nc",
+     "size": 5509661,
+     "last_modified": "2026-07-27T19:48:26.000Z"
+    }
+   ]
+  },
+  {
+   "product": "2d",
+   "date": "2026-07-27",
+   "status": 200,
+   "sha256": "369eedf25531a1af34cb07ce72e06ceaeb3a173d4c7fbbcd19f67ffcae392829",
+   "path": "phase0/s3_listings/369eedf25531a1af34cb07ce72e06ceaeb3a173d4c7fbbcd19f67ffcae392829.xml",
+   "objects": [
+    {
+     "key": "stofs_2d_glo.20260727/stofs_2d_glo.t12z.points.autoval.cwl.nc",
+     "size": 12483240,
+     "last_modified": "2026-07-27T19:49:16.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260727/stofs_2d_glo.t12z.points.cwl.nc",
+     "size": 25246800,
+     "last_modified": "2026-07-27T18:29:40.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260727/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+     "size": 23290367,
+     "last_modified": "2026-07-27T18:29:42.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260727/stofs_2d_glo.t12z.points.cwl.shef",
+     "size": 1829043,
+     "last_modified": "2026-07-27T18:29:43.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260727/stofs_2d_glo.t12z.points.cwl.vel.nc",
+     "size": 41905115,
+     "last_modified": "2026-07-27T18:29:43.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260727/stofs_2d_glo.t12z.points.htp.nc",
+     "size": 23275015,
+     "last_modified": "2026-07-27T18:29:44.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260727/stofs_2d_glo.t12z.points.htp.shef",
+     "size": 1829040,
+     "last_modified": "2026-07-27T18:29:45.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260727/stofs_2d_glo.t12z.points.swl.nc",
+     "size": 23106811,
+     "last_modified": "2026-07-27T18:29:45.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260727/stofs_2d_glo.t12z.points.swl.shef",
+     "size": 1829044,
+     "last_modified": "2026-07-27T18:29:45.000Z"
+    }
+   ]
+  },
+  {
+   "product": "3d",
+   "date": "2026-08-03",
+   "status": 200,
+   "sha256": "7a77aafc411c3835b38989eaa243f3986e2493c88ff218131ca0905b222ed678",
+   "path": "phase0/s3_listings/7a77aafc411c3835b38989eaa243f3986e2493c88ff218131ca0905b222ed678.xml",
+   "objects": [
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260803/stofs_3d_atl.t12z.points.autoval.cwl.nc",
+     "size": 5509783,
+     "last_modified": "2026-08-05T19:48:07.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260803/stofs_3d_atl.t12z.points.cwl.nc",
+     "size": 5509661,
+     "last_modified": "2026-08-03T19:48:57.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260803/stofs_3d_atl.t12z.points.cwl.shef",
+     "size": 220663,
+     "last_modified": "2026-08-03T19:48:58.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260803/stofs_3d_atl.t12z.points.cwl.temp.salt.vel.nc",
+     "size": 5509661,
+     "last_modified": "2026-08-03T19:48:58.000Z"
+    }
+   ]
+  },
+  {
+   "product": "2d",
+   "date": "2026-08-03",
+   "status": 200,
+   "sha256": "189e277f74c0a7709447022c3cd38286670c5940e63fc3a35dc749d838456f5e",
+   "path": "phase0/s3_listings/189e277f74c0a7709447022c3cd38286670c5940e63fc3a35dc749d838456f5e.xml",
+   "objects": [
+    {
+     "key": "stofs_2d_glo.20260803/stofs_2d_glo.t12z.points.autoval.cwl.nc",
+     "size": 12483240,
+     "last_modified": "2026-08-03T19:49:15.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260803/stofs_2d_glo.t12z.points.cwl.nc",
+     "size": 25246800,
+     "last_modified": "2026-08-03T18:29:20.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260803/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+     "size": 23273049,
+     "last_modified": "2026-08-03T18:29:20.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260803/stofs_2d_glo.t12z.points.cwl.shef",
+     "size": 1829043,
+     "last_modified": "2026-08-03T18:29:21.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260803/stofs_2d_glo.t12z.points.cwl.vel.nc",
+     "size": 41866425,
+     "last_modified": "2026-08-03T18:29:21.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260803/stofs_2d_glo.t12z.points.htp.nc",
+     "size": 23262882,
+     "last_modified": "2026-08-03T18:29:21.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260803/stofs_2d_glo.t12z.points.htp.shef",
+     "size": 1829040,
+     "last_modified": "2026-08-03T18:29:22.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260803/stofs_2d_glo.t12z.points.swl.nc",
+     "size": 23067823,
+     "last_modified": "2026-08-03T18:29:22.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260803/stofs_2d_glo.t12z.points.swl.shef",
+     "size": 1829044,
+     "last_modified": "2026-08-03T18:29:23.000Z"
+    }
+   ]
+  },
+  {
+   "product": "3d",
+   "date": "2026-08-10",
+   "status": 200,
+   "sha256": "9139f75a99eb44cd9d332c885538b46713da6530079e828fafffdb46106648dc",
+   "path": "phase0/s3_listings/9139f75a99eb44cd9d332c885538b46713da6530079e828fafffdb46106648dc.xml",
+   "objects": [
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260810/stofs_3d_atl.t12z.points.autoval.cwl.nc",
+     "size": 5509783,
+     "last_modified": "2026-08-10T22:45:07.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260810/stofs_3d_atl.t12z.points.cwl.nc",
+     "size": 5509661,
+     "last_modified": "2026-08-10T19:48:35.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260810/stofs_3d_atl.t12z.points.cwl.shef",
+     "size": 220663,
+     "last_modified": "2026-08-10T19:48:35.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260810/stofs_3d_atl.t12z.points.cwl.temp.salt.vel.nc",
+     "size": 5509661,
+     "last_modified": "2026-08-10T19:48:35.000Z"
+    }
+   ]
+  },
+  {
+   "product": "2d",
+   "date": "2026-08-10",
+   "status": 200,
+   "sha256": "37720ca2d3b3219bfff004d194f75e5d3601dad46e80117fa9c947d5bb51dd86",
+   "path": "phase0/s3_listings/37720ca2d3b3219bfff004d194f75e5d3601dad46e80117fa9c947d5bb51dd86.xml",
+   "objects": [
+    {
+     "key": "stofs_2d_glo.20260810/stofs_2d_glo.t12z.points.autoval.cwl.nc",
+     "size": 12483240,
+     "last_modified": "2026-08-10T19:49:29.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260810/stofs_2d_glo.t12z.points.cwl.nc",
+     "size": 25246800,
+     "last_modified": "2026-08-10T18:29:19.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260810/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+     "size": 23315013,
+     "last_modified": "2026-08-10T18:29:19.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260810/stofs_2d_glo.t12z.points.cwl.shef",
+     "size": 1829043,
+     "last_modified": "2026-08-10T18:29:20.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260810/stofs_2d_glo.t12z.points.cwl.vel.nc",
+     "size": 41883913,
+     "last_modified": "2026-08-10T18:29:20.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260810/stofs_2d_glo.t12z.points.htp.nc",
+     "size": 23302054,
+     "last_modified": "2026-08-10T18:29:20.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260810/stofs_2d_glo.t12z.points.htp.shef",
+     "size": 1829040,
+     "last_modified": "2026-08-10T18:29:22.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260810/stofs_2d_glo.t12z.points.swl.nc",
+     "size": 23081462,
+     "last_modified": "2026-08-10T18:29:22.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260810/stofs_2d_glo.t12z.points.swl.shef",
+     "size": 1829044,
+     "last_modified": "2026-08-10T18:29:22.000Z"
+    }
+   ]
+  },
+  {
+   "product": "3d",
+   "date": "2026-08-13",
+   "status": 200,
+   "sha256": "35156dc05cd118baf56194653a7132557b0bf187ce542a6529ce12ab09253cce",
+   "path": "phase0/s3_listings/35156dc05cd118baf56194653a7132557b0bf187ce542a6529ce12ab09253cce.xml",
+   "objects": [
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260813/stofs_3d_atl.t12z.points.cwl.nc",
+     "size": 5509661,
+     "last_modified": "2026-08-13T19:50:41.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260813/stofs_3d_atl.t12z.points.cwl.shef",
+     "size": 220663,
+     "last_modified": "2026-08-13T19:50:41.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260813/stofs_3d_atl.t12z.points.cwl.temp.salt.vel.nc",
+     "size": 5509661,
+     "last_modified": "2026-08-13T19:50:41.000Z"
+    }
+   ]
+  },
+  {
+   "product": "2d",
+   "date": "2026-08-13",
+   "status": 200,
+   "sha256": "951c43a9e79b6f08044185e520d2b1062649d1c0061142cf1e87db433133e238",
+   "path": "phase0/s3_listings/951c43a9e79b6f08044185e520d2b1062649d1c0061142cf1e87db433133e238.xml",
+   "objects": [
+    {
+     "key": "stofs_2d_glo.20260813/stofs_2d_glo.t12z.points.autoval.cwl.nc",
+     "size": 12483240,
+     "last_modified": "2026-08-13T19:49:08.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260813/stofs_2d_glo.t12z.points.cwl.nc",
+     "size": 25246800,
+     "last_modified": "2026-08-13T18:29:16.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260813/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+     "size": 23306368,
+     "last_modified": "2026-08-13T18:29:16.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260813/stofs_2d_glo.t12z.points.cwl.shef",
+     "size": 1829043,
+     "last_modified": "2026-08-13T18:29:17.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260813/stofs_2d_glo.t12z.points.cwl.vel.nc",
+     "size": 41901601,
+     "last_modified": "2026-08-13T18:29:18.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260813/stofs_2d_glo.t12z.points.htp.nc",
+     "size": 23289319,
+     "last_modified": "2026-08-13T18:29:18.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260813/stofs_2d_glo.t12z.points.htp.shef",
+     "size": 1829040,
+     "last_modified": "2026-08-13T18:29:19.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260813/stofs_2d_glo.t12z.points.swl.nc",
+     "size": 23100153,
+     "last_modified": "2026-08-13T18:29:19.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260813/stofs_2d_glo.t12z.points.swl.shef",
+     "size": 1829044,
+     "last_modified": "2026-08-13T18:29:19.000Z"
+    }
+   ]
+  },
+  {
+   "product": "3d",
+   "date": "2026-08-14",
+   "status": 200,
+   "sha256": "b80749ddfae36d7681a1d83844186e6fc016265f835f2bb08a3a9392e3d8bcc2",
+   "path": "phase0/s3_listings/b80749ddfae36d7681a1d83844186e6fc016265f835f2bb08a3a9392e3d8bcc2.xml",
+   "objects": [
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260814/stofs_3d_atl.t12z.points.cwl.nc",
+     "size": 5509661,
+     "last_modified": "2026-08-14T18:30:00.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260814/stofs_3d_atl.t12z.points.cwl.shef",
+     "size": 220663,
+     "last_modified": "2026-08-14T18:30:00.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260814/stofs_3d_atl.t12z.points.cwl.temp.salt.vel.nc",
+     "size": 5509661,
+     "last_modified": "2026-08-14T18:30:01.000Z"
+    }
+   ]
+  },
+  {
+   "product": "2d",
+   "date": "2026-08-14",
+   "status": 200,
+   "sha256": "5a926a4cd581652619f8628efc7bf1d53f84e3fe0088528155095f9ebd33cae3",
+   "path": "phase0/s3_listings/5a926a4cd581652619f8628efc7bf1d53f84e3fe0088528155095f9ebd33cae3.xml",
+   "objects": [
+    {
+     "key": "stofs_2d_glo.20260814/stofs_2d_glo.t12z.points.autoval.cwl.nc",
+     "size": 12483240,
+     "last_modified": "2026-08-14T19:49:08.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260814/stofs_2d_glo.t12z.points.cwl.nc",
+     "size": 25246800,
+     "last_modified": "2026-08-14T18:29:23.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260814/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+     "size": 23294251,
+     "last_modified": "2026-08-14T18:29:23.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260814/stofs_2d_glo.t12z.points.cwl.shef",
+     "size": 1829043,
+     "last_modified": "2026-08-14T18:29:24.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260814/stofs_2d_glo.t12z.points.cwl.vel.nc",
+     "size": 41903695,
+     "last_modified": "2026-08-14T18:29:24.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260814/stofs_2d_glo.t12z.points.htp.nc",
+     "size": 23275804,
+     "last_modified": "2026-08-14T18:29:24.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260814/stofs_2d_glo.t12z.points.htp.shef",
+     "size": 1829040,
+     "last_modified": "2026-08-14T18:29:26.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260814/stofs_2d_glo.t12z.points.swl.nc",
+     "size": 23108511,
+     "last_modified": "2026-08-14T18:29:26.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260814/stofs_2d_glo.t12z.points.swl.shef",
+     "size": 1829044,
+     "last_modified": "2026-08-14T18:29:26.000Z"
+    }
+   ]
+  },
+  {
+   "product": "3d",
+   "date": "2026-08-15",
+   "status": 200,
+   "sha256": "1b5d918e2279ffd7b68e14f0c13175c988e7426b508ee75f3d52bb3636dfe3a9",
+   "path": "phase0/s3_listings/1b5d918e2279ffd7b68e14f0c13175c988e7426b508ee75f3d52bb3636dfe3a9.xml",
+   "objects": [
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260815/stofs_3d_atl.t12z.points.cwl.nc",
+     "size": 5509661,
+     "last_modified": "2026-08-15T19:47:53.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260815/stofs_3d_atl.t12z.points.cwl.shef",
+     "size": 220663,
+     "last_modified": "2026-08-15T19:47:54.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260815/stofs_3d_atl.t12z.points.cwl.temp.salt.vel.nc",
+     "size": 5509661,
+     "last_modified": "2026-08-15T19:47:54.000Z"
+    }
+   ]
+  },
+  {
+   "product": "2d",
+   "date": "2026-08-15",
+   "status": 200,
+   "sha256": "15af8a815880c6704aca25b47756b3f0e11f1bb9e9f4d8feae245ef901142304",
+   "path": "phase0/s3_listings/15af8a815880c6704aca25b47756b3f0e11f1bb9e9f4d8feae245ef901142304.xml",
+   "objects": [
+    {
+     "key": "stofs_2d_glo.20260815/stofs_2d_glo.t12z.points.autoval.cwl.nc",
+     "size": 12483240,
+     "last_modified": "2026-08-15T19:49:16.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260815/stofs_2d_glo.t12z.points.cwl.nc",
+     "size": 25246800,
+     "last_modified": "2026-08-15T18:29:28.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260815/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+     "size": 23277795,
+     "last_modified": "2026-08-15T18:29:28.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260815/stofs_2d_glo.t12z.points.cwl.shef",
+     "size": 1829043,
+     "last_modified": "2026-08-15T18:29:29.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260815/stofs_2d_glo.t12z.points.cwl.vel.nc",
+     "size": 41909812,
+     "last_modified": "2026-08-15T18:29:29.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260815/stofs_2d_glo.t12z.points.htp.nc",
+     "size": 23259605,
+     "last_modified": "2026-08-15T18:29:29.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260815/stofs_2d_glo.t12z.points.htp.shef",
+     "size": 1829040,
+     "last_modified": "2026-08-15T18:29:30.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260815/stofs_2d_glo.t12z.points.swl.nc",
+     "size": 23110054,
+     "last_modified": "2026-08-15T18:29:31.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260815/stofs_2d_glo.t12z.points.swl.shef",
+     "size": 1829044,
+     "last_modified": "2026-08-15T18:29:31.000Z"
+    }
+   ]
+  },
+  {
+   "product": "3d",
+   "date": "2026-08-16",
+   "status": 200,
+   "sha256": "e1294e23712ef7493f89798d55e08649918ff357889fb708aa337b6d2370e2ec",
+   "path": "phase0/s3_listings/e1294e23712ef7493f89798d55e08649918ff357889fb708aa337b6d2370e2ec.xml",
+   "objects": [
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260816/stofs_3d_atl.t12z.points.cwl.nc",
+     "size": 5509661,
+     "last_modified": "2026-08-16T19:47:45.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260816/stofs_3d_atl.t12z.points.cwl.shef",
+     "size": 220663,
+     "last_modified": "2026-08-16T19:47:45.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260816/stofs_3d_atl.t12z.points.cwl.temp.salt.vel.nc",
+     "size": 5509661,
+     "last_modified": "2026-08-16T19:47:45.000Z"
+    }
+   ]
+  },
+  {
+   "product": "2d",
+   "date": "2026-08-16",
+   "status": 200,
+   "sha256": "6605900c8755669aa2ff9e09ad6db447ac104ef32e41ba6e66bddf272d1365d1",
+   "path": "phase0/s3_listings/6605900c8755669aa2ff9e09ad6db447ac104ef32e41ba6e66bddf272d1365d1.xml",
+   "objects": [
+    {
+     "key": "stofs_2d_glo.20260816/stofs_2d_glo.t12z.points.autoval.cwl.nc",
+     "size": 12483240,
+     "last_modified": "2026-08-16T19:49:34.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260816/stofs_2d_glo.t12z.points.cwl.nc",
+     "size": 25231796,
+     "last_modified": "2026-08-17T19:58:06.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260816/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+     "size": 25231828,
+     "last_modified": "2026-08-17T19:58:08.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260816/stofs_2d_glo.t12z.points.cwl.shef",
+     "size": 1817587,
+     "last_modified": "2026-08-17T19:58:10.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260816/stofs_2d_glo.t12z.points.cwl.vel.nc",
+     "size": 50334820,
+     "last_modified": "2026-08-17T19:58:10.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260816/stofs_2d_glo.t12z.points.htp.nc",
+     "size": 25231828,
+     "last_modified": "2026-08-17T19:58:12.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260816/stofs_2d_glo.t12z.points.htp.shef",
+     "size": 1817584,
+     "last_modified": "2026-08-17T19:58:14.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260816/stofs_2d_glo.t12z.points.swl.nc",
+     "size": 25232240,
+     "last_modified": "2026-08-17T19:58:14.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260816/stofs_2d_glo.t12z.points.swl.shef",
+     "size": 1817588,
+     "last_modified": "2026-08-17T19:58:15.000Z"
+    }
+   ]
+  },
+  {
+   "product": "3d",
+   "date": "2026-08-17",
+   "status": 200,
+   "sha256": "da3ec129c04571bdb1c1d50234f3691eb2a457f7c6e4b6532dd09527157ba940",
+   "path": "phase0/s3_listings/da3ec129c04571bdb1c1d50234f3691eb2a457f7c6e4b6532dd09527157ba940.xml",
+   "objects": [
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260817/stofs_3d_atl.t12z.points.cwl.nc",
+     "size": 8297477,
+     "last_modified": "2026-08-17T19:55:40.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260817/stofs_3d_atl.t12z.points.cwl.shef",
+     "size": 309243,
+     "last_modified": "2026-08-17T19:55:40.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260817/stofs_3d_atl.t12z.points.cwl.temp.salt.vel.nc",
+     "size": 8297477,
+     "last_modified": "2026-08-17T19:55:40.000Z"
+    }
+   ]
+  },
+  {
+   "product": "2d",
+   "date": "2026-08-17",
+   "status": 200,
+   "sha256": "43519ae0fa8f075cc4e2a50ea98c702aa183554ef0963c36159e18c92ff0ec47",
+   "path": "phase0/s3_listings/43519ae0fa8f075cc4e2a50ea98c702aa183554ef0963c36159e18c92ff0ec47.xml",
+   "objects": [
+    {
+     "key": "stofs_2d_glo.20260817/stofs_2d_glo.t12z.points.cwl.nc",
+     "size": 25231796,
+     "last_modified": "2026-08-17T21:39:35.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260817/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+     "size": 25231828,
+     "last_modified": "2026-08-17T21:39:36.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260817/stofs_2d_glo.t12z.points.cwl.shef",
+     "size": 1817587,
+     "last_modified": "2026-08-17T21:39:38.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260817/stofs_2d_glo.t12z.points.cwl.vel.nc",
+     "size": 50334820,
+     "last_modified": "2026-08-17T21:39:38.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260817/stofs_2d_glo.t12z.points.htp.nc",
+     "size": 25231828,
+     "last_modified": "2026-08-17T21:39:41.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260817/stofs_2d_glo.t12z.points.htp.shef",
+     "size": 1817584,
+     "last_modified": "2026-08-17T21:39:42.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260817/stofs_2d_glo.t12z.points.swl.nc",
+     "size": 25232240,
+     "last_modified": "2026-08-17T21:39:42.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260817/stofs_2d_glo.t12z.points.swl.shef",
+     "size": 1817588,
+     "last_modified": "2026-08-17T21:39:44.000Z"
+    }
+   ]
+  },
+  {
+   "product": "3d",
+   "date": "2026-08-18",
+   "status": 200,
+   "sha256": "2b3951b1e83a7edbfe4300feeda008d0ac0c186bdfec65ad873fb6c9e6b551bb",
+   "path": "phase0/s3_listings/2b3951b1e83a7edbfe4300feeda008d0ac0c186bdfec65ad873fb6c9e6b551bb.xml",
+   "objects": [
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260818/stofs_3d_atl.t12z.points.cwl.nc",
+     "size": 8297477,
+     "last_modified": "2026-08-18T19:45:17.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260818/stofs_3d_atl.t12z.points.cwl.shef",
+     "size": 309243,
+     "last_modified": "2026-08-18T19:45:18.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260818/stofs_3d_atl.t12z.points.cwl.temp.salt.vel.nc",
+     "size": 8297477,
+     "last_modified": "2026-08-18T19:45:18.000Z"
+    }
+   ]
+  },
+  {
+   "product": "2d",
+   "date": "2026-08-18",
+   "status": 200,
+   "sha256": "144d7bdd1e2acc0c20ee2d5ba65d35ef548aae196695283f30e39a33e4e3e383",
+   "path": "phase0/s3_listings/144d7bdd1e2acc0c20ee2d5ba65d35ef548aae196695283f30e39a33e4e3e383.xml",
+   "objects": [
+    {
+     "key": "stofs_2d_glo.20260818/stofs_2d_glo.t12z.points.autoval.cwl.nc",
+     "size": 12468232,
+     "last_modified": "2026-08-18T19:49:38.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260818/stofs_2d_glo.t12z.points.cwl.nc",
+     "size": 25231796,
+     "last_modified": "2026-08-18T18:37:57.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260818/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+     "size": 25231828,
+     "last_modified": "2026-08-18T18:37:58.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260818/stofs_2d_glo.t12z.points.cwl.shef",
+     "size": 1817587,
+     "last_modified": "2026-08-18T18:52:13.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260818/stofs_2d_glo.t12z.points.cwl.vel.nc",
+     "size": 50334820,
+     "last_modified": "2026-08-18T18:37:59.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260818/stofs_2d_glo.t12z.points.htp.nc",
+     "size": 25231828,
+     "last_modified": "2026-08-18T18:38:02.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260818/stofs_2d_glo.t12z.points.htp.shef",
+     "size": 1817584,
+     "last_modified": "2026-08-18T18:52:13.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260818/stofs_2d_glo.t12z.points.swl.nc",
+     "size": 25232240,
+     "last_modified": "2026-08-18T18:52:14.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260818/stofs_2d_glo.t12z.points.swl.shef",
+     "size": 1817588,
+     "last_modified": "2026-08-18T18:52:14.000Z"
+    }
+   ]
+  },
+  {
+   "product": "3d",
+   "date": "2026-08-19",
+   "status": 200,
+   "sha256": "3c5c3e56a236fc24e686e0fe453df9e1b8eeac387176654f8194c66c4d599a80",
+   "path": "phase0/s3_listings/3c5c3e56a236fc24e686e0fe453df9e1b8eeac387176654f8194c66c4d599a80.xml",
+   "objects": [
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260819/stofs_3d_atl.t12z.points.cwl.nc",
+     "size": 8297477,
+     "last_modified": "2026-08-19T19:45:37.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260819/stofs_3d_atl.t12z.points.cwl.shef",
+     "size": 309243,
+     "last_modified": "2026-08-19T19:45:37.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260819/stofs_3d_atl.t12z.points.cwl.temp.salt.vel.nc",
+     "size": 8297477,
+     "last_modified": "2026-08-19T19:45:37.000Z"
+    }
+   ]
+  },
+  {
+   "product": "2d",
+   "date": "2026-08-19",
+   "status": 200,
+   "sha256": "36229e21a546330f71b74677c6271e9481a906588271d8bc1b13adf328583a0f",
+   "path": "phase0/s3_listings/36229e21a546330f71b74677c6271e9481a906588271d8bc1b13adf328583a0f.xml",
+   "objects": [
+    {
+     "key": "stofs_2d_glo.20260819/stofs_2d_glo.t12z.points.autoval.cwl.nc",
+     "size": 12468232,
+     "last_modified": "2026-08-19T19:49:21.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260819/stofs_2d_glo.t12z.points.cwl.nc",
+     "size": 25231796,
+     "last_modified": "2026-08-19T18:39:44.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260819/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+     "size": 25231828,
+     "last_modified": "2026-08-19T18:39:46.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260819/stofs_2d_glo.t12z.points.cwl.shef",
+     "size": 1817587,
+     "last_modified": "2026-08-19T18:39:47.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260819/stofs_2d_glo.t12z.points.cwl.vel.nc",
+     "size": 50334820,
+     "last_modified": "2026-08-19T18:39:47.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260819/stofs_2d_glo.t12z.points.htp.nc",
+     "size": 25231828,
+     "last_modified": "2026-08-19T18:39:49.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260819/stofs_2d_glo.t12z.points.htp.shef",
+     "size": 1817584,
+     "last_modified": "2026-08-19T18:39:51.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260819/stofs_2d_glo.t12z.points.swl.nc",
+     "size": 25232240,
+     "last_modified": "2026-08-19T18:39:51.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260819/stofs_2d_glo.t12z.points.swl.shef",
+     "size": 1817588,
+     "last_modified": "2026-08-19T18:39:52.000Z"
+    }
+   ]
+  },
+  {
+   "product": "3d",
+   "date": "2026-08-20",
+   "status": 200,
+   "sha256": "fc4a5d3c035d0dea041f2299e0407dcf884f9d590885996ef480829d12d40c73",
+   "path": "phase0/s3_listings/fc4a5d3c035d0dea041f2299e0407dcf884f9d590885996ef480829d12d40c73.xml",
+   "objects": [
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260820/stofs_3d_atl.t12z.points.cwl.nc",
+     "size": 8297477,
+     "last_modified": "2026-08-20T19:45:09.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260820/stofs_3d_atl.t12z.points.cwl.shef",
+     "size": 309243,
+     "last_modified": "2026-08-20T19:45:09.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260820/stofs_3d_atl.t12z.points.cwl.temp.salt.vel.nc",
+     "size": 8297477,
+     "last_modified": "2026-08-20T19:45:09.000Z"
+    }
+   ]
+  },
+  {
+   "product": "2d",
+   "date": "2026-08-20",
+   "status": 200,
+   "sha256": "dd946866b96ca8b1bdf16ba9ed977b46338f3b68ce4f7e1be524f1291ebc6139",
+   "path": "phase0/s3_listings/dd946866b96ca8b1bdf16ba9ed977b46338f3b68ce4f7e1be524f1291ebc6139.xml",
+   "objects": [
+    {
+     "key": "stofs_2d_glo.20260820/stofs_2d_glo.t12z.points.autoval.cwl.nc",
+     "size": 12468232,
+     "last_modified": "2026-08-20T19:49:36.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260820/stofs_2d_glo.t12z.points.cwl.nc",
+     "size": 25231796,
+     "last_modified": "2026-08-20T18:39:58.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260820/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+     "size": 25231828,
+     "last_modified": "2026-08-20T18:39:59.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260820/stofs_2d_glo.t12z.points.cwl.shef",
+     "size": 1817587,
+     "last_modified": "2026-08-20T18:40:02.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260820/stofs_2d_glo.t12z.points.cwl.vel.nc",
+     "size": 50334820,
+     "last_modified": "2026-08-20T18:40:02.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260820/stofs_2d_glo.t12z.points.htp.nc",
+     "size": 25231828,
+     "last_modified": "2026-08-20T18:40:05.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260820/stofs_2d_glo.t12z.points.htp.shef",
+     "size": 1817584,
+     "last_modified": "2026-08-20T18:40:06.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260820/stofs_2d_glo.t12z.points.swl.nc",
+     "size": 25232240,
+     "last_modified": "2026-08-20T18:40:06.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260820/stofs_2d_glo.t12z.points.swl.shef",
+     "size": 1817588,
+     "last_modified": "2026-08-20T18:40:08.000Z"
+    }
+   ]
+  },
+  {
+   "product": "3d",
+   "date": "2026-08-24",
+   "status": 200,
+   "sha256": "db7e1ef77ca5c19ae817f2c5ecf6f7e4237754f81007582f811628dbae0cfaf2",
+   "path": "phase0/s3_listings/db7e1ef77ca5c19ae817f2c5ecf6f7e4237754f81007582f811628dbae0cfaf2.xml",
+   "objects": [
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260824/stofs_3d_atl.t12z.points.cwl.nc",
+     "size": 8297477,
+     "last_modified": "2026-08-24T19:46:23.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260824/stofs_3d_atl.t12z.points.cwl.shef",
+     "size": 309243,
+     "last_modified": "2026-08-24T19:46:24.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260824/stofs_3d_atl.t12z.points.cwl.temp.salt.vel.nc",
+     "size": 8297477,
+     "last_modified": "2026-08-24T19:46:24.000Z"
+    }
+   ]
+  },
+  {
+   "product": "2d",
+   "date": "2026-08-24",
+   "status": 200,
+   "sha256": "0e0a09ac92adcc54625c05fe8fdaa89a0575c5bed3176ae1fa4373c00030c414",
+   "path": "phase0/s3_listings/0e0a09ac92adcc54625c05fe8fdaa89a0575c5bed3176ae1fa4373c00030c414.xml",
+   "objects": [
+    {
+     "key": "stofs_2d_glo.20260824/stofs_2d_glo.t12z.points.autoval.cwl.nc",
+     "size": 12468232,
+     "last_modified": "2026-08-24T19:49:26.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260824/stofs_2d_glo.t12z.points.cwl.nc",
+     "size": 25231796,
+     "last_modified": "2026-08-24T18:36:18.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260824/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+     "size": 25231828,
+     "last_modified": "2026-08-24T18:36:19.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260824/stofs_2d_glo.t12z.points.cwl.shef",
+     "size": 1817587,
+     "last_modified": "2026-08-24T18:50:52.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260824/stofs_2d_glo.t12z.points.cwl.vel.nc",
+     "size": 50334820,
+     "last_modified": "2026-08-24T18:36:21.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260824/stofs_2d_glo.t12z.points.htp.nc",
+     "size": 25231828,
+     "last_modified": "2026-08-24T18:36:23.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260824/stofs_2d_glo.t12z.points.htp.shef",
+     "size": 1817584,
+     "last_modified": "2026-08-24T18:50:56.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260824/stofs_2d_glo.t12z.points.swl.nc",
+     "size": 25232240,
+     "last_modified": "2026-08-24T18:50:56.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260824/stofs_2d_glo.t12z.points.swl.shef",
+     "size": 1817588,
+     "last_modified": "2026-08-24T18:50:56.000Z"
+    }
+   ]
+  },
+  {
+   "product": "3d",
+   "date": "2026-08-31",
+   "status": 200,
+   "sha256": "a59a845cf8dfb674c8387acc4651071de780138d5e5c36b035857fd64580738f",
+   "path": "phase0/s3_listings/a59a845cf8dfb674c8387acc4651071de780138d5e5c36b035857fd64580738f.xml",
+   "objects": [
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260831/stofs_3d_atl.t12z.points.cwl.nc",
+     "size": 8297477,
+     "last_modified": "2026-08-31T19:49:08.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260831/stofs_3d_atl.t12z.points.cwl.shef",
+     "size": 309243,
+     "last_modified": "2026-08-31T19:49:08.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260831/stofs_3d_atl.t12z.points.cwl.temp.salt.vel.nc",
+     "size": 8297477,
+     "last_modified": "2026-08-31T19:49:08.000Z"
+    }
+   ]
+  },
+  {
+   "product": "2d",
+   "date": "2026-08-31",
+   "status": 200,
+   "sha256": "c5eda8059696ed0a0ee3255e33bbe1c1ee9fac79551f44c1794d923157b5e585",
+   "path": "phase0/s3_listings/c5eda8059696ed0a0ee3255e33bbe1c1ee9fac79551f44c1794d923157b5e585.xml",
+   "objects": [
+    {
+     "key": "stofs_2d_glo.20260831/stofs_2d_glo.t12z.points.autoval.cwl.nc",
+     "size": 12468232,
+     "last_modified": "2026-08-31T19:49:17.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260831/stofs_2d_glo.t12z.points.cwl.nc",
+     "size": 25231796,
+     "last_modified": "2026-08-31T18:38:14.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260831/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+     "size": 25231828,
+     "last_modified": "2026-08-31T18:38:16.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260831/stofs_2d_glo.t12z.points.cwl.shef",
+     "size": 1817587,
+     "last_modified": "2026-08-31T18:38:17.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260831/stofs_2d_glo.t12z.points.cwl.vel.nc",
+     "size": 50334820,
+     "last_modified": "2026-08-31T18:38:17.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260831/stofs_2d_glo.t12z.points.htp.nc",
+     "size": 25231828,
+     "last_modified": "2026-08-31T18:38:19.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260831/stofs_2d_glo.t12z.points.htp.shef",
+     "size": 1817584,
+     "last_modified": "2026-08-31T18:38:20.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260831/stofs_2d_glo.t12z.points.swl.nc",
+     "size": 25232240,
+     "last_modified": "2026-08-31T18:38:20.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260831/stofs_2d_glo.t12z.points.swl.shef",
+     "size": 1817588,
+     "last_modified": "2026-08-31T18:38:22.000Z"
+    }
+   ]
+  },
+  {
+   "product": "3d",
+   "date": "2026-09-07",
+   "status": 200,
+   "sha256": "eb02e924d3271f64bd3673ad53af4999bb7230bf38d596d804a2cd6060e416c0",
+   "path": "phase0/s3_listings/eb02e924d3271f64bd3673ad53af4999bb7230bf38d596d804a2cd6060e416c0.xml",
+   "objects": [
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260907/stofs_3d_atl.t12z.points.cwl.nc",
+     "size": 8297477,
+     "last_modified": "2026-09-07T19:47:52.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260907/stofs_3d_atl.t12z.points.cwl.shef",
+     "size": 309243,
+     "last_modified": "2026-09-07T19:47:52.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260907/stofs_3d_atl.t12z.points.cwl.temp.salt.vel.nc",
+     "size": 8297477,
+     "last_modified": "2026-09-07T19:47:54.000Z"
+    }
+   ]
+  },
+  {
+   "product": "2d",
+   "date": "2026-09-07",
+   "status": 200,
+   "sha256": "9a1d1ab9e34b1ea3e451b2f97da50c0aba3fc699dc4a50f4df959f8060afcf02",
+   "path": "phase0/s3_listings/9a1d1ab9e34b1ea3e451b2f97da50c0aba3fc699dc4a50f4df959f8060afcf02.xml",
+   "objects": [
+    {
+     "key": "stofs_2d_glo.20260907/stofs_2d_glo.t12z.points.autoval.cwl.nc",
+     "size": 12468232,
+     "last_modified": "2026-09-07T19:49:21.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260907/stofs_2d_glo.t12z.points.cwl.nc",
+     "size": 25231796,
+     "last_modified": "2026-09-07T18:39:29.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260907/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+     "size": 25231828,
+     "last_modified": "2026-09-07T18:39:30.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260907/stofs_2d_glo.t12z.points.cwl.shef",
+     "size": 1817587,
+     "last_modified": "2026-09-07T18:39:32.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260907/stofs_2d_glo.t12z.points.cwl.vel.nc",
+     "size": 50334820,
+     "last_modified": "2026-09-07T18:39:32.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260907/stofs_2d_glo.t12z.points.htp.nc",
+     "size": 25231828,
+     "last_modified": "2026-09-07T18:39:35.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260907/stofs_2d_glo.t12z.points.htp.shef",
+     "size": 1817584,
+     "last_modified": "2026-09-07T18:39:36.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260907/stofs_2d_glo.t12z.points.swl.nc",
+     "size": 25232240,
+     "last_modified": "2026-09-07T18:39:36.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260907/stofs_2d_glo.t12z.points.swl.shef",
+     "size": 1817588,
+     "last_modified": "2026-09-07T18:39:38.000Z"
+    }
+   ]
+  },
+  {
+   "product": "3d",
+   "date": "2026-09-14",
+   "status": 200,
+   "sha256": "6127eb0f924771b093979fff9e604cdef14601ded060cef0bbf8bca374b942a6",
+   "path": "phase0/s3_listings/6127eb0f924771b093979fff9e604cdef14601ded060cef0bbf8bca374b942a6.xml",
+   "objects": [
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260914/stofs_3d_atl.t12z.points.cwl.nc",
+     "size": 8297477,
+     "last_modified": "2026-09-14T19:52:16.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260914/stofs_3d_atl.t12z.points.cwl.shef",
+     "size": 309243,
+     "last_modified": "2026-09-14T19:52:16.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260914/stofs_3d_atl.t12z.points.cwl.temp.salt.vel.nc",
+     "size": 8297477,
+     "last_modified": "2026-09-14T19:52:17.000Z"
+    }
+   ]
+  },
+  {
+   "product": "2d",
+   "date": "2026-09-14",
+   "status": 200,
+   "sha256": "f21b155aec63c8d21ad2b6d2ef7353cd7eb0a2d32b3a96f805c2c42203912a1e",
+   "path": "phase0/s3_listings/f21b155aec63c8d21ad2b6d2ef7353cd7eb0a2d32b3a96f805c2c42203912a1e.xml",
+   "objects": [
+    {
+     "key": "stofs_2d_glo.20260914/stofs_2d_glo.t12z.points.cwl.nc",
+     "size": 25231796,
+     "last_modified": "2026-09-14T19:52:51.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260914/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+     "size": 25231828,
+     "last_modified": "2026-09-14T19:52:53.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260914/stofs_2d_glo.t12z.points.cwl.shef",
+     "size": 1817587,
+     "last_modified": "2026-09-14T19:52:54.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260914/stofs_2d_glo.t12z.points.cwl.vel.nc",
+     "size": 50334820,
+     "last_modified": "2026-09-14T19:52:55.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260914/stofs_2d_glo.t12z.points.htp.nc",
+     "size": 25231828,
+     "last_modified": "2026-09-14T19:52:57.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260914/stofs_2d_glo.t12z.points.htp.shef",
+     "size": 1817584,
+     "last_modified": "2026-09-14T19:52:59.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260914/stofs_2d_glo.t12z.points.swl.nc",
+     "size": 25232240,
+     "last_modified": "2026-09-14T19:52:59.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260914/stofs_2d_glo.t12z.points.swl.shef",
+     "size": 1817588,
+     "last_modified": "2026-09-14T19:53:00.000Z"
+    }
+   ]
+  },
+  {
+   "product": "3d",
+   "date": "2026-09-21",
+   "status": 200,
+   "sha256": "37b43234ae38991d03ee892ae1e6b35bc9a947eec6b8e8061ae81dc86a48a2f7",
+   "path": "phase0/s3_listings/37b43234ae38991d03ee892ae1e6b35bc9a947eec6b8e8061ae81dc86a48a2f7.xml",
+   "objects": [
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260921/stofs_3d_atl.t12z.points.cwl.nc",
+     "size": 8297477,
+     "last_modified": "2026-09-21T20:14:25.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260921/stofs_3d_atl.t12z.points.cwl.shef",
+     "size": 309243,
+     "last_modified": "2026-09-21T20:14:26.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260921/stofs_3d_atl.t12z.points.cwl.temp.salt.vel.nc",
+     "size": 8297477,
+     "last_modified": "2026-09-21T20:14:26.000Z"
+    }
+   ]
+  },
+  {
+   "product": "2d",
+   "date": "2026-09-21",
+   "status": 200,
+   "sha256": "f284d7cf2f48dfcfe7f23921adcf117fe3a60a70a7c4a185f1570254d28289ce",
+   "path": "phase0/s3_listings/f284d7cf2f48dfcfe7f23921adcf117fe3a60a70a7c4a185f1570254d28289ce.xml",
+   "objects": [
+    {
+     "key": "stofs_2d_glo.20260921/stofs_2d_glo.t12z.points.autoval.cwl.nc",
+     "size": 12468232,
+     "last_modified": "2026-09-21T19:49:24.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260921/stofs_2d_glo.t12z.points.cwl.nc",
+     "size": 25231796,
+     "last_modified": "2026-09-21T18:39:35.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260921/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+     "size": 25231828,
+     "last_modified": "2026-09-21T18:39:37.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260921/stofs_2d_glo.t12z.points.cwl.shef",
+     "size": 1817587,
+     "last_modified": "2026-09-21T18:39:38.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260921/stofs_2d_glo.t12z.points.cwl.vel.nc",
+     "size": 50334820,
+     "last_modified": "2026-09-21T18:39:38.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260921/stofs_2d_glo.t12z.points.htp.nc",
+     "size": 25231828,
+     "last_modified": "2026-09-21T18:39:40.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260921/stofs_2d_glo.t12z.points.htp.shef",
+     "size": 1817584,
+     "last_modified": "2026-09-21T18:39:42.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260921/stofs_2d_glo.t12z.points.swl.nc",
+     "size": 25232240,
+     "last_modified": "2026-09-21T18:39:42.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260921/stofs_2d_glo.t12z.points.swl.shef",
+     "size": 1817588,
+     "last_modified": "2026-09-21T18:39:43.000Z"
+    }
+   ]
+  },
+  {
+   "product": "3d",
+   "date": "2026-09-28",
+   "status": 200,
+   "sha256": "14c433a5aed8331d84c7c2d8b6198b82ae69f185ff66558f6dd5019e3dfc6698",
+   "path": "phase0/s3_listings/14c433a5aed8331d84c7c2d8b6198b82ae69f185ff66558f6dd5019e3dfc6698.xml",
+   "objects": [
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260928/stofs_3d_atl.t12z.points.cwl.nc",
+     "size": 8297477,
+     "last_modified": "2026-09-28T19:58:28.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260928/stofs_3d_atl.t12z.points.cwl.shef",
+     "size": 309243,
+     "last_modified": "2026-09-28T19:58:29.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20260928/stofs_3d_atl.t12z.points.cwl.temp.salt.vel.nc",
+     "size": 8297477,
+     "last_modified": "2026-09-28T19:58:29.000Z"
+    }
+   ]
+  },
+  {
+   "product": "2d",
+   "date": "2026-09-28",
+   "status": 200,
+   "sha256": "d578de59b33977e2cffe10d175a0ad8d9236c13a6f21aca68193c1c8688007b9",
+   "path": "phase0/s3_listings/d578de59b33977e2cffe10d175a0ad8d9236c13a6f21aca68193c1c8688007b9.xml",
+   "objects": [
+    {
+     "key": "stofs_2d_glo.20260928/stofs_2d_glo.t12z.points.cwl.nc",
+     "size": 25231796,
+     "last_modified": "2026-09-29T21:00:38.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260928/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+     "size": 25231828,
+     "last_modified": "2026-09-29T21:00:39.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260928/stofs_2d_glo.t12z.points.cwl.shef",
+     "size": 1817587,
+     "last_modified": "2026-09-29T21:00:40.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260928/stofs_2d_glo.t12z.points.cwl.vel.nc",
+     "size": 50334820,
+     "last_modified": "2026-09-29T21:00:41.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260928/stofs_2d_glo.t12z.points.htp.nc",
+     "size": 25231828,
+     "last_modified": "2026-09-29T21:00:43.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260928/stofs_2d_glo.t12z.points.htp.shef",
+     "size": 1817584,
+     "last_modified": "2026-09-29T21:00:44.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260928/stofs_2d_glo.t12z.points.swl.nc",
+     "size": 25232240,
+     "last_modified": "2026-09-29T21:00:44.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20260928/stofs_2d_glo.t12z.points.swl.shef",
+     "size": 1817588,
+     "last_modified": "2026-09-29T21:00:46.000Z"
+    }
+   ]
+  },
+  {
+   "product": "3d",
+   "date": "2026-10-05",
+   "status": 200,
+   "sha256": "5985250f76fc91667d07373cdbcdcabd20e51a7f2012517579ae029bc1b94ff1",
+   "path": "phase0/s3_listings/5985250f76fc91667d07373cdbcdcabd20e51a7f2012517579ae029bc1b94ff1.xml",
+   "objects": [
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20261005/stofs_3d_atl.t12z.points.cwl.nc",
+     "size": 8297477,
+     "last_modified": "2026-10-05T20:41:46.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20261005/stofs_3d_atl.t12z.points.cwl.shef",
+     "size": 309243,
+     "last_modified": "2026-10-05T20:41:46.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20261005/stofs_3d_atl.t12z.points.cwl.temp.salt.vel.nc",
+     "size": 8297477,
+     "last_modified": "2026-10-05T20:41:46.000Z"
+    }
+   ]
+  },
+  {
+   "product": "2d",
+   "date": "2026-10-05",
+   "status": 200,
+   "sha256": "ba05b81ef20c81cf5e31d83f913bb0efaf29337d10bec11c20e11c9532b2de34",
+   "path": "phase0/s3_listings/ba05b81ef20c81cf5e31d83f913bb0efaf29337d10bec11c20e11c9532b2de34.xml",
+   "objects": [
+    {
+     "key": "stofs_2d_glo.20261005/stofs_2d_glo.t12z.points.autoval.cwl.nc",
+     "size": 12468232,
+     "last_modified": "2026-10-05T19:49:09.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261005/stofs_2d_glo.t12z.points.cwl.nc",
+     "size": 25231796,
+     "last_modified": "2026-10-05T19:36:01.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261005/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+     "size": 25231828,
+     "last_modified": "2026-10-05T19:36:02.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261005/stofs_2d_glo.t12z.points.cwl.shef",
+     "size": 1817587,
+     "last_modified": "2026-10-05T19:36:04.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261005/stofs_2d_glo.t12z.points.cwl.vel.nc",
+     "size": 50334820,
+     "last_modified": "2026-10-05T19:36:04.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261005/stofs_2d_glo.t12z.points.htp.nc",
+     "size": 25231828,
+     "last_modified": "2026-10-05T19:36:06.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261005/stofs_2d_glo.t12z.points.htp.shef",
+     "size": 1817584,
+     "last_modified": "2026-10-05T19:36:08.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261005/stofs_2d_glo.t12z.points.swl.nc",
+     "size": 25232240,
+     "last_modified": "2026-10-05T19:36:08.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261005/stofs_2d_glo.t12z.points.swl.shef",
+     "size": 1817588,
+     "last_modified": "2026-10-05T19:36:09.000Z"
+    }
+   ]
+  },
+  {
+   "product": "3d",
+   "date": "2026-10-12",
+   "status": 200,
+   "sha256": "24a97aa2204f2547f029f7181ebd813330d93b5acfa6cee151585c811470a6a2",
+   "path": "phase0/s3_listings/24a97aa2204f2547f029f7181ebd813330d93b5acfa6cee151585c811470a6a2.xml",
+   "objects": [
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20261012/stofs_3d_atl.t12z.points.cwl.nc",
+     "size": 8297477,
+     "last_modified": "2026-10-12T19:55:18.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20261012/stofs_3d_atl.t12z.points.cwl.shef",
+     "size": 309243,
+     "last_modified": "2026-10-12T19:55:18.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20261012/stofs_3d_atl.t12z.points.cwl.temp.salt.vel.nc",
+     "size": 8297477,
+     "last_modified": "2026-10-12T19:55:19.000Z"
+    }
+   ]
+  },
+  {
+   "product": "2d",
+   "date": "2026-10-12",
+   "status": 200,
+   "sha256": "ec1ffb19e83aab33b19caaa69f2c7b9c80a195cc73c96f5e1b87b4dbdbad77ed",
+   "path": "phase0/s3_listings/ec1ffb19e83aab33b19caaa69f2c7b9c80a195cc73c96f5e1b87b4dbdbad77ed.xml",
+   "objects": [
+    {
+     "key": "stofs_2d_glo.20261012/stofs_2d_glo.t12z.points.autoval.cwl.nc",
+     "size": 12468232,
+     "last_modified": "2026-10-12T19:49:09.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261012/stofs_2d_glo.t12z.points.cwl.nc",
+     "size": 25231796,
+     "last_modified": "2026-10-12T19:20:12.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261012/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+     "size": 25231828,
+     "last_modified": "2026-10-12T19:20:13.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261012/stofs_2d_glo.t12z.points.cwl.shef",
+     "size": 1817587,
+     "last_modified": "2026-10-12T19:20:15.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261012/stofs_2d_glo.t12z.points.cwl.vel.nc",
+     "size": 50334820,
+     "last_modified": "2026-10-12T19:20:15.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261012/stofs_2d_glo.t12z.points.htp.nc",
+     "size": 25231828,
+     "last_modified": "2026-10-12T14:04:07.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261012/stofs_2d_glo.t12z.points.htp.shef",
+     "size": 1817584,
+     "last_modified": "2026-10-12T19:20:17.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261012/stofs_2d_glo.t12z.points.swl.nc",
+     "size": 25232240,
+     "last_modified": "2026-10-12T19:20:18.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261012/stofs_2d_glo.t12z.points.swl.shef",
+     "size": 1817588,
+     "last_modified": "2026-10-12T19:20:19.000Z"
+    }
+   ]
+  },
+  {
+   "product": "3d",
+   "date": "2026-10-19",
+   "status": 200,
+   "sha256": "372ccc54b55ba8d278d4b8cd0c0ca27cb6c15defa542d26dc5d2cf4038bc90c4",
+   "path": "phase0/s3_listings/372ccc54b55ba8d278d4b8cd0c0ca27cb6c15defa542d26dc5d2cf4038bc90c4.xml",
+   "objects": [
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20261019/stofs_3d_atl.t12z.points.cwl.nc",
+     "size": 8297477,
+     "last_modified": "2026-10-19T19:57:22.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20261019/stofs_3d_atl.t12z.points.cwl.shef",
+     "size": 309243,
+     "last_modified": "2026-10-19T19:57:22.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20261019/stofs_3d_atl.t12z.points.cwl.temp.salt.vel.nc",
+     "size": 8297477,
+     "last_modified": "2026-10-19T19:57:22.000Z"
+    }
+   ]
+  },
+  {
+   "product": "2d",
+   "date": "2026-10-19",
+   "status": 200,
+   "sha256": "da9d06917901ae556cf5a9263789b36a54904d6944c953c17041aa93f33fdbc3",
+   "path": "phase0/s3_listings/da9d06917901ae556cf5a9263789b36a54904d6944c953c17041aa93f33fdbc3.xml",
+   "objects": [
+    {
+     "key": "stofs_2d_glo.20261019/stofs_2d_glo.t12z.points.cwl.nc",
+     "size": 25231796,
+     "last_modified": "2026-10-19T19:49:15.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261019/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+     "size": 25231828,
+     "last_modified": "2026-10-19T19:49:16.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261019/stofs_2d_glo.t12z.points.cwl.shef",
+     "size": 1817587,
+     "last_modified": "2026-10-19T19:49:18.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261019/stofs_2d_glo.t12z.points.cwl.vel.nc",
+     "size": 50334820,
+     "last_modified": "2026-10-19T19:49:18.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261019/stofs_2d_glo.t12z.points.htp.nc",
+     "size": 25231828,
+     "last_modified": "2026-10-19T13:33:20.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261019/stofs_2d_glo.t12z.points.htp.shef",
+     "size": 1817584,
+     "last_modified": "2026-10-19T19:49:20.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261019/stofs_2d_glo.t12z.points.swl.nc",
+     "size": 25232240,
+     "last_modified": "2026-10-19T19:49:20.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261019/stofs_2d_glo.t12z.points.swl.shef",
+     "size": 1817588,
+     "last_modified": "2026-10-19T19:49:22.000Z"
+    }
+   ]
+  },
+  {
+   "product": "3d",
+   "date": "2026-10-26",
+   "status": 200,
+   "sha256": "77351397b35a5ad5b1493b698c8dc0ad9e73aa45f36a260e8e08d8154c63c06c",
+   "path": "phase0/s3_listings/77351397b35a5ad5b1493b698c8dc0ad9e73aa45f36a260e8e08d8154c63c06c.xml",
+   "objects": [
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20261026/stofs_3d_atl.t12z.points.cwl.nc",
+     "size": 8297477,
+     "last_modified": "2026-10-26T19:56:14.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20261026/stofs_3d_atl.t12z.points.cwl.shef",
+     "size": 309243,
+     "last_modified": "2026-10-26T19:56:14.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20261026/stofs_3d_atl.t12z.points.cwl.temp.salt.vel.nc",
+     "size": 8297477,
+     "last_modified": "2026-10-26T19:56:15.000Z"
+    }
+   ]
+  },
+  {
+   "product": "2d",
+   "date": "2026-10-26",
+   "status": 200,
+   "sha256": "69e9c02e75dd315eaf79bfd341996c06a38390529647e45240ac464b8fa26b57",
+   "path": "phase0/s3_listings/69e9c02e75dd315eaf79bfd341996c06a38390529647e45240ac464b8fa26b57.xml",
+   "objects": [
+    {
+     "key": "stofs_2d_glo.20261026/stofs_2d_glo.t12z.points.autoval.cwl.nc",
+     "size": 12468232,
+     "last_modified": "2026-10-26T19:49:32.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261026/stofs_2d_glo.t12z.points.cwl.nc",
+     "size": 25231796,
+     "last_modified": "2026-10-26T19:19:52.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261026/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+     "size": 25231828,
+     "last_modified": "2026-10-26T19:19:54.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261026/stofs_2d_glo.t12z.points.cwl.shef",
+     "size": 1817587,
+     "last_modified": "2026-10-26T19:19:55.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261026/stofs_2d_glo.t12z.points.cwl.vel.nc",
+     "size": 50334820,
+     "last_modified": "2026-10-26T19:19:55.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261026/stofs_2d_glo.t12z.points.htp.nc",
+     "size": 25231828,
+     "last_modified": "2026-10-26T13:33:38.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261026/stofs_2d_glo.t12z.points.htp.shef",
+     "size": 1817584,
+     "last_modified": "2026-10-26T19:19:55.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261026/stofs_2d_glo.t12z.points.swl.nc",
+     "size": 25232240,
+     "last_modified": "2026-10-26T19:19:55.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261026/stofs_2d_glo.t12z.points.swl.shef",
+     "size": 1817588,
+     "last_modified": "2026-10-26T19:19:56.000Z"
+    }
+   ]
+  },
+  {
+   "product": "3d",
+   "date": "2026-11-02",
+   "status": 200,
+   "sha256": "82cfffd67768f31fe3e09899e852ab2f4cae2bdb04b34b0ceb46cd457a7689c6",
+   "path": "phase0/s3_listings/82cfffd67768f31fe3e09899e852ab2f4cae2bdb04b34b0ceb46cd457a7689c6.xml",
+   "objects": [
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20261102/stofs_3d_atl.t12z.points.cwl.nc",
+     "size": 8297477,
+     "last_modified": "2026-11-02T19:57:38.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20261102/stofs_3d_atl.t12z.points.cwl.shef",
+     "size": 309243,
+     "last_modified": "2026-11-02T19:57:38.000Z"
+    },
+    {
+     "key": "STOFS-3D-Atl/stofs_3d_atl.20261102/stofs_3d_atl.t12z.points.cwl.temp.salt.vel.nc",
+     "size": 8297477,
+     "last_modified": "2026-11-02T19:57:38.000Z"
+    }
+   ]
+  },
+  {
+   "product": "2d",
+   "date": "2026-11-02",
+   "status": 200,
+   "sha256": "ba73d8b8b75c62b0e68d6f8d331c13a2031daf9c04bc1fa9b250e60f616697f7",
+   "path": "phase0/s3_listings/ba73d8b8b75c62b0e68d6f8d331c13a2031daf9c04bc1fa9b250e60f616697f7.xml",
+   "objects": [
+    {
+     "key": "stofs_2d_glo.20261102/stofs_2d_glo.t12z.points.autoval.cwl.nc",
+     "size": 12468232,
+     "last_modified": "2026-11-02T19:49:22.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261102/stofs_2d_glo.t12z.points.cwl.nc",
+     "size": 25231796,
+     "last_modified": "2026-11-02T19:43:22.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261102/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+     "size": 25231828,
+     "last_modified": "2026-11-02T19:43:24.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261102/stofs_2d_glo.t12z.points.cwl.shef",
+     "size": 1817587,
+     "last_modified": "2026-11-02T19:43:25.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261102/stofs_2d_glo.t12z.points.cwl.vel.nc",
+     "size": 50334820,
+     "last_modified": "2026-11-02T19:43:25.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261102/stofs_2d_glo.t12z.points.htp.nc",
+     "size": 25231828,
+     "last_modified": "2026-11-02T13:43:34.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261102/stofs_2d_glo.t12z.points.htp.shef",
+     "size": 1817584,
+     "last_modified": "2026-11-02T19:43:27.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261102/stofs_2d_glo.t12z.points.swl.nc",
+     "size": 25232240,
+     "last_modified": "2026-11-02T19:43:27.000Z"
+    },
+    {
+     "key": "stofs_2d_glo.20261102/stofs_2d_glo.t12z.points.swl.shef",
+     "size": 1817588,
+     "last_modified": "2026-11-02T19:43:29.000Z"
+    }
+   ]
+  }
+ ]
+}

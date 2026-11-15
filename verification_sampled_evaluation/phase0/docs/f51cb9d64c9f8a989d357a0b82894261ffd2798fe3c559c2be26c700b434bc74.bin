@@ -1,0 +1,274 @@
+#!/usr/bin/env python3
+
+'''
+Version : 1.0
+Purpose : Calculate the bias between the model and observation data for the target period
+
+Description:
+1. Usage: python derive_bias.py <start_date> --duration <duration>
+    - <start_date>: The target time for the bias calculation in the format YYYY-MM-DD
+    - --duration: The number of days to duration for calculating bias (default is 2)
+    - RUN: The name of the run
+
+2. Parameters: (Mannually set by the user)
+    - WDIR: The working directory where the SCHISM output files are stored
+    - stations: The list of stations to calculate the bias (number of stations will be able to change)
+
+'''
+import sys; sys.path.append('./pylibs')
+
+import argparse
+import numpy as np
+import pandas as pd
+from scipy import interpolate, stats
+from pylib import read, datenum, num2date, read_schism_bpfile, loadtxt, loadz, lpfilt
+
+
+def input_date():
+    '''
+    Function to input the target time for the bias calculation
+    '''
+    # Setting up argument parser
+    parser = argparse.ArgumentParser(description='Input the target time for the bias calculation')
+    parser.add_argument('option', type=str, help='Starttime for the bias calculation in the format YYYY-MM-DD')
+    parser.add_argument('--duration', type=int, default=2, help='Number of days to duration for calculating bias')
+    parser.add_argument('run', type=str, help='date-run folder')
+    parser.add_argument('outfn', type=str, help='output filename date')
+
+    # Parse the arguments
+    args = parser.parse_args()
+
+    # input date
+    date = args.option.split('-')
+
+    # Split the input date into year, month, and day
+    year, month, day = map(int, date[:3])
+    hour = int(date[3]) if len(date) > 3 else 12
+
+    # Set the target time for the bias calculation
+    target_ts = datenum(year, month, day, hour)
+    target_te = target_ts + args.duration
+
+    # Set date-run folder
+    run = args.run
+
+    # Set output filename
+    outfn = args.outfn
+
+    return target_ts, target_te, run, outfn
+
+
+def get_valid_stations(stations, elev_obs, gap_idx, target_ts, target_te):
+    '''
+    Function to check observation data availability for stations and return a list of valid stations.
+
+    Parameters:
+    stations (list): The list of stations to calculate the bias
+    elev_obs : the observation database
+    gap_idx : The threshold for the gap in the observation data (default is 3)
+    TargetTs : The start time for the bias calculation
+    TargetTe : The end time for the bias calculation
+
+    Returns:
+    Valid_Station_list (list): The list of valid stations with observation data available for the target period
+    '''
+    valid_station_list = []
+    gap_station_list = []
+
+    for station in stations:
+        fp = (elev_obs.station == station) * (elev_obs.time >= target_ts) * (elev_obs.time <= target_te)
+        oti, oyi = elev_obs.time[fp], elev_obs.elev[fp]
+        sind = np.argsort(oti)
+        oti, oyi = oti[sind], oyi[sind]
+
+        if len(oti) == 0 or np.all(np.isnan(oyi)):
+            print(f"No observation for station {station}")
+            continue
+        else:
+            gap_threshold = stats.mode(np.diff(oti),keepdims=False).mode * gap_idx # unit day
+            gap_threshold_min = round(gap_threshold * 24 * 60) # unit minutes (60 min)
+            
+            print(f"threshold time is {gap_threshold_min} min")
+            oti_diff = np.diff(oti)
+            gap_indices = np.where(oti_diff > gap_threshold)[0]
+
+            if len(gap_indices) > 0:
+                number = len(gap_indices)
+                period = round(max(oti_diff) * 24 * 60)
+                print(f"{station} : {period} min gap existed")
+                valid_station_list.append(station)
+            else:       
+                st = num2date(target_ts).strftime('%Y-%m-%d-%H')
+                et = num2date(target_te).strftime('%Y-%m-%d-%H')
+                print(f"Observation data is available for station {station} during the target period {st} - {et}")
+
+                valid_station_list.append(station)
+
+    return valid_station_list
+
+
+def interpolate_observations(oti, oyi, mti):
+    '''
+    Function to interpolate the observation data to the model time
+    '''
+    gap_threshold = stats.mode(np.diff(oti),keepdims=False).mode * 10  # Adjust threshold for gaps
+    oti_diff = np.diff(oti)
+    gap_indices = np.where(oti_diff > gap_threshold)[0]
+    inter_indices = np.where((7/(24*60)<oti_diff) & (oti_diff<gap_threshold))[0]
+
+    # Initialize interpolated observation array with NaNs
+    soyi = np.full_like(mti, np.nan, dtype=np.float64)
+
+    start_idx = 0
+    for gap_idx in gap_indices:
+        # Interpolate only for the segment without a gap
+        if gap_idx > start_idx:
+            interp_func = interpolate.interp1d(oti[start_idx:gap_idx + 1], oyi[start_idx:gap_idx + 1],
+                                               bounds_error=False, fill_value=np.nan)
+            segment_mask = (mti >= oti[start_idx]) & (mti <= oti[gap_idx])
+            soyi[segment_mask] = interp_func(mti[segment_mask])
+        # Leave NaNs in the gap region
+        start_idx = gap_idx + 1
+
+    # Handle the last segment if no gap is found after the last point
+    if start_idx < len(oti):
+        interp_func = interpolate.interp1d(oti[start_idx:], oyi[start_idx:], bounds_error=False, fill_value=np.nan)
+        segment_mask = (mti >= oti[start_idx]) & (mti <= oti[-1])
+        soyi[segment_mask] = interp_func(mti[segment_mask])
+
+    return soyi
+
+
+def calculate_bias(elev_obs, elev_model, diff_xgeoid_navd, station_in, stations, target_ts, target_te, ts_model):
+    '''
+    Function to calculate the bias between the model and observation data for the target period
+
+    Parameters:
+    elev_obs : The path to the observation database
+    elev_model : SCHISM output data (e.g., staout_1)
+    diff_xGEOID_NAVD88 : The difference between xGEOID and NAVD88 at the stations
+    stations (list): The list of stations to calculate the bias
+    TargetTs : The start time for the bias calculation
+    TargetTe : The end time for the bias calculation
+
+    Returns:
+    bias_df (DataFrame): The DataFrame to store the bias for each station
+    '''
+    # Create a DataFrame to store the bias for each station
+    inner_bias_df = pd.DataFrame()
+    stations  = get_valid_stations(stations, elev_obs, 10, target_ts, target_te)
+
+    for station in stations:
+        fp = (elev_obs.station == station) * (elev_obs.time >= target_ts) * (elev_obs.time <= target_te)
+        oti, oyi = elev_obs.time[fp], elev_obs.elev[fp]
+        sind = np.argsort(oti)
+        oti, oyi = oti[sind], oyi[sind]
+        di = diff_xgeoid_navd.z[diff_xgeoid_navd.station == station]
+        oyi_d = oyi + di
+
+        # Model data at the station
+        myi = elev_model[:, 1:]
+        mti = elev_model[:, 0]/86400 + ts_model
+        sid_match = np.nonzero(station_in.station == station)[0]
+        sid = sid_match[0]
+        myi = myi[:, sid]
+        fp_m = (mti >= target_ts) * (mti < target_te)
+        mtti, mtyi = mti[fp_m], myi[fp_m]
+        soyi = interpolate_observations(oti, oyi_d, mtti)
+
+        bias = mtyi - soyi
+        inner_bias_df[station] = bias
+        # set the time index and title
+        inner_bias_df.index = num2date(mtti)
+        inner_bias_df.index.name = 'Time'
+
+    return inner_bias_df
+
+
+def save_bias(inner_bias_df, ts, te, nan_threshold=0.2):
+    '''
+    Save the bias data and compute the average bias,
+    excluding stations with excessive NaN
+
+    nan_threshold : float, e.g. 0.2 mean 20% NaN occupied the data
+    '''
+    # Resample the bias data to hourly data
+    inner_bias_df = inner_bias_df.resample('h').mean()
+
+    valid_columns =[]
+    for col in inner_bias_df.columns:
+        nan_ratio = inner_bias_df[col].isna().sum() / len(inner_bias_df)
+        if nan_ratio <= nan_threshold:
+            valid_columns.append(col)
+        else:
+            print(f"Excluding station {col} due to high NaN ratio: {nan_ratio:.2%}")
+
+    filtered_df = inner_bias_df[valid_columns].copy()
+
+    # Average all stations
+    filtered_df['Average'] = filtered_df.mean(axis=1)
+    avg_all = filtered_df.mean(axis=1)
+
+    str_ts = ts.strftime('%Y-%m-%d')
+    str_te = te.strftime('%Y%m%d')
+    filtered_df.to_csv(f'each_time_bias_{OUTFN}', sep=' ', float_format='%.3f')
+
+    # Average the df['Average']
+    average_bias = filtered_df['Average'].mean()
+    # format the average_bias
+    avg_bias = f"{average_bias:.3f}"
+    average_bias = float(avg_bias)
+    with open(f'average_bias_{OUTFN}', 'w') as f:
+        f.write(f'{avg_bias}')
+    print(f'Average bias: {avg_bias}')
+
+    return avg_all, float(avg_bias)
+
+
+# Define the main function to calculate the bias
+if __name__ == '__main__':
+    WDIR = './'
+
+
+    #RUN = '20180101'
+    #print(WDIR)
+
+    # Station List (Starts from Fort Pulaski to Newport 11 stations - number of stations will be able to change)
+    # Exclude the bad quality stations (ex. Beaufort: 8656483, Wachapreague: 8631044 etc.)
+    # Exclude the stations with zero value at difference between xGEOID and NAVD88
+    # (ex. Cape Henry: 8638999, Nantucket Island: 8449130 etc.)
+    STA_LIST = ['8670870', '8665530', '8661070',
+                '8658163', '8651370', '8632200',
+                '8557380', '8536110', '8534720',
+                '8531680', '8452660']
+
+    # Target time for the bias calculation
+    TS, TE, RUN, OUTFN = input_date()
+    #print(RUN)
+
+    # Find the model start time (from param.nml)
+    #param = read(f'{WDIR}/{RUN}/param.nml')
+    param = read(f'{WDIR}/param.nml')
+    MTS = datenum(int(param['start_year']),
+                  int(param['start_month']),
+                  int(param['start_day']),
+                  int(param['start_hour']))
+
+    # Directory of Databases
+    #NOAA_OBS = loadz('/work2/06923/hyu05/frontera/oper_3D/bias_correct/example/noaa_navd.npz')
+    NOAA_OBS = loadz('./noaa_navd.npz')
+
+
+    #SCHISM_OUT = loadtxt(f'{WDIR}/{RUN}/outputs/staout_1')
+    SCHISM_OUT = loadtxt(f'{WDIR}/staout_1')
+    #DIFF_DATUM = read_schism_bpfile('/work2/noaa/nosofs/Dan/stofs3d-atl/run_bias_correct/run/derive_bias/diff.bp')
+    DIFF_DATUM = read_schism_bpfile('./diff.bp')
+    #STA_INFO = read_schism_bpfile(f'{WDIR}/{RUN}/station.in')
+    STA_INFO = read_schism_bpfile(f'{WDIR}/station.in')
+
+    # Calculate the bias & save the bias data
+    bias_df = calculate_bias(elev_obs=NOAA_OBS, elev_model=SCHISM_OUT, diff_xgeoid_navd=DIFF_DATUM,
+                             station_in=STA_INFO, stations=STA_LIST, target_ts=TS, target_te=TE, ts_model=MTS)
+    # Save the bias data
+    avg_all_station, one_avg_value = save_bias(bias_df, ts=num2date(TS), te=num2date(TE))
+    print("Finish the bias calculation")

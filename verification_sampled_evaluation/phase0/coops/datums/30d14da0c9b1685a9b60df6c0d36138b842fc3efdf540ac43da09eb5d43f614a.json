@@ -1,0 +1,106 @@
+{
+  "accepted": "May 14 2020",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 2.854
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 2.74
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 2.065
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 2.033
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 2.054
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 1.326
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 1.276
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 1.578
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 1.414
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.114
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.051
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 4.865
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 11.774
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 2.036
+    }
+  ],
+  "LAT": 0.9469999,
+  "LATdate": "20360116",
+  "LATtime": "01:30",
+  "HAT": 3.355,
+  "HATdate": "20341127",
+  "HATtime": "17:30",
+  "min": 0.573,
+  "mindate": "20110125",
+  "mintime": "03:12",
+  "max": 4.157,
+  "maxdate": "20140103",
+  "maxtime": "18:06",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "09/01/2015 - 08/31/2017"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8449130 Nantucket Island, MA",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8447435/datums.json"
+}

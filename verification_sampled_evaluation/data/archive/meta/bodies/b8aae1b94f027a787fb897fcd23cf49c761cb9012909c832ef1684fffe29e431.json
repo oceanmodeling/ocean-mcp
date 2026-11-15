@@ -1,0 +1,107 @@
+{
+  "accepted": "Mar 18 2020",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 0.194
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 0.176
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 0.001
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 0.003
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 0.003
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": -0.169
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": -0.191
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.386
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.346
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.018
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.021
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 7.271
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 1.505
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": -0.002
+    }
+  ],
+  "LAT": -0.33400002,
+  "LATdate": "20370201",
+  "LATtime": "14:18",
+  "HAT": 0.4,
+  "HATdate": "20281018",
+  "HATtime": "19:18",
+  "min": -0.571,
+  "mindate": "20040415",
+  "mintime": "10:30",
+  "max": 1.5468,
+  "maxdate": "20161007",
+  "maxtime": "22:54",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "05/01/2014 - 04/30/2016",
+    "04/01/2017 - 03/31/2019"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8720226 Southbank Riverwalk, St Johns River, FL",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8720625/datums.json"
+}

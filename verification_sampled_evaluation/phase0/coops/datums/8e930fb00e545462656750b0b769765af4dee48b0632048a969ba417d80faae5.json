@@ -1,0 +1,97 @@
+{
+  "accepted": "Sep 14 2020",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 7.136
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 7.108
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 6.903
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 6.902
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 6.9
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 6.695
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 6.669
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.467
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.413
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.028
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.026
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 6.869
+    }
+  ],
+  "LAT": 6.295,
+  "LATdate": "20050109",
+  "LATtime": "12:48",
+  "HAT": 7.3900003,
+  "HATdate": "20251011",
+  "HATtime": "05:12",
+  "min": 6.012,
+  "mindate": "20060114",
+  "mintime": "19:00",
+  "max": 9.263,
+  "maxdate": "20201029",
+  "maxtime": "06:48",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "03/01/2007 - 02/29/2012",
+    "05/01/2014 - 04/30/2019"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8729840 Pensacola, FL",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8741533/datums.json"
+}

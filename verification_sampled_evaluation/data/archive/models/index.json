@@ -1,0 +1,2878 @@
+{
+ "format": "ocean-replay-archive/1",
+ "entries": [
+  {
+   "id": "e00001",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-nos-stofs3d-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/STOFS-3D-Atl/stofs_3d_atl.20260601/stofs_3d_atl.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260601/stofs_3d_atl.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/38b4c9d98aaaa52622cd0938e65e07809420007f3e1e363e6cf46df9e37afd69.nc",
+    "body_sha256": "38b4c9d98aaaa52622cd0938e65e07809420007f3e1e363e6cf46df9e37afd69",
+    "bytes": 5509661
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:45:24.722+00:00",
+    "tag": "s3_3d",
+    "last_modified": "Mon, 01 Jun 2026 19:53:24 GMT",
+    "etag": "\"aa5b29469c05883d8d8302555ef650b9\""
+   }
+  },
+  {
+   "id": "e00002",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260601/stofs_2d_glo.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260601/stofs_2d_glo.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/84a750e9c08e2fef271dad000f05d5fee09c46fbc71a4bf1f853f7576941a970.nc",
+    "body_sha256": "84a750e9c08e2fef271dad000f05d5fee09c46fbc71a4bf1f853f7576941a970",
+    "bytes": 25246800
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:45:26.949+00:00",
+    "tag": "s3_2d",
+    "last_modified": "Mon, 01 Jun 2026 18:30:51 GMT",
+    "etag": "\"53946f716df7cc0fac99db37f3b48bf8-4\""
+   }
+  },
+  {
+   "id": "e00003",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260601/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260601/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/0cf68e6e38b8bb248a3fd16e743165b061273cf3b05a2d2f68e3b6ffa0501bff.nc",
+    "body_sha256": "0cf68e6e38b8bb248a3fd16e743165b061273cf3b05a2d2f68e3b6ffa0501bff",
+    "bytes": 23260408
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:45:29.432+00:00",
+    "tag": "s3_2d_noanomaly",
+    "last_modified": "Mon, 01 Jun 2026 18:30:52 GMT",
+    "etag": "\"8e4ba7cd4973109cb186176c1c305860-3\""
+   }
+  },
+  {
+   "id": "e00004",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-nos-stofs3d-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/STOFS-3D-Atl/stofs_3d_atl.20260608/stofs_3d_atl.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260608/stofs_3d_atl.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/f65e6a276af30bb089e664d9dd76666887805b7579af590122f53e7252b9083c.nc",
+    "body_sha256": "f65e6a276af30bb089e664d9dd76666887805b7579af590122f53e7252b9083c",
+    "bytes": 5509661
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:45:31.150+00:00",
+    "tag": "s3_3d",
+    "last_modified": "Mon, 08 Jun 2026 19:52:07 GMT",
+    "etag": "\"629959bc2a41920c43d72c52eff9090e\""
+   }
+  },
+  {
+   "id": "e00005",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260608/stofs_2d_glo.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260608/stofs_2d_glo.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/7e18cd1a50cb8b84633d71b7d61b861a1f39736c97f63344d2be9cbe35fdd8a7.nc",
+    "body_sha256": "7e18cd1a50cb8b84633d71b7d61b861a1f39736c97f63344d2be9cbe35fdd8a7",
+    "bytes": 25246800
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:45:31.283+00:00",
+    "tag": "s3_2d",
+    "last_modified": "Mon, 08 Jun 2026 18:29:30 GMT",
+    "etag": "\"010f4b50d7609e61ba58fea595855b21-4\""
+   }
+  },
+  {
+   "id": "e00006",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260608/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260608/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/e3f699d13bc1907b98095cb2d477b7184526a848551c7d1f4898392e50e065d2.nc",
+    "body_sha256": "e3f699d13bc1907b98095cb2d477b7184526a848551c7d1f4898392e50e065d2",
+    "bytes": 23281668
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:45:33.483+00:00",
+    "tag": "s3_2d_noanomaly",
+    "last_modified": "Mon, 08 Jun 2026 18:29:30 GMT",
+    "etag": "\"e8f194f275e86e82db134960a1b579b3-3\""
+   }
+  },
+  {
+   "id": "e00007",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-nos-stofs3d-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/STOFS-3D-Atl/stofs_3d_atl.20260615/stofs_3d_atl.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260615/stofs_3d_atl.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/481bc75182d163d93bc920617befe0103649ba54b3a3708270d339df5b224aa0.nc",
+    "body_sha256": "481bc75182d163d93bc920617befe0103649ba54b3a3708270d339df5b224aa0",
+    "bytes": 5509661
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:45:35.144+00:00",
+    "tag": "s3_3d",
+    "last_modified": "Mon, 15 Jun 2026 19:53:18 GMT",
+    "etag": "\"1fefe72d918a904e08a752ff47ac408f\""
+   }
+  },
+  {
+   "id": "e00008",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260615/stofs_2d_glo.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260615/stofs_2d_glo.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/4a65727091365433f91ad8badfbbe9d401f6c82a4dc1aa066ec9a67e35fee7bd.nc",
+    "body_sha256": "4a65727091365433f91ad8badfbbe9d401f6c82a4dc1aa066ec9a67e35fee7bd",
+    "bytes": 25246800
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:45:37.435+00:00",
+    "tag": "s3_2d",
+    "last_modified": "Mon, 15 Jun 2026 18:29:23 GMT",
+    "etag": "\"ff964f4f4d8cec41ac36b2e403db30d6-4\""
+   }
+  },
+  {
+   "id": "e00009",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260615/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260615/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/50d27e7d847ef86dd1fd8e06addf8dfdb518e603296b6e8debd6b231f4c48310.nc",
+    "body_sha256": "50d27e7d847ef86dd1fd8e06addf8dfdb518e603296b6e8debd6b231f4c48310",
+    "bytes": 23298959
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:45:39.471+00:00",
+    "tag": "s3_2d_noanomaly",
+    "last_modified": "Mon, 15 Jun 2026 18:29:23 GMT",
+    "etag": "\"610cd6b21c03f05006bdbac9e1576fad-3\""
+   }
+  },
+  {
+   "id": "e00010",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-nos-stofs3d-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/STOFS-3D-Atl/stofs_3d_atl.20260622/stofs_3d_atl.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260622/stofs_3d_atl.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/ca1d325949b14e6364c4250f8e9cca03ed002298a587943b0ddc76663dd9102d.nc",
+    "body_sha256": "ca1d325949b14e6364c4250f8e9cca03ed002298a587943b0ddc76663dd9102d",
+    "bytes": 5509661
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:45:41.106+00:00",
+    "tag": "s3_3d",
+    "last_modified": "Mon, 22 Jun 2026 19:51:32 GMT",
+    "etag": "\"b1a3795b27d8e940cd5e97ed84f38fd0\""
+   }
+  },
+  {
+   "id": "e00011",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260622/stofs_2d_glo.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260622/stofs_2d_glo.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/5cebd04e75cfff94ee35a88658b273d1eaa13a205d95720e548f8dc6ea11f959.nc",
+    "body_sha256": "5cebd04e75cfff94ee35a88658b273d1eaa13a205d95720e548f8dc6ea11f959",
+    "bytes": 25246800
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:45:43.292+00:00",
+    "tag": "s3_2d",
+    "last_modified": "Mon, 22 Jun 2026 18:29:36 GMT",
+    "etag": "\"64a62fdedc4b4612a7722e08fc280839-4\""
+   }
+  },
+  {
+   "id": "e00012",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260622/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260622/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/fff6c6bffe340a5491782299f210bdb3783b8400b2552fb9ca535847c2a25143.nc",
+    "body_sha256": "fff6c6bffe340a5491782299f210bdb3783b8400b2552fb9ca535847c2a25143",
+    "bytes": 23266083
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:45:45.325+00:00",
+    "tag": "s3_2d_noanomaly",
+    "last_modified": "Mon, 22 Jun 2026 18:29:36 GMT",
+    "etag": "\"9336fc00d15e47a2c4aa22d1053188aa-3\""
+   }
+  },
+  {
+   "id": "e00013",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-nos-stofs3d-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/STOFS-3D-Atl/stofs_3d_atl.20260629/stofs_3d_atl.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260629/stofs_3d_atl.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/4ceaa8bb3291c77b39176c52448f0ffe3fb65d672151d2a8dc40666c89f59d40.nc",
+    "body_sha256": "4ceaa8bb3291c77b39176c52448f0ffe3fb65d672151d2a8dc40666c89f59d40",
+    "bytes": 5509661
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:45:46.988+00:00",
+    "tag": "s3_3d",
+    "last_modified": "Mon, 29 Jun 2026 20:17:46 GMT",
+    "etag": "\"a091a9d92d129dcaa210dd585d655205\""
+   }
+  },
+  {
+   "id": "e00014",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260629/stofs_2d_glo.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260629/stofs_2d_glo.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/cb5240ef7614b26176022f93f72866f7442eba3dc2ae3543685ae8734bdde9b9.nc",
+    "body_sha256": "cb5240ef7614b26176022f93f72866f7442eba3dc2ae3543685ae8734bdde9b9",
+    "bytes": 25246800
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:45:49.186+00:00",
+    "tag": "s3_2d",
+    "last_modified": "Mon, 29 Jun 2026 18:29:08 GMT",
+    "etag": "\"fb46b7b1443e49fd71575d31a86e10c3-4\""
+   }
+  },
+  {
+   "id": "e00015",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260629/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260629/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/46653c68ed041845c0bb4f27ceb953bf56035e499b8ce87bb635dc47543e07a4.nc",
+    "body_sha256": "46653c68ed041845c0bb4f27ceb953bf56035e499b8ce87bb635dc47543e07a4",
+    "bytes": 23281740
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:45:51.458+00:00",
+    "tag": "s3_2d_noanomaly",
+    "last_modified": "Mon, 29 Jun 2026 18:29:08 GMT",
+    "etag": "\"11a0b6c3beb01c470fc9c1b6bc7dd4fe-3\""
+   }
+  },
+  {
+   "id": "e00016",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-nos-stofs3d-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/STOFS-3D-Atl/stofs_3d_atl.20260706/stofs_3d_atl.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260706/stofs_3d_atl.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/3f734d57b87c0e3bf003460172a374dd2e1f7d3e48fd3b5573a83112a7cb511b.nc",
+    "body_sha256": "3f734d57b87c0e3bf003460172a374dd2e1f7d3e48fd3b5573a83112a7cb511b",
+    "bytes": 5509661
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:45:53.028+00:00",
+    "tag": "s3_3d",
+    "last_modified": "Mon, 06 Jul 2026 19:56:54 GMT",
+    "etag": "\"9950833492caf1cc6d0f56d27845af4f\""
+   }
+  },
+  {
+   "id": "e00017",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260706/stofs_2d_glo.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260706/stofs_2d_glo.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/238dc4b74b06c94cdfcbda3a393a8865ea5ced3c8ecca355c5ccd7f95583abaa.nc",
+    "body_sha256": "238dc4b74b06c94cdfcbda3a393a8865ea5ced3c8ecca355c5ccd7f95583abaa",
+    "bytes": 25246800
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:45:55.090+00:00",
+    "tag": "s3_2d",
+    "last_modified": "Mon, 06 Jul 2026 18:29:35 GMT",
+    "etag": "\"4342e6ea520ac17c08009112f03ab9b7-4\""
+   }
+  },
+  {
+   "id": "e00018",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260706/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260706/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/7a27419ba981a9f7347b7b950589ba2d43195dc0f3663925b6cad97e47c0ce36.nc",
+    "body_sha256": "7a27419ba981a9f7347b7b950589ba2d43195dc0f3663925b6cad97e47c0ce36",
+    "bytes": 23280962
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:45:57.208+00:00",
+    "tag": "s3_2d_noanomaly",
+    "last_modified": "Mon, 06 Jul 2026 18:29:37 GMT",
+    "etag": "\"fca737c49f1ba59703135a32fe425e9a-3\""
+   }
+  },
+  {
+   "id": "e00019",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-nos-stofs3d-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/STOFS-3D-Atl/stofs_3d_atl.20260713/stofs_3d_atl.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260713/stofs_3d_atl.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/7c30ea416535278d2dc7c6c85f12970002a14b88a8275461704e444a0a4c04ae.nc",
+    "body_sha256": "7c30ea416535278d2dc7c6c85f12970002a14b88a8275461704e444a0a4c04ae",
+    "bytes": 5509661
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:45:58.853+00:00",
+    "tag": "s3_3d",
+    "last_modified": "Mon, 13 Jul 2026 19:50:37 GMT",
+    "etag": "\"97b83b74bcf9f2bcab5e3f19b49127d1\""
+   }
+  },
+  {
+   "id": "e00020",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260713/stofs_2d_glo.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260713/stofs_2d_glo.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/307c75ceec255cef2ccbaa4838177050c9f5d73d82284e36819d4bf7d19f8fa9.nc",
+    "body_sha256": "307c75ceec255cef2ccbaa4838177050c9f5d73d82284e36819d4bf7d19f8fa9",
+    "bytes": 25246800
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:46:01.168+00:00",
+    "tag": "s3_2d",
+    "last_modified": "Mon, 13 Jul 2026 18:29:20 GMT",
+    "etag": "\"22c7401f4f8f68ff7a431b6b5ce75a5d-4\""
+   }
+  },
+  {
+   "id": "e00021",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260713/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260713/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/63d42b76596c55a5b02b1f5d3b75df2745bd23b322178e972f241395395aeea8.nc",
+    "body_sha256": "63d42b76596c55a5b02b1f5d3b75df2745bd23b322178e972f241395395aeea8",
+    "bytes": 23308750
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:46:01.245+00:00",
+    "tag": "s3_2d_noanomaly",
+    "last_modified": "Mon, 13 Jul 2026 18:29:20 GMT",
+    "etag": "\"4c16e264876b9715353250d783656c0a-3\""
+   }
+  },
+  {
+   "id": "e00022",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-nos-stofs3d-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/STOFS-3D-Atl/stofs_3d_atl.20260720/stofs_3d_atl.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260720/stofs_3d_atl.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/809f3515ba388cde404bd96a2ec9b124faeaf4f085ebe3914ea78fbd85f433a5.nc",
+    "body_sha256": "809f3515ba388cde404bd96a2ec9b124faeaf4f085ebe3914ea78fbd85f433a5",
+    "bytes": 5509661
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:46:02.881+00:00",
+    "tag": "s3_3d",
+    "last_modified": "Mon, 20 Jul 2026 19:51:07 GMT",
+    "etag": "\"8ab41b906822fad5b7ef162921bb8551\""
+   }
+  },
+  {
+   "id": "e00023",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260720/stofs_2d_glo.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260720/stofs_2d_glo.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/bd9cb410fc645a422a643c6a1b07124a5dc61f62f43ae5832d2ce0ec7366c8c8.nc",
+    "body_sha256": "bd9cb410fc645a422a643c6a1b07124a5dc61f62f43ae5832d2ce0ec7366c8c8",
+    "bytes": 25246800
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:46:05.179+00:00",
+    "tag": "s3_2d",
+    "last_modified": "Mon, 20 Jul 2026 18:29:22 GMT",
+    "etag": "\"4c07a5b06d8b04cf15f983020307942d-4\""
+   }
+  },
+  {
+   "id": "e00024",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260720/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260720/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/01f86b6f64947d10a49a78f424761a08ada866785a2e2f71d6dcf21f782196d7.nc",
+    "body_sha256": "01f86b6f64947d10a49a78f424761a08ada866785a2e2f71d6dcf21f782196d7",
+    "bytes": 23255308
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:46:07.250+00:00",
+    "tag": "s3_2d_noanomaly",
+    "last_modified": "Mon, 20 Jul 2026 18:29:22 GMT",
+    "etag": "\"1279bb049478566ed4750cc4b0702060-3\""
+   }
+  },
+  {
+   "id": "e00025",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-nos-stofs3d-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/STOFS-3D-Atl/stofs_3d_atl.20260727/stofs_3d_atl.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260727/stofs_3d_atl.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/5e4f481fc7ea0b821a124cc7a55b4f3a0bba3a1e77514f8b5b847ada4d82e42e.nc",
+    "body_sha256": "5e4f481fc7ea0b821a124cc7a55b4f3a0bba3a1e77514f8b5b847ada4d82e42e",
+    "bytes": 5509661
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:46:08.985+00:00",
+    "tag": "s3_3d",
+    "last_modified": "Mon, 27 Jul 2026 19:48:26 GMT",
+    "etag": "\"988f72eeb71395a5f33eec658a1fac19\""
+   }
+  },
+  {
+   "id": "e00026",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260727/stofs_2d_glo.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260727/stofs_2d_glo.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/391b936bccdc88be2262d286b47fa27dbd38a6ffd617695bc4ee96d0ae3858ff.nc",
+    "body_sha256": "391b936bccdc88be2262d286b47fa27dbd38a6ffd617695bc4ee96d0ae3858ff",
+    "bytes": 25246800
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:46:11.067+00:00",
+    "tag": "s3_2d",
+    "last_modified": "Mon, 27 Jul 2026 18:29:40 GMT",
+    "etag": "\"17fe5049046743edf2c0d6475dcd43a1-4\""
+   }
+  },
+  {
+   "id": "e00027",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260727/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260727/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/52d47cc205ec2d22b5a63eb53bda1020c6e76df51a6031363d31f58d3fc5fc10.nc",
+    "body_sha256": "52d47cc205ec2d22b5a63eb53bda1020c6e76df51a6031363d31f58d3fc5fc10",
+    "bytes": 23290367
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:46:13.210+00:00",
+    "tag": "s3_2d_noanomaly",
+    "last_modified": "Mon, 27 Jul 2026 18:29:42 GMT",
+    "etag": "\"5b2d761e2d33b0ca5941f7078f0e9c5c-3\""
+   }
+  },
+  {
+   "id": "e00028",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-nos-stofs3d-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/STOFS-3D-Atl/stofs_3d_atl.20260803/stofs_3d_atl.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260803/stofs_3d_atl.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/5bf8488eb002808ed8405d567a6c63bab6d6c7b37645c5d50628c9a4d5f89e56.nc",
+    "body_sha256": "5bf8488eb002808ed8405d567a6c63bab6d6c7b37645c5d50628c9a4d5f89e56",
+    "bytes": 5509661
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:46:14.803+00:00",
+    "tag": "s3_3d",
+    "last_modified": "Mon, 03 Aug 2026 19:48:57 GMT",
+    "etag": "\"74310fd833417d18d7fd5cf4bd81507f\""
+   }
+  },
+  {
+   "id": "e00029",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260803/stofs_2d_glo.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260803/stofs_2d_glo.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/92d7198805989d41539024d8c5558f1cfeb0d8e7ea3f98fb3457adf7a79b9faa.nc",
+    "body_sha256": "92d7198805989d41539024d8c5558f1cfeb0d8e7ea3f98fb3457adf7a79b9faa",
+    "bytes": 25246800
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:46:17.011+00:00",
+    "tag": "s3_2d",
+    "last_modified": "Mon, 03 Aug 2026 18:29:20 GMT",
+    "etag": "\"73c0e8e89fb84fc9d5cab4abe1ae7b1f-4\""
+   }
+  },
+  {
+   "id": "e00030",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260803/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260803/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/c09eb9c86e84cfefbc86dc571246eedab20f0931ff7f1cf59ca4be54a241f843.nc",
+    "body_sha256": "c09eb9c86e84cfefbc86dc571246eedab20f0931ff7f1cf59ca4be54a241f843",
+    "bytes": 23273049
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:46:19.093+00:00",
+    "tag": "s3_2d_noanomaly",
+    "last_modified": "Mon, 03 Aug 2026 18:29:20 GMT",
+    "etag": "\"f9dcd49006c281d52540241747c2c264-3\""
+   }
+  },
+  {
+   "id": "e00031",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-nos-stofs3d-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/STOFS-3D-Atl/stofs_3d_atl.20260810/stofs_3d_atl.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260810/stofs_3d_atl.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/eef5cb9fa69156f220e0fc7da3fd489df37e05d9caafe0e11b60d63448501e45.nc",
+    "body_sha256": "eef5cb9fa69156f220e0fc7da3fd489df37e05d9caafe0e11b60d63448501e45",
+    "bytes": 5509661
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:46:20.740+00:00",
+    "tag": "s3_3d",
+    "last_modified": "Mon, 10 Aug 2026 19:48:35 GMT",
+    "etag": "\"5c61e0c773e707c514ca939d24221cea\""
+   }
+  },
+  {
+   "id": "e00032",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260810/stofs_2d_glo.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260810/stofs_2d_glo.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/e03717adbf9f98863ae18a075303a06171424f45d8ffa08526b3225be5e8db7f.nc",
+    "body_sha256": "e03717adbf9f98863ae18a075303a06171424f45d8ffa08526b3225be5e8db7f",
+    "bytes": 25246800
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:46:22.777+00:00",
+    "tag": "s3_2d",
+    "last_modified": "Mon, 10 Aug 2026 18:29:19 GMT",
+    "etag": "\"8f2dfd7cbfa70c3127575a4584d81361-4\""
+   }
+  },
+  {
+   "id": "e00033",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260810/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260810/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/9deaff8563eb5c1084a620ddabf9474d49e26eb3752ffa4fd3c1fbad4f18c98b.nc",
+    "body_sha256": "9deaff8563eb5c1084a620ddabf9474d49e26eb3752ffa4fd3c1fbad4f18c98b",
+    "bytes": 23315013
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:46:24.879+00:00",
+    "tag": "s3_2d_noanomaly",
+    "last_modified": "Mon, 10 Aug 2026 18:29:19 GMT",
+    "etag": "\"3f601d4c0a8abc0dbedc674d89991674-3\""
+   }
+  },
+  {
+   "id": "e00034",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-nos-stofs3d-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/STOFS-3D-Atl/stofs_3d_atl.20260813/stofs_3d_atl.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260813/stofs_3d_atl.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/05d5e323b80d77941a3a18de2a817945189d0d6a5aa0bbd778c84b147f8df14e.nc",
+    "body_sha256": "05d5e323b80d77941a3a18de2a817945189d0d6a5aa0bbd778c84b147f8df14e",
+    "bytes": 5509661
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:46:26.593+00:00",
+    "tag": "s3_3d",
+    "last_modified": "Thu, 13 Aug 2026 19:50:41 GMT",
+    "etag": "\"837b056a775485a42808e51644430bd3\""
+   }
+  },
+  {
+   "id": "e00035",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260813/stofs_2d_glo.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260813/stofs_2d_glo.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/b9801476519e58a134c56c1f6ff53ca49408237a6318e6f469f557e381d167b7.nc",
+    "body_sha256": "b9801476519e58a134c56c1f6ff53ca49408237a6318e6f469f557e381d167b7",
+    "bytes": 25246800
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:46:28.604+00:00",
+    "tag": "s3_2d",
+    "last_modified": "Thu, 13 Aug 2026 18:29:16 GMT",
+    "etag": "\"4c9b94d97ac3344c94ce5bb7bf344a06-4\""
+   }
+  },
+  {
+   "id": "e00036",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260813/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260813/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/59ba95941b70ce64758df11551e3af3c31f0d5094b99e808ba8801da62b330ea.nc",
+    "body_sha256": "59ba95941b70ce64758df11551e3af3c31f0d5094b99e808ba8801da62b330ea",
+    "bytes": 23306368
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:46:30.736+00:00",
+    "tag": "s3_2d_noanomaly",
+    "last_modified": "Thu, 13 Aug 2026 18:29:16 GMT",
+    "etag": "\"981199301472bf26993d446aba39c74f-3\""
+   }
+  },
+  {
+   "id": "e00037",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-nos-stofs3d-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/STOFS-3D-Atl/stofs_3d_atl.20260814/stofs_3d_atl.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260814/stofs_3d_atl.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/35fe703644b0d4fbcbf97ccb72cd909fcfbf3ef64b93ca4402f391f8c7264bca.nc",
+    "body_sha256": "35fe703644b0d4fbcbf97ccb72cd909fcfbf3ef64b93ca4402f391f8c7264bca",
+    "bytes": 5509661
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:46:32.397+00:00",
+    "tag": "s3_3d",
+    "last_modified": "Fri, 14 Aug 2026 18:30:00 GMT",
+    "etag": "\"a41294ede6f70959cf6ae146700e8d4a\""
+   }
+  },
+  {
+   "id": "e00038",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260814/stofs_2d_glo.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260814/stofs_2d_glo.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/e4be8b7978625ddbd88dc0ce3d88cee4d6c63e3f0d458e7fe89c241e073c793c.nc",
+    "body_sha256": "e4be8b7978625ddbd88dc0ce3d88cee4d6c63e3f0d458e7fe89c241e073c793c",
+    "bytes": 25246800
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:46:32.572+00:00",
+    "tag": "s3_2d",
+    "last_modified": "Fri, 14 Aug 2026 18:29:23 GMT",
+    "etag": "\"6a30c84062558018aae5b101b4e2b468-4\""
+   }
+  },
+  {
+   "id": "e00039",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260814/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260814/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/ac4fd0cfc69c145bac7d524ba82966941d96cd7d7448fa62019bb12da9e0e534.nc",
+    "body_sha256": "ac4fd0cfc69c145bac7d524ba82966941d96cd7d7448fa62019bb12da9e0e534",
+    "bytes": 23294251
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:46:34.712+00:00",
+    "tag": "s3_2d_noanomaly",
+    "last_modified": "Fri, 14 Aug 2026 18:29:23 GMT",
+    "etag": "\"1253796db931ce94896a7c365e03c617-3\""
+   }
+  },
+  {
+   "id": "e00040",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-nos-stofs3d-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/STOFS-3D-Atl/stofs_3d_atl.20260815/stofs_3d_atl.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260815/stofs_3d_atl.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/ac4ab50e6b3596e9da752434fa913262c18b642b3e3819e479fa1cc2109283dd.nc",
+    "body_sha256": "ac4ab50e6b3596e9da752434fa913262c18b642b3e3819e479fa1cc2109283dd",
+    "bytes": 5509661
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:46:36.367+00:00",
+    "tag": "s3_3d",
+    "last_modified": "Sat, 15 Aug 2026 19:47:53 GMT",
+    "etag": "\"057a2e90a5e6b8391a8d659bd9f77278\""
+   }
+  },
+  {
+   "id": "e00041",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260815/stofs_2d_glo.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260815/stofs_2d_glo.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/acddab8ef6e146d1abb87f263d4121e7843a51b70eb46e5e7a34c7a8043a7805.nc",
+    "body_sha256": "acddab8ef6e146d1abb87f263d4121e7843a51b70eb46e5e7a34c7a8043a7805",
+    "bytes": 25246800
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:46:38.532+00:00",
+    "tag": "s3_2d",
+    "last_modified": "Sat, 15 Aug 2026 18:29:28 GMT",
+    "etag": "\"e27a06ce9a93c2e818acd1133303ec85-4\""
+   }
+  },
+  {
+   "id": "e00042",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260815/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260815/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/fea35416bc9632a45f96d94f49fe05f9bbc9a1e4bfc6e6ff6bd5c1aa777c73f1.nc",
+    "body_sha256": "fea35416bc9632a45f96d94f49fe05f9bbc9a1e4bfc6e6ff6bd5c1aa777c73f1",
+    "bytes": 23277795
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:46:40.757+00:00",
+    "tag": "s3_2d_noanomaly",
+    "last_modified": "Sat, 15 Aug 2026 18:29:28 GMT",
+    "etag": "\"787781084132bc47cba2eca2e02b955f-3\""
+   }
+  },
+  {
+   "id": "e00043",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260816/stofs_2d_glo.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260816/stofs_2d_glo.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/cfe945d48e365742c6d6518217c5c90f5e195a32498406b5ff96ca97e12fb97d.nc",
+    "body_sha256": "cfe945d48e365742c6d6518217c5c90f5e195a32498406b5ff96ca97e12fb97d",
+    "bytes": 25231796
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:46:42.877+00:00",
+    "tag": "s3_2d",
+    "last_modified": "Mon, 17 Aug 2026 19:58:06 GMT",
+    "etag": "\"5f70ecfcb344d0e0f2c561b432afa5bd-4\""
+   }
+  },
+  {
+   "id": "e00044",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260816/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260816/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/ed77a238d0bf716f32168c851a49be4fc0370a75ee1c9dc8c8c65adc30427cd5.nc",
+    "body_sha256": "ed77a238d0bf716f32168c851a49be4fc0370a75ee1c9dc8c8c65adc30427cd5",
+    "bytes": 25231828
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:46:45.174+00:00",
+    "tag": "s3_2d_noanomaly",
+    "last_modified": "Mon, 17 Aug 2026 19:58:08 GMT",
+    "etag": "\"5bf7120aba91ab23a6f1ef657c86853a-4\""
+   }
+  },
+  {
+   "id": "e00045",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260817/stofs_2d_glo.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260817/stofs_2d_glo.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/db2b8639d6658c55f1640d0b28632f5c5a0435e6933afad459f04102210a0ed4.nc",
+    "body_sha256": "db2b8639d6658c55f1640d0b28632f5c5a0435e6933afad459f04102210a0ed4",
+    "bytes": 25231796
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:46:47.175+00:00",
+    "tag": "s3_2d",
+    "last_modified": "Mon, 17 Aug 2026 21:39:35 GMT",
+    "etag": "\"5ef7b134ca76e96f4c1dfaa0064d5658-4\""
+   }
+  },
+  {
+   "id": "e00046",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260817/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260817/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/7a9288ecbc4dc51b6782e8f9a81a7cf8485582e7b70ba6d478d3c6bf1cc723a7.nc",
+    "body_sha256": "7a9288ecbc4dc51b6782e8f9a81a7cf8485582e7b70ba6d478d3c6bf1cc723a7",
+    "bytes": 25231828
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:46:49.261+00:00",
+    "tag": "s3_2d_noanomaly",
+    "last_modified": "Mon, 17 Aug 2026 21:39:36 GMT",
+    "etag": "\"ad35b1ac2c006778321dec2b07be2c21-4\""
+   }
+  },
+  {
+   "id": "e00047",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-nos-stofs3d-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/STOFS-3D-Atl/stofs_3d_atl.20260818/stofs_3d_atl.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260818/stofs_3d_atl.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/c0e7c90e0c41b1f5f43845444d6a7994f7b32fbf6c7b3312ce9ec295fda8527a.nc",
+    "body_sha256": "c0e7c90e0c41b1f5f43845444d6a7994f7b32fbf6c7b3312ce9ec295fda8527a",
+    "bytes": 8297477
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:46:50.959+00:00",
+    "tag": "s3_3d",
+    "last_modified": "Tue, 18 Aug 2026 19:45:17 GMT",
+    "etag": "\"5474310091ec270a2113af321dcea512\""
+   }
+  },
+  {
+   "id": "e00048",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260818/stofs_2d_glo.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260818/stofs_2d_glo.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/4d5a88fc8f02d98f664e4187d0a33fe3788fc2a6767dfed57ddfb477ca31da54.nc",
+    "body_sha256": "4d5a88fc8f02d98f664e4187d0a33fe3788fc2a6767dfed57ddfb477ca31da54",
+    "bytes": 25231796
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:46:53.353+00:00",
+    "tag": "s3_2d",
+    "last_modified": "Tue, 18 Aug 2026 18:37:57 GMT",
+    "etag": "\"1620cf1de1c8bfe68a9edae6ae54cdee-4\""
+   }
+  },
+  {
+   "id": "e00049",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260818/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260818/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/8dd6e6586a0772cbff7f0ca2b9b24639b5c67d151fe625f455ae41c678640f24.nc",
+    "body_sha256": "8dd6e6586a0772cbff7f0ca2b9b24639b5c67d151fe625f455ae41c678640f24",
+    "bytes": 25231828
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:46:57.226+00:00",
+    "tag": "s3_2d_noanomaly",
+    "last_modified": "Tue, 18 Aug 2026 18:37:58 GMT",
+    "etag": "\"7b941b45cd1dae240eb5189ebf66d820-4\""
+   }
+  },
+  {
+   "id": "e00050",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-nos-stofs3d-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/STOFS-3D-Atl/stofs_3d_atl.20260819/stofs_3d_atl.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260819/stofs_3d_atl.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/9a57599ce9e2a7a87ce752b2c81ffc5a9facf0196f62064966e5654a2054d2af.nc",
+    "body_sha256": "9a57599ce9e2a7a87ce752b2c81ffc5a9facf0196f62064966e5654a2054d2af",
+    "bytes": 8297477
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:47:02.074+00:00",
+    "tag": "s3_3d",
+    "last_modified": "Wed, 19 Aug 2026 19:45:37 GMT",
+    "etag": "\"101cc415d8ce5fd67928f2b077288824\""
+   }
+  },
+  {
+   "id": "e00051",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260819/stofs_2d_glo.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260819/stofs_2d_glo.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/f5b4025bf1d99eaa3b3aea12b46fe871edfca82444246ec1acce191b5580038d.nc",
+    "body_sha256": "f5b4025bf1d99eaa3b3aea12b46fe871edfca82444246ec1acce191b5580038d",
+    "bytes": 25231796
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:47:02.103+00:00",
+    "tag": "s3_2d",
+    "last_modified": "Wed, 19 Aug 2026 18:39:44 GMT",
+    "etag": "\"c5226df274d0c5ae13e6ab1028ebf19c-4\""
+   }
+  },
+  {
+   "id": "e00052",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260819/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260819/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/04af5e2515d35d4d0ac43f3fa86426466d454a39836c1a7f4e39659e34febb64.nc",
+    "body_sha256": "04af5e2515d35d4d0ac43f3fa86426466d454a39836c1a7f4e39659e34febb64",
+    "bytes": 25231828
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:47:04.202+00:00",
+    "tag": "s3_2d_noanomaly",
+    "last_modified": "Wed, 19 Aug 2026 18:39:46 GMT",
+    "etag": "\"6b3083611a4644877513ea28673bfa77-4\""
+   }
+  },
+  {
+   "id": "e00053",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-nos-stofs3d-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/STOFS-3D-Atl/stofs_3d_atl.20260820/stofs_3d_atl.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260820/stofs_3d_atl.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/5df4307f2f417caf096fd93164a658fc967c001ab7edeec70735fc16267c6418.nc",
+    "body_sha256": "5df4307f2f417caf096fd93164a658fc967c001ab7edeec70735fc16267c6418",
+    "bytes": 8297477
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:47:05.917+00:00",
+    "tag": "s3_3d",
+    "last_modified": "Thu, 20 Aug 2026 19:45:09 GMT",
+    "etag": "\"27e4ddc2d27ef6db0e4996543cc563d8\""
+   }
+  },
+  {
+   "id": "e00054",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260820/stofs_2d_glo.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260820/stofs_2d_glo.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/1d42602c719790fddccb40df394a203797ddd68ae6042f329aa3a63de73a40ee.nc",
+    "body_sha256": "1d42602c719790fddccb40df394a203797ddd68ae6042f329aa3a63de73a40ee",
+    "bytes": 25231796
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:47:08.282+00:00",
+    "tag": "s3_2d",
+    "last_modified": "Thu, 20 Aug 2026 18:39:58 GMT",
+    "etag": "\"e1e2e9607ff51cf46e30e4cb64b2206f-4\""
+   }
+  },
+  {
+   "id": "e00055",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260820/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260820/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/79374076d5d845f77f9ed00cccc23b919e5c3b7b43e478075fceb6e626b23737.nc",
+    "body_sha256": "79374076d5d845f77f9ed00cccc23b919e5c3b7b43e478075fceb6e626b23737",
+    "bytes": 25231828
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:47:10.585+00:00",
+    "tag": "s3_2d_noanomaly",
+    "last_modified": "Thu, 20 Aug 2026 18:39:59 GMT",
+    "etag": "\"9431cdd21309b5fcdec5a55105fba5be-4\""
+   }
+  },
+  {
+   "id": "e00056",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-nos-stofs3d-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/STOFS-3D-Atl/stofs_3d_atl.20260824/stofs_3d_atl.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260824/stofs_3d_atl.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/8d96c674f1681dbe88e0fab6099c04a47716a6016b7d49657c0e09b5367c4f7a.nc",
+    "body_sha256": "8d96c674f1681dbe88e0fab6099c04a47716a6016b7d49657c0e09b5367c4f7a",
+    "bytes": 8297477
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:47:12.259+00:00",
+    "tag": "s3_3d",
+    "last_modified": "Mon, 24 Aug 2026 19:46:23 GMT",
+    "etag": "\"7ad3fa41a4ea3896c29c28bca187efc4\""
+   }
+  },
+  {
+   "id": "e00057",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260824/stofs_2d_glo.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260824/stofs_2d_glo.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/be768e11f25a312d336e3175f0b1f50ea79b34a6eb86bb5e9d412017c2d5a665.nc",
+    "body_sha256": "be768e11f25a312d336e3175f0b1f50ea79b34a6eb86bb5e9d412017c2d5a665",
+    "bytes": 25231796
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:47:14.260+00:00",
+    "tag": "s3_2d",
+    "last_modified": "Mon, 24 Aug 2026 18:36:18 GMT",
+    "etag": "\"80cc582faa7ac826acfede1abcaf43ed-4\""
+   }
+  },
+  {
+   "id": "e00058",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260824/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260824/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/2f9336ffa06b230429b13317dbb34c5f97719e3b0ce1d773da4e232b64a5a7d7.nc",
+    "body_sha256": "2f9336ffa06b230429b13317dbb34c5f97719e3b0ce1d773da4e232b64a5a7d7",
+    "bytes": 25231828
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:47:16.247+00:00",
+    "tag": "s3_2d_noanomaly",
+    "last_modified": "Mon, 24 Aug 2026 18:36:19 GMT",
+    "etag": "\"bb990e886eb78aaa7840f8878386fb49-4\""
+   }
+  },
+  {
+   "id": "e00059",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-nos-stofs3d-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/STOFS-3D-Atl/stofs_3d_atl.20260831/stofs_3d_atl.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260831/stofs_3d_atl.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/8841a2e14298103c88711e8e67ea0ea29968090de4c27eab9d2d41cfbe523210.nc",
+    "body_sha256": "8841a2e14298103c88711e8e67ea0ea29968090de4c27eab9d2d41cfbe523210",
+    "bytes": 8297477
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:47:17.928+00:00",
+    "tag": "s3_3d",
+    "last_modified": "Mon, 31 Aug 2026 19:49:08 GMT",
+    "etag": "\"b290484155b5068c98079e2b130f8fef\""
+   }
+  },
+  {
+   "id": "e00060",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260831/stofs_2d_glo.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260831/stofs_2d_glo.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/09c367e13eca3572a805d88218fe77a5824dec41703fb7c59b5e336822947012.nc",
+    "body_sha256": "09c367e13eca3572a805d88218fe77a5824dec41703fb7c59b5e336822947012",
+    "bytes": 25231796
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:47:19.988+00:00",
+    "tag": "s3_2d",
+    "last_modified": "Mon, 31 Aug 2026 18:38:14 GMT",
+    "etag": "\"4f199085ec0659dbbdd645e62582c52e-4\""
+   }
+  },
+  {
+   "id": "e00061",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260831/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260831/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/35c64766b8127fd62d6a6e6b630a31a213b624ba1a782079d59c24c31f399dea.nc",
+    "body_sha256": "35c64766b8127fd62d6a6e6b630a31a213b624ba1a782079d59c24c31f399dea",
+    "bytes": 25231828
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:47:22.236+00:00",
+    "tag": "s3_2d_noanomaly",
+    "last_modified": "Mon, 31 Aug 2026 18:38:16 GMT",
+    "etag": "\"0c99178e719bdbd51568e97df0dfc870-4\""
+   }
+  },
+  {
+   "id": "e00062",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-nos-stofs3d-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/STOFS-3D-Atl/stofs_3d_atl.20260907/stofs_3d_atl.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260907/stofs_3d_atl.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/817a2c4f5907a99d76172b9fa206613217931ce312f93faf1ff23770ea8bbef4.nc",
+    "body_sha256": "817a2c4f5907a99d76172b9fa206613217931ce312f93faf1ff23770ea8bbef4",
+    "bytes": 8297477
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:47:23.855+00:00",
+    "tag": "s3_3d",
+    "last_modified": "Mon, 07 Sep 2026 19:47:52 GMT",
+    "etag": "\"b72cf233cd9789460664213541b72dd6\""
+   }
+  },
+  {
+   "id": "e00063",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260907/stofs_2d_glo.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260907/stofs_2d_glo.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/f29dc7889a1b42b3c7feed5004396a3a4ea1de088a69b4dec2cc2eebf825aa25.nc",
+    "body_sha256": "f29dc7889a1b42b3c7feed5004396a3a4ea1de088a69b4dec2cc2eebf825aa25",
+    "bytes": 25231796
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:47:25.879+00:00",
+    "tag": "s3_2d",
+    "last_modified": "Mon, 07 Sep 2026 18:39:29 GMT",
+    "etag": "\"092e3e8dace9db3d4daf189e871b3a9e-4\""
+   }
+  },
+  {
+   "id": "e00064",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260907/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260907/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/818bd0b6691412c1d0ce15739ec61691dd1a9df9d00bdd3eb9b57f3a6da0f632.nc",
+    "body_sha256": "818bd0b6691412c1d0ce15739ec61691dd1a9df9d00bdd3eb9b57f3a6da0f632",
+    "bytes": 25231828
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:47:27.973+00:00",
+    "tag": "s3_2d_noanomaly",
+    "last_modified": "Mon, 07 Sep 2026 18:39:30 GMT",
+    "etag": "\"5b7eab5675d712c3a320df553c1f9562-4\""
+   }
+  },
+  {
+   "id": "e00065",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-nos-stofs3d-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/STOFS-3D-Atl/stofs_3d_atl.20260914/stofs_3d_atl.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260914/stofs_3d_atl.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/c2f3f0753c9aa58e08675125293cd48853962abf69ea91bec6fe05dc4983acf2.nc",
+    "body_sha256": "c2f3f0753c9aa58e08675125293cd48853962abf69ea91bec6fe05dc4983acf2",
+    "bytes": 8297477
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:47:29.665+00:00",
+    "tag": "s3_3d",
+    "last_modified": "Mon, 14 Sep 2026 19:52:16 GMT",
+    "etag": "\"382b1eb06abf5d88bdea1459dacda69e\""
+   }
+  },
+  {
+   "id": "e00066",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260914/stofs_2d_glo.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260914/stofs_2d_glo.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/484a6a727474a1f0181980aee036bc3a844f4f87759f04e3b7964e90bf872688.nc",
+    "body_sha256": "484a6a727474a1f0181980aee036bc3a844f4f87759f04e3b7964e90bf872688",
+    "bytes": 25231796
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:47:31.901+00:00",
+    "tag": "s3_2d",
+    "last_modified": "Mon, 14 Sep 2026 19:52:51 GMT",
+    "etag": "\"b26e8963c5edfea3adf450ae634c7be9-4\""
+   }
+  },
+  {
+   "id": "e00067",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260914/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260914/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/03aea70418a67ec1fd75d648425b29f27b970076d9d824fd5bdea44e07e3971b.nc",
+    "body_sha256": "03aea70418a67ec1fd75d648425b29f27b970076d9d824fd5bdea44e07e3971b",
+    "bytes": 25231828
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:47:32.230+00:00",
+    "tag": "s3_2d_noanomaly",
+    "last_modified": "Mon, 14 Sep 2026 19:52:53 GMT",
+    "etag": "\"b3306a01568cddb4eedb4f815fb00184-4\""
+   }
+  },
+  {
+   "id": "e00068",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-nos-stofs3d-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/STOFS-3D-Atl/stofs_3d_atl.20260921/stofs_3d_atl.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260921/stofs_3d_atl.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/452748365f58c15838eaadb69cbecd83d7d712a442d4a920cd06fe71034dbf7e.nc",
+    "body_sha256": "452748365f58c15838eaadb69cbecd83d7d712a442d4a920cd06fe71034dbf7e",
+    "bytes": 8297477
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:47:33.906+00:00",
+    "tag": "s3_3d",
+    "last_modified": "Mon, 21 Sep 2026 20:14:25 GMT",
+    "etag": "\"4eeffcd31955366b8840ad17239ec3a0\""
+   }
+  },
+  {
+   "id": "e00069",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260921/stofs_2d_glo.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260921/stofs_2d_glo.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/51fa381d047160520eb360632dd37c517b2eae8f2eca2f5d0c7279323accf0f2.nc",
+    "body_sha256": "51fa381d047160520eb360632dd37c517b2eae8f2eca2f5d0c7279323accf0f2",
+    "bytes": 25231796
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:47:36.206+00:00",
+    "tag": "s3_2d",
+    "last_modified": "Mon, 21 Sep 2026 18:39:35 GMT",
+    "etag": "\"bcff110ace40b42e22882c5704f549c6-4\""
+   }
+  },
+  {
+   "id": "e00070",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260921/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260921/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/0762c78eb0b3f70f68ecbd81f99c1085efb79d049914b55ee4249af4538bce5d.nc",
+    "body_sha256": "0762c78eb0b3f70f68ecbd81f99c1085efb79d049914b55ee4249af4538bce5d",
+    "bytes": 25231828
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:47:38.447+00:00",
+    "tag": "s3_2d_noanomaly",
+    "last_modified": "Mon, 21 Sep 2026 18:39:37 GMT",
+    "etag": "\"fb539bceb515ecc5856f2b6568fa8d87-4\""
+   }
+  },
+  {
+   "id": "e00071",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-nos-stofs3d-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/STOFS-3D-Atl/stofs_3d_atl.20260928/stofs_3d_atl.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260928/stofs_3d_atl.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/7d86d2bea6a45b7f0b90caff60a65c099fbf8e321a54ff035d2be5551051c6b5.nc",
+    "body_sha256": "7d86d2bea6a45b7f0b90caff60a65c099fbf8e321a54ff035d2be5551051c6b5",
+    "bytes": 8297477
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:47:40.134+00:00",
+    "tag": "s3_3d",
+    "last_modified": "Mon, 28 Sep 2026 19:58:28 GMT",
+    "etag": "\"bf503449431a876e150bfcdc712f919a\""
+   }
+  },
+  {
+   "id": "e00072",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260928/stofs_2d_glo.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260928/stofs_2d_glo.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/eaa082c93d0172ec6f56be33715e183fc03225fb973b68430c13838cea88a112.nc",
+    "body_sha256": "eaa082c93d0172ec6f56be33715e183fc03225fb973b68430c13838cea88a112",
+    "bytes": 25231796
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:47:42.478+00:00",
+    "tag": "s3_2d",
+    "last_modified": "Tue, 29 Sep 2026 21:00:38 GMT",
+    "etag": "\"708a97593bb499ee13a2f7ea803cd231-4\""
+   }
+  },
+  {
+   "id": "e00073",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20260928/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20260928/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/76c583f4ccf1762dccb86c2963bd2120a8a691a3dddc94f6324dbd1306047004.nc",
+    "body_sha256": "76c583f4ccf1762dccb86c2963bd2120a8a691a3dddc94f6324dbd1306047004",
+    "bytes": 25231828
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:47:44.498+00:00",
+    "tag": "s3_2d_noanomaly",
+    "last_modified": "Tue, 29 Sep 2026 21:00:39 GMT",
+    "etag": "\"f5c7288c63920516b4f29cf7faffd069-4\""
+   }
+  },
+  {
+   "id": "e00074",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-nos-stofs3d-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/STOFS-3D-Atl/stofs_3d_atl.20261005/stofs_3d_atl.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20261005/stofs_3d_atl.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/bc19f0881609133d6a7a8d0ed3cf9b3f66244463c5a42de03ee2c4ce70314836.nc",
+    "body_sha256": "bc19f0881609133d6a7a8d0ed3cf9b3f66244463c5a42de03ee2c4ce70314836",
+    "bytes": 8297477
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:47:46.208+00:00",
+    "tag": "s3_3d",
+    "last_modified": "Mon, 05 Oct 2026 20:41:46 GMT",
+    "etag": "\"829779761d5acd9386b215db4d214fac\""
+   }
+  },
+  {
+   "id": "e00075",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20261005/stofs_2d_glo.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20261005/stofs_2d_glo.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/52415e9a4470034c49d05577b6d1df8adf6f1764fffead8d055f9daeff73f953.nc",
+    "body_sha256": "52415e9a4470034c49d05577b6d1df8adf6f1764fffead8d055f9daeff73f953",
+    "bytes": 25231796
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:47:48.443+00:00",
+    "tag": "s3_2d",
+    "last_modified": "Mon, 05 Oct 2026 19:36:01 GMT",
+    "etag": "\"d425e7eea0fcb19db5768b2c0d1e63da-4\""
+   }
+  },
+  {
+   "id": "e00076",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20261005/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20261005/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/f6ca6d0e98d078989813ea7dc857b5093b0f798102721c5b6f226b5b6c5bad14.nc",
+    "body_sha256": "f6ca6d0e98d078989813ea7dc857b5093b0f798102721c5b6f226b5b6c5bad14",
+    "bytes": 25231828
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:47:51.339+00:00",
+    "tag": "s3_2d_noanomaly",
+    "last_modified": "Mon, 05 Oct 2026 19:36:02 GMT",
+    "etag": "\"e5eaae2263d10283c814caede8835f34-4\""
+   }
+  },
+  {
+   "id": "e00077",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-nos-stofs3d-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/STOFS-3D-Atl/stofs_3d_atl.20261012/stofs_3d_atl.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20261012/stofs_3d_atl.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/ca2c578798df0f1d325653d88528a0ebbdf05dabbe2ef4935af254d4ce1ab68c.nc",
+    "body_sha256": "ca2c578798df0f1d325653d88528a0ebbdf05dabbe2ef4935af254d4ce1ab68c",
+    "bytes": 8297477
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:47:53.045+00:00",
+    "tag": "s3_3d",
+    "last_modified": "Mon, 12 Oct 2026 19:55:18 GMT",
+    "etag": "\"9707f85069bdee58b223ff0fd95e82de\""
+   }
+  },
+  {
+   "id": "e00078",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20261012/stofs_2d_glo.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20261012/stofs_2d_glo.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/75cd1c772c8c43fe8477dde29ac2eb60669d250197770fd2de420b470bffd3f9.nc",
+    "body_sha256": "75cd1c772c8c43fe8477dde29ac2eb60669d250197770fd2de420b470bffd3f9",
+    "bytes": 25231796
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:47:55.270+00:00",
+    "tag": "s3_2d",
+    "last_modified": "Mon, 12 Oct 2026 19:20:12 GMT",
+    "etag": "\"2f9704abdee93587b52f518eac63e642-4\""
+   }
+  },
+  {
+   "id": "e00079",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20261012/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20261012/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/fa9eb3062ee4bd300d9887ccb63d4e7840e0709bc5fafc3ab6b2515e3fa6493b.nc",
+    "body_sha256": "fa9eb3062ee4bd300d9887ccb63d4e7840e0709bc5fafc3ab6b2515e3fa6493b",
+    "bytes": 25231828
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:47:57.495+00:00",
+    "tag": "s3_2d_noanomaly",
+    "last_modified": "Mon, 12 Oct 2026 19:20:13 GMT",
+    "etag": "\"96d1548a4957f7c1842a03170c507bb8-4\""
+   }
+  },
+  {
+   "id": "e00080",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-nos-stofs3d-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/STOFS-3D-Atl/stofs_3d_atl.20261019/stofs_3d_atl.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20261019/stofs_3d_atl.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/4e5432e9f40984bec76fb9b967a41ad383583a48b3492d941fe5235db35d8a2f.nc",
+    "body_sha256": "4e5432e9f40984bec76fb9b967a41ad383583a48b3492d941fe5235db35d8a2f",
+    "bytes": 8297477
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:47:59.264+00:00",
+    "tag": "s3_3d",
+    "last_modified": "Mon, 19 Oct 2026 19:57:22 GMT",
+    "etag": "\"008529c9523c24509e834ba8744392ea\""
+   }
+  },
+  {
+   "id": "e00081",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20261019/stofs_2d_glo.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20261019/stofs_2d_glo.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/c895c40c3d33c7dcf7548b9496eb0859d610cdba9ece8995d6631b4fe83223c9.nc",
+    "body_sha256": "c895c40c3d33c7dcf7548b9496eb0859d610cdba9ece8995d6631b4fe83223c9",
+    "bytes": 25231796
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:48:01.372+00:00",
+    "tag": "s3_2d",
+    "last_modified": "Mon, 19 Oct 2026 19:49:15 GMT",
+    "etag": "\"51e2bc8335477fee59fcec5803ca01e4-4\""
+   }
+  },
+  {
+   "id": "e00082",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20261019/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20261019/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/8230380be0d3b3661936abedf4bc3da0c8e1bb7595027b9328681266d4c93a35.nc",
+    "body_sha256": "8230380be0d3b3661936abedf4bc3da0c8e1bb7595027b9328681266d4c93a35",
+    "bytes": 25231828
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:48:03.570+00:00",
+    "tag": "s3_2d_noanomaly",
+    "last_modified": "Mon, 19 Oct 2026 19:49:16 GMT",
+    "etag": "\"88c265a50f51da0f5d0ad7743c7f3b9d-4\""
+   }
+  },
+  {
+   "id": "e00083",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-nos-stofs3d-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/STOFS-3D-Atl/stofs_3d_atl.20261026/stofs_3d_atl.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20261026/stofs_3d_atl.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/742b358c25575a21ab5e6858ec4f0f62c6dcd950c23e9e4d2a84e46610027f6f.nc",
+    "body_sha256": "742b358c25575a21ab5e6858ec4f0f62c6dcd950c23e9e4d2a84e46610027f6f",
+    "bytes": 8297477
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:48:03.420+00:00",
+    "tag": "s3_3d",
+    "last_modified": "Mon, 26 Oct 2026 19:56:14 GMT",
+    "etag": "\"214194f5df1bd30855b33149b9ae8bda\""
+   }
+  },
+  {
+   "id": "e00084",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20261026/stofs_2d_glo.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20261026/stofs_2d_glo.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/63144eefdc91811dc1485105d2dae6136d9bc8aaaa2d3cb8949f71fd4b3dc4f0.nc",
+    "body_sha256": "63144eefdc91811dc1485105d2dae6136d9bc8aaaa2d3cb8949f71fd4b3dc4f0",
+    "bytes": 25231796
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:48:05.567+00:00",
+    "tag": "s3_2d",
+    "last_modified": "Mon, 26 Oct 2026 19:19:52 GMT",
+    "etag": "\"94a20d35981273086033561d402c3750-4\""
+   }
+  },
+  {
+   "id": "e00085",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20261026/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20261026/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/4a0729b65301a1dc43eac500402afddd6c94055837af362544a9987ec6607652.nc",
+    "body_sha256": "4a0729b65301a1dc43eac500402afddd6c94055837af362544a9987ec6607652",
+    "bytes": 25231828
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:48:07.811+00:00",
+    "tag": "s3_2d_noanomaly",
+    "last_modified": "Mon, 26 Oct 2026 19:19:54 GMT",
+    "etag": "\"803b87369ec76515a2805ce7321ca8de-4\""
+   }
+  },
+  {
+   "id": "e00086",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-nos-stofs3d-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/STOFS-3D-Atl/stofs_3d_atl.20261102/stofs_3d_atl.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20261102/stofs_3d_atl.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/9e50f4884bc5202d77f09a7e83c6d17655792b0c9a0b830217ea2eff5b0e0ed3.nc",
+    "body_sha256": "9e50f4884bc5202d77f09a7e83c6d17655792b0c9a0b830217ea2eff5b0e0ed3",
+    "bytes": 8297477
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:48:09.476+00:00",
+    "tag": "s3_3d",
+    "last_modified": "Mon, 02 Nov 2026 19:57:38 GMT",
+    "etag": "\"f78ed0193bab25bbcacbab65d5d653b9\""
+   }
+  },
+  {
+   "id": "e00087",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20261102/stofs_2d_glo.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20261102/stofs_2d_glo.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/e232d6598f80f80e56ba601820555b885eb542b44fe233cf52434ac1c1b6cd87.nc",
+    "body_sha256": "e232d6598f80f80e56ba601820555b885eb542b44fe233cf52434ac1c1b6cd87",
+    "bytes": 25231796
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:48:11.618+00:00",
+    "tag": "s3_2d",
+    "last_modified": "Mon, 02 Nov 2026 19:43:22 GMT",
+    "etag": "\"cca1e4c312fcc330d33f68c0ea51f525-4\""
+   }
+  },
+  {
+   "id": "e00088",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-gestofs-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/stofs_2d_glo.20261102/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+    "params": []
+   },
+   "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20261102/stofs_2d_glo.t12z.points.cwl.noanomaly.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/b57a91cf2752f77619dc01533f7eb9b2aa7e22e9d639dc09b8f1209d49212e23.nc",
+    "body_sha256": "b57a91cf2752f77619dc01533f7eb9b2aa7e22e9d639dc09b8f1209d49212e23",
+    "bytes": 25231828
+   },
+   "provenance": {
+    "source": "noaa_fetch",
+    "retrieved_at": "2026-11-10T04:48:13.721+00:00",
+    "tag": "s3_2d_noanomaly",
+    "last_modified": "Mon, 02 Nov 2026 19:43:24 GMT",
+    "etag": "\"3593b258b1c7a296f67c95260f6c0f62-4\""
+   }
+  },
+  {
+   "id": "e00089",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-nos-stofs3d-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/STOFS-3D-Atl/stofs_3d_atl.20260816/stofs_3d_atl.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260816/stofs_3d_atl.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/f78e84ef18ae35083c7efe83c26df4c907d7359fb397155e1c2d748001d02462.nc",
+    "body_sha256": "f78e84ef18ae35083c7efe83c26df4c907d7359fb397155e1c2d748001d02462",
+    "bytes": 5509661
+   },
+   "provenance": {
+    "source": "seeded from the WP1 archive (fetched 2026-11-06; S3 Last-Modified before that)"
+   }
+  },
+  {
+   "id": "e00090",
+   "kind": "exact",
+   "key": {
+    "method": "GET",
+    "scheme": "https",
+    "host": "noaa-nos-stofs3d-pds.s3.amazonaws.com",
+    "port": null,
+    "path": "/STOFS-3D-Atl/stofs_3d_atl.20260817/stofs_3d_atl.t12z.points.cwl.nc",
+    "params": []
+   },
+   "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260817/stofs_3d_atl.t12z.points.cwl.nc",
+   "response": {
+    "status": 200,
+    "headers": [
+     [
+      "content-type",
+      "application/x-netcdf"
+     ]
+    ],
+    "body_file": "bodies/f47962fa8504ef4017e5a858603fa8ee0894546524e125ec38025e1fe05289c4.nc",
+    "body_sha256": "f47962fa8504ef4017e5a858603fa8ee0894546524e125ec38025e1fe05289c4",
+    "bytes": 8297477
+   },
+   "provenance": {
+    "source": "seeded from the WP1 archive (fetched 2026-11-06; S3 Last-Modified before that)"
+   }
+  }
+ ],
+ "dns": {}
+}

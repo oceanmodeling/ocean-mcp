@@ -1,0 +1,97 @@
+{
+  "accepted": "May 15 2020",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 8.113
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 8.105
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 7.925
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 7.938
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 7.961
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 7.77
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 7.736
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.377
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.335
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.008
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.034
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 7.85
+    }
+  ],
+  "LAT": 7.399,
+  "LATdate": "20050109",
+  "LATtime": "13:36",
+  "HAT": 8.381,
+  "HATdate": "20251012",
+  "HATtime": "06:36",
+  "min": 7.223,
+  "mindate": "20190120",
+  "mintime": "18:48",
+  "max": 9.072,
+  "maxdate": "20200921",
+  "maxtime": "14:48",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "07/01/2016 - 06/30/2017",
+    "09/01/2017 - 08/31/2019"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8775870 Bob Hall Pier, Corpus Christi, TX",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8773767/datums.json"
+}

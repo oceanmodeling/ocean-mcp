@@ -1,0 +1,102 @@
+{
+  "accepted": "Aug 31 2020",
+  "superseded": "",
+  "epoch": "2012-2016",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 5.291
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 5.047
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 3.503
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 3.62
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 3.597
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 2.194
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 1.715
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 3.575
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 2.853
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.244
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.478
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 10.624
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 4.58
+    }
+  ],
+  "LAT": 0.5409999,
+  "LATdate": "20210527",
+  "LATtime": "17:54",
+  "HAT": 6.352,
+  "HATdate": "20031124",
+  "HATtime": "22:42",
+  "min": 0.209,
+  "mindate": "20081214",
+  "mintime": "06:00",
+  "max": 6.636,
+  "maxdate": "20071125",
+  "maxtime": "22:48",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "05/01/2007 - 04/30/2008",
+    "06/01/2009 - 05/31/2019"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "9457292 Kodiak Island, AK",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9457804/datums.json"
+}

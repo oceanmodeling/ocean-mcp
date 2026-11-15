@@ -1,0 +1,9 @@
+case 20
+product 3d  cycle 2026-08-31 12:00 UTC  station 9759938  record 'MISP4 SOUS41 9759938 PR Mona Island'
+file https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260831/stofs_3d_atl.t12z.points.cwl.nc
+sha256 8841a2e14298103c88711e8e67ea0ea29968090de4c27eab9d2d41cfbe523210
+
+zeta attributes: {"_FillValue": "-99999.0", "long_name": "water surface elevation above msl", "standard_name": "sea_surface_height_above_msl", "units": "m"}
+global attributes: {"title": "SCHISM Model output", "source": "SCHISM model output version v10", "references": "http://ccrm.vims.edu/schismweb/", "history": "Mon Aug 31 18:05:08 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v3.1.5/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_xgeoid_to_msl.nco staout_timeseries_2026-08-30-12.nc staout_timeseries_2026-08-30-12_msl.nc", "NCO": "netCDF Operators version 5.0.6 (Homepage = http://nco.sf.net, Code = http://github.com/nco/nco)"}
+
+CO-OPS datums (metadata API): epoch 1983-2001, values (m above station datum): {"STND": 0.0, "MHHW": 8.965, "MHW": 8.949, "DTL": 8.841, "MTL": 8.844, "MSL": 8.843, "MLW": 8.739, "MLLW": 8.718, "GT": 0.247, "MN": 0.21, "DHQ": 0.016, "DLQ": 0.022, "PRVD02": 8.842}

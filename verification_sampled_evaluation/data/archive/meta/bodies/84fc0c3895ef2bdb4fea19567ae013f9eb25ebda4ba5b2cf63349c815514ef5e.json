@@ -1,0 +1,106 @@
+{
+  "accepted": "Dec 02 2014",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 7.38
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 7.277
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 6.633
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 6.611
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 6.607
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 5.945
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 5.887
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 1.493
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 1.332
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.102
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.058
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 0.2
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 6.29
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 6.759
+    }
+  ],
+  "LAT": 5.5099998,
+  "LATdate": "20320114",
+  "LATtime": "19:48",
+  "HAT": 7.7489996,
+  "HATdate": "20350607",
+  "HATtime": "00:48",
+  "min": null,
+  "mindate": "",
+  "mintime": "",
+  "max": null,
+  "maxdate": "",
+  "maxtime": "",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "05/01/2014 - 07/31/2014"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8531680 Sandy Hook, NJ",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8516881/datums.json"
+}

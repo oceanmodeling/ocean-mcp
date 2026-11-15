@@ -1,0 +1,107 @@
+{
+  "accepted": "Oct 26 2020",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 0.095
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 0.081
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": -0.058
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": -0.05
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": -0.045
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": -0.182
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": -0.211
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.306
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.265
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.013
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.028
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 6.032
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 0.181
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 0.008
+    }
+  ],
+  "LAT": -0.235,
+  "LATdate": "20360212",
+  "LATtime": "12:42",
+  "HAT": 0.144,
+  "HATdate": "20340519",
+  "HATtime": "07:00",
+  "min": -0.578,
+  "mindate": "20040414",
+  "mintime": "21:12",
+  "max": 1.022,
+  "maxdate": "20040927",
+  "maxtime": "05:06",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "11/01/2003 - 10/31/2005",
+    "05/01/2014 - 04/30/2015"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8720357 I-295 Buckman Bridge, FL",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8720503/datums.json"
+}

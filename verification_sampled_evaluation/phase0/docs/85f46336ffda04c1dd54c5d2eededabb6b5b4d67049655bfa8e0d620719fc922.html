@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <!-- Remove the next line to disable mobile mode -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="description here" />
+    
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/bootstrap-responsive.css" rel="stylesheet">
+    
+	<title>New Tidal Datum Updates - NOAA Tides & Currents</title>
+   
+    <script type="text/javascript" src="/jquery-latest.js"></script>
+    <script type="text/javascript" src="/js/hoverintent.js"></script>
+    <script type="text/javascript" src="/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/menus_sub.js"></script>
+    <link href="/css/frontpage.css" rel="stylesheet">
+    
+	<style type="text/css">
+    	p.content {
+			text-indent: 2em;
+		}
+    </style>
+	 
+</head>
+<body>
+	<link href="https://cdn.tidesandcurrents.noaa.gov/assets/css/tac-custom.css" rel="stylesheet" />
+<!-- GA4 - Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FHLZQ78JLV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FHLZQ78JLV');
+</script>
+<!-- end GA4 - Global site tag (gtag.js) - Google Analytics -->
+<style type="text/css">
+  #about ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  #about .sub-menu-dropdown {
+    /*position: relative;*/
+    display: block;
+   padding: .25rem 1.5rem .25rem 1.5rem !important;
+  }
+  
+  #about .mission-dropdown-box {
+    display: none;
+    /*position: absolute;*/
+    top: 100%;
+    left: 0;
+    background-color: white !important;
+  }
+  
+  #about:hover .sub-menu-dropdown:hover .mission-dropdown-box {
+    display: block;
+    background-color: #eeeeee;
+  }
+  
+  #about .mission-dropdown-box li {
+    padding: .25rem 1.5rem .25rem 1.5rem !important;
+    white-space: nowrap;
+  }
+</style>
+<nav class="bodyfont">
+  <!-- Navigation starts -->
+  <div id="header" class="navbarbox navbarbottom">
+    <!-- Desktop Display -->
+    <div class="hidden-phone hidden-tablet">
+      <div id="buttoncontainer" class="container-fluid navi">
+        <div class="row-fluid" style="margin-left: 0; margin-right: 0;">
+          <!-- navigation logos-->
+          <div class="navbar-brand">
+              <a href="https://www.noaa.gov/"><img class="logoimg"
+              src="https://cdn.tidesandcurrents.noaa.gov/assets/logos/logo_separate/noaa.jpg" alt="NOAA" />
+              </a>
+          </div>
+          <div class="navbar-brand">
+            <a href="/"><img class="logoimg"
+                src="https://cdn.tidesandcurrents.noaa.gov/assets/logos/logo_separate/tidesandcurrentslogo.jpg"
+                alt="Tides &amp; Currents" /></a>
+          </div>
+          <!-- Right side navigation -->
+          <div class="floatboxright">
+            <!-- Home -->
+            <div class="span1 navi-item" id="homebutton">
+              <a href="/" class="navtext nav-underline">Home</a>
+            </div>
+            <!-- About Us -->
+            <div class="span1 navi-item panebutton" id="aboutbutton">
+              <a class="navtext nav-underline">About<span class="caret"></span></a>
+              <div id="about" class="pane about pulldown dropdownbox dropdownboxabout">
+                <div class="row-fluid">
+                  <div class="span12">
+                    <ul class="nav nav-list dropdownpadding sub-menu-dropdown">
+                      <li><a href="/about_us.html">Overview</a></li>
+                      <div class="dropdown-divider"></div>
+                      
+                        <li class="sub-menu-header mission-area-header">Mission Areas
+                       <div class="mission-items-box">
+                         <ul class="nav nav-list dropdownpadding sub-dropdown-item mission-dropdown-box">
+    		                    <li>
+    		                      <a href="/navigation_services.html">Navigation Services</a>
+    		                      <div class="dropdown-divider"></div>
+    		                    </li>
+    		                    <li>
+    		                      <a href="/coastal_hazards.html">Coastal Hazards</a>
+    		                      <div class="dropdown-divider"></div>
+    		                    </li>
+    		                    <li>
+    		                      <a href="/mapping_and_charting.html">Mapping and Charting</a>
+    		                    </li>
+  		                    </ul>
+                       </div>
+                          
+		                    </li>
+                      
+                      <div class="dropdown-divider"></div>
+                      <li>
+                        <a href="/news/strategic-plan-2019-2023.html">Strategic Plan</a>
+                      </li>
+                      <div class="dropdown-divider"></div>
+                      <li><a href="/contact.html">Contact Us</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- What we Do -->
+            <div class="span1 navi-item panebutton" id="productbutton">
+              <a class="navtext nav-underline">Data and Products<span class="caret"></span></a>
+              <div id="products" class="pane products pulldown dropdownbox">
+                <div id="productspacer" class="hidden-phone"></div>
+                <div class="row-fluid">
+                  <div class="span12">
+                    <ul class="nav nav-list dropdownpadding">
+                      <li>
+                        <a href="/water_level_info.html">Tides and Water Levels</a>
+                      </li>
+                      <div class="dropdown-divider"></div>
+                      <li><a href="/currents_info.html">Currents</a></li>
+                      <div class="dropdown-divider"></div>
+                      <li>
+                        <a href="/ports_info.html">PORTS<sup>®</sup></a>
+                      </li>
+                      <div class="dropdown-divider"></div>
+                      <li>
+                        <a href="/sea_level_info.html">Sea Level and Coastal Flooding</a>
+                      </li>
+                      <div class="dropdown-divider"></div>
+                      <li>
+                        <a href="/met_info.html">Meteorological and Oceanographic Data</a>
+                      </li>
+                      <div class="dropdown-divider"></div>
+                      <li>
+                        <a href="/forecast_info.html" style="padding-right: 30px">Coastal and Great Lakes Forecasts</a>
+                      </li>
+                      <div class="dropdown-divider"></div>
+                      
+                      
+                      <li>
+                        <a href="/web_services_info.html">GIS and Web Services</a>
+                      </li>
+                      <div class="dropdown-divider"></div>
+                      <li>
+                        <a href="/datum-updates/">Datum Updates</a>
+                        <div class="dropdown-divider"></div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- News -->
+            <div class="span1 navi-item panebutton" id="partnerbutton">
+              <a href="/tac_news.html" class="navtext nav-underline">News</a>
+            </div>
+            <!-- Education -->
+            <div class="span1 navi-item panebutton" id="educationbutton">
+              <a class="navtext nav-underline">Education and Outreach<span class="caret"></span></a>
+              <div id="education" class="pane education pulldown dropdownbox dropdownboxeducation">
+                <div class="row-fluid">
+                  <div class="span12">
+                    <ul class="nav nav-list dropdownpadding">
+                      <li>
+                        <a href="/education/videolib/tac-videos.html">Videos</a>
+                      </li>                      
+                      <div class="dropdown-divider"></div>
+                      <li><a href="/pub.html">CO-OPS Publications</a></li>
+                      <div class="dropdown-divider"></div>
+                      <li>
+                        <a href="/fieldlibrary/Welcome">CO-OPS Field Library</a>
+                      </li>
+                      <div class="dropdown-divider"></div>
+                      <li>
+                        <a class="dropdown-item custom-dropdown-item" href="/education/tech-assist/">Technical Assistance</a>
+                      </li>
+                      <div class="dropdown-divider"></div>
+                      <li>
+                        <a class="dropdown-item custom-dropdown-item" href="/education/tech-assist/partnerships">Partnerships</a>
+                      </li>
+                      <div class="dropdown-divider"></div>
+                      <li>
+                        <a href="/glossary.html">Glossary</a>
+                      </li>
+                      <div class="dropdown-divider"></div>
+                      
+                      <li><a href="/faq.html">FAQs</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Search Bar -->
+            <div class="hidden-phone searchfloat">
+              <form id="searchForm" name="searchForm" accept-charset="UTF-8" action="/search_results.html" method="get"
+                class="form-search searchbar">
+                <div style="margin: 0; padding: 0; display: inline">
+                  <input name="utf8" type="hidden" value="&#x2713;" />
+                </div>
+                <div class="controls">
+                  <div class="input-append">
+                    <input placeholder="Search" autocomplete="on" type="text"
+                      class="search-query searchboxtext form-control" id="query" name="query"
+                      aria-label="Search Text Box" />
+                    <button type="submit" class="btn btn-outline-success searchbutton"
+                      aria-label="Mobile Search Text Box">
+                      <img class="searchicon" src="https://cdn.tidesandcurrents.noaa.gov/assets/icons/search.png"
+                        alt="Search Button" />
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- visible-phone navigation and search box show-->
+    <div class="visible-tablet visible-phone">
+      <div id="buttoncontainermobile" class="container-fluid navi">
+        <div class="row-fluid">
+          <!-- Logo Section-->
+          <a class="navbar-brand brand-custom" href="https://www.noaa.gov/">
+            <img class="logoimg" src="https://cdn.tidesandcurrents.noaa.gov/assets/logos/logo_separate/noaa.jpg"
+              alt="NOAA" />
+          </a>
+          <a class="navbar-brand brand-custom" href="/">
+            <img class="logoimg"
+              src="https://cdn.tidesandcurrents.noaa.gov/assets/logos/logo_separate/tidesandcurrentslogo.jpg"
+              alt="Tides &amp; Current" />
+          </a>
+          <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+          <a class="btn-navbar navbar-toggler collapsed" type="button" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="navbar-toggler-icon"></span>
+          </a>
+          <!-- Everything you want hidden at 940px or less, place within here -->
+          <div class="nav-collapse collapse-box collapse" style="overflow: hidden; height: 0;" >
+            <!-- Search Bar -->
+            <div class="navbar-search navbarmobile-search" style="border: 0;">
+              <form id="searchForm2" name="searchForm2" accept-charset="UTF-8" action="/search_results.html"
+                method="get" class="form-search form-horizontal searchbox-mobile">
+                <div style="margin: 0; padding: 0; display: inline">
+                  <input name="utf8" type="hidden" value="&#x2713;" />
+                </div>
+                <div class="controls" style="margin-left: 0px;">
+                  <div class="input-append">
+                    <input placeholder="Search" autocomplete="on" type="text"
+                      class="search-query searchboxtext form-control" id="query2" name="query2"
+                      aria-label="Search Text Box" />
+                    <button type="submit" class="btn btn-outline-success searchbutton"
+                      aria-label="Mobile Search Text Box">
+                      <img class="searchicon" src="https://cdn.tidesandcurrents.noaa.gov/assets/icons/search.png"
+                        alt="Search Button" />
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!-- .nav, .navbar-search, .navbar-form, etc -->
+            <ul class="nav navbox-mobile">
+              <!-- About Us-->
+              <li class="dropdown dropdownbox">
+                <a class="dropdown-toggle dropdown-mobile" data-toggle="dropdown">About<span class="caret"></span></a>
+                <ul class="dropdown-menu dropdownbox-mobile">
+                  <li><a href="/about_us.html">Overview</a></li>
+                      <div class="dropdown-divider"></div>
+                      <li class="sub-menu-header"><p>Mission Areas</p></li>
+  		                  <ul class="nav nav-list sub-menu-dropdown">
+  		                    <li>
+  		                      <a href="/navigation_services.html">Navigation Services</a>
+  		                      <div class="dropdown-divider"></div>
+  		                    </li>
+  		                    <li>
+  		                      <a href="/coastal_hazards.html">Coastal Hazards</a>
+  		                      <div class="dropdown-divider"></div>
+  		                    </li>
+  		                    <li>
+  		                      <a href="/mapping_and_charting.html">Mapping and Charting</a>
+  		                    </li>
+		                    </ul>
+                      <div class="dropdown-divider"></div>
+                      <li>
+                        <a href="/news/strategic-plan-2019-2023.html">Strategic Plan</a>
+                      </li>
+                      <div class="dropdown-divider"></div>
+                      <li><a href="/contact.html">Contact Us</a></li>
+                </ul>
+              </li>
+              <!-- What we Do -->
+              <li class="dropdown dropdownbox">
+                <a href="#a" class="dropdown-toggle dropdown-mobile" data-toggle="dropdown">Data and Products<span
+                    class="caret"></span></a>
+                <ul class="dropdown-menu dropdownbox-mobile megamenu">
+                   <li>
+                        <a href="/water_level_info.html">Tides and Water Levels</a>
+                      </li>
+                      <div class="dropdown-divider"></div>
+                      <li><a href="/currents_info.html">Currents</a></li>
+                      <div class="dropdown-divider"></div>
+                      <li>
+                        <a href="/ports_info.html">PORTS<sup>®</sup></a>
+                      </li>
+                      <div class="dropdown-divider"></div>
+                      <li>
+                        <a href="/sea_level_info.html">Sea Level and Coastal Flooding</a>
+                      </li>
+                      <div class="dropdown-divider"></div>
+                      <li>
+                        <a href="/met_info.html">Meteorological and Oceanographic Data</a>
+                      </li>
+                      <div class="dropdown-divider"></div>
+                      <li>
+                        <a href="/forecast_info.html" style="padding-right: 30px">Coastal Forecasts</a>
+                      </li>
+                      <div class="dropdown-divider"></div>
+                      
+                      
+                      <li>
+                        <a href="/web_services_info.html">GIS and Web Services</a>
+                      </li>
+                      <div class="dropdown-divider"></div>
+                      <li>
+                        <a href="/datum-updates/">Tidal/Water Level Datum Updates</a>
+                        <div class="dropdown-divider"></div>
+                      </li>
+                </ul>
+              </li>
+              <!-- News -->
+              <li><a class="dropdown-mobile" href="/tac_news.html">News</a></li>
+              <!-- Education -->
+              <li class="dropdown dropdownbox">
+                <a href="#a" class="dropdown-toggle dropdown-mobile" data-toggle="dropdown">Education and Outreach<span
+                    class="caret"></span></a>
+                <ul class="dropdown-menu dropdownbox-mobile">
+                   <li>
+                        <a href="/education/videolib/tac-videos.html">Videos</a>
+                      </li>                      
+                      <div class="dropdown-divider"></div>
+                      <li><a href="/pub.html">CO-OPS Publications</a></li>
+                      <div class="dropdown-divider"></div>
+                      <li>
+                        <a href="/fieldlibrary/Welcome">CO-OPS Field Library</a>
+                      </li>
+                      <div class="dropdown-divider"></div>
+                      <li>
+                        <a class="dropdown-item custom-dropdown-item" href="/education/tech-assist/">Technical Assistance</a>
+                      </li>
+                      <div class="dropdown-divider"></div>
+                      <li>
+                        <a class="dropdown-item custom-dropdown-item" href="/education/tech-assist/partnerships">Partnerships</a>
+                      </li>
+                      <div class="dropdown-divider"></div>
+                      <li>
+                        <a href="/glossary.html">Glossary</a>
+                      </li>
+                      <div class="dropdown-divider"></div>
+                      
+                      <li><a href="/faq.html">FAQs</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="headlinebarnav"></div>
+
+<!-- End menu header -->
+
+<!-- Sitewide Alert -->
+<div id="sitewideAlert" class="row-fluid"></div>
+
+<!-- Start the alert -->
+<!--<div id="stormAlert" class="alert alert-error text-white alert-dismissible alertbox container-fluid pl-5 fade show text-center fixed-top" style="display:none;" role="alert"></div>-->
+<div class="alert alert-error sitewide row-fluid stormalert-text mb-0 align-middle" id="stormAlert" style="background-color:rgba(179, 0, 3, 1); color: white; font-size: 1rem; text-align: center; display:none; padding:0 10px 0 10px; margin: 0 50% 0 50%; width: 100%;" role="alert" ></div>
+
+<!-- Alert End-->
+<!-- Start Div Content Container -->
+<div class="container-fluid custom-padding">
+  <!-- Breadcrumbs -->
+  <ul class="breadcrumb">
+    <li id="home"></li>
+  </ul>
+  <hr />
+  <!-- breadcrumb script-->
+  <script>
+    if (window.location.pathname == '/') {
+      //we're on index
+      $('#home').html('Tides & Currents Home');
+    } else {
+      $('#home').html('<a href="/">Home</a><span class="divider">/</span>');
+    }
+  </script>
+
+   	<!-- Page content starts here -->
+    <div class="row-fluid">
+		<div class="span12">
+			<h3><center>Notification Of Updated Tidal Datums <br>USING THE 2012-2016 MODIFIED PROCEDURE FOR COMPUTING ACCEPTED TIDAL DATUMS<br>For Areas With Anomalous Sea Level Trends</center></h3><br>
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span12">
+			<P CLASS="content">SUMMARY: NOAA's National Ocean Service (NOS), Center for Operational Oceanographic Products and Services (CO-OPS), last updated the Nation's tidal datums to a new National Tidal Datum Epoch (NTDE) in April 2003 to adjust for changes in mean sea level that have occurred along the Nation's coast over the past 25 years. The NTDE was updated from the 1960-1978 to the 1983- 2001 time period effective on May 28, 2003 (Federal Register, volume 68, Number 102). The NTDE is a specific 19-year period over which tide observations are taken to determine Mean Sea Level and other tidal datums such as Mean Lower Low Water and Mean High Water. This period includes an 18.6 year astronomical cycle that accounts for all significant variations in the distances to the moon and sun that cause slowly varying changes in the range of tide. It is the policy of NOS to consider a revised NTDE every 20-25 years in order to take into account relative sea level changes caused by global sea level rise and the effects of long term land movement on local sea level due to subsidence or glacial rebound. The NTDE of 1983-2001 has been adopted so that all tidal datums throughout the United States will be based on one specific common reference period.   </p>
+		</div>
+	</div>
+	<div class="row-fluid">
+			<div class="span12">
+				<div class="span6">
+					<P CLASS="content">In 1998, NOS recognized the need for a modified procedure for computing accepted tidal datums for regions with anomalously high rates of relative sea level change, and has adopted a 5 year computational period to better reflect the current mean sea level datum. Consequently, tidal datums at stations exhibiting anomalous trends are computed from MSL observations for the most recent 5 year time period, and tidal ranges based on the most recent 19 year NTDE observations at that station. Anomalous relative sea level trends are seen along the western Gulf Coast, southeast Alaska, and southern Cook Inlet, AK (Figure 1). The magnitudes of the sea level trends in these areas are so large, (+9.09 mm/yr in Grand Isle, LA; -13.14 mm/yr in Juneau, AK; and -9.91 mm/yr in Seldovia, AK), that computation of a 19-year epoch value for mean sea level has little practical meaning.</p>
+					
+					<P CLASS="content">The modified procedure is necessary at selected stations to ensure that the tidal datums accurately represent the existing stand of sea level. Sea level analyses in these anomalous regions are conducted approximately every five years to determine if the sea level trend exceeds the established 9.0mm/yr threshold tolerance in order to qualify for a 5-yr modified procedure datum update. A detailed report explaining this modified procedure can be found in the publications section of the CO-OPS Tides & Currents website at <a href="http://tidesandcurrents.noaa.gov/pub.html">http://tidesandcurrents.noaa.gov/pub.html</a>.</p>
+				</div>
+				<div class="span6">
+					<div class="thumbnail">
+						<img src="/images/plotsealevel2012-2016.png" ALT="plots of relative sea level change for several locations highlights the anomalous trends in Louisiana and Alaska" />
+						<div class="caption">
+							<p>Figure 1: Plots of relative sea level change for several locations around the U.S. highlights the anomalous trends in Louisiana and Alaska. </p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<div class="row-fluid">
+			<div class="span12">
+				<br>
+				<p>The current modified procedure datum update for 2012-2016, will affect the following NOAA national Water Level Observation Network Stations:</p>
+				<h5>Control Stations</h5>
+				<P style="margin-left: 10px;">
+				8761724 Grand Isle, LA <br>
+				9452210 Juneau, AK  <br>
+				9452400 Skagway, AK   <br>
+				9455500 Seldovia, AK  <br>
+				9457292 Kodiak, AK  <br>
+				9453220 Yakutat, AK  <br>
+				</p>
+				<h5>Subordinates</h5>
+			</div>
+	</div>
+	<div class="row-fluid"> 
+	
+			<div class="span4">
+				<P style="margin-left: 10px;">
+				8760417	Devon Energy Facility, LA <br>
+				8760551	South Pass, LA <br>
+				8760721	Pilottown, LA <br>
+				8760781	Shell Oil, LA <br>
+				8760889	Olga Compressor Sta., LA <br>
+				8760922	Pilots Station East, LA <br>
+				8760943	Pilots Station, LA <br>
+				8761198	Chevron Station 289, LA <br>
+				8761414	Billet Bay Community, LA <br>
+				8761484	Lease VB #4, LA <br>
+				8761602	Lake Judge Perez, LA <br>
+				8761679	St. Marys Point, LA <br>
+				8761742	Mendicant Island, LA <br>
+				8761799	M.V. Petroleum Dock, LA <br>
+				8761819	Texaco Dock, LA <br>
+				8761826	Cheniere Caminada, LA <br>
+				8761899	Lafitte, LA <br>
+
+				</p>
+			</div>
+			<div class="span4">
+			<p style="margin-left: 10px;">
+			8761962	Texaco Gas Expl. Dock, LA <br>
+			8762075	Port Fourchon, LA <br>
+			8762084	Leeville, LA <br>
+			8762184	Golden Meadow, LA <br>
+			8762223	East Timbalier Island, LA <br>
+			8762231	Salvador WMA, LA <br>
+			8762372	East Bank 1, LA <br>
+			8762482	West Bank 1, LA <br>
+			8762888	E. Isle Dernieres, LA <br>
+			8762928	Cocodrie, LA <br>
+			9452067	Holkham Bay, AK <br>
+			9452123	Taku Harbor, AK <br>
+			9452249	Young Bay, AK <br>
+			9452294	Hawk Inlet Entrance, AK <br>
+			9452318	Barlow Cove, AK <br>
+			9452346	Cove Point, AK <br>
+			9452368	Swanson Harbor, AK <br>
+			9452421	Chilkat Inlet, AK <br>
+
+			</p>
+			</div>
+			<div class="span4">
+				<p style="margin-left: 10px;">
+				9452434	Taiyasanka Harbor, AK <br>
+				9452437	Excursion Inlet (S End), AK <br>
+				9452438	Hoonah, AK <br>
+				9452749	Tarr Inlet, AK <br>
+				9453443	Moraine Bay, AK <br>
+				9455437	Port Grahan, AK <br>
+				9455517	Kasitsna Bay, AK <br>
+				9455595	Bear Cove, AK <br>
+				9455606	Anchor Point, AK <br>
+				9455653	Ninilchik, AK <br>
+				9455760	Nikiski, AK <br>
+				9457287	Ouzinkie, AK <br>
+				9457391	Port Lions, AK <br>
+				9457512	Sitkalidak Isl. GPS Tide Buoy, AK <br>
+				9457527	Old Harbor, AK <br>
+				9457634	Japanese Bay, AK <br>
+				9457726	Geese Isl. GPS Tide Buoy, AK <br>
+				9458293	Cherikof Island, AK <br>
+
+
+				</p>
+			</div>
+	</div>
+	<div class="row-fluid">
+		<div class='span12'>
+			<p class="content">Due to the small vertical changes which result from these modified procedure datum updates (~0.03m (~0.10 foot) to ~0.16m (0.5 foot)), the overall accuracy of hydrographic-cartographic processes at the scale of the NOAA nautical charts, the shoreline, depth soundings values, isobaths, etc., are not significantly modified as a result. However, in regions that have experienced rapid land movement, changes to actual soundings and shoreline depiction may be required on the next regularly scheduled chart edition. Although depictions of the datum changes will not be evident on the largest scale NOS nautical charts, the datum changes will be noticeable when establishing or re-occupying tide stations using accepted surveying techniques and the numerical relationships for tidal benchmarks provided by NOS' CO-OPS. These tidal datum relationships are made available to the public in the form of accepted tidal datums and published tidal benchmark sheets available at <a href="http://www.tidesandcurrents.noaa.gov/">http://www.tidesandcurrents.noaa.gov/</a>. This action is necessary to provide the latest up-to-date information available for applications that are essential to supporting Federal, State and private sector coastal zone activities, including hydrographic surveys and coastal mapping, navigational safety, wetland restoration, marine boundary determinations, coastal engineering, storm warnings and hazard mitigation, emergency management, and hydrodynamic modeling. There are generally no changes required to the NOAA tidal prediction products put out by NOAA as a result of these updates. Users will note that predicted and observed elevations will generally agree more closely during normal weather conditions after the update than previous predicted tides versus observed water levels.</p>
+		</div>
+	</div>
+		
+		
+		
+    <!-- Page content ends here -->
+    
+    <hr>
+    <!-- Closing Div for Container-->
+
+</div>
+
+<!-- Footer section -->
+<div class='push'></div>
+<footer>
+	<div class="footer-container">
+		<div class="row-fluid copyright_box">
+			<div class="container footer-wrapper">
+
+				<div class="copyright-p">
+					<h6 class="copyright-header" style="font-size: 1rem; font-weight: 500">Website Owner: Center for
+						Operational Oceanographic Products and Services
+					</h6>
+					<p style="font-size: 14px">
+						<a class="copyrightText" href="http://www.noaa.gov">National Oceanic and Atmospheric
+							Administration</a>
+						<a class="footerbox" style="margin: 0 1rem">•</a>
+						<br class="break">
+						<a class="copyrightText" href="http://oceanservice.noaa.gov">National Ocean Service</a>
+						<a class="footerbox" style="margin: 0 1rem">•</a>
+						<br class="break">
+						<a class="copyrightText" href="/privacy.html">Privacy Policy</a>
+						<a class="footerbox" style="margin: 0 1rem">•</a>
+						<br>
+						<a class="copyrightText" href="/disclaimers.html">Disclaimer</a>
+						<a class="footerbox" style="margin: 0 1rem">•</a>
+						<br class="break">
+						<a class="copyrightText" href="/survey.html">Take Our Survey </a>
+						<a class="footerbox" style="margin: 0 1rem">•</a>
+						<br class="break">
+						<a class="copyrightText" href="https://www.noaa.gov/foia-freedom-of-information-act">Freedom of
+							Information Act</a>
+						<a class="footerbox" style="margin: 0 1rem">•</a>
+						<br class="break">
+						<a class="copyrightText" href="/contact.html">Contact Us</a>
+					</p>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</footer>
+
+
+
+
+
+<script src="https://cdn.tidesandcurrents.noaa.gov/assets/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="https://cdn.tidesandcurrents.noaa.gov/assets/js/hoverintent.js"></script>
+<script type="text/javascript" src="https://cdn.tidesandcurrents.noaa.gov/assets/js/chosen.jquery.js"></script>
+
+<!--<script type="text/javascript" src="https://cdn.tidesandcurrents.noaa.gov/assets/includes/federated-analytics.js?agency=DOC&subagency=NOAA&pua=UA-47217314-1"-->
+<!--	id="_fed_an_ua_tag"></script>-->
+<script type="text/javascript" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=DOC&subagency=NOAA&pua=UA-47217314-1" id="_fed_an_ua_tag"></script>
+
+<!-- Search Bar autocomplete-->
+<script src="https://cdn.tidesandcurrents.noaa.gov/assets/js/jquery/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/js/bluebird.js"></script>
+<script src="https://cdn.tidesandcurrents.noaa.gov/assets/js/latest/searchbox.js"></script>
+<script type="text/javascript" src="https://cdn.tidesandcurrents.noaa.gov/assets/js/custom_v1.js"></script>
+<script type="text/javascript" src="https://cdn.tidesandcurrents.noaa.gov/assets/js/js-bs4/scroller.js"></script>
+<!-- Alert Bars -->
+<!--<script type="text/javascript" src="/js/storm_alert_panel_bs2.js"></script>-->
+<script type="text/javascript" src="https://cdn.tidesandcurrents.noaa.gov/assets/js/storm_alert_panel_bs2.js"></script>
+<script type="text/javascript" src="https://cdn.tidesandcurrents.noaa.gov/assets/js/sitewide_alert.js"></script>
+<!-- Redirect Check for page url's  -->
+<!--<script type="text/javascript" src="/js/check-redirect.js"></script>-->
+
+	<script type="text/javascript">
+                var bc = new breadcrumb();
+                bc.appendLocation("New Tidal Datum Updates in SE Alaska & Louisiana");
+	</script>
+</body>
+
+</html>

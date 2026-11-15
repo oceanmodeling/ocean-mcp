@@ -1,0 +1,18 @@
+{
+ "NAVD88_G2018": {
+  "url": "https://cdn.proj.org/us_noaa_g2018u0.tif",
+  "status": 200,
+  "bytes": 16742155,
+  "sha256": "fa9a407ac7ee3f5a3694008e4bcd09ce9cc250452f0c3b11700a4960340abce2",
+  "path": "data/raw/vdatum_grids/fa9a407ac7ee3f5a3694008e4bcd09ce9cc250452f0c3b11700a4960340abce2.bin",
+  "end_utc": "2026-11-10T04:46:55.091+00:00"
+ },
+ "LMSL_ITRF2020_2020": {
+  "url": "https://noaa-nos-stofs2d-pds.s3.amazonaws.com/_archive/coastalmodeling-vdatum/us_noaa_nos_LMSL-ITRF2020_2020.0_nwldatum_4.7.0_20240621_3.tif",
+  "status": 200,
+  "bytes": 55534954,
+  "sha256": "345ac0f74feba9450980dbc6327a35a64ccb6aadd97bb9a470e20399e31ab46a",
+  "path": "data/raw/vdatum_grids/345ac0f74feba9450980dbc6327a35a64ccb6aadd97bb9a470e20399e31ab46a.bin",
+  "end_utc": "2026-11-10T04:47:00.465+00:00"
+ }
+}

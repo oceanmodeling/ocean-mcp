@@ -1,0 +1,101 @@
+{
+  "accepted": "Apr 17 2003",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 1.901
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 1.851
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 1.514
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 1.51
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 1.508
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 1.169
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 1.127
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.774
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.682
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.05
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.041
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 4.514
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 11.426
+    }
+  ],
+  "LAT": 0.90500003,
+  "LATdate": "20140130",
+  "LATtime": "23:12",
+  "HAT": 2.1360002,
+  "HATdate": "20110929",
+  "HATtime": "17:54",
+  "min": null,
+  "mindate": "",
+  "mintime": "",
+  "max": null,
+  "maxdate": "",
+  "maxtime": "",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "08/01/1988 - 11/30/1988"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8632200 Kiptopeke, VA",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8633777/datums.json"
+}

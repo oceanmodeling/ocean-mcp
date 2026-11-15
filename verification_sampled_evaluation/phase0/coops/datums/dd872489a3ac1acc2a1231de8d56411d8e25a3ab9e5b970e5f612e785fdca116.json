@@ -1,0 +1,102 @@
+{
+  "accepted": "Mar 23 2020",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 6.315
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 6.291
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 6.122
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 6.141
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 6.157
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 5.991
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 5.929
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.387
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.301
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.024
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.062
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 6.035
+    }
+  ],
+  "LAT": 5.575,
+  "LATdate": "20050110",
+  "LATtime": "16:30",
+  "HAT": 6.567,
+  "HATdate": "20251012",
+  "HATtime": "08:12",
+  "min": 5.108,
+  "mindate": "20181221",
+  "mintime": "15:18",
+  "max": 7.453,
+  "maxdate": "20240708",
+  "maxtime": "17:30",
+  "disclaimers": {
+    "disclaimers": [
+      {
+        "name": "Texas Coastal Ocean Observation Network",
+        "text": "These data and associated tidal datums are derived from the Texas Coastal Ocean Observation Network (TCOON), a state-wide coastal observing system. Leveling information used to verify vertical positioning for navigational purposes may not meet NOS standards. Subsequent review of these data based upon field inspections may result in revisions. Data users are cautioned before using these data for critical decisions such as those that concern physical or public safety."
+      }
+    ],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "10/01/2013 - 09/30/2014",
+    "05/01/2016 - 04/30/2018"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8771450 Galveston Pier 21, TX",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8771486/datums.json"
+}

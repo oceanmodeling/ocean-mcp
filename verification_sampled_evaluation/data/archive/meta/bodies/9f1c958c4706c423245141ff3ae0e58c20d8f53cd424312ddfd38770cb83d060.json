@@ -1,0 +1,99 @@
+{
+  "accepted": "Nov 18 2020",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 1.247
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 1.241
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 1.061
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 1.06
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 1.05
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 0.88
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 0.876
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.372
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.361
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.007
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.004
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 1.034
+    }
+  ],
+  "LAT": 0.5519999,
+  "LATdate": "20050110",
+  "LATtime": "15:06",
+  "HAT": 1.4879999,
+  "HATdate": "20251012",
+  "HATtime": "07:12",
+  "min": 0.244,
+  "mindate": "19770119",
+  "mintime": "06:00",
+  "max": 3.054,
+  "maxdate": "20040916",
+  "maxtime": "04:06",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "01/01/1983 - 12/31/1997",
+    "10/01/2001 - 09/30/2003",
+    "02/01/2005 - 01/31/2012",
+    "09/01/2013 - 08/31/2018"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8729840 Pensacola, FL",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8735180/datums.json"
+}

@@ -1,0 +1,107 @@
+{
+  "accepted": "Jun 14 2018",
+  "superseded": "",
+  "epoch": "2012-2016",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 8.273
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 8.05
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 5.142
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 5.356
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 5.453
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 2.661
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 2.011
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 6.262
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 5.39
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.223
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.65
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 1.189
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 7.567
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 4.216
+    }
+  ],
+  "LAT": 0.25300026,
+  "LATdate": "20350607",
+  "LATtime": "20:42",
+  "HAT": 9.807,
+  "HATdate": "20331010",
+  "HATtime": "01:48",
+  "min": 0.086,
+  "mindate": "20081214",
+  "mintime": "08:54",
+  "max": 10.668,
+  "maxdate": "19761226",
+  "maxtime": "09:00",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "10/01/1996 - 09/30/2010",
+    "07/01/2012 - 06/30/2017"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "9455500 Seldovia, AK",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9455760/datums.json"
+}

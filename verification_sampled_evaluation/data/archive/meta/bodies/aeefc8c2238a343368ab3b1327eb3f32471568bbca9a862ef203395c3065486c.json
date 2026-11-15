@@ -1,0 +1,107 @@
+{
+  "accepted": "Aug 30 2018",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 2.012
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 1.826
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 1.361
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 1.381
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 1.39
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 0.937
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 0.709
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 1.303
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.889
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.187
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.227
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 7.609
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 1.493
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 0.368
+    }
+  ],
+  "LAT": 0.403,
+  "LATdate": "20080605",
+  "LATtime": "15:48",
+  "HAT": 2.328,
+  "HATdate": "20251205",
+  "HATtime": "18:42",
+  "min": 0.348,
+  "mindate": "20120607",
+  "mintime": "21:00",
+  "max": 2.814,
+  "maxdate": "20110320",
+  "maxtime": "12:00",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "07/01/2009 - 06/30/2011",
+    "12/01/2012 - 11/30/2017"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "9415020 Point Reyes, CA",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9414958/datums.json"
+}

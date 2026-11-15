@@ -1,0 +1,106 @@
+{
+  "accepted": "Aug 15 2013",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 2.179
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 2.128
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 1.851
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 1.844
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 1.828
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 1.56
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 1.523
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.657
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.567
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.052
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.038
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 5.22
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 11.69
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 1.876
+    }
+  ],
+  "LAT": 1.4259999,
+  "LATdate": "20370302",
+  "LATtime": "11:48",
+  "HAT": 2.317,
+  "HATdate": "20391216",
+  "HATtime": "18:00",
+  "min": null,
+  "mindate": "",
+  "mintime": "",
+  "max": null,
+  "maxdate": "",
+  "maxtime": "",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "05/01/1977 - 11/30/1977"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8638610 Sewells Point, VA",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8571091/datums.json"
+}

@@ -1,0 +1,1978 @@
+{
+ "session_id": "stofs020_3d_20261012",
+ "server": {
+  "python": "/mnt/d/ocean-mcp/.claude/worktrees/sampled-evaluation/verification_sampled_evaluation/.envs/stofs020/bin/python",
+  "module": "stofs_mcp",
+  "archives": [
+   "/mnt/d/ocean-mcp/.claude/worktrees/sampled-evaluation/verification_sampled_evaluation/data/archive/models",
+   "/mnt/d/ocean-mcp/.claude/worktrees/sampled-evaluation/verification_sampled_evaluation/data/archive/coops",
+   "/mnt/d/ocean-mcp/.claude/worktrees/sampled-evaluation/verification_sampled_evaluation/data/archive/meta",
+   "/mnt/d/ocean-mcp/.claude/worktrees/sampled-evaluation/verification_sampled_evaluation/data/archive/templates"
+  ],
+  "dists": [
+   "stofs-mcp",
+   "mcp",
+   "httpx",
+   "netCDF4",
+   "numpy"
+  ]
+ },
+ "calls": [
+  {
+   "call_id": "3d_20261012_8410140",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8410140",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8411060",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8411060",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8413320",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8413320",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8418150",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8418150",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8419317",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8419317",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8423898",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8423898",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8443970",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8443970",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8447386",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8447386",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8447435",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8447435",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8447930",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8447930",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8449130",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8449130",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8452660",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8452660",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8452944",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8452944",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8454000",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8454000",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8454049",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8454049",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8461490",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8461490",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8465705",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8465705",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8467150",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8467150",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8510560",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8510560",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8516945",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8516945",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8518750",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8518750",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8518962",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8518962",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8519483",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8519483",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8531232",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8531232",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8531680",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8531680",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8534720",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8534720",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8536110",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8536110",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8537121",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8537121",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8539094",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8539094",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8540433",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8540433",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8545240",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8545240",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8546252",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8546252",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8548989",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8548989",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8551762",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8551762",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8551910",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8551910",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8555889",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8555889",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8557380",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8557380",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8570283",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8570283",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8571421",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8571421",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8571892",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8571892",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8573364",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8573364",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8573927",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8573927",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8574680",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8574680",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8575512",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8575512",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8577330",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8577330",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8594900",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8594900",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8631044",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8631044",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8632200",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8632200",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8632837",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8632837",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8635027",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8635027",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8635750",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8635750",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8636580",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8636580",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8637689",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8637689",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8638610",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8638610",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8638901",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8638901",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8638999",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8638999",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8639348",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8639348",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8651370",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8651370",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8652587",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8652587",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8654467",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8654467",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8656483",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8656483",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8658120",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8658120",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8658163",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8658163",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8661070",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8661070",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8662245",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8662245",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8665530",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8665530",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8670870",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8670870",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8679598",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8679598",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8720030",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8720030",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8720215",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8720215",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8720218",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8720218",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8720219",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8720219",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8720226",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8720226",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8721604",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8721604",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8722670",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8722670",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8722956",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8722956",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8723214",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8723214",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8723970",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8723970",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8724580",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8724580",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8725110",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8725110",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8725114",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8725114",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8725520",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8725520",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8726384",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8726384",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8726520",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8726520",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8726607",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8726607",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8726667",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8726667",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8726724",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8726724",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8727520",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8727520",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8728690",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8728690",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8729108",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8729108",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8729210",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8729210",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8729840",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8729840",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8732828",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8732828",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8735180",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8735180",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8735391",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8735391",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8735523",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8735523",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8736897",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8736897",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8737048",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8737048",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8737138",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8737138",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8738043",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8738043",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8739803",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8739803",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8740166",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8740166",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8747437",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8747437",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8760721",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8760721",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8760922",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8760922",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8761305",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8761305",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8761724",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8761724",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8761927",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8761927",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8762483",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8762483",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8764044",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8764044",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8764227",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8764227",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8764314",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8764314",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8766072",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8766072",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8767816",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8767816",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8767961",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8767961",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8768094",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8768094",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8770475",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8770475",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8770520",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8770520",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8770570",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8770570",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8770613",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8770613",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8770777",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8770777",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8770808",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8770808",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8770822",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8770822",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8770971",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8770971",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8771013",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8771013",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8771341",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8771341",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8771450",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8771450",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8771486",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8771486",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8771972",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8771972",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8772447",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8772447",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8772471",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8772471",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8772985",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8772985",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8773037",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8773037",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8773146",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8773146",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8773259",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8773259",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8773701",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8773701",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8773767",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8773767",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8774230",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8774230",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8774770",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8774770",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8775237",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8775237",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8775241",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8775241",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8775244",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8775244",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8775296",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8775296",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8775792",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8775792",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8775870",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8775870",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8779280",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8779280",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8779748",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8779748",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8779749",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8779749",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_8779770",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "8779770",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_9751364",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9751364",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_9751381",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9751381",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_9751401",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9751401",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_9751639",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9751639",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_9752235",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9752235",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_9752619",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9752619",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_9752695",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9752695",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_9753216",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9753216",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_9754228",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9754228",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_9755371",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9755371",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_9757809",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9757809",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_9759110",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9759110",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_9759394",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9759394",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  },
+  {
+   "call_id": "3d_20261012_9759938",
+   "tool": "stofs_compare_with_observations",
+   "arguments": {
+    "station_id": "9759938",
+    "model": "3d_atlantic",
+    "cycle_date": "2026-10-12",
+    "cycle_hour": "12",
+    "hours_to_compare": 72,
+    "response_format": "json"
+   }
+  }
+ ]
+}

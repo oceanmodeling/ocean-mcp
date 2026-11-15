@@ -1,0 +1,106 @@
+{
+  "accepted": "Jul 15 2014",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 3.494
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 3.384
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 2.291
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 2.273
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 2.278
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 1.162
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 1.089
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 2.405
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 2.223
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.11
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.073
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 3.73
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 10.31
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 2.349
+    }
+  ],
+  "LAT": 0.6170001,
+  "LATdate": "20140131",
+  "LATtime": "22:54",
+  "HAT": 4.035,
+  "HATdate": "20170526",
+  "HATtime": "03:36",
+  "min": null,
+  "mindate": "",
+  "mintime": "",
+  "max": null,
+  "maxdate": "",
+  "maxtime": "",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "04/01/1988 - 02/28/1989"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8516990 Willets Point, NY",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8518091/datums.json"
+}

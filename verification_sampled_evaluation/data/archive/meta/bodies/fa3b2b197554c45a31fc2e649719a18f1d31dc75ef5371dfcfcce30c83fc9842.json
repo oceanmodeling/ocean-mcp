@@ -1,0 +1,106 @@
+{
+  "accepted": "Mar 03 2004",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 8.829
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 8.704
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 7.329
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 7.327
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 7.337
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 5.949
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 5.829
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 3.0
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 2.755
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.124
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.12
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 3.53
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 9.774
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 7.187
+    }
+  ],
+  "LAT": 5.187,
+  "LATdate": "20161115",
+  "LATtime": "22:18",
+  "HAT": 9.461,
+  "HATdate": "20341127",
+  "HATtime": "16:30",
+  "min": null,
+  "mindate": "",
+  "mintime": "",
+  "max": null,
+  "maxdate": "",
+  "maxtime": "",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "07/01/2003 - 09/30/2003"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8418150 Portland, ME",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8415709/datums.json"
+}

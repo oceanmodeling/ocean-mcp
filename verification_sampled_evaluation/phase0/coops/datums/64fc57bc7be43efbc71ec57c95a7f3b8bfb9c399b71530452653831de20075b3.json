@@ -1,0 +1,96 @@
+{
+  "accepted": "Jan 13 2026",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 9.613
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 9.511
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 9.02
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 9.012
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 8.984
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 8.514
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 8.427
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 1.187
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.997
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.103
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.088
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 8.023
+    }
+  ],
+  "LAT": null,
+  "LATdate": "",
+  "LATtime": "",
+  "HAT": null,
+  "HATdate": "",
+  "HATtime": "",
+  "min": null,
+  "mindate": "",
+  "mintime": "",
+  "max": null,
+  "maxdate": "",
+  "maxtime": "",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "07/01/2025 - 09/30/2025"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "9468756 Nome, Norton Sound, AK",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9468132/datums.json"
+}

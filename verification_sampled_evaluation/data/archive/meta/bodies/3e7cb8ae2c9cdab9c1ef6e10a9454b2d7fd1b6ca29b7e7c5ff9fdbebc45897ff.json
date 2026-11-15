@@ -1,0 +1,106 @@
+{
+  "accepted": "Sep 26 2017",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 2.396
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 2.318
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 1.911
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 1.891
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 1.889
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 1.465
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 1.426
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.969
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.853
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.078
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.039
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 0.173
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 6.694
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 1.98
+    }
+  ],
+  "LAT": 1.164,
+  "LATdate": "20320114",
+  "LATtime": "20:12",
+  "HAT": 2.681,
+  "HATdate": "20291009",
+  "HATtime": "13:24",
+  "min": 0.896,
+  "mindate": "19901112",
+  "mintime": "10:54",
+  "max": 3.125,
+  "maxdate": "20140103",
+  "maxtime": "14:12",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "07/01/1989 - 06/30/1990"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8510560 Montauk, NY",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8512451/datums.json"
+}

@@ -1,0 +1,106 @@
+{
+  "accepted": "May 09 2013",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 14.901
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 14.677
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 14.096
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 14.132
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 14.127
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 13.587
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 13.29
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 1.611
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 1.091
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.224
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.297
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 5.59
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 11.64
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 13.318
+    }
+  ],
+  "LAT": 12.66,
+  "LATdate": "20050111",
+  "LATtime": "00:06",
+  "HAT": 15.474,
+  "HATdate": "20040702",
+  "HATtime": "04:12",
+  "min": null,
+  "mindate": "",
+  "mintime": "",
+  "max": null,
+  "maxdate": "",
+  "maxtime": "",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "12/01/2012 - 02/28/2013"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "9411340 Santa Barbara, CA",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9411399/datums.json"
+}

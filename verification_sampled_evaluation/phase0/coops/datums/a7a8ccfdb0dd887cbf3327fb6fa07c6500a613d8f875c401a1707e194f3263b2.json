@@ -1,0 +1,96 @@
+{
+  "accepted": "Apr 17 2003",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 1.029
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 1.012
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 0.805
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 0.821
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 0.846
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 0.63
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 0.58
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.449
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.382
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.017
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.05
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 0.854
+    }
+  ],
+  "LAT": 0.13100004,
+  "LATdate": "20040702",
+  "LATtime": "01:42",
+  "HAT": 1.32,
+  "HATdate": "20261031",
+  "HATtime": "04:06",
+  "min": -0.0792,
+  "mindate": "19891213",
+  "mintime": "08:42",
+  "max": 2.7127,
+  "maxdate": "19670920",
+  "maxtime": "00:00",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "03/01/1991 - 02/28/1994"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8779770 Port Isabel, TX",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8779750/datums.json"
+}

@@ -1,0 +1,9 @@
+case 9
+product 3d  cycle 2026-11-02 12:00 UTC  station 8720215  record 'XXXXX XXXXXX 8720215 FL Navy Fuel Depot'
+file https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20261102/stofs_3d_atl.t12z.points.cwl.nc
+sha256 9e50f4884bc5202d77f09a7e83c6d17655792b0c9a0b830217ea2eff5b0e0ed3
+
+zeta attributes: {"_FillValue": "-99999.0", "long_name": "water surface elevation above msl", "standard_name": "sea_surface_height_above_msl", "units": "m"}
+global attributes: {"title": "SCHISM Model output", "source": "SCHISM model output version v10", "references": "http://ccrm.vims.edu/schismweb/", "history": "Mon Nov  2 18:04:10 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v3.1.7/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_xgeoid_to_msl.nco staout_timeseries_2026-11-01-12.nc staout_timeseries_2026-11-01-12_msl.nc", "NCO": "netCDF Operators version 5.0.6 (Homepage = http://nco.sf.net, Code = http://github.com/nco/nco)"}
+
+CO-OPS datums (metadata API): epoch 1983-2001, values (m above station datum): {"STND": 0.0, "MHHW": 2.419, "MHW": 2.379, "DTL": 1.992, "MTL": 1.984, "MSL": 1.985, "MLW": 1.588, "MLLW": 1.565, "GT": 0.855, "MN": 0.791, "DHQ": 0.04, "DLQ": 0.023, "HWI": 2.357, "LWI": 8.776, "NAVD88": 2.083}

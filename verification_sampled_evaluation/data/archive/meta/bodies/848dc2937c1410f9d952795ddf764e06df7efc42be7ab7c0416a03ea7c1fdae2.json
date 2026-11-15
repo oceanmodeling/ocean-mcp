@@ -1,0 +1,97 @@
+{
+  "accepted": "Sep 29 2020",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 1.475
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 1.475
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 1.393
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 1.392
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 1.394
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 1.308
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 1.31
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.165
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.167
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.0
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": -0.001
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 1.381
+    }
+  ],
+  "LAT": 1.139,
+  "LATdate": "20230122",
+  "LATtime": "01:00",
+  "HAT": 1.6190001,
+  "HATdate": "20230925",
+  "HATtime": "21:36",
+  "min": 0.518,
+  "mindate": "19891225",
+  "mintime": "22:18",
+  "max": 3.295,
+  "maxdate": "20120830",
+  "maxtime": "12:24",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "01/01/2010 - 12/31/2012",
+    "03/01/2013 - 02/28/2019"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8761305 Shell Beach, LA",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8761927/datums.json"
+}

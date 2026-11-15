@@ -1,0 +1,98 @@
+{
+  "accepted": "Apr 21 2020",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 7.039
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 6.993
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 6.721
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 6.775
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 6.768
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 6.557
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 6.403
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.636
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.436
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.046
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.153
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 6.775
+    }
+  ],
+  "LAT": 5.946,
+  "LATdate": "20050110",
+  "LATtime": "13:54",
+  "HAT": 7.241,
+  "HATdate": "20071027",
+  "HATtime": "22:24",
+  "min": 5.148,
+  "mindate": "20220312",
+  "mintime": "12:36",
+  "max": 9.475,
+  "maxdate": "20080912",
+  "maxtime": "23:30",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "04/01/2006 - 03/31/2008",
+    "08/01/2008 - 07/31/2013",
+    "07/01/2015 - 06/30/2017"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8770570 Sabine Pass North, TX",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8766072/datums.json"
+}

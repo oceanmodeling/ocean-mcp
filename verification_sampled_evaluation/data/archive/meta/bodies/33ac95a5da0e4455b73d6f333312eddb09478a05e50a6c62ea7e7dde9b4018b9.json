@@ -1,0 +1,101 @@
+{
+  "accepted": "May 01 2003",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 3.398
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 3.324
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 2.948
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 2.929
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 2.916
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 2.533
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 2.498
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.9
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.791
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.074
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.035
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 0.352
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 6.606
+    }
+  ],
+  "LAT": 2.231,
+  "LATdate": "20320212",
+  "LATtime": "07:12",
+  "HAT": 3.735,
+  "HATdate": "20111027",
+  "HATtime": "12:30",
+  "min": null,
+  "mindate": "",
+  "mintime": "",
+  "max": null,
+  "maxdate": "",
+  "maxtime": "",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "05/01/1998 - 10/31/1998"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8452660 Newport, RI",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8459681/datums.json"
+}

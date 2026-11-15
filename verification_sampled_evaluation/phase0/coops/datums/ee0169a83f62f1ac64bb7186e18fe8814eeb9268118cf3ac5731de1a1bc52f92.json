@@ -1,0 +1,98 @@
+{
+  "accepted": "Feb 27 2018",
+  "superseded": "",
+  "epoch": "2012-2016",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 9.756
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 9.753
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 9.579
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 9.579
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 9.579
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 9.406
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 9.401
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.356
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.347
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.004
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.005
+    }
+  ],
+  "LAT": 9.091001,
+  "LATdate": "20050109",
+  "LATtime": "11:54",
+  "HAT": 9.991,
+  "HATdate": "20260615",
+  "HATtime": "13:42",
+  "min": 8.737,
+  "mindate": "20041213",
+  "mintime": "14:00",
+  "max": 11.445,
+  "maxdate": "20050829",
+  "maxtime": "09:30",
+  "disclaimers": {
+    "disclaimers": [
+      {
+        "name": "NOTICE OF PROVISIONAL DATUM",
+        "text": "These datums and any data referred to said datum are PROVISIONAL and subject to revision until they have been thoroughly reviewed and received final approval.  Subsequent review based on field inspections and additional measurements may result in revisions to the data and datums.  Data users are cautioned to consider the conditional nature of this information before using it for critical decisions such as those that concern physical or public safety. Only after meeting all standards for quality control assurance will the datums be classified as Accepted Datums."
+      }
+    ],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "09/01/2004 - 08/31/2008",
+    "04/01/2010 - 03/31/2012",
+    "05/01/2012 - 04/30/2017"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8761724 Grand Isle, LA",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8760922/datums.json"
+}

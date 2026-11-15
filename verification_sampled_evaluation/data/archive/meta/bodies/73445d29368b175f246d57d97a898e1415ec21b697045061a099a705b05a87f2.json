@@ -1,0 +1,96 @@
+{
+  "accepted": "Sep 06 2017",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "VIVD09",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 10.605
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 10.603
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 10.497
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 10.498
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 10.501
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 10.393
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 10.389
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.216
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.21
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.002
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.004
+    },
+    {
+      "name": "VIVD09",
+      "description": "Virgin Islands Vertical Datum of 2009",
+      "value": 10.501
+    }
+  ],
+  "LAT": 10.231,
+  "LATdate": "20250430",
+  "LATtime": "17:36",
+  "HAT": 10.737,
+  "HATdate": "20050818",
+  "HATtime": "02:12",
+  "min": 10.156,
+  "mindate": "19900526",
+  "mintime": "12:54",
+  "max": 11.177,
+  "maxdate": "19991117",
+  "maxtime": "18:24",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "01/01/1984 - 12/31/2001"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9751401/datums.json"
+}

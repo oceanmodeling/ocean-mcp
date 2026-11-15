@@ -1,0 +1,96 @@
+{
+  "accepted": "Feb 05 2018",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 0.953
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 0.927
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 0.702
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 0.703
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 0.702
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 0.479
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 0.451
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.501
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.448
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.026
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.028
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 0.6
+    }
+  ],
+  "LAT": 0.07800001,
+  "LATdate": "20050110",
+  "LATtime": "16:42",
+  "HAT": 1.169,
+  "HATdate": "20050623",
+  "HATtime": "18:36",
+  "min": -0.415,
+  "mindate": "19850120",
+  "mintime": "19:54",
+  "max": 2.504,
+  "maxdate": "20171008",
+  "maxtime": "08:36",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "07/01/2007 - 06/30/2017"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8741533 Pascagoula NOAA Lab, MS",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8737048/datums.json"
+}

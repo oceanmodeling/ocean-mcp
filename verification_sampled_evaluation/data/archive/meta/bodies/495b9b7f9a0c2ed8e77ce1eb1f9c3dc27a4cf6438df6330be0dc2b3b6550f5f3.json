@@ -1,0 +1,101 @@
+{
+  "accepted": "Aug 07 2003",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 1.182
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 1.106
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 0.972
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 0.948
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 0.953
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 0.79
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 0.762
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 0.42
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 0.316
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.076
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.028
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 7.36
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 1.28
+    }
+  ],
+  "LAT": 0.599,
+  "LATdate": "20360114",
+  "LATtime": "13:48",
+  "HAT": 1.248,
+  "HATdate": "20280920",
+  "HATtime": "20:24",
+  "min": null,
+  "mindate": "",
+  "mintime": "",
+  "max": null,
+  "maxdate": "",
+  "maxtime": "",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "11/01/1983 - 11/30/1983"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8575512 Annapolis, MD",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8577188/datums.json"
+}

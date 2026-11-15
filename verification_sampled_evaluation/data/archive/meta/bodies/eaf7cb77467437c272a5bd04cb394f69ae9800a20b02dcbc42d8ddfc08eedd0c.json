@@ -1,0 +1,91 @@
+{
+  "accepted": "May 13 2008",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 4.707
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 4.448
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 3.162
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 3.236
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 3.233
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 2.024
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 1.606
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 3.093
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 2.424
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.259
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.418
+    }
+  ],
+  "LAT": 0.69499993,
+  "LATdate": "20251206",
+  "LATtime": "04:00",
+  "HAT": 5.45,
+  "HATdate": "20031124",
+  "HATtime": "21:12",
+  "min": null,
+  "mindate": "",
+  "mintime": "",
+  "max": null,
+  "maxdate": "",
+  "maxtime": "",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "05/01/2007 - 06/30/2007"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "9451600 Sitka, AK",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9450551/datums.json"
+}

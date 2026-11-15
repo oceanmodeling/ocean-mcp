@@ -1,0 +1,108 @@
+{
+  "accepted": "Nov 02 2020",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 4.278
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 4.196
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 3.523
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 3.505
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 3.519
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 2.814
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 2.767
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 1.511
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 1.382
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.083
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.047
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 1.177
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 7.029
+    },
+    {
+      "name": "NAVD88",
+      "description": "North American Vertical Datum of 1988",
+      "value": 3.678
+    }
+  ],
+  "LAT": 2.342,
+  "LATdate": "20140131",
+  "LATtime": "07:00",
+  "HAT": 4.7650003,
+  "HATdate": "20111027",
+  "HATtime": "13:30",
+  "min": 1.99,
+  "mindate": "20080308",
+  "mintime": "19:42",
+  "max": 5.316,
+  "maxdate": "20221110",
+  "maxtime": "20:18",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "01/01/2001 - 12/31/2010",
+    "01/01/2012 - 12/31/2014",
+    "01/01/2016 - 12/31/2018"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "8720030 Fernandina Beach, FL",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8720218/datums.json"
+}

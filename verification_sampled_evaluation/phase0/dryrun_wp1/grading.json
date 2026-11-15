@@ -1,0 +1,56 @@
+{
+ "purpose": "pre-freeze pipeline check on PREVIOUSLY SEEN WP1 files (2026-10-30), window (0, 48] h; not part of the sample",
+ "session_valid": false,
+ "packages": {
+  "python": "3.13.12",
+  "stofs-mcp": "0.3.0",
+  "mcp": "1.30.0",
+  "httpx": "0.28.1"
+ },
+ "calls": [
+  {
+   "case_id": "3d_20261030_8443970",
+   "call_valid": true,
+   "class": "correct_comparison",
+   "sub": "",
+   "stat_diffs": {
+    "bias": -1.1496665344168377e-06,
+    "rmse": 4.7424378753574414e-05,
+    "mae": -6.314752312608363e-06
+   },
+   "n_tool": 480,
+   "n_ref": 480
+  },
+  {
+   "case_id": "3d_20261030_9751381",
+   "call_valid": true,
+   "class": "correct_refusal",
+   "sub": "declined, reason matches",
+   "stat_diffs": null,
+   "n_tool": null,
+   "n_ref": null
+  },
+  {
+   "case_id": "2d_20261030_8443970",
+   "call_valid": true,
+   "class": "correct_comparison",
+   "sub": "",
+   "stat_diffs": {
+    "bias": 1.3417291666594248e-06,
+    "rmse": 3.167112493387969e-06,
+    "mae": 6.916812500007419e-06
+   },
+   "n_tool": 480,
+   "n_ref": 480
+  },
+  {
+   "case_id": "2d_20261030_8571421",
+   "call_valid": false,
+   "class": "invalid_session",
+   "sub": "replay miss or network attempt",
+   "stat_diffs": null,
+   "n_tool": null,
+   "n_ref": null
+  }
+ ]
+}

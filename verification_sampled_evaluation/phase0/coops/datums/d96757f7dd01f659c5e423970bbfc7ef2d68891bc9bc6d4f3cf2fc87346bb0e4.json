@@ -1,0 +1,101 @@
+{
+  "accepted": "May 04 2020",
+  "superseded": "",
+  "epoch": "1983-2001",
+  "units": "meters",
+  "OrthometricDatum": "NAVD88",
+  "datums": [
+    {
+      "name": "STND",
+      "description": "Station Datum",
+      "value": 0.0
+    },
+    {
+      "name": "MHHW",
+      "description": "Mean Higher-High Water",
+      "value": 6.209
+    },
+    {
+      "name": "MHW",
+      "description": "Mean High Water",
+      "value": 5.939
+    },
+    {
+      "name": "DTL",
+      "description": "Mean Diurnal Tide Level",
+      "value": 4.532
+    },
+    {
+      "name": "MTL",
+      "description": "Mean Tide Level",
+      "value": 4.62
+    },
+    {
+      "name": "MSL",
+      "description": "Mean Sea Level",
+      "value": 4.602
+    },
+    {
+      "name": "MLW",
+      "description": "Mean Low Water",
+      "value": 3.3
+    },
+    {
+      "name": "MLLW",
+      "description": "Mean Lower-Low Water",
+      "value": 2.855
+    },
+    {
+      "name": "GT",
+      "description": "Great Diurnal Range",
+      "value": 3.354
+    },
+    {
+      "name": "MN",
+      "description": "Mean Range of Tide",
+      "value": 2.639
+    },
+    {
+      "name": "DHQ",
+      "description": "Mean Diurnal High Water Inequality",
+      "value": 0.27
+    },
+    {
+      "name": "DLQ",
+      "description": "Mean Diurnal Low Water Inequality",
+      "value": 0.445
+    },
+    {
+      "name": "HWI",
+      "description": "Greenwich High Water Interval (in hours)",
+      "value": 9.59
+    },
+    {
+      "name": "LWI",
+      "description": "Greenwich Low Water Interval (in hours)",
+      "value": 3.342
+    }
+  ],
+  "LAT": 1.8310003,
+  "LATdate": "20390607",
+  "LATtime": "16:06",
+  "HAT": 7.188,
+  "HATdate": "20391216",
+  "HATtime": "21:42",
+  "min": 1.414,
+  "mindate": "20211205",
+  "mintime": "09:00",
+  "max": 7.435,
+  "maxdate": "20051231",
+  "maxtime": "21:24",
+  "disclaimers": {
+    "disclaimers": [],
+    "self": null
+  },
+  "DatumAnalysisPeriod": [
+    "05/01/2006 - 04/30/2018"
+  ],
+  "NGSLink": "",
+  "ctrlStation": "9451600 Sitka, AK",
+  "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9452634/datums.json"
+}
