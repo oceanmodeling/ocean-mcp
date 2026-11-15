@@ -1,0 +1,716 @@
+{
+ "started_at": "2026-11-09T02:52:44+00:00",
+ "arms": [
+  "C",
+  "D"
+ ],
+ "ww3_candidate_wheel": [],
+ "sessions": [
+  {
+   "task": "N1",
+   "arm": "C",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 2,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "stofs-mcp": "0.3.0",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "answered",
+   "action": "proceed"
+  },
+  {
+   "task": "N1",
+   "arm": "D",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 2,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "stofs-mcp": "0.2.0",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "answered",
+   "action": "proceed"
+  },
+  {
+   "task": "N2",
+   "arm": "C",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 2,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "stofs-mcp": "0.3.0",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "answered",
+   "action": "proceed"
+  },
+  {
+   "task": "N2",
+   "arm": "D",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 2,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "stofs-mcp": "0.2.0",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "answered",
+   "action": "proceed"
+  },
+  {
+   "task": "N3",
+   "arm": "C",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 2,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "coops-mcp": "0.1.1",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "answered",
+   "action": "proceed"
+  },
+  {
+   "task": "N3",
+   "arm": "D",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 2,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "coops-mcp": "0.1.1",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "answered",
+   "action": "proceed"
+  },
+  {
+   "task": "N4",
+   "arm": "C",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 2,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "erddap-mcp": "0.1.2",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "answered",
+   "action": "proceed"
+  },
+  {
+   "task": "N4",
+   "arm": "D",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 2,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "erddap-mcp": "0.1.2",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "answered",
+   "action": "proceed"
+  },
+  {
+   "task": "R1a",
+   "arm": "C",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 1,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "stofs-mcp": "0.3.0",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "answered",
+   "action": "proceed"
+  },
+  {
+   "task": "R1a",
+   "arm": "D",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 1,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "stofs-mcp": "0.2.0",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "answered",
+   "action": "proceed"
+  },
+  {
+   "task": "R1b",
+   "arm": "C",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 1,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "stofs-mcp": "0.3.0",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "refused",
+   "action": "refuse"
+  },
+  {
+   "task": "R1b",
+   "arm": "D",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 2,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "stofs-mcp": "0.2.0",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "answered",
+   "action": "proceed"
+  },
+  {
+   "task": "R2",
+   "arm": "C",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 1,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "stofs-mcp": "0.3.0",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "answered",
+   "action": "proceed"
+  },
+  {
+   "task": "R2",
+   "arm": "D",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 1,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "stofs-mcp": "0.2.0",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "answered",
+   "action": "proceed"
+  },
+  {
+   "task": "R3",
+   "arm": "C",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 1,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "stofs-mcp": "0.3.0",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "answered",
+   "action": "proceed"
+  },
+  {
+   "task": "R3",
+   "arm": "D",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 1,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "stofs-mcp": "0.2.0",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "answered",
+   "action": "proceed"
+  },
+  {
+   "task": "R4a",
+   "arm": "C",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 2,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "stofs-mcp": "0.3.0",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "answered",
+   "action": "proceed"
+  },
+  {
+   "task": "R4a",
+   "arm": "D",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 2,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "stofs-mcp": "0.2.0",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "answered",
+   "action": "proceed"
+  },
+  {
+   "task": "R4b",
+   "arm": "C",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 2,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "stofs-mcp": "0.3.0",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "answered",
+   "action": "proceed"
+  },
+  {
+   "task": "R4b",
+   "arm": "D",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 2,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "stofs-mcp": "0.2.0",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "answered",
+   "action": "proceed"
+  },
+  {
+   "task": "R5",
+   "arm": "C",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 1,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "stofs-mcp": "0.3.0",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "answered",
+   "action": "proceed"
+  },
+  {
+   "task": "R5",
+   "arm": "D",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 1,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "stofs-mcp": "0.2.0",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "answered",
+   "action": "proceed"
+  },
+  {
+   "task": "R6",
+   "arm": "C",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 1,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "stofs-mcp": "0.3.0",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "answered",
+   "action": "proceed"
+  },
+  {
+   "task": "R6",
+   "arm": "D",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 1,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "stofs-mcp": "0.2.0",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "refused",
+   "action": "refuse"
+  },
+  {
+   "task": "R7",
+   "arm": "C",
+   "status": "candidate_not_available"
+  },
+  {
+   "task": "R7",
+   "arm": "D",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 1,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "ww3-mcp": "0.1.2",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "answered",
+   "action": "proceed"
+  },
+  {
+   "task": "S1",
+   "arm": "C",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 1,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "stofs-mcp": "0.3.0",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "refused",
+   "action": "refuse"
+  },
+  {
+   "task": "S1",
+   "arm": "D",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 2,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "stofs-mcp": "0.2.0",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "answered",
+   "action": "proceed"
+  },
+  {
+   "task": "S2",
+   "arm": "C",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 1,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "stofs-mcp": "0.3.0",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "refused",
+   "action": "refuse"
+  },
+  {
+   "task": "S2",
+   "arm": "D",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 2,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "stofs-mcp": "0.2.0",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "answered",
+   "action": "proceed"
+  },
+  {
+   "task": "S3",
+   "arm": "C",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 1,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "stofs-mcp": "0.3.0",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "refused",
+   "action": "refuse"
+  },
+  {
+   "task": "S3",
+   "arm": "D",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 2,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "stofs-mcp": "0.2.0",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "answered",
+   "action": "proceed"
+  },
+  {
+   "task": "S4",
+   "arm": "C",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 2,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "stofs-mcp": "0.3.0",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "answered",
+   "action": "proceed"
+  },
+  {
+   "task": "S4",
+   "arm": "D",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 2,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "stofs-mcp": "0.2.0",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "answered",
+   "action": "proceed"
+  },
+  {
+   "task": "S5",
+   "arm": "C",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 2,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "stofs-mcp": "0.3.0",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "answered",
+   "action": "proceed"
+  },
+  {
+   "task": "S5",
+   "arm": "D",
+   "exit": 0,
+   "valid": true,
+   "http": {
+    "requests": 2,
+    "replay_misses": 0,
+    "network_blocked": 0,
+    "log": "http_log.jsonl"
+   },
+   "packages": {
+    "python": "3.13.12",
+    "stofs-mcp": "0.2.0",
+    "mcp": "1.30.0",
+    "httpx": "0.28.1"
+   },
+   "status": "answered",
+   "action": "proceed"
+  }
+ ],
+ "finished_at": "2026-11-09T02:53:42+00:00"
+}

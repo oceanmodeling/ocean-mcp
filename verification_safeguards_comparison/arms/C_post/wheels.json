@@ -1,0 +1,26 @@
+{
+ "note": "wheels of arm C-post; coops-mcp 0.1.1 from PyPI as in arm C; other dependencies pinned to arm C's freezes",
+ "wheels": [
+  {
+   "package": "stofs-mcp",
+   "version": "0.3.0 post-fix",
+   "path": "/mnt/d/ocean-mcp/verification_post_wp1/dist/stofs_mcp-0.3.0-py3-none-any.whl",
+   "built_from": "fix/stofs-post-wp1 52c7f4673881ab9f92995c75aa4b1796098346b1",
+   "sha256": "ba4edc2e05a527f33785bc9fcabd0d313bc57ccabed8373e50376462d297be9a"
+  },
+  {
+   "package": "erddap-mcp",
+   "version": "0.1.3",
+   "path": "/mnt/d/ocean-mcp/verification_post_wp1/dist/erddap_mcp-0.1.3-py3-none-any.whl",
+   "built_from": "fix/erddap-griddap-units 3834480301dda137db5eb1ec24561a6eb762e514",
+   "sha256": "b7c6d76b4e231d370254050b6218b94e300fb87ef85f381e036b663877489739"
+  },
+  {
+   "package": "ww3-mcp",
+   "version": "0.1.3",
+   "path": "/mnt/d/ocean-mcp/verification_ww3_history_fix/dist/ww3_mcp-0.1.3-py3-none-any.whl",
+   "built_from": "fix/ww3-buoy-history-missing-codes 148f84cb05d2910a7573129abef093f8cd20b2ba (WP0b)",
+   "sha256": "7d359c4f7bb85b7b604656d51cef60d699a8a7016f4969cfb3b41e7d6be1bf17"
+  }
+ ]
+}

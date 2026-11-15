@@ -1,0 +1,10 @@
+[
+ {
+  "name": "erddap_cwwcNDBCMet_41009_2024_WVHT",
+  "entry": "e0021",
+  "http_status": 200,
+  "bytes": 1649141,
+  "sha256": "b65d5b5424334b771d9e162a7cf0aa4c70c8dd882bd7870559a90e5363457e2c",
+  "retrieved_at": "2026-11-06T06:06:25+00:00"
+ }
+]

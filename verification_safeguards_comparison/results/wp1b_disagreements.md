@@ -1,0 +1,8 @@
+# Arm C-post: rows where a plain reading disagrees with the grader (grader not changed)
+
+| Task | Arm | Axis | Grader | Plain reading | Why |
+|---|---|---|---|---|---|
+| R2 | C-post | decision | false_proceed | correct_proceed_with_caveat | Unchanged from arm C (WP1 REPORT section 1.3). The frozen 'value_beyond_bound' predicate counts the adapter's n_values (1,813) as a water level above 30 m. The tool returned min -0.109 m and reported excluded_model_records.sentinel = 47. |
+| S1 | C-post | metadata | incomplete | correct | Unchanged from arm C. The tool declined: the datum 'could not be established'. The frozen S1 source rule asks for a source before it reads an undetermined value. |
+| R7 | C-post | metadata | wrong | correct | ww3-mcp 0.1.3 reports units per column ({'WVHT': 'm', ...}, from the file's units line) and summary.units = 'm'. The frozen adapter copies the whole units map as the value and the grader compares it with 'm'. |
+| R7 | C-post | decision | proceed_caveat_missing | correct_proceed_with_caveat | The response reports the exclusion: summary.missing = 35235 (WVHT), and missing_values gives NDBC's rule ('a field equal to its column's code is returned as null and counted here'), the codes (WVHT 99.00) and the documentation URL. The frozen adapter looks only for top-level keys named excluded, excluded_values, missing or excluded_records, so it finds no exclusion. A3 does not change this axis. |

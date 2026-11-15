@@ -1,0 +1,57 @@
+{
+ "task_id": "R1a",
+ "arm": "A",
+ "status": "answered",
+ "action": "proceed",
+ "values": {
+  "top": [
+   {
+    "station": "LAMV3 SOUS41 9751381 VI Lameshur Bay, St John",
+    "max_m": 9999999.58197999
+   },
+   {
+    "station": "XXXXX XXXXXX 9752235 PR Culebra",
+    "max_m": 9999999.550009996
+   },
+   {
+    "station": "ESPP4 SOUS41 9752695 PR Esperanza, Vieques Island",
+    "max_m": 9999999.523169994
+   },
+   {
+    "station": "LTBV3 SOUS41 9751401 VI Lime Tree Bay",
+    "max_m": 9999999.443830013
+   },
+   {
+    "station": "CHSV3 SOUS41 9751364 VI Christiansted Harbor, St C",
+    "max_m": 9999999.41071999
+   }
+  ],
+  "station": "LAMV3 SOUS41 9751381 VI Lameshur Bay, St John",
+  "max_m": 9999999.58197999
+ },
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {
+  "model_datum": {
+   "value": "LMSL",
+   "source": "fixed pairing from current product documentation (NWS SCN 26-51, STOFS v3.1)"
+  },
+  "units": {
+   "value": "m",
+   "source": "zeta:units attribute"
+  }
+ },
+ "texts": [],
+ "exclusions": [],
+ "evidence": {
+  "inputs": [
+   {
+    "archive": "base",
+    "entry": "e0002",
+    "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20261030/stofs_3d_atl.t12z.points.cwl.nc",
+    "sha256": "4660819425aa1d2eec0e63a37d3a78e8fef2e00f62a1cb56f088347ef51a450f",
+    "why": "url"
+   }
+  ]
+ }
+}

@@ -1,0 +1,26 @@
+{
+ "session_id": "phase0_ww3_012_replay_failloud",
+ "arm": "phase0",
+ "server": {
+  "python": "/tmp/claude-1000/-mnt-d-ocean-mcp/349682ef-6680-4b65-946b-8dddc1d96a0d/scratchpad/envs/ww3_012/bin/python",
+  "module": "ww3_mcp",
+  "mode": "replay",
+  "archives": [
+   "/mnt/d/ocean-mcp/.claude/worktrees/safeguards-comparison/verification_safeguards_comparison/data/archive/base"
+  ],
+  "dists": [
+   "ww3-mcp",
+   "mcp",
+   "httpx"
+  ]
+ },
+ "calls": [
+  {
+   "call_id": "unarchived_realtime",
+   "tool": "ww3_get_buoy_observations",
+   "arguments": {
+    "station_id": "41009"
+   }
+  }
+ ]
+}

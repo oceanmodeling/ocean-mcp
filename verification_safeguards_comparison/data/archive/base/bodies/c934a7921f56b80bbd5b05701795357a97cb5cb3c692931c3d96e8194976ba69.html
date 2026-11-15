@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- Remove the next line to disable mobile mode -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="description here" />
+<link href="css/bootstrap.css" rel="stylesheet">
+<title>The Data API Response Help</title>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span2">
+				<ul class="nav nav-list well">
+					<li class="nav-header">Jump to:</li>
+					<li><a href="#preliminarywaterlevel">Preliminary Water
+							Level</a></li>
+					<li><a href="#verifiedwaterlevel">Verified Water Level</a></li>
+					<li><a href="#hourlyheight">Hourly Height</a></li>
+					<li><a href="#highlow">High Low</a></li>
+					<li><a href="#dailymean">Daily Mean</a></li>
+					<li><a href="#monthlymean">Monthly Mean</a></li>
+					<li><a href="#oneminute">One Minute Water Level</a></li>
+					<li><a href="#tidepred">Tide Predictions</a></li>
+					<li><a href="#airgap">Air Gap</a></li>
+					<li><a href="#wind">Wind</a></li>
+					<li><a href="#airpress">Air Pressure</a></li>
+					<li><a href="#airtemp">Air Temperature</a></li>
+					<li><a href="#visibility">Visibility</a></li>
+					<li><a href="#humidity">Humidity</a></li>
+					<li><a href="#watertemp">Water Temperature</a></li>
+					<li><a href="#conductivity">Conductivity</a></li>
+					<li><a href="#salinity">Salinity</a></li>
+					<li><a href="#currents">Currents</a></li>
+					<li><a href="#currentspred">Currents Prediction</a></li>
+					<li><a href="#currentsheader">Currents Header</a></li>
+				</ul>
+			</div>
+			<div class="span9">
+				<div class="hero well">
+					<h3>The Data API Response Help</h3>
+				</div>
+				What do the letters in the data columns represent? There is a
+				different set of columns returned for different types of data. <a
+					name="preliminarywaterlevel"></a>
+				<h4>Preliminary Water Level</h4>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Field</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tr>
+						<td>t</td>
+						<td>Time - Date and time of the observation</td>
+					</tr>
+					<tr>
+						<td>v</td>
+						<td>Value - Measured water level height</td>
+					</tr>
+					<tr>
+						<td>s</td>
+						<td>Sigma - Standard deviation of 1 second samples used to
+							compute the water level height</td>
+					</tr>
+					<tr>
+						<td>f</td>
+						<td>Data Flags - in order of listing:<br> -- (O) Count
+							of number of 1 second samples that fall outside a 3-sigma band
+							about the mean<br> -- (F) A flag that when set to 1
+							indicates that the flat tolerance limit was exceeded<br> --
+							(R) A flag that when set to 1 indicates that the rate of change
+							tolerance limit was exceeded<br> -- (L) A flag that when set
+							to 1 indicates that either the maximum or minimum expected water
+							level height limit was exceeded
+						</td>
+					</tr>
+					<tr>
+						<td>q</td>
+						<td>Quality Assurance/Quality Control level<br> -- p =
+							preliminary<br> -- v = verified
+						</td>
+					</tr>
+				</table>
+
+				<a name="verifiedwaterlevel"></a>
+				<h4>Verified Water Level</h4>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Field</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tr>
+						<td>t</td>
+						<td>Time - Date and time of the observation</td>
+					</tr>
+					<tr>
+						<td>v</td>
+						<td>Value - Measured water level height</td>
+					</tr>
+					<tr>
+						<td>s</td>
+						<td>Sigma - Standard deviation of 1 second samples used to
+							compute the water level height</td>
+					</tr>
+					<tr>
+						<td>f</td>
+						<td>Data Flags - in order of listing:<br> -- (I) A flag
+							that when set to 1 indicates that the water level value has been
+							inferred<br> -- (F) A flag that when set to 1 indicates that
+							the flat tolerance limit was exceeded<br> -- (R) A flag that
+							when set to 1 indicates that the rate of change tolerance limit
+							was exceeded<br> -- (T) A flag that when set to 1 indicates
+							that either the maximum or minimum expected water level height
+							limit was exceeded
+						</td>
+					</tr>
+					<tr>
+						<td>q</td>
+						<td>Quality Assurance/Quality Control level<br> -- p =
+							preliminary<br> -- v = verified
+						</td>
+					</tr>
+				</table>
+
+				<a name="hourlyheight"></a>
+				<h4>Hourly Height</h4>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Field</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tr>
+						<td>t</td>
+						<td>Time - Date and time of the observation</td>
+					</tr>
+					<tr>
+						<td>v</td>
+						<td>Value - Measured water level height</td>
+					</tr>
+					<tr>
+						<td>s</td>
+						<td>Sigma - Standard deviation of 1 second samples used to
+							compute the water level height</td>
+					</tr>
+					<tr>
+						<td>f</td>
+						<td>Data Flags - in order of listing:<br> -- (I) A flag
+							that when set to 1 indicates that the water level value has been
+							inferred<br> -- (L) A flag that when set to 1 indicates that
+							either the maximum or minimum expected water level height limit
+							was exceeded
+						</td>
+					</tr>
+				</table>
+
+				<a name="highlow"></a>
+				<h4>High Low</h4>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Field</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tr>
+						<td>t</td>
+						<td>Time - Date and time of the observation</td>
+					</tr>
+					<tr>
+						<td>v</td>
+						<td>Value - Measured water level height</td>
+					</tr>
+					<tr>
+						<td>ty</td>
+						<td>Type - Designation of Water level height. HH = Higher
+							High water, H = High water, L = Low water, LL = Lower Low water</td>
+					</tr>
+					<tr>
+						<td>f</td>
+						<td>Data Flags - in order of listing:<br> -- (I) A flag
+							that when set to 1 indicates that the water level value has been
+							inferred<br> -- (L) A flag that when set to 1 indicates that
+							either the maximum or minimum expected water level height limit
+							was exceeded
+						</td>
+					</tr>
+				</table>
+
+				<a name="dailymean"></a>
+				<h4>Daily Mean</h4>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Field</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tr>
+						<td>t</td>
+						<td>Time - Date and time of the observation</td>
+					</tr>
+					<tr>
+						<td>v</td>
+						<td>Value – Mean hourly data over a 24 hour period</td>
+					</tr>
+					<tr>
+						<td>f</td>
+						<td>Data Flags - in order of listing:<br> -- (I) A flag
+							that when set to 1 indicates that the water level value has been
+							inferred<br> -- (L) A flag that when set to 1 indicates that
+							either the maximum or minimum expected water level height limit
+							was exceeded
+						</td>
+					</tr>
+				</table>
+				<a name="dailymaxmin"></a>
+				<h4>Daily Maximum/ Minimum</h4>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Field</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tr>
+						<td>dailyMaxHourly</td>
+						<td>Daily maximum water level from the hourly water level
+							data</td>
+					</tr>
+
+
+					<tr>
+						<td>dailyMinHourly</td>
+						<td>Daily minimum water level from the hourly water level
+							data</td>
+					</tr>
+					<tr>
+						<td>dailyMax6Min</td>
+						<td>Daily maximum water level from the 6-minute water level
+							dat</td>
+					</tr>
+					<tr>
+						<td>dailyMin6Min</td>
+						<td>Daily minimum water level from the 6-minute water level
+							data</td>
+					</tr>
+					<tr>
+						<td>date6Min</td>
+						<td>Time - Date of the six minute observation</td>
+					</tr>
+					<tr>
+						<td>time6Min</td>
+						<td>Time -Time of the six minute observation</td>
+					</tr>
+					<tr>
+						<td>value6Min</td>
+						<td>Value - Measured six minute water level height</td>
+					</tr>
+					<tr>
+						<td>pcComplete6Min</td>
+						<td>Percent Completeness - Percentage of the six minute water
+							level data in a day <br>• (Number of six minute observations
+							÷ the expected 6 minute observation in 24 hours which is 240) ×
+							100<br>
+						</td>
+					</tr>
+					<tr>
+						<td>flag6Min</td>
+						<td>Data Flags - A flag that when set to 1 indicates that the
+							six minute water level value has been inferred</td>
+					</tr>
+					<tr>
+						<td>dateHourly</td>
+						<td>Time - Date of the hourly observation</td>
+					</tr>
+					<tr>
+						<td>timeHourly</td>
+						<td>Time - Time of the hourly observation</td>
+					</tr>
+					<tr>
+						<td>valueHourly</td>
+						<td>Value - Measured hourly water level height</td>
+					</tr>
+					<tr>
+						<td>pcCompleteHourly</td>
+						<td>Percent Completeness - Percentage of the hourly water
+							level data in a day<br>• (Number of hourly observations ÷
+							the expected hourly observation in 24 hours which is 24) × 100<br>
+						</td>
+					</tr>
+					<tr>
+						<td>flagHourly</td>
+						<td>Data Flags - A flag that when set to 1 indicates that the
+							hourly water level value has been inferred</td>
+					</tr>
+					<tr>
+						<td>max_min_type</td>
+						<td>Type - Designation of Water level height. max = observed
+							daily maximum water level, min = observed daily minimum water
+							level</td>
+					</tr>
+				</table>
+
+				<a name="monthlymean"></a>
+				<h4>Monthly Mean</h4>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Field</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tr>
+						<td>year</td>
+						<td>Year</td>
+					</tr>
+
+
+					<tr>
+						<td>month</td>
+						<td>Month</td>
+					</tr>
+					<tr>
+						<td>highest</td>
+						<td>Highest Tide</td>
+					</tr>
+					<tr>
+						<td>MHHW</td>
+						<td>Mean Higher-High Water</td>
+					</tr>
+					<tr>
+						<td>MHW</td>
+						<td>Mean High Water</td>
+					</tr>
+					<tr>
+						<td>MSL</td>
+						<td>Mean Sea Level</td>
+					</tr>
+					<tr>
+						<td>MTL</td>
+						<td>Mean Tide Level</td>
+					</tr>
+					<tr>
+						<td>MLW</td>
+						<td>Mean Low Water</td>
+					</tr>
+					<tr>
+						<td>MLLW</td>
+						<td>Mean Lower-Low Water</td>
+					</tr>
+					<tr>
+						<td>DTL</td>
+						<td>Mean Diurnal Tide Level</td>
+					</tr>
+					<tr>
+						<td>GT</td>
+						<td>Great Diurnal Range</td>
+					</tr>
+					<tr>
+						<td>MN</td>
+						<td>Mean Range of Tide</td>
+					</tr>
+					<tr>
+						<td>DHQ</td>
+						<td>Mean Diurnal High Water Inequality</td>
+					</tr>
+					<tr>
+						<td>DLQ</td>
+						<td>Mean Diurnal Low Water Inequality</td>
+					</tr>
+					<tr>
+						<td>HWI</td>
+						<td>Greenwich High Water Interval (in Hours)</td>
+					</tr>
+					<tr>
+						<td>LWI</td>
+						<td>Greenwich Low Water Interval (in Hours)</td>
+					</tr>
+					<tr>
+						<td>lowest</td>
+						<td>Lowest Tide</td>
+					</tr>
+					<tr>
+						<td>inferred</td>
+						<td>A flag that when set to 1 indicates that the water level
+							value has been inferred</td>
+					</tr>
+				</table>
+
+				<a name="oneminute"></a>
+				<h4>One Minute Water Level</h4>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Field</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tr>
+						<td>t</td>
+						<td>Time - Date and time of the observation</td>
+					</tr>
+					<tr>
+						<td>v</td>
+						<td>Value - Measured water level height</td>
+					</tr>
+				</table>
+
+				<a name="tidepred"></a>
+				<h4>Tide Predictions</h4>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Field</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tr>
+						<td>t</td>
+						<td>Time - Date and time of the observation</td>
+					</tr>
+					<tr>
+						<td>v</td>
+						<td>Value - Predicted water level height</td>
+					</tr>
+				</table>
+
+				<a name="airgap"></a>
+				<h4>Air Gap</h4>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Field</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tr>
+						<td>t</td>
+						<td>Time - Date and time of the observation</td>
+					</tr>
+					<tr>
+						<td>v</td>
+						<td>Value - Measured air gap</td>
+					</tr>
+					<tr>
+						<td>s</td>
+						<td>Sigma - Standard deviation of 1 second samples used to
+							compute the air gap</td>
+					</tr>
+					<tr>
+						<td>f</td>
+						<td>Data Flags - in order of listing:<br> -- (O) Count
+							of number of 1 second samples that fall outside a 3-sigma band
+							about the mean<br> -- (F) A flag that when set to 1
+							indicates that the flat tolerance limit was exceeded<br> --
+							(R) A flag that when set to 1 indicates that the rate of change
+							tolerance limit was exceeded<br> -- (A) A flag that when set
+							to 1 indicates that either the maximum or minimum expected air
+							gap limit was exceeded
+						</td>
+					</tr>
+				</table>
+
+				<a name="wind"></a>
+				<h4>Wind</h4>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Field</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tr>
+						<td>t</td>
+						<td>Time - Date and time of the observation</td>
+					</tr>
+					<tr>
+						<td>s</td>
+						<td>Speed - Measured wind speed</td>
+					</tr>
+					<tr>
+						<td>d</td>
+						<td>Direction - wind direction in degrees</td>
+					</tr>
+					<tr>
+						<td>dr</td>
+						<td>Direction - wind direction in text</td>
+					</tr>
+					<tr>
+						<td>g</td>
+						<td>Gust - Measured wind gust speed</td>
+					</tr>
+					<tr>
+						<td>f</td>
+						<td>Data Flags - in order of listing:<br> -- (X) A flag
+							that when set to 1 indicates that the maximum wind speed was
+							exceeded<br> -- (R) A flag that when set to 1 indicates that
+							the rate of change tolerance limit was exceeded
+						</td>
+					</tr>
+				</table>
+
+				<a name="airpress"></a>
+				<h4>Air Pressure</h4>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Field</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tr>
+						<td>t</td>
+						<td>Time - Date and time of the observation</td>
+					</tr>
+					<tr>
+						<td>v</td>
+						<td>Value - Measured air pressure</td>
+					</tr>
+					<tr>
+						<td>f</td>
+						<td>Data Flags - in order of listing:<br> -- (X) A flag
+							that when set to 1 indicates that the maximum expected air
+							pressure was exceeded<br> -- (N) A flag that when set to 1
+							indicates that the minimum expected air pressure was exceeded<br>
+							-- (R) A flag that when set to 1 indicates that the rate of
+							change tolerance limit was exceeded
+						</td>
+					</tr>
+				</table>
+
+				<a name="airtemp"></a>
+				<h4>Air Temperature</h4>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Field</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tr>
+						<td>t</td>
+						<td>Time - Date and time of the observation</td>
+					</tr>
+					<tr>
+						<td>v</td>
+						<td>Value - Measured air temperature</td>
+					</tr>
+					<tr>
+						<td>f</td>
+						<td>Data Flags - in order of listing:<br> -- (X) A flag
+							that when set to 1 indicates that the maximum expected air
+							temperature was exceeded<br> -- (N) A flag that when set to
+							1 indicates that the minimum expected air temperature was
+							exceeded<br> -- (R) A flag that when set to 1 indicates that
+							the rate of change tolerance limit was exceeded
+						</td>
+					</tr>
+				</table>
+
+				<a name="visibility"></a>
+				<h4>Visibility</h4>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Field</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tr>
+						<td>t</td>
+						<td>Time - Date and time of the observation</td>
+					</tr>
+					<tr>
+						<td>v</td>
+						<td>Value - Measured visibility</td>
+					</tr>
+					<tr>
+						<td>f</td>
+						<td>Data Flags - in order of listing:<br> -- (X) A flag
+							that when set to 1 indicates that the maximum expected visibility
+							was exceeded<br> -- (N) A flag that when set to 1 indicates
+							that the minimum expected visibility was exceeded<br> -- (R)
+							A flag that when set to 1 indicates that the rate of change
+							tolerance limit was exceeded
+						</td>
+					</tr>
+				</table>
+
+				<a name="humidity"></a>
+				<h4>Humidity</h4>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Field</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tr>
+						<td>t</td>
+						<td>Time - Date and time of the observation</td>
+					</tr>
+					<tr>
+						<td>v</td>
+						<td>Value - Measured humidity</td>
+					</tr>
+					<tr>
+						<td>f</td>
+						<td>Data Flags - in order of listing:<br> -- (X) A flag
+							that when set to 1 indicates that the maximum expected humidity
+							was exceeded<br> -- (N) A flag that when set to 1 indicates
+							that the minimum expected humidity was exceeded<br> -- (R) A
+							flag that when set to 1 indicates that the rate of change
+							tolerance limit was exceeded
+						</td>
+					</tr>
+				</table>
+
+				<a name="watertemp"></a>
+				<h4>Water Temperature</h4>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Field</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tr>
+						<td>t</td>
+						<td>Time - Date and time of the observation</td>
+					</tr>
+					<tr>
+						<td>v</td>
+						<td>Value - Measured water temperature</td>
+					</tr>
+					<tr>
+						<td>f</td>
+						<td>Data Flags - in order of listing:<br> -- (X) A flag
+							that when set to 1 indicates that the maximum expected water
+							temperature was exceeded<br> -- (N) A flag that when set to
+							1 indicates that the minimum expected water temperature was
+							exceeded<br> -- (R) A flag that when set to 1 indicates that
+							the rate of change tolerance limit was exceeded
+						</td>
+					</tr>
+				</table>
+
+				<a name="conductivity"></a>
+				<h4>Conductivity</h4>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Field</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tr>
+						<td>t</td>
+						<td>Time - Date and time of the observation</td>
+					</tr>
+					<tr>
+						<td>v</td>
+						<td>Value - Measured conductivity</td>
+					</tr>
+					<tr>
+						<td>f</td>
+						<td>Data Flags - in order of listing:<br> -- (X) A flag
+							that when set to 1 indicates that the maximum expected
+							conductivity was exceeded<br> -- (N) A flag that when set to
+							1 indicates that the minimum expected conductivity was exceeded<br>
+							-- (R) A flag that when set to 1 indicates that the rate of
+							change tolerance limit was exceeded
+						</td>
+					</tr>
+				</table>
+
+				<a name="salinity"></a>
+				<h4>Salinity</h4>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Field</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tr>
+						<td>t</td>
+						<td>Time - Date and time of the observation</td>
+					</tr>
+					<tr>
+						<td>s</td>
+						<td>Salinity</td>
+					</tr>
+					<tr>
+						<td>g</td>
+						<td>Specific Gravity</td>
+					</tr>
+				</table>
+
+				<a name="currents"></a>
+				<h4>Currents</h4>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Field</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tr>
+						<td>t</td>
+						<td>Time - Date and time of the observation</td>
+					</tr>
+					<tr>
+						<td>s</td>
+						<td>Speed - Measured current speed</td>
+					</tr>
+					<tr>
+						<td>d</td>
+						<td>Direction - current direction in degrees</td>
+					</tr>
+					<tr>
+						<td>b</td>
+						<td>Bin number</td>
+					</tr>
+					<tr>
+						<td>echo1</td>
+						<td>Echo Intensity Beam 1 (Counts)</td>
+					</tr>
+					<tr>
+						<td>echo2</td>
+						<td>Echo Intensity Beam 2 (Counts)</td>
+					</tr>
+					<tr>
+						<td>echo3</td>
+						<td>Echo Intensity Beam 3 (Counts)</td>
+					</tr>
+					<tr>
+						<td>echo4</td>
+						<td>Echo Intensity Beam 4 (Counts)</td>
+					</tr>
+					<tr>
+						<td>corr1</td>
+						<td>Correlation Magnitude Beam 1 (Counts)</td>
+					</tr>
+					<tr>
+						<td>corr2</td>
+						<td>Correlation Magnitude Beam 2 (Counts)</td>
+					</tr>
+					<tr>
+						<td>corr3</td>
+						<td>Correlation Magnitude Beam 3 (Counts)</td>
+					</tr>
+					<tr>
+						<td>corr4</td>
+						<td>Correlation Magnitude Beam 4 (Counts)</td>
+					</tr>
+				</table>
+
+				<a name="currentspred"></a>
+				<h4>Currents Prediction</h4>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Field</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tr>
+						<td>Time</td>
+						<td>Time - Date and time of the current prediction</td>
+					</tr>
+					<tr>
+						<td>Velocity_Major</td>
+						<td>Velocity along major axis</td>
+					</tr>
+					<tr>
+						<td>meanEbbDir</td>
+						<td>ebb direction in degrees</td>
+					</tr>
+					<tr>
+						<td>meanFloodDir</td>
+						<td>flood direction in degrees</td>
+					</tr>
+					<tr>
+						<td>Bin</td>
+						<td>Bin number</td>
+					</tr>
+					<tr>
+						<td>Depth</td>
+						<td>Bin depth</td>
+					</tr>
+					<tr>
+						<td>Speed</td>
+						<td>Speed - predicted current speed</td>
+					</tr>
+					<tr>
+						<td>Direction</td>
+						<td>Direction - current direction in degrees</td>
+					</tr>
+				</table>
+
+				<a name="currentsheader"></a>
+				<h4>Currents Header</h4>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Field</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tr>
+						<td>Time</td>
+						<td>Time - Date and time of the observation(GMT only)</td>
+					</tr>
+					<tr>
+						<td>h</td>
+						<td>The heading of the current meter refers to the direction
+							in which instrument is oriented relative to a reference
+							direction, usually true north or magnetic north.</td>
+					</tr>
+					<tr>
+						<td>p</td>
+						<td>Pitch in degrees</td>
+					</tr>
+					<tr>
+						<td>r</td>
+						<td>Roll in degrees</td>
+					</tr>
+					<tr>
+						<td>t</td>
+						<td>Temperature in degrees Celsius</td>
+					</tr>
+					<tr>
+						<td>pr</td>
+						<td>Pressure in decibars</td>
+					</tr>
+					<tr>
+						<td>d</td>
+						<td>Depth in meters</td>
+					</tr>
+					<tr>
+						<td>v</td>
+						<td>Battery voltage measured in volts</td>
+					</tr>
+				</table>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>

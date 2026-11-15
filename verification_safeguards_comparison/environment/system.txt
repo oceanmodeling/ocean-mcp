@@ -1,0 +1,8 @@
+Linux DESKTOP-TB25H9C 6.6.87.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
+PRETTY_NAME="Ubuntu 24.04.3 LTS"
+NAME="Ubuntu"
+VERSION_ID="24.04"
+uv 0.10.4
+Python 3.13.12
+TZ for sessions: UTC (set by replay/run_session.py)
+network isolation: unshare -rn (util-linux 2.39.3)

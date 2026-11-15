@@ -1,0 +1,59 @@
+{
+ "task_id": "R4a",
+ "arm": "B",
+ "status": "answered",
+ "action": "proceed",
+ "values": {
+  "n": 480,
+  "bias_m": -0.12353631479633381,
+  "rmse_m": 0.26759714394015427,
+  "mae_m": 0.21408470225226264,
+  "r": 0.9971337071087539
+ },
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {
+  "units": {
+   "value": "m",
+   "source": "zeta:units attribute"
+  },
+  "product_version": {
+   "value": "2.1.18",
+   "source": "global attribute history (package path)"
+  },
+  "model_datum": {
+   "value": "NAVD88",
+   "source": "file label zeta {'standard_name': 'sea_surface_height_above_navd88', 'long_name': 'water surface elevation above navd88'}; consistent with SCN 26-51 (station output was NAVD88 before v3.1)"
+  },
+  "obs_datum": {
+   "value": "NAVD",
+   "source": "[B-D2] CO-OPS datum for NAVD88 (CO-OPS API datum names)"
+  }
+ },
+ "texts": [],
+ "exclusions": [],
+ "evidence": {
+  "pairs": 480,
+  "obs_in_window": 480,
+  "flagged_pairs_kept": 0,
+  "q_status": {
+   "v": 1200
+  },
+  "inputs": [
+   {
+    "archive": "base",
+    "entry": "e0006",
+    "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260816/stofs_3d_atl.t12z.points.cwl.nc",
+    "sha256": "f78e84ef18ae35083c7efe83c26df4c907d7359fb397155e1c2d748001d02462",
+    "why": "url"
+   },
+   {
+    "archive": "base",
+    "entry": "e0008",
+    "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8443970&product=water_level&datum=NAVD&units=metric&time_zone=gmt&format=json&begin_date=20260815&end_date=20260819&application=ocean_mcp_wp1",
+    "sha256": "29192c304fc598440768b97bcee9c38fc88c2507efc1004d820989ef3c523911",
+    "why": "coops master 8443970 NAVD"
+   }
+  ]
+ }
+}

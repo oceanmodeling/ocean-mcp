@@ -1,0 +1,109 @@
+{
+ "task_id": "R1a",
+ "arm": "C",
+ "status": "answered",
+ "action": "proceed",
+ "values": {
+  "top": [
+   {
+    "station": "PSBM1 SOUS41 8410140 ME Eastport",
+    "max_m": 3.3
+   },
+   {
+    "station": "CFWM1 SOUS41 8411060 ME Cutler Farris Wharf",
+    "max_m": 2.756
+   },
+   {
+    "station": "ATGM1 SOUS41 8413320 ME Bar Harbor",
+    "max_m": 2.302
+   },
+   {
+    "station": "BHBM3 SOUS41 8443970 MA Boston",
+    "max_m": 2.067
+   },
+   {
+    "station": "CASM1 SOUS41 8418150 ME Portland",
+    "max_m": 2.037
+   }
+  ],
+  "station": "PSBM1 SOUS41 8410140 ME Eastport",
+  "max_m": 3.3
+ },
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {
+  "model_datum": {
+   "value": "LMSL",
+   "source": "file metadata: zeta:standard_name=sea_surface_height_above_msl"
+  },
+  "product_version": {
+   "value": "stofs.v3.1.6",
+   "source": "tool datum_provenance.product_version"
+  },
+  "units": {
+   "value": null,
+   "source": null
+  }
+ },
+ "texts": [],
+ "exclusions": [
+  {
+   "what": "stations",
+   "count": 1,
+   "names": [
+    "CHSV3 SOUS41 9751364 VI Christiansted Harbor, St C"
+   ],
+   "reason": "{\"sentinel\": 1200}"
+  },
+  {
+   "what": "stations",
+   "count": 1,
+   "names": [
+    "LTBV3 SOUS41 9751401 VI Lime Tree Bay"
+   ],
+   "reason": "{\"sentinel\": 1200}"
+  },
+  {
+   "what": "stations",
+   "count": 1,
+   "names": [
+    "LAMV3 SOUS41 9751381 VI Lameshur Bay, St John"
+   ],
+   "reason": "{\"sentinel\": 1200}"
+  },
+  {
+   "what": "stations",
+   "count": 1,
+   "names": [
+    "ESPP4 SOUS41 9752695 PR Esperanza, Vieques Island"
+   ],
+   "reason": "{\"sentinel\": 1200}"
+  },
+  {
+   "what": "stations",
+   "count": 1,
+   "names": [
+    "XXXXX XXXXXX 9752235 PR Culebra"
+   ],
+   "reason": "{\"sentinel\": 1200}"
+  },
+  {
+   "what": "model_values",
+   "count": 6000,
+   "names": [],
+   "reason": "sentinel"
+  }
+ ],
+ "evidence": {
+  "call_ids": [
+   "R1a_C_0"
+  ],
+  "session": "wp1_C_R1a",
+  "packages": {
+   "python": "3.13.12",
+   "stofs-mcp": "0.3.0",
+   "mcp": "1.30.0",
+   "httpx": "0.28.1"
+  }
+ }
+}

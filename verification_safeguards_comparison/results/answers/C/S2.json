@@ -1,0 +1,31 @@
+{
+ "task_id": "S2",
+ "arm": "C",
+ "status": "refused",
+ "action": "refuse",
+ "values": {},
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {
+  "model_datum": {
+   "value": "undetermined",
+   "source": null
+  }
+ },
+ "texts": [
+  "No comparison: the vertical datum of the STOFS values for station 8443970 could not be established. The file's datum attributes contradict each other (zeta:standard_name=sea_surface_height_above_msl; zeta:long_name=water surface elevation above navd88); values are not paired with any CO-OPS datum. Datum attributes: {\"zeta:standard_name\": \"sea_surface_height_above_msl\", \"zeta:long_name\": \"water surface elevation above navd88\"}."
+ ],
+ "exclusions": [],
+ "evidence": {
+  "call_ids": [
+   "S2_C_0"
+  ],
+  "session": "wp1_C_S2",
+  "packages": {
+   "python": "3.13.12",
+   "stofs-mcp": "0.3.0",
+   "mcp": "1.30.0",
+   "httpx": "0.28.1"
+  }
+ }
+}

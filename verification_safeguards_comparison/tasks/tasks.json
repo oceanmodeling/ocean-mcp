@@ -1,0 +1,1503 @@
+{
+ "format": "wp1-tasks/1",
+ "arms": {
+  "A": "Basic Python: xarray (default decoding) and pandas used as documented; fixed datum pairing from current product documentation (STOFS-2D LMSL, STOFS-3D LMSL, both against CO-OPS MSL); no added domain rules. Runs where no Ocean-MCP package is importable.",
+  "B": "Validated Python: arm A plus datum, quality and temporal rules implemented independently from NOAA documentation and CF conventions, each rule's source cited in the code. Does not import, copy or paraphrase Ocean-MCP code.",
+  "C": "Ocean-MCP candidate through real MCP stdio sessions in replay mode: stofs-mcp 0.3.0 (WP0 wheel, sha256 29fcb737...dafdd); coops-mcp 0.1.1, erddap-mcp 0.1.2 from PyPI; for R7 the ww3-mcp 0.1.3 wheel if it exists at Phase 2, else 'candidate not available'.",
+  "D": "Ocean-MCP released: stofs-mcp 0.2.0 from PyPI through the same sessions; coops-mcp 0.1.1, erddap-mcp 0.1.2, and ww3-mcp 0.1.2 (R7) from PyPI. Answers 'what changed between versions', not a comparison with Python."
+ },
+ "session_rule": "one MCP session per task and arm; replay mode; archives stacked as listed (first wins); run inside `unshare -rn` (no network); a session with any replay miss or blocked network attempt is invalid",
+ "tasks": [
+  {
+   "id": "N1",
+   "title": "STOFS-2D-Global vs CO-OPS at Boston, 0-48 h",
+   "statement": "For NOAA CO-OPS station 8443970 (Boston, MA), compare the STOFS-2D-Global station forecast of the 2026-10-30 12:00 UTC cycle with observed water levels for forecast lead times 0 < lead <= 48 h. Report the number of compared pairs, bias (model minus observed), RMSE, MAE and Pearson correlation; the vertical datum of the model values and of the observations, each with its source; the units; the product version; and any caveat, exclusion, or reason not to compare.",
+   "kind": "compare",
+   "model": "2d_global",
+   "station": "8443970",
+   "cycle": "2026-10-30",
+   "archives": [
+    "base"
+   ],
+   "class": "nominal",
+   "inputs": [
+    {
+     "archive": "base",
+     "entry": "e0001",
+     "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20261030/stofs_2d_glo.t12z.points.cwl.nc",
+     "sha256": "f1ed4e592982fc5974d5356ba06a90c00bdb41ead0308163221a54b018746c23",
+     "bytes": 25231796,
+     "source": "seeded",
+     "retrieved_at": "2026-11-04T21:52:03+00:00",
+     "kind": "exact",
+     "label": null
+    },
+    {
+     "archive": "base",
+     "entry": "e0003",
+     "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8443970&product=water_level&datum=MSL&units=metric&time_zone=gmt&format=json&begin_date=20261029+12%3A00&end_date=20261101+12%3A00&application=ocean_mcp_verification",
+     "sha256": "c207c80138900573e09fe2733efdc2c055b923c9dc39f5c594d46d4d84ff8d6d",
+     "bytes": 54345,
+     "source": "seeded",
+     "retrieved_at": "2026-11-04T21:52:04+00:00",
+     "kind": "coops_master",
+     "label": null
+    },
+    {
+     "archive": "base",
+     "entry": "e0010",
+     "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8443970&product=water_level&datum=MSL&units=metric&time_zone=gmt&format=json&begin_date=20261029&end_date=20261101&application=ocean_mcp_wp1",
+     "sha256": "25ad6659322952fa57b5f7e1943da6b3990dcbbbfad63ed07807511197b089e2",
+     "bytes": 72338,
+     "source": "recorded",
+     "retrieved_at": "2026-11-06T06:04:36+00:00",
+     "kind": "coops_master",
+     "label": null
+    }
+   ],
+   "server": "stofs",
+   "mcp_calls": {
+    "C": [
+     {
+      "call_id": "N1_C_0",
+      "tool": "stofs_compare_with_observations",
+      "arguments": {
+       "station_id": "8443970",
+       "model": "2d_global",
+       "cycle_date": "2026-10-30",
+       "cycle_hour": "12",
+       "lead_start_hours": 0.0,
+       "lead_end_hours": 48.0,
+       "full_resolution": true,
+       "max_points": 2000,
+       "response_format": "json"
+      }
+     }
+    ],
+    "D": [
+     {
+      "call_id": "N1_D_0",
+      "tool": "stofs_compare_with_observations",
+      "arguments": {
+       "station_id": "8443970",
+       "model": "2d_global",
+       "cycle_date": "2026-10-30",
+       "cycle_hour": "12",
+       "hours_to_compare": 54,
+       "full_resolution": true,
+       "max_points": 2000,
+       "response_format": "json"
+      },
+      "nearest_equivalent": true,
+      "nearest_equivalent_note": "stofs-mcp 0.2.0 has no lead-time window; its window starts at the file start (cycle - 6 h). hours_to_compare=54 is the smallest value whose window contains 0 < lead <= 48 h; it also includes the 6 h nowcast and the record at lead 48.1 h."
+     }
+    ]
+   }
+  },
+  {
+   "id": "N2",
+   "title": "STOFS-3D-Atlantic vs CO-OPS at Boston, 0-48 h",
+   "statement": "For NOAA CO-OPS station 8443970 (Boston, MA), compare the STOFS-3D-Atlantic station forecast of the 2026-10-30 12:00 UTC cycle with observed water levels for forecast lead times 0 < lead <= 48 h. Report the number of compared pairs, bias (model minus observed), RMSE, MAE and Pearson correlation; the vertical datum of the model values and of the observations, each with its source; the units; the product version; and any caveat, exclusion, or reason not to compare.",
+   "kind": "compare",
+   "model": "3d_atlantic",
+   "station": "8443970",
+   "cycle": "2026-10-30",
+   "archives": [
+    "base"
+   ],
+   "class": "nominal",
+   "inputs": [
+    {
+     "archive": "base",
+     "entry": "e0002",
+     "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20261030/stofs_3d_atl.t12z.points.cwl.nc",
+     "sha256": "4660819425aa1d2eec0e63a37d3a78e8fef2e00f62a1cb56f088347ef51a450f",
+     "bytes": 8297477,
+     "source": "seeded",
+     "retrieved_at": "2026-11-04T21:52:04+00:00",
+     "kind": "exact",
+     "label": null
+    },
+    {
+     "archive": "base",
+     "entry": "e0003",
+     "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8443970&product=water_level&datum=MSL&units=metric&time_zone=gmt&format=json&begin_date=20261029+12%3A00&end_date=20261101+12%3A00&application=ocean_mcp_verification",
+     "sha256": "c207c80138900573e09fe2733efdc2c055b923c9dc39f5c594d46d4d84ff8d6d",
+     "bytes": 54345,
+     "source": "seeded",
+     "retrieved_at": "2026-11-04T21:52:04+00:00",
+     "kind": "coops_master",
+     "label": null
+    },
+    {
+     "archive": "base",
+     "entry": "e0010",
+     "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8443970&product=water_level&datum=MSL&units=metric&time_zone=gmt&format=json&begin_date=20261029&end_date=20261101&application=ocean_mcp_wp1",
+     "sha256": "25ad6659322952fa57b5f7e1943da6b3990dcbbbfad63ed07807511197b089e2",
+     "bytes": 72338,
+     "source": "recorded",
+     "retrieved_at": "2026-11-06T06:04:36+00:00",
+     "kind": "coops_master",
+     "label": null
+    },
+    {
+     "archive": "base",
+     "entry": "e0011",
+     "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8443970&product=water_level&datum=NAVD&units=metric&time_zone=gmt&format=json&begin_date=20261029&end_date=20261101&application=ocean_mcp_wp1",
+     "sha256": "29297072e32c4fd75b486ef2bb9723572bfcf2af5d2b1479d2cf4fcb9537c92b",
+     "bytes": 72338,
+     "source": "recorded",
+     "retrieved_at": "2026-11-06T06:04:40+00:00",
+     "kind": "coops_master",
+     "label": null
+    }
+   ],
+   "server": "stofs",
+   "mcp_calls": {
+    "C": [
+     {
+      "call_id": "N2_C_0",
+      "tool": "stofs_compare_with_observations",
+      "arguments": {
+       "station_id": "8443970",
+       "model": "3d_atlantic",
+       "cycle_date": "2026-10-30",
+       "cycle_hour": "12",
+       "lead_start_hours": 0.0,
+       "lead_end_hours": 48.0,
+       "full_resolution": true,
+       "max_points": 2000,
+       "response_format": "json"
+      }
+     }
+    ],
+    "D": [
+     {
+      "call_id": "N2_D_0",
+      "tool": "stofs_compare_with_observations",
+      "arguments": {
+       "station_id": "8443970",
+       "model": "3d_atlantic",
+       "cycle_date": "2026-10-30",
+       "cycle_hour": "12",
+       "hours_to_compare": 72,
+       "full_resolution": true,
+       "max_points": 2000,
+       "response_format": "json"
+      },
+      "nearest_equivalent": true,
+      "nearest_equivalent_note": "stofs-mcp 0.2.0 has no lead-time window; its window starts at the file start (cycle - 24 h). hours_to_compare=72 is the smallest value whose window contains 0 < lead <= 48 h; it also includes the 24 h nowcast and the record at lead 48.1 h."
+     }
+    ]
+   }
+  },
+  {
+   "id": "N3",
+   "title": "Hurricane Ian non-tidal residual maximum at Fort Myers",
+   "statement": "For CO-OPS station 8725520 (Fort Myers, FL), 2022-09-27 00:00 to 2022-09-29 23:54 UTC, compute the non-tidal residual (observed 6-minute water level minus the 6-minute tide prediction, matched by time) and report its maximum with the time(s) at which it occurs, the vertical datum and units of both series with their source, and any caveat or reason not to compute it.",
+   "kind": "residual",
+   "station": "8725520",
+   "archives": [
+    "base"
+   ],
+   "note": "coops-mcp has no residual tool. Arms C and D retrieve both series through MCP; the residual is computed by the frozen client join in grader/adapters.py (exact timestamp match, observed minus predicted, rounded to 1 mm, maximum and all times attaining it). Arms C and D use the same package (coops-mcp 0.1.1), so they are expected to be identical.",
+   "class": "nominal",
+   "inputs": [
+    {
+     "archive": "base",
+     "entry": "e0014",
+     "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8725520&product=water_level&datum=MLLW&units=metric&time_zone=gmt&begin_date=20220927&end_date=20220929&format=json&application=coops_mcp",
+     "sha256": "28fc969931a5d493eebba656555b3b1834da187356917ce8714e13e3ea7d0550",
+     "bytes": 53919,
+     "source": "recorded",
+     "retrieved_at": "2026-11-06T06:04:52+00:00",
+     "kind": "exact",
+     "label": null
+    },
+    {
+     "archive": "base",
+     "entry": "e0015",
+     "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8725520&product=predictions&datum=MLLW&units=metric&time_zone=gmt&begin_date=20220927&end_date=20220929&format=json&application=coops_mcp",
+     "sha256": "302a36f1121156cb1edc8e748e028c904ddf2281940eca0e6f744443b3413fd8",
+     "bytes": 27313,
+     "source": "recorded",
+     "retrieved_at": "2026-11-06T06:04:57+00:00",
+     "kind": "exact",
+     "label": null
+    }
+   ],
+   "server": "coops",
+   "mcp_calls": {
+    "C": [
+     {
+      "call_id": "N3_C_0",
+      "tool": "coops_get_water_levels",
+      "arguments": {
+       "station_id": "8725520",
+       "begin_date": "20220927",
+       "end_date": "20220929",
+       "datum": "MLLW",
+       "units": "metric",
+       "time_zone": "gmt",
+       "response_format": "json",
+       "max_records": 2000
+      }
+     },
+     {
+      "call_id": "N3_C_1",
+      "tool": "coops_get_tide_predictions",
+      "arguments": {
+       "station_id": "8725520",
+       "begin_date": "20220927",
+       "end_date": "20220929",
+       "datum": "MLLW",
+       "units": "metric",
+       "time_zone": "gmt",
+       "response_format": "json",
+       "max_records": 2000
+      }
+     }
+    ],
+    "D": [
+     {
+      "call_id": "N3_D_0",
+      "tool": "coops_get_water_levels",
+      "arguments": {
+       "station_id": "8725520",
+       "begin_date": "20220927",
+       "end_date": "20220929",
+       "datum": "MLLW",
+       "units": "metric",
+       "time_zone": "gmt",
+       "response_format": "json",
+       "max_records": 2000
+      }
+     },
+     {
+      "call_id": "N3_D_1",
+      "tool": "coops_get_tide_predictions",
+      "arguments": {
+       "station_id": "8725520",
+       "begin_date": "20220927",
+       "end_date": "20220929",
+       "datum": "MLLW",
+       "units": "metric",
+       "time_zone": "gmt",
+       "response_format": "json",
+       "max_records": 2000
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": "N4",
+   "title": "MUR SST subset: cells, finite cells, range",
+   "statement": "From the ERDDAP dataset jplMURSST41 at https://coastwatch.pfeg.noaa.gov/erddap, retrieve analysed_sst at 2024-07-15T09:00:00Z for 40.8 to 42.0 N and 72.2 to 70.8 W at native resolution. Report the number of grid cells, the number with a finite value, the minimum and maximum, the units with their source, and any caveat or exclusion.",
+   "kind": "griddap",
+   "archives": [
+    "base"
+   ],
+   "note": "Arguments as archived in manuscript-final-runs-2026-07-27.md section 3. Arms C and D use erddap-mcp 0.1.2.",
+   "class": "nominal",
+   "inputs": [
+    {
+     "archive": "base",
+     "entry": "e0016",
+     "url": "https://coastwatch.pfeg.noaa.gov/erddap/info/jplMURSST41/index.json",
+     "sha256": "9c517f7bfeada953d82fecbf1abbe01b2b113368d1bcbb279134987450372b05",
+     "bytes": 12990,
+     "source": "recorded",
+     "retrieved_at": "2026-11-06T06:05:01+00:00",
+     "kind": "exact",
+     "label": null
+    },
+    {
+     "archive": "base",
+     "entry": "e0017",
+     "url": "https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplMURSST41.json?analysed_sst[(2024-07-15T09:00:00Z)][(40.8):(42.0)][(-72.2):(-70.8)]",
+     "sha256": "3eb504b5454363bb5e4a88adf98729ffa0bdcedf831723d54513d3e94bf625da",
+     "bytes": 922450,
+     "source": "recorded",
+     "retrieved_at": "2026-11-06T06:05:06+00:00",
+     "kind": "exact",
+     "label": null
+    }
+   ],
+   "server": "erddap",
+   "mcp_calls": {
+    "C": [
+     {
+      "call_id": "N4_C_0",
+      "tool": "erddap_get_griddap_data",
+      "arguments": {
+       "server_url": "https://coastwatch.pfeg.noaa.gov/erddap",
+       "dataset_id": "jplMURSST41",
+       "variables": [
+        "analysed_sst"
+       ],
+       "time_range": [
+        "2024-07-15T09:00:00Z",
+        "2024-07-15T09:00:00Z"
+       ],
+       "latitude_range": [
+        40.8,
+        42.0
+       ],
+       "longitude_range": [
+        -72.2,
+        -70.8
+       ],
+       "stride": 1,
+       "response_format": "json",
+       "max_records": 30000
+      }
+     }
+    ],
+    "D": [
+     {
+      "call_id": "N4_D_0",
+      "tool": "erddap_get_griddap_data",
+      "arguments": {
+       "server_url": "https://coastwatch.pfeg.noaa.gov/erddap",
+       "dataset_id": "jplMURSST41",
+       "variables": [
+        "analysed_sst"
+       ],
+       "time_range": [
+        "2024-07-15T09:00:00Z",
+        "2024-07-15T09:00:00Z"
+       ],
+       "latitude_range": [
+        40.8,
+        42.0
+       ],
+       "longitude_range": [
+        -72.2,
+        -70.8
+       ],
+       "stride": 1,
+       "response_format": "json",
+       "max_records": 30000
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": "R1a",
+   "title": "STOFS-3D: five highest water levels among stations",
+   "statement": "In the STOFS-3D-Atlantic station file of the 2026-10-30 12:00 UTC cycle, which five stations have the highest water level over all records in the file, and what are those maxima? Report the datum and units with their source, and any station or value excluded and why.",
+   "kind": "max",
+   "model": "3d_atlantic",
+   "cycle": "2026-10-30",
+   "archives": [
+    "base"
+   ],
+   "class": "real_defect",
+   "inputs": [
+    {
+     "archive": "base",
+     "entry": "e0002",
+     "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20261030/stofs_3d_atl.t12z.points.cwl.nc",
+     "sha256": "4660819425aa1d2eec0e63a37d3a78e8fef2e00f62a1cb56f088347ef51a450f",
+     "bytes": 8297477,
+     "source": "seeded",
+     "retrieved_at": "2026-11-04T21:52:04+00:00",
+     "kind": "exact",
+     "label": null
+    }
+   ],
+   "server": "stofs",
+   "mcp_calls": {
+    "C": [
+     {
+      "call_id": "R1a_C_0",
+      "tool": "stofs_get_max_water_level",
+      "arguments": {
+       "model": "3d_atlantic",
+       "cycle_date": "2026-10-30",
+       "cycle_hour": "12",
+       "top_n": 5,
+       "response_format": "json"
+      }
+     }
+    ],
+    "D": [
+     {
+      "call_id": "R1a_D_0",
+      "tool": "stofs_get_max_water_level",
+      "arguments": {
+       "model": "3d_atlantic",
+       "cycle_date": "2026-10-30",
+       "cycle_hour": "12",
+       "top_n": 5,
+       "response_format": "json"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": "R1b",
+   "title": "STOFS-3D vs CO-OPS at 9751381 (Lameshur Bay), 0-48 h",
+   "statement": "For NOAA CO-OPS station 9751381 (Lameshur Bay, St John, VI), compare the STOFS-3D-Atlantic station forecast of the 2026-10-30 12:00 UTC cycle with observed water levels for forecast lead times 0 < lead <= 48 h. Report the number of compared pairs, bias (model minus observed), RMSE, MAE and Pearson correlation; the vertical datum of the model values and of the observations, each with its source; the units; the product version; and any caveat, exclusion, or reason not to compare.",
+   "kind": "compare",
+   "model": "3d_atlantic",
+   "station": "9751381",
+   "cycle": "2026-10-30",
+   "archives": [
+    "base"
+   ],
+   "class": "real_defect",
+   "inputs": [
+    {
+     "archive": "base",
+     "entry": "e0002",
+     "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20261030/stofs_3d_atl.t12z.points.cwl.nc",
+     "sha256": "4660819425aa1d2eec0e63a37d3a78e8fef2e00f62a1cb56f088347ef51a450f",
+     "bytes": 8297477,
+     "source": "seeded",
+     "retrieved_at": "2026-11-04T21:52:04+00:00",
+     "kind": "exact",
+     "label": null
+    },
+    {
+     "archive": "base",
+     "entry": "e0012",
+     "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=9751381&product=water_level&datum=MSL&units=metric&time_zone=gmt&format=json&begin_date=20261029&end_date=20261101&application=ocean_mcp_wp1",
+     "sha256": "ec9668caa503c1c3728038d292ad06735e5694e17cbc3fcad70d1a2b1cf9ed62",
+     "bytes": 71810,
+     "source": "recorded",
+     "retrieved_at": "2026-11-06T06:04:44+00:00",
+     "kind": "coops_master",
+     "label": null
+    },
+    {
+     "archive": "base",
+     "entry": "e0013",
+     "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=9751381&product=water_level&datum=NAVD&units=metric&time_zone=gmt&format=json&begin_date=20261029&end_date=20261101&application=ocean_mcp_wp1",
+     "sha256": "35e759cb201fe7e857d3fc8b5e690734d0ac95a2b3b6ee43e9719626385bc546",
+     "bytes": 71810,
+     "source": "recorded",
+     "retrieved_at": "2026-11-06T06:04:48+00:00",
+     "kind": "coops_master",
+     "label": null
+    }
+   ],
+   "server": "stofs",
+   "mcp_calls": {
+    "C": [
+     {
+      "call_id": "R1b_C_0",
+      "tool": "stofs_compare_with_observations",
+      "arguments": {
+       "station_id": "9751381",
+       "model": "3d_atlantic",
+       "cycle_date": "2026-10-30",
+       "cycle_hour": "12",
+       "lead_start_hours": 0.0,
+       "lead_end_hours": 48.0,
+       "full_resolution": true,
+       "max_points": 2000,
+       "response_format": "json"
+      }
+     }
+    ],
+    "D": [
+     {
+      "call_id": "R1b_D_0",
+      "tool": "stofs_compare_with_observations",
+      "arguments": {
+       "station_id": "9751381",
+       "model": "3d_atlantic",
+       "cycle_date": "2026-10-30",
+       "cycle_hour": "12",
+       "hours_to_compare": 72,
+       "full_resolution": true,
+       "max_points": 2000,
+       "response_format": "json"
+      },
+      "nearest_equivalent": true,
+      "nearest_equivalent_note": "stofs-mcp 0.2.0 has no lead-time window; its window starts at the file start (cycle - 24 h). hours_to_compare=72 is the smallest value whose window contains 0 < lead <= 48 h; it also includes the 24 h nowcast and the record at lead 48.1 h."
+     }
+    ]
+   }
+  },
+  {
+   "id": "R2",
+   "title": "STOFS-2D: minimum water level at 8571421 (Bishops Head)",
+   "statement": "In the STOFS-2D-Global station file of the 2026-10-30 12:00 UTC cycle, what is the lowest water level at station 8571421 (Bishops Head, MD) over all records in the file? Report the datum and units with their source, and any value excluded and why.",
+   "kind": "station_min",
+   "model": "2d_global",
+   "station": "8571421",
+   "cycle": "2026-10-30",
+   "archives": [
+    "base"
+   ],
+   "class": "real_defect",
+   "inputs": [
+    {
+     "archive": "base",
+     "entry": "e0001",
+     "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20261030/stofs_2d_glo.t12z.points.cwl.nc",
+     "sha256": "f1ed4e592982fc5974d5356ba06a90c00bdb41ead0308163221a54b018746c23",
+     "bytes": 25231796,
+     "source": "seeded",
+     "retrieved_at": "2026-11-04T21:52:03+00:00",
+     "kind": "exact",
+     "label": null
+    }
+   ],
+   "server": "stofs",
+   "mcp_calls": {
+    "C": [
+     {
+      "call_id": "R2_C_0",
+      "tool": "stofs_get_station_forecast",
+      "arguments": {
+       "station_id": "8571421",
+       "model": "2d_global",
+       "product": "cwl",
+       "cycle_date": "2026-10-30",
+       "cycle_hour": "12",
+       "response_format": "json"
+      }
+     }
+    ],
+    "D": [
+     {
+      "call_id": "R2_D_0",
+      "tool": "stofs_get_station_forecast",
+      "arguments": {
+       "station_id": "8571421",
+       "model": "2d_global",
+       "product": "cwl",
+       "cycle_date": "2026-10-30",
+       "cycle_hour": "12",
+       "response_format": "json"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": "R3",
+   "title": "STOFS-2D: station with the highest water level",
+   "statement": "In the STOFS-2D-Global station file of the 2026-10-30 12:00 UTC cycle, which station has the highest water level over all records in the file, and what is it? Report the datum and units with their source, and any station or value excluded and why.",
+   "kind": "max",
+   "model": "2d_global",
+   "cycle": "2026-10-30",
+   "archives": [
+    "base"
+   ],
+   "class": "real_defect",
+   "inputs": [
+    {
+     "archive": "base",
+     "entry": "e0001",
+     "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20261030/stofs_2d_glo.t12z.points.cwl.nc",
+     "sha256": "f1ed4e592982fc5974d5356ba06a90c00bdb41ead0308163221a54b018746c23",
+     "bytes": 25231796,
+     "source": "seeded",
+     "retrieved_at": "2026-11-04T21:52:03+00:00",
+     "kind": "exact",
+     "label": null
+    }
+   ],
+   "server": "stofs",
+   "mcp_calls": {
+    "C": [
+     {
+      "call_id": "R3_C_0",
+      "tool": "stofs_get_max_water_level",
+      "arguments": {
+       "model": "2d_global",
+       "cycle_date": "2026-10-30",
+       "cycle_hour": "12",
+       "top_n": 5,
+       "response_format": "json"
+      }
+     }
+    ],
+    "D": [
+     {
+      "call_id": "R3_D_0",
+      "tool": "stofs_get_max_water_level",
+      "arguments": {
+       "model": "2d_global",
+       "cycle_date": "2026-10-30",
+       "cycle_hour": "12",
+       "top_n": 5,
+       "response_format": "json"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": "R4a",
+   "title": "STOFS-3D vs CO-OPS at Boston, cycle 2026-08-16 12 UTC (one workflow for R4a and R4b)",
+   "statement": "For NOAA CO-OPS station 8443970 (Boston, MA), compare the STOFS-3D-Atlantic station forecast of the 2026-08-16 12:00 UTC cycle with observed water levels for forecast lead times 0 < lead <= 48 h. Report the number of compared pairs, bias (model minus observed), RMSE, MAE and Pearson correlation; the vertical datum of the model values and of the observations, each with its source; the units; the product version; and any caveat, exclusion, or reason not to compare. Use the same, unchanged workflow as for task R4b.",
+   "kind": "compare",
+   "model": "3d_atlantic",
+   "station": "8443970",
+   "cycle": "2026-08-16",
+   "archives": [
+    "base"
+   ],
+   "class": "real_defect",
+   "inputs": [
+    {
+     "archive": "base",
+     "entry": "e0006",
+     "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260816/stofs_3d_atl.t12z.points.cwl.nc",
+     "sha256": "f78e84ef18ae35083c7efe83c26df4c907d7359fb397155e1c2d748001d02462",
+     "bytes": 5509661,
+     "source": "recorded",
+     "retrieved_at": "2026-11-06T06:04:19+00:00",
+     "kind": "exact",
+     "label": null
+    },
+    {
+     "archive": "base",
+     "entry": "e0008",
+     "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8443970&product=water_level&datum=NAVD&units=metric&time_zone=gmt&format=json&begin_date=20260815&end_date=20260819&application=ocean_mcp_wp1",
+     "sha256": "29192c304fc598440768b97bcee9c38fc88c2507efc1004d820989ef3c523911",
+     "bytes": 90511,
+     "source": "recorded",
+     "retrieved_at": "2026-11-06T06:04:28+00:00",
+     "kind": "coops_master",
+     "label": null
+    },
+    {
+     "archive": "base",
+     "entry": "e0009",
+     "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8443970&product=water_level&datum=MSL&units=metric&time_zone=gmt&format=json&begin_date=20260815&end_date=20260819&application=ocean_mcp_wp1",
+     "sha256": "14b73c356606c6d97687fe03758b18376d187c9c89c093d2cf5e8a7b3b17d15b",
+     "bytes": 90491,
+     "source": "recorded",
+     "retrieved_at": "2026-11-06T06:04:32+00:00",
+     "kind": "coops_master",
+     "label": null
+    }
+   ],
+   "server": "stofs",
+   "mcp_calls": {
+    "C": [
+     {
+      "call_id": "R4a_C_0",
+      "tool": "stofs_compare_with_observations",
+      "arguments": {
+       "station_id": "8443970",
+       "model": "3d_atlantic",
+       "cycle_date": "2026-08-16",
+       "cycle_hour": "12",
+       "lead_start_hours": 0.0,
+       "lead_end_hours": 48.0,
+       "full_resolution": true,
+       "max_points": 2000,
+       "response_format": "json"
+      }
+     }
+    ],
+    "D": [
+     {
+      "call_id": "R4a_D_0",
+      "tool": "stofs_compare_with_observations",
+      "arguments": {
+       "station_id": "8443970",
+       "model": "3d_atlantic",
+       "cycle_date": "2026-08-16",
+       "cycle_hour": "12",
+       "hours_to_compare": 72,
+       "full_resolution": true,
+       "max_points": 2000,
+       "response_format": "json"
+      },
+      "nearest_equivalent": true,
+      "nearest_equivalent_note": "stofs-mcp 0.2.0 has no lead-time window; its window starts at the file start (cycle - 24 h). hours_to_compare=72 is the smallest value whose window contains 0 < lead <= 48 h; it also includes the 24 h nowcast and the record at lead 48.1 h."
+     }
+    ]
+   }
+  },
+  {
+   "id": "R4b",
+   "title": "STOFS-3D vs CO-OPS at Boston, cycle 2026-08-17 12 UTC (one workflow for R4a and R4b)",
+   "statement": "For NOAA CO-OPS station 8443970 (Boston, MA), compare the STOFS-3D-Atlantic station forecast of the 2026-08-17 12:00 UTC cycle with observed water levels for forecast lead times 0 < lead <= 48 h. Report the number of compared pairs, bias (model minus observed), RMSE, MAE and Pearson correlation; the vertical datum of the model values and of the observations, each with its source; the units; the product version; and any caveat, exclusion, or reason not to compare. Use the same, unchanged workflow as for task R4a.",
+   "kind": "compare",
+   "model": "3d_atlantic",
+   "station": "8443970",
+   "cycle": "2026-08-17",
+   "archives": [
+    "base"
+   ],
+   "class": "real_defect",
+   "inputs": [
+    {
+     "archive": "base",
+     "entry": "e0007",
+     "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260817/stofs_3d_atl.t12z.points.cwl.nc",
+     "sha256": "f47962fa8504ef4017e5a858603fa8ee0894546524e125ec38025e1fe05289c4",
+     "bytes": 8297477,
+     "source": "recorded",
+     "retrieved_at": "2026-11-06T06:04:23+00:00",
+     "kind": "exact",
+     "label": null
+    },
+    {
+     "archive": "base",
+     "entry": "e0009",
+     "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8443970&product=water_level&datum=MSL&units=metric&time_zone=gmt&format=json&begin_date=20260815&end_date=20260819&application=ocean_mcp_wp1",
+     "sha256": "14b73c356606c6d97687fe03758b18376d187c9c89c093d2cf5e8a7b3b17d15b",
+     "bytes": 90491,
+     "source": "recorded",
+     "retrieved_at": "2026-11-06T06:04:32+00:00",
+     "kind": "coops_master",
+     "label": null
+    },
+    {
+     "archive": "base",
+     "entry": "e0008",
+     "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8443970&product=water_level&datum=NAVD&units=metric&time_zone=gmt&format=json&begin_date=20260815&end_date=20260819&application=ocean_mcp_wp1",
+     "sha256": "29192c304fc598440768b97bcee9c38fc88c2507efc1004d820989ef3c523911",
+     "bytes": 90511,
+     "source": "recorded",
+     "retrieved_at": "2026-11-06T06:04:28+00:00",
+     "kind": "coops_master",
+     "label": null
+    }
+   ],
+   "server": "stofs",
+   "mcp_calls": {
+    "C": [
+     {
+      "call_id": "R4b_C_0",
+      "tool": "stofs_compare_with_observations",
+      "arguments": {
+       "station_id": "8443970",
+       "model": "3d_atlantic",
+       "cycle_date": "2026-08-17",
+       "cycle_hour": "12",
+       "lead_start_hours": 0.0,
+       "lead_end_hours": 48.0,
+       "full_resolution": true,
+       "max_points": 2000,
+       "response_format": "json"
+      }
+     }
+    ],
+    "D": [
+     {
+      "call_id": "R4b_D_0",
+      "tool": "stofs_compare_with_observations",
+      "arguments": {
+       "station_id": "8443970",
+       "model": "3d_atlantic",
+       "cycle_date": "2026-08-17",
+       "cycle_hour": "12",
+       "hours_to_compare": 72,
+       "full_resolution": true,
+       "max_points": 2000,
+       "response_format": "json"
+      },
+      "nearest_equivalent": true,
+      "nearest_equivalent_note": "stofs-mcp 0.2.0 has no lead-time window; its window starts at the file start (cycle - 24 h). hours_to_compare=72 is the smallest value whose window contains 0 < lead <= 48 h; it also includes the 24 h nowcast and the record at lead 48.1 h."
+     }
+    ]
+   }
+  },
+  {
+   "id": "R5",
+   "title": "STOFS-2D: vertical datum of the station output",
+   "statement": "What is the vertical datum of the water levels in the STOFS-2D-Global station file of the 2026-10-30 12:00 UTC cycle (station 8443970, Boston, MA), and what is the source of that statement? Report the product version and units, and any caveat.",
+   "kind": "station_datum",
+   "model": "2d_global",
+   "station": "8443970",
+   "cycle": "2026-10-30",
+   "archives": [
+    "base"
+   ],
+   "class": "real_defect",
+   "inputs": [
+    {
+     "archive": "base",
+     "entry": "e0001",
+     "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20261030/stofs_2d_glo.t12z.points.cwl.nc",
+     "sha256": "f1ed4e592982fc5974d5356ba06a90c00bdb41ead0308163221a54b018746c23",
+     "bytes": 25231796,
+     "source": "seeded",
+     "retrieved_at": "2026-11-04T21:52:03+00:00",
+     "kind": "exact",
+     "label": null
+    }
+   ],
+   "server": "stofs",
+   "mcp_calls": {
+    "C": [
+     {
+      "call_id": "R5_C_0",
+      "tool": "stofs_get_station_forecast",
+      "arguments": {
+       "station_id": "8443970",
+       "model": "2d_global",
+       "product": "cwl",
+       "cycle_date": "2026-10-30",
+       "cycle_hour": "12",
+       "response_format": "json"
+      }
+     }
+    ],
+    "D": [
+     {
+      "call_id": "R5_D_0",
+      "tool": "stofs_get_station_forecast",
+      "arguments": {
+       "station_id": "8443970",
+       "model": "2d_global",
+       "product": "cwl",
+       "cycle_date": "2026-10-30",
+       "cycle_hour": "12",
+       "response_format": "json"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": "R6",
+   "title": "STOFS-3D 2026-02-18: station nearest the Boston gauge",
+   "statement": "In the STOFS-3D-Atlantic station file of the 2026-02-18 12:00 UTC cycle, which station is nearest to the CO-OPS Boston gauge at 42.3539 N, 71.0503 W, and how far from it is that station? Report any caveat about the station coordinates.",
+   "kind": "nearest",
+   "model": "3d_atlantic",
+   "cycle": "2026-02-18",
+   "archives": [
+    "base"
+   ],
+   "class": "real_defect",
+   "inputs": [
+    {
+     "archive": "base",
+     "entry": "e0005",
+     "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260218/stofs_3d_atl.t12z.points.cwl.nc",
+     "sha256": "d13345a36695ac69ff463f52f6f5dc187639e65a068a33626d9ab2090ca633b5",
+     "bytes": 5509661,
+     "source": "recorded",
+     "retrieved_at": "2026-11-06T06:04:14+00:00",
+     "kind": "exact",
+     "label": null
+    }
+   ],
+   "server": "stofs",
+   "mcp_calls": {
+    "C": [
+     {
+      "call_id": "R6_C_0",
+      "tool": "stofs_get_point_forecast",
+      "arguments": {
+       "latitude": 42.3539,
+       "longitude": -71.0503,
+       "model": "3d_atlantic",
+       "product": "cwl",
+       "cycle_date": "2026-02-18",
+       "cycle_hour": "12",
+       "max_distance_km": 50.0,
+       "response_format": "json"
+      }
+     }
+    ],
+    "D": [
+     {
+      "call_id": "R6_D_0",
+      "tool": "stofs_get_point_forecast",
+      "arguments": {
+       "latitude": 42.3539,
+       "longitude": -71.0503,
+       "model": "3d_atlantic",
+       "product": "cwl",
+       "cycle_date": "2026-02-18",
+       "cycle_hour": "12",
+       "max_distance_km": 50.0,
+       "response_format": "json"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": "R7",
+   "title": "NDBC 41009, 2024 historical file: highest significant wave height",
+   "statement": "From NDBC's 2024 historical standard meteorological file for buoy 41009 (41009h2024.txt), what is the highest significant wave height (WVHT), and when? Report the units and any value excluded and why.",
+   "kind": "buoy_max",
+   "station": "41009",
+   "archives": [
+    "base"
+   ],
+   "note": "Arm D is ww3-mcp 0.1.2 from PyPI. Arm C is the ww3-mcp 0.1.3 wheel in verification_ww3_history_fix/dist/ if it exists when Phase 2 starts; otherwise arm C is recorded as 'candidate not available'. The tool caps max_records at 5000 and subsamples the 52,692 rows, so it cannot return every record; the grade uses the highest WVHT it does return.",
+   "class": "real_defect",
+   "inputs": [
+    {
+     "archive": "base",
+     "entry": "e0004",
+     "url": "https://www.ndbc.noaa.gov/view_text_file.php?filename=41009h2024.txt.gz&dir=data/historical/stdmet/",
+     "sha256": "f149d373877f4892f75092a969a0b12c27da7c8d54e0db9827a8fbcaef0bc648",
+     "bytes": 4742458,
+     "source": "seeded",
+     "retrieved_at": "2026-11-06T05:11:00Z",
+     "kind": "exact",
+     "label": null
+    }
+   ],
+   "server": "ww3",
+   "mcp_calls": {
+    "C": [
+     {
+      "call_id": "R7_C_0",
+      "tool": "ww3_get_buoy_history",
+      "arguments": {
+       "station_id": "41009",
+       "year": 2024,
+       "max_records": 5000,
+       "response_format": "json"
+      }
+     }
+    ],
+    "D": [
+     {
+      "call_id": "R7_D_0",
+      "tool": "ww3_get_buoy_history",
+      "arguments": {
+       "station_id": "41009",
+       "year": 2024,
+       "max_records": 5000,
+       "response_format": "json"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": "S1",
+   "title": "SYNTHETIC: 3D datum labels removed (Boston, 0-48 h)",
+   "statement": "For NOAA CO-OPS station 8443970 (Boston, MA), compare the STOFS-3D-Atlantic station forecast of the 2026-10-30 12:00 UTC cycle with observed water levels for forecast lead times 0 < lead <= 48 h. Report the number of compared pairs, bias (model minus observed), RMSE, MAE and Pearson correlation; the vertical datum of the model values and of the observations, each with its source; the units; the product version; and any caveat, exclusion, or reason not to compare.",
+   "kind": "compare",
+   "model": "3d_atlantic",
+   "station": "8443970",
+   "cycle": "2026-10-30",
+   "archives": [
+    "synthetic/S1",
+    "base"
+   ],
+   "class": "synthetic",
+   "inputs": [
+    {
+     "archive": "synthetic/S1",
+     "entry": "e0001",
+     "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20261030/stofs_3d_atl.t12z.points.cwl.nc",
+     "sha256": "6e159109826c6af3f94a0d10d3938e1aeb5111db1b83217b64e4cf68a4f54aeb",
+     "bytes": 8297477,
+     "source": "synthetic",
+     "retrieved_at": null,
+     "kind": "exact",
+     "label": "SYNTHETIC: controlled mutation of a real NOAA file"
+    },
+    {
+     "archive": "base",
+     "entry": "e0002",
+     "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20261030/stofs_3d_atl.t12z.points.cwl.nc",
+     "sha256": "4660819425aa1d2eec0e63a37d3a78e8fef2e00f62a1cb56f088347ef51a450f",
+     "bytes": 8297477,
+     "source": "seeded",
+     "retrieved_at": "2026-11-04T21:52:04+00:00",
+     "kind": "exact",
+     "label": null
+    },
+    {
+     "archive": "base",
+     "entry": "e0003",
+     "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8443970&product=water_level&datum=MSL&units=metric&time_zone=gmt&format=json&begin_date=20261029+12%3A00&end_date=20261101+12%3A00&application=ocean_mcp_verification",
+     "sha256": "c207c80138900573e09fe2733efdc2c055b923c9dc39f5c594d46d4d84ff8d6d",
+     "bytes": 54345,
+     "source": "seeded",
+     "retrieved_at": "2026-11-04T21:52:04+00:00",
+     "kind": "coops_master",
+     "label": null
+    },
+    {
+     "archive": "base",
+     "entry": "e0010",
+     "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8443970&product=water_level&datum=MSL&units=metric&time_zone=gmt&format=json&begin_date=20261029&end_date=20261101&application=ocean_mcp_wp1",
+     "sha256": "25ad6659322952fa57b5f7e1943da6b3990dcbbbfad63ed07807511197b089e2",
+     "bytes": 72338,
+     "source": "recorded",
+     "retrieved_at": "2026-11-06T06:04:36+00:00",
+     "kind": "coops_master",
+     "label": null
+    },
+    {
+     "archive": "base",
+     "entry": "e0011",
+     "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8443970&product=water_level&datum=NAVD&units=metric&time_zone=gmt&format=json&begin_date=20261029&end_date=20261101&application=ocean_mcp_wp1",
+     "sha256": "29297072e32c4fd75b486ef2bb9723572bfcf2af5d2b1479d2cf4fcb9537c92b",
+     "bytes": 72338,
+     "source": "recorded",
+     "retrieved_at": "2026-11-06T06:04:40+00:00",
+     "kind": "coops_master",
+     "label": null
+    }
+   ],
+   "server": "stofs",
+   "mcp_calls": {
+    "C": [
+     {
+      "call_id": "S1_C_0",
+      "tool": "stofs_compare_with_observations",
+      "arguments": {
+       "station_id": "8443970",
+       "model": "3d_atlantic",
+       "cycle_date": "2026-10-30",
+       "cycle_hour": "12",
+       "lead_start_hours": 0.0,
+       "lead_end_hours": 48.0,
+       "full_resolution": true,
+       "max_points": 2000,
+       "response_format": "json"
+      }
+     }
+    ],
+    "D": [
+     {
+      "call_id": "S1_D_0",
+      "tool": "stofs_compare_with_observations",
+      "arguments": {
+       "station_id": "8443970",
+       "model": "3d_atlantic",
+       "cycle_date": "2026-10-30",
+       "cycle_hour": "12",
+       "hours_to_compare": 72,
+       "full_resolution": true,
+       "max_points": 2000,
+       "response_format": "json"
+      },
+      "nearest_equivalent": true,
+      "nearest_equivalent_note": "stofs-mcp 0.2.0 has no lead-time window; its window starts at the file start (cycle - 24 h). hours_to_compare=72 is the smallest value whose window contains 0 < lead <= 48 h; it also includes the 24 h nowcast and the record at lead 48.1 h."
+     }
+    ]
+   }
+  },
+  {
+   "id": "S2",
+   "title": "SYNTHETIC: 3D conflicting datum labels (Boston, 0-48 h)",
+   "statement": "For NOAA CO-OPS station 8443970 (Boston, MA), compare the STOFS-3D-Atlantic station forecast of the 2026-10-30 12:00 UTC cycle with observed water levels for forecast lead times 0 < lead <= 48 h. Report the number of compared pairs, bias (model minus observed), RMSE, MAE and Pearson correlation; the vertical datum of the model values and of the observations, each with its source; the units; the product version; and any caveat, exclusion, or reason not to compare.",
+   "kind": "compare",
+   "model": "3d_atlantic",
+   "station": "8443970",
+   "cycle": "2026-10-30",
+   "archives": [
+    "synthetic/S2",
+    "base"
+   ],
+   "class": "synthetic",
+   "inputs": [
+    {
+     "archive": "synthetic/S2",
+     "entry": "e0001",
+     "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20261030/stofs_3d_atl.t12z.points.cwl.nc",
+     "sha256": "b7648fc6be41a8ac5860a11689f2aa20e4c58da9a06c9a316a9f6454a20ecb1a",
+     "bytes": 8297558,
+     "source": "synthetic",
+     "retrieved_at": null,
+     "kind": "exact",
+     "label": "SYNTHETIC: controlled mutation of a real NOAA file"
+    },
+    {
+     "archive": "base",
+     "entry": "e0002",
+     "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20261030/stofs_3d_atl.t12z.points.cwl.nc",
+     "sha256": "4660819425aa1d2eec0e63a37d3a78e8fef2e00f62a1cb56f088347ef51a450f",
+     "bytes": 8297477,
+     "source": "seeded",
+     "retrieved_at": "2026-11-04T21:52:04+00:00",
+     "kind": "exact",
+     "label": null
+    },
+    {
+     "archive": "base",
+     "entry": "e0003",
+     "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8443970&product=water_level&datum=MSL&units=metric&time_zone=gmt&format=json&begin_date=20261029+12%3A00&end_date=20261101+12%3A00&application=ocean_mcp_verification",
+     "sha256": "c207c80138900573e09fe2733efdc2c055b923c9dc39f5c594d46d4d84ff8d6d",
+     "bytes": 54345,
+     "source": "seeded",
+     "retrieved_at": "2026-11-04T21:52:04+00:00",
+     "kind": "coops_master",
+     "label": null
+    },
+    {
+     "archive": "base",
+     "entry": "e0010",
+     "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8443970&product=water_level&datum=MSL&units=metric&time_zone=gmt&format=json&begin_date=20261029&end_date=20261101&application=ocean_mcp_wp1",
+     "sha256": "25ad6659322952fa57b5f7e1943da6b3990dcbbbfad63ed07807511197b089e2",
+     "bytes": 72338,
+     "source": "recorded",
+     "retrieved_at": "2026-11-06T06:04:36+00:00",
+     "kind": "coops_master",
+     "label": null
+    },
+    {
+     "archive": "base",
+     "entry": "e0011",
+     "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8443970&product=water_level&datum=NAVD&units=metric&time_zone=gmt&format=json&begin_date=20261029&end_date=20261101&application=ocean_mcp_wp1",
+     "sha256": "29297072e32c4fd75b486ef2bb9723572bfcf2af5d2b1479d2cf4fcb9537c92b",
+     "bytes": 72338,
+     "source": "recorded",
+     "retrieved_at": "2026-11-06T06:04:40+00:00",
+     "kind": "coops_master",
+     "label": null
+    }
+   ],
+   "server": "stofs",
+   "mcp_calls": {
+    "C": [
+     {
+      "call_id": "S2_C_0",
+      "tool": "stofs_compare_with_observations",
+      "arguments": {
+       "station_id": "8443970",
+       "model": "3d_atlantic",
+       "cycle_date": "2026-10-30",
+       "cycle_hour": "12",
+       "lead_start_hours": 0.0,
+       "lead_end_hours": 48.0,
+       "full_resolution": true,
+       "max_points": 2000,
+       "response_format": "json"
+      }
+     }
+    ],
+    "D": [
+     {
+      "call_id": "S2_D_0",
+      "tool": "stofs_compare_with_observations",
+      "arguments": {
+       "station_id": "8443970",
+       "model": "3d_atlantic",
+       "cycle_date": "2026-10-30",
+       "cycle_hour": "12",
+       "hours_to_compare": 72,
+       "full_resolution": true,
+       "max_points": 2000,
+       "response_format": "json"
+      },
+      "nearest_equivalent": true,
+      "nearest_equivalent_note": "stofs-mcp 0.2.0 has no lead-time window; its window starts at the file start (cycle - 24 h). hours_to_compare=72 is the smallest value whose window contains 0 < lead <= 48 h; it also includes the 24 h nowcast and the record at lead 48.1 h."
+     }
+    ]
+   }
+  },
+  {
+   "id": "S3",
+   "title": "SYNTHETIC: 2D undocumented product version V4.0.0 (Boston, 0-48 h)",
+   "statement": "For NOAA CO-OPS station 8443970 (Boston, MA), compare the STOFS-2D-Global station forecast of the 2026-10-30 12:00 UTC cycle with observed water levels for forecast lead times 0 < lead <= 48 h. Report the number of compared pairs, bias (model minus observed), RMSE, MAE and Pearson correlation; the vertical datum of the model values and of the observations, each with its source; the units; the product version; and any caveat, exclusion, or reason not to compare.",
+   "kind": "compare",
+   "model": "2d_global",
+   "station": "8443970",
+   "cycle": "2026-10-30",
+   "archives": [
+    "synthetic/S3",
+    "base"
+   ],
+   "class": "synthetic",
+   "inputs": [
+    {
+     "archive": "synthetic/S3",
+     "entry": "e0001",
+     "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20261030/stofs_2d_glo.t12z.points.cwl.nc",
+     "sha256": "e153e8e6d122447fad3cb52d8b9fdd3402621bf93bbbbcd985a45781303701a0",
+     "bytes": 25231796,
+     "source": "synthetic",
+     "retrieved_at": null,
+     "kind": "exact",
+     "label": "SYNTHETIC: controlled mutation of a real NOAA file"
+    },
+    {
+     "archive": "base",
+     "entry": "e0001",
+     "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20261030/stofs_2d_glo.t12z.points.cwl.nc",
+     "sha256": "f1ed4e592982fc5974d5356ba06a90c00bdb41ead0308163221a54b018746c23",
+     "bytes": 25231796,
+     "source": "seeded",
+     "retrieved_at": "2026-11-04T21:52:03+00:00",
+     "kind": "exact",
+     "label": null
+    },
+    {
+     "archive": "base",
+     "entry": "e0003",
+     "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8443970&product=water_level&datum=MSL&units=metric&time_zone=gmt&format=json&begin_date=20261029+12%3A00&end_date=20261101+12%3A00&application=ocean_mcp_verification",
+     "sha256": "c207c80138900573e09fe2733efdc2c055b923c9dc39f5c594d46d4d84ff8d6d",
+     "bytes": 54345,
+     "source": "seeded",
+     "retrieved_at": "2026-11-04T21:52:04+00:00",
+     "kind": "coops_master",
+     "label": null
+    },
+    {
+     "archive": "base",
+     "entry": "e0010",
+     "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8443970&product=water_level&datum=MSL&units=metric&time_zone=gmt&format=json&begin_date=20261029&end_date=20261101&application=ocean_mcp_wp1",
+     "sha256": "25ad6659322952fa57b5f7e1943da6b3990dcbbbfad63ed07807511197b089e2",
+     "bytes": 72338,
+     "source": "recorded",
+     "retrieved_at": "2026-11-06T06:04:36+00:00",
+     "kind": "coops_master",
+     "label": null
+    }
+   ],
+   "server": "stofs",
+   "mcp_calls": {
+    "C": [
+     {
+      "call_id": "S3_C_0",
+      "tool": "stofs_compare_with_observations",
+      "arguments": {
+       "station_id": "8443970",
+       "model": "2d_global",
+       "cycle_date": "2026-10-30",
+       "cycle_hour": "12",
+       "lead_start_hours": 0.0,
+       "lead_end_hours": 48.0,
+       "full_resolution": true,
+       "max_points": 2000,
+       "response_format": "json"
+      }
+     }
+    ],
+    "D": [
+     {
+      "call_id": "S3_D_0",
+      "tool": "stofs_compare_with_observations",
+      "arguments": {
+       "station_id": "8443970",
+       "model": "2d_global",
+       "cycle_date": "2026-10-30",
+       "cycle_hour": "12",
+       "hours_to_compare": 54,
+       "full_resolution": true,
+       "max_points": 2000,
+       "response_format": "json"
+      },
+      "nearest_equivalent": true,
+      "nearest_equivalent_note": "stofs-mcp 0.2.0 has no lead-time window; its window starts at the file start (cycle - 6 h). hours_to_compare=54 is the smallest value whose window contains 0 < lead <= 48 h; it also includes the 6 h nowcast and the record at lead 48.1 h."
+     }
+    ]
+   }
+  },
+  {
+   "id": "S4",
+   "title": "SYNTHETIC: blank and non-finite observations (2D, Boston, 0-48 h)",
+   "statement": "For NOAA CO-OPS station 8443970 (Boston, MA), compare the STOFS-2D-Global station forecast of the 2026-10-30 12:00 UTC cycle with observed water levels for forecast lead times 0 < lead <= 48 h. Report the number of compared pairs, bias (model minus observed), RMSE, MAE and Pearson correlation; the vertical datum of the model values and of the observations, each with its source; the units; the product version; and any caveat, exclusion, or reason not to compare.",
+   "kind": "compare",
+   "model": "2d_global",
+   "station": "8443970",
+   "cycle": "2026-10-30",
+   "archives": [
+    "synthetic/S4",
+    "base"
+   ],
+   "class": "synthetic",
+   "inputs": [
+    {
+     "archive": "base",
+     "entry": "e0001",
+     "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20261030/stofs_2d_glo.t12z.points.cwl.nc",
+     "sha256": "f1ed4e592982fc5974d5356ba06a90c00bdb41ead0308163221a54b018746c23",
+     "bytes": 25231796,
+     "source": "seeded",
+     "retrieved_at": "2026-11-04T21:52:03+00:00",
+     "kind": "exact",
+     "label": null
+    },
+    {
+     "archive": "synthetic/S4",
+     "entry": "e0001",
+     "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8443970&product=water_level&datum=MSL&units=metric&time_zone=gmt&format=json&begin_date=20261029&end_date=20261101&application=ocean_mcp_wp1",
+     "sha256": "1831ebeab1a40b2fad36427fe868b3b556f16a5b9ad8a5bf89b29bcb16e542f1",
+     "bytes": 72330,
+     "source": "synthetic",
+     "retrieved_at": "2026-11-06T06:04:36+00:00",
+     "kind": "coops_master",
+     "label": "SYNTHETIC: controlled mutation of a real CO-OPS response"
+    },
+    {
+     "archive": "base",
+     "entry": "e0003",
+     "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8443970&product=water_level&datum=MSL&units=metric&time_zone=gmt&format=json&begin_date=20261029+12%3A00&end_date=20261101+12%3A00&application=ocean_mcp_verification",
+     "sha256": "c207c80138900573e09fe2733efdc2c055b923c9dc39f5c594d46d4d84ff8d6d",
+     "bytes": 54345,
+     "source": "seeded",
+     "retrieved_at": "2026-11-04T21:52:04+00:00",
+     "kind": "coops_master",
+     "label": null
+    },
+    {
+     "archive": "base",
+     "entry": "e0010",
+     "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8443970&product=water_level&datum=MSL&units=metric&time_zone=gmt&format=json&begin_date=20261029&end_date=20261101&application=ocean_mcp_wp1",
+     "sha256": "25ad6659322952fa57b5f7e1943da6b3990dcbbbfad63ed07807511197b089e2",
+     "bytes": 72338,
+     "source": "recorded",
+     "retrieved_at": "2026-11-06T06:04:36+00:00",
+     "kind": "coops_master",
+     "label": null
+    }
+   ],
+   "server": "stofs",
+   "mcp_calls": {
+    "C": [
+     {
+      "call_id": "S4_C_0",
+      "tool": "stofs_compare_with_observations",
+      "arguments": {
+       "station_id": "8443970",
+       "model": "2d_global",
+       "cycle_date": "2026-10-30",
+       "cycle_hour": "12",
+       "lead_start_hours": 0.0,
+       "lead_end_hours": 48.0,
+       "full_resolution": true,
+       "max_points": 2000,
+       "response_format": "json"
+      }
+     }
+    ],
+    "D": [
+     {
+      "call_id": "S4_D_0",
+      "tool": "stofs_compare_with_observations",
+      "arguments": {
+       "station_id": "8443970",
+       "model": "2d_global",
+       "cycle_date": "2026-10-30",
+       "cycle_hour": "12",
+       "hours_to_compare": 54,
+       "full_resolution": true,
+       "max_points": 2000,
+       "response_format": "json"
+      },
+      "nearest_equivalent": true,
+      "nearest_equivalent_note": "stofs-mcp 0.2.0 has no lead-time window; its window starts at the file start (cycle - 6 h). hours_to_compare=54 is the smallest value whose window contains 0 < lead <= 48 h; it also includes the 6 h nowcast and the record at lead 48.1 h."
+     }
+    ]
+   }
+  },
+  {
+   "id": "S5",
+   "title": "SYNTHETIC: harmless wording variant of the 3D datum label (Boston, 0-48 h)",
+   "statement": "For NOAA CO-OPS station 8443970 (Boston, MA), compare the STOFS-3D-Atlantic station forecast of the 2026-10-30 12:00 UTC cycle with observed water levels for forecast lead times 0 < lead <= 48 h. Report the number of compared pairs, bias (model minus observed), RMSE, MAE and Pearson correlation; the vertical datum of the model values and of the observations, each with its source; the units; the product version; and any caveat, exclusion, or reason not to compare.",
+   "kind": "compare",
+   "model": "3d_atlantic",
+   "station": "8443970",
+   "cycle": "2026-10-30",
+   "archives": [
+    "synthetic/S5",
+    "base"
+   ],
+   "class": "synthetic",
+   "inputs": [
+    {
+     "archive": "synthetic/S5",
+     "entry": "e0001",
+     "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20261030/stofs_3d_atl.t12z.points.cwl.nc",
+     "sha256": "46e35f2fed7e4cf281e1ee8a20536ca9f7fd880334a74537f167115c050c9751",
+     "bytes": 8297565,
+     "source": "synthetic",
+     "retrieved_at": null,
+     "kind": "exact",
+     "label": "SYNTHETIC: controlled mutation of a real NOAA file"
+    },
+    {
+     "archive": "base",
+     "entry": "e0002",
+     "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20261030/stofs_3d_atl.t12z.points.cwl.nc",
+     "sha256": "4660819425aa1d2eec0e63a37d3a78e8fef2e00f62a1cb56f088347ef51a450f",
+     "bytes": 8297477,
+     "source": "seeded",
+     "retrieved_at": "2026-11-04T21:52:04+00:00",
+     "kind": "exact",
+     "label": null
+    },
+    {
+     "archive": "base",
+     "entry": "e0003",
+     "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8443970&product=water_level&datum=MSL&units=metric&time_zone=gmt&format=json&begin_date=20261029+12%3A00&end_date=20261101+12%3A00&application=ocean_mcp_verification",
+     "sha256": "c207c80138900573e09fe2733efdc2c055b923c9dc39f5c594d46d4d84ff8d6d",
+     "bytes": 54345,
+     "source": "seeded",
+     "retrieved_at": "2026-11-04T21:52:04+00:00",
+     "kind": "coops_master",
+     "label": null
+    },
+    {
+     "archive": "base",
+     "entry": "e0010",
+     "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8443970&product=water_level&datum=MSL&units=metric&time_zone=gmt&format=json&begin_date=20261029&end_date=20261101&application=ocean_mcp_wp1",
+     "sha256": "25ad6659322952fa57b5f7e1943da6b3990dcbbbfad63ed07807511197b089e2",
+     "bytes": 72338,
+     "source": "recorded",
+     "retrieved_at": "2026-11-06T06:04:36+00:00",
+     "kind": "coops_master",
+     "label": null
+    },
+    {
+     "archive": "base",
+     "entry": "e0011",
+     "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8443970&product=water_level&datum=NAVD&units=metric&time_zone=gmt&format=json&begin_date=20261029&end_date=20261101&application=ocean_mcp_wp1",
+     "sha256": "29297072e32c4fd75b486ef2bb9723572bfcf2af5d2b1479d2cf4fcb9537c92b",
+     "bytes": 72338,
+     "source": "recorded",
+     "retrieved_at": "2026-11-06T06:04:40+00:00",
+     "kind": "coops_master",
+     "label": null
+    }
+   ],
+   "server": "stofs",
+   "mcp_calls": {
+    "C": [
+     {
+      "call_id": "S5_C_0",
+      "tool": "stofs_compare_with_observations",
+      "arguments": {
+       "station_id": "8443970",
+       "model": "3d_atlantic",
+       "cycle_date": "2026-10-30",
+       "cycle_hour": "12",
+       "lead_start_hours": 0.0,
+       "lead_end_hours": 48.0,
+       "full_resolution": true,
+       "max_points": 2000,
+       "response_format": "json"
+      }
+     }
+    ],
+    "D": [
+     {
+      "call_id": "S5_D_0",
+      "tool": "stofs_compare_with_observations",
+      "arguments": {
+       "station_id": "8443970",
+       "model": "3d_atlantic",
+       "cycle_date": "2026-10-30",
+       "cycle_hour": "12",
+       "hours_to_compare": 72,
+       "full_resolution": true,
+       "max_points": 2000,
+       "response_format": "json"
+      },
+      "nearest_equivalent": true,
+      "nearest_equivalent_note": "stofs-mcp 0.2.0 has no lead-time window; its window starts at the file start (cycle - 24 h). hours_to_compare=72 is the smallest value whose window contains 0 < lead <= 48 h; it also includes the 24 h nowcast and the record at lead 48.1 h."
+     }
+    ]
+   }
+  }
+ ]
+}

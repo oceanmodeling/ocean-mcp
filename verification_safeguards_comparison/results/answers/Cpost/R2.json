@@ -1,0 +1,53 @@
+{
+ "task_id": "R2",
+ "arm": "Cpost",
+ "status": "answered",
+ "action": "proceed",
+ "values": {
+  "min_m": -0.109,
+  "n_values": 1813
+ },
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {
+  "model_datum": {
+   "value": "LMSL",
+   "source": "NOAA documentation (STOFS_2D_GLOBAL V3.1.0: NOMADS STOFS-Global description (archived 2026-11-04): station and gridded output referenced to LMSL); file label zeta:standard_name=sea_surface_height_above_geoid names no specific datum"
+  },
+  "product_version": {
+   "value": "STOFS_2D_GLOBAL V3.1.0",
+   "source": "tool datum_provenance.product_version"
+  },
+  "units": {
+   "value": "m",
+   "source": "tool response field units"
+  }
+ },
+ "texts": [],
+ "exclusions": [
+  {
+   "what": "model_records",
+   "count": 47,
+   "names": [],
+   "reason": "sentinel"
+  }
+ ],
+ "evidence": {
+  "call_ids": [
+   "R2_C_0"
+  ],
+  "session": "wp1b_Cpost_R2",
+  "packages": {
+   "python": "3.13.12",
+   "stofs-mcp": "0.3.0",
+   "coops-mcp": "0.1.1",
+   "erddap-mcp": "0.1.3",
+   "ww3-mcp": "0.1.3",
+   "mcp": "1.30.0",
+   "httpx": "0.28.1",
+   "numpy": "2.5.4",
+   "netCDF4": "1.7.5.1.post1",
+   "xarray": "2026.9.0"
+  }
+ }
+}

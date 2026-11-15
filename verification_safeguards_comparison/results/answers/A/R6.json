@@ -1,0 +1,28 @@
+{
+ "task_id": "R6",
+ "arm": "A",
+ "status": "answered",
+ "action": "proceed",
+ "values": {
+  "station": "TRDF1 SOUS41 8721604 FL Trident Pier, Port Canaver",
+  "distance_km": 1772.181086783613
+ },
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {},
+ "texts": [],
+ "exclusions": [],
+ "evidence": {
+  "x": -80.5934,
+  "y": 28.4157,
+  "inputs": [
+   {
+    "archive": "base",
+    "entry": "e0005",
+    "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260218/stofs_3d_atl.t12z.points.cwl.nc",
+    "sha256": "d13345a36695ac69ff463f52f6f5dc187639e65a068a33626d9ab2090ca633b5",
+    "why": "url"
+   }
+  ]
+ }
+}

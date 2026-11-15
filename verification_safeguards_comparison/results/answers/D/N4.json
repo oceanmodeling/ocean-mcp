@@ -1,0 +1,39 @@
+{
+ "task_id": "N4",
+ "arm": "D",
+ "status": "answered",
+ "action": "proceed",
+ "values": {
+  "cells": 17061,
+  "finite": 9301,
+  "min": 22.198999999999998,
+  "max": 23.983
+ },
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {
+  "units": {
+   "value": null,
+   "source": null
+  }
+ },
+ "texts": [],
+ "exclusions": [],
+ "evidence": {
+  "call_ids": [
+   "N4_D_0"
+  ],
+  "envelope": {
+   "record_count": 17061,
+   "total": 17061,
+   "truncated": false
+  },
+  "session": "wp1_D_N4",
+  "packages": {
+   "python": "3.13.12",
+   "erddap-mcp": "0.1.2",
+   "mcp": "1.30.0",
+   "httpx": "0.28.1"
+  }
+ }
+}

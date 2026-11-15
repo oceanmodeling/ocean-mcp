@@ -1,0 +1,10 @@
+[11/09/26 02:54:09] INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[11/09/26 02:54:10] INFO     HTTP Request: GET                   _client.py:1740
+                             https://noaa-gestofs-pds.s3.amazona                
+                             ws.com/stofs_2d_glo.20261030/stofs_                
+                             2d_glo.t12z.points.cwl.nc "HTTP/1.1                
+                             200 OK"                                            
+[ocean-replay] replay summary: {"served": 1, "recorded": 0, "miss": 0, "network_blocked": 0}

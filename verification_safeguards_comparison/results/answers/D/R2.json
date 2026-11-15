@@ -1,0 +1,40 @@
+{
+ "task_id": "R2",
+ "arm": "D",
+ "status": "answered",
+ "action": "proceed",
+ "values": {
+  "min_m": -99998.6,
+  "n_values": 1860
+ },
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {
+  "model_datum": {
+   "value": "LMSL",
+   "source": null
+  },
+  "product_version": {
+   "value": null,
+   "source": null
+  },
+  "units": {
+   "value": null,
+   "source": null
+  }
+ },
+ "texts": [],
+ "exclusions": [],
+ "evidence": {
+  "call_ids": [
+   "R2_D_0"
+  ],
+  "session": "wp1_D_R2",
+  "packages": {
+   "python": "3.13.12",
+   "stofs-mcp": "0.2.0",
+   "mcp": "1.30.0",
+   "httpx": "0.28.1"
+  }
+ }
+}

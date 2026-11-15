@@ -1,0 +1,38 @@
+{
+ "task_id": "S3",
+ "arm": "B",
+ "status": "refused",
+ "action": "refuse",
+ "values": {},
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {
+  "units": {
+   "value": "m",
+   "source": "zeta:units attribute"
+  },
+  "product_version": {
+   "value": "4.0.0",
+   "source": "global attribute title"
+  },
+  "model_datum": {
+   "value": "undetermined",
+   "source": "file labels {'standard_name': 'sea_surface_height_above_geoid', 'long_name': 'water surface elevation above geoid'}"
+  }
+ },
+ "texts": [
+  "[B-D1] The file label {'standard_name': 'sea_surface_height_above_geoid', 'long_name': 'water surface elevation above geoid'} names no datum, and product version 4.0.0 is not documented (documented: STOFS_2D_GLOBAL V3.1). Datum undetermined; not compared."
+ ],
+ "exclusions": [],
+ "evidence": {
+  "inputs": [
+   {
+    "archive": "synthetic/S3",
+    "entry": "e0001",
+    "url": "https://noaa-gestofs-pds.s3.amazonaws.com/stofs_2d_glo.20261030/stofs_2d_glo.t12z.points.cwl.nc",
+    "sha256": "e153e8e6d122447fad3cb52d8b9fdd3402621bf93bbbbcd985a45781303701a0",
+    "why": "url"
+   }
+  ]
+ }
+}

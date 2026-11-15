@@ -1,0 +1,261 @@
+{
+ "arm": "B",
+ "started_at": "2026-11-09T02:52:37+00:00",
+ "python": "3.13.12",
+ "importable": {
+  "stofs_mcp": false,
+  "coops_mcp": false,
+  "erddap_mcp": false,
+  "ww3_mcp": false,
+  "ndbc_mcp": false,
+  "nhc_mcp": false,
+  "vdatum_mcp": false,
+  "recon_mcp": false,
+  "ofs_mcp": false,
+  "rtofs_mcp": false,
+  "winds_mcp": false,
+  "usgs_mcp": false,
+  "goes_mcp": false,
+  "mcp": false,
+  "httpx": false
+ },
+ "versions": {
+  "numpy": "2.5.4",
+  "pandas": "3.1.1",
+  "xarray": "2026.9.0"
+ },
+ "tasks": {
+  "N1": {
+   "status": "answered",
+   "action": "proceed",
+   "values": {
+    "n": 480,
+    "bias_m": -0.00050134172916666,
+    "rmse_m": 0.12299683288750661,
+    "mae_m": 0.0999930831875,
+    "r": 0.9933770698751171
+   },
+   "texts": [
+    "[B-D1] The file label {'standard_name': 'sea_surface_height_above_geoid', 'long_name': 'water surface elevation above geoid'} names no datum ('geoid' is a generic surface); the datum LMSL is taken fro",
+    "[B-D4] Model LMSL and CO-OPS MSL are both mean-sea-level datums and are treated as compatible, but their equivalence is not established: CO-OPS MSL is the tidal datum of the 1983-2001 National Tidal D",
+    "[B-Q2] 480 of 480 matched observations are CO-OPS preliminary (q=p) and may be revised."
+   ],
+   "answer": "results/answers/B/N1.json"
+  },
+  "N2": {
+   "status": "answered",
+   "action": "proceed",
+   "values": {
+    "n": 480,
+    "bias_m": -0.14299885033346554,
+    "rmse_m": 0.24555257562124647,
+    "mae_m": 0.20860631475231262,
+    "r": 0.9913206350537714
+   },
+   "texts": [
+    "[B-D4] Model LMSL and CO-OPS MSL are both mean-sea-level datums and are treated as compatible, but their equivalence is not established: CO-OPS MSL is the tidal datum of the 1983-2001 National Tidal D",
+    "[B-Q2] 480 of 480 matched observations are CO-OPS preliminary (q=p) and may be revised."
+   ],
+   "answer": "results/answers/B/N2.json"
+  },
+  "N3": {
+   "status": "answered",
+   "action": "proceed",
+   "values": {
+    "residual_max_m": 2.209,
+    "times_utc": [
+     "2022-09-28 22:18",
+     "2022-09-28 22:30"
+    ]
+   },
+   "texts": [
+    "[B-R1] Residual = observed minus predicted on MLLW, 720 matched 6-minute times; quality {'v': 720}.",
+    "[B-R1] The maximum is attained at 2 times: ['2022-09-28 22:18', '2022-09-28 22:30']."
+   ],
+   "answer": "results/answers/B/N3.json"
+  },
+  "N4": {
+   "status": "answered",
+   "action": "proceed",
+   "values": {
+    "cells": 17061,
+    "finite": 9301,
+    "min": 22.198999999999998,
+    "max": 23.983
+   },
+   "texts": [
+    "[B-E1] 7760 of 17061 cells are null (missing; land or masked) and are not counted as values."
+   ],
+   "answer": "results/answers/B/N4.json"
+  },
+  "R1a": {
+   "status": "answered",
+   "action": "proceed",
+   "values": {
+    "station": "PSBM1 SOUS41 8410140 ME Eastport",
+    "max_m": 3.3004299945163726
+   },
+   "texts": [
+    "[B-Q1] Stations with no valid value, excluded from the ranking: ['CHSV3 SOUS41 9751364 VI Christiansted Harbor, St C', 'LTBV3 SOUS41 9751401 VI Lime Tree Bay', 'LAMV3 SOUS41 9751381 VI Lameshur Bay, S"
+   ],
+   "answer": "results/answers/B/R1a.json"
+  },
+  "R1b": {
+   "status": "refused",
+   "action": "refuse",
+   "values": {},
+   "texts": [
+    "[B-Q1] No valid model value for LAMV3 SOUS41 9751381 VI Lameshur Bay, St John in 0 < lead <= 48 h: all 480 records excluded ({'fill_or_nonfinite': 0, 'declared_dry_value': 0, 'beyond_physical_bound': "
+   ],
+   "answer": "results/answers/B/R1b.json"
+  },
+  "R2": {
+   "status": "answered",
+   "action": "proceed",
+   "values": {
+    "min_m": -0.109007
+   },
+   "texts": [
+    "[B-Q1] Excluded records at BISM2 SOUS41 8571421 MD Bishops Head: {'fill_or_nonfinite': 0, 'declared_dry_value': 0, 'beyond_physical_bound': 47, 'of_which_no_data_magnitude': 47}; distinct excluded val",
+    "[B-D1] The file label {'standard_name': 'sea_surface_height_above_geoid', 'long_name': 'water surface elevation above geoid'} names no datum ('geoid' is a generic surface); the datum LMSL is taken fro"
+   ],
+   "answer": "results/answers/B/R2.json"
+  },
+  "R3": {
+   "status": "answered",
+   "action": "proceed",
+   "values": {
+    "station": "UJ852 SOUS00 SA852",
+    "max_m": 5.0525569484
+   },
+   "texts": [
+    "[B-Q1] Stations with no valid value, excluded from the ranking: ['UJ816 SOUS00 SA816'].",
+    "[B-D1] The file label {'standard_name': 'sea_surface_height_above_geoid', 'long_name': 'water surface elevation above geoid'} names no datum ('geoid' is a generic surface); the datum LMSL is taken fro"
+   ],
+   "answer": "results/answers/B/R3.json"
+  },
+  "R4a": {
+   "status": "answered",
+   "action": "proceed",
+   "values": {
+    "n": 480,
+    "bias_m": -0.12353631479633381,
+    "rmse_m": 0.26759714394015427,
+    "mae_m": 0.21408470225226264,
+    "r": 0.9971337071087539
+   },
+   "texts": [],
+   "answer": "results/answers/B/R4a.json"
+  },
+  "R4b": {
+   "status": "answered",
+   "action": "proceed",
+   "values": {
+    "n": 480,
+    "bias_m": -0.03543881277513224,
+    "rmse_m": 0.21109845929613913,
+    "mae_m": 0.18518852024446203,
+    "r": 0.9959001843154157
+   },
+   "texts": [
+    "[B-D4] Model LMSL and CO-OPS MSL are both mean-sea-level datums and are treated as compatible, but their equivalence is not established: CO-OPS MSL is the tidal datum of the 1983-2001 National Tidal D"
+   ],
+   "answer": "results/answers/B/R4b.json"
+  },
+  "R5": {
+   "status": "answered",
+   "action": "proceed",
+   "values": {},
+   "texts": [
+    "[B-D1] The file label {'standard_name': 'sea_surface_height_above_geoid', 'long_name': 'water surface elevation above geoid'} names no datum ('geoid' is a generic surface); the datum LMSL is taken fro"
+   ],
+   "answer": "results/answers/B/R5.json"
+  },
+  "R6": {
+   "status": "answered",
+   "action": "proceed",
+   "values": {
+    "station": "BHBM3 SOUS41 8443970 MA Boston",
+    "distance_km": 0.0016326060119950473
+   },
+   "texts": [
+    "[B-C1] 105 of 108 station records store latitude in x and longitude in y (reversed relative to their attributes); they were swapped before the distance search. 0 records outside the product domain eit"
+   ],
+   "answer": "results/answers/B/R6.json"
+  },
+  "R7": {
+   "status": "answered",
+   "action": "proceed",
+   "values": {
+    "max_wvht_m": 6.32,
+    "time": "2024-10-10 08:10"
+   },
+   "texts": [
+    "[B-W1] 35235 of 52692 rows hold the NDBC historical missing code for WVHT (99.00) and were excluded."
+   ],
+   "answer": "results/answers/B/R7.json"
+  },
+  "S1": {
+   "status": "refused",
+   "action": "refuse",
+   "values": {},
+   "texts": [
+    "[B-D3] The zeta variable carries no datum label (no standard_name or long_name). STOFS-3D station output is labelled in NOAA files and its datum changed at v3.1; documentation for 3.1.6 alone does not"
+   ],
+   "answer": "results/answers/B/S1.json"
+  },
+  "S2": {
+   "status": "refused",
+   "action": "refuse",
+   "values": {},
+   "texts": [
+    "[B-D3] Conflicting datum labels on zeta: {'standard_name': 'sea_surface_height_above_msl', 'long_name': 'water surface elevation above navd88'} name ['LMSL', 'NAVD88']. Neither can be trusted; not com"
+   ],
+   "answer": "results/answers/B/S2.json"
+  },
+  "S3": {
+   "status": "refused",
+   "action": "refuse",
+   "values": {},
+   "texts": [
+    "[B-D1] The file label {'standard_name': 'sea_surface_height_above_geoid', 'long_name': 'water surface elevation above geoid'} names no datum, and product version 4.0.0 is not documented (documented: S"
+   ],
+   "answer": "results/answers/B/S3.json"
+  },
+  "S4": {
+   "status": "answered",
+   "action": "proceed",
+   "values": {
+    "n": 475,
+    "bias_m": 0.0006509557263157965,
+    "rmse_m": 0.12266640696644632,
+    "mae_m": 0.09967844616842106,
+    "r": 0.9934012074804537
+   },
+   "texts": [
+    "[B-D1] The file label {'standard_name': 'sea_surface_height_above_geoid', 'long_name': 'water surface elevation above geoid'} names no datum ('geoid' is a generic surface); the datum LMSL is taken fro",
+    "[B-D4] Model LMSL and CO-OPS MSL are both mean-sea-level datums and are treated as compatible, but their equivalence is not established: CO-OPS MSL is the tidal datum of the 1983-2001 National Tidal D",
+    "[B-Q2] 475 of 475 matched observations are CO-OPS preliminary (q=p) and may be revised.",
+    "[B-T2] 5 model records in the window had no observation at the same time.",
+    "[B-Q2] Observations excluded before pairing: {'blank': 2, 'non_numeric': 0, 'non_finite': 3, 'beyond_bound': 0}."
+   ],
+   "answer": "results/answers/B/S4.json"
+  },
+  "S5": {
+   "status": "answered",
+   "action": "proceed",
+   "values": {
+    "n": 480,
+    "bias_m": -0.14299885033346554,
+    "rmse_m": 0.24555257562124647,
+    "mae_m": 0.20860631475231262,
+    "r": 0.9913206350537714
+   },
+   "texts": [
+    "[B-D4] Model LMSL and CO-OPS MSL are both mean-sea-level datums and are treated as compatible, but their equivalence is not established: CO-OPS MSL is the tidal datum of the 1983-2001 National Tidal D",
+    "[B-Q2] 480 of 480 matched observations are CO-OPS preliminary (q=p) and may be revised."
+   ],
+   "answer": "results/answers/B/S5.json"
+  }
+ }
+}

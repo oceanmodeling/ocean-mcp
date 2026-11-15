@@ -1,0 +1,38 @@
+{
+ "task_id": "S2",
+ "arm": "B",
+ "status": "refused",
+ "action": "refuse",
+ "values": {},
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {
+  "units": {
+   "value": "m",
+   "source": "zeta:units attribute"
+  },
+  "product_version": {
+   "value": "3.1.6",
+   "source": "global attribute history (package path)"
+  },
+  "model_datum": {
+   "value": "undetermined",
+   "source": "file labels {'standard_name': 'sea_surface_height_above_msl', 'long_name': 'water surface elevation above navd88'}"
+  }
+ },
+ "texts": [
+  "[B-D3] Conflicting datum labels on zeta: {'standard_name': 'sea_surface_height_above_msl', 'long_name': 'water surface elevation above navd88'} name ['LMSL', 'NAVD88']. Neither can be trusted; not compared."
+ ],
+ "exclusions": [],
+ "evidence": {
+  "inputs": [
+   {
+    "archive": "synthetic/S2",
+    "entry": "e0001",
+    "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20261030/stofs_3d_atl.t12z.points.cwl.nc",
+    "sha256": "b7648fc6be41a8ac5860a11689f2aa20e4c58da9a06c9a316a9f6454a20ecb1a",
+    "why": "url"
+   }
+  ]
+ }
+}

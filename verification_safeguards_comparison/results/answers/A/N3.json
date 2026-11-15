@@ -1,0 +1,50 @@
+{
+ "task_id": "N3",
+ "arm": "A",
+ "status": "answered",
+ "action": "proceed",
+ "values": {
+  "residual_max_m": 2.209,
+  "times_utc": [
+   "2022-09-28 22:18",
+   "2022-09-28 22:30"
+  ]
+ },
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {
+  "obs_datum": {
+   "value": "MLLW",
+   "source": "CO-OPS request parameter datum"
+  },
+  "pred_datum": {
+   "value": "MLLW",
+   "source": "CO-OPS request parameter datum"
+  },
+  "units": {
+   "value": "m",
+   "source": "CO-OPS request parameter units=metric"
+  }
+ },
+ "texts": [],
+ "exclusions": [],
+ "evidence": {
+  "pairs": 720,
+  "inputs": [
+   {
+    "archive": "base",
+    "entry": "e0014",
+    "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8725520&product=water_level&datum=MLLW&units=metric&time_zone=gmt&begin_date=20220927&end_date=20220929&format=json&application=coops_mcp",
+    "sha256": "28fc969931a5d493eebba656555b3b1834da187356917ce8714e13e3ea7d0550",
+    "why": "input_name"
+   },
+   {
+    "archive": "base",
+    "entry": "e0015",
+    "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8725520&product=predictions&datum=MLLW&units=metric&time_zone=gmt&begin_date=20220927&end_date=20220929&format=json&application=coops_mcp",
+    "sha256": "302a36f1121156cb1edc8e748e028c904ddf2281940eca0e6f744443b3413fd8",
+    "why": "input_name"
+   }
+  ]
+ }
+}

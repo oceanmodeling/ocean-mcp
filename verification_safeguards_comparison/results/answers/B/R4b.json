@@ -1,0 +1,61 @@
+{
+ "task_id": "R4b",
+ "arm": "B",
+ "status": "answered",
+ "action": "proceed",
+ "values": {
+  "n": 480,
+  "bias_m": -0.03543881277513224,
+  "rmse_m": 0.21109845929613913,
+  "mae_m": 0.18518852024446203,
+  "r": 0.9959001843154157
+ },
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {
+  "units": {
+   "value": "m",
+   "source": "zeta:units attribute"
+  },
+  "product_version": {
+   "value": "3.1.4",
+   "source": "global attribute history (package path)"
+  },
+  "model_datum": {
+   "value": "LMSL",
+   "source": "file label zeta {'standard_name': 'sea_surface_height_above_msl', 'long_name': 'water surface elevation above msl'}; consistent with SCN 26-51 (v3.1 station output referenced to LMSL)"
+  },
+  "obs_datum": {
+   "value": "MSL",
+   "source": "[B-D2] CO-OPS datum for LMSL (CO-OPS API datum names)"
+  }
+ },
+ "texts": [
+  "[B-D4] Model LMSL and CO-OPS MSL are both mean-sea-level datums and are treated as compatible, but their equivalence is not established: CO-OPS MSL is the tidal datum of the 1983-2001 National Tidal Datum Epoch [COOPSDAT], and NOAA does not state the epoch or realization of the model's LMSL [SCN26-51, NOMADS2D]. A mean offset (bias) can therefore include a reference difference; no vertical transformation was applied."
+ ],
+ "exclusions": [],
+ "evidence": {
+  "pairs": 480,
+  "obs_in_window": 480,
+  "flagged_pairs_kept": 0,
+  "q_status": {
+   "v": 1200
+  },
+  "inputs": [
+   {
+    "archive": "base",
+    "entry": "e0007",
+    "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260817/stofs_3d_atl.t12z.points.cwl.nc",
+    "sha256": "f47962fa8504ef4017e5a858603fa8ee0894546524e125ec38025e1fe05289c4",
+    "why": "url"
+   },
+   {
+    "archive": "base",
+    "entry": "e0009",
+    "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8443970&product=water_level&datum=MSL&units=metric&time_zone=gmt&format=json&begin_date=20260815&end_date=20260819&application=ocean_mcp_wp1",
+    "sha256": "14b73c356606c6d97687fe03758b18376d187c9c89c093d2cf5e8a7b3b17d15b",
+    "why": "coops master 8443970 MSL"
+   }
+  ]
+ }
+}

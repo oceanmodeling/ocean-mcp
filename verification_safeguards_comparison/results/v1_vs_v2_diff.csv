@@ -1,0 +1,15 @@
+arm,task,axis,v1,v2,changes,v1_trigger,v2_trigger
+C,R2,decision,false_proceed,correct_proceed_with_caveat,1,value beyond 30.0 m: ['n_values=1813'],count 47
+Cpost,R2,decision,false_proceed,correct_proceed_with_caveat,1,value beyond 30.0 m: ['n_values=1813'],count 47
+Cpost,R7,values,outside_tolerance,within_tolerance,5,,
+Cpost,R7,metadata,wrong,correct,3,,
+Cpost,R7,metadata_strict,wrong,correct,3,,
+Cpost,R7,decision,proceed_caveat_missing,correct_proceed_with_caveat,4,no excluded_records,"counts [35235, 35235]"
+C,S1,metadata,incomplete,correct,2,,
+C,S1,metadata_strict,incomplete,correct,2,,
+Cpost,S1,metadata,incomplete,correct,2,,
+Cpost,S1,metadata_strict,incomplete,correct,2,,
+C,S2,metadata_strict,incomplete,correct,2,,
+Cpost,S2,metadata_strict,incomplete,correct,2,,
+C,S3,metadata_strict,incomplete,correct,2,,
+Cpost,S3,metadata_strict,incomplete,correct,2,,

@@ -1,0 +1,53 @@
+{
+ "task_id": "R1b",
+ "arm": "D",
+ "status": "answered",
+ "action": "proceed",
+ "values": {
+  "n": 721,
+  "bias_m": 9999999.3293,
+  "rmse_m": 9999999.3293,
+  "mae_m": 9999999.3293,
+  "r": NaN
+ },
+ "nearest_equivalent": true,
+ "nearest_equivalent_note": "stofs-mcp 0.2.0 has no lead-time window; its window starts at the file start (cycle - 24 h). hours_to_compare=72 is the smallest value whose window contains 0 < lead <= 48 h; it also includes the 24 h nowcast and the record at lead 48.1 h.",
+ "metadata": {
+  "model_datum": {
+   "value": "NAVD88",
+   "source": null
+  },
+  "product_version": {
+   "value": null,
+   "source": null
+  },
+  "obs_datum": {
+   "value": "NAVD",
+   "source": "tool response field coops_datum (CO-OPS request datum)"
+  },
+  "units": {
+   "value": "m",
+   "source": "tool response field units"
+  }
+ },
+ "texts": [],
+ "exclusions": [],
+ "evidence": {
+  "call_ids": [
+   "R1b_D_0"
+  ],
+  "window": {
+   "comparison_start": "2026-10-29 12:06",
+   "comparison_end": "2026-11-01 12:06",
+   "window_lead_hours": null,
+   "hours_to_compare": null
+  },
+  "session": "wp1_D_R1b",
+  "packages": {
+   "python": "3.13.12",
+   "stofs-mcp": "0.2.0",
+   "mcp": "1.30.0",
+   "httpx": "0.28.1"
+  }
+ }
+}

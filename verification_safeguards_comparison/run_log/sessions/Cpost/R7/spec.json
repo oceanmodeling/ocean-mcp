@@ -1,0 +1,35 @@
+{
+ "session_id": "wp1b_Cpost_R7",
+ "arm": "Cpost",
+ "server": {
+  "python": "/tmp/claude-1000/-mnt-d-ocean-mcp/349682ef-6680-4b65-946b-8dddc1d96a0d/scratchpad/envs/cpost/bin/python",
+  "module": "ww3_mcp",
+  "mode": "replay",
+  "archives": [
+   "/mnt/d/ocean-mcp/.claude/worktrees/safeguards-comparison/verification_safeguards_comparison/data/archive/base"
+  ],
+  "dists": [
+   "stofs-mcp",
+   "coops-mcp",
+   "erddap-mcp",
+   "ww3-mcp",
+   "mcp",
+   "httpx",
+   "numpy",
+   "netCDF4",
+   "xarray"
+  ]
+ },
+ "calls": [
+  {
+   "call_id": "R7_C_0",
+   "tool": "ww3_get_buoy_history",
+   "arguments": {
+    "station_id": "41009",
+    "year": 2024,
+    "max_records": 5000,
+    "response_format": "json"
+   }
+  }
+ ]
+}

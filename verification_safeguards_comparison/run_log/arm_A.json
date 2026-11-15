@@ -1,0 +1,222 @@
+{
+ "arm": "A",
+ "started_at": "2026-11-09T02:52:28+00:00",
+ "python": "3.13.12",
+ "importable": {
+  "stofs_mcp": false,
+  "coops_mcp": false,
+  "erddap_mcp": false,
+  "ww3_mcp": false,
+  "ndbc_mcp": false,
+  "nhc_mcp": false,
+  "vdatum_mcp": false,
+  "recon_mcp": false,
+  "ofs_mcp": false,
+  "rtofs_mcp": false,
+  "winds_mcp": false,
+  "usgs_mcp": false,
+  "goes_mcp": false,
+  "mcp": false,
+  "httpx": false
+ },
+ "versions": {
+  "numpy": "2.5.4",
+  "pandas": "3.1.1",
+  "xarray": "2026.9.0"
+ },
+ "tasks": {
+  "N1": {
+   "status": "answered",
+   "action": "proceed",
+   "values": {
+    "n": 480,
+    "bias_m": -0.00050134172916666,
+    "rmse_m": 0.12299683288750661,
+    "mae_m": 0.0999930831875,
+    "r": 0.9933770698751178
+   },
+   "answer": "results/answers/A/N1.json"
+  },
+  "N2": {
+   "status": "answered",
+   "action": "proceed",
+   "values": {
+    "n": 480,
+    "bias_m": -0.14299885033346554,
+    "rmse_m": 0.24555257562124647,
+    "mae_m": 0.20860631475231262,
+    "r": 0.991320635053772
+   },
+   "answer": "results/answers/A/N2.json"
+  },
+  "N3": {
+   "status": "answered",
+   "action": "proceed",
+   "values": {
+    "residual_max_m": 2.209,
+    "times_utc": [
+     "2022-09-28 22:18",
+     "2022-09-28 22:30"
+    ]
+   },
+   "answer": "results/answers/A/N3.json"
+  },
+  "N4": {
+   "status": "answered",
+   "action": "proceed",
+   "values": {
+    "cells": 17061,
+    "finite": 9301,
+    "min": 22.198999999999998,
+    "max": 23.983
+   },
+   "answer": "results/answers/A/N4.json"
+  },
+  "R1a": {
+   "status": "answered",
+   "action": "proceed",
+   "values": {
+    "station": "LAMV3 SOUS41 9751381 VI Lameshur Bay, St John",
+    "max_m": 9999999.58197999
+   },
+   "answer": "results/answers/A/R1a.json"
+  },
+  "R1b": {
+   "status": "answered",
+   "action": "proceed",
+   "values": {
+    "n": 480,
+    "bias_m": 9999999.327465408,
+    "rmse_m": 9999999.327465408,
+    "mae_m": 9999999.327465408,
+    "r": "nan"
+   },
+   "answer": "results/answers/A/R1b.json"
+  },
+  "R2": {
+   "status": "answered",
+   "action": "proceed",
+   "values": {
+    "min_m": -99998.6
+   },
+   "answer": "results/answers/A/R2.json"
+  },
+  "R3": {
+   "status": "answered",
+   "action": "proceed",
+   "values": {
+    "station": "UJ816 SOUS00 SA816",
+    "max_m": 136.2005569911
+   },
+   "answer": "results/answers/A/R3.json"
+  },
+  "R4a": {
+   "status": "answered",
+   "action": "proceed",
+   "values": {
+    "n": 480,
+    "bias_m": -0.2155363147963338,
+    "rmse_m": 0.3206289340771557,
+    "mae_m": 0.2493309019723961,
+    "r": 0.9971337071087547
+   },
+   "answer": "results/answers/A/R4a.json"
+  },
+  "R4b": {
+   "status": "answered",
+   "action": "proceed",
+   "values": {
+    "n": 480,
+    "bias_m": -0.03543881277513224,
+    "rmse_m": 0.21109845929613913,
+    "mae_m": 0.18518852024446203,
+    "r": 0.9959001843154162
+   },
+   "answer": "results/answers/A/R4b.json"
+  },
+  "R5": {
+   "status": "answered",
+   "action": "proceed",
+   "values": {},
+   "answer": "results/answers/A/R5.json"
+  },
+  "R6": {
+   "status": "answered",
+   "action": "proceed",
+   "values": {
+    "station": "TRDF1 SOUS41 8721604 FL Trident Pier, Port Canaver",
+    "distance_km": 1772.181086783613
+   },
+   "answer": "results/answers/A/R6.json"
+  },
+  "R7": {
+   "status": "answered",
+   "action": "proceed",
+   "values": {
+    "max_wvht_m": 99.0,
+    "time": "2024-01-01 00:00"
+   },
+   "answer": "results/answers/A/R7.json"
+  },
+  "S1": {
+   "status": "answered",
+   "action": "proceed",
+   "values": {
+    "n": 480,
+    "bias_m": -0.14299885033346554,
+    "rmse_m": 0.24555257562124647,
+    "mae_m": 0.20860631475231262,
+    "r": 0.991320635053772
+   },
+   "answer": "results/answers/A/S1.json"
+  },
+  "S2": {
+   "status": "answered",
+   "action": "proceed",
+   "values": {
+    "n": 480,
+    "bias_m": -0.14299885033346554,
+    "rmse_m": 0.24555257562124647,
+    "mae_m": 0.20860631475231262,
+    "r": 0.991320635053772
+   },
+   "answer": "results/answers/A/S2.json"
+  },
+  "S3": {
+   "status": "answered",
+   "action": "proceed",
+   "values": {
+    "n": 480,
+    "bias_m": -0.00050134172916666,
+    "rmse_m": 0.12299683288750661,
+    "mae_m": 0.0999930831875,
+    "r": 0.9933770698751178
+   },
+   "answer": "results/answers/A/S3.json"
+  },
+  "S4": {
+   "status": "answered",
+   "action": "proceed",
+   "values": {
+    "n": 480,
+    "bias_m": "nan",
+    "rmse_m": "inf",
+    "mae_m": "inf",
+    "r": "nan"
+   },
+   "answer": "results/answers/A/S4.json"
+  },
+  "S5": {
+   "status": "answered",
+   "action": "proceed",
+   "values": {
+    "n": 480,
+    "bias_m": -0.14299885033346554,
+    "rmse_m": 0.24555257562124647,
+    "mae_m": 0.20860631475231262,
+    "r": 0.991320635053772
+   },
+   "answer": "results/answers/A/S5.json"
+  }
+ }
+}

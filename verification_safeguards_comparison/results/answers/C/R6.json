@@ -1,0 +1,36 @@
+{
+ "task_id": "R6",
+ "arm": "C",
+ "status": "answered",
+ "action": "proceed",
+ "values": {
+  "station": "BHBM3 SOUS41 8443970 MA Boston",
+  "distance_km": 0.0
+ },
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {
+  "model_datum": {
+   "value": "NAVD88",
+   "source": "file metadata: zeta:standard_name=sea_surface_height_above_navd88"
+  },
+  "product_version": {
+   "value": "stofs.v2.1.18",
+   "source": "tool datum_provenance.product_version"
+  }
+ },
+ "texts": [],
+ "exclusions": [],
+ "evidence": {
+  "call_ids": [
+   "R6_C_0"
+  ],
+  "session": "wp1_C_R6",
+  "packages": {
+   "python": "3.13.12",
+   "stofs-mcp": "0.3.0",
+   "mcp": "1.30.0",
+   "httpx": "0.28.1"
+  }
+ }
+}

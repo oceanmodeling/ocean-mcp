@@ -1,0 +1,47 @@
+{
+ "session_id": "wp1_D_N3",
+ "arm": "D",
+ "server": {
+  "python": "/tmp/claude-1000/-mnt-d-ocean-mcp/349682ef-6680-4b65-946b-8dddc1d96a0d/scratchpad/envs/coops/bin/python",
+  "module": "coops_mcp",
+  "mode": "replay",
+  "archives": [
+   "/mnt/d/ocean-mcp/.claude/worktrees/safeguards-comparison/verification_safeguards_comparison/data/archive/base"
+  ],
+  "dists": [
+   "coops-mcp",
+   "mcp",
+   "httpx"
+  ]
+ },
+ "calls": [
+  {
+   "call_id": "N3_D_0",
+   "tool": "coops_get_water_levels",
+   "arguments": {
+    "station_id": "8725520",
+    "begin_date": "20220927",
+    "end_date": "20220929",
+    "datum": "MLLW",
+    "units": "metric",
+    "time_zone": "gmt",
+    "response_format": "json",
+    "max_records": 2000
+   }
+  },
+  {
+   "call_id": "N3_D_1",
+   "tool": "coops_get_tide_predictions",
+   "arguments": {
+    "station_id": "8725520",
+    "begin_date": "20220927",
+    "end_date": "20220929",
+    "datum": "MLLW",
+    "units": "metric",
+    "time_zone": "gmt",
+    "response_format": "json",
+    "max_records": 2000
+   }
+  }
+ ]
+}

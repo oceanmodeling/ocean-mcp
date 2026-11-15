@@ -1,0 +1,33 @@
+{
+ "task_id": "R6",
+ "arm": "B",
+ "status": "answered",
+ "action": "proceed",
+ "values": {
+  "station": "BHBM3 SOUS41 8443970 MA Boston",
+  "distance_km": 0.0016326060119950473
+ },
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {},
+ "texts": [
+  "[B-C1] 105 of 108 station records store latitude in x and longitude in y (reversed relative to their attributes); they were swapped before the distance search. 0 records outside the product domain either way were excluded."
+ ],
+ "exclusions": [],
+ "evidence": {
+  "coordinate_status": {
+   "as_labelled": 3,
+   "reversed_corrected": 105,
+   "outside_domain_excluded": 0
+  },
+  "inputs": [
+   {
+    "archive": "base",
+    "entry": "e0005",
+    "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260218/stofs_3d_atl.t12z.points.cwl.nc",
+    "sha256": "d13345a36695ac69ff463f52f6f5dc187639e65a068a33626d9ab2090ca633b5",
+    "why": "url"
+   }
+  ]
+ }
+}

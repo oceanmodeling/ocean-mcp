@@ -1,0 +1,42 @@
+{
+ "task_id": "N4",
+ "arm": "B",
+ "status": "answered",
+ "action": "proceed",
+ "values": {
+  "cells": 17061,
+  "finite": 9301,
+  "min": 22.198999999999998,
+  "max": 23.983
+ },
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {
+  "units": {
+   "value": "degree_C",
+   "source": "ERDDAP response columnUnits"
+  }
+ },
+ "texts": [
+  "[B-E1] 7760 of 17061 cells are null (missing; land or masked) and are not counted as values."
+ ],
+ "exclusions": [
+  {
+   "what": "cells",
+   "count": 7760,
+   "names": [],
+   "reason": "null (missing)"
+  }
+ ],
+ "evidence": {
+  "inputs": [
+   {
+    "archive": "base",
+    "entry": "e0017",
+    "url": "https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplMURSST41.json?analysed_sst[(2024-07-15T09:00:00Z)][(40.8):(42.0)][(-72.2):(-70.8)]",
+    "sha256": "3eb504b5454363bb5e4a88adf98729ffa0bdcedf831723d54513d3e94bf625da",
+    "why": "input_name"
+   }
+  ]
+ }
+}

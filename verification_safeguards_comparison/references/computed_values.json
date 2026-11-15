@@ -1,0 +1,451 @@
+{
+ "script": "references/derive_references.py",
+ "phys_bound_m": 30.0,
+ "N1": {
+  "class": "IND",
+  "source": "Boston package results/statistics_independent.json (2d_global_forecast)",
+  "stats": {
+   "n": 480,
+   "bias_m": -0.00050134172916666,
+   "rmse_m": 0.12299683288750661,
+   "mae_m": 0.0999930831875,
+   "r": 0.9933770698751176
+  },
+  "crosscheck_from_archived_bytes": {
+   "stats": {
+    "n": 480,
+    "bias_m": -0.0005013417291666594,
+    "rmse_m": 0.12299683288750661,
+    "mae_m": 0.0999930831875,
+    "r": 0.9933770698751176
+   },
+   "model_records_in_window": 480,
+   "model_records_excluded": 0,
+   "pairs": 480,
+   "first": "2026-10-30 12:06:00",
+   "last": "2026-11-01 12:00:00"
+  },
+  "crosscheck_max_abs_diff": 5.421010862427522e-19
+ },
+ "N2": {
+  "class": "IND",
+  "source": "Boston package results/statistics_independent.json (3d_atlantic_forecast)",
+  "stats": {
+   "n": 480,
+   "bias_m": -0.14299885033346554,
+   "rmse_m": 0.24555257562124647,
+   "mae_m": 0.20860631475231262,
+   "r": 0.9913206350537719
+  },
+  "crosscheck_from_archived_bytes": {
+   "stats": {
+    "n": 480,
+    "bias_m": -0.14299885033346557,
+    "rmse_m": 0.24555257562124644,
+    "mae_m": 0.20860631475231262,
+    "r": 0.9913206350537719
+   },
+   "model_records_in_window": 480,
+   "model_records_excluded": 0,
+   "pairs": 480,
+   "first": "2026-10-30 12:06:00",
+   "last": "2026-11-01 12:00:00"
+  },
+  "crosscheck_max_abs_diff": 2.7755575615628914e-17
+ },
+ "N3": {
+  "class": "IND",
+  "source": "MANUSCRIPT_SECOND_REVIEW.md section D1",
+  "residual_max_m": 2.209,
+  "first_time_utc": "2022-09-28 22:18",
+  "tie_times_utc": [
+   "2022-09-28 22:18",
+   "2022-09-28 22:30"
+  ],
+  "crosscheck_from_archived_bytes": {
+   "records_obs": 720,
+   "records_pred": 720,
+   "residual_max_m": 2.209,
+   "times": [
+    "2022-09-28 22:18",
+    "2022-09-28 22:30"
+   ],
+   "obs_quality": [
+    "v"
+   ],
+   "blank_obs": 0,
+   "obs_22_18": "2.611",
+   "pred_22_18": 0.402
+  }
+ },
+ "N4": {
+  "class": "IND",
+  "source": "MANUSCRIPT_SECOND_REVIEW.md section D3",
+  "cells": 17061,
+  "finite": 9301,
+  "null": 7760,
+  "min_degC": 22.199,
+  "max_degC": 23.983,
+  "units": "degree_C",
+  "crosscheck_from_archived_bytes": {
+   "cells": 17061,
+   "finite": 9301,
+   "min": 22.198999999999998,
+   "max": 23.983,
+   "units": "degree_C",
+   "sha256": "3eb504b5454363bb5e4a88adf98729ffa0bdcedf831723d54513d3e94bf625da"
+  }
+ },
+ "R1a": {
+  "class": "RECALC+PHY",
+  "top5": [
+   {
+    "station": "PSBM1 SOUS41 8410140 ME Eastport",
+    "max_m": 3.3004299945163726
+   },
+   {
+    "station": "CFWM1 SOUS41 8411060 ME Cutler Farris Wharf",
+    "max_m": 2.7564899969005587
+   },
+   {
+    "station": "ATGM1 SOUS41 8413320 ME Bar Harbor",
+    "max_m": 2.302114012636185
+   },
+   {
+    "station": "BHBM3 SOUS41 8443970 MA Boston",
+    "max_m": 2.0674600042915348
+   },
+   {
+    "station": "CASM1 SOUS41 8418150 ME Portland",
+    "max_m": 2.037420011920929
+   }
+  ],
+  "sixth": {
+   "station": "WELM1 SOUS41 8419317 ME Wells",
+   "max_m": 2.0235619928474424
+  },
+  "excluded_stations": [
+   {
+    "station": "CHSV3 SOUS41 9751364 VI Christiansted Harbor, St C",
+    "records": 1200,
+    "example": 9999999.41071999
+   },
+   {
+    "station": "LTBV3 SOUS41 9751401 VI Lime Tree Bay",
+    "records": 1200,
+    "example": 9999999.443830013
+   },
+   {
+    "station": "LAMV3 SOUS41 9751381 VI Lameshur Bay, St John",
+    "records": 1200,
+    "example": 9999999.58197999
+   },
+   {
+    "station": "ESPP4 SOUS41 9752695 PR Esperanza, Vieques Island",
+    "records": 1200,
+    "example": 9999999.523169994
+   },
+   {
+    "station": "XXXXX XXXXXX 9752235 PR Culebra",
+    "records": 1200,
+    "example": 9999999.550009996
+   }
+  ],
+  "bound_interval": {
+   "largest_retained_abs_m": 3.3004299945163726,
+   "smallest_excluded_abs_m": 9999999.41071999,
+   "note": "any physical bound B with largest_retained_abs_m < B <= smallest_excluded_abs_m excludes exactly the same values, so the result does not depend on B within it"
+  },
+  "window": "all 1200 records of the station file (2026-10-29 12:06 to 2026-11-03 12:00)",
+  "lead_gt0_top5": [
+   {
+    "station": "PSBM1 SOUS41 8410140 ME Eastport",
+    "max_m": 3.209429994516373
+   },
+   {
+    "station": "CFWM1 SOUS41 8411060 ME Cutler Farris Wharf",
+    "max_m": 2.6907699969005585
+   },
+   {
+    "station": "ATGM1 SOUS41 8413320 ME Bar Harbor",
+    "max_m": 2.2336240126361844
+   },
+   {
+    "station": "BHBM3 SOUS41 8443970 MA Boston",
+    "max_m": 2.0147940042915344
+   },
+   {
+    "station": "CASM1 SOUS41 8418150 ME Portland",
+    "max_m": 1.988352011920929
+   }
+  ]
+ },
+ "R1b": {
+  "class": "PHY+CON",
+  "station": "LAMV3 SOUS41 9751381 VI Lameshur Bay, St John",
+  "records": 1200,
+  "valid_records": 0,
+  "distinct_values": [
+   9999999.58197999
+  ],
+  "decision": "refuse: no valid model value"
+ },
+ "R2": {
+  "class": "RECALC+PHY",
+  "station": "BISM2 SOUS41 8571421 MD Bishops Head",
+  "records": 1860,
+  "valid_records": 1813,
+  "excluded_records": 47,
+  "excluded_distinct_values": [
+   -99998.6
+  ],
+  "dry_Value_attribute": "-99999.0",
+  "min_m": -0.109007,
+  "min_time": "2026-10-31 03:48:00",
+  "max_m": 0.644094,
+  "lead_gt0": {
+   "valid_records": 1753,
+   "min_m": -0.109007,
+   "excluded_records": 47
+  },
+  "window": "all 1860 records of the station file (2026-10-30 06:06 to 2026-11-07 00:00)"
+ },
+ "R3": {
+  "class": "RECALC+PHY",
+  "top": {
+   "station": "UJ852 SOUS00 SA852",
+   "max_m": 5.0525569484
+  },
+  "top5": [
+   {
+    "station": "UJ852 SOUS00 SA852",
+    "max_m": 5.0525569484
+   },
+   {
+    "station": "ZZZZZ SOUS45 ber0014 AK Naknek River Ent #13",
+    "max_m": 4.9187745209
+   },
+   {
+    "station": "UH166 SOUS00 GL040 Broome Australia brom",
+    "max_m": 4.5771018945
+   },
+   {
+    "station": "ZZZZZ SOUS45 9465374 AK Dillingham",
+    "max_m": 4.5590924181
+   },
+   {
+    "station": "ZZZZZ SOUS45 9465261 AK Clarks Point Nushagak Bay",
+    "max_m": 4.3897739774
+   }
+  ],
+  "excluded_stations": [
+   {
+    "station": "UJ816 SOUS00 SA816",
+    "records": 1860,
+    "example": 123.330143154
+   }
+  ],
+  "bound_interval": {
+   "largest_retained_abs_m": 5.81003,
+   "smallest_excluded_abs_m": 90.7486150257,
+   "note": "any physical bound B with largest_retained_abs_m < B <= smallest_excluded_abs_m excludes exactly the same values, so the result does not depend on B within it"
+  },
+  "lead_gt0_top": {
+   "station": "UJ852 SOUS00 SA852",
+   "max_m": 5.0525569484
+  },
+  "SA816_range_m": [
+   90.7486150257,
+   136.2005569911
+  ]
+ },
+ "R4": {
+  "R4a": {
+   "class": "RECALC+DOC",
+   "cycle": "2026-08-16 12:00:00",
+   "file_label": "sea_surface_height_above_navd88",
+   "product_version": "stofs.v2.1.18",
+   "coops_datum": "NAVD",
+   "coops_master": "e0008",
+   "obs_counts": {
+    "blank": 0,
+    "nonfinite": 0,
+    "nonnumeric": 0
+   },
+   "obs_quality": [
+    "v"
+   ],
+   "stats": {
+    "n": 480,
+    "bias_m": -0.12353631479633381,
+    "rmse_m": 0.26759714394015427,
+    "mae_m": 0.21408470225226262,
+    "r": 0.9971337071087546
+   },
+   "model_records_in_window": 480,
+   "model_records_excluded": 0,
+   "pairs": 480,
+   "first": "2026-08-16 12:06:00",
+   "last": "2026-08-18 12:00:00",
+   "for_information_mismatched_datum": {
+    "coops_datum": "MSL",
+    "stats": {
+     "n": 480,
+     "bias_m": -0.2155363147963338,
+     "rmse_m": 0.3206289340771557,
+     "mae_m": 0.24933090197239607,
+     "r": 0.9971337071087546
+    }
+   }
+  },
+  "R4b": {
+   "class": "RECALC+DOC",
+   "cycle": "2026-08-17 12:00:00",
+   "file_label": "sea_surface_height_above_msl",
+   "product_version": "stofs.v3.1.4",
+   "coops_datum": "MSL",
+   "coops_master": "e0009",
+   "obs_counts": {
+    "blank": 0,
+    "nonfinite": 0,
+    "nonnumeric": 0
+   },
+   "obs_quality": [
+    "v"
+   ],
+   "stats": {
+    "n": 480,
+    "bias_m": -0.03543881277513225,
+    "rmse_m": 0.21109845929613913,
+    "mae_m": 0.18518852024446206,
+    "r": 0.9959001843154162
+   },
+   "model_records_in_window": 480,
+   "model_records_excluded": 0,
+   "pairs": 480,
+   "first": "2026-08-17 12:06:00",
+   "last": "2026-08-19 12:00:00",
+   "for_information_mismatched_datum": {
+    "coops_datum": "NAVD",
+    "stats": {
+     "n": 480,
+     "bias_m": 0.05656118722486776,
+     "rmse_m": 0.2156520761935284,
+     "mae_m": 0.18456768012463404,
+     "r": 0.9959001843154162
+    }
+   }
+  }
+ },
+ "R6": {
+  "class": "CON",
+  "station": "BHBM3 SOUS41 8443970 MA Boston",
+  "index": 3,
+  "stored_x_y": [
+   42.3539103827,
+   -71.0502859522
+  ],
+  "distance_km_with_x_read_as_latitude": 0.0016326060119950473,
+  "gauge": [
+   42.3539,
+   -71.0503
+  ],
+  "for_information_naive_nearest_using_attributes_as_labelled": {
+   "station": "TRDF1 SOUS41 8721604 FL Trident Pier, Port Canaver",
+   "distance_km": 1772.181086783613,
+   "x": -80.5934,
+   "y": 28.4157
+  }
+ },
+ "R7": {
+  "class": "DOC+RECALC; corroborated by NOAA CoastWatch ERDDAP cwwcNDBCMet",
+  "rows": 52692,
+  "wvht_99_rows": 35235,
+  "wvht_valid_rows": 17457,
+  "max_wvht_m": 6.32,
+  "max_row": "2024 10 10 08 10",
+  "max_rows_count": 1,
+  "erddap": {
+   "rows": 52692,
+   "non_null": 17457,
+   "max_m": 6.32,
+   "time": "2024-10-10T08:10:00Z",
+   "sha256": "b65d5b5424334b771d9e162a7cf0aa4c70c8dd882bd7870559a90e5363457e2c"
+  }
+ },
+ "S1": {
+  "class": "CON",
+  "zeta_identical_to_real_file": true,
+  "zeta_attrs": {
+   "_FillValue": "-99999.0",
+   "units": "m"
+  },
+  "values_if_proceeding": {
+   "n": 480,
+   "bias_m": -0.14299885033346554,
+   "rmse_m": 0.24555257562124647,
+   "mae_m": 0.20860631475231262,
+   "r": 0.9913206350537719
+  }
+ },
+ "S2": {
+  "class": "CON",
+  "zeta_identical_to_real_file": true,
+  "zeta_attrs": {
+   "_FillValue": "-99999.0",
+   "standard_name": "sea_surface_height_above_msl",
+   "units": "m",
+   "long_name": "water surface elevation above navd88"
+  },
+  "values_if_proceeding": {
+   "n": 480,
+   "bias_m": -0.14299885033346554,
+   "rmse_m": 0.24555257562124647,
+   "mae_m": 0.20860631475231262,
+   "r": 0.9913206350537719
+  }
+ },
+ "S5": {
+  "class": "CON",
+  "zeta_identical_to_real_file": true,
+  "zeta_attrs": {
+   "_FillValue": "-99999.0",
+   "units": "m",
+   "long_name": "water surface elevation above mean sea level",
+   "standard_name": "sea_surface_height_above_mean_sea_level"
+  },
+  "values_if_proceeding": {
+   "n": 480,
+   "bias_m": -0.14299885033346554,
+   "rmse_m": 0.24555257562124647,
+   "mae_m": 0.20860631475231262,
+   "r": 0.9913206350537719
+  }
+ },
+ "S3": {
+  "class": "CON",
+  "zeta_identical_to_real_file": true,
+  "title": "STOFS_2D_GLOBAL.V4.0.0     ! NCPROJ - PROJECT TITLE",
+  "comments": "STOFS_2D_GLOBAL.V4.0.0     ! NCCOM  - PROJECT COMMENTS"
+ },
+ "S4": {
+  "class": "CON+RECALC",
+  "obs_excluded": {
+   "blank": 2,
+   "nonfinite": 3,
+   "nonnumeric": 0
+  },
+  "stats": {
+   "n": 475,
+   "bias_m": 0.0006509557263157968,
+   "rmse_m": 0.12266640696644632,
+   "mae_m": 0.09967844616842106,
+   "r": 0.9934012074804542
+  },
+  "model_records_in_window": 480,
+  "model_records_excluded": 0,
+  "pairs": 475,
+  "first": "2026-10-30 12:06:00",
+  "last": "2026-11-01 12:00:00"
+ }
+}

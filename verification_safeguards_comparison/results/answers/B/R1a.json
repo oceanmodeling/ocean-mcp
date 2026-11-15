@@ -1,0 +1,106 @@
+{
+ "task_id": "R1a",
+ "arm": "B",
+ "status": "answered",
+ "action": "proceed",
+ "values": {
+  "top": [
+   {
+    "station": "PSBM1 SOUS41 8410140 ME Eastport",
+    "max_m": 3.3004299945163726
+   },
+   {
+    "station": "CFWM1 SOUS41 8411060 ME Cutler Farris Wharf",
+    "max_m": 2.7564899969005587
+   },
+   {
+    "station": "ATGM1 SOUS41 8413320 ME Bar Harbor",
+    "max_m": 2.302114012636185
+   },
+   {
+    "station": "BHBM3 SOUS41 8443970 MA Boston",
+    "max_m": 2.0674600042915348
+   },
+   {
+    "station": "CASM1 SOUS41 8418150 ME Portland",
+    "max_m": 2.037420011920929
+   }
+  ],
+  "station": "PSBM1 SOUS41 8410140 ME Eastport",
+  "max_m": 3.3004299945163726
+ },
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {
+  "units": {
+   "value": "m",
+   "source": "zeta:units attribute"
+  },
+  "model_datum": {
+   "value": "LMSL",
+   "source": "file label zeta {'standard_name': 'sea_surface_height_above_msl', 'long_name': 'water surface elevation above msl'}; consistent with SCN 26-51 (v3.1 station output referenced to LMSL)"
+  }
+ },
+ "texts": [
+  "[B-Q1] Stations with no valid value, excluded from the ranking: ['CHSV3 SOUS41 9751364 VI Christiansted Harbor, St C', 'LTBV3 SOUS41 9751401 VI Lime Tree Bay', 'LAMV3 SOUS41 9751381 VI Lameshur Bay, St John', 'ESPP4 SOUS41 9752695 PR Esperanza, Vieques Island', 'XXXXX XXXXXX 9752235 PR Culebra']."
+ ],
+ "exclusions": [
+  {
+   "what": "stations",
+   "count": 1,
+   "names": [
+    "CHSV3 SOUS41 9751364 VI Christiansted Harbor, St C"
+   ],
+   "reason": "all records excluded; 1200 beyond the 30 m bound (e.g. 9999999.4107 m)"
+  },
+  {
+   "what": "stations",
+   "count": 1,
+   "names": [
+    "LTBV3 SOUS41 9751401 VI Lime Tree Bay"
+   ],
+   "reason": "all records excluded; 1200 beyond the 30 m bound (e.g. 9999999.4438 m)"
+  },
+  {
+   "what": "stations",
+   "count": 1,
+   "names": [
+    "LAMV3 SOUS41 9751381 VI Lameshur Bay, St John"
+   ],
+   "reason": "all records excluded; 1200 beyond the 30 m bound (e.g. 9999999.5820 m)"
+  },
+  {
+   "what": "stations",
+   "count": 1,
+   "names": [
+    "ESPP4 SOUS41 9752695 PR Esperanza, Vieques Island"
+   ],
+   "reason": "all records excluded; 1200 beyond the 30 m bound (e.g. 9999999.5232 m)"
+  },
+  {
+   "what": "stations",
+   "count": 1,
+   "names": [
+    "XXXXX XXXXXX 9752235 PR Culebra"
+   ],
+   "reason": "all records excluded; 1200 beyond the 30 m bound (e.g. 9999999.5500 m)"
+  },
+  {
+   "what": "model_values",
+   "count": 6000,
+   "names": [],
+   "reason": "beyond_physical_bound"
+  }
+ ],
+ "evidence": {
+  "inputs": [
+   {
+    "archive": "base",
+    "entry": "e0002",
+    "url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20261030/stofs_3d_atl.t12z.points.cwl.nc",
+    "sha256": "4660819425aa1d2eec0e63a37d3a78e8fef2e00f62a1cb56f088347ef51a450f",
+    "why": "url"
+   }
+  ]
+ }
+}

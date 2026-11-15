@@ -1,0 +1,16 @@
+{
+ "baseline": "v1 grader (grader/grade.py) with amendment A1 references, arms A, B, C, Cpost, D",
+ "baseline_matches_published_v1_file": true,
+ "v2_with_no_change_reproduces_v1": true,
+ "v2_with_no_change_reproduces_archived_answers": true,
+ "changed_cells": 14,
+ "changed_cells_per_arm": {
+  "A": 0,
+  "B": 0,
+  "C": 5,
+  "Cpost": 9,
+  "D": 0
+ },
+ "unexplained": [],
+ "passed": true
+}

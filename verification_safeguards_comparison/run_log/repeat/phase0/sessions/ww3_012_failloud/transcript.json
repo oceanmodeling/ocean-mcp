@@ -1,0 +1,741 @@
+{
+ "session_id": "phase0_ww3_012_replay_failloud",
+ "arm": "phase0",
+ "started_at": "2026-11-09T02:52:12+00:00",
+ "network_probe": {
+  "1.1.1.1:443": "refused: OSError: [Errno 101] Network is unreachable",
+  "1.1.1.1:443_seconds": 0.002,
+  "8.8.8.8:53": "refused: OSError: [Errno 101] Network is unreachable",
+  "8.8.8.8:53_seconds": 0.0
+ },
+ "server_command": [
+  "/tmp/claude-1000/-mnt-d-ocean-mcp/349682ef-6680-4b65-946b-8dddc1d96a0d/scratchpad/envs/ww3_012/bin/python",
+  "-I",
+  "/mnt/d/ocean-mcp/.claude/worktrees/safeguards-comparison/verification_safeguards_comparison/replay/ocean_replay_launcher.py",
+  "--mode",
+  "replay",
+  "--log",
+  "/mnt/d/ocean-mcp/.claude/worktrees/safeguards-comparison/verification_safeguards_comparison/run_log/repeat/phase0/sessions/ww3_012_failloud/http_log.jsonl",
+  "--archive",
+  "/mnt/d/ocean-mcp/.claude/worktrees/safeguards-comparison/verification_safeguards_comparison/data/archive/base",
+  "-m",
+  "ww3_mcp"
+ ],
+ "server_env": {
+  "PATH": "/usr/bin:/bin",
+  "HOME": "/mnt/d/ocean-mcp/.claude/worktrees/safeguards-comparison/verification_safeguards_comparison/run_log/repeat/phase0/sessions/ww3_012_failloud",
+  "TZ": "UTC",
+  "LANG": "C.UTF-8"
+ },
+ "packages": {
+  "python": "3.13.12",
+  "ww3-mcp": "0.1.2",
+  "mcp": "1.30.0",
+  "httpx": "0.28.1"
+ },
+ "calls": [
+  {
+   "call_id": "unarchived_realtime",
+   "tool": "ww3_get_buoy_observations",
+   "arguments": {
+    "station_id": "41009"
+   },
+   "sent_at": "2026-11-09T02:52:14+00:00",
+   "received_at": "2026-11-09T02:52:14+00:00",
+   "is_error": false,
+   "content": [
+    {
+     "type": "text",
+     "text": "not archived: GET https://www.ndbc.noaa.gov/data/realtime2/41009.txt",
+     "annotations": null,
+     "meta": null
+    }
+   ],
+   "structured_content": {
+    "result": "not archived: GET https://www.ndbc.noaa.gov/data/realtime2/41009.txt"
+   }
+  }
+ ],
+ "initialize": {
+  "meta": null,
+  "protocolVersion": "2025-11-25",
+  "capabilities": {
+   "experimental": {},
+   "logging": null,
+   "prompts": {
+    "listChanged": false
+   },
+   "resources": {
+    "subscribe": false,
+    "listChanged": false
+   },
+   "tools": {
+    "listChanged": false
+   },
+   "completions": null,
+   "tasks": null
+  },
+  "serverInfo": {
+   "name": "ww3_mcp",
+   "title": null,
+   "version": "1.30.0",
+   "websiteUrl": null,
+   "icons": null
+  },
+  "instructions": null
+ },
+ "tools": [
+  {
+   "name": "ww3_get_buoy_observations",
+   "title": null,
+   "description": "Get recent wave observations from an NDBC buoy.\n\nFetches realtime standard meteorological data from NDBC including wave\nheight, dominant period, average period, mean wave direction, wind speed,\nand wind direction. Data covers the last ~45 days at hourly intervals.\n\nArgs:\n    station_id: NDBC station ID (e.g., '41025', '46042', '44013').\n    hours: Number of recent hours to return (default 24, max 1080).\n    response_format: 'markdown' (default) or 'json'.\n",
+   "inputSchema": {
+    "properties": {
+     "station_id": {
+      "title": "Station Id",
+      "type": "string"
+     },
+     "hours": {
+      "default": 24,
+      "title": "Hours",
+      "type": "integer"
+     },
+     "response_format": {
+      "default": "markdown",
+      "enum": [
+       "markdown",
+       "json"
+      ],
+      "title": "Response Format",
+      "type": "string"
+     }
+    },
+    "required": [
+     "station_id"
+    ],
+    "title": "ww3_get_buoy_observationsArguments",
+    "type": "object"
+   },
+   "outputSchema": {
+    "properties": {
+     "result": {
+      "title": "Result",
+      "type": "string"
+     }
+    },
+    "required": [
+     "result"
+    ],
+    "title": "ww3_get_buoy_observationsOutput",
+    "type": "object"
+   },
+   "icons": null,
+   "annotations": {
+    "title": null,
+    "readOnlyHint": true,
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true
+   },
+   "meta": null,
+   "execution": null
+  },
+  {
+   "name": "ww3_get_buoy_history",
+   "title": null,
+   "description": "Get historical annual wave observations from an NDBC buoy.\n\nFetches archived standard meteorological data for a specific year from\nthe NDBC historical archive. Useful for climatological analysis.\n\nArgs:\n    station_id: NDBC station ID (e.g., '41025', '46042').\n    year: Year to fetch (e.g., 2023).\n    max_records: Maximum records to return (default 500, max 5000).\n    response_format: 'markdown' (default) or 'json'.\n",
+   "inputSchema": {
+    "properties": {
+     "station_id": {
+      "title": "Station Id",
+      "type": "string"
+     },
+     "year": {
+      "title": "Year",
+      "type": "integer"
+     },
+     "max_records": {
+      "default": 500,
+      "title": "Max Records",
+      "type": "integer"
+     },
+     "response_format": {
+      "default": "markdown",
+      "enum": [
+       "markdown",
+       "json"
+      ],
+      "title": "Response Format",
+      "type": "string"
+     }
+    },
+    "required": [
+     "station_id",
+     "year"
+    ],
+    "title": "ww3_get_buoy_historyArguments",
+    "type": "object"
+   },
+   "outputSchema": {
+    "properties": {
+     "result": {
+      "title": "Result",
+      "type": "string"
+     }
+    },
+    "required": [
+     "result"
+    ],
+    "title": "ww3_get_buoy_historyOutput",
+    "type": "object"
+   },
+   "icons": null,
+   "annotations": {
+    "title": null,
+    "readOnlyHint": true,
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true
+   },
+   "meta": null,
+   "execution": null
+  },
+  {
+   "name": "ww3_list_grids",
+   "title": null,
+   "description": "List available GFS-Wave (WAVEWATCH III) model grids with resolution and domain info.\n\nReturns grid IDs, resolution, geographic coverage, forecast length, and\navailable wave variables. Use this to choose a grid for ww3_get_forecast_at_point.\n\nArgs:\n    response_format: 'markdown' (default) or 'json'.\n",
+   "inputSchema": {
+    "properties": {
+     "response_format": {
+      "default": "markdown",
+      "enum": [
+       "markdown",
+       "json"
+      ],
+      "title": "Response Format",
+      "type": "string"
+     }
+    },
+    "title": "ww3_list_gridsArguments",
+    "type": "object"
+   },
+   "outputSchema": {
+    "properties": {
+     "result": {
+      "title": "Result",
+      "type": "string"
+     }
+    },
+    "required": [
+     "result"
+    ],
+    "title": "ww3_list_gridsOutput",
+    "type": "object"
+   },
+   "icons": null,
+   "annotations": {
+    "title": null,
+    "readOnlyHint": true,
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": false
+   },
+   "meta": null,
+   "execution": null
+  },
+  {
+   "name": "ww3_list_cycles",
+   "title": null,
+   "description": "Check available GFS-Wave forecast cycles on NOAA servers.\n\nChecks AWS S3 for available GRIB2 files to determine which forecast\ncycles have been published. Useful before calling ww3_get_forecast_at_point.\n\nArgs:\n    grid: Wave grid to check (default: 'global.0p25').\n    date: Specific date in YYYY-MM-DD format. Default: today UTC.\n    num_days: Number of past days to check (1-7). Default: 2.\n",
+   "inputSchema": {
+    "$defs": {
+     "WaveGrid": {
+      "description": "GFS-Wave output grids.",
+      "enum": [
+       "global.0p16",
+       "global.0p25",
+       "atlocn.0p16",
+       "wcoast.0p16",
+       "epacif.0p16",
+       "arctic.9km"
+      ],
+      "title": "WaveGrid",
+      "type": "string"
+     }
+    },
+    "properties": {
+     "grid": {
+      "$ref": "#/$defs/WaveGrid",
+      "default": "global.0p25"
+     },
+     "date": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Date"
+     },
+     "num_days": {
+      "default": 2,
+      "title": "Num Days",
+      "type": "integer"
+     }
+    },
+    "title": "ww3_list_cyclesArguments",
+    "type": "object"
+   },
+   "outputSchema": {
+    "properties": {
+     "result": {
+      "title": "Result",
+      "type": "string"
+     }
+    },
+    "required": [
+     "result"
+    ],
+    "title": "ww3_list_cyclesOutput",
+    "type": "object"
+   },
+   "icons": null,
+   "annotations": {
+    "title": null,
+    "readOnlyHint": true,
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true
+   },
+   "meta": null,
+   "execution": null
+  },
+  {
+   "name": "ww3_find_buoys",
+   "title": null,
+   "description": "Find NDBC buoys near a geographic location.\n\nSearches the NDBC active stations registry for buoys within a specified\nradius of a lat/lon point. Returns station IDs, distances, and metadata.\n\nArgs:\n    latitude: Target latitude in decimal degrees.\n    longitude: Target longitude in decimal degrees.\n    radius_km: Search radius in kilometers (default 200).\n    limit: Maximum number of buoys to return (default 10).\n    response_format: 'markdown' (default) or 'json'.\n",
+   "inputSchema": {
+    "properties": {
+     "latitude": {
+      "title": "Latitude",
+      "type": "number"
+     },
+     "longitude": {
+      "title": "Longitude",
+      "type": "number"
+     },
+     "radius_km": {
+      "default": 200.0,
+      "title": "Radius Km",
+      "type": "number"
+     },
+     "limit": {
+      "default": 10,
+      "title": "Limit",
+      "type": "integer"
+     },
+     "response_format": {
+      "default": "markdown",
+      "enum": [
+       "markdown",
+       "json"
+      ],
+      "title": "Response Format",
+      "type": "string"
+     }
+    },
+    "required": [
+     "latitude",
+     "longitude"
+    ],
+    "title": "ww3_find_buoysArguments",
+    "type": "object"
+   },
+   "outputSchema": {
+    "properties": {
+     "result": {
+      "title": "Result",
+      "type": "string"
+     }
+    },
+    "required": [
+     "result"
+    ],
+    "title": "ww3_find_buoysOutput",
+    "type": "object"
+   },
+   "icons": null,
+   "annotations": {
+    "title": null,
+    "readOnlyHint": true,
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true
+   },
+   "meta": null,
+   "execution": null
+  },
+  {
+   "name": "ww3_get_forecast_at_point",
+   "title": null,
+   "description": "Get GFS-Wave forecast time series at a geographic point.\n\nDownloads subsetted GRIB2 data from NOMADS for multiple forecast hours\nand extracts wave variables at the nearest grid point. This is the\nprimary tool for wave forecast data.\n\nArgs:\n    latitude: Target latitude in decimal degrees (-90 to 90).\n    longitude: Target longitude in decimal degrees (-180 to 180).\n    grid: Wave grid to use (default: 'global.0p25').\n    variables: List of wave variables to retrieve (e.g., ['HTSGW', 'PERPW', 'DIRPW']).\n               Default: ['HTSGW', 'PERPW', 'DIRPW'].\n    max_hours: Maximum forecast hours to retrieve (default 120, max 384).\n    step_hours: Hours between forecast steps (default 3, min 1).\n    response_format: 'markdown' (default) or 'json'.\n",
+   "inputSchema": {
+    "$defs": {
+     "WaveGrid": {
+      "description": "GFS-Wave output grids.",
+      "enum": [
+       "global.0p16",
+       "global.0p25",
+       "atlocn.0p16",
+       "wcoast.0p16",
+       "epacif.0p16",
+       "arctic.9km"
+      ],
+      "title": "WaveGrid",
+      "type": "string"
+     }
+    },
+    "properties": {
+     "latitude": {
+      "title": "Latitude",
+      "type": "number"
+     },
+     "longitude": {
+      "title": "Longitude",
+      "type": "number"
+     },
+     "grid": {
+      "$ref": "#/$defs/WaveGrid",
+      "default": "global.0p25"
+     },
+     "variables": {
+      "anyOf": [
+       {
+        "items": {
+         "type": "string"
+        },
+        "type": "array"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Variables"
+     },
+     "max_hours": {
+      "default": 120,
+      "title": "Max Hours",
+      "type": "integer"
+     },
+     "step_hours": {
+      "default": 3,
+      "title": "Step Hours",
+      "type": "integer"
+     },
+     "response_format": {
+      "default": "markdown",
+      "enum": [
+       "markdown",
+       "json"
+      ],
+      "title": "Response Format",
+      "type": "string"
+     }
+    },
+    "required": [
+     "latitude",
+     "longitude"
+    ],
+    "title": "ww3_get_forecast_at_pointArguments",
+    "type": "object"
+   },
+   "outputSchema": {
+    "properties": {
+     "result": {
+      "title": "Result",
+      "type": "string"
+     }
+    },
+    "required": [
+     "result"
+    ],
+    "title": "ww3_get_forecast_at_pointOutput",
+    "type": "object"
+   },
+   "icons": null,
+   "annotations": {
+    "title": null,
+    "readOnlyHint": true,
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true
+   },
+   "meta": null,
+   "execution": null
+  },
+  {
+   "name": "ww3_get_point_snapshot",
+   "title": null,
+   "description": "Get all wave variables at a single point and forecast time.\n\nDownloads a single GRIB2 file and extracts all available wave variables\nat the nearest grid point. Use this for a quick snapshot of current or\nnear-future conditions.\n\nArgs:\n    latitude: Target latitude in decimal degrees.\n    longitude: Target longitude in decimal degrees.\n    forecast_hour: Forecast hour (0=analysis, 6, 12, ..., max 384). Default: 0.\n    grid: Wave grid to use (default: 'global.0p25').\n    response_format: 'markdown' (default) or 'json'.\n",
+   "inputSchema": {
+    "$defs": {
+     "WaveGrid": {
+      "description": "GFS-Wave output grids.",
+      "enum": [
+       "global.0p16",
+       "global.0p25",
+       "atlocn.0p16",
+       "wcoast.0p16",
+       "epacif.0p16",
+       "arctic.9km"
+      ],
+      "title": "WaveGrid",
+      "type": "string"
+     }
+    },
+    "properties": {
+     "latitude": {
+      "title": "Latitude",
+      "type": "number"
+     },
+     "longitude": {
+      "title": "Longitude",
+      "type": "number"
+     },
+     "forecast_hour": {
+      "default": 0,
+      "title": "Forecast Hour",
+      "type": "integer"
+     },
+     "grid": {
+      "$ref": "#/$defs/WaveGrid",
+      "default": "global.0p25"
+     },
+     "response_format": {
+      "default": "markdown",
+      "enum": [
+       "markdown",
+       "json"
+      ],
+      "title": "Response Format",
+      "type": "string"
+     }
+    },
+    "required": [
+     "latitude",
+     "longitude"
+    ],
+    "title": "ww3_get_point_snapshotArguments",
+    "type": "object"
+   },
+   "outputSchema": {
+    "properties": {
+     "result": {
+      "title": "Result",
+      "type": "string"
+     }
+    },
+    "required": [
+     "result"
+    ],
+    "title": "ww3_get_point_snapshotOutput",
+    "type": "object"
+   },
+   "icons": null,
+   "annotations": {
+    "title": null,
+    "readOnlyHint": true,
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true
+   },
+   "meta": null,
+   "execution": null
+  },
+  {
+   "name": "ww3_get_regional_summary",
+   "title": null,
+   "description": "Get spatial statistics for wave variables over a bounding box.\n\nDownloads a single GRIB2 file subsetted to the bounding box and computes\nmin, max, mean, and standard deviation for each wave variable.\n\nArgs:\n    lat_min: Southern latitude bound.\n    lat_max: Northern latitude bound.\n    lon_min: Western longitude bound (-180 to 180).\n    lon_max: Eastern longitude bound (-180 to 180).\n    forecast_hour: Forecast hour (default 0).\n    grid: Wave grid to use (default: 'global.0p25').\n    response_format: 'markdown' (default) or 'json'.\n",
+   "inputSchema": {
+    "$defs": {
+     "WaveGrid": {
+      "description": "GFS-Wave output grids.",
+      "enum": [
+       "global.0p16",
+       "global.0p25",
+       "atlocn.0p16",
+       "wcoast.0p16",
+       "epacif.0p16",
+       "arctic.9km"
+      ],
+      "title": "WaveGrid",
+      "type": "string"
+     }
+    },
+    "properties": {
+     "lat_min": {
+      "title": "Lat Min",
+      "type": "number"
+     },
+     "lat_max": {
+      "title": "Lat Max",
+      "type": "number"
+     },
+     "lon_min": {
+      "title": "Lon Min",
+      "type": "number"
+     },
+     "lon_max": {
+      "title": "Lon Max",
+      "type": "number"
+     },
+     "forecast_hour": {
+      "default": 0,
+      "title": "Forecast Hour",
+      "type": "integer"
+     },
+     "grid": {
+      "$ref": "#/$defs/WaveGrid",
+      "default": "global.0p25"
+     },
+     "response_format": {
+      "default": "markdown",
+      "enum": [
+       "markdown",
+       "json"
+      ],
+      "title": "Response Format",
+      "type": "string"
+     }
+    },
+    "required": [
+     "lat_min",
+     "lat_max",
+     "lon_min",
+     "lon_max"
+    ],
+    "title": "ww3_get_regional_summaryArguments",
+    "type": "object"
+   },
+   "outputSchema": {
+    "properties": {
+     "result": {
+      "title": "Result",
+      "type": "string"
+     }
+    },
+    "required": [
+     "result"
+    ],
+    "title": "ww3_get_regional_summaryOutput",
+    "type": "object"
+   },
+   "icons": null,
+   "annotations": {
+    "title": null,
+    "readOnlyHint": true,
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true
+   },
+   "meta": null,
+   "execution": null
+  },
+  {
+   "name": "ww3_compare_forecast_with_buoy",
+   "title": null,
+   "description": "Compare GFS-Wave forecast with NDBC buoy observations.\n\nFetches both the model forecast and buoy observations for wave height,\naligns the time series, and computes validation statistics (bias, RMSE,\nMAE, peak error, correlation).\n\nArgs:\n    station_id: NDBC buoy station ID (e.g., '41025', '46042').\n    buoy_lat: Buoy latitude in decimal degrees.\n    buoy_lon: Buoy longitude in decimal degrees.\n    grid: Wave grid to use (default: 'global.0p25').\n    hours_to_compare: Hours of comparison (default 24, max 120).\n    response_format: 'markdown' (default) or 'json'.\n",
+   "inputSchema": {
+    "$defs": {
+     "WaveGrid": {
+      "description": "GFS-Wave output grids.",
+      "enum": [
+       "global.0p16",
+       "global.0p25",
+       "atlocn.0p16",
+       "wcoast.0p16",
+       "epacif.0p16",
+       "arctic.9km"
+      ],
+      "title": "WaveGrid",
+      "type": "string"
+     }
+    },
+    "properties": {
+     "station_id": {
+      "title": "Station Id",
+      "type": "string"
+     },
+     "buoy_lat": {
+      "title": "Buoy Lat",
+      "type": "number"
+     },
+     "buoy_lon": {
+      "title": "Buoy Lon",
+      "type": "number"
+     },
+     "grid": {
+      "$ref": "#/$defs/WaveGrid",
+      "default": "global.0p25"
+     },
+     "hours_to_compare": {
+      "default": 24,
+      "title": "Hours To Compare",
+      "type": "integer"
+     },
+     "response_format": {
+      "default": "markdown",
+      "enum": [
+       "markdown",
+       "json"
+      ],
+      "title": "Response Format",
+      "type": "string"
+     }
+    },
+    "required": [
+     "station_id",
+     "buoy_lat",
+     "buoy_lon"
+    ],
+    "title": "ww3_compare_forecast_with_buoyArguments",
+    "type": "object"
+   },
+   "outputSchema": {
+    "properties": {
+     "result": {
+      "title": "Result",
+      "type": "string"
+     }
+    },
+    "required": [
+     "result"
+    ],
+    "title": "ww3_compare_forecast_with_buoyOutput",
+    "type": "object"
+   },
+   "icons": null,
+   "annotations": {
+    "title": null,
+    "readOnlyHint": true,
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true
+   },
+   "meta": null,
+   "execution": null
+  }
+ ],
+ "finished_at": "2026-11-09T02:52:14+00:00",
+ "http": {
+  "requests": 0,
+  "replay_misses": 1,
+  "network_blocked": 0,
+  "log": "http_log.jsonl"
+ },
+ "valid": false
+}

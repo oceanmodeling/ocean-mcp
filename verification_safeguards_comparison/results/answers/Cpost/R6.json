@@ -1,0 +1,44 @@
+{
+ "task_id": "R6",
+ "arm": "Cpost",
+ "status": "answered",
+ "action": "proceed",
+ "values": {
+  "station": "BHBM3 SOUS41 8443970 MA Boston",
+  "distance_km": 0.0
+ },
+ "nearest_equivalent": false,
+ "nearest_equivalent_note": null,
+ "metadata": {
+  "model_datum": {
+   "value": "NAVD88",
+   "source": "file metadata: zeta:standard_name=sea_surface_height_above_navd88"
+  },
+  "product_version": {
+   "value": "stofs.v2.1.18",
+   "source": "tool datum_provenance.product_version"
+  }
+ },
+ "texts": [
+  "coordinate_warning: 105 of 108 station records in this file store latitude in x and longitude in y, the reverse of their attributes; their coordinates were swapped (rule: a record reading as latitude < 0 < longitude cannot lie in the STOFS-3D-Atlantic domain). This station's coordinates were corrected (stored x=42.3539103827, y=-71.0502859522)."
+ ],
+ "exclusions": [],
+ "evidence": {
+  "call_ids": [
+   "R6_C_0"
+  ],
+  "session": "wp1b_Cpost_R6",
+  "packages": {
+   "python": "3.13.12",
+   "stofs-mcp": "0.3.0",
+   "coops-mcp": "0.1.1",
+   "erddap-mcp": "0.1.3",
+   "ww3-mcp": "0.1.3",
+   "mcp": "1.30.0",
+   "httpx": "0.28.1",
+   "numpy": "2.5.4",
+   "netCDF4": "1.7.5.1.post1",
+   "xarray": "2026.9.0"
+  }
+ }
+}

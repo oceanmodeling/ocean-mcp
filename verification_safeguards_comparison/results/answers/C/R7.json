@@ -1,0 +1,14 @@
+{
+ "task_id": "R7",
+ "arm": "C",
+ "status": "candidate_not_available",
+ "action": null,
+ "values": {},
+ "nearest_equivalent": false,
+ "metadata": {},
+ "texts": [
+  "ww3-mcp 0.1.3 candidate not available: no wheel in verification_ww3_history_fix/dist/ (found []) or no ww3_013 environment"
+ ],
+ "exclusions": [],
+ "evidence": {}
+}
