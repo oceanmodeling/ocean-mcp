@@ -8,6 +8,7 @@ so no network traffic occurs.
 
 from __future__ import annotations
 
+import copy
 import json
 import ssl
 from pathlib import Path
@@ -1125,3 +1126,73 @@ async def test_search_ttl_zero_disables_cache():
     finally:
         await c.close()
     assert route.call_count == 2
+
+
+class TestGriddapUnits:
+    """The griddap JSON states each variable's units from the dataset metadata."""
+
+    @staticmethod
+    def _mock(info: dict, data: dict) -> None:
+        respx.get(url__startswith=f"{COASTWATCH}/info/erdMH1chlamday/index.json").mock(
+            return_value=httpx.Response(200, json=info)
+        )
+        respx.get(url__startswith=f"{COASTWATCH}/griddap/erdMH1chlamday.json").mock(
+            return_value=httpx.Response(200, json=data)
+        )
+
+    @staticmethod
+    async def _call(ctx: MagicMock) -> dict:
+        return json.loads(
+            await erddap_get_griddap_data(
+                ctx,
+                server_url=COASTWATCH,
+                dataset_id="erdMH1chlamday",
+                variables=["chlorophyll"],
+                time_range=["2022-05-16T00:00:00Z", "2022-05-16T00:00:00Z"],
+                latitude_range=[37.0, 38.0],
+                longitude_range=[-122.0, -121.5],
+                response_format="json",
+            )
+        )
+
+    @respx.mock
+    @pytest.mark.asyncio
+    async def test_units_come_from_dataset_info(
+        self, ctx: MagicMock, info_fixture: dict, griddap_fixture: dict
+    ) -> None:
+        """The variable's units attribute in the info rows is reported."""
+        self._mock(info_fixture, griddap_fixture)
+        parsed = await self._call(ctx)
+        assert parsed["units"] == {"chlorophyll": "mg m-3"}
+        assert parsed["units_missing"] == []
+
+    @respx.mock
+    @pytest.mark.asyncio
+    async def test_units_follow_the_metadata_not_a_constant(
+        self, ctx: MagicMock, info_fixture: dict, griddap_fixture: dict
+    ) -> None:
+        """Changing the metadata's units changes the reported units."""
+        info = copy.deepcopy(info_fixture)
+        for row in info["table"]["rows"]:
+            if row[1] == "chlorophyll" and row[2] == "units":
+                row[4] = "kg m-3"
+        self._mock(info, griddap_fixture)
+        parsed = await self._call(ctx)
+        assert parsed["units"] == {"chlorophyll": "kg m-3"}
+
+    @respx.mock
+    @pytest.mark.asyncio
+    async def test_missing_units_attribute_is_reported(
+        self, ctx: MagicMock, info_fixture: dict, griddap_fixture: dict
+    ) -> None:
+        """Without a units attribute the value is null and the variable is listed."""
+        info = copy.deepcopy(info_fixture)
+        info["table"]["rows"] = [
+            r
+            for r in info["table"]["rows"]
+            if not (r[1] == "chlorophyll" and r[2] == "units")
+        ]
+        self._mock(info, griddap_fixture)
+        parsed = await self._call(ctx)
+        assert parsed["units"] == {"chlorophyll": None}
+        assert parsed["units_missing"] == ["chlorophyll"]
