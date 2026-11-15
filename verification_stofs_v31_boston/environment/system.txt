@@ -1,0 +1,6 @@
+captured_at: 2026-11-04T22:01:21Z
+os: Linux 6.6.87.2-microsoft-standard-WSL2 x86_64 GNU/Linux
+uv: uv 0.10.4
+python (server env): 3.13.2
+git_commit_server_code: 31e7f6a71e6ea2468c963159982e257f53e763a4
+git_branch: docs/stofs-v31-boston-example

@@ -1,0 +1,105 @@
+{
+  "case": {
+    "station": "8443970",
+    "cycle": "2026-10-30 12:00 UTC"
+  },
+  "columns": {
+    "2d_global_forecast": "STOFS-2D-Global v3.1, forecast (0, 48] h",
+    "3d_atlantic_forecast": "STOFS-3D-Atlantic v3.1, forecast (0, 48] h",
+    "2d_global_nowcast": "STOFS-2D-Global v3.1, nowcast (-6, 0] h",
+    "3d_atlantic_nowcast": "STOFS-3D-Atlantic v3.1, nowcast (-24, 0] h"
+  },
+  "note": "e = model - observed (m). Forecast columns share 480 valid times; nowcast columns differ in duration and are not comparable.",
+  "rows": [
+    {
+      "metric": "Matched pairs",
+      "definition": "count of exact-timestamp pairs",
+      "unit": "",
+      "2d_global_forecast": 480,
+      "3d_atlantic_forecast": 480,
+      "2d_global_nowcast": 60,
+      "3d_atlantic_nowcast": 240
+    },
+    {
+      "metric": "Mean bias",
+      "definition": "mean(e)",
+      "unit": "m",
+      "2d_global_forecast": -0.00050134172916666,
+      "3d_atlantic_forecast": -0.14299885033346554,
+      "2d_global_nowcast": -0.01822176166666667,
+      "3d_atlantic_nowcast": -0.02949048333346558
+    },
+    {
+      "metric": "RMSE",
+      "definition": "sqrt(mean(e^2))",
+      "unit": "m",
+      "2d_global_forecast": 0.12299683288750661,
+      "3d_atlantic_forecast": 0.24555257562124647,
+      "2d_global_nowcast": 0.02379170303984493,
+      "3d_atlantic_nowcast": 0.22518839747080577
+    },
+    {
+      "metric": "MAE",
+      "definition": "mean(|e|)",
+      "unit": "m",
+      "2d_global_forecast": 0.0999930831875,
+      "3d_atlantic_forecast": 0.20860631475231262,
+      "2d_global_nowcast": 0.019554375,
+      "3d_atlantic_nowcast": 0.2001765206958466
+    },
+    {
+      "metric": "Centred RMSE",
+      "definition": "sqrt(mean((e - mean(e))^2))",
+      "unit": "m",
+      "2d_global_forecast": 0.12299581113528958,
+      "3d_atlantic_forecast": 0.19961812592431347,
+      "2d_global_nowcast": 0.015297468264368574,
+      "3d_atlantic_nowcast": 0.223249021830395
+    },
+    {
+      "metric": "Pearson r",
+      "definition": "cov(M,O)/(sd(M) sd(O))",
+      "unit": "",
+      "2d_global_forecast": 0.9933770698751176,
+      "3d_atlantic_forecast": 0.9913206350537719,
+      "2d_global_nowcast": 0.9998738342038054,
+      "3d_atlantic_nowcast": 0.9865919691776863
+    },
+    {
+      "metric": "Max |e|",
+      "definition": "max(|e|)",
+      "unit": "m",
+      "2d_global_forecast": 0.26638000000000006,
+      "3d_atlantic_forecast": 0.5351339957084656,
+      "2d_global_nowcast": 0.05735599999999996,
+      "3d_atlantic_nowcast": 0.39763199570846564
+    },
+    {
+      "metric": "max(M) - max(O)",
+      "definition": "max(M) - max(O)",
+      "unit": "m",
+      "2d_global_forecast": -0.06736999999999971,
+      "3d_atlantic_forecast": 0.012794004291534655,
+      "2d_global_nowcast": -0.004070000000000018,
+      "3d_atlantic_nowcast": 0.07146000429153476
+    },
+    {
+      "metric": "sd(M)/sd(O)",
+      "definition": "ratio of population standard deviations",
+      "unit": "",
+      "2d_global_forecast": 1.0065173238824563,
+      "3d_atlantic_forecast": 1.1252823887821082,
+      "2d_global_nowcast": 1.0061951300957623,
+      "3d_atlantic_nowcast": 1.09545574173585
+    },
+    {
+      "metric": "Best-correlated lag",
+      "definition": "lag maximizing r(M(t+lag), O(t)), 6-min steps",
+      "unit": "min",
+      "2d_global_forecast": -12,
+      "3d_atlantic_forecast": 12,
+      "2d_global_nowcast": 0,
+      "3d_atlantic_nowcast": 18
+    }
+  ]
+}

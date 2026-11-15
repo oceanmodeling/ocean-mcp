@@ -1,0 +1,57 @@
+{
+  "grib_message": {
+    "discipline": 10,
+    "parameterCategory": 3,
+    "parameterNumber": 250,
+    "grid": "lambert",
+    "shape": [
+      1377,
+      2145
+    ]
+  },
+  "station_point": {
+    "lat": 42.3539,
+    "lon": -71.05028
+  },
+  "nearest_wet_cells": [
+    {
+      "cell_index": [
+        948,
+        1898
+      ],
+      "cell_lat": 42.35781433826575,
+      "cell_lon": -71.04132285644454,
+      "distance_km": 0.855,
+      "n_hours": 49,
+      "station_minus_grid_mean_m": 0.4583,
+      "station_minus_grid_sd_m": 0.0052
+    },
+    {
+      "cell_index": [
+        946,
+        1899
+      ],
+      "cell_lat": 42.311174343060635,
+      "cell_lon": -71.02271078883246,
+      "distance_km": 5.264,
+      "n_hours": 49,
+      "station_minus_grid_mean_m": 0.4559,
+      "station_minus_grid_sd_m": 0.0439
+    },
+    {
+      "cell_index": [
+        948,
+        1900
+      ],
+      "cell_lat": 42.35015983134257,
+      "cell_lon": -70.98339383540899,
+      "distance_km": 5.512,
+      "n_hours": 49,
+      "station_minus_grid_mean_m": 0.4612,
+      "station_minus_grid_sd_m": 0.0581
+    }
+  ],
+  "vdatum_xgeoid20b_to_lmsl_m": 0.41763985225712474,
+  "station_minus_grid_minus_vdatum_m": 0.0407,
+  "interpretation": "Grid-proxy residual at one site: station (native mesh point) versus a 2.5 km GRIB2 cell, minus VDatum. It mixes datum-conversion differences with station-versus-cell differences and cannot by itself be read as a datum difference. Across 115 STOFS-3D stations the same residual has a median of +0.0001 m (step 5e), so the Boston value is a station-versus-cell residual (inner harbour; one wet cell within 3 km), not a datum difference. The 5.3 and 5.5 km cells are compared with the same Boston series, so they do not corroborate it independently."
+}

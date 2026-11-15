@@ -1,0 +1,94 @@
+{
+  "count": 1,
+  "SeaLvlTrends": [
+    {
+      "stationId": "8516945",
+      "stationName": "Kings Point",
+      "affil": "US",
+      "annotation": "Combined with station 8516990 from 08/15/1931 to 10/15/1998 with an adjustment of 2.365 m.",
+      "trendUnits": "inches/decade",
+      "seasonalUnits": "inches",
+      "seasonalAverage": 1.46,
+      "latitude": 40.810299,
+      "longitude": -73.764900,
+      "trendType": "SINGLE",
+      "autoregressive": 0.38,
+      "autoregressiveError": 0.03,
+      "trend": 1.08,
+      "trendError": 0.04,
+      "y2000_offset": 0.0,
+      "startDate": "08/15/1931",
+      "endDate": "12/15/2025",
+      "trend0": null,
+      "trendError0": null,
+      "y2000_offset0": null,
+      "startDate0": null,
+      "endDate0": null,
+      "monthlyMeans": "https://api.tidesandcurrents.noaa.gov/dpapi/prod/webapi/product/sealvltrends.json?station=8516945&details=monthlymeans&units=english&trendType=SINGLE",
+      "numberEvents": 0,
+      "events": [],
+      "seasonalCycleMonth": [
+        {
+          "month": 1,
+          "seasonalVar": -0.28,
+          "seasonalErr": 0.02
+        },
+        {
+          "month": 2,
+          "seasonalVar": -0.28,
+          "seasonalErr": 0.02
+        },
+        {
+          "month": 3,
+          "seasonalVar": -0.14,
+          "seasonalErr": 0.02
+        },
+        {
+          "month": 4,
+          "seasonalVar": -0.01,
+          "seasonalErr": 0.02
+        },
+        {
+          "month": 5,
+          "seasonalVar": 0.07,
+          "seasonalErr": 0.02
+        },
+        {
+          "month": 6,
+          "seasonalVar": 0.14,
+          "seasonalErr": 0.02
+        },
+        {
+          "month": 7,
+          "seasonalVar": 0.13,
+          "seasonalErr": 0.02
+        },
+        {
+          "month": 8,
+          "seasonalVar": 0.18,
+          "seasonalErr": 0.02
+        },
+        {
+          "month": 9,
+          "seasonalVar": 0.23,
+          "seasonalErr": 0.02
+        },
+        {
+          "month": 10,
+          "seasonalVar": 0.18,
+          "seasonalErr": 0.02
+        },
+        {
+          "month": 11,
+          "seasonalVar": 0.0,
+          "seasonalErr": 0.02
+        },
+        {
+          "month": 12,
+          "seasonalVar": -0.21,
+          "seasonalErr": 0.02
+        }
+      ]
+    }
+  ]
+}

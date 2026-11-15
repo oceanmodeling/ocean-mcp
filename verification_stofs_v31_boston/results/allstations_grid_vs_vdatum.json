@@ -1,0 +1,1284 @@
+{
+  "sentinel_constants": [
+    {
+      "station_id": "9751364",
+      "name": "CHSV3 SOUS41 9751364 VI Christiansted Harbor, St C",
+      "noaa_c_m": -0.5893,
+      "vdatum_xgeoid20b_to_lmsl_m": -0.5645,
+      "noaa_minus_vdatum_m": -0.0248
+    },
+    {
+      "station_id": "9751401",
+      "name": "LTBV3 SOUS41 9751401 VI Lime Tree Bay",
+      "noaa_c_m": -0.5562,
+      "vdatum_xgeoid20b_to_lmsl_m": -0.5565,
+      "noaa_minus_vdatum_m": 0.0003
+    },
+    {
+      "station_id": "9751381",
+      "name": "LAMV3 SOUS41 9751381 VI Lameshur Bay, St John",
+      "noaa_c_m": -0.418,
+      "vdatum_xgeoid20b_to_lmsl_m": -0.4171,
+      "noaa_minus_vdatum_m": -0.0009
+    },
+    {
+      "station_id": "9752695",
+      "name": "ESPP4 SOUS41 9752695 PR Esperanza, Vieques Island",
+      "noaa_c_m": -0.4768,
+      "vdatum_xgeoid20b_to_lmsl_m": -0.4833,
+      "noaa_minus_vdatum_m": 0.0064
+    },
+    {
+      "station_id": "9752235",
+      "name": "XXXXX XXXXXX 9752235 PR Culebra",
+      "noaa_c_m": -0.45,
+      "vdatum_xgeoid20b_to_lmsl_m": -0.4506,
+      "noaa_minus_vdatum_m": 0.0006
+    }
+  ],
+  "summary": {
+    "criteria": "wet cell within 4.0 km and station-minus-grid SD < 0.05 m",
+    "stations_with_wet_cell_within_4km": 133,
+    "n": 115,
+    "median_m": 0.0001,
+    "mean_m": 0.0003,
+    "sd_m": 0.0455,
+    "sd_population_m": 0.0453,
+    "p10_p90_m": [
+      -0.013,
+      0.0277
+    ],
+    "northeast_lat_gt_40": {
+      "n": 17,
+      "median_m": -0.0008,
+      "sd_m": 0.0173,
+      "sd_population_m": 0.0168,
+      "boston_rank_by_abs_residual": 1
+    },
+    "boston": {
+      "station_id": "8443970",
+      "name": "BHBM3 SOUS41 8443970 MA Boston",
+      "lat": 42.3539,
+      "cell_km": 0.855,
+      "station_minus_grid_mean_m": 0.4583,
+      "station_minus_grid_sd_m": 0.0052,
+      "vdatum_m": 0.4176,
+      "residual_m": 0.0407
+    },
+    "boston_abs_residual_percentile": 93.0,
+    "largest_abs_residuals": [
+      {
+        "station_id": "8760721",
+        "name": "PILL1 SOUS42 8760721 LA Pilottown",
+        "lat": 29.179306,
+        "cell_km": 1.712,
+        "station_minus_grid_mean_m": -0.2386,
+        "station_minus_grid_sd_m": 0.0042,
+        "vdatum_m": 0.2,
+        "residual_m": -0.4386
+      },
+      {
+        "station_id": "8635027",
+        "name": "NCDV2 SOUS41 8635027 VA Dahlgren",
+        "lat": 38.319753,
+        "cell_km": 2.733,
+        "station_minus_grid_mean_m": 0.5269,
+        "station_minus_grid_sd_m": 0.0237,
+        "vdatum_m": 0.4239,
+        "residual_m": 0.1029
+      },
+      {
+        "station_id": "8772471",
+        "name": "XXXXX XXXXXX 8772471 TX Freeport Harbor",
+        "lat": 28.935699,
+        "cell_km": 1.136,
+        "station_minus_grid_mean_m": 0.1051,
+        "station_minus_grid_sd_m": 0.0015,
+        "vdatum_m": 0.0403,
+        "residual_m": 0.0649
+      },
+      {
+        "station_id": "8775241",
+        "name": "ANPT2 SOUS42 8775241 TX Aransas Aransas Pass",
+        "lat": 27.836599,
+        "cell_km": 0.744,
+        "station_minus_grid_mean_m": 0.0952,
+        "station_minus_grid_sd_m": 0.0061,
+        "vdatum_m": 0.0367,
+        "residual_m": 0.0585
+      },
+      {
+        "station_id": "8658163",
+        "name": "JMPN7 SOUS41 8658163 NC Wrightsville Beach",
+        "lat": 34.213333,
+        "cell_km": 0.305,
+        "station_minus_grid_mean_m": 0.41,
+        "station_minus_grid_sd_m": 0.0002,
+        "vdatum_m": 0.3535,
+        "residual_m": 0.0565
+      },
+      {
+        "station_id": "8726667",
+        "name": "MCYF1 SOUS42 8726667 FL Mckay Bay Entrance",
+        "lat": 27.9133,
+        "cell_km": 2.925,
+        "station_minus_grid_mean_m": 0.0961,
+        "station_minus_grid_sd_m": 0.0052,
+        "vdatum_m": 0.0472,
+        "residual_m": 0.0489
+      }
+    ]
+  },
+  "stations": [
+    {
+      "station_id": "8725520",
+      "name": "FMRF1 SOUS42 8725520 FL Fort Myers",
+      "lat": 26.648,
+      "cell_km": 0.553,
+      "station_minus_grid_mean_m": 0.0988,
+      "station_minus_grid_sd_m": 0.0015,
+      "vdatum_m": 0.1108,
+      "residual_m": -0.012
+    },
+    {
+      "station_id": "8724580",
+      "name": "KYWF1 SOUS42 8724580 FL Key West",
+      "lat": 24.550833,
+      "cell_km": 1.561,
+      "station_minus_grid_mean_m": 0.1283,
+      "station_minus_grid_sd_m": 0.0403,
+      "vdatum_m": 0.1118,
+      "residual_m": 0.0164
+    },
+    {
+      "station_id": "8722956",
+      "name": "PEGF1 SOUS41 8722956 FL Port Everglades",
+      "lat": 26.0826324,
+      "cell_km": 1.976,
+      "station_minus_grid_mean_m": 0.1671,
+      "station_minus_grid_sd_m": 0.0176,
+      "vdatum_m": 0.1809,
+      "residual_m": -0.0137
+    },
+    {
+      "station_id": "8722670",
+      "name": "LKWF1 SOUS41 8722670 FL Lake Worth Pier, Atlantic",
+      "lat": 26.612778,
+      "cell_km": 0.57,
+      "station_minus_grid_mean_m": 0.225,
+      "station_minus_grid_sd_m": 0.0006,
+      "vdatum_m": 0.2073,
+      "residual_m": 0.0177
+    },
+    {
+      "station_id": "8665530",
+      "name": "CHTS1 SOUS41 8665530 SC Charleston, Cooper River E",
+      "lat": 32.775,
+      "cell_km": 1.231,
+      "station_minus_grid_mean_m": 0.3255,
+      "station_minus_grid_sd_m": 0.0085,
+      "vdatum_m": 0.3241,
+      "residual_m": 0.0013
+    },
+    {
+      "station_id": "8661070",
+      "name": "MROS1 SOUS41 8661070 SC Springmaid Pier",
+      "lat": 33.6549,
+      "cell_km": 1.305,
+      "station_minus_grid_mean_m": 0.345,
+      "station_minus_grid_sd_m": 0.0013,
+      "vdatum_m": 0.3162,
+      "residual_m": 0.0289
+    },
+    {
+      "station_id": "8658163",
+      "name": "JMPN7 SOUS41 8658163 NC Wrightsville Beach",
+      "lat": 34.213333,
+      "cell_km": 0.305,
+      "station_minus_grid_mean_m": 0.41,
+      "station_minus_grid_sd_m": 0.0002,
+      "vdatum_m": 0.3535,
+      "residual_m": 0.0565
+    },
+    {
+      "station_id": "8654467",
+      "name": "HCGN7 SOUS41 8654467 NC USCG Station Hatteras",
+      "lat": 35.208611,
+      "cell_km": 0.969,
+      "station_minus_grid_mean_m": 0.3083,
+      "station_minus_grid_sd_m": 0.008,
+      "vdatum_m": 0.3289,
+      "residual_m": -0.0206
+    },
+    {
+      "station_id": "8651370",
+      "name": "DUKN7 SOUS41 8651370 NC Duck",
+      "lat": 36.1833,
+      "cell_km": 0.805,
+      "station_minus_grid_mean_m": 0.4343,
+      "station_minus_grid_sd_m": 0.0024,
+      "vdatum_m": 0.4251,
+      "residual_m": 0.0092
+    },
+    {
+      "station_id": "8632200",
+      "name": "KPTV2 SOUS41 8632200 VA Kiptopeke",
+      "lat": 37.165278,
+      "cell_km": 0.553,
+      "station_minus_grid_mean_m": 0.4277,
+      "station_minus_grid_sd_m": 0.0028,
+      "vdatum_m": 0.4293,
+      "residual_m": -0.0016
+    },
+    {
+      "station_id": "8557380",
+      "name": "LWSD1 SOUS41 8557380 DE Lewes",
+      "lat": 38.782833,
+      "cell_km": 0.937,
+      "station_minus_grid_mean_m": 0.4742,
+      "station_minus_grid_sd_m": 0.0084,
+      "vdatum_m": 0.4739,
+      "residual_m": 0.0004
+    },
+    {
+      "station_id": "8536110",
+      "name": "CMAN4 SOUS41 8536110 NJ Cape May",
+      "lat": 38.9675544545747,
+      "cell_km": 1.122,
+      "station_minus_grid_mean_m": 0.5201,
+      "station_minus_grid_sd_m": 0.0132,
+      "vdatum_m": 0.5193,
+      "residual_m": 0.0007
+    },
+    {
+      "station_id": "8534720",
+      "name": "ACYN4 SOUS41 8534720 NJ Atlantic City",
+      "lat": 39.356667,
+      "cell_km": 1.262,
+      "station_minus_grid_mean_m": 0.4204,
+      "station_minus_grid_sd_m": 0.0032,
+      "vdatum_m": 0.4649,
+      "residual_m": -0.0445
+    },
+    {
+      "station_id": "8531680",
+      "name": "SDHN4 SOUS41 8531680 NJ Sandy Hook",
+      "lat": 40.4669,
+      "cell_km": 2.105,
+      "station_minus_grid_mean_m": 0.4583,
+      "station_minus_grid_sd_m": 0.0082,
+      "vdatum_m": 0.4313,
+      "residual_m": 0.027
+    },
+    {
+      "station_id": "8510560",
+      "name": "MTKN6 SOUS41 8510560 NY Montauk",
+      "lat": 41.048333,
+      "cell_km": 1.606,
+      "station_minus_grid_mean_m": 0.4316,
+      "station_minus_grid_sd_m": 0.0018,
+      "vdatum_m": 0.4463,
+      "residual_m": -0.0147
+    },
+    {
+      "station_id": "8452660",
+      "name": "NWPR1 SOUS41 8452660 RI Newport",
+      "lat": 41.504333,
+      "cell_km": 0.899,
+      "station_minus_grid_mean_m": 0.4514,
+      "station_minus_grid_sd_m": 0.0089,
+      "vdatum_m": 0.4482,
+      "residual_m": 0.0032
+    },
+    {
+      "station_id": "8443970",
+      "name": "BHBM3 SOUS41 8443970 MA Boston",
+      "lat": 42.3539,
+      "cell_km": 0.855,
+      "station_minus_grid_mean_m": 0.4583,
+      "station_minus_grid_sd_m": 0.0052,
+      "vdatum_m": 0.4176,
+      "residual_m": 0.0407
+    },
+    {
+      "station_id": "8419317",
+      "name": "WELM1 SOUS41 8419317 ME Wells",
+      "lat": 43.31730795,
+      "cell_km": 1.948,
+      "station_minus_grid_mean_m": 0.4437,
+      "station_minus_grid_sd_m": 0.0474,
+      "vdatum_m": 0.4224,
+      "residual_m": 0.0213
+    },
+    {
+      "station_id": "8418150",
+      "name": "CASM1 SOUS41 8418150 ME Portland",
+      "lat": 43.65806,
+      "cell_km": 0.659,
+      "station_minus_grid_mean_m": 0.4248,
+      "station_minus_grid_sd_m": 0.0018,
+      "vdatum_m": 0.4083,
+      "residual_m": 0.0165
+    },
+    {
+      "station_id": "8413320",
+      "name": "ATGM1 SOUS41 8413320 ME Bar Harbor",
+      "lat": 44.392194,
+      "cell_km": 1.849,
+      "station_minus_grid_mean_m": 0.4159,
+      "station_minus_grid_sd_m": 0.0077,
+      "vdatum_m": 0.4401,
+      "residual_m": -0.0242
+    },
+    {
+      "station_id": "8411060",
+      "name": "CFWM1 SOUS41 8411060 ME Cutler Farris Wharf",
+      "lat": 44.6567,
+      "cell_km": 1.998,
+      "station_minus_grid_mean_m": 0.4449,
+      "station_minus_grid_sd_m": 0.0108,
+      "vdatum_m": 0.4529,
+      "residual_m": -0.008
+    },
+    {
+      "station_id": "8779749",
+      "name": "BZST2 SOUS42 8779749 TX SPI Brazos Santiago",
+      "lat": 26.0675,
+      "cell_km": 2.044,
+      "station_minus_grid_mean_m": 0.1116,
+      "station_minus_grid_sd_m": 0.0296,
+      "vdatum_m": 0.1006,
+      "residual_m": 0.011
+    },
+    {
+      "station_id": "8779748",
+      "name": "PCGT2 SOUS42 8779748 TX South Padre Island CG Stat",
+      "lat": 26.072472,
+      "cell_km": 2.326,
+      "station_minus_grid_mean_m": 0.0462,
+      "station_minus_grid_sd_m": 0.0294,
+      "vdatum_m": 0.0562,
+      "residual_m": -0.0099
+    },
+    {
+      "station_id": "8775870",
+      "name": "MQTT2 SOUS42 8775870 TX Bob Hall Pier, Corpus Chri",
+      "lat": 27.58,
+      "cell_km": 1.121,
+      "station_minus_grid_mean_m": 0.0186,
+      "station_minus_grid_sd_m": 0.0003,
+      "vdatum_m": 0.0192,
+      "residual_m": -0.0006
+    },
+    {
+      "station_id": "8775241",
+      "name": "ANPT2 SOUS42 8775241 TX Aransas Aransas Pass",
+      "lat": 27.836599,
+      "cell_km": 0.744,
+      "station_minus_grid_mean_m": 0.0952,
+      "station_minus_grid_sd_m": 0.0061,
+      "vdatum_m": 0.0367,
+      "residual_m": 0.0585
+    },
+    {
+      "station_id": "8775237",
+      "name": "RTAT2 SOUS42 8775237 TX Port Aransas",
+      "lat": 27.839756,
+      "cell_km": 0.933,
+      "station_minus_grid_mean_m": 0.0125,
+      "station_minus_grid_sd_m": 0.021,
+      "vdatum_m": 0.0089,
+      "residual_m": 0.0035
+    },
+    {
+      "station_id": "8773767",
+      "name": "MBET2 SOUS42 8773767 TX Matagorda Bay Entrance Cha",
+      "lat": 28.426901,
+      "cell_km": 1.0,
+      "station_minus_grid_mean_m": 0.1023,
+      "station_minus_grid_sd_m": 0.0298,
+      "vdatum_m": 0.1377,
+      "residual_m": -0.0355
+    },
+    {
+      "station_id": "8772447",
+      "name": "FCGT2 SOUS42 8772447 TX Freeport",
+      "lat": 28.942688547457,
+      "cell_km": 2.282,
+      "station_minus_grid_mean_m": 0.0357,
+      "station_minus_grid_sd_m": 0.0043,
+      "vdatum_m": 0.0347,
+      "residual_m": 0.001
+    },
+    {
+      "station_id": "8771972",
+      "name": "LUIT2 SOUS42 8771972 TX San Luis Pass",
+      "lat": 29.0967643,
+      "cell_km": 1.378,
+      "station_minus_grid_mean_m": 0.0538,
+      "station_minus_grid_sd_m": 0.028,
+      "vdatum_m": 0.0476,
+      "residual_m": 0.0062
+    },
+    {
+      "station_id": "8771341",
+      "name": "GNJT2 SOUS42 8771341 TX Galveston Bay Entrance, No",
+      "lat": 29.357461,
+      "cell_km": 1.228,
+      "station_minus_grid_mean_m": 0.0311,
+      "station_minus_grid_sd_m": 0.033,
+      "vdatum_m": 0.0303,
+      "residual_m": 0.0008
+    },
+    {
+      "station_id": "8770971",
+      "name": "RLOT2 SOUS42 8770971 TX Rollover Pass",
+      "lat": 29.514999,
+      "cell_km": 1.129,
+      "station_minus_grid_mean_m": 0.1097,
+      "station_minus_grid_sd_m": 0.0036,
+      "vdatum_m": 0.1104,
+      "residual_m": -0.0007
+    },
+    {
+      "station_id": "8770822",
+      "name": "TXPT2 SOUS42 8770822 TX Texas Point, Sabine Pass",
+      "lat": 29.689301,
+      "cell_km": 1.131,
+      "station_minus_grid_mean_m": 0.0049,
+      "station_minus_grid_sd_m": 0.0104,
+      "vdatum_m": 0.0072,
+      "residual_m": -0.0023
+    },
+    {
+      "station_id": "8770808",
+      "name": "HIST2 SOUS42 8770808 TX High Island",
+      "lat": 29.59472,
+      "cell_km": 1.082,
+      "station_minus_grid_mean_m": 0.0433,
+      "station_minus_grid_sd_m": 0.0184,
+      "vdatum_m": 0.0478,
+      "residual_m": -0.0045
+    },
+    {
+      "station_id": "8766072",
+      "name": "FRWL1 SOUS42 8766072 LA Freshwater Canal Locks",
+      "lat": 29.551667,
+      "cell_km": 3.525,
+      "station_minus_grid_mean_m": 0.0589,
+      "station_minus_grid_sd_m": 0.0469,
+      "vdatum_m": 0.0387,
+      "residual_m": 0.0202
+    },
+    {
+      "station_id": "8764314",
+      "name": "EINL1 SOUS42 8764314 LA Eugene Island North of",
+      "lat": 29.3675,
+      "cell_km": 1.0,
+      "station_minus_grid_mean_m": 0.0146,
+      "station_minus_grid_sd_m": 0.0024,
+      "vdatum_m": 0.0178,
+      "residual_m": -0.0032
+    },
+    {
+      "station_id": "8764227",
+      "name": "AMRL1 SOUS42 8764227 LA LAWMA, Amerada Pass",
+      "lat": 29.4496,
+      "cell_km": 0.57,
+      "station_minus_grid_mean_m": -0.0046,
+      "station_minus_grid_sd_m": 0.0009,
+      "vdatum_m": -0.004,
+      "residual_m": -0.0006
+    },
+    {
+      "station_id": "8761724",
+      "name": "GISL1 SOUS42 8761724 LA Grand Isle East PT",
+      "lat": 29.263333,
+      "cell_km": 0.832,
+      "station_minus_grid_mean_m": 0.0889,
+      "station_minus_grid_sd_m": 0.0062,
+      "vdatum_m": 0.0917,
+      "residual_m": -0.0028
+    },
+    {
+      "station_id": "8761305",
+      "name": "SHBL1 SOUS42 8761305 LA Shell Beach",
+      "lat": 29.8683,
+      "cell_km": 0.688,
+      "station_minus_grid_mean_m": -0.1265,
+      "station_minus_grid_sd_m": 0.0009,
+      "vdatum_m": -0.1251,
+      "residual_m": -0.0014
+    },
+    {
+      "station_id": "8760922",
+      "name": "PSTL1 SOUS42 8760922 LA Pilots Station East, S.W.",
+      "lat": 28.932222,
+      "cell_km": 1.186,
+      "station_minus_grid_mean_m": -0.0356,
+      "station_minus_grid_sd_m": 0.0035,
+      "vdatum_m": -0.0401,
+      "residual_m": 0.0045
+    },
+    {
+      "station_id": "8760721",
+      "name": "PILL1 SOUS42 8760721 LA Pilottown",
+      "lat": 29.179306,
+      "cell_km": 1.712,
+      "station_minus_grid_mean_m": -0.2386,
+      "station_minus_grid_sd_m": 0.0042,
+      "vdatum_m": 0.2,
+      "residual_m": -0.4386
+    },
+    {
+      "station_id": "8747437",
+      "name": "WYCM6 SOUS42 8747437 MS Bay Waveland Yacht Club",
+      "lat": 30.326342,
+      "cell_km": 1.711,
+      "station_minus_grid_mean_m": 0.104,
+      "station_minus_grid_sd_m": 0.0047,
+      "vdatum_m": 0.1157,
+      "residual_m": -0.0117
+    },
+    {
+      "station_id": "8735180",
+      "name": "DILA1 SOUS42 8735180 AL Dauphin Island",
+      "lat": 30.250278,
+      "cell_km": 0.57,
+      "station_minus_grid_mean_m": 0.1123,
+      "station_minus_grid_sd_m": 0.0029,
+      "vdatum_m": 0.1147,
+      "residual_m": -0.0024
+    },
+    {
+      "station_id": "8729840",
+      "name": "PCLF1 SOUS42 8729840 FL Pensacola",
+      "lat": 30.4044,
+      "cell_km": 1.961,
+      "station_minus_grid_mean_m": 0.1039,
+      "station_minus_grid_sd_m": 0.0036,
+      "vdatum_m": 0.1146,
+      "residual_m": -0.0107
+    },
+    {
+      "station_id": "8729210",
+      "name": "PCBF1 SOUS42 8729210 FL Panama City Beach",
+      "lat": 30.21375,
+      "cell_km": 0.853,
+      "station_minus_grid_mean_m": 0.1285,
+      "station_minus_grid_sd_m": 0.001,
+      "vdatum_m": 0.1229,
+      "residual_m": 0.0055
+    },
+    {
+      "station_id": "8729108",
+      "name": "PACF1 SOUS42 8729108 FL Panama City",
+      "lat": 30.149722,
+      "cell_km": 1.623,
+      "station_minus_grid_mean_m": 0.1496,
+      "station_minus_grid_sd_m": 0.0035,
+      "vdatum_m": 0.1394,
+      "residual_m": 0.0102
+    },
+    {
+      "station_id": "8728690",
+      "name": "APCF1 SOUS42 8728690 FL Apalachicola",
+      "lat": 29.724444,
+      "cell_km": 0.25,
+      "station_minus_grid_mean_m": 0.1003,
+      "station_minus_grid_sd_m": 0.0013,
+      "vdatum_m": 0.0881,
+      "residual_m": 0.0122
+    },
+    {
+      "station_id": "8727520",
+      "name": "CKYF1 SOUS42 8727520 FL Cedar Key",
+      "lat": 29.1321562,
+      "cell_km": 0.939,
+      "station_minus_grid_mean_m": 0.1328,
+      "station_minus_grid_sd_m": 0.0052,
+      "vdatum_m": 0.1347,
+      "residual_m": -0.0018
+    },
+    {
+      "station_id": "8726724",
+      "name": "CWBF1 SOUS42 8726724 FL Clearwater Beach",
+      "lat": 27.978333,
+      "cell_km": 1.763,
+      "station_minus_grid_mean_m": 0.1781,
+      "station_minus_grid_sd_m": 0.0029,
+      "vdatum_m": 0.1525,
+      "residual_m": 0.0256
+    },
+    {
+      "station_id": "8726520",
+      "name": "SAPF1 SOUS42 8726520 FL St. Petersburg, Tampa Bay",
+      "lat": 27.760599,
+      "cell_km": 1.99,
+      "station_minus_grid_mean_m": 0.1419,
+      "station_minus_grid_sd_m": 0.0019,
+      "vdatum_m": 0.1139,
+      "residual_m": 0.0281
+    },
+    {
+      "station_id": "8726384",
+      "name": "PMAF1 SOUS42 8726384 FL Port Manatee",
+      "lat": 27.6387,
+      "cell_km": 1.285,
+      "station_minus_grid_mean_m": 0.142,
+      "station_minus_grid_sd_m": 0.0012,
+      "vdatum_m": 0.1136,
+      "residual_m": 0.0285
+    },
+    {
+      "station_id": "8720226",
+      "name": "MSBF1 SOUS41 8720226 FL Southbank Riverwalk",
+      "lat": 30.32088,
+      "cell_km": 0.89,
+      "station_minus_grid_mean_m": 0.2062,
+      "station_minus_grid_sd_m": 0.0185,
+      "vdatum_m": 0.1735,
+      "residual_m": 0.0327
+    },
+    {
+      "station_id": "8720219",
+      "name": "DMSF1 SOUS41 8720219 FL Dames Point",
+      "lat": 30.387222,
+      "cell_km": 0.923,
+      "station_minus_grid_mean_m": 0.2199,
+      "station_minus_grid_sd_m": 0.0269,
+      "vdatum_m": 0.2235,
+      "residual_m": -0.0036
+    },
+    {
+      "station_id": "8638901",
+      "name": "CHBV2 SOUS41 8638901 VA CBBT Chesapeake Channel",
+      "lat": 37.032902,
+      "cell_km": 1.018,
+      "station_minus_grid_mean_m": 0.4341,
+      "station_minus_grid_sd_m": 0.0078,
+      "vdatum_m": 0.4452,
+      "residual_m": -0.0111
+    },
+    {
+      "station_id": "8638610",
+      "name": "SWPV2 SOUS41 8638610 VA Sewells Point",
+      "lat": 36.942778,
+      "cell_km": 1.07,
+      "station_minus_grid_mean_m": 0.3782,
+      "station_minus_grid_sd_m": 0.007,
+      "vdatum_m": 0.3803,
+      "residual_m": -0.0021
+    },
+    {
+      "station_id": "8637689",
+      "name": "YKTV2 SOUS41 8637689 VA Yorktown USCG Training Cen",
+      "lat": 37.2265,
+      "cell_km": 1.306,
+      "station_minus_grid_mean_m": 0.4301,
+      "station_minus_grid_sd_m": 0.0028,
+      "vdatum_m": 0.4177,
+      "residual_m": 0.0124
+    },
+    {
+      "station_id": "8636580",
+      "name": "WNDV2 SOUS41 8636580 VA Windmill Point",
+      "lat": 37.6155,
+      "cell_km": 1.466,
+      "station_minus_grid_mean_m": 0.484,
+      "station_minus_grid_sd_m": 0.0071,
+      "vdatum_m": 0.4647,
+      "residual_m": 0.0194
+    },
+    {
+      "station_id": "8635750",
+      "name": "LWTV2 SOUS41 8635750 VA Lewisetta",
+      "lat": 37.996389,
+      "cell_km": 2.632,
+      "station_minus_grid_mean_m": 0.4284,
+      "station_minus_grid_sd_m": 0.0088,
+      "vdatum_m": 0.4277,
+      "residual_m": 0.0007
+    },
+    {
+      "station_id": "8635027",
+      "name": "NCDV2 SOUS41 8635027 VA Dahlgren",
+      "lat": 38.319753,
+      "cell_km": 2.733,
+      "station_minus_grid_mean_m": 0.5269,
+      "station_minus_grid_sd_m": 0.0237,
+      "vdatum_m": 0.4239,
+      "residual_m": 0.1029
+    },
+    {
+      "station_id": "8632837",
+      "name": "RPLV2 SOUS41 8632837 VA Rappahannock Light",
+      "lat": 37.538333,
+      "cell_km": 1.248,
+      "station_minus_grid_mean_m": 0.4493,
+      "station_minus_grid_sd_m": 0.0042,
+      "vdatum_m": 0.4491,
+      "residual_m": 0.0002
+    },
+    {
+      "station_id": "8594900",
+      "name": "WASD2 SOUS41 8594900 DC Washington",
+      "lat": 38.873,
+      "cell_km": 3.331,
+      "station_minus_grid_mean_m": 0.265,
+      "station_minus_grid_sd_m": 0.0044,
+      "vdatum_m": 0.2891,
+      "residual_m": -0.0241
+    },
+    {
+      "station_id": "8577330",
+      "name": "SLIM2 SOUS41 8577330 MD Solomons Island",
+      "lat": 38.3167,
+      "cell_km": 1.239,
+      "station_minus_grid_mean_m": 0.4348,
+      "station_minus_grid_sd_m": 0.0058,
+      "vdatum_m": 0.439,
+      "residual_m": -0.0042
+    },
+    {
+      "station_id": "8575512",
+      "name": "APAM2 SOUS41 8575512 MD Annapolis",
+      "lat": 38.9833,
+      "cell_km": 2.614,
+      "station_minus_grid_mean_m": 0.4257,
+      "station_minus_grid_sd_m": 0.0087,
+      "vdatum_m": 0.4273,
+      "residual_m": -0.0016
+    },
+    {
+      "station_id": "8573364",
+      "name": "TCBM2 SOUS41 8573364 MD Tolchester Beach",
+      "lat": 39.213444,
+      "cell_km": 0.742,
+      "station_minus_grid_mean_m": 0.3632,
+      "station_minus_grid_sd_m": 0.0054,
+      "vdatum_m": 0.3592,
+      "residual_m": 0.0041
+    },
+    {
+      "station_id": "8571892",
+      "name": "CAMM2 SOUS41 8571892 MD Cambridge",
+      "lat": 38.5725,
+      "cell_km": 1.728,
+      "station_minus_grid_mean_m": 0.3964,
+      "station_minus_grid_sd_m": 0.0043,
+      "vdatum_m": 0.4173,
+      "residual_m": -0.0209
+    },
+    {
+      "station_id": "8571421",
+      "name": "BISM2 SOUS41 8571421 MD Bishops Head",
+      "lat": 38.22,
+      "cell_km": 1.161,
+      "station_minus_grid_mean_m": 0.3895,
+      "station_minus_grid_sd_m": 0.0198,
+      "vdatum_m": 0.392,
+      "residual_m": -0.0024
+    },
+    {
+      "station_id": "8555889",
+      "name": "BRND1 SOUS41 8555889 DE Brandywine Shoal Light",
+      "lat": 38.987,
+      "cell_km": 0.625,
+      "station_minus_grid_mean_m": 0.4637,
+      "station_minus_grid_sd_m": 0.0052,
+      "vdatum_m": 0.4642,
+      "residual_m": -0.0005
+    },
+    {
+      "station_id": "8551910",
+      "name": "RDYD1 SOUS41 8551910 DE Reedy Point",
+      "lat": 39.559674,
+      "cell_km": 0.509,
+      "station_minus_grid_mean_m": 0.4662,
+      "station_minus_grid_sd_m": 0.0206,
+      "vdatum_m": 0.4372,
+      "residual_m": 0.029
+    },
+    {
+      "station_id": "8551762",
+      "name": "DELD1 SOUS41 8551762 DE Delaware City",
+      "lat": 39.582194,
+      "cell_km": 1.218,
+      "station_minus_grid_mean_m": 0.3844,
+      "station_minus_grid_sd_m": 0.0245,
+      "vdatum_m": 0.3793,
+      "residual_m": 0.0051
+    },
+    {
+      "station_id": "8546252",
+      "name": "BDSP1 SOUS41 8546252 PA Bridesburg",
+      "lat": 39.979683,
+      "cell_km": 1.547,
+      "station_minus_grid_mean_m": 0.2678,
+      "station_minus_grid_sd_m": 0.0199,
+      "vdatum_m": 0.2692,
+      "residual_m": -0.0014
+    },
+    {
+      "station_id": "8540433",
+      "name": "MRCP1 SOUS41 8540433 PA Marcus Hook",
+      "lat": 39.811806,
+      "cell_km": 2.011,
+      "station_minus_grid_mean_m": 0.3351,
+      "station_minus_grid_sd_m": 0.0096,
+      "vdatum_m": 0.3407,
+      "residual_m": -0.0056
+    },
+    {
+      "station_id": "8537121",
+      "name": "SJSN4 SOUS41 8537121 NJ Ship John Shoal",
+      "lat": 39.305389,
+      "cell_km": 1.18,
+      "station_minus_grid_mean_m": 0.3927,
+      "station_minus_grid_sd_m": 0.0088,
+      "vdatum_m": 0.3931,
+      "residual_m": -0.0004
+    },
+    {
+      "station_id": "8519483",
+      "name": "BGNN6 SOUS41 8519483 NY Bergen Point West Reach",
+      "lat": 40.6391,
+      "cell_km": 0.23,
+      "station_minus_grid_mean_m": 0.4278,
+      "station_minus_grid_sd_m": 0.005,
+      "vdatum_m": 0.4142,
+      "residual_m": 0.0136
+    },
+    {
+      "station_id": "8518750",
+      "name": "BATN6 SOUS41 8518750 NY The Battery",
+      "lat": 40.700556,
+      "cell_km": 2.727,
+      "station_minus_grid_mean_m": 0.414,
+      "station_minus_grid_sd_m": 0.0355,
+      "vdatum_m": 0.4206,
+      "residual_m": -0.0066
+    },
+    {
+      "station_id": "8516945",
+      "name": "KPTN6 SOUS41 8516945 NY Kings Point",
+      "lat": 40.810299,
+      "cell_km": 1.687,
+      "station_minus_grid_mean_m": 0.425,
+      "station_minus_grid_sd_m": 0.0045,
+      "vdatum_m": 0.4209,
+      "residual_m": 0.0041
+    },
+    {
+      "station_id": "8467150",
+      "name": "BRHC3 SOUS41 8467150 CT Bridgeport",
+      "lat": 41.175819,
+      "cell_km": 3.15,
+      "station_minus_grid_mean_m": 0.3961,
+      "station_minus_grid_sd_m": 0.0101,
+      "vdatum_m": 0.4017,
+      "residual_m": -0.0056
+    },
+    {
+      "station_id": "8454049",
+      "name": "QPTR1 SOUS41 8454049 RI Quonset Point",
+      "lat": 41.58694,
+      "cell_km": 0.521,
+      "station_minus_grid_mean_m": 0.4496,
+      "station_minus_grid_sd_m": 0.0006,
+      "vdatum_m": 0.4735,
+      "residual_m": -0.0238
+    },
+    {
+      "station_id": "8452944",
+      "name": "CPTR1 SOUS41 8452944 RI Conimicut Light",
+      "lat": 41.717111,
+      "cell_km": 0.581,
+      "station_minus_grid_mean_m": 0.4412,
+      "station_minus_grid_sd_m": 0.0026,
+      "vdatum_m": 0.4417,
+      "residual_m": -0.0005
+    },
+    {
+      "station_id": "8447386",
+      "name": "FRVM3 SOUS41 8447386 MA Fall River",
+      "lat": 41.706623,
+      "cell_km": 3.23,
+      "station_minus_grid_mean_m": 0.4287,
+      "station_minus_grid_sd_m": 0.0177,
+      "vdatum_m": 0.4315,
+      "residual_m": -0.0028
+    },
+    {
+      "station_id": "8779770",
+      "name": "PTIT2 SOUS42 8779770 TX Port Isabel",
+      "lat": 26.061167,
+      "cell_km": 0.396,
+      "station_minus_grid_mean_m": 0.0152,
+      "station_minus_grid_sd_m": 0.0001,
+      "vdatum_m": 0.0157,
+      "residual_m": -0.0005
+    },
+    {
+      "station_id": "8779280",
+      "name": "RLIT2 SOUS42 8779280 TX Realitos Peninsula",
+      "lat": 26.2625,
+      "cell_km": 1.907,
+      "station_minus_grid_mean_m": 0.0555,
+      "station_minus_grid_sd_m": 0.0099,
+      "vdatum_m": 0.0521,
+      "residual_m": 0.0034
+    },
+    {
+      "station_id": "8775792",
+      "name": "PACT2 SOUS42 8775792 TX Packery Channel",
+      "lat": 27.633301,
+      "cell_km": 0.439,
+      "station_minus_grid_mean_m": -0.0127,
+      "station_minus_grid_sd_m": 0.0009,
+      "vdatum_m": -0.0119,
+      "residual_m": -0.0008
+    },
+    {
+      "station_id": "8775296",
+      "name": "TAQT2 SOUS42 8775296 TX USS Lexington, Corpus Chri",
+      "lat": 27.811694,
+      "cell_km": 1.724,
+      "station_minus_grid_mean_m": -0.042,
+      "station_minus_grid_sd_m": 0.0009,
+      "vdatum_m": -0.0422,
+      "residual_m": 0.0002
+    },
+    {
+      "station_id": "8775244",
+      "name": "NUET2 SOUS42 8775244 TX Nueces Bay",
+      "lat": 27.8328,
+      "cell_km": 1.011,
+      "station_minus_grid_mean_m": -0.0413,
+      "station_minus_grid_sd_m": 0.0013,
+      "vdatum_m": -0.0425,
+      "residual_m": 0.0012
+    },
+    {
+      "station_id": "8774770",
+      "name": "RCPT2 SOUS42 8774770 TX Rockport",
+      "lat": 28.021667,
+      "cell_km": 0.693,
+      "station_minus_grid_mean_m": 0.0458,
+      "station_minus_grid_sd_m": 0.0009,
+      "vdatum_m": 0.044,
+      "residual_m": 0.0018
+    },
+    {
+      "station_id": "8773701",
+      "name": "PCNT2 SOUS42 8773701 TX Port O'Connor",
+      "lat": 28.4517,
+      "cell_km": 1.488,
+      "station_minus_grid_mean_m": 0.0152,
+      "station_minus_grid_sd_m": 0.0036,
+      "vdatum_m": 0.0161,
+      "residual_m": -0.0009
+    },
+    {
+      "station_id": "8773259",
+      "name": "VCAT2 SOUS42 8773259 TX Port Lavaca",
+      "lat": 28.6406,
+      "cell_km": 0.654,
+      "station_minus_grid_mean_m": 0.0751,
+      "station_minus_grid_sd_m": 0.0036,
+      "vdatum_m": 0.075,
+      "residual_m": 0.0001
+    },
+    {
+      "station_id": "8773037",
+      "name": "SDRT2 SOUS42 8773037 TX Seadrift",
+      "lat": 28.4069,
+      "cell_km": 1.377,
+      "station_minus_grid_mean_m": -0.0742,
+      "station_minus_grid_sd_m": 0.0014,
+      "vdatum_m": -0.0741,
+      "residual_m": -0.0002
+    },
+    {
+      "station_id": "8771486",
+      "name": "GRRT2 SOUS42 8771486 TX Galveston Railroad Bridge",
+      "lat": 29.302583,
+      "cell_km": 1.101,
+      "station_minus_grid_mean_m": 0.0467,
+      "station_minus_grid_sd_m": 0.0121,
+      "vdatum_m": 0.0486,
+      "residual_m": -0.002
+    },
+    {
+      "station_id": "8771013",
+      "name": "EPTT2 SOUS42 8771013 TX Eagle Point, Galveston Bay",
+      "lat": 29.481306,
+      "cell_km": 0.823,
+      "station_minus_grid_mean_m": 0.0663,
+      "station_minus_grid_sd_m": 0.0012,
+      "vdatum_m": 0.067,
+      "residual_m": -0.0007
+    },
+    {
+      "station_id": "8770613",
+      "name": "MGPT2 SOUS42 8770613 TX Morgans Point, Barbours Cu",
+      "lat": 29.681667,
+      "cell_km": 2.748,
+      "station_minus_grid_mean_m": -0.0547,
+      "station_minus_grid_sd_m": 0.0058,
+      "vdatum_m": -0.0516,
+      "residual_m": -0.0031
+    },
+    {
+      "station_id": "8770520",
+      "name": "RBBT2 SOUS42 8770520 TX Rainbow Bridge",
+      "lat": 29.981194,
+      "cell_km": 1.887,
+      "station_minus_grid_mean_m": -0.085,
+      "station_minus_grid_sd_m": 0.0074,
+      "vdatum_m": -0.0812,
+      "residual_m": -0.0038
+    },
+    {
+      "station_id": "8770475",
+      "name": "PORT2 SOUS42 8770475 TX Port Arthur",
+      "lat": 29.866699,
+      "cell_km": 1.092,
+      "station_minus_grid_mean_m": -0.0778,
+      "station_minus_grid_sd_m": 0.0292,
+      "vdatum_m": -0.0583,
+      "residual_m": -0.0196
+    },
+    {
+      "station_id": "8767961",
+      "name": "BKTL1 SOUS42 8767961 LA Bulk Terminal",
+      "lat": 30.1903,
+      "cell_km": 1.138,
+      "station_minus_grid_mean_m": -0.0783,
+      "station_minus_grid_sd_m": 0.0024,
+      "vdatum_m": -0.0775,
+      "residual_m": -0.0008
+    },
+    {
+      "station_id": "8767816",
+      "name": "LCLL1 SOUS42 8767816 LA Lake Charles",
+      "lat": 30.223878,
+      "cell_km": 3.627,
+      "station_minus_grid_mean_m": -0.078,
+      "station_minus_grid_sd_m": 0.007,
+      "vdatum_m": -0.0819,
+      "residual_m": 0.0039
+    },
+    {
+      "station_id": "8764044",
+      "name": "TESL1 SOUS42 8764044 LA Berwick, Atchafalaya River",
+      "lat": 29.6675,
+      "cell_km": 3.976,
+      "station_minus_grid_mean_m": -0.5348,
+      "station_minus_grid_sd_m": 0.0222,
+      "vdatum_m": -0.5377,
+      "residual_m": 0.0029
+    },
+    {
+      "station_id": "8761927",
+      "name": "NWCL1 SOUS42 8761927 LA New Canal Station",
+      "lat": 30.027222,
+      "cell_km": 0.989,
+      "station_minus_grid_mean_m": 0.117,
+      "station_minus_grid_sd_m": 0.0004,
+      "vdatum_m": 0.1162,
+      "residual_m": 0.0007
+    },
+    {
+      "station_id": "8736897",
+      "name": "MCGA1 SOUS42 8736897 AL Coast Guard Sector Mobile",
+      "lat": 30.6495,
+      "cell_km": 1.231,
+      "station_minus_grid_mean_m": 0.078,
+      "station_minus_grid_sd_m": 0.0083,
+      "vdatum_m": 0.0683,
+      "residual_m": 0.0097
+    },
+    {
+      "station_id": "8735391",
+      "name": "BYSA1 SOUS42 8735391 AL Dog River Bridge",
+      "lat": 30.563874,
+      "cell_km": 1.398,
+      "station_minus_grid_mean_m": 0.1149,
+      "station_minus_grid_sd_m": 0.0022,
+      "vdatum_m": 0.1118,
+      "residual_m": 0.0031
+    },
+    {
+      "station_id": "8726667",
+      "name": "MCYF1 SOUS42 8726667 FL Mckay Bay Entrance",
+      "lat": 27.9133,
+      "cell_km": 2.925,
+      "station_minus_grid_mean_m": 0.0961,
+      "station_minus_grid_sd_m": 0.0052,
+      "vdatum_m": 0.0472,
+      "residual_m": 0.0489
+    },
+    {
+      "station_id": "8726607",
+      "name": "OPTF1 SOUS42 8726607 FL Old Port Tampa",
+      "lat": 27.8578,
+      "cell_km": 1.978,
+      "station_minus_grid_mean_m": 0.1408,
+      "station_minus_grid_sd_m": 0.0046,
+      "vdatum_m": 0.1034,
+      "residual_m": 0.0374
+    },
+    {
+      "station_id": "8725114",
+      "name": "NPSF1 SOUS42 8725114 FL Naples, Gulf of Mexico",
+      "lat": 26.131701,
+      "cell_km": 2.382,
+      "station_minus_grid_mean_m": 0.1052,
+      "station_minus_grid_sd_m": 0.0009,
+      "vdatum_m": 0.1236,
+      "residual_m": -0.0183
+    },
+    {
+      "station_id": "8590111",
+      "name": "BPPD2 SOUS41 8590111 DC Bellevue",
+      "lat": 38.82973,
+      "cell_km": 0.97,
+      "station_minus_grid_mean_m": 0.2934,
+      "station_minus_grid_sd_m": 0.0035,
+      "vdatum_m": 0.2931,
+      "residual_m": 0.0003
+    },
+    {
+      "station_id": "8579629",
+      "name": "MVRV2 SOUS41 8579629 VA Mount Vernon",
+      "lat": 38.70797,
+      "cell_km": 2.858,
+      "station_minus_grid_mean_m": 0.3084,
+      "station_minus_grid_sd_m": 0.0149,
+      "vdatum_m": 0.308,
+      "residual_m": 0.0004
+    },
+    {
+      "station_id": "8515421",
+      "name": "ARLN6 SOUS41 8515421 NY Babylon",
+      "lat": 40.66911,
+      "cell_km": 1.447,
+      "station_minus_grid_mean_m": 0.3596,
+      "station_minus_grid_sd_m": 0.0035,
+      "vdatum_m": 0.3635,
+      "residual_m": -0.0039
+    },
+    {
+      "station_id": "8531232",
+      "name": "PABN4 SOUS41 8531232 NJ S Amboy Raritan River",
+      "lat": 40.50035,
+      "cell_km": 0.194,
+      "station_minus_grid_mean_m": 0.3995,
+      "station_minus_grid_sd_m": 0.0008,
+      "vdatum_m": 0.4003,
+      "residual_m": -0.0008
+    },
+    {
+      "station_id": "8679598",
+      "name": "KBMG1 SOUS42 8679598 GA Kings Bay MSF Pier",
+      "lat": 30.7781,
+      "cell_km": 0.726,
+      "station_minus_grid_mean_m": 0.305,
+      "station_minus_grid_sd_m": 0.0078,
+      "vdatum_m": 0.305,
+      "residual_m": -0.0
+    },
+    {
+      "station_id": "8725110",
+      "name": "XXXXX XXXXXX 8725110 FL Naples",
+      "lat": 26.131701,
+      "cell_km": 2.382,
+      "station_minus_grid_mean_m": 0.1332,
+      "station_minus_grid_sd_m": 0.0009,
+      "vdatum_m": 0.1236,
+      "residual_m": 0.0097
+    },
+    {
+      "station_id": "8638999",
+      "name": "XXXXX XXXXXX 8638999 VA Cape Henry",
+      "lat": 36.93,
+      "cell_km": 1.023,
+      "station_minus_grid_mean_m": 0.4588,
+      "station_minus_grid_sd_m": 0.0051,
+      "vdatum_m": 0.4583,
+      "residual_m": 0.0005
+    },
+    {
+      "station_id": "8772985",
+      "name": "XXXXX XXXXXX 8772985 TX Sargent",
+      "lat": 28.771389,
+      "cell_km": 0.767,
+      "station_minus_grid_mean_m": -0.0107,
+      "station_minus_grid_sd_m": 0.0098,
+      "vdatum_m": -0.0111,
+      "residual_m": 0.0004
+    },
+    {
+      "station_id": "8772471",
+      "name": "XXXXX XXXXXX 8772471 TX Freeport Harbor",
+      "lat": 28.935699,
+      "cell_km": 1.136,
+      "station_minus_grid_mean_m": 0.1051,
+      "station_minus_grid_sd_m": 0.0015,
+      "vdatum_m": 0.0403,
+      "residual_m": 0.0649
+    },
+    {
+      "station_id": "8732828",
+      "name": "XXXXX XXXXXX 8732828 AL Weeks Bay, Mobile Bay",
+      "lat": 30.416901,
+      "cell_km": 1.51,
+      "station_minus_grid_mean_m": 0.0919,
+      "station_minus_grid_sd_m": 0.0276,
+      "vdatum_m": 0.0941,
+      "residual_m": -0.0023
+    },
+    {
+      "station_id": "8774230",
+      "name": "XXXXX XXXXXX 8774230 TX Aransas Wildlife Refuge",
+      "lat": 28.2283,
+      "cell_km": 2.097,
+      "station_minus_grid_mean_m": -0.0756,
+      "station_minus_grid_sd_m": 0.005,
+      "vdatum_m": -0.0807,
+      "residual_m": 0.005
+    },
+    {
+      "station_id": "8773146",
+      "name": "XXXXX XXXXXX 8773146 TX Matagorda City",
+      "lat": 28.71,
+      "cell_km": 1.43,
+      "station_minus_grid_mean_m": -0.0247,
+      "station_minus_grid_sd_m": 0.0017,
+      "vdatum_m": -0.0238,
+      "residual_m": -0.0009
+    },
+    {
+      "station_id": "8762483",
+      "name": "XXXXX XXXXXX 8762483 LA I-10 BONNET CARRE FLOODWAY",
+      "lat": 30.0679,
+      "cell_km": 0.882,
+      "station_minus_grid_mean_m": 0.0043,
+      "station_minus_grid_sd_m": 0.0036,
+      "vdatum_m": 0.0079,
+      "residual_m": -0.0036
+    },
+    {
+      "station_id": "8735523",
+      "name": "XXXXX XXXXXX 8735523 AL East Fowl River Bridge",
+      "lat": 30.443701,
+      "cell_km": 2.535,
+      "station_minus_grid_mean_m": 0.1285,
+      "station_minus_grid_sd_m": 0.0144,
+      "vdatum_m": 0.1218,
+      "residual_m": 0.0067
+    }
+  ]
+}

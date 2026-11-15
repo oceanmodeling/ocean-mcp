@@ -1,0 +1,327 @@
+{
+  "code": {
+    "package": "stofs-mcp",
+    "version": "0.3.0",
+    "git_commit": "deccffa6de0c8119019551c31e033a65bde70283"
+  },
+  "archive_unchanged": true,
+  "boston_replay_matches_archived_mcp": true,
+  "boston_replay": {
+    "2d_global_forecast": {
+      "archived_server_commit": "31e7f6a71e6ea2468c963159982e257f53e763a4",
+      "series_identical": true,
+      "statistics_identical": true,
+      "peak_error_m_identical": true,
+      "datum_provenance": {
+        "datum": "LMSL",
+        "resolution": "documented_fallback",
+        "comparable": true,
+        "source": "NOAA documentation (STOFS_2D_GLOBAL V3.1.0: NOMADS STOFS-Global description (archived 2026-11-04): station and gridded output referenced to LMSL); file label zeta:standard_name=sea_surface_height_above_geoid names no specific datum",
+        "warning": null,
+        "documented_datum": "LMSL",
+        "product_version": "STOFS_2D_GLOBAL V3.1.0",
+        "attributes": {
+          "zeta:standard_name": "sea_surface_height_above_geoid",
+          "zeta:long_name": "water surface elevation above geoid"
+        }
+      },
+      "excluded_model_records": {
+        "masked_or_fill": 0,
+        "nonfinite": 0,
+        "sentinel": 0,
+        "implausible": 0
+      },
+      "statistics": {
+        "bias": -0.0005,
+        "rmse": 0.123,
+        "mae": 0.1,
+        "max_abs_error": 0.2664,
+        "peak_error": 0.2664,
+        "correlation": 0.9934,
+        "n": 480,
+        "n_excluded_nonfinite": 0
+      }
+    },
+    "2d_global_nowcast": {
+      "archived_server_commit": "31e7f6a71e6ea2468c963159982e257f53e763a4",
+      "series_identical": true,
+      "statistics_identical": true,
+      "peak_error_m_identical": true,
+      "datum_provenance": {
+        "datum": "LMSL",
+        "resolution": "documented_fallback",
+        "comparable": true,
+        "source": "NOAA documentation (STOFS_2D_GLOBAL V3.1.0: NOMADS STOFS-Global description (archived 2026-11-04): station and gridded output referenced to LMSL); file label zeta:standard_name=sea_surface_height_above_geoid names no specific datum",
+        "warning": null,
+        "documented_datum": "LMSL",
+        "product_version": "STOFS_2D_GLOBAL V3.1.0",
+        "attributes": {
+          "zeta:standard_name": "sea_surface_height_above_geoid",
+          "zeta:long_name": "water surface elevation above geoid"
+        }
+      },
+      "excluded_model_records": {
+        "masked_or_fill": 0,
+        "nonfinite": 0,
+        "sentinel": 0,
+        "implausible": 0
+      },
+      "statistics": {
+        "bias": -0.0182,
+        "rmse": 0.0238,
+        "mae": 0.0196,
+        "max_abs_error": 0.0574,
+        "peak_error": 0.0574,
+        "correlation": 0.9999,
+        "n": 60,
+        "n_excluded_nonfinite": 0
+      }
+    },
+    "3d_atlantic_forecast": {
+      "archived_server_commit": "31e7f6a71e6ea2468c963159982e257f53e763a4",
+      "series_identical": true,
+      "statistics_identical": true,
+      "peak_error_m_identical": true,
+      "datum_provenance": {
+        "datum": "LMSL",
+        "resolution": "file_metadata",
+        "comparable": true,
+        "source": "file metadata: zeta:standard_name=sea_surface_height_above_msl",
+        "warning": null,
+        "documented_datum": "LMSL",
+        "product_version": "stofs.v3.1.6",
+        "attributes": {
+          "zeta:standard_name": "sea_surface_height_above_msl",
+          "zeta:long_name": "water surface elevation above msl"
+        }
+      },
+      "excluded_model_records": {
+        "masked_or_fill": 0,
+        "nonfinite": 0,
+        "sentinel": 0,
+        "implausible": 0
+      },
+      "statistics": {
+        "bias": -0.143,
+        "rmse": 0.2456,
+        "mae": 0.2086,
+        "max_abs_error": 0.5351,
+        "peak_error": 0.5351,
+        "correlation": 0.9913,
+        "n": 480,
+        "n_excluded_nonfinite": 0
+      }
+    },
+    "3d_atlantic_nowcast": {
+      "archived_server_commit": "31e7f6a71e6ea2468c963159982e257f53e763a4",
+      "series_identical": true,
+      "statistics_identical": true,
+      "peak_error_m_identical": true,
+      "datum_provenance": {
+        "datum": "LMSL",
+        "resolution": "file_metadata",
+        "comparable": true,
+        "source": "file metadata: zeta:standard_name=sea_surface_height_above_msl",
+        "warning": null,
+        "documented_datum": "LMSL",
+        "product_version": "stofs.v3.1.6",
+        "attributes": {
+          "zeta:standard_name": "sea_surface_height_above_msl",
+          "zeta:long_name": "water surface elevation above msl"
+        }
+      },
+      "excluded_model_records": {
+        "masked_or_fill": 0,
+        "nonfinite": 0,
+        "sentinel": 0,
+        "implausible": 0
+      },
+      "statistics": {
+        "bias": -0.0295,
+        "rmse": 0.2252,
+        "mae": 0.2002,
+        "max_abs_error": 0.3976,
+        "peak_error": 0.3976,
+        "correlation": 0.9866,
+        "n": 240,
+        "n_excluded_nonfinite": 0
+      }
+    }
+  },
+  "sentinel_and_plausibility_checks": {
+    "max_water_level_2d_global": {
+      "top_10": [
+        [
+          "UJ852 SOUS00 SA852",
+          5.053
+        ],
+        [
+          "ZZZZZ SOUS45 ber0014 AK Naknek River Ent #13",
+          4.919
+        ],
+        [
+          "UH166 SOUS00 GL040 Broome Australia brom",
+          4.577
+        ],
+        [
+          "ZZZZZ SOUS45 9465374 AK Dillingham",
+          4.559
+        ],
+        [
+          "ZZZZZ SOUS45 9465261 AK Clarks Point Nushagak Bay",
+          4.39
+        ],
+        [
+          "ANTA2 SOUS45 9455920 AK Anchorage",
+          4.068
+        ],
+        [
+          "ZZZZZ SOUS45 ber0015 AK Egegik River Ent",
+          3.746
+        ],
+        [
+          "UJ803 SOUS00 SA803",
+          3.726
+        ],
+        [
+          "ZZZZZ SOUS45 9465056 AK Protection Point Nushagak",
+          3.696
+        ],
+        [
+          "NKTA2 SOUS45 9455760 AK Nikiski",
+          3.667
+        ]
+      ],
+      "largest_ranked_value_m": 5.053,
+      "excluded_values": {
+        "masked_or_fill": 4539,
+        "nonfinite": 0,
+        "sentinel": 162,
+        "implausible": 1860
+      },
+      "excluded_stations": [
+        {
+          "station": "UJ816 SOUS00 SA816",
+          "reasons": {
+            "implausible": 1860
+          },
+          "example_raw_value": 123.330143154
+        }
+      ]
+    },
+    "max_water_level_3d_atlantic": {
+      "top_10": [
+        [
+          "PSBM1 SOUS41 8410140 ME Eastport",
+          3.3
+        ],
+        [
+          "CFWM1 SOUS41 8411060 ME Cutler Farris Wharf",
+          2.756
+        ],
+        [
+          "ATGM1 SOUS41 8413320 ME Bar Harbor",
+          2.302
+        ],
+        [
+          "BHBM3 SOUS41 8443970 MA Boston",
+          2.067
+        ],
+        [
+          "CASM1 SOUS41 8418150 ME Portland",
+          2.037
+        ],
+        [
+          "WELM1 SOUS41 8419317 ME Wells",
+          2.024
+        ],
+        [
+          "FTPN3 SOUS41 8423898 NH Fort Point",
+          1.952
+        ],
+        [
+          "FPKG1 SOUS41 8670870 GA Fort Pulaski",
+          1.832
+        ],
+        [
+          "KBMG1 SOUS42 8679598 GA Kings Bay MSF Pier",
+          1.819
+        ],
+        [
+          "FRDF1 SOUS41 8720030 FL Fernandina Beach",
+          1.805
+        ]
+      ],
+      "largest_ranked_value_m": 3.3,
+      "excluded_values": {
+        "masked_or_fill": 0,
+        "nonfinite": 0,
+        "sentinel": 6000,
+        "implausible": 0
+      },
+      "excluded_stations": [
+        {
+          "station": "CHSV3 SOUS41 9751364 VI Christiansted Harbor, St C",
+          "reasons": {
+            "sentinel": 1200
+          },
+          "example_raw_value": 9999999.41071999
+        },
+        {
+          "station": "LTBV3 SOUS41 9751401 VI Lime Tree Bay",
+          "reasons": {
+            "sentinel": 1200
+          },
+          "example_raw_value": 9999999.443830013
+        },
+        {
+          "station": "LAMV3 SOUS41 9751381 VI Lameshur Bay, St John",
+          "reasons": {
+            "sentinel": 1200
+          },
+          "example_raw_value": 9999999.58197999
+        },
+        {
+          "station": "ESPP4 SOUS41 9752695 PR Esperanza, Vieques Island",
+          "reasons": {
+            "sentinel": 1200
+          },
+          "example_raw_value": 9999999.523169994
+        },
+        {
+          "station": "XXXXX XXXXXX 9752235 PR Culebra",
+          "reasons": {
+            "sentinel": 1200
+          },
+          "example_raw_value": 9999999.550009996
+        }
+      ]
+    },
+    "station_9751364": {
+      "station_tool": "No valid data for station 9751364 in this STOFS cycle: all 1200 records were excluded (1200 sentinel). 'sentinel' values are no-data codes (possibly shifted by a datum constant); 'implausible' values exceed 50 m.",
+      "compare_tool": "No usable STOFS values for station 9751364 in this cycle: all 1200 records were excluded (1200 sentinel). 'sentinel' values are no-data codes (possibly shifted by a datum constant); 'implausible' values exceed 50 m. Nothing was compared.",
+      "coops_requests_made_by_compare": 0
+    },
+    "station_9751401": {
+      "station_tool": "No valid data for station 9751401 in this STOFS cycle: all 1200 records were excluded (1200 sentinel). 'sentinel' values are no-data codes (possibly shifted by a datum constant); 'implausible' values exceed 50 m.",
+      "compare_tool": "No usable STOFS values for station 9751401 in this cycle: all 1200 records were excluded (1200 sentinel). 'sentinel' values are no-data codes (possibly shifted by a datum constant); 'implausible' values exceed 50 m. Nothing was compared.",
+      "coops_requests_made_by_compare": 0
+    },
+    "station_9751381": {
+      "station_tool": "No valid data for station 9751381 in this STOFS cycle: all 1200 records were excluded (1200 sentinel). 'sentinel' values are no-data codes (possibly shifted by a datum constant); 'implausible' values exceed 50 m.",
+      "compare_tool": "No usable STOFS values for station 9751381 in this cycle: all 1200 records were excluded (1200 sentinel). 'sentinel' values are no-data codes (possibly shifted by a datum constant); 'implausible' values exceed 50 m. Nothing was compared.",
+      "coops_requests_made_by_compare": 0
+    },
+    "station_9752695": {
+      "station_tool": "No valid data for station 9752695 in this STOFS cycle: all 1200 records were excluded (1200 sentinel). 'sentinel' values are no-data codes (possibly shifted by a datum constant); 'implausible' values exceed 50 m.",
+      "compare_tool": "No usable STOFS values for station 9752695 in this cycle: all 1200 records were excluded (1200 sentinel). 'sentinel' values are no-data codes (possibly shifted by a datum constant); 'implausible' values exceed 50 m. Nothing was compared.",
+      "coops_requests_made_by_compare": 0
+    },
+    "station_9752235": {
+      "station_tool": "No valid data for station 9752235 in this STOFS cycle: all 1200 records were excluded (1200 sentinel). 'sentinel' values are no-data codes (possibly shifted by a datum constant); 'implausible' values exceed 50 m.",
+      "compare_tool": "No usable STOFS values for station 9752235 in this cycle: all 1200 records were excluded (1200 sentinel). 'sentinel' values are no-data codes (possibly shifted by a datum constant); 'implausible' values exceed 50 m. Nothing was compared.",
+      "coops_requests_made_by_compare": 0
+    },
+    "point_tool_at_9751381": "The nearest STOFS station, LAMV3 SOUS41 9751381 VI Lameshur Bay, St John (0.0 km away), has no valid data in this cycle: all 1200 records were excluded (1200 sentinel). Try another nearby station with stofs_list_stations."
+  }
+}
