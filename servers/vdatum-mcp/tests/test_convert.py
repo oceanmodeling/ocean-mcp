@@ -132,16 +132,44 @@ class TestVdatumConvert:
 
     @pytest.mark.asyncio
     async def test_multiple_points_format(self, mock_ctx):
-        """Test that multiple points produce a table."""
+        """Multi-point input runs the conversion once and renders one table row
+        per point, with an out-of-domain (inf) result labelled as such.
+
+        Replaces a test that patched vdatum_convert itself and only asserted
+        callable(vdatum_convert), so the multi-point path never ran.
+        """
         mock_vdatum = MagicMock()
         mock_vdatum.convert.return_value = (
-            np.array([30.0, 26.0]),
-            np.array([-80.0, -75.0]),
-            np.array([0.85, 0.92]),
+            np.array([30.0, 26.0, 10.0]),
+            np.array([-80.0, -75.0, -40.0]),
+            np.array([0.85, 0.92, np.inf]),
         )
-        # The function imports vdatum internally, so we patch the import
-        with patch("vdatum_mcp.tools.convert.vdatum_convert"):
-            assert callable(vdatum_convert)
+        fake_mod = MagicMock()
+        fake_mod.vdatum = mock_vdatum
+        with patch.dict(
+            "sys.modules", {"vdatum_mcp._vendor.coastalmodeling_vdatum": fake_mod}
+        ):
+            result = await vdatum_convert(
+                mock_ctx,
+                datum_from="navd88",
+                datum_to="mllw",
+                lat="30, 26, 10",
+                lon="-80, -75, -40",
+                z="1.0, 2.0, 3.0",
+            )
+
+        mock_vdatum.convert.assert_called_once()
+        args = mock_vdatum.convert.call_args.args
+        assert args[:2] == ("navd88", "mllw")
+        assert args[2].tolist() == [30.0, 26.0, 10.0]
+        assert args[3].tolist() == [-80.0, -75.0, -40.0]
+        assert args[4].tolist() == [1.0, 2.0, 3.0]
+
+        assert "| Lat | Lon | Input (m) | Output (m) | Diff (m) |" in result
+        assert "| 30.0000 | -80.0000 | 1.0000 | 0.8500 | -0.1500 |" in result
+        assert "| 26.0000 | -75.0000 | 2.0000 | 0.9200 | -1.0800 |" in result
+        assert "| 10.0000 | -40.0000 | 3.0000 | outside domain | — |" in result
+        assert "**Output:**" not in result  # single-point layout not used
 
 
 class TestVdatumListDatums:
