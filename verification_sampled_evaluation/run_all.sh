@@ -56,6 +56,11 @@ A=(--models "$V/data/archive/models" --coops "$V/data/archive/coops" --meta "$V/
 "$R" -I "$V/reference/classify.py" "${A[@]}" --out "$V/reference/results/w24_8" --lead-end 24.8
 "$R" -I "$V/reference/classify.py" "${A[@]}" --out "$V/reference/results/w48" --lead-end 48
 "$R" -I "$V/reference/classify.py" "${A[@]}" --out "$V/reference/results/noanomaly_w49_7" --only-variant cwl.noanomaly
+# The uncompressed cases.jsonl are not committed; their gzip copies are. GNU gzip -n (no name,
+# no time) -6 reproduces the committed copies byte for byte; results/SHA256SUMS checks them.
+for d in w49_7 w24_8 w48 noanomaly_w49_7; do
+  gzip -n -6 -c "$V/reference/results/$d/cases.jsonl" > "$V/reference/results/$d/cases.jsonl.gz"
+done
 
 say "4. A1 datum consistency (offline VDatum)"
 mkdir -p "$V/results/a1"
@@ -73,6 +78,7 @@ fi
 
 say "7. Study 1 grading and tables"
 "$R" -I "$V/analysis/study1_outcomes.py"
+gzip -n -6 -c "$V/results/study1/outcomes.jsonl" > "$V/results/study1/outcomes.jsonl.gz"   # committed copy, as in step 3
 "$R" -I "$V/analysis/study1_report.py"
 
 say "8. Study 2, Study 3, human check"

@@ -65,4 +65,25 @@ with open(PKG / "results/a1/datum_consistency.csv", "w", newline="") as fh:
     w.writerows(A1["rows"])
 (PKG / "results/study2/tables.md").write_text("\n".join(out) + "\n")
 print("wrote results/study2/tables.md")
+
+
+# The 3D post-transition station table as markdown, from the CSVs that study2_run.py writes, with
+# each station's pre-transition bias where the station is in the pre-transition table.
+def num(s):
+    return None if s == "" else float(s)
+
+
+with open(PKG / "results/study2/station_table_3d_post.csv", newline="", encoding="utf-8") as fh:
+    post = list(csv.DictReader(fh))
+with open(PKG / "results/study2/station_table_3d_pre.csv", newline="", encoding="utf-8") as fh:
+    pre = {r["station_id"]: r for r in csv.DictReader(fh)}
+VALUES = ["bias_mean", "bias_sd", "model_mean", "obs_mean", "X", "O12", "O29", "S_seasonal"]
+table = md(["station", "name", "epoch", "boundary", "cycles", "bias mean (m)", "bias SD", "model mean", "obs mean",
+            "X = O12_pre+S", "O12 (brief)", "O29 (brief)", "S", "pre-transition bias (NAVD)"],
+           [[r["station_id"], r["name"], r["epoch_class"].split("_")[0], "yes" if r["boundary_station"] == "True" else "",
+             r["n_cycles"], *(f(num(r[k])) for k in VALUES),
+             f(num(pre[r["station_id"]]["bias_mean"])) if r["station_id"] in pre else "—"] for r in post]).split("\n")
+table[1] = "|---|---|---|---|" + "---:|" * 10   # text columns left, numbers right
+(PKG / "results/study2/station_table_3d_post.md").write_text("\n".join(table) + "\n", encoding="utf-8")
+print("wrote results/study2/station_table_3d_post.md")
 sys.exit(0)
