@@ -1,4 +1,4 @@
-"""Tools: rtofs_get_transect, rtofs_compare_with_observations."""
+"""Tools: rtofs_get_transect, rtofs_compare_forecast_times."""
 
 from __future__ import annotations
 
@@ -58,7 +58,8 @@ async def rtofs_get_transect(
         lat_end: Ending latitude.
         lon_end: Ending longitude.
         variable: One of: temperature, salinity, u, v. Default: 'temperature'.
-        time: Time in ISO format. Default: latest ('present').
+        time: Time in ISO format; THREDDS returns the nearest time step.
+              Default: the step nearest the current time ('present').
         n_points: Number of profile points along the transect (2–20). Default: 10.
         response_format: 'markdown' (default) or 'json'.
     """
@@ -206,7 +207,7 @@ async def rtofs_get_transect(
         openWorldHint=True,
     )
 )
-async def rtofs_compare_with_observations(
+async def rtofs_compare_forecast_times(
     ctx: Context,
     latitude: float,
     longitude: float,
@@ -214,10 +215,13 @@ async def rtofs_compare_with_observations(
     time: str | None = None,
     response_format: Literal["markdown", "json"] = "markdown",
 ) -> str:
-    """Compare RTOFS values at the same location over the 24 hours before a time.
+    """Compare RTOFS values at two forecast times at one location; no observations are involved.
 
-    Fetches the 24 h window ending at the reference time and reports the
-    value at its start, middle and end, plus the change across the window.
+    The two times are the first and last valid time steps of the 24 h window
+    that ends at the reference time. The tool reports the value at each, the
+    value at the middle step, and the change from the first to the last.
+    All values are RTOFS model output; to compare with measurements, fetch
+    observations from another source.
 
     Args:
         latitude: Latitude in decimal degrees.

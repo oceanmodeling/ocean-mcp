@@ -314,7 +314,7 @@ class TestToolRegistration:
     """Verify all 8 tools are registered on the MCP server."""
 
     def test_all_tools_registered(self):
-        """All 8 RTOFS tools should be registered."""
+        """Exactly the 8 RTOFS tools are registered, no more and no fewer."""
         from rtofs_mcp.server import mcp
 
         tool_names = {t.name for t in mcp._tool_manager.list_tools()}
@@ -326,10 +326,25 @@ class TestToolRegistration:
             "rtofs_get_profile_forecast",
             "rtofs_get_area_forecast",
             "rtofs_get_transect",
-            "rtofs_compare_with_observations",
+            "rtofs_compare_forecast_times",
         }
-        for name in expected:
-            assert name in tool_names, f"Tool '{name}' not registered"
+        assert tool_names == expected
+
+    def test_old_compare_name_not_registered(self):
+        """The pre-0.1.4 name rtofs_compare_with_observations is gone, not aliased."""
+        from rtofs_mcp.server import mcp
+
+        tool_names = {t.name for t in mcp._tool_manager.list_tools()}
+        assert "rtofs_compare_with_observations" not in tool_names
+
+    def test_compare_description_says_no_observations(self):
+        """The compare tool's description opens by saying it uses no observations."""
+        from rtofs_mcp.server import mcp
+
+        tools = {t.name: t for t in mcp._tool_manager.list_tools()}
+        first_line = tools["rtofs_compare_forecast_times"].description.splitlines()[0]
+        assert "two forecast times at one location" in first_line
+        assert "no observations" in first_line
 
 
 def test_cap_series_json_caps_data():
@@ -385,10 +400,10 @@ class TestToolTimeWindows:
     @pytest.mark.asyncio
     @respx.mock
     async def test_compare_fetches_24h_before_present(self):
-        """rtofs_compare_with_observations asks only for the 24 h ending now."""
+        """rtofs_compare_forecast_times asks only for the 24 h ending now."""
         import json
 
-        from rtofs_mcp.tools.analysis import rtofs_compare_with_observations
+        from rtofs_mcp.tools.analysis import rtofs_compare_forecast_times
 
         csv_text = (
             "time,latitude,longitude,vertCoord,water_temp\n"
@@ -400,7 +415,7 @@ class TestToolTimeWindows:
         route = respx.get(url).mock(return_value=httpx.Response(200, text=csv_text))
         client = RTOFSClient()
         try:
-            out = await rtofs_compare_with_observations(
+            out = await rtofs_compare_forecast_times(
                 _mock_ctx(client),
                 latitude=35.0,
                 longitude=-65.0,
@@ -422,14 +437,14 @@ class TestToolTimeWindows:
     @respx.mock
     async def test_compare_window_ends_at_given_time(self):
         """A reference time becomes the end of the 24 h window."""
-        from rtofs_mcp.tools.analysis import rtofs_compare_with_observations
+        from rtofs_mcp.tools.analysis import rtofs_compare_forecast_times
 
         fixture_text = FIXTURES_DIR.joinpath("sst_timeseries.csv").read_text()
         url = f"{THREDDS_BASE}/ncss/{DATASETS['sst']['path']}"
         route = respx.get(url).mock(return_value=httpx.Response(200, text=fixture_text))
         client = RTOFSClient()
         try:
-            out = await rtofs_compare_with_observations(
+            out = await rtofs_compare_forecast_times(
                 _mock_ctx(client),
                 latitude=35.0,
                 longitude=-65.0,
@@ -441,3 +456,255 @@ class TestToolTimeWindows:
         assert params["time_end"] == "2026-10-12T00:00:00Z"
         assert params["time_duration"] == "PT24H"
         assert "24 h window" in out
+
+
+# ---------------------------------------------------------------------------
+# rtofs_get_latest_time: dataset time coordinate (saved THREDDS responses,
+# see tests/fixtures/thredds_time/SOURCE.md for URLs and checksums)
+# ---------------------------------------------------------------------------
+
+TIME_FIXTURES = FIXTURES_DIR / "thredds_time"
+
+
+def _mock_time_coordinate(prefix: str, dataset_key: str, ascii_text: str | None = None):
+    """Serve the saved DAS and OPeNDAP ASCII time responses for one dataset."""
+    base = f"{THREDDS_BASE}/dodsC/{DATASETS[dataset_key]['path']}"
+    das_text = (TIME_FIXTURES / f"{prefix}.das").read_text()
+    if ascii_text is None:
+        ascii_text = (TIME_FIXTURES / f"{prefix}_time.ascii").read_text()
+    das = respx.get(f"{base}.das").mock(return_value=httpx.Response(200, text=das_text))
+    asc = respx.get(f"{base}.ascii?time,time_run").mock(
+        return_value=httpx.Response(200, text=ascii_text)
+    )
+    return das, asc
+
+
+class TestTimeCoordinateParsing:
+    """Parse the saved THREDDS DAS and OPeNDAP ASCII responses."""
+
+    def test_das_time_attributes(self):
+        """The DAS gives the units and calendar of time and of time_run."""
+        from rtofs_mcp.client import _parse_das_attributes
+
+        das = (TIME_FIXTURES / "ssh_best.das").read_text()
+        time_attrs = _parse_das_attributes(das, "time")
+        assert time_attrs["units"] == "hours since 2026-10-30 12:00:00.000 UTC"
+        assert time_attrs["calendar"] == "proleptic_gregorian"
+        run_attrs = _parse_das_attributes(das, "time_run")
+        assert run_attrs["standard_name"] == "forecast_reference_time"
+        assert _parse_das_attributes(das, "no_such_variable") == {}
+
+    def test_time_origin_attribute_is_not_the_axis_start(self):
+        """The time_origin attribute 0.1.3 reported as 'first' is not the axis start."""
+        from rtofs_mcp.client import _parse_das_attributes
+
+        das = (TIME_FIXTURES / "ssh_best.das").read_text()
+        assert _parse_das_attributes(das, "tau")["time_origin"] == "2026-11-06 12:00:00"
+        assert "2026-10-30 12:00" in _parse_das_attributes(das, "time")["units"]
+
+    def test_ascii_arrays(self):
+        """Both coordinates are read, each with its declared number of values."""
+        from rtofs_mcp.client import _parse_opendap_ascii
+
+        arrays = _parse_opendap_ascii(
+            (TIME_FIXTURES / "ssh_best_time.ascii").read_text()
+        )
+        assert len(arrays["time"]) == 385
+        assert len(arrays["time_run"]) == 385
+        assert arrays["time"][0] == 0.0
+        assert arrays["time"][-1] == 384.0
+        assert max(arrays["time_run"]) == 192.0
+
+    def test_ascii_count_mismatch_raises(self):
+        """A response with fewer values than declared is rejected, not half-read."""
+        from rtofs_mcp.client import RTOFSAPIError, _parse_opendap_ascii
+
+        text = (TIME_FIXTURES / "t3z_best_time.ascii").read_text()
+        text = text.replace("time[129]\n", "time[130]\n", 1)
+        with pytest.raises(RTOFSAPIError, match="declares 130 values but has 129"):
+            _parse_opendap_ascii(text)
+
+    def test_ascii_without_separator_raises(self):
+        """An HTML error page instead of OPeNDAP ASCII is rejected."""
+        from rtofs_mcp.client import RTOFSAPIError, _parse_opendap_ascii
+
+        with pytest.raises(RTOFSAPIError, match="unexpected OPeNDAP ASCII"):
+            _parse_opendap_ascii("<html><body>Error</body></html>")
+
+    def test_cf_units_both_spellings(self):
+        """Both unit spellings THREDDS serves decode to the same UTC origin."""
+        from datetime import datetime, timezone
+
+        from rtofs_mcp.client import _cf_time_to_datetime
+
+        origin = datetime(2026, 10, 30, 12, tzinfo=timezone.utc)
+        assert (
+            _cf_time_to_datetime(
+                0.0, "hours since 2026-10-30 12:00:00.000 UTC", "proleptic_gregorian"
+            )
+            == origin
+        )
+        assert (
+            _cf_time_to_datetime(0.0, "hours since 2026-10-30T12:00:00Z", None)
+            == origin
+        )
+        assert _cf_time_to_datetime(
+            384.0, "hours since 2026-10-30 12:00:00.000 UTC", None
+        ) == datetime(2026, 11, 15, 12, tzinfo=timezone.utc)
+        assert _cf_time_to_datetime(1.5, "days since 2026-01-01", None) == datetime(
+            2026, 1, 2, 12, tzinfo=timezone.utc
+        )
+
+    def test_cf_units_unsupported_raise(self):
+        """Units, offsets or calendars the converter cannot honour raise instead of guessing."""
+        from rtofs_mcp.client import RTOFSAPIError, _cf_time_to_datetime
+
+        with pytest.raises(RTOFSAPIError, match="units"):
+            _cf_time_to_datetime(0.0, "months since 2026-01-01", None)
+        with pytest.raises(RTOFSAPIError, match="units"):
+            _cf_time_to_datetime(0.0, "hours since 2026-01-01 00:00 +05:00", None)
+        with pytest.raises(RTOFSAPIError, match="calendar"):
+            _cf_time_to_datetime(0.0, "hours since 2026-01-01", "noleap")
+
+
+class TestDatasetTimeRange:
+    """client.get_dataset_time_range and rtofs_get_latest_time on saved responses."""
+
+    @pytest.mark.asyncio
+    @respx.mock
+    async def test_ssh_time_range(self):
+        """Hourly SSH: first and last from the time axis, 385 steps, newest run."""
+        das, asc = _mock_time_coordinate("ssh_best", "ssh")
+        client = RTOFSClient(backoff_factor=0)
+        try:
+            r = await client.get_dataset_time_range("ssh")
+        finally:
+            await client.close()
+        assert r["first"] == "2026-10-30T12:00:00Z"
+        assert r["last"] == "2026-11-15T12:00:00Z"
+        assert r["n_time_steps"] == 385
+        assert r["time_step_hours"] == 1.0
+        assert r["latest_run"] == "2026-11-07T12:00:00Z"
+        assert r["thredds_path"] == DATASETS["ssh"]["path"]
+        assert das.call_count == 1
+        assert asc.call_count == 1
+
+    @pytest.mark.asyncio
+    @respx.mock
+    async def test_sst_time_range(self):
+        """3-hourly temperature has its own axis: 129 steps, 3 h apart."""
+        _mock_time_coordinate("t3z_best", "sst")
+        client = RTOFSClient(backoff_factor=0)
+        try:
+            r = await client.get_dataset_time_range("sst")
+        finally:
+            await client.close()
+        assert r["first"] == "2026-10-30T12:00:00Z"
+        assert r["last"] == "2026-11-15T12:00:00Z"
+        assert r["n_time_steps"] == 129
+        assert r["time_step_hours"] == 3.0
+        assert r["latest_run"] == "2026-11-08T12:00:00Z"
+
+    @pytest.mark.asyncio
+    @respx.mock
+    async def test_nan_values_are_skipped(self):
+        """NaN entries (the coordinate's missing_value) are not counted as times."""
+        text = (TIME_FIXTURES / "ssh_best_time.ascii").read_text()
+        text = text.replace("time[385]\n0.0, ", "time[385]\nNaN, ", 1)
+        _mock_time_coordinate("ssh_best", "ssh", ascii_text=text)
+        client = RTOFSClient(backoff_factor=0)
+        try:
+            r = await client.get_dataset_time_range("ssh")
+        finally:
+            await client.close()
+        assert r["first"] == "2026-10-30T13:00:00Z"
+        assert r["n_time_steps"] == 384
+
+    @pytest.mark.asyncio
+    @respx.mock
+    async def test_tool_json_reports_axis_not_present_step(self):
+        """JSON names the dataset and reports the axis ends; no NCSS 'present' query."""
+        import json
+
+        from rtofs_mcp.tools.discovery import rtofs_get_latest_time
+
+        _mock_time_coordinate("ssh_best", "ssh")
+        ncss = respx.get(f"{THREDDS_BASE}/ncss/{DATASETS['ssh']['path']}").mock(
+            return_value=httpx.Response(200, text="")
+        )
+        client = RTOFSClient(backoff_factor=0)
+        try:
+            out = await rtofs_get_latest_time(
+                _mock_ctx(client), dataset="ssh", response_format="json"
+            )
+        finally:
+            await client.close()
+        r = json.loads(out)
+        assert r["dataset"] == "ssh"
+        assert r["thredds_dataset"] == DATASETS["ssh"]["path"]
+        assert r["variables"] == ["surf_el"]
+        assert r["first_time"] == "2026-10-30T12:00:00Z"
+        assert r["last_time"] == "2026-11-15T12:00:00Z"
+        assert r["latest_run"] == "2026-11-07T12:00:00Z"
+        assert r["timezone"] == "UTC"
+        assert r["source_url"].endswith("ssh_best.ncd.ascii?time,time_run")
+        assert "retrieved_at" in r
+        assert not ncss.called
+
+    @pytest.mark.asyncio
+    @respx.mock
+    async def test_tool_markdown(self):
+        """Markdown shows the THREDDS path, both ends, the steps and the newest run."""
+        from rtofs_mcp.tools.discovery import rtofs_get_latest_time
+
+        _mock_time_coordinate("t3z_best", "sst")
+        client = RTOFSClient(backoff_factor=0)
+        try:
+            out = await rtofs_get_latest_time(_mock_ctx(client), dataset="sst")
+        finally:
+            await client.close()
+        assert f"`{DATASETS['sst']['path']}`" in out
+        assert "**First available**: 2026-10-30T12:00:00Z" in out
+        assert "**Last available**: 2026-11-15T12:00:00Z" in out
+        assert "**Time steps**: 129, every 3 h" in out
+        assert "**Newest model run**: 2026-11-08T12:00:00Z" in out
+
+    @pytest.mark.asyncio
+    @respx.mock
+    async def test_tool_http_error_names_dataset(self):
+        """A THREDDS failure is an 'RTOFS Error' that names the dataset path."""
+        from rtofs_mcp.tools.discovery import rtofs_get_latest_time
+
+        base = f"{THREDDS_BASE}/dodsC/{DATASETS['ssh']['path']}"
+        respx.get(f"{base}.das").mock(return_value=httpx.Response(503))
+        client = RTOFSClient(backoff_factor=0)
+        try:
+            out = await rtofs_get_latest_time(_mock_ctx(client), dataset="ssh")
+        finally:
+            await client.close()
+        assert out.startswith("RTOFS Error: THREDDS OPeNDAP request failed (HTTP 503)")
+        assert DATASETS["ssh"]["path"] in out
+
+
+class TestDefaultTimeDocstrings:
+    """The single-time tools describe their default time as THREDDS applies it."""
+
+    def test_default_is_nearest_current_time(self):
+        """No tool says its default time is 'latest'; three say 'nearest the current time'."""
+        from rtofs_mcp.server import mcp
+
+        descriptions = {
+            t.name: " ".join(t.description.split())
+            for t in mcp._tool_manager.list_tools()
+        }
+        for name, text in descriptions.items():
+            assert "Default: latest" not in text, name
+        for name in (
+            "rtofs_get_profile_forecast",
+            "rtofs_get_area_forecast",
+            "rtofs_get_transect",
+        ):
+            assert (
+                "Default: the step nearest the current time ('present')"
+                in descriptions[name]
+            )

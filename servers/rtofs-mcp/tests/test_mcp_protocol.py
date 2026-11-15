@@ -19,8 +19,8 @@ async def test_mcp_server_starts_and_lists_tools():
             tool_names = {t.name for t in tools_result.tools}
 
             # Verify expected tool count
-            assert len(tool_names) >= 8, (
-                f"Expected at least 8 tools, got {len(tool_names)}: {tool_names}"
+            assert len(tool_names) == 8, (
+                f"Expected 8 tools, got {len(tool_names)}: {tool_names}"
             )
 
             # Verify key tools are present
@@ -32,7 +32,10 @@ async def test_mcp_server_starts_and_lists_tools():
                 "rtofs_get_profile_forecast",
                 "rtofs_get_area_forecast",
                 "rtofs_get_transect",
-                "rtofs_compare_with_observations",
+                "rtofs_compare_forecast_times",
             ]
             for name in expected:
                 assert name in tool_names, f"Expected tool '{name}' not found"
+
+            # The 0.1.3 name was removed, not kept as an alias
+            assert "rtofs_compare_with_observations" not in tool_names

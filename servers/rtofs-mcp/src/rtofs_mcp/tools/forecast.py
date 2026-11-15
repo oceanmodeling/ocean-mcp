@@ -229,7 +229,9 @@ async def rtofs_get_profile_forecast(
         latitude: Latitude in decimal degrees (-80 to 90).
         longitude: Longitude in decimal degrees (-180 to 180).
         variable: One of: temperature, salinity, u, v. Default: 'temperature'.
-        time: Time in ISO format (e.g., '2026-03-03T12:00:00Z'). Default: latest.
+        time: Time in ISO format (e.g., '2026-03-03T12:00:00Z'); THREDDS returns
+              the nearest time step. Default: the step nearest the current
+              time ('present').
         response_format: 'markdown' (default) or 'json'.
     """
     try:
@@ -361,7 +363,8 @@ async def rtofs_get_area_forecast(
         lon_start: Western longitude bound.
         lon_end: Eastern longitude bound.
         variable: One of: sst, sss, u_current, v_current, ssh. Default: 'sst'.
-        time: Time in ISO format. Default: latest ('present').
+        time: Time in ISO format; THREDDS returns the nearest time step.
+              Default: the step nearest the current time ('present').
         n_points: Number of grid points per axis (2–15). Default: 10. Total = n^2.
         response_format: 'markdown' (default) or 'json'.
     """

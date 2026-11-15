@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Literal
 import json
+from datetime import datetime, timezone
 
 from mcp.server.fastmcp import Context
 from mcp.types import ToolAnnotations
@@ -169,10 +170,14 @@ async def rtofs_get_latest_time(
     dataset: str = "ssh",
     response_format: Literal["markdown", "json"] = "markdown",
 ) -> str:
-    """Query the latest available forecast time from HYCOM THREDDS.
+    """Get the first and last available times of one RTOFS dataset on HYCOM THREDDS.
 
-    Useful for determining what forecast data is currently available before
-    making data queries.
+    Reads the dataset's time coordinate over OPeNDAP and reports its first
+    and last values (UTC), the number of time steps and their spacing, and
+    the newest model run in the dataset. The response names the dataset: its
+    key, description and THREDDS path. Times after the current time are
+    forecasts. Each dataset has its own time axis (hourly ssh; 3-hourly sst,
+    sss and currents), so check the one you will query.
 
     Args:
         dataset: One of 'ssh', 'sst', 'sss', 'currents'. Default: 'ssh'.
@@ -185,30 +190,47 @@ async def rtofs_get_latest_time(
 
         client = _get_client(ctx)
         time_range = await client.get_dataset_time_range(dataset)
-
-        if time_range is None:
-            return (
-                f"Could not retrieve time range for dataset '{dataset}'. "
-                "HYCOM THREDDS may be temporarily unavailable."
-            )
+        ds = DATASETS[dataset]
+        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        step = time_range["time_step_hours"]
 
         if response_format == "json":
             return json.dumps(
                 {
                     "dataset": dataset,
+                    "description": ds["description"],
+                    "thredds_dataset": time_range["thredds_path"],
+                    "variables": list(ds["variables"]),
                     "first_time": time_range["first"],
                     "last_time": time_range["last"],
+                    "n_time_steps": time_range["n_time_steps"],
+                    "time_step_hours": step,
+                    "latest_run": time_range["latest_run"],
+                    "timezone": "UTC",
+                    "time_units": time_range["time_units"],
+                    "source": "HYCOM THREDDS OPeNDAP, dataset time coordinate",
+                    "source_url": time_range["source_url"],
+                    "retrieved_at": retrieved_at,
                 },
                 indent=2,
             )
 
+        spacing = f"every {step:g} h" if step is not None else "uneven spacing"
         lines = [
             f"## RTOFS Time Range — {dataset}",
-            f"**Dataset**: {DATASETS[dataset]['description']}",
+            f"**Dataset**: {dataset} — {ds['description']}",
+            f"**THREDDS dataset**: `{time_range['thredds_path']}` "
+            f"(variables: {', '.join(ds['variables'])})",
             f"**First available**: {time_range['first']}",
             f"**Last available**: {time_range['last']}",
+            f"**Time steps**: {time_range['n_time_steps']}, {spacing}",
+        ]
+        if time_range["latest_run"]:
+            lines.append(f"**Newest model run**: {time_range['latest_run']}")
+        lines += [
             "",
-            "*Source: HYCOM THREDDS*",
+            "*Times are UTC, read from the dataset's time coordinate "
+            f"({time_range['source_url']}). Retrieved {retrieved_at}.*",
         ]
         return "\n".join(lines)
 
