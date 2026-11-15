@@ -423,6 +423,145 @@ class TestWw3GetBuoyHistory:
         assert "404" in result or "not found" in result.lower()
 
 
+NDBC_HISTORY_URL = "https://www.ndbc.noaa.gov/view_text_file.php"
+
+
+def mock_history(fixture: str) -> None:
+    """Serve a real-file excerpt (bytes as stored, CRLF kept) for the history URL."""
+    respx.get(url__startswith=NDBC_HISTORY_URL).mock(
+        return_value=httpx.Response(200, content=(FIXTURES_DIR / fixture).read_bytes())
+    )
+
+
+class TestWw3GetBuoyHistoryMissingCodesAndSummary:
+    """ww3_get_buoy_history on real 41009 excerpts (fixtures/ndbc_history_SOURCES.md)."""
+
+    @respx.mock
+    async def test_summary_covers_every_row_not_the_returned_rows(self, client):
+        """The WVHT summary is over all valid rows, even when few rows are returned."""
+        from ww3_mcp.tools.buoy import ww3_get_buoy_history
+
+        mock_history("ndbc_history_41009h2024_excerpt.txt")
+        result = await ww3_get_buoy_history(
+            make_ctx(client), "41009", 2024, max_records=3, response_format="json"
+        )
+        data = json.loads(result)
+        assert [o["timestamp"] for o in data["observations"]] == [
+            "2024-12-31 23:30",
+            "2024-12-31 23:40",
+            "2024-12-31 23:50",
+        ]
+        returned_max = max(
+            o["WVHT"] for o in data["observations"] if o["WVHT"] is not None
+        )
+        assert returned_max == 0.68
+        summary = data["summary"]
+        assert summary["max"] == 6.32
+        assert summary["max_time"] == "2024-10-10 08:10"
+        assert summary["valid"] == 8
+        assert summary["missing"] == 8
+        assert summary["units"] == "m"
+        assert summary["covers"] == "all 16 rows of the file"
+        assert data["rows_in_file"] == 16
+
+    @respx.mock
+    async def test_record_cap_and_truncation_envelope(self, client):
+        """At most max_records rows come back, with truncated/returned/total/hint."""
+        from ww3_mcp.tools.buoy import ww3_get_buoy_history
+
+        mock_history("ndbc_history_41009h2024_excerpt.txt")
+        ctx = make_ctx(client)
+        capped = json.loads(
+            await ww3_get_buoy_history(
+                ctx, "41009", 2024, max_records=3, response_format="json"
+            )
+        )
+        assert len(capped["observations"]) == capped["returned"] == 3
+        assert capped["records"] == 3
+        assert capped["truncated"] is True
+        assert capped["total"] == 16
+        assert "hint" in capped
+        assert "most recent 3 of 16 rows" in capped["row_selection"]
+
+        full = json.loads(
+            await ww3_get_buoy_history(
+                ctx, "41009", 2024, max_records=100, response_format="json"
+            )
+        )
+        assert full["truncated"] is False
+        assert full["returned"] == full["total"] == len(full["observations"]) == 16
+        assert "hint" not in full
+
+    @respx.mock
+    async def test_missing_codes_are_null_and_counted(self, client):
+        """No 9-filled code reaches the caller as a value; each one is counted."""
+        from ww3_mcp.tools.buoy import ww3_get_buoy_history
+
+        mock_history("ndbc_history_41009h2024_excerpt.txt")
+        data = json.loads(
+            await ww3_get_buoy_history(
+                make_ctx(client), "41009", 2024, max_records=100, response_format="json"
+            )
+        )
+        obs = data["observations"]
+        assert all(o["WVHT"] != 99.0 for o in obs)
+        assert all(o["PRES"] != 9999.0 for o in obs)
+        assert sum(o["WVHT"] is None for o in obs) == 8
+        mv = data["missing_values"]
+        assert mv["excluded_counts"]["WVHT"] == 8
+        assert mv["codes"]["WVHT"] == "99.00"
+        assert mv["documentation"] == "https://www.ndbc.noaa.gov/faq/measdes.shtml"
+        assert data["units"]["WVHT"] == "m"
+        assert data["timezone"] == "UTC"
+        assert "retrieved_at" in data
+
+    @respx.mock
+    async def test_markdown_summary_over_whole_file(self, client):
+        """Markdown states the whole-file maximum and which rows the table shows."""
+        from ww3_mcp.tools.buoy import ww3_get_buoy_history
+
+        mock_history("ndbc_history_41009h2024_excerpt.txt")
+        result = await ww3_get_buoy_history(
+            make_ctx(client), "41009", 2024, max_records=3
+        )
+        assert "max 6.32 m at 2024-10-10 08:10 UTC" in result
+        assert "8 of 16 rows valid" in result
+        assert "WVHT 8" in result  # missing values excluded, with counts
+        assert "Showing the most recent 3 of 16 rows" in result
+        assert "| 99.0 |" not in result
+
+    @respx.mock
+    async def test_older_file_format_through_the_tool(self, client):
+        """A 1998 file (YY, WD/BAR, no minutes, CRLF) gives real timestamps."""
+        from ww3_mcp.tools.buoy import ww3_get_buoy_history
+
+        mock_history("ndbc_history_41009h1998_excerpt.txt")
+        data = json.loads(
+            await ww3_get_buoy_history(
+                make_ctx(client), "41009", 1998, max_records=100, response_format="json"
+            )
+        )
+        assert data["observations"][0]["timestamp"] == "1998-01-01 00:00"
+        assert data["file_format"]["two_digit_year"] is True
+        assert data["file_format"]["renamed"] == {"WD": "WDIR", "BAR": "PRES"}
+        assert "no minute column" in data["time_note"]
+        assert data["summary"]["max"] == 5.05
+        assert data["summary"]["max_time"] == "1998-02-03 10:00"
+
+    @respx.mock
+    async def test_404_names_the_missing_annual_file(self, client):
+        """HTTP 404 explains that the annual file does not exist (yet)."""
+        from ww3_mcp.tools.buoy import ww3_get_buoy_history
+
+        respx.get(url__startswith=NDBC_HISTORY_URL).mock(
+            return_value=httpx.Response(404, text="Unable to access data file")
+        )
+        result = await ww3_get_buoy_history(make_ctx(client), "41009", 2026)
+        assert "No NDBC historical annual file" in result
+        assert "41009h2026.txt.gz" in result
+        assert "404" in result
+
+
 # ============================================================================
 # Test: client methods
 # ============================================================================
@@ -749,3 +888,159 @@ class TestRegionalSummarySeam:
         assert calls == [(330.0, 360.0), (0.0, 20.0)]
         # Union of both halves (3 + 3), not silently empty/errored.
         assert data["statistics"]["swh"]["n_points"] == 6
+
+
+# ============================================================================
+# Realtime window by timestamp — real excerpts, see
+# fixtures/ndbc_realtime_SOURCES.md for the source files and their SHA-256
+# ============================================================================
+
+NDBC_REALTIME_URL = "https://www.ndbc.noaa.gov/data/realtime2/"
+
+
+def mock_realtime(fixture: str) -> None:
+    """Serve a real realtime2 excerpt for any realtime2 URL."""
+    respx.get(url__startswith=NDBC_REALTIME_URL).mock(
+        return_value=httpx.Response(200, content=(FIXTURES_DIR / fixture).read_bytes())
+    )
+
+
+class TestWw3GetBuoyObservationsWindow:
+    """ww3_get_buoy_observations returns the requested hours, not a row count."""
+
+    @respx.mock
+    async def test_window_covers_the_requested_hours(self, client):
+        """41009 (10-min rows): hours=3 returns the 19 rows 23:00-02:00."""
+        from ww3_mcp.tools.buoy import ww3_get_buoy_observations
+
+        mock_realtime("ndbc_realtime_41009_excerpt.txt")
+        data = json.loads(
+            await ww3_get_buoy_observations(
+                make_ctx(client), "41009", hours=3, response_format="json"
+            )
+        )
+        obs = data["observations"]
+        assert len(obs) == data["returned"] == data["total"] == data["records"] == 19
+        assert obs[0]["timestamp"] == "2026-11-09 02:00"
+        assert obs[-1]["timestamp"] == "2026-11-08 23:00"
+        assert data["window"]["window_start"] == "2026-11-08 23:00"
+        assert data["window"]["typical_interval_minutes"] == 10
+        assert data["truncated"] is False
+        assert data["timezone"] == "UTC"
+
+    @respx.mock
+    async def test_station_with_another_reporting_interval(self, client):
+        """44025 (30-min rows with gaps): hours=6 returns the 12 rows in 6 h."""
+        from ww3_mcp.tools.buoy import ww3_get_buoy_observations
+
+        mock_realtime("ndbc_realtime_44025_excerpt.txt")
+        data = json.loads(
+            await ww3_get_buoy_observations(
+                make_ctx(client), "44025", hours=6, response_format="json"
+            )
+        )
+        assert data["total"] == 12
+        assert data["observations"][-1]["timestamp"] == "2026-11-08 19:40"
+        assert data["window"]["typical_interval_minutes"] == 30
+
+    @respx.mock
+    async def test_truncation_envelope_keeps_the_most_recent_rows(self, client):
+        """max_records caps the JSON rows, newest kept, with the envelope."""
+        from ww3_mcp.tools.buoy import ww3_get_buoy_observations
+
+        mock_realtime("ndbc_realtime_41009_excerpt.txt")
+        data = json.loads(
+            await ww3_get_buoy_observations(
+                make_ctx(client),
+                "41009",
+                hours=6,
+                response_format="json",
+                max_records=5,
+            )
+        )
+        assert data["truncated"] is True
+        assert data["returned"] == len(data["observations"]) == 5
+        assert data["total"] == 37  # 20:00 to 02:00 at 10 min, both ends included
+        assert "hint" in data
+        assert [o["timestamp"][-5:] for o in data["observations"]] == [
+            "02:00", "01:50", "01:40", "01:30", "01:20",
+        ]  # fmt: skip
+
+    @respx.mock
+    async def test_clamp_and_short_file_are_reported(self, client):
+        """A clamped hours value and a file shorter than the window are noted."""
+        from ww3_mcp.tools.buoy import ww3_get_buoy_observations
+
+        mock_realtime("ndbc_realtime_41009_excerpt.txt")
+        data = json.loads(
+            await ww3_get_buoy_observations(
+                make_ctx(client), "41009", hours=5000, response_format="json"
+            )
+        )
+        notes = " ".join(data["notes"])
+        assert "clamped to 1080" in notes
+        assert "reaches back only to 2026-11-08 19:10" in notes
+        assert data["window"]["covers_full_window"] is False
+
+    @respx.mock
+    async def test_markdown_states_the_window(self, client):
+        """Markdown names the window, its rows and the interval found."""
+        from ww3_mcp.tools.buoy import ww3_get_buoy_observations
+
+        mock_realtime("ndbc_realtime_41009_excerpt.txt")
+        result = await ww3_get_buoy_observations(make_ctx(client), "41009", hours=3)
+        assert (
+            "**Window**: 3 h before the latest row "
+            "(2026-11-08 23:00 to 2026-11-09 02:00 UTC): 19 rows, typically every 10 min"
+        ) in result
+        assert "rows valid" in result
+
+
+class TestCompareForecastWithBuoyWindow:
+    """ww3_compare_forecast_with_buoy gets the full observation window."""
+
+    @respx.mock
+    async def test_comparison_uses_the_full_observation_window(
+        self, client, monkeypatch
+    ):
+        """hours_to_compare=6 pairs 21:00 and 00:00; the old row rule paired none."""
+        from datetime import datetime, timedelta
+
+        from ww3_mcp.tools.forecast import ww3_compare_forecast_with_buoy
+
+        mock_realtime("ndbc_realtime_41009_excerpt.txt")
+
+        async def fake_cycle(grid, num_days=2):
+            return ("20261108", "18")
+
+        async def fake_download(grid, date, cycle, fhour, **kwargs):
+            return Path(f"/nonexistent/ww3-test-f{fhour:03d}.grib2")
+
+        def fake_extract(path, lat, lon):
+            fhour = int(Path(path).stem.split("-f")[-1])
+            valid = datetime(2026, 11, 8, 18) + timedelta(hours=fhour)
+            return {"valid_time": valid.strftime("%Y-%m-%d %H:%M"), "HTSGW": 1.5}
+
+        monkeypatch.setattr(client, "resolve_latest_cycle", fake_cycle)
+        monkeypatch.setattr(client, "download_grib_subset", fake_download)
+        monkeypatch.setattr("ww3_mcp.tools.forecast.extract_grib_point", fake_extract)
+
+        data = json.loads(
+            await ww3_compare_forecast_with_buoy(
+                make_ctx(client),
+                "41009",
+                28.5,
+                -80.2,
+                hours_to_compare=6,
+                response_format="json",
+            )
+        )
+        window = data["observation_window"]
+        assert window["window_start"] == "2026-11-08 20:00"
+        assert window["rows_in_window"] == 37
+        assert window["rows_with_wvht"] == 18
+        # 18:00 is outside the window; 21:00 pairs with 21:10 (tie with 20:50,
+        # first in file order wins); 00:00 pairs with 23:50.
+        assert data["comparison_times"] == ["2026-11-08 21:00", "2026-11-09 00:00"]
+        assert data["observed_values"] == [1.3, 1.6]
+        assert data["stats"]["n"] == 2
