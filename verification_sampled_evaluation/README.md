@@ -1,7 +1,7 @@
 # WP5: sampled evaluation of the STOFS safeguards, and the mean-level bias across stations
 
-Status: **Phase 1 design freeze.** Phase 0 probes are done; no sampled model file has been
-downloaded; Phase 2 has not run.
+**Status: complete (Phases 0 to 2 and the analysis).** The results are in `REPORT.md`;
+`run_all.sh` repeats the analysis offline from the archives.
 
 | Path | What |
 |---|---|
