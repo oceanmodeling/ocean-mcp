@@ -1,0 +1,259 @@
+{
+ "manifest_for": "WP2 scripted two-server MCP workflow, Hurricane Ian (2022)",
+ "created_at": "2026-11-06T05:45:52+00:00",
+ "created_by": "build_manifest.py",
+ "git": {
+  "branch": "docs/ian-cross-server",
+  "head_at_manifest_time": "53fe5069e053ae9fc648648413674cced70a55ca",
+  "base_ref": "origin/main (local remote-tracking ref, not fetched)",
+  "base_commit": "53fe5069e053ae9fc648648413674cced70a55ca"
+ },
+ "builder": {
+  "python": "3.13.2",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39"
+ },
+ "packages": {
+  "nhc-mcp": {
+   "version": "0.1.1",
+   "wheel_url": "https://files.pythonhosted.org/packages/82/98/467653e6514a023ce7f3a7c46a33ba071e0bf3ce7cde4321ef6104ee247b/nhc_mcp-0.1.1-py3-none-any.whl",
+   "wheel_sha256": "34bd7bb5b2b1dc6995d20572acff5afc47b198d69570b93bfd5e037035811c25",
+   "pypi_sha256": "34bd7bb5b2b1dc6995d20572acff5afc47b198d69570b93bfd5e037035811c25",
+   "installed_source_identical_to_repo": true,
+   "repo_commit_compared": "53fe5069e053ae9fc648648413674cced70a55ca"
+  },
+  "coops-mcp": {
+   "version": "0.1.1",
+   "wheel_url": "https://files.pythonhosted.org/packages/94/3e/e7214785a3134f6c032946a9ad0e420b20742ac9d3d1db4dd7de6dbf5dc6/coops_mcp-0.1.1-py3-none-any.whl",
+   "wheel_sha256": "f9630bc8bf7e024aff0ade1ec2e9a696487e3fdccc1e2b9860a6c5e64846f210",
+   "pypi_sha256": "f9630bc8bf7e024aff0ade1ec2e9a696487e3fdccc1e2b9860a6c5e64846f210",
+   "installed_source_identical_to_repo": true,
+   "repo_commit_compared": "53fe5069e053ae9fc648648413674cced70a55ca"
+  }
+ },
+ "mcp_sdk_version": "1.30.0",
+ "server_info_reported": {
+  "nhc-mcp": {
+   "name": "nhc_mcp",
+   "version": "1.30.0"
+  },
+  "coops-mcp": {
+   "name": "coops_mcp",
+   "version": "1.30.0"
+  }
+ },
+ "client_python": "3.13.12",
+ "env_python": "3.13.12",
+ "uv": "uv 0.10.4",
+ "environment_freeze": [
+  "annotated-doc==0.0.5",
+  "annotated-types==0.8.0",
+  "anyio==4.16.0",
+  "attrs==26.1.0",
+  "certifi==2026.10.23",
+  "cffi==2.1.1",
+  "click==8.5.0",
+  "coops-mcp @ file:///tmp/claude-1000/-mnt-d-ocean-mcp/0cd85e19-9f6a-4f1b-868d-92d9964fe1a2/scratchpad/wp2_env.wheels/coops-mcp/coops_mcp-0.1.1-py3-none-any.whl",
+  "cryptography==50.0.2",
+  "h11==0.16.0",
+  "httpcore==1.0.9",
+  "httpx==0.28.1",
+  "httpx-sse==0.4.3",
+  "idna==3.20",
+  "jsonschema==4.26.0",
+  "jsonschema-specifications==2025.9.1",
+  "markdown-it-py==4.2.0",
+  "mcp==1.30.0",
+  "mdurl==0.1.2",
+  "nhc-mcp @ file:///tmp/claude-1000/-mnt-d-ocean-mcp/0cd85e19-9f6a-4f1b-868d-92d9964fe1a2/scratchpad/wp2_env.wheels/nhc-mcp/nhc_mcp-0.1.1-py3-none-any.whl",
+  "pycparser==3.12",
+  "pydantic==2.14.3",
+  "pydantic-core==2.50.4",
+  "pydantic-settings==2.16.2",
+  "pygments==2.21.0",
+  "pyjwt==2.15.1",
+  "python-dotenv==1.2.4",
+  "python-multipart==0.0.33",
+  "referencing==0.37.0",
+  "rich==15.0.0",
+  "rpds-py==2026.9.1",
+  "shellingham==1.5.4",
+  "sse-starlette==3.6.0",
+  "starlette==1.10.0",
+  "typer==0.27.3",
+  "typing-extensions==4.16.0",
+  "typing-inspection==0.4.5",
+  "uvicorn==0.54.0"
+ ],
+ "session": {
+  "started_at": "2026-11-06T05:29:54.680+00:00",
+  "finished_at": "2026-11-06T05:30:15.615+00:00",
+  "server_processes": [
+   {
+    "pid": 1292133,
+    "cmdline": [
+     "/tmp/claude-1000/-mnt-d-ocean-mcp/0cd85e19-9f6a-4f1b-868d-92d9964fe1a2/scratchpad/wp2_env/bin/python",
+     "-m",
+     "nhc_mcp"
+    ]
+   },
+   {
+    "pid": 1292137,
+    "cmdline": [
+     "/tmp/claude-1000/-mnt-d-ocean-mcp/0cd85e19-9f6a-4f1b-868d-92d9964fe1a2/scratchpad/wp2_env/bin/python",
+     "-m",
+     "coops_mcp"
+    ]
+   }
+  ],
+  "tool_listing_matches_inspect_tools": true
+ },
+ "calls": [
+  {
+   "seq": 1,
+   "server": "nhc-mcp",
+   "tool": "nhc_get_best_track",
+   "started_at": "2026-11-06T05:29:55.795+00:00",
+   "text_sha256": "32b21ee2b7793dbd610958a5b75403a275345380200876e78a50449e92c260e0",
+   "result_sha256": "a3cd3884fc169e166ebfdf2e78386eee3b0c6213cc193d27048c45d867d5b6eb"
+  },
+  {
+   "seq": 2,
+   "server": "coops-mcp",
+   "tool": "coops_get_station",
+   "started_at": "2026-11-06T05:29:59.406+00:00",
+   "text_sha256": "80a7335c70615c960410c868d720f32ac7bf4301beecaa8f663ced5f71f2598b",
+   "result_sha256": "a55a50ada66bae3c385e27d009059ea7aa3e964efd3774a7a10c9197c4710b0f"
+  },
+  {
+   "seq": 3,
+   "server": "coops-mcp",
+   "tool": "coops_get_water_levels",
+   "started_at": "2026-11-06T05:30:02.704+00:00",
+   "text_sha256": "f2b285a4ec9a7916e5e2d9e81ad1c72396384204d94bb93bd66c3f851f7a960b",
+   "result_sha256": "b338cda26a2c323f7e0c9aa4164806eccf358c16c13b4db82c0879d0397ff78e"
+  },
+  {
+   "seq": 4,
+   "server": "coops-mcp",
+   "tool": "coops_get_tide_predictions",
+   "started_at": "2026-11-06T05:30:05.812+00:00",
+   "text_sha256": "eccf1e1ce47e02434376df485998d8ee264997a89dec43292893fb7b9317182d",
+   "result_sha256": "369f51338f27b07b1a03070b9182a776a9e9ad57e2dbb413bb497b908291fc44"
+  },
+  {
+   "seq": 5,
+   "server": "coops-mcp",
+   "tool": "coops_get_station",
+   "started_at": "2026-11-06T05:30:08.905+00:00",
+   "text_sha256": "d64e0a48410aa7c30d3dca46766839d594291f25c630bf761899eb9c5350bc14",
+   "result_sha256": "445034c39c0a0f119adf6793117f6818a709abd686991946692e237d8c2b0c16"
+  },
+  {
+   "seq": 6,
+   "server": "coops-mcp",
+   "tool": "coops_get_water_levels",
+   "started_at": "2026-11-06T05:30:11.964+00:00",
+   "text_sha256": "1bb40c28227f6312f55ef890100c4f9ad5d118e4edd5ac21844c157e150f18cc",
+   "result_sha256": "fc6715bf9ea5f8a55ff6dda5b1e4c58051cd87489c6f4dfcf087c2d89b78c87d"
+  },
+  {
+   "seq": 7,
+   "server": "coops-mcp",
+   "tool": "coops_get_tide_predictions",
+   "started_at": "2026-11-06T05:30:15.106+00:00",
+   "text_sha256": "ca8184420cfbd0376e8c89b377e816d25e9ed05d2cfa67aff02b6d3629f92de4",
+   "result_sha256": "670a8ee76c5d6611484e1bea4f467e6b379d15a1bffc6e26989ac53bedec7b20"
+  }
+ ],
+ "saved_examples_compared": {
+  "water_levels": {
+   "path": "examples/ian_coops_water_levels.json",
+   "sha256": "bdb8e50384fd280275df057f37f2f23cb8bebfe695a061c350ed661990800048"
+  },
+  "tide_predictions": {
+   "path": "examples/ian_coops_tide_predictions.json",
+   "sha256": "2914d94a136ddedc70c987332acf41e4c015e379492ef0fb44f72c58dbb1f658"
+  },
+  "best_track": {
+   "path": "examples/ian_besttrack_AL092022.json",
+   "sha256": "32b21ee2b7793dbd610958a5b75403a275345380200876e78a50449e92c260e0"
+  }
+ },
+ "references": {
+  "nhc_tropical_cyclone_report": {
+   "url": "https://www.nhc.noaa.gov/data/tcr/AL092022_Ian.pdf",
+   "retrieved_at_http_date": "Fri, 06 Nov 2026 05:24:07 GMT",
+   "last_modified": "Thu, 12 Mar 2026 20:11:39 GMT",
+   "sha256": "804d2a867917d4ab157e5b2b1e444d21d306379a08d07ffd7059d157a4b15fce"
+  },
+  "coops_data_api_response_help": {
+   "url": "https://api.tidesandcurrents.noaa.gov/api/prod/responseHelp.html",
+   "retrieved_at_http_date": "Fri, 06 Nov 2026 05:24:09 GMT",
+   "last_modified": "Tue, 30 Jun 2026 17:01:28 GMT",
+   "sha256": "c934a7921f56b80bbd5b05701795357a97cb5cb3c692931c3d96e8194976ba69"
+  }
+ },
+ "wp0_manifest": {
+  "path_in_main_checkout": "verification_release_readiness/manifest.json",
+  "tracked_in_git": false,
+  "snapshot": "wp0_manifest_snapshot.json",
+  "snapshot_sha256": "f0f44b38c369c3103d6e87e13b654632dc7498371d69f3f803499d6dbe9a1d7c",
+  "original_sha256_now": "09e1f8e9f56d4341d6394328762e85ff0efcb6c666fdfdac72daff552ae6479e",
+  "generated_at_utc": "2026-11-06T05:22:38+00:00",
+  "agreement_with_wp2_environment": {
+   "nhc-mcp": {
+    "wp0_version": "0.1.1",
+    "wp2_version": "0.1.1",
+    "wp0_wheel_sha256": "34bd7bb5b2b1dc6995d20572acff5afc47b198d69570b93bfd5e037035811c25",
+    "wp2_wheel_sha256": "34bd7bb5b2b1dc6995d20572acff5afc47b198d69570b93bfd5e037035811c25",
+    "wp0_tool_names": [
+     "nhc_get_active_storms",
+     "nhc_get_best_track",
+     "nhc_get_forecast_track",
+     "nhc_get_storm_watches_warnings",
+     "nhc_search_storms"
+    ],
+    "same_version_and_wheel": true,
+    "same_tool_names": true
+   },
+   "coops-mcp": {
+    "wp0_version": "0.1.1",
+    "wp2_version": "0.1.1",
+    "wp0_wheel_sha256": "f9630bc8bf7e024aff0ade1ec2e9a696487e3fdccc1e2b9860a6c5e64846f210",
+    "wp2_wheel_sha256": "f9630bc8bf7e024aff0ade1ec2e9a696487e3fdccc1e2b9860a6c5e64846f210",
+    "wp0_tool_names": [
+     "coops_find_nearest_stations",
+     "coops_get_currents",
+     "coops_get_datums",
+     "coops_get_extreme_water_levels",
+     "coops_get_flood_stats",
+     "coops_get_meteorological",
+     "coops_get_peak_storm_events",
+     "coops_get_sea_level_trends",
+     "coops_get_station",
+     "coops_get_tide_predictions",
+     "coops_get_water_levels",
+     "coops_list_stations"
+    ],
+    "same_version_and_wheel": true,
+    "same_tool_names": true
+   }
+  }
+ },
+ "files": {
+  "session_record.json": "cc8b52830f23ca98be0ea932e196accc2775490cb6c55542608f9f6ee4fcf1bd",
+  "results.json": "9df5ef68e79c3eb24e3355ace677363cfeffd2c7b7ccfbe8a9bf587a60c3a97f",
+  "geometry_table.md": "ff9483b54d308c900d5862b6f9036ac914e4242afc814897f54042d80f5bd433",
+  "env_provenance.json": "944d0f3fab31a82c9960638d220f044577f1e0c3a4121782be6dcfe426b10324",
+  "references.json": "5d07431d8c23da6440dbb79a37cfe7b7a045854c65fea8599a47ffb8de99d87a",
+  "tool_schemas.json": "18d1ee06bdc692d3e47f71ef69029a1ade35122d91cb12c4bd8b13581c6b39ab",
+  "wp0_manifest_snapshot.json": "f0f44b38c369c3103d6e87e13b654632dc7498371d69f3f803499d6dbe9a1d7c",
+  "make_env.py": "996a2d03906b1086c3856176e8742cdb18f43b4cf87e8ca9fbea6fa689092cb8",
+  "inspect_tools.py": "2693fb441c63425fd88bd5860a9461797318e3bd242ca534f679cf7f0d864871",
+  "run_workflow.py": "8e2f7ac69c08bfcb3235c39bdc3cca3b90f31f15732b69cd6389c11cdaec8e63",
+  "analyze.py": "6f24aa948eff16d84cbb795b059d664f6f2528488c1dc7e17eab4096a87805a1",
+  "record_references.py": "8d83bfeb0d3ee5f8e492114dfc8aa4ae476e9a0dbedb586dbee32ac7644dd9d6",
+  "build_manifest.py": "ea25d3fa3321c5002252a7100b2585d57b7406c7fa63aa8bc15f8a8d41eecc2a",
+  "replay_offline.py": "89365f9e06077a1ab8f8733a6240d2939d189cdb88c6166db5dce42d217b19e4"
+ }
+}

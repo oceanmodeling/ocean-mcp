@@ -1,0 +1,1442 @@
+{
+  "nhc-mcp": {
+    "server_info": {
+      "name": "nhc_mcp",
+      "title": null,
+      "version": "1.30.0",
+      "websiteUrl": null,
+      "icons": null
+    },
+    "protocol_version": "2025-11-25",
+    "tools": [
+      {
+        "name": "nhc_get_active_storms",
+        "description": "Get currently active tropical cyclones from the National Hurricane Center.\n\nReturns a list of all active storms with their current classification,\nlocation, and advisory information. Returns an empty list outside of\nhurricane season or when no storms are active.\n\nArgs:\n    response_format: Output format \u2014 'markdown' (default) or 'json'.\n",
+        "inputSchema": {
+          "properties": {
+            "response_format": {
+              "default": "markdown",
+              "enum": [
+                "markdown",
+                "json"
+              ],
+              "title": "Response Format",
+              "type": "string"
+            }
+          },
+          "title": "nhc_get_active_stormsArguments",
+          "type": "object"
+        },
+        "outputSchema": {
+          "properties": {
+            "result": {
+              "title": "Result",
+              "type": "string"
+            }
+          },
+          "required": [
+            "result"
+          ],
+          "title": "nhc_get_active_stormsOutput",
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": true
+        }
+      },
+      {
+        "name": "nhc_get_forecast_track",
+        "description": "Get the official NHC 5-day forecast track positions for an active storm.\n\nRetrieves forecast point data from the NHC ArcGIS MapServer including\nposition (lat/lon), forecast time, maximum winds, development type,\nand Saffir-Simpson category for each forecast period (12h, 24h, etc.).\n\nNote: This only works for currently active storms. Use nhc_get_active_storms\nfirst to see available storms and their IDs.\n\nArgs:\n    storm_id: NHC storm identifier (e.g., 'AL052024', 'EP042023').\n    response_format: Output format \u2014 'markdown' (default), 'json', or\n        'geojson' (a FeatureCollection: a LineString for the forecast\n        track plus a Point per forecast period, coordinates [lon, lat]).\n",
+        "inputSchema": {
+          "properties": {
+            "storm_id": {
+              "title": "Storm Id",
+              "type": "string"
+            },
+            "response_format": {
+              "default": "markdown",
+              "enum": [
+                "markdown",
+                "json",
+                "geojson"
+              ],
+              "title": "Response Format",
+              "type": "string"
+            }
+          },
+          "required": [
+            "storm_id"
+          ],
+          "title": "nhc_get_forecast_trackArguments",
+          "type": "object"
+        },
+        "outputSchema": {
+          "properties": {
+            "result": {
+              "title": "Result",
+              "type": "string"
+            }
+          },
+          "required": [
+            "result"
+          ],
+          "title": "nhc_get_forecast_trackOutput",
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": true
+        }
+      },
+      {
+        "name": "nhc_get_storm_watches_warnings",
+        "description": "Get active watches and warnings for an active tropical cyclone.\n\nReturns coastal watch/warning segments (Hurricane Warning, Tropical Storm\nWatch, etc.) from the NHC ArcGIS MapServer.\n\nNote: This only works for currently active storms with watches/warnings in\neffect. Use nhc_get_active_storms first to see available storms.\n\nArgs:\n    storm_id: NHC storm identifier (e.g., 'AL052024').\n    response_format: Output format \u2014 'markdown' (default) or 'json'.\n",
+        "inputSchema": {
+          "properties": {
+            "storm_id": {
+              "title": "Storm Id",
+              "type": "string"
+            },
+            "response_format": {
+              "default": "markdown",
+              "enum": [
+                "markdown",
+                "json"
+              ],
+              "title": "Response Format",
+              "type": "string"
+            }
+          },
+          "required": [
+            "storm_id"
+          ],
+          "title": "nhc_get_storm_watches_warningsArguments",
+          "type": "object"
+        },
+        "outputSchema": {
+          "properties": {
+            "result": {
+              "title": "Result",
+              "type": "string"
+            }
+          },
+          "required": [
+            "result"
+          ],
+          "title": "nhc_get_storm_watches_warningsOutput",
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": true
+        }
+      },
+      {
+        "name": "nhc_get_best_track",
+        "description": "Get best track (observed path) data for a tropical cyclone.\n\nFor recent storms (current/previous year), retrieves from ATCF B-deck files.\nFor historical storms, retrieves from HURDAT2 archive (Atlantic 1851\u20132024,\nEast Pacific 1949\u20132024).\n\nArgs:\n    storm_id: NHC storm identifier (e.g., 'AL092005' for Katrina, 'AL042024').\n    response_format: Output format \u2014 'markdown' (default), 'json', or\n        'geojson' (a FeatureCollection: a LineString for the track plus a\n        Point per fix, coordinates [lon, lat], for mapping).\n",
+        "inputSchema": {
+          "properties": {
+            "storm_id": {
+              "title": "Storm Id",
+              "type": "string"
+            },
+            "response_format": {
+              "default": "markdown",
+              "enum": [
+                "markdown",
+                "json",
+                "geojson"
+              ],
+              "title": "Response Format",
+              "type": "string"
+            }
+          },
+          "required": [
+            "storm_id"
+          ],
+          "title": "nhc_get_best_trackArguments",
+          "type": "object"
+        },
+        "outputSchema": {
+          "properties": {
+            "result": {
+              "title": "Result",
+              "type": "string"
+            }
+          },
+          "required": [
+            "result"
+          ],
+          "title": "nhc_get_best_trackOutput",
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": true
+        }
+      },
+      {
+        "name": "nhc_search_storms",
+        "description": "Search historical tropical cyclones in the HURDAT2 database.\n\nSearches the Atlantic (1851\u20132024) and East Pacific (1949\u20132024) hurricane\ndatabases. Filter by storm name, year, basin, and/or minimum wind speed.\n\nArgs:\n    name: Storm name to search for (case-insensitive, partial match). E.g., 'katrina'.\n    year: Filter by year (e.g., 2005).\n    basin: Filter by basin \u2014 'al' (Atlantic), 'ep' (East Pacific), 'cp' (Central Pacific).\n    min_wind: Minimum peak wind speed in knots (e.g., 64 for hurricanes, 96 for major).\n    limit: Maximum number of results to return (default 50).\n    response_format: Output format \u2014 'markdown' (default) or 'json'.\n",
+        "inputSchema": {
+          "$defs": {
+            "Basin": {
+              "description": "NHC tropical cyclone basins.",
+              "enum": [
+                "al",
+                "ep",
+                "cp"
+              ],
+              "title": "Basin",
+              "type": "string"
+            }
+          },
+          "properties": {
+            "name": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Name"
+            },
+            "year": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Year"
+            },
+            "basin": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Basin"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "min_wind": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Min Wind"
+            },
+            "limit": {
+              "default": 50,
+              "title": "Limit",
+              "type": "integer"
+            },
+            "response_format": {
+              "default": "markdown",
+              "enum": [
+                "markdown",
+                "json"
+              ],
+              "title": "Response Format",
+              "type": "string"
+            }
+          },
+          "title": "nhc_search_stormsArguments",
+          "type": "object"
+        },
+        "outputSchema": {
+          "properties": {
+            "result": {
+              "title": "Result",
+              "type": "string"
+            }
+          },
+          "required": [
+            "result"
+          ],
+          "title": "nhc_search_stormsOutput",
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": true
+        }
+      }
+    ]
+  },
+  "coops-mcp": {
+    "server_info": {
+      "name": "coops_mcp",
+      "title": null,
+      "version": "1.30.0",
+      "websiteUrl": null,
+      "icons": null
+    },
+    "protocol_version": "2025-11-25",
+    "tools": [
+      {
+        "name": "coops_get_currents",
+        "description": "Retrieve current (water flow) observations or predictions from a CO-OPS currents station.\n\nNote: Currents stations use alphanumeric IDs (e.g., 'cb1401'), not the 7-digit numeric IDs used for water level stations.\n\nArgs:\n    station_id: CO-OPS currents station ID (e.g., 'cb1401').\n    product: Data type \u2014 'currents' for observations, 'currents_predictions' for predictions.\n    begin_date: Start date (YYYY-MM-DD or YYYYMMDD).\n    end_date: End date (YYYY-MM-DD or YYYYMMDD).\n    date: Date shorthand \u2014 'today', 'latest', or 'recent' (alternative to begin/end).\n    units: Unit system \u2014 'metric' or 'english' (default: metric).\n    time_zone: Time zone \u2014 'gmt', 'lst', or 'lst_ldt' (default: gmt).\n    bin_num: Depth bin number for multi-bin stations (optional).\n    response_format: Output format \u2014 'markdown' (default) or 'json'.\n    max_records: Cap on records returned (default 2000). Only the most\n        recent max_records are kept, and the output flags any truncation.\n",
+        "inputSchema": {
+          "$defs": {
+            "CurrentsProduct": {
+              "enum": [
+                "currents",
+                "currents_predictions"
+              ],
+              "title": "CurrentsProduct",
+              "type": "string"
+            },
+            "DateShorthand": {
+              "enum": [
+                "today",
+                "latest",
+                "recent"
+              ],
+              "title": "DateShorthand",
+              "type": "string"
+            },
+            "TimeZone": {
+              "enum": [
+                "gmt",
+                "lst",
+                "lst_ldt"
+              ],
+              "title": "TimeZone",
+              "type": "string"
+            },
+            "Units": {
+              "enum": [
+                "metric",
+                "english"
+              ],
+              "title": "Units",
+              "type": "string"
+            }
+          },
+          "properties": {
+            "station_id": {
+              "title": "Station Id",
+              "type": "string"
+            },
+            "product": {
+              "$ref": "#/$defs/CurrentsProduct",
+              "default": "currents"
+            },
+            "begin_date": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Begin Date"
+            },
+            "end_date": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "End Date"
+            },
+            "date": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/DateShorthand"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "units": {
+              "$ref": "#/$defs/Units",
+              "default": "metric"
+            },
+            "time_zone": {
+              "$ref": "#/$defs/TimeZone",
+              "default": "gmt"
+            },
+            "bin_num": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Bin Num"
+            },
+            "response_format": {
+              "default": "markdown",
+              "enum": [
+                "markdown",
+                "json"
+              ],
+              "title": "Response Format",
+              "type": "string"
+            },
+            "max_records": {
+              "default": 2000,
+              "title": "Max Records",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "station_id"
+          ],
+          "title": "coops_get_currentsArguments",
+          "type": "object"
+        },
+        "outputSchema": {
+          "properties": {
+            "result": {
+              "title": "Result",
+              "type": "string"
+            }
+          },
+          "required": [
+            "result"
+          ],
+          "title": "coops_get_currentsOutput",
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": true
+        }
+      },
+      {
+        "name": "coops_get_extreme_water_levels",
+        "description": "Get extreme (record) water levels ever recorded at a CO-OPS station.\n\nReturns the highest and lowest water levels on record with dates and values.\n\nArgs:\n    station_id: CO-OPS station ID (e.g., '8518750' for The Battery, NY).\n    datum: Vertical datum reference (default: MHHW).\n    units: Unit system \u2014 'metric' or 'english' (default: metric).\n",
+        "inputSchema": {
+          "$defs": {
+            "Datum": {
+              "enum": [
+                "MLLW",
+                "MHHW",
+                "MSL",
+                "NAVD",
+                "STND",
+                "MHW",
+                "MLW",
+                "MTL",
+                "IGLD",
+                "LWD"
+              ],
+              "title": "Datum",
+              "type": "string"
+            },
+            "Units": {
+              "enum": [
+                "metric",
+                "english"
+              ],
+              "title": "Units",
+              "type": "string"
+            }
+          },
+          "properties": {
+            "station_id": {
+              "title": "Station Id",
+              "type": "string"
+            },
+            "datum": {
+              "$ref": "#/$defs/Datum",
+              "default": "MHHW"
+            },
+            "units": {
+              "$ref": "#/$defs/Units",
+              "default": "metric"
+            }
+          },
+          "required": [
+            "station_id"
+          ],
+          "title": "coops_get_extreme_water_levelsArguments",
+          "type": "object"
+        },
+        "outputSchema": {
+          "properties": {
+            "result": {
+              "title": "Result",
+              "type": "string"
+            }
+          },
+          "required": [
+            "result"
+          ],
+          "title": "coops_get_extreme_water_levelsOutput",
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": true
+        }
+      },
+      {
+        "name": "coops_get_flood_stats",
+        "description": "Get annual flood day counts and high tide flooding outlook for a CO-OPS station.\n\nCombines data from the annual flood count and high tide flooding outlook endpoints.\n\nArgs:\n    station_id: CO-OPS station ID (e.g., '8518750' for The Battery, NY).\n    year: Optional specific year to query.\n    datum: Vertical datum reference (default: MHHW).\n    units: Unit system \u2014 'metric' or 'english' (default: metric).\n",
+        "inputSchema": {
+          "$defs": {
+            "Datum": {
+              "enum": [
+                "MLLW",
+                "MHHW",
+                "MSL",
+                "NAVD",
+                "STND",
+                "MHW",
+                "MLW",
+                "MTL",
+                "IGLD",
+                "LWD"
+              ],
+              "title": "Datum",
+              "type": "string"
+            },
+            "Units": {
+              "enum": [
+                "metric",
+                "english"
+              ],
+              "title": "Units",
+              "type": "string"
+            }
+          },
+          "properties": {
+            "station_id": {
+              "title": "Station Id",
+              "type": "string"
+            },
+            "year": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Year"
+            },
+            "datum": {
+              "$ref": "#/$defs/Datum",
+              "default": "MHHW"
+            },
+            "units": {
+              "$ref": "#/$defs/Units",
+              "default": "metric"
+            }
+          },
+          "required": [
+            "station_id"
+          ],
+          "title": "coops_get_flood_statsArguments",
+          "type": "object"
+        },
+        "outputSchema": {
+          "properties": {
+            "result": {
+              "title": "Result",
+              "type": "string"
+            }
+          },
+          "required": [
+            "result"
+          ],
+          "title": "coops_get_flood_statsOutput",
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": true
+        }
+      },
+      {
+        "name": "coops_get_sea_level_trends",
+        "description": "Get sea level trend data for a CO-OPS station.\n\nReturns the long-term linear sea level trend with confidence intervals.\n\nArgs:\n    station_id: CO-OPS station ID (e.g., '8518750' for The Battery, NY).\n",
+        "inputSchema": {
+          "properties": {
+            "station_id": {
+              "title": "Station Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "station_id"
+          ],
+          "title": "coops_get_sea_level_trendsArguments",
+          "type": "object"
+        },
+        "outputSchema": {
+          "properties": {
+            "result": {
+              "title": "Result",
+              "type": "string"
+            }
+          },
+          "required": [
+            "result"
+          ],
+          "title": "coops_get_sea_level_trendsOutput",
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": true
+        }
+      },
+      {
+        "name": "coops_get_peak_storm_events",
+        "description": "Get peak water level events (storm surges) recorded at a CO-OPS station.\n\nArgs:\n    station_id: CO-OPS station ID (e.g., '8518750' for The Battery, NY).\n    datum: Vertical datum reference (default: MHHW).\n    units: Unit system \u2014 'metric' or 'english' (default: metric).\n    year: Optional specific year to query.\n",
+        "inputSchema": {
+          "$defs": {
+            "Datum": {
+              "enum": [
+                "MLLW",
+                "MHHW",
+                "MSL",
+                "NAVD",
+                "STND",
+                "MHW",
+                "MLW",
+                "MTL",
+                "IGLD",
+                "LWD"
+              ],
+              "title": "Datum",
+              "type": "string"
+            },
+            "Units": {
+              "enum": [
+                "metric",
+                "english"
+              ],
+              "title": "Units",
+              "type": "string"
+            }
+          },
+          "properties": {
+            "station_id": {
+              "title": "Station Id",
+              "type": "string"
+            },
+            "datum": {
+              "$ref": "#/$defs/Datum",
+              "default": "MHHW"
+            },
+            "units": {
+              "$ref": "#/$defs/Units",
+              "default": "metric"
+            },
+            "year": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Year"
+            }
+          },
+          "required": [
+            "station_id"
+          ],
+          "title": "coops_get_peak_storm_eventsArguments",
+          "type": "object"
+        },
+        "outputSchema": {
+          "properties": {
+            "result": {
+              "title": "Result",
+              "type": "string"
+            }
+          },
+          "required": [
+            "result"
+          ],
+          "title": "coops_get_peak_storm_eventsOutput",
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": true
+        }
+      },
+      {
+        "name": "coops_get_datums",
+        "description": "Get tidal datum values for a CO-OPS station.\n\nReturns datum elevations (MLLW, MHHW, MSL, MHW, MLW, etc.) relative to station datum.\n\nArgs:\n    station_id: CO-OPS station ID (e.g., '9414290' for San Francisco, CA).\n    units: Unit system \u2014 'metric' or 'english' (default: metric).\n",
+        "inputSchema": {
+          "$defs": {
+            "Units": {
+              "enum": [
+                "metric",
+                "english"
+              ],
+              "title": "Units",
+              "type": "string"
+            }
+          },
+          "properties": {
+            "station_id": {
+              "title": "Station Id",
+              "type": "string"
+            },
+            "units": {
+              "$ref": "#/$defs/Units",
+              "default": "metric"
+            }
+          },
+          "required": [
+            "station_id"
+          ],
+          "title": "coops_get_datumsArguments",
+          "type": "object"
+        },
+        "outputSchema": {
+          "properties": {
+            "result": {
+              "title": "Result",
+              "type": "string"
+            }
+          },
+          "required": [
+            "result"
+          ],
+          "title": "coops_get_datumsOutput",
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": true
+        }
+      },
+      {
+        "name": "coops_get_meteorological",
+        "description": "Retrieve meteorological observations from a CO-OPS station.\n\nArgs:\n    station_id: CO-OPS station ID (e.g., '8724580' for Key West, FL).\n    product: Met data type \u2014 'wind', 'air_temperature', 'water_temperature', 'air_pressure', 'humidity', 'conductivity', 'salinity', 'visibility', or 'air_gap'.\n    begin_date: Start date (YYYY-MM-DD or YYYYMMDD).\n    end_date: End date (YYYY-MM-DD or YYYYMMDD).\n    date: Date shorthand \u2014 'today', 'latest', or 'recent' (alternative to begin/end).\n    units: Unit system \u2014 'metric' or 'english' (default: metric).\n    interval: Data interval \u2014 '6' (6-min) or 'h' (hourly).\n    time_zone: Time zone \u2014 'gmt', 'lst', or 'lst_ldt' (default: gmt).\n    response_format: Output format \u2014 'markdown' (default) or 'json'.\n    max_records: Cap on records returned (default 2000). Only the most\n        recent max_records are kept, and the output flags any truncation.\n",
+        "inputSchema": {
+          "$defs": {
+            "DateShorthand": {
+              "enum": [
+                "today",
+                "latest",
+                "recent"
+              ],
+              "title": "DateShorthand",
+              "type": "string"
+            },
+            "Interval": {
+              "enum": [
+                "6",
+                "h",
+                "hilo"
+              ],
+              "title": "Interval",
+              "type": "string"
+            },
+            "MetProduct": {
+              "enum": [
+                "wind",
+                "air_temperature",
+                "water_temperature",
+                "air_pressure",
+                "humidity",
+                "conductivity",
+                "salinity",
+                "visibility",
+                "air_gap"
+              ],
+              "title": "MetProduct",
+              "type": "string"
+            },
+            "TimeZone": {
+              "enum": [
+                "gmt",
+                "lst",
+                "lst_ldt"
+              ],
+              "title": "TimeZone",
+              "type": "string"
+            },
+            "Units": {
+              "enum": [
+                "metric",
+                "english"
+              ],
+              "title": "Units",
+              "type": "string"
+            }
+          },
+          "properties": {
+            "station_id": {
+              "title": "Station Id",
+              "type": "string"
+            },
+            "product": {
+              "$ref": "#/$defs/MetProduct"
+            },
+            "begin_date": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Begin Date"
+            },
+            "end_date": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "End Date"
+            },
+            "date": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/DateShorthand"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "units": {
+              "$ref": "#/$defs/Units",
+              "default": "metric"
+            },
+            "interval": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Interval"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "time_zone": {
+              "$ref": "#/$defs/TimeZone",
+              "default": "gmt"
+            },
+            "response_format": {
+              "default": "markdown",
+              "enum": [
+                "markdown",
+                "json"
+              ],
+              "title": "Response Format",
+              "type": "string"
+            },
+            "max_records": {
+              "default": 2000,
+              "title": "Max Records",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "station_id",
+            "product"
+          ],
+          "title": "coops_get_meteorologicalArguments",
+          "type": "object"
+        },
+        "outputSchema": {
+          "properties": {
+            "result": {
+              "title": "Result",
+              "type": "string"
+            }
+          },
+          "required": [
+            "result"
+          ],
+          "title": "coops_get_meteorologicalOutput",
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": true
+        }
+      },
+      {
+        "name": "coops_list_stations",
+        "description": "List CO-OPS stations, optionally filtered by type and/or state.\n\nArgs:\n    station_type: Filter by station type (e.g., 'waterlevels', 'currentpredictions', 'waterlevelsandmet').\n    state: Filter by US state (2-letter code, e.g., 'NY', 'FL').\n    limit: Maximum number of stations to return (default 50).\n    offset: Number of stations to skip for pagination (default 0).\n",
+        "inputSchema": {
+          "$defs": {
+            "StationType": {
+              "enum": [
+                "waterlevels",
+                "currentpredictions",
+                "waterlevelsandmet",
+                "tcoon",
+                "nwlon",
+                "ports"
+              ],
+              "title": "StationType",
+              "type": "string"
+            }
+          },
+          "properties": {
+            "station_type": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/StationType"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "state": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "State"
+            },
+            "limit": {
+              "default": 50,
+              "title": "Limit",
+              "type": "integer"
+            },
+            "offset": {
+              "default": 0,
+              "title": "Offset",
+              "type": "integer"
+            }
+          },
+          "title": "coops_list_stationsArguments",
+          "type": "object"
+        },
+        "outputSchema": {
+          "properties": {
+            "result": {
+              "title": "Result",
+              "type": "string"
+            }
+          },
+          "required": [
+            "result"
+          ],
+          "title": "coops_list_stationsOutput",
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": true
+        }
+      },
+      {
+        "name": "coops_get_station",
+        "description": "Get detailed information for a specific CO-OPS station.\n\nArgs:\n    station_id: CO-OPS station ID (e.g., '8518750' for The Battery, NY).\n    expand: Optional list of resources to include: 'details', 'sensors', 'datums', 'floodlevels', 'harcon', 'benchmarks'.\n    units: Unit system \u2014 'metric' or 'english' (default: metric).\n",
+        "inputSchema": {
+          "$defs": {
+            "Units": {
+              "enum": [
+                "metric",
+                "english"
+              ],
+              "title": "Units",
+              "type": "string"
+            }
+          },
+          "properties": {
+            "station_id": {
+              "title": "Station Id",
+              "type": "string"
+            },
+            "expand": {
+              "anyOf": [
+                {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Expand"
+            },
+            "units": {
+              "$ref": "#/$defs/Units",
+              "default": "metric"
+            }
+          },
+          "required": [
+            "station_id"
+          ],
+          "title": "coops_get_stationArguments",
+          "type": "object"
+        },
+        "outputSchema": {
+          "properties": {
+            "result": {
+              "title": "Result",
+              "type": "string"
+            }
+          },
+          "required": [
+            "result"
+          ],
+          "title": "coops_get_stationOutput",
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": true
+        }
+      },
+      {
+        "name": "coops_find_nearest_stations",
+        "description": "Find CO-OPS stations nearest to a geographic coordinate.\n\nArgs:\n    latitude: Latitude in decimal degrees (e.g., 40.7).\n    longitude: Longitude in decimal degrees (e.g., -74.0).\n    radius_km: Search radius in kilometers (default 50).\n    station_type: Optional filter by station type (e.g., 'waterlevels').\n    limit: Maximum number of stations to return (default 5).\n    response_format: Output format \u2014 'markdown' (default) or 'geojson'\n        (a FeatureCollection of Point features, coordinates [lon, lat]).\n",
+        "inputSchema": {
+          "$defs": {
+            "StationType": {
+              "enum": [
+                "waterlevels",
+                "currentpredictions",
+                "waterlevelsandmet",
+                "tcoon",
+                "nwlon",
+                "ports"
+              ],
+              "title": "StationType",
+              "type": "string"
+            }
+          },
+          "properties": {
+            "latitude": {
+              "title": "Latitude",
+              "type": "number"
+            },
+            "longitude": {
+              "title": "Longitude",
+              "type": "number"
+            },
+            "radius_km": {
+              "default": 50.0,
+              "title": "Radius Km",
+              "type": "number"
+            },
+            "station_type": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/StationType"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "limit": {
+              "default": 5,
+              "title": "Limit",
+              "type": "integer"
+            },
+            "response_format": {
+              "default": "markdown",
+              "enum": [
+                "markdown",
+                "geojson"
+              ],
+              "title": "Response Format",
+              "type": "string"
+            }
+          },
+          "required": [
+            "latitude",
+            "longitude"
+          ],
+          "title": "coops_find_nearest_stationsArguments",
+          "type": "object"
+        },
+        "outputSchema": {
+          "properties": {
+            "result": {
+              "title": "Result",
+              "type": "string"
+            }
+          },
+          "required": [
+            "result"
+          ],
+          "title": "coops_find_nearest_stationsOutput",
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": true
+        }
+      },
+      {
+        "name": "coops_get_water_levels",
+        "description": "Retrieve observed water level data from a CO-OPS station.\n\nUse begin_date/end_date for a date range, or date='today'/'latest'/'recent' for shortcuts.\nMax range is 365 days per request.\n\nArgs:\n    station_id: CO-OPS station ID (e.g., '8518750' for The Battery, NY).\n    begin_date: Start date (YYYY-MM-DD or YYYYMMDD format).\n    end_date: End date (YYYY-MM-DD or YYYYMMDD format).\n    date: Date shorthand \u2014 'today', 'latest', or 'recent' (alternative to begin/end).\n    datum: Vertical datum reference (default: MLLW). Options: MLLW, MHHW, MSL, NAVD, STND, MHW, MLW, MTL.\n    units: Unit system \u2014 'metric' or 'english' (default: metric).\n    interval: Data interval \u2014 '6' (6-min), 'h' (hourly), 'hilo' (high/low only). Default is 6-min.\n    time_zone: Time zone \u2014 'gmt', 'lst', or 'lst_ldt' (default: gmt).\n    response_format: Output format \u2014 'markdown' (default) or 'json'.\n    max_records: Cap on records returned (default 2000). A long 6-min range\n        is tens of thousands of points; only the most recent max_records are\n        kept, and the output flags any truncation.\n",
+        "inputSchema": {
+          "$defs": {
+            "DateShorthand": {
+              "enum": [
+                "today",
+                "latest",
+                "recent"
+              ],
+              "title": "DateShorthand",
+              "type": "string"
+            },
+            "Datum": {
+              "enum": [
+                "MLLW",
+                "MHHW",
+                "MSL",
+                "NAVD",
+                "STND",
+                "MHW",
+                "MLW",
+                "MTL",
+                "IGLD",
+                "LWD"
+              ],
+              "title": "Datum",
+              "type": "string"
+            },
+            "Interval": {
+              "enum": [
+                "6",
+                "h",
+                "hilo"
+              ],
+              "title": "Interval",
+              "type": "string"
+            },
+            "TimeZone": {
+              "enum": [
+                "gmt",
+                "lst",
+                "lst_ldt"
+              ],
+              "title": "TimeZone",
+              "type": "string"
+            },
+            "Units": {
+              "enum": [
+                "metric",
+                "english"
+              ],
+              "title": "Units",
+              "type": "string"
+            }
+          },
+          "properties": {
+            "station_id": {
+              "title": "Station Id",
+              "type": "string"
+            },
+            "begin_date": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Begin Date"
+            },
+            "end_date": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "End Date"
+            },
+            "date": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/DateShorthand"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "datum": {
+              "$ref": "#/$defs/Datum",
+              "default": "MLLW"
+            },
+            "units": {
+              "$ref": "#/$defs/Units",
+              "default": "metric"
+            },
+            "interval": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Interval"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "time_zone": {
+              "$ref": "#/$defs/TimeZone",
+              "default": "gmt"
+            },
+            "response_format": {
+              "default": "markdown",
+              "enum": [
+                "markdown",
+                "json"
+              ],
+              "title": "Response Format",
+              "type": "string"
+            },
+            "max_records": {
+              "default": 2000,
+              "title": "Max Records",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "station_id"
+          ],
+          "title": "coops_get_water_levelsArguments",
+          "type": "object"
+        },
+        "outputSchema": {
+          "properties": {
+            "result": {
+              "title": "Result",
+              "type": "string"
+            }
+          },
+          "required": [
+            "result"
+          ],
+          "title": "coops_get_water_levelsOutput",
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": true
+        }
+      },
+      {
+        "name": "coops_get_tide_predictions",
+        "description": "Retrieve tide predictions for a CO-OPS station.\n\nPredictions are based on harmonic constituents \u2014 available for most water level stations.\nMax range: 365 days (or 3650 days for high/low interval).\n\nArgs:\n    station_id: CO-OPS station ID (e.g., '8518750' for The Battery, NY).\n    begin_date: Start date (YYYY-MM-DD or YYYYMMDD format).\n    end_date: End date (YYYY-MM-DD or YYYYMMDD format).\n    datum: Vertical datum reference (default: MLLW).\n    units: Unit system \u2014 'metric' or 'english' (default: metric).\n    interval: Prediction interval \u2014 '6' (6-min), 'h' (hourly), 'hilo' (high/low only). Default is 6-min.\n    time_zone: Time zone \u2014 'gmt', 'lst', or 'lst_ldt' (default: gmt).\n    response_format: Output format \u2014 'markdown' (default) or 'json'.\n    max_records: Cap on predictions returned (default 2000). A long 6-min\n        range is tens of thousands of points; only the most recent\n        max_records are kept, and the output flags any truncation.\n",
+        "inputSchema": {
+          "$defs": {
+            "Datum": {
+              "enum": [
+                "MLLW",
+                "MHHW",
+                "MSL",
+                "NAVD",
+                "STND",
+                "MHW",
+                "MLW",
+                "MTL",
+                "IGLD",
+                "LWD"
+              ],
+              "title": "Datum",
+              "type": "string"
+            },
+            "Interval": {
+              "enum": [
+                "6",
+                "h",
+                "hilo"
+              ],
+              "title": "Interval",
+              "type": "string"
+            },
+            "TimeZone": {
+              "enum": [
+                "gmt",
+                "lst",
+                "lst_ldt"
+              ],
+              "title": "TimeZone",
+              "type": "string"
+            },
+            "Units": {
+              "enum": [
+                "metric",
+                "english"
+              ],
+              "title": "Units",
+              "type": "string"
+            }
+          },
+          "properties": {
+            "station_id": {
+              "title": "Station Id",
+              "type": "string"
+            },
+            "begin_date": {
+              "title": "Begin Date",
+              "type": "string"
+            },
+            "end_date": {
+              "title": "End Date",
+              "type": "string"
+            },
+            "datum": {
+              "$ref": "#/$defs/Datum",
+              "default": "MLLW"
+            },
+            "units": {
+              "$ref": "#/$defs/Units",
+              "default": "metric"
+            },
+            "interval": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Interval"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "time_zone": {
+              "$ref": "#/$defs/TimeZone",
+              "default": "gmt"
+            },
+            "response_format": {
+              "default": "markdown",
+              "enum": [
+                "markdown",
+                "json"
+              ],
+              "title": "Response Format",
+              "type": "string"
+            },
+            "max_records": {
+              "default": 2000,
+              "title": "Max Records",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "station_id",
+            "begin_date",
+            "end_date"
+          ],
+          "title": "coops_get_tide_predictionsArguments",
+          "type": "object"
+        },
+        "outputSchema": {
+          "properties": {
+            "result": {
+              "title": "Result",
+              "type": "string"
+            }
+          },
+          "required": [
+            "result"
+          ],
+          "title": "coops_get_tide_predictionsOutput",
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": true
+        }
+      }
+    ]
+  }
+}
