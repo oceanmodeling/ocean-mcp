@@ -13,6 +13,8 @@
 | WP1b: report revision | `45c68df` |
 | WP1c: grader v2 (`grader/v2/`), fairness check, v2 tables, report | `3a3ccd3` and the commit after it |
 
+Before publication, the names of two referenced source documents were changed in these commits (to `MANUSCRIPT_SECOND_REVIEW.md` and `manuscript-final-runs-2026-07-27.md`), and the recorded SHA-256 of `references/references.json` was updated to match; no task statement, input, reference value, tolerance, grader or result changed. The hashes above are the original ones; `REWRITTEN_COMMITS.tsv` gives the published hash of each.
+
 Arms A and B and the gradings run with no Ocean-MCP package importable. Arms C and D are real MCP
 stdio sessions in replay mode.
 

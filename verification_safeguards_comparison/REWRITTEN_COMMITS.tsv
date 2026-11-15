@@ -1,0 +1,22 @@
+old	new	old_short	new_short	branch_tip	subject
+deccffa6de0c8119019551c31e033a65bde70283	1ef80e6618d6e6e2cf1ebac74d86df5046883096	deccffa	1ef80e6		verification: reproducible STOFS v3.1 Boston validation case study
+57e853ea4e20cd720cbc818a77d1798be884fc42	9a56f46fe3ba86daabb3b053838b54d79a8fbf50	57e853e	9a56f46	docs/stofs-v31-boston-example-v2	verification: Boston v3.1 revision 2: withdraw the 4 cm datum claim, two-panel figure
+2e050983649a2cdbaec27ff21799035b1743a2b5	c1c7242c215bf763e79af9eaee9e06103af60d95	2e05098	c1c7242	docs/ian-cross-server	docs: WP2 scripted two-server MCP workflow for Hurricane Ian
+2567537394fc82fbba8282d210f051dd9aa8eedd	f27ff7bed3b84466d79462b8dfe89c06d8c59627	2567537	f27ff7b		erddap-mcp: state each variable's units in the griddap JSON
+3834480301dda137db5eb1ec24561a6eb762e514	7f9d2bc858b73fc833b24fe532cae5064f48f4e3	3834480	7f9d2bc	fix/erddap-griddap-units	erddap-mcp: bump to 0.1.3 to release the griddap units field
+5d84c1371fea56fbad078b2e7812fb5bb0612e68	527026b82f1d80a4e4fc47b9e81d6fad95651ff7	5d84c13	527026b		wp1: freeze tasks, references and grader for the safeguards comparison
+96fd7f808f924bf76084a203b996e712d30953c4	cc404e9584cfe020f85e92eb5268275e5aa09f2e	96fd7f8	cc404e9		wp1: arms A and B with outputs; record amendment A1
+53d0f3f4d31d73562cec89c7177040c9f826c64d	8949419f72f0bda9de570fe09b9465acea772065	53d0f3f	8949419		wp1: Phase 2 start; record A2 sensitivity grading and validate slicing
+e74f02bf597d81a5eac118cab6646ea5d2201485	2922498f7c13c939f791900ab0fcf17d700df867	e74f02b	2922498		wp1: run arms C and D through MCP, grade all arms, write the report
+fe1cac51fc8aa92dbacd5e11bfda6b046bbb4c77	a9cc16cc534c61d63679341923c46ab48f26bd28	fe1cac5	a9cc16c		wp1b: record amendment A3 (R7 read from the response's stated maximum)
+03509ee5f7de77001895b4b549241331e704374d	88d9b74fc4b4ed95c7d5f8d94e8c5e3c972b2fd9	03509ee	88d9b74		wp1b: arm C-post (0.3.0 post-fix) sessions and gradings
+45c68df33f01d50616388f549e36d3765109fc16	7fa70ec8dca09645fb27dd64e44525251291dd59	45c68df	7fa70ec		wp1b: report the post-fix rerun (arm C-post) beside the pre-fix results
+3a3ccd3eca3c98f22105d131344380bd48aab031	51936572299abbe092ac44a9289a567dbba27cc1	3a3ccd3	5193657		wp1c: grader v2, a versioned correction of five documented v1 grader defects
+1b284cf9ccfd9156652118b245998029550d24ed	58dd95e5b412634582a8d01b7342396ac724bc61	1b284cf	58dd95e	eval/safeguards-comparison	wp1c: record the reproduction and preservation checks for grader v2
+52c7f4673881ab9f92995c75aa4b1796098346b1	241c55b56db20e012a483923a33cb7bd91a3add3	52c7f46	241c55b	fix/stofs-post-wp1	stofs: report coordinate corrections and state units in station, point and max JSON
+2ea1e0052f66fddd84df00504abaceda4fbf3858	84ba3dadb46af7e383739ec9804c2b945a575de4	2ea1e00	84ba3da		wp5: design freeze for the sampled evaluation (Phase 0 and Phase 1)
+8a7318df30af619c7e75d8bc162a7ccca919bb24	8a597125c601e075252b5792b8441d246167ab36	8a7318d	8a59712		wp5: record amendments A1-A4 before any sampled download
+d767d62c6d16ebc8919524564024142244f808fa	f99fe6ea6e0a04ba6258649523f44ad822cd543e	d767d62	f99fe6e		wp5: Phase 2 checkpoint (downloads done, amendments A5 and A6, pipeline)
+c1ace27f9c9f15b299304cfb77213ab20da2345f	2c638e16b7b4e4faa346f4e2a1dff200ef570122	c1ace27	2c638e1	eval/sampled-evaluation	wp5: results and report for the sampled evaluation
+f5ab1fd32768dda284ad95a5a02119c64ee8d3f5	9ce3264ba87186d47c457869cffb23212a41bd56	f5ab1fd	9ce3264		stofs: report CO-OPS rejections, duplicated station IDs and the datum epoch
+d2fefb419310ff139e365bd7550ebc6efc1311d8	854ab2fccbf9fea28e7091719d086af02b4d5c44	d2fefb4	854ab2f	fix/stofs-post-wp5	wp7: report for the post-WP5 stofs-mcp fixes and their regressions
