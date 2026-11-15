@@ -1,0 +1,244 @@
+
+== 0. archive bodies present and unchanged; wheel checksum
+4395 archived bodies checked, 0 bad
+/mnt/d/ocean-mcp/verification_post_wp1/dist/stofs_mcp-0.3.0-py3-none-any.whl: OK
+
+== 1. environments
+
+== 2. pre-freeze self-test of the reference (previously seen WP1 files)
+{"passed": true, "n_checks": 8}
+
+== 3. reference classification: windows (0,49.7], (0,24.8], (0,48]; 2D noanomaly
+2d 2026-06-01 12:00 v2.1.0 documented_generic_label cases=371 band=0
+2d 2026-06-08 12:00 v2.1.0 documented_generic_label cases=371 band=0
+2d 2026-06-15 12:00 v2.1.0 documented_generic_label cases=371 band=0
+2d 2026-06-22 12:00 v2.1.0 documented_generic_label cases=371 band=0
+2d 2026-06-29 12:00 v2.1.0 documented_generic_label cases=371 band=0
+2d 2026-07-06 12:00 v2.1.0 documented_generic_label cases=371 band=0
+2d 2026-07-13 12:00 v2.1.0 documented_generic_label cases=371 band=6
+2d 2026-07-20 12:00 v2.1.0 documented_generic_label cases=371 band=11
+2d 2026-07-27 12:00 v2.1.0 documented_generic_label cases=371 band=51
+2d 2026-08-03 12:00 v2.1.0 documented_generic_label cases=371 band=1
+2d 2026-08-10 12:00 v2.1.0 documented_generic_label cases=371 band=0
+2d 2026-08-13 12:00 v2.1.0 documented_generic_label cases=371 band=0
+2d 2026-08-14 12:00 v2.1.0 documented_generic_label cases=371 band=50
+2d 2026-08-15 12:00 v2.1.0 documented_generic_label cases=371 band=23
+2d 2026-08-16 12:00 v3.1.0 documented_generic_label cases=373 band=48
+2d 2026-08-17 12:00 v3.1.0 documented_generic_label cases=373 band=71
+2d 2026-08-18 12:00 v3.1.0 documented_generic_label cases=373 band=79
+2d 2026-08-19 12:00 v3.1.0 documented_generic_label cases=373 band=3
+2d 2026-08-20 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-08-24 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-08-31 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-09-07 12:00 v3.1.0 documented_generic_label cases=373 band=28
+2d 2026-09-14 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-09-21 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-09-28 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-10-05 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-10-12 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-10-19 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-10-26 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-11-02 12:00 v3.1.0 documented_generic_label cases=373 band=0
+3d 2026-06-01 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-06-08 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-06-15 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-06-22 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-06-29 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-07-06 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-07-13 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-07-20 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-07-27 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-08-03 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-08-10 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-08-13 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-08-14 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-08-15 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-08-16 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-08-17 12:00 v3.1.4 label_matches_documentation cases=163 band=0
+3d 2026-08-18 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-08-19 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-08-20 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-08-24 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-08-31 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-09-07 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-09-14 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-09-21 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-09-28 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-10-05 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-10-12 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-10-19 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-10-26 12:00 v3.1.6 label_matches_documentation cases=163 band=0
+3d 2026-11-02 12:00 v3.1.7 label_matches_documentation cases=163 band=0
+{"files": 60, "cases": 15197, "window": [0.0, 49.7]}
+2d 2026-06-01 12:00 v2.1.0 documented_generic_label cases=371 band=0
+2d 2026-06-08 12:00 v2.1.0 documented_generic_label cases=371 band=0
+2d 2026-06-15 12:00 v2.1.0 documented_generic_label cases=371 band=0
+2d 2026-06-22 12:00 v2.1.0 documented_generic_label cases=371 band=0
+2d 2026-06-29 12:00 v2.1.0 documented_generic_label cases=371 band=0
+2d 2026-07-06 12:00 v2.1.0 documented_generic_label cases=371 band=0
+2d 2026-07-13 12:00 v2.1.0 documented_generic_label cases=371 band=6
+2d 2026-07-20 12:00 v2.1.0 documented_generic_label cases=371 band=11
+2d 2026-07-27 12:00 v2.1.0 documented_generic_label cases=371 band=51
+2d 2026-08-03 12:00 v2.1.0 documented_generic_label cases=371 band=1
+2d 2026-08-10 12:00 v2.1.0 documented_generic_label cases=371 band=0
+2d 2026-08-13 12:00 v2.1.0 documented_generic_label cases=371 band=0
+2d 2026-08-14 12:00 v2.1.0 documented_generic_label cases=371 band=50
+2d 2026-08-15 12:00 v2.1.0 documented_generic_label cases=371 band=23
+2d 2026-08-16 12:00 v3.1.0 documented_generic_label cases=373 band=48
+2d 2026-08-17 12:00 v3.1.0 documented_generic_label cases=373 band=71
+2d 2026-08-18 12:00 v3.1.0 documented_generic_label cases=373 band=79
+2d 2026-08-19 12:00 v3.1.0 documented_generic_label cases=373 band=3
+2d 2026-08-20 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-08-24 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-08-31 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-09-07 12:00 v3.1.0 documented_generic_label cases=373 band=28
+2d 2026-09-14 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-09-21 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-09-28 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-10-05 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-10-12 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-10-19 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-10-26 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-11-02 12:00 v3.1.0 documented_generic_label cases=373 band=0
+3d 2026-06-01 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-06-08 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-06-15 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-06-22 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-06-29 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-07-06 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-07-13 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-07-20 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-07-27 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-08-03 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-08-10 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-08-13 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-08-14 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-08-15 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-08-16 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-08-17 12:00 v3.1.4 label_matches_documentation cases=163 band=0
+3d 2026-08-18 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-08-19 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-08-20 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-08-24 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-08-31 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-09-07 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-09-14 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-09-21 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-09-28 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-10-05 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-10-12 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-10-19 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-10-26 12:00 v3.1.6 label_matches_documentation cases=163 band=0
+3d 2026-11-02 12:00 v3.1.7 label_matches_documentation cases=163 band=0
+{"files": 60, "cases": 15197, "window": [0.0, 24.8]}
+2d 2026-06-01 12:00 v2.1.0 documented_generic_label cases=371 band=0
+2d 2026-06-08 12:00 v2.1.0 documented_generic_label cases=371 band=0
+2d 2026-06-15 12:00 v2.1.0 documented_generic_label cases=371 band=0
+2d 2026-06-22 12:00 v2.1.0 documented_generic_label cases=371 band=0
+2d 2026-06-29 12:00 v2.1.0 documented_generic_label cases=371 band=0
+2d 2026-07-06 12:00 v2.1.0 documented_generic_label cases=371 band=0
+2d 2026-07-13 12:00 v2.1.0 documented_generic_label cases=371 band=6
+2d 2026-07-20 12:00 v2.1.0 documented_generic_label cases=371 band=11
+2d 2026-07-27 12:00 v2.1.0 documented_generic_label cases=371 band=51
+2d 2026-08-03 12:00 v2.1.0 documented_generic_label cases=371 band=1
+2d 2026-08-10 12:00 v2.1.0 documented_generic_label cases=371 band=0
+2d 2026-08-13 12:00 v2.1.0 documented_generic_label cases=371 band=0
+2d 2026-08-14 12:00 v2.1.0 documented_generic_label cases=371 band=50
+2d 2026-08-15 12:00 v2.1.0 documented_generic_label cases=371 band=23
+2d 2026-08-16 12:00 v3.1.0 documented_generic_label cases=373 band=48
+2d 2026-08-17 12:00 v3.1.0 documented_generic_label cases=373 band=71
+2d 2026-08-18 12:00 v3.1.0 documented_generic_label cases=373 band=79
+2d 2026-08-19 12:00 v3.1.0 documented_generic_label cases=373 band=3
+2d 2026-08-20 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-08-24 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-08-31 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-09-07 12:00 v3.1.0 documented_generic_label cases=373 band=28
+2d 2026-09-14 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-09-21 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-09-28 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-10-05 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-10-12 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-10-19 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-10-26 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-11-02 12:00 v3.1.0 documented_generic_label cases=373 band=0
+3d 2026-06-01 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-06-08 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-06-15 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-06-22 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-06-29 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-07-06 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-07-13 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-07-20 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-07-27 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-08-03 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-08-10 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-08-13 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-08-14 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-08-15 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-08-16 12:00 v2.1.18 label_matches_documentation cases=106 band=0
+3d 2026-08-17 12:00 v3.1.4 label_matches_documentation cases=163 band=0
+3d 2026-08-18 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-08-19 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-08-20 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-08-24 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-08-31 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-09-07 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-09-14 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-09-21 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-09-28 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-10-05 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-10-12 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-10-19 12:00 v3.1.5 label_matches_documentation cases=163 band=0
+3d 2026-10-26 12:00 v3.1.6 label_matches_documentation cases=163 band=0
+3d 2026-11-02 12:00 v3.1.7 label_matches_documentation cases=163 band=0
+{"files": 60, "cases": 15197, "window": [0.0, 48.0]}
+2d 2026-06-01 12:00 v2.1.0 documented_generic_label cases=371 band=0
+2d 2026-06-08 12:00 v2.1.0 documented_generic_label cases=371 band=0
+2d 2026-06-15 12:00 v2.1.0 documented_generic_label cases=371 band=0
+2d 2026-06-22 12:00 v2.1.0 documented_generic_label cases=371 band=0
+2d 2026-06-29 12:00 v2.1.0 documented_generic_label cases=371 band=0
+2d 2026-07-06 12:00 v2.1.0 documented_generic_label cases=371 band=0
+2d 2026-07-13 12:00 v2.1.0 documented_generic_label cases=371 band=6
+2d 2026-07-20 12:00 v2.1.0 documented_generic_label cases=371 band=11
+2d 2026-07-27 12:00 v2.1.0 documented_generic_label cases=371 band=51
+2d 2026-08-03 12:00 v2.1.0 documented_generic_label cases=371 band=1
+2d 2026-08-10 12:00 v2.1.0 documented_generic_label cases=371 band=0
+2d 2026-08-13 12:00 v2.1.0 documented_generic_label cases=371 band=0
+2d 2026-08-14 12:00 v2.1.0 documented_generic_label cases=371 band=50
+2d 2026-08-15 12:00 v2.1.0 documented_generic_label cases=371 band=23
+2d 2026-08-16 12:00 v3.1.0 documented_generic_label cases=373 band=48
+2d 2026-08-17 12:00 v3.1.0 documented_generic_label cases=373 band=71
+2d 2026-08-18 12:00 v3.1.0 documented_generic_label cases=373 band=79
+2d 2026-08-19 12:00 v3.1.0 documented_generic_label cases=373 band=3
+2d 2026-08-20 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-08-24 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-08-31 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-09-07 12:00 v3.1.0 documented_generic_label cases=373 band=28
+2d 2026-09-14 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-09-21 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-09-28 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-10-05 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-10-12 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-10-19 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-10-26 12:00 v3.1.0 documented_generic_label cases=373 band=0
+2d 2026-11-02 12:00 v3.1.0 documented_generic_label cases=373 band=0
+{"files": 30, "cases": 11162, "window": [0.0, 49.7]}
+
+== 4. A1 datum consistency (offline VDatum)
+Traceback (most recent call last):
+  File "/mnt/d/ocean-mcp-wp7-scratch/taskB/verification_sampled_evaluation/reference/a1_datum_consistency.py", line 144, in <module>
+    sys.exit(run(Path(a.run)))
+             ~~~^^^^^^^^^^^^^
+  File "/mnt/d/ocean-mcp-wp7-scratch/taskB/verification_sampled_evaluation/reference/a1_datum_consistency.py", line 130, in run
+    out_path.write_text(json.dumps(out, indent=1) + "\n")
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mjisan/.local/share/uv/python/cpython-3.13.12-linux-x86_64-gnu/lib/python3.13/pathlib/_local.py", line 555, in write_text
+    return PathBase.write_text(self, data, encoding, errors, newline)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mjisan/.local/share/uv/python/cpython-3.13.12-linux-x86_64-gnu/lib/python3.13/pathlib/_abc.py", line 651, in write_text
+    with self.open(mode='w', encoding=encoding, errors=errors, newline=newline) as f:
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mjisan/.local/share/uv/python/cpython-3.13.12-linux-x86_64-gnu/lib/python3.13/pathlib/_local.py", line 537, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/mnt/d/ocean-mcp-wp7-scratch/taskB/verification_sampled_evaluation/results/a1/datum_consistency.json'

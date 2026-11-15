@@ -1,0 +1,103 @@
+{
+ "description": "Verbatim excerpt of a real NOAA STOFS-3D-Atlantic station file (raw stored values).",
+ "source_url": "https://noaa-nos-stofs3d-pds.s3.amazonaws.com/STOFS-3D-Atl/stofs_3d_atl.20260218/stofs_3d_atl.t12z.points.cwl.nc",
+ "source_sha256": "d13345a36695ac69ff463f52f6f5dc187639e65a068a33626d9ab2090ca633b5",
+ "source_bytes": 5509661,
+ "source_note": "Retrieved 2026-11-06 (WP1, data/archive/base entry e0005); same SHA-256 as recorded in MANUSCRIPT_SECOND_REVIEW.md. 105 of the file's 108 records store latitude in x.",
+ "extracted_by": "verification_post_wp1/scripts/extract_feb_excerpt.py",
+ "station_indices_in_source": [
+  0,
+  3,
+  53,
+  82,
+  95
+ ],
+ "global_attributes": {
+  "title": "SCHISM Model output",
+  "source": "SCHISM model output version v10",
+  "history": "Wed Feb 18 18:06:48 2026: ncap2 -O -F -S /lfs/h1/ops/prod/packages/stofs.v2.1.18/fix/stofs_3d_atl/stofs_3d_atl_sta_cwl_xgeoid_to_navd.nco staout_timeseries_2026-02-17-12.nc staout_timeseries_2026-02-17-12_navd.nc"
+ },
+ "time": {
+  "units": "seconds since 2026-02-17 12:00:00 UTC",
+  "values": [
+   360.0,
+   720.0,
+   1080.0,
+   1440.0,
+   1800.0
+  ]
+ },
+ "zeta_attributes": {
+  "_FillValue": -99999.0,
+  "long_name": "water surface elevation above navd88",
+  "standard_name": "sea_surface_height_above_navd88",
+  "units": "m"
+ },
+ "stations": [
+  {
+   "index": 0,
+   "name": "PSBM1 SOUS41 8410140 ME Eastport",
+   "x": 44.9046093476,
+   "y": -66.9829080647,
+   "zeta": [
+    -1.0537020139808655,
+    -0.9398580139808654,
+    -0.8270820139808654,
+    -0.7167180139808655,
+    -0.6010540139808654
+   ]
+  },
+  {
+   "index": 3,
+   "name": "BHBM3 SOUS41 8443970 MA Boston",
+   "x": 42.3539103827,
+   "y": -71.0502859522,
+   "zeta": [
+    -0.7531939867630004,
+    -0.6903619867630004,
+    -0.6258817867630005,
+    -0.5606277867630005,
+    -0.4966529867630005
+   ]
+  },
+  {
+   "index": 53,
+   "name": "TRDF1 SOUS41 8721604 FL Trident Pier, Port Canaver",
+   "x": -80.5934,
+   "y": 28.4157,
+   "zeta": [
+    0.5214372000983476,
+    0.5272844000983476,
+    0.5302994000983476,
+    0.5305990000983477,
+    0.5283460000983476
+   ]
+  },
+  {
+   "index": 82,
+   "name": "LCLL1 SOUS42 8767816 LA Lake Charles",
+   "x": -93.2243,
+   "y": 30.2241,
+   "zeta": [
+    0.10660140315189362,
+    0.10958580315189362,
+    0.1125552031518936,
+    0.11552400315189362,
+    0.11849200315189362
+   ]
+  },
+  {
+   "index": 95,
+   "name": "LUIT2 SOUS42 8771972 TX San Luis Pass",
+   "x": -95.1313,
+   "y": 29.081,
+   "zeta": [
+    0.11830413290943145,
+    0.11525901290943145,
+    0.11247441290943146,
+    0.10990841290943146,
+    0.10752569290943145
+   ]
+  }
+ ]
+}

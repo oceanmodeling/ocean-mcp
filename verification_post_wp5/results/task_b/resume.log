@@ -1,0 +1,168 @@
+
+== 4. A1 datum consistency (offline VDatum)
+{
+ "boston_check": {
+  "offline": 0.09173215948229796,
+  "boston_package": 0.09173215948229796,
+  "same_within_1e-6_m": true
+ },
+ "n_evaluated": 199,
+ "n_not_evaluated": 18,
+ "median_m": 0.003529137385086756,
+ "sd_m": 0.037401060038018706,
+ "largest_abs": {
+  "station_id": "8774770",
+  "name": "Rockport",
+  "d_m": 0.1934190695951976,
+  "epoch": "2002-2006"
+ },
+ "n_abs_le_0_03": 156
+}
+
+== 5. block containment and the pre-session scan (acquisition record)
+{"all_inside_one_block": true, "block_lengths_days": {"MSL": [13, 28, 28, 28, 28, 28, 29], "NAVD": [28, 28, 28, 28, 28, 29]}, "n_checked": 180} 0
+{"files": 60, "new_ids": 0, "out_of_block_020": 0, "supplement_requests": 0, "versions": [["noaa-gestofs", "2.1.0"], ["noaa-gestofs", "3.1.0"], ["noaa-nos-sto", "2.1.18"], ["noaa-nos-sto", "3.1.4"], ["noaa-nos-sto", "3.1.5"], ["noaa-nos-sto", "3.1.6"], ["noaa-nos-sto", "3.1.7"]]}
+
+== 6. MCP sessions in replay mode (unshare -rn), 1 at a time
+{"stofs_specs": 120, "cases": 15197, "coops_calls": 389}
+{"written_utc": "2026-11-12T22:23:23+00:00", "first_session": "run_log/specs/stofs030/2d_20260601.json", "first_session_seconds": 109.4, "first_session_calls": 371, "seconds_per_call": 0.295, "sessions": 121, "total_calls": 30783, "jobs": 1, "projected_total_seconds_serial": 9077, "projected_wall_seconds": 9077, "assumption": "every call costs as much as a 2D 0.3.0 call (3D files are smaller, so this is an upper bound for them)"}
+{"spec": "run_log/specs/stofs030/2d_20260608.json", "exit": 0, "seconds": 103.0, "valid": true, "calls": 371, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/2d_20260615.json", "exit": 0, "seconds": 103.2, "valid": true, "calls": 371, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/2d_20260622.json", "exit": 0, "seconds": 102.4, "valid": true, "calls": 371, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/2d_20260629.json", "exit": 0, "seconds": 102.8, "valid": true, "calls": 371, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/2d_20260706.json", "exit": 0, "seconds": 99.7, "valid": true, "calls": 371, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/2d_20260713.json", "exit": 0, "seconds": 102.6, "valid": true, "calls": 371, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/2d_20260720.json", "exit": 0, "seconds": 100.0, "valid": true, "calls": 371, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/2d_20260727.json", "exit": 0, "seconds": 103.4, "valid": true, "calls": 371, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/2d_20260803.json", "exit": 0, "seconds": 101.1, "valid": true, "calls": 371, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/2d_20260810.json", "exit": 0, "seconds": 99.3, "valid": true, "calls": 371, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/2d_20260813.json", "exit": 0, "seconds": 100.8, "valid": true, "calls": 371, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/2d_20260814.json", "exit": 0, "seconds": 100.9, "valid": true, "calls": 371, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/2d_20260815.json", "exit": 0, "seconds": 103.7, "valid": true, "calls": 371, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/2d_20260816.json", "exit": 0, "seconds": 137.5, "valid": true, "calls": 373, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/2d_20260817.json", "exit": 0, "seconds": 110.0, "valid": true, "calls": 373, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/2d_20260818.json", "exit": 0, "seconds": 107.1, "valid": true, "calls": 373, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/2d_20260819.json", "exit": 0, "seconds": 120.0, "valid": true, "calls": 373, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/2d_20260820.json", "exit": 0, "seconds": 108.3, "valid": true, "calls": 373, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/2d_20260824.json", "exit": 0, "seconds": 114.2, "valid": true, "calls": 373, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/2d_20260831.json", "exit": 0, "seconds": 106.7, "valid": true, "calls": 373, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/2d_20260907.json", "exit": 0, "seconds": 107.0, "valid": true, "calls": 373, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/2d_20260914.json", "exit": 0, "seconds": 115.0, "valid": true, "calls": 373, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/2d_20260921.json", "exit": 0, "seconds": 108.8, "valid": true, "calls": 373, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/2d_20260928.json", "exit": 0, "seconds": 108.1, "valid": true, "calls": 373, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/2d_20261005.json", "exit": 0, "seconds": 120.5, "valid": true, "calls": 373, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/2d_20261012.json", "exit": 0, "seconds": 110.3, "valid": true, "calls": 373, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/2d_20261019.json", "exit": 0, "seconds": 104.5, "valid": true, "calls": 373, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/2d_20261026.json", "exit": 0, "seconds": 103.2, "valid": true, "calls": 373, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/2d_20261102.json", "exit": 0, "seconds": 108.0, "valid": true, "calls": 373, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/3d_20260601.json", "exit": 0, "seconds": 26.9, "valid": true, "calls": 106, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/3d_20260608.json", "exit": 0, "seconds": 28.9, "valid": true, "calls": 106, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/3d_20260615.json", "exit": 0, "seconds": 26.5, "valid": true, "calls": 106, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/3d_20260622.json", "exit": 0, "seconds": 26.1, "valid": true, "calls": 106, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/3d_20260629.json", "exit": 0, "seconds": 28.2, "valid": true, "calls": 106, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/3d_20260706.json", "exit": 0, "seconds": 26.3, "valid": true, "calls": 106, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/3d_20260713.json", "exit": 0, "seconds": 27.7, "valid": true, "calls": 106, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/3d_20260720.json", "exit": 0, "seconds": 29.5, "valid": true, "calls": 106, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/3d_20260727.json", "exit": 0, "seconds": 27.9, "valid": true, "calls": 106, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/3d_20260803.json", "exit": 0, "seconds": 32.2, "valid": true, "calls": 106, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/3d_20260810.json", "exit": 0, "seconds": 29.6, "valid": true, "calls": 106, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/3d_20260813.json", "exit": 0, "seconds": 29.7, "valid": true, "calls": 106, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/3d_20260814.json", "exit": 0, "seconds": 29.1, "valid": true, "calls": 106, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/3d_20260815.json", "exit": 0, "seconds": 27.0, "valid": true, "calls": 106, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/3d_20260816.json", "exit": 0, "seconds": 27.2, "valid": true, "calls": 106, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/3d_20260817.json", "exit": 0, "seconds": 38.6, "valid": true, "calls": 163, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/3d_20260818.json", "exit": 0, "seconds": 38.2, "valid": true, "calls": 163, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/3d_20260819.json", "exit": 0, "seconds": 37.0, "valid": true, "calls": 163, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/3d_20260820.json", "exit": 0, "seconds": 36.6, "valid": true, "calls": 163, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/3d_20260824.json", "exit": 0, "seconds": 36.2, "valid": true, "calls": 163, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/3d_20260831.json", "exit": 0, "seconds": 36.6, "valid": true, "calls": 163, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/3d_20260907.json", "exit": 0, "seconds": 39.4, "valid": true, "calls": 163, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/3d_20260914.json", "exit": 0, "seconds": 36.2, "valid": true, "calls": 163, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/3d_20260921.json", "exit": 0, "seconds": 36.1, "valid": true, "calls": 163, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/3d_20260928.json", "exit": 0, "seconds": 37.3, "valid": true, "calls": 163, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/3d_20261005.json", "exit": 0, "seconds": 36.6, "valid": true, "calls": 163, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/3d_20261012.json", "exit": 0, "seconds": 38.3, "valid": true, "calls": 163, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/3d_20261019.json", "exit": 0, "seconds": 35.2, "valid": true, "calls": 163, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/3d_20261026.json", "exit": 0, "seconds": 35.9, "valid": true, "calls": 163, "replay_misses": 0}
+{"spec": "run_log/specs/stofs030/3d_20261102.json", "exit": 0, "seconds": 35.2, "valid": true, "calls": 163, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/2d_20260601.json", "exit": 0, "seconds": 121.4, "valid": true, "calls": 371, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/2d_20260608.json", "exit": 0, "seconds": 109.9, "valid": true, "calls": 371, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/2d_20260615.json", "exit": 0, "seconds": 113.4, "valid": true, "calls": 371, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/2d_20260622.json", "exit": 0, "seconds": 112.5, "valid": true, "calls": 371, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/2d_20260629.json", "exit": 0, "seconds": 115.5, "valid": true, "calls": 371, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/2d_20260706.json", "exit": 0, "seconds": 114.8, "valid": true, "calls": 371, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/2d_20260713.json", "exit": 0, "seconds": 115.6, "valid": true, "calls": 371, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/2d_20260720.json", "exit": 0, "seconds": 122.6, "valid": true, "calls": 371, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/2d_20260727.json", "exit": 0, "seconds": 132.8, "valid": true, "calls": 371, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/2d_20260803.json", "exit": 0, "seconds": 133.5, "valid": true, "calls": 371, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/2d_20260810.json", "exit": 0, "seconds": 115.6, "valid": true, "calls": 371, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/2d_20260813.json", "exit": 0, "seconds": 111.5, "valid": true, "calls": 371, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/2d_20260814.json", "exit": 0, "seconds": 114.4, "valid": true, "calls": 371, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/2d_20260815.json", "exit": 0, "seconds": 110.0, "valid": true, "calls": 371, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/2d_20260816.json", "exit": 0, "seconds": 117.8, "valid": true, "calls": 373, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/2d_20260817.json", "exit": 0, "seconds": 117.9, "valid": true, "calls": 373, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/2d_20260818.json", "exit": 0, "seconds": 118.8, "valid": true, "calls": 373, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/2d_20260819.json", "exit": 0, "seconds": 121.3, "valid": true, "calls": 373, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/2d_20260820.json", "exit": 0, "seconds": 126.9, "valid": true, "calls": 373, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/2d_20260824.json", "exit": 0, "seconds": 113.9, "valid": true, "calls": 373, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/2d_20260831.json", "exit": 0, "seconds": 112.4, "valid": true, "calls": 373, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/2d_20260907.json", "exit": 0, "seconds": 111.7, "valid": true, "calls": 373, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/2d_20260914.json", "exit": 0, "seconds": 115.1, "valid": true, "calls": 373, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/2d_20260921.json", "exit": 0, "seconds": 109.9, "valid": true, "calls": 373, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/2d_20260928.json", "exit": 0, "seconds": 111.8, "valid": true, "calls": 373, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/2d_20261005.json", "exit": 0, "seconds": 111.4, "valid": true, "calls": 373, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/2d_20261012.json", "exit": 0, "seconds": 111.2, "valid": true, "calls": 373, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/2d_20261019.json", "exit": 0, "seconds": 106.7, "valid": true, "calls": 373, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/2d_20261026.json", "exit": 0, "seconds": 110.1, "valid": true, "calls": 373, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/2d_20261102.json", "exit": 0, "seconds": 120.6, "valid": true, "calls": 373, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/3d_20260601.json", "exit": 0, "seconds": 29.1, "valid": true, "calls": 106, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/3d_20260608.json", "exit": 0, "seconds": 29.1, "valid": true, "calls": 106, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/3d_20260615.json", "exit": 0, "seconds": 32.7, "valid": true, "calls": 106, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/3d_20260622.json", "exit": 0, "seconds": 31.1, "valid": true, "calls": 106, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/3d_20260629.json", "exit": 0, "seconds": 27.6, "valid": true, "calls": 106, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/3d_20260706.json", "exit": 0, "seconds": 29.5, "valid": true, "calls": 106, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/3d_20260713.json", "exit": 0, "seconds": 27.9, "valid": true, "calls": 106, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/3d_20260720.json", "exit": 0, "seconds": 27.9, "valid": true, "calls": 106, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/3d_20260727.json", "exit": 0, "seconds": 28.7, "valid": true, "calls": 106, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/3d_20260803.json", "exit": 0, "seconds": 28.5, "valid": true, "calls": 106, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/3d_20260810.json", "exit": 0, "seconds": 27.8, "valid": true, "calls": 106, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/3d_20260813.json", "exit": 0, "seconds": 29.0, "valid": true, "calls": 106, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/3d_20260814.json", "exit": 0, "seconds": 27.6, "valid": true, "calls": 106, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/3d_20260815.json", "exit": 0, "seconds": 28.3, "valid": true, "calls": 106, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/3d_20260816.json", "exit": 0, "seconds": 28.1, "valid": true, "calls": 106, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/3d_20260817.json", "exit": 0, "seconds": 37.7, "valid": true, "calls": 163, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/3d_20260818.json", "exit": 0, "seconds": 37.2, "valid": true, "calls": 163, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/3d_20260819.json", "exit": 0, "seconds": 37.9, "valid": true, "calls": 163, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/3d_20260820.json", "exit": 0, "seconds": 37.3, "valid": true, "calls": 163, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/3d_20260824.json", "exit": 0, "seconds": 38.5, "valid": true, "calls": 163, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/3d_20260831.json", "exit": 0, "seconds": 38.3, "valid": true, "calls": 163, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/3d_20260907.json", "exit": 0, "seconds": 38.4, "valid": true, "calls": 163, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/3d_20260914.json", "exit": 0, "seconds": 37.7, "valid": true, "calls": 163, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/3d_20260921.json", "exit": 0, "seconds": 37.4, "valid": true, "calls": 163, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/3d_20260928.json", "exit": 0, "seconds": 37.9, "valid": true, "calls": 163, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/3d_20261005.json", "exit": 0, "seconds": 38.5, "valid": true, "calls": 163, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/3d_20261012.json", "exit": 0, "seconds": 37.3, "valid": true, "calls": 163, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/3d_20261019.json", "exit": 0, "seconds": 36.3, "valid": true, "calls": 163, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/3d_20261026.json", "exit": 0, "seconds": 36.0, "valid": true, "calls": 163, "replay_misses": 0}
+{"spec": "run_log/specs/stofs020/3d_20261102.json", "exit": 0, "seconds": 35.9, "valid": true, "calls": 163, "replay_misses": 0}
+{"spec": "run_log/specs/coops011/datums.json", "exit": 0, "seconds": 18.0, "valid": true, "calls": 389, "replay_misses": 0}
+
+== 7. Study 1 grading and tables
+Counter({('2d', 'correct_comparison'): 6428, ('2d', 'not_eligible'): 4703, ('3d', 'correct_comparison'): 3520, ('3d', 'not_eligible'): 440, ('3d', 'correct_refusal'): 75, ('2d', 'correct_refusal'): 30, ('2d', 'other_discrepancy'): 1})
+wrote /mnt/d/ocean-mcp-wp7-scratch/taskB/verification_sampled_evaluation/results/study1/tables.md
+
+== 8. Study 2, Study 3, human check
+{
+ "primary": "inconclusive (slope)",
+ "control_2d_same_stations": "supports H-carried (slope ~ 0)",
+ "control_2d_all_stations": "supports H-carried (slope ~ 0)",
+ "pre_transition_3d": "not separable: depends on whether the model carries the seasonal cycle",
+ "supplementary_2d_noanomaly_same_stations": "not separable: depends on whether the model carries the seasonal cycle",
+ "supplementary_2d_noanomaly_all": "outside both hypotheses (slope beyond -1 or above 0)"
+}
+wrote results/study2/tables.md
+
+== 9. regenerated results against the committed checksums
+sha256sum: results/study2/station_table_3d_post.md: No such file or directory
+results/study2/station_table_3d_post.md: FAILED open or read
+sha256sum: WARNING: 1 listed file could not be read

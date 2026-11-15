@@ -6,8 +6,6 @@ Add a new tool `stofs_get_gridded_forecast` and supporting OPeNDAP client code t
 
 This complements the existing station-based tools. The station tools use pre-extracted point files (~385 fixed locations); this new tool uses the interpolated regular grids served via OPeNDAP to reach any coastal point.
 
-**Do NOT modify existing tools.** This is purely additive.
-
 ---
 
 ## Background: How OPeNDAP Works Here
@@ -446,10 +444,6 @@ And for 3D:
 
 ## What NOT to Change
 
-- Do NOT modify `stofs_get_station_forecast` — it stays S3 + NetCDF based
-- Do NOT modify `stofs_compare_with_observations` — it uses station files for validation
-- Do NOT modify `stofs_get_max_water_level` — station-based is correct for this
-- Do NOT remove any existing tools or change their behavior
 - Do NOT add xarray to any of the station-based code paths
 
 ---

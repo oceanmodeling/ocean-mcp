@@ -155,7 +155,7 @@ async def stofs_get_system_info(
                 "nowcast": "6 hours",
                 "station_count": "~385",
                 "station_resolution": "6-minute",
-                "datum": "LMSL (Local Mean Sea Level)",
+                "datum": "LMSL (Local Mean Sea Level), station and gridded output",
                 "atmospheric_forcing": "GFS",
                 "products": "cwl (combined), htp (tidal), swl (surge)",
                 "data_url": "s3://noaa-gestofs-pds/",
@@ -170,9 +170,13 @@ async def stofs_get_system_info(
                 "cycles": "1x daily: 12 UTC",
                 "forecast_length": "96 hours (4 days)",
                 "nowcast": "24 hours",
-                "station_count": "~108",
+                "station_count": "108 (v2.1); 166 (v3.1, from 2026-08-17 12z)",
                 "station_resolution": "6-minute",
-                "datum": "NAVD88",
+                "datum": (
+                    "Station NetCDF: NAVD88 through the 2026-08-16 cycle (v2.1), "
+                    "LMSL from the 2026-08-17 12z cycle (v3.1). "
+                    "Gridded GRIB2: xGEOID20b."
+                ),
                 "atmospheric_forcing": "GFS + HRRR",
                 "tidal_forcing": "FES2014",
                 "hydrology": "National Water Model (NWM)",
@@ -185,10 +189,21 @@ async def stofs_get_system_info(
 
         lines = ["# STOFS System Information"]
         lines.append("")
+        per_model = {
+            "2d_global": "STOFS-2D-Global station output is LMSL.",
+            "3d_atlantic": (
+                "STOFS-3D-Atlantic station output is NAVD88 before the v3.1 "
+                "upgrade (2026-08-17 12z cycle) and LMSL from it; its gridded "
+                "output is xGEOID20b."
+            ),
+        }
         lines.append(
-            "> **Datum note**: STOFS-2D uses LMSL; STOFS-3D uses NAVD88. "
-            "CO-OPS observations can be requested in MSL (≈LMSL) or NAVD for comparison. "
-            "Small systematic offsets (1–5 cm) are expected."
+            "> **Datum note**: "
+            + " ".join(per_model[m.value] for m in models_to_show)
+            + " The station tools read the datum from each file's metadata and "
+            "compare against CO-OPS MSL (for LMSL) or NAVD (CO-OPS's identifier "
+            "for NAVD88). No vertical transformation is applied, and matching "
+            "labels do not guarantee identical realizations or epochs."
         )
 
         for m in models_to_show:

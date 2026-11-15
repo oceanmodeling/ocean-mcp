@@ -21,7 +21,27 @@ from stofs_mcp.utils import (
     format_timeseries_table,
     get_opendap_region,
     handle_stofs_error,
+    parse_station_netcdf,
     resolve_cycle,
+    resolve_station_datum,
+    classify_datum_label,
+    combine_datum_attributes,
+    datum_from_label,
+    documented_fallback,
+    dumps_strict,
+    match_timeseries,
+    value_exclusion_reason,
+    unswap_station_coords,
+    utc_seconds,
+)
+
+from .conftest import (
+    GLOBAL_2D,
+    GLOBAL_3D_V31,
+    GLOBAL_ESTOFS,
+    ZETA_2D,
+    ZETA_3D_V21,
+    ZETA_3D_V31,
 )
 
 
@@ -477,3 +497,829 @@ class TestResolveCycle:
         """A bad date returns None rather than silently using another cycle."""
         out = await resolve_cycle(None, "2d_global", "not-a-date", "00")
         assert out is None
+
+
+# ---------------------------------------------------------------------------
+# Vertical datum: read from the file, version-aware fallback
+# ---------------------------------------------------------------------------
+
+
+class TestDatumFromLabel:
+    """datum_from_label maps CF labels to datums and refuses ambiguous ones."""
+
+    @pytest.mark.parametrize(
+        "label,expected",
+        [
+            ("sea_surface_height_above_navd88", "NAVD88"),
+            ("water surface elevation above navd88", "NAVD88"),
+            ("sea_surface_height_above_msl", "LMSL"),
+            ("water surface elevation above msl", "LMSL"),
+            ("sea_surface_height_above_mean_sea_level", "LMSL"),
+            ("water level above LMSL", "LMSL"),
+            ("height above MLLW", "MLLW"),
+            ("water surface elevation above xgeoid20b", "xGEOID20b"),
+        ],
+    )
+    def test_specific_labels(self, label, expected):
+        """Labels that name a datum map to it."""
+        assert datum_from_label(label) == expected
+
+    @pytest.mark.parametrize(
+        "label",
+        ["sea_surface_height_above_geoid", "water surface elevation", "", None],
+    )
+    def test_ambiguous_labels_return_none(self, label):
+        """ADCIRC's generic 'above geoid' and empty labels name no datum."""
+        assert datum_from_label(label) is None
+
+    def test_msl_inside_another_word_is_not_a_datum(self):
+        """'mslp' (pressure) must not be read as MSL."""
+        assert datum_from_label("air_pressure_at_mslp") is None
+
+
+class TestParseStationNetcdfDatum:
+    """parse_station_netcdf reports the datum named by the zeta metadata."""
+
+    def test_v21_3d_file_reads_navd88(self, station_nc):
+        """A pre-v3.1 STOFS-3D file is NAVD88 per its zeta:standard_name."""
+        path = station_nc(ZETA_3D_V21, "2026-02-17 12:00", [0.1, 0.2])
+        meta = parse_station_netcdf(path)
+        assert meta["datum"] == "NAVD88"
+        assert meta["datum_label"] == (
+            "zeta:standard_name=sea_surface_height_above_navd88"
+        )
+
+    def test_v31_3d_file_reads_lmsl(self, station_nc):
+        """A v3.1 STOFS-3D file is LMSL per its zeta:standard_name."""
+        path = station_nc(ZETA_3D_V31, "2026-08-16 12:00", [0.1, 0.2])
+        assert parse_station_netcdf(path, "8443970")["datum"] == "LMSL"
+
+    def test_2d_geoid_label_is_ambiguous(self, station_nc):
+        """The 2D 'above geoid' label yields no datum, but keeps the label."""
+        path = station_nc(ZETA_2D, "2026-02-18 12:00", [0.1, 0.2])
+        meta = parse_station_netcdf(path)
+        assert meta["datum"] == ""
+        assert "sea_surface_height_above_geoid" in meta["datum_label"]
+
+
+class TestClassifyDatumLabel:
+    """Labels are classified; unfamiliar explicit references are not guessed."""
+
+    @pytest.mark.parametrize(
+        "label,status,datum",
+        [
+            ("sea_surface_height_above_navd88", "recognized", "NAVD88"),
+            ("water level above NAVD", "recognized", "NAVD88"),
+            ("sea_surface_height_above_msl", "recognized", "LMSL"),
+            ("sea_surface_height_above_mean_sea_level", "recognized", "LMSL"),
+            ("height above MLLW", "recognized", "MLLW"),
+            ("water surface elevation above xgeoid20b", "recognized", "xGEOID20b"),
+            ("sea_surface_height_above_geoid", "generic", None),
+            ("water surface elevation", "generic", None),
+            ("", "absent", None),
+            (None, "absent", None),
+        ],
+    )
+    def test_known_generic_and_absent(self, label, status, datum):
+        """Known datums are recognized; generic and absent labels name none."""
+        c = classify_datum_label(label)
+        assert (c["status"], c["datum"]) == (status, datum)
+
+    @pytest.mark.parametrize(
+        "label,reference",
+        [
+            ("sea_surface_height_above_ngvd29", "ngvd29"),
+            ("sea_surface_height_above_NAVD2022", "navd2022"),
+            ("water level above navd 2022", "navd 2022"),
+            ("sea_surface_height_above_reference_ellipsoid", "reference_ellipsoid"),
+            ("water level above GMSL", "gmsl"),
+        ],
+    )
+    def test_unfamiliar_explicit_reference_is_unsupported(self, label, reference):
+        """NGVD29, NAVD2022, ellipsoid and global MSL are not mapped to a known datum."""
+        c = classify_datum_label(label)
+        assert c["status"] == "unsupported"
+        assert c["reference"] == reference
+        assert datum_from_label(label) is None
+
+    def test_two_datums_in_one_label_conflict(self):
+        """A label naming two different datums is conflicting, not first-match."""
+        c = classify_datum_label("water level relative to MLLW and NAVD88")
+        assert c["status"] == "conflicting"
+        assert datum_from_label("water level relative to MLLW and NAVD88") is None
+
+
+class TestCombineDatumAttributes:
+    """File-level verdicts across standard_name, long_name and global attrs."""
+
+    def test_specific_attributes_that_disagree_conflict(self):
+        """NAVD88 standard_name vs MSL long_name is a conflict (review C1)."""
+        out = combine_datum_attributes(
+            {
+                "zeta:standard_name": "sea_surface_height_above_navd88",
+                "zeta:long_name": "water surface elevation above msl",
+            }
+        )
+        assert out["status"] == "conflicting"
+        assert "above_navd88" in out["label"] and "above msl" in out["label"]
+
+    def test_generic_does_not_conflict_with_specific(self):
+        """A generic 'geoid' long_name does not override a specific standard_name."""
+        out = combine_datum_attributes(
+            {
+                "zeta:standard_name": "sea_surface_height_above_msl",
+                "zeta:long_name": "water surface elevation above geoid",
+            }
+        )
+        assert (out["status"], out["datum"]) == ("recognized", "LMSL")
+
+    def test_unsupported_wins_over_recognized(self):
+        """Any unsupported explicit reference blocks interpretation."""
+        out = combine_datum_attributes(
+            {
+                "zeta:standard_name": "sea_surface_height_above_navd88",
+                ":vertical_datum": "NGVD29",
+            }
+        )
+        assert out["status"] == "unsupported"
+
+    def test_raw_attributes_are_preserved(self):
+        """Every inspected attribute is returned verbatim."""
+        attrs = {"zeta:standard_name": "sea_surface_height_above_geoid"}
+        assert combine_datum_attributes(attrs)["attributes"] == attrs
+
+
+class TestProductSignature:
+    """parse_station_netcdf identifies the producing system and version."""
+
+    def test_3d_v31_package_version(self, station_nc):
+        """The STOFS package version is read from the 3D history attribute."""
+        path = station_nc(
+            ZETA_3D_V31, "2026-10-29 12:00", [0.1], global_attrs=GLOBAL_3D_V31
+        )
+        assert (
+            parse_station_netcdf(path)["product"]["product_version"] == "stofs.v3.1.4"
+        )
+
+    def test_2d_title_version(self, station_nc):
+        """The 2D product version is read from ADCIRC's padded title."""
+        path = station_nc(ZETA_2D, "2026-10-30 06:00", [0.1], global_attrs=GLOBAL_2D)
+        product = parse_station_netcdf(path)["product"]
+        assert product["model"] == "ADCIRC"
+        assert product["product_version"] == "STOFS_2D_GLOBAL V3.1.0"
+
+    def test_estofs_title_version(self, station_nc):
+        """The pre-2023 ESTOFS archive title is recognized too."""
+        path = station_nc(
+            ZETA_2D, "2022-12-01 00:00", [0.1], global_attrs=GLOBAL_ESTOFS
+        )
+        assert parse_station_netcdf(path)["product"]["product_version"] == (
+            "ESTOFS GLOBAL V2.1.0"
+        )
+
+
+def _meta(status, datum="", label="", reference=None, product=None):
+    return {
+        "datum": datum,
+        "datum_status": status,
+        "datum_label": label,
+        "datum_reference": reference,
+        "datum_attributes": {},
+        "product": product or {},
+    }
+
+
+ADCIRC_2D = {"model": "ADCIRC", "title": "STOFS_2D_GLOBAL.V3.1.0"}
+
+
+class TestResolveStationDatum:
+    """resolve_station_datum: file metadata first, fallback only when safe."""
+
+    def test_file_metadata_wins(self):
+        """An unambiguous file label is used and cited as the source."""
+        out = resolve_station_datum(
+            "3d_atlantic", "20260818", "12", _meta("recognized", "LMSL", "zeta:..._msl")
+        )
+        assert out["datum"] == "LMSL"
+        assert out["comparable"] is True
+        assert out["resolution"] == "file_metadata"
+        assert out["datum_source"].startswith("file metadata")
+        assert out["datum_warning"] == ""
+
+    def test_2d_generic_label_with_adcirc_signature_falls_back(self):
+        """2D 'geoid' label from an ADCIRC STOFS-2D file -> documented LMSL."""
+        out = resolve_station_datum(
+            "2d_global",
+            "20260218",
+            "18",
+            _meta("generic", label="zeta:..._geoid", product=ADCIRC_2D),
+        )
+        assert (out["datum"], out["resolution"]) == ("LMSL", "documented_fallback")
+        assert out["comparable"] is True
+        assert "names no specific datum" in out["datum_source"]
+
+    def test_2d_generic_label_from_unknown_producer_is_undetermined(self):
+        """Without the ADCIRC STOFS-2D signature there is no fallback."""
+        out = resolve_station_datum(
+            "2d_global", "20260218", "18", _meta("generic", label="zeta:..._geoid")
+        )
+        assert out["datum"] == "undetermined"
+        assert out["comparable"] is False
+        assert out["datum_warning"]
+
+    @pytest.mark.parametrize("date", ["20260816", "20260817", "20270101"])
+    def test_3d_without_label_is_undetermined(self, date):
+        """No date-based guess for a 3D file that names no datum."""
+        out = resolve_station_datum("3d_atlantic", date, "12", {})
+        assert out["datum"] == "undetermined"
+        assert out["comparable"] is False
+
+    def test_unsupported_reference_is_undetermined(self):
+        """An NGVD29 label is reported, not replaced by LMSL (review C1)."""
+        out = resolve_station_datum(
+            "3d_atlantic",
+            "20260902",
+            "12",
+            _meta("unsupported", label="zeta:..._ngvd29", reference="ngvd29"),
+        )
+        assert out["datum"] == "undetermined"
+        assert out["comparable"] is False
+        assert "ngvd29" in out["datum_warning"]
+        assert "names no specific datum" not in out["datum_source"]
+
+    def test_conflicting_attributes_are_undetermined(self):
+        """Contradictory attributes block interpretation and are named."""
+        out = resolve_station_datum(
+            "3d_atlantic",
+            "20260902",
+            "12",
+            _meta("conflicting", label="a=navd88; b=msl"),
+        )
+        assert out["comparable"] is False
+        assert "contradict" in out["datum_warning"]
+
+    def test_unclassified_caller_label_is_classified(self):
+        """A caller passing only a label still gets the unsupported verdict."""
+        out = resolve_station_datum(
+            "3d_atlantic",
+            "20260902",
+            "12",
+            {
+                "datum": "",
+                "datum_label": "zeta:standard_name=sea_surface_height_above_ngvd29",
+            },
+        )
+        assert out["comparable"] is False
+        assert "ngvd29" in out["datum_warning"]
+
+    def test_file_contradicting_documentation_is_flagged(self):
+        """A NAVD88 label on a post-v3.1 cycle is used but warned about."""
+        out = resolve_station_datum(
+            "3d_atlantic",
+            "20260901",
+            "12",
+            _meta("recognized", "NAVD88", "zeta:..._navd88"),
+        )
+        assert out["datum"] == "NAVD88"
+        assert out["comparable"] is True
+        assert "NOAA documents LMSL" in out["datum_warning"]
+
+
+class TestValidationStatsDefinitions:
+    """max_abs_error is the largest pointwise error, not the peak-level error."""
+
+    def test_max_abs_error_differs_from_peak_error_m(self):
+        """Boston-like case: max |F-O| and (max F - max O) are different numbers."""
+        times = ["2026-02-18 12:00", "2026-02-18 12:06", "2026-02-18 12:12"]
+        forecast = [0.0, 1.0, 0.5]
+        observed = [0.2, 1.1, 0.4]
+        stats = compute_validation_stats(forecast, observed)
+        peak = compute_peak_stats(times, forecast, observed)
+        assert stats["max_abs_error"] == pytest.approx(0.2)
+        assert stats["peak_error"] == stats["max_abs_error"]  # legacy alias
+        assert peak["peak_error_m"] == pytest.approx(-0.1)
+
+    def test_constant_series_correlation_is_none_and_json_safe(self):
+        """A constant series has undefined correlation: None, not NaN."""
+        import json
+
+        stats = compute_validation_stats([0.2, 0.2, 0.2], [0.1, 0.3, 0.2])
+        assert stats["correlation"] is None
+
+        def reject(name):
+            raise ValueError(name)
+
+        json.loads(json.dumps(stats), parse_constant=reject)  # no NaN emitted
+
+
+class TestUnswapStationCoords:
+    """STOFS-3D v2.1 station files store latitude in x for most rows."""
+
+    def test_swapped_3d_row_is_repaired(self):
+        """Boston as stored in the 2026-02-18 file (x=42.354, y=-71.050)."""
+        lats, lons = unswap_station_coords("3d_atlantic", [-71.0503], [42.3539])
+        assert lats == [42.3539] and lons == [-71.0503]
+
+    def test_correct_3d_row_is_untouched(self):
+        """Rows already stored correctly (3 of 108 in v2.1, all in v3.1) stay."""
+        lats, lons = unswap_station_coords("3d_atlantic", [28.4157], [-80.5934])
+        assert lats == [28.4157] and lons == [-80.5934]
+
+    def test_2d_southern_hemisphere_station_is_not_swapped(self):
+        """2D-Global has real stations with latitude < 0 < longitude (Sydney)."""
+        lats, lons = unswap_station_coords("2d_global", [-33.85], [151.23])
+        assert lats == [-33.85] and lons == [151.23]
+
+    def test_unknown_model_is_untouched(self):
+        """Without a model the repair is not applied."""
+        assert unswap_station_coords(None, [-71.0], [42.3]) == ([-71.0], [42.3])
+
+    def test_parse_station_netcdf_repairs_3d_file(self, station_nc):
+        """parse_station_netcdf(model='3d_atlantic') returns real coordinates."""
+        path = station_nc(
+            ZETA_3D_V21, "2026-02-17 12:00", [0.1, 0.2], xy=[(42.3539, -71.0503)]
+        )
+        data = parse_station_netcdf(path, "8443970", model="3d_atlantic")
+        assert (data["lat"], data["lon"]) == (42.3539, -71.0503)
+        raw = parse_station_netcdf(path, "8443970")
+        assert (raw["lat"], raw["lon"]) == (-71.0503, 42.3539)  # as stored
+
+
+class TestNonFiniteValues:
+    """NaN, Inf, masked and fill values never reach statistics or JSON (review C3)."""
+
+    def _strict_loads(self, text):
+        import json
+
+        def reject(name):
+            raise ValueError(name)
+
+        return json.loads(text, parse_constant=reject)
+
+    def test_dumps_strict_nulls_nonfinite_values(self):
+        """NaN/±Inf, including NumPy scalars, become null; output is standard JSON."""
+        import numpy as np
+
+        out = self._strict_loads(
+            dumps_strict(
+                {
+                    "a": float("nan"),
+                    "b": [float("inf"), -float("inf"), 1.5],
+                    "c": np.float64("nan"),
+                }
+            )
+        )
+        assert out == {"a": None, "b": [None, None, 1.5], "c": None}
+
+    def test_stats_exclude_nonfinite_pairs_and_count_them(self):
+        """Non-finite pairs are dropped and counted, never treated as zero."""
+        stats = compute_validation_stats(
+            [0.1, float("nan"), 0.3, 0.4], [0.0, 0.2, float("inf"), 0.4]
+        )
+        assert stats["n"] == 2
+        assert stats["n_excluded_nonfinite"] == 2
+        assert stats["bias"] == pytest.approx(0.05)
+
+    def test_stats_all_invalid_returns_nulls(self):
+        """All-invalid input gives n=0 and null metrics."""
+        stats = compute_validation_stats([float("nan")], [0.1])
+        assert stats["n"] == 0 and stats["bias"] is None
+        assert stats["n_excluded_nonfinite"] == 1
+
+    def test_peak_stats_ignore_nonfinite(self):
+        """A NaN cannot become the peak."""
+        times = ["2026-10-30 12:00", "2026-10-30 12:06", "2026-10-30 12:12"]
+        peak = compute_peak_stats(
+            times, [0.1, float("nan"), 0.3], [0.2, 0.9, float("inf")]
+        )
+        assert peak["forecast_peak_m"] == pytest.approx(0.1)
+        assert peak["observed_peak_m"] == pytest.approx(0.2)
+
+    def test_parser_excludes_nan_inf_fill_and_masked(self, station_nc):
+        """NaN, +Inf, the -99999 fill and masked entries are excluded and counted."""
+        import netCDF4
+        import numpy as np
+
+        path = station_nc(
+            ZETA_3D_V31, "2026-10-29 12:00", [0.1, np.nan, np.inf, -99999.0, 0.2, 0.3]
+        )
+        nc = netCDF4.Dataset(str(path), "a")
+        z = nc["zeta"][:]
+        z[5, 0] = np.ma.masked
+        nc["zeta"][:] = z
+        nc.close()
+        data = parse_station_netcdf(path, "8443970")
+        assert data["values"] == [0.1, 0.2]
+        assert data["n_records"] == 6
+        assert data["excluded_model_records"] == {
+            "masked_or_fill": 2,
+            "nonfinite": 2,
+            "sentinel": 0,
+            "implausible": 0,
+        }
+
+    def test_parser_honours_in_range_fill_value(self, tmp_path):
+        """A _FillValue inside the physical range (-9.99) is still excluded."""
+        import netCDF4
+        import numpy as np
+
+        path = tmp_path / "fill.nc"
+        nc = netCDF4.Dataset(str(path), "w")
+        nc.createDimension("time", 3)
+        nc.createDimension("station", 1)
+        nc.createDimension("namelen", 8)
+        t = nc.createVariable("time", "f8", ("time",))
+        t.units = "seconds since 2026-10-30 12:00:00"
+        t[:] = [360, 720, 1080]
+        n = nc.createVariable("station_name", "S1", ("station", "namelen"))
+        c = np.full((1, 8), b"", dtype="S1")
+        c[0, :7] = [bytes([x]) for x in b"8443970"]
+        n[:] = c
+        z = nc.createVariable("zeta", "f8", ("time", "station"), fill_value=-9.99)
+        z.standard_name = "sea_surface_height_above_msl"
+        z.set_auto_mask(False)
+        z[:] = np.array([[0.5], [-9.99], [0.7]])
+        nc.close()
+        assert parse_station_netcdf(path, "8443970")["values"] == [0.5, 0.7]
+
+
+class TestMatchTimeseries:
+    """One-to-one, exact-first, deterministic pairing (second review H2)."""
+
+    def test_an_observation_is_never_reused(self):
+        """A lone 12:03 observation pairs with 12:00 only, not also with 12:06."""
+        m = match_timeseries(
+            ["2026-10-30 12:00", "2026-10-30 12:06"], ["2026-10-30 12:03"]
+        )
+        assert m["pairs"] == [(0, 0)]
+        assert m["nearest"] == 1
+
+    def test_exact_match_wins_over_an_earlier_nearest_claim(self):
+        """12:06 keeps its exact observation even though 12:03 is processed first."""
+        m = match_timeseries(
+            ["2026-10-30 12:03", "2026-10-30 12:06"],
+            ["2026-10-30 12:06", "2026-10-30 12:01"],
+        )
+        assert dict(m["pairs"]) == {1: 0, 0: 1}
+        assert (m["exact"], m["nearest"]) == (1, 1)
+
+    def test_equal_distance_tie_goes_to_the_earlier_observation(self):
+        """12:03 is 3 min from both 12:00 and 12:06; the earlier one is chosen."""
+        m = match_timeseries(
+            ["2026-10-30 12:03"], ["2026-10-30 12:06", "2026-10-30 12:00"]
+        )
+        assert m["pairs"] == [(0, 1)]
+
+    def test_beyond_tolerance_is_unmatched(self):
+        """Four minutes apart does not pair at the 3 min tolerance."""
+        m = match_timeseries(["2026-10-30 12:00"], ["2026-10-30 12:04"])
+        assert m["pairs"] == []
+
+    def test_malformed_and_duplicate_times_are_counted(self):
+        """Bad timestamps on either side are skipped and counted, not fatal."""
+        m = match_timeseries(
+            ["2026-10-30 12:00", "garbage"],
+            ["2026-10-30 12:00", "2026-10-30 12:00", "also bad"],
+        )
+        assert m["pairs"] == [(0, 0)]
+        assert m["bad_forecast_times"] == 1
+        assert m["bad_observed_times"] == 1
+        assert m["duplicate_observed_times"] == 1
+
+    def test_host_timezone_does_not_change_results(self, monkeypatch):
+        """Across a US DST change, pairing is identical under UTC and New York."""
+        import time
+
+        fc = ["2026-11-01 05:54", "2026-11-01 06:00", "2026-11-01 06:06"]
+        ob = ["2026-11-01 05:57", "2026-11-01 06:00", "2026-11-01 06:09"]
+        results = []
+        for tz in ("UTC", "America/New_York"):
+            monkeypatch.setenv("TZ", tz)
+            time.tzset()
+            results.append(match_timeseries(fc, ob)["pairs"])
+        monkeypatch.delenv("TZ")
+        time.tzset()
+        assert results[0] == results[1] == [(0, 0), (1, 1), (2, 2)]
+
+    def test_utc_seconds(self):
+        """utc_seconds is plain UTC epoch arithmetic."""
+        assert utc_seconds("1970-01-01 00:01") == 60
+        assert utc_seconds("not a time") is None
+
+
+# Real patterns from the 2026-10-30 12z NOAA station files (inspected 2026-11-04).
+# STOFS-3D v3.1: five Caribbean stations hold 1e7 + c for every record, c being
+# the station's xGEOID20b->LMSL constant (e.g. 9751381 Lameshur Bay 9999999.5820).
+SENTINEL_3D = [9999999.4107, 9999999.4438, 9999999.5820, 9999999.5232, 9999999.5500]
+# STOFS-2D v3.1: intermittently dry stations write -99999 + 0.4 when dry.
+SENTINEL_2D_DRY = -99998.6
+# STOFS-2D v3.1 station SA816 (46.22 N, 35.44 E): 90.7..136.2 m, time-varying.
+AZOV_SA816 = [123.3301, 115.65, 136.2006, 90.7486, 113.2918]
+
+
+class TestTransformedSentinels:
+    """Shifted no-data codes and implausible values are excluded (audit C-1)."""
+
+    @pytest.mark.parametrize("value", SENTINEL_3D + [SENTINEL_2D_DRY, 1e10, -1e7])
+    def test_shifted_sentinels_are_sentinel(self, value):
+        """1e7 + c and -99999 + c no longer pass as water levels."""
+        assert value_exclusion_reason(value) == "sentinel"
+
+    @pytest.mark.parametrize("value", AZOV_SA816 + [-50.0, 50.0, 9999.0])
+    def test_values_beyond_50_m_are_implausible(self, value):
+        """|v| >= 50 m is counted as implausible, separately from sentinels."""
+        assert value_exclusion_reason(value) == "implausible"
+
+    @pytest.mark.parametrize("value", [0.0, -1.562, 2.002, 16.0, -25.0, 49.99])
+    def test_physical_water_levels_are_kept(self, value):
+        """Ordinary and extreme-but-physical water levels stay valid."""
+        assert value_exclusion_reason(value) is None
+
+    def test_constant_1e7_plus_c_station_is_fully_excluded(self, station_nc):
+        """All 1200 records of a Lameshur-Bay-like series are 'sentinel'."""
+        path = station_nc(ZETA_3D_V31, "2026-10-29 12:00", [9999999.5820] * 1200)
+        data = parse_station_netcdf(path, "8443970")
+        assert data["values"] == []
+        assert data["n_records"] == 1200
+        assert data["excluded_model_records"]["sentinel"] == 1200
+
+    def test_dry_records_shifted_by_bias_correction_are_excluded(self, station_nc):
+        """-99998.6 dry records are dropped; the wet values around them stay."""
+        values = [0.2, SENTINEL_2D_DRY, SENTINEL_2D_DRY, 0.3, -0.1]
+        path = station_nc(ZETA_2D, "2026-10-30 06:00", values, global_attrs=GLOBAL_2D)
+        data = parse_station_netcdf(path, "8443970")
+        assert data["values"] == [0.2, 0.3, -0.1]
+        assert data["excluded_model_records"] == {
+            "masked_or_fill": 0,
+            "nonfinite": 0,
+            "sentinel": 2,
+            "implausible": 0,
+        }
+
+    def test_azov_like_series_is_implausible(self, station_nc):
+        """A 90-136 m series is excluded as implausible, not as no-data."""
+        path = station_nc(
+            ZETA_2D, "2026-10-30 06:00", AZOV_SA816, global_attrs=GLOBAL_2D
+        )
+        data = parse_station_netcdf(path, "8443970")
+        assert data["values"] == []
+        assert data["excluded_model_records"]["implausible"] == 5
+
+
+class TestVersionBoundedFallback:
+    """The 2D documented-datum fallback is bounded by version (audit M-2)."""
+
+    @pytest.mark.parametrize(
+        "title",
+        [
+            "STOFS_2D_GLOBAL.V3.1.0     ! NCPROJ - PROJECT TITLE",
+            "STOFS_2D_GLOBAL.V3.1.4",
+            "STOFS_2D_GLOBAL.V2.1.0     ! NCPROJ - PROJECT TITLE",
+        ],
+    )
+    def test_documented_versions_fall_back_without_warning(self, title):
+        """V2.1 and V3.1 (any patch level) use the documented LMSL."""
+        verdict, why = documented_fallback(
+            "2d_global", {"model": "ADCIRC", "title": title}
+        )
+        assert verdict == "documented"
+        out = resolve_station_datum(
+            "2d_global",
+            "20261030",
+            "12",
+            _meta("generic", product={"model": "ADCIRC", "title": title}),
+        )
+        assert (out["datum"], out["comparable"], out["datum_warning"]) == (
+            "LMSL",
+            True,
+            "",
+        )
+
+    def test_estofs_falls_back_with_a_warning(self):
+        """ESTOFS GLOBAL V2.1 resolves to LMSL but says it is assumed."""
+        product = {"model": "ADCIRC", "title": "ESTOFS GLOBAL V2.1.0       ! NCPROJ"}
+        assert documented_fallback("2d_global", product)[0] == "assumed"
+        out = resolve_station_datum(
+            "2d_global", "20221201", "00", _meta("generic", product=product)
+        )
+        assert out["datum"] == "LMSL" and out["comparable"] is True
+        assert (
+            "assumed" in out["datum_warning"]
+            and "ESTOFS GLOBAL V2.1.0" in out["datum_warning"]
+        )
+
+    @pytest.mark.parametrize(
+        "title,version",
+        [
+            ("STOFS_2D_GLOBAL.V4.0.0     ! NCPROJ - PROJECT TITLE", "V4.0.0"),
+            ("STOFS_2D_GLOBAL.V3.2.0", "V3.2.0"),
+            ("ESTOFS GLOBAL V3.0.0", "V3.0.0"),
+        ],
+    )
+    def test_undocumented_versions_get_no_datum(self, title, version):
+        """A future V4.0.0 (or V3.2.0) is not silently assumed to be LMSL."""
+        product = {"model": "ADCIRC", "title": title}
+        verdict, why = documented_fallback("2d_global", product)
+        assert verdict is None and version in why
+        out = resolve_station_datum(
+            "2d_global", "20280101", "00", _meta("generic", product=product)
+        )
+        assert out["datum"] == "undetermined" and out["comparable"] is False
+        assert version in out["datum_warning"]
+
+    @pytest.mark.parametrize(
+        "model,product",
+        [
+            ("2d_global", {"model": "ADCIRC", "title": "STOFS_2D_GLOBAL"}),
+            ("2d_global", {"model": "SCHISM", "title": "STOFS_2D_GLOBAL.V3.1.0"}),
+            ("3d_atlantic", {"model": "ADCIRC", "title": "STOFS_2D_GLOBAL.V3.1.0"}),
+        ],
+    )
+    def test_unversioned_or_wrong_producer_gets_no_datum(self, model, product):
+        """No version, a non-ADCIRC producer or the 3D model: no fallback."""
+        assert documented_fallback(model, product)[0] is None
+
+
+class TestAuditMinorFindings:
+    """Minor findings m-1..m-4, m-6 of the 2026-11-04 audit."""
+
+    @pytest.mark.parametrize(
+        "label",
+        [
+            "water surface elevation above the geoid",
+            "water surface elevation above geoid in metres",
+            "sea_surface_height_above_geoid",
+        ],
+    )
+    def test_geoid_wording_variants_stay_generic(self, label):
+        """m-1: 'the'/'in metres' around 'geoid' do not make it unsupported."""
+        assert classify_datum_label(label)["status"] == "generic"
+
+    def test_specific_geoid_model_is_still_unsupported(self):
+        """A named geoid model (e.g. geoid12b) is an explicit, unknown reference."""
+        assert classify_datum_label("height above geoid12b")["status"] == "unsupported"
+
+    @pytest.mark.parametrize("value", ["N/A", "none", "unknown"])
+    def test_placeholder_global_datum_is_absent(self, value):
+        """m-6: datum='N/A' means no datum given, not an unsupported one."""
+        assert (
+            classify_datum_label(value, explicit_reference=True)["status"] == "absent"
+        )
+
+    def test_duplicate_forecast_times_are_counted_not_paired(self):
+        """m-3: a repeated model time is counted and not paired a second time."""
+        m = match_timeseries(
+            ["2026-10-30 12:00", "2026-10-30 12:00"],
+            ["2026-10-30 12:00", "2026-10-30 12:03"],
+        )
+        assert m["pairs"] == [(0, 0)]
+        assert m["duplicate_forecast_times"] == 1
+
+    def test_dumps_strict_serializes_arrays(self):
+        """m-4: NumPy arrays (with NaN) serialize as lists with nulls."""
+        import json
+
+        import numpy as np
+
+        out = json.loads(
+            dumps_strict({"a": np.array([1.5, np.nan]), "b": np.zeros((1, 2))})
+        )
+        assert out == {"a": [1.5, None], "b": [[0.0, 0.0]]}
+
+
+# ---------------------------------------------------------------------------
+# Coordinate check with provenance (WP1 defect D1), on a verbatim excerpt of
+# the real 2026-02-18 12z STOFS-3D-Atlantic file (sha256 d13345a3...33b5)
+# ---------------------------------------------------------------------------
+
+
+class TestCheckStationCoordsRealExcerpt:
+    """check_station_coords repairs reversed records and reports what it did."""
+
+    @staticmethod
+    def _coords(excerpt, ids):
+        rows = [
+            s for s in excerpt["stations"] if any(i in s["name"].split() for i in ids)
+        ]
+        # parse order: lats come from y, lons from x
+        return [r["y"] for r in rows], [r["x"] for r in rows], rows
+
+    def test_reversed_records_are_swapped_and_reported(self, feb_excerpt):
+        """Eastport and Boston store latitude in x: both are swapped and counted."""
+        from stofs_mcp.utils import check_station_coords, coordinate_warning
+
+        from .conftest import FEB_REVERSED
+
+        lats, lons, rows = self._coords(feb_excerpt, FEB_REVERSED)
+        fixed_lats, fixed_lons, info = check_station_coords("3d_atlantic", lats, lons)
+        assert fixed_lats == [r["x"] for r in rows]
+        assert fixed_lons == [r["y"] for r in rows]
+        assert info["corrected"] == [0, 1] and info["undetermined"] == []
+        warning = coordinate_warning(info, 1)
+        assert warning.startswith("2 of 2 station records")
+        assert "This station's coordinates were corrected" in warning
+
+    def test_records_as_labelled_are_unchanged_and_not_reported(self, feb_excerpt):
+        """The file's three correctly ordered records are kept, with no warning."""
+        from stofs_mcp.utils import (
+            check_station_coords,
+            coordinate_provenance,
+            coordinate_warning,
+        )
+
+        from .conftest import FEB_AS_LABELLED
+
+        lats, lons, _ = self._coords(feb_excerpt, FEB_AS_LABELLED)
+        fixed_lats, fixed_lons, info = check_station_coords("3d_atlantic", lats, lons)
+        assert (fixed_lats, fixed_lons) == (lats, lons)
+        assert coordinate_warning(info) is None
+        prov = coordinate_provenance(info, 0)
+        assert prov["checked"] is True
+        assert prov["stations_corrected"] == 0
+        assert prov["station"]["corrected"] is False
+
+    def test_mixed_set_reports_counts_and_station_level_detail(self, feb_excerpt):
+        """All five excerpt records: 2 corrected, 3 kept, each station's stored values kept."""
+        from stofs_mcp.utils import (
+            check_station_coords,
+            coordinate_provenance,
+            coordinate_warning,
+        )
+
+        lats, lons, rows = self._coords(
+            feb_excerpt, ("8410140", "8443970", "8721604", "8767816", "8771972")
+        )
+        fixed_lats, fixed_lons, info = check_station_coords("3d_atlantic", lats, lons)
+        assert len(info["corrected"]) == 2 and len(info["undetermined"]) == 0
+        assert all(
+            15 < la < 47 and -100 < lo < -60 for la, lo in zip(fixed_lats, fixed_lons)
+        )
+        prov = coordinate_provenance(info, 1)
+        assert prov["stations_in_file"] == 5 and prov["stations_corrected"] == 2
+        assert prov["station"] == {
+            "corrected": True,
+            "undetermined": False,
+            "stored_x": rows[1]["x"],
+            "stored_y": rows[1]["y"],
+        }
+        assert coordinate_warning(info, 2).startswith("2 of 5 station records")
+        assert "This station" not in coordinate_warning(info, 2)
+
+    def test_undetermined_orientation_is_reported_not_guessed(self, feb_excerpt):
+        """SYNTHETIC record: x and y both positive read as neither orientation."""
+        from stofs_mcp.utils import check_station_coords, coordinate_warning
+
+        lats, lons, _ = self._coords(feb_excerpt, ("8443970",))
+        lats.append(71.05)  # synthetic: same sign as x, not a real record
+        lons.append(42.35)
+        fixed_lats, fixed_lons, info = check_station_coords("3d_atlantic", lats, lons)
+        assert info["undetermined"] == [1]
+        assert math.isnan(fixed_lats[1]) and math.isnan(fixed_lons[1])
+        warning = coordinate_warning(info, 1, ["Boston", "SYNTHETIC"])
+        assert "undetermined" in warning and "SYNTHETIC" in warning
+        assert "This station's position is undetermined" in warning
+
+    def test_2d_global_is_not_checked(self):
+        """2D-Global keeps a southern-hemisphere station and reports that no check applies."""
+        from stofs_mcp.utils import (
+            check_station_coords,
+            coordinate_provenance,
+            coordinate_warning,
+        )
+
+        lats, lons, info = check_station_coords("2d_global", [-33.85], [151.23])
+        assert (lats, lons) == ([-33.85], [151.23])
+        assert coordinate_warning(info) is None
+        assert coordinate_provenance(info)["checked"] is False
+        assert coordinate_provenance(info)["rule"].startswith("not applied")
+
+    def test_unswap_wrapper_still_returns_repaired_coordinates(self, feb_excerpt):
+        """unswap_station_coords keeps its signature and result."""
+        from .conftest import FEB_REVERSED
+
+        lats, lons, rows = self._coords(feb_excerpt, FEB_REVERSED)
+        assert unswap_station_coords("3d_atlantic", lats, lons) == (
+            [r["x"] for r in rows],
+            [r["y"] for r in rows],
+        )
+
+
+class TestZetaUnits:
+    """zeta_units reads the water-level variable's units attribute (WP1 defect D2)."""
+
+    def test_reads_the_attribute(self):
+        """The attribute is returned as written."""
+        from types import SimpleNamespace
+
+        from stofs_mcp.utils import zeta_units
+
+        assert zeta_units(SimpleNamespace(units="m")) == "m"
+        assert zeta_units(SimpleNamespace(units="ft")) == "ft"
+
+    def test_missing_attribute_defaults_to_metres(self):
+        """Without the attribute, the value the comparison tool assumes is used."""
+        from types import SimpleNamespace
+
+        from stofs_mcp.utils import zeta_units
+
+        assert zeta_units(SimpleNamespace()) == "m"

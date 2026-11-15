@@ -24,6 +24,15 @@ from stofs_mcp.client import (
     STOFSClient,
 )
 from stofs_mcp.models import STOFSModel, STOFSProduct
+from .conftest import (
+    GLOBAL_2D,
+    GLOBAL_ESTOFS,
+    ZETA_2D,
+    ZETA_3D_V21,
+    ZETA_3D_V31,
+    adcirc_2d_meta,
+    six_minute_times,
+)
 from stofs_mcp.utils import (
     align_timeseries,
     compute_validation_stats,
@@ -1019,7 +1028,10 @@ class TestCompareWithObservationsOutput:
         monkeypatch.setattr(
             validation,
             "parse_station_netcdf",
-            lambda path, station_id: {"times": self.TIMES, "values": self.FORECAST},
+            lambda path, station_id: (
+                adcirc_2d_meta(GLOBAL_ESTOFS["title"])
+                | {"times": self.TIMES, "values": self.FORECAST}
+            ),
         )
         return make_ctx(client)
 
@@ -1094,6 +1106,1193 @@ class TestCompareWithObservationsOutput:
         assert result.index("RMSE") < result.index("Time Series Comparison (hourly)")
         assert "Showing 31 of 31 hourly points" in result
         assert "full_resolution=true" in result
+
+
+class TestCompareWithObservationsPeakCutOff:
+    """A peak cut off by the window or by a gauge outage is called out."""
+
+    TIMES = _six_minute_times("2024-09-25 18:06", 30)
+    # Water still rising at the end of the record.
+    RISING = [i / 100 for i in range(len(TIMES))]
+
+    def _ctx(self, monkeypatch, n_obs):
+        """Station file covers all of TIMES; observations stop after n_obs points."""
+        from unittest.mock import AsyncMock
+
+        from stofs_mcp.tools import validation
+
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(return_value=None)
+        client.fetch_coops_observations = AsyncMock(
+            return_value={
+                "data": [
+                    {"t": t, "v": f"{v:.3f}"}
+                    for t, v in zip(self.TIMES[:n_obs], self.RISING[:n_obs])
+                ]
+            }
+        )
+        monkeypatch.setattr(
+            validation,
+            "parse_station_netcdf",
+            lambda path, station_id: (
+                adcirc_2d_meta() | {"times": self.TIMES, "values": self.RISING}
+            ),
+        )
+        return make_ctx(client)
+
+    async def _run(self, monkeypatch, n_obs, **kwargs):
+        from stofs_mcp.tools.validation import stofs_compare_with_observations
+
+        return await stofs_compare_with_observations(
+            self._ctx(monkeypatch, n_obs),
+            station_id="8727520",
+            cycle_date="2024-09-26",
+            cycle_hour="00",
+            hours_to_compare=30,
+            **kwargs,
+        )
+
+    def test_default_window_covers_three_days(self):
+        """The default window is 72 h, so a cycle a day out reaches the landfall peak."""
+        import inspect
+
+        from stofs_mcp.tools.validation import stofs_compare_with_observations
+
+        params = inspect.signature(stofs_compare_with_observations).parameters
+        assert params["hours_to_compare"].default == 72
+
+    @pytest.mark.asyncio
+    async def test_window_cut_off_suggests_longer_window(self, monkeypatch):
+        """Still rising at the window end -> tell the caller to widen the window."""
+        result = await self._run(monkeypatch, n_obs=len(self.TIMES))
+        assert "**Note:**" in result
+        assert "larger hours_to_compare (now 30 h, max 96)" in result
+
+    @pytest.mark.asyncio
+    async def test_gauge_outage_is_not_blamed_on_window(self, monkeypatch):
+        """Observations ending early point to the gauge, not to the window length."""
+        result = await self._run(monkeypatch, n_obs=200)
+        assert "the gauge may have failed" in result
+        assert "hours_to_compare" not in result.split("**Note:**")[1].split("\n")[0]
+
+    @pytest.mark.asyncio
+    async def test_json_carries_peak_note(self, monkeypatch):
+        """The JSON response includes the same note as peak_note."""
+        parsed = json.loads(
+            await self._run(monkeypatch, n_obs=len(self.TIMES), response_format="json")
+        )
+        assert "larger hours_to_compare" in parsed["peak_note"]
+        keys = list(parsed)
+        assert keys.index("peak_note") < keys.index("comparison")
+
+
+# ---------------------------------------------------------------------------
+# Test: datum handling follows the file and the STOFS v3.1 transition
+# ---------------------------------------------------------------------------
+
+
+class TestCompareWithObservationsDatum:
+    """The CO-OPS request datum follows the station file's own datum.
+
+    Regression for the fixed 3d_atlantic -> NAVD88/NAVD mapping, which after
+    the STOFS v3.1 upgrade (2026-08-17 12z) compared LMSL model output with
+    NAVD observations while labelling the model NAVD88.
+    """
+
+    def _ctx(self, path, start, n):
+        from unittest.mock import AsyncMock
+
+        times = six_minute_times(start, n)
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(return_value=path)
+        client.fetch_coops_observations = AsyncMock(
+            return_value={"data": [{"t": t, "v": "0.100"} for t in times]}
+        )
+        return client, make_ctx(client)
+
+    async def _run(
+        self, station_nc, zeta_attrs, model, date, hour, start, global_attrs=None
+    ):
+        from stofs_mcp.tools.validation import stofs_compare_with_observations
+
+        path = station_nc(zeta_attrs, start, [0.2] * 50, global_attrs=global_attrs)
+        client, ctx = self._ctx(path, start, 50)
+        out = await stofs_compare_with_observations(
+            ctx,
+            station_id="8443970",
+            model=model,
+            cycle_date=date,
+            cycle_hour=hour,
+            hours_to_compare=4,
+            response_format="json",
+        )
+        return client, out
+
+    @pytest.mark.asyncio
+    async def test_v31_3d_cycle_requests_msl_not_navd(self, station_nc):
+        """A post-cutover 3D file (above_msl) is compared with CO-OPS MSL."""
+        client, out = await self._run(
+            station_nc,
+            ZETA_3D_V31,
+            STOFSModel.ATLANTIC_3D,
+            "2026-08-18",
+            "12",
+            "2026-08-17 12:00",
+        )
+        assert client.fetch_coops_observations.call_args.kwargs["datum"] == "MSL"
+        parsed = json.loads(out)
+        assert parsed["stofs_datum"] == "LMSL"
+        assert parsed["coops_datum"] == "MSL"
+        assert "sea_surface_height_above_msl" in parsed["stofs_datum_source"]
+        assert "NAVD88" not in parsed["stofs_datum"]
+
+    @pytest.mark.asyncio
+    async def test_v21_3d_cycle_requests_navd(self, station_nc):
+        """The Boston example's 2026-02-18 3D file (above_navd88) uses NAVD."""
+        client, out = await self._run(
+            station_nc,
+            ZETA_3D_V21,
+            STOFSModel.ATLANTIC_3D,
+            "2026-02-18",
+            "12",
+            "2026-02-17 12:00",
+        )
+        assert client.fetch_coops_observations.call_args.kwargs["datum"] == "NAVD"
+        parsed = json.loads(out)
+        assert parsed["stofs_datum"] == "NAVD88"
+        assert parsed["coops_datum"] == "NAVD"
+
+    @pytest.mark.asyncio
+    async def test_2d_geoid_label_uses_documented_lmsl(self, station_nc):
+        """2D files say 'above geoid'; the documented LMSL is used and cited."""
+        client, out = await self._run(
+            station_nc,
+            ZETA_2D,
+            STOFSModel.GLOBAL_2D,
+            "2026-02-18",
+            "18",
+            "2026-02-18 12:00",
+            global_attrs=GLOBAL_2D,
+        )
+        assert client.fetch_coops_observations.call_args.kwargs["datum"] == "MSL"
+        parsed = json.loads(out)
+        assert parsed["stofs_datum"] == "LMSL"
+        assert "NOAA documentation" in parsed["stofs_datum_source"]
+        assert parsed["datum_provenance"]["resolution"] == "documented_fallback"
+        assert parsed["datum_provenance"]["product_version"] == "STOFS_2D_GLOBAL V3.1.0"
+
+    @pytest.mark.asyncio
+    async def test_future_2d_version_is_refused(self, station_nc):
+        """A STOFS_2D_GLOBAL V4.0.0 file gets no assumed datum (audit M-2)."""
+        client, out = await self._run(
+            station_nc,
+            ZETA_2D,
+            STOFSModel.GLOBAL_2D,
+            "2026-10-30",
+            "12",
+            "2026-10-30 06:00",
+            global_attrs={
+                "model": "ADCIRC",
+                "title": "STOFS_2D_GLOBAL.V4.0.0     ! NCPROJ",
+            },
+        )
+        assert out.startswith("No comparison")
+        assert "V4.0.0 is not a version whose station datum is documented" in out
+        client.fetch_coops_observations.assert_not_called()
+
+    @pytest.mark.asyncio
+    async def test_estofs_compares_with_assumed_datum_warning(self, station_nc):
+        """ESTOFS GLOBAL V2.1 is compared on LMSL with the warning in provenance."""
+        client, out = await self._run(
+            station_nc,
+            ZETA_2D,
+            STOFSModel.GLOBAL_2D,
+            "2022-12-01",
+            "00",
+            "2022-11-30 18:00",
+            global_attrs=GLOBAL_ESTOFS,
+        )
+        assert client.fetch_coops_observations.call_args.kwargs["datum"] == "MSL"
+        prov = json.loads(out)["datum_provenance"]
+        assert prov["resolution"] == "documented_fallback"
+        assert "assumed" in prov["warning"]
+
+    @pytest.mark.asyncio
+    async def test_2d_geoid_label_without_adcirc_signature_is_refused(self, station_nc):
+        """A generic label from an unrecognized producer gets no assumed datum."""
+        client, out = await self._run(
+            station_nc,
+            ZETA_2D,
+            STOFSModel.GLOBAL_2D,
+            "2026-02-18",
+            "18",
+            "2026-02-18 12:00",
+        )
+        assert out.startswith("No comparison")
+        client.fetch_coops_observations.assert_not_called()
+
+    @pytest.mark.asyncio
+    async def test_unsupported_explicit_datum_is_refused(self, station_nc):
+        """An NGVD29 label is not mistaken for LMSL on a v3.1 cycle (review C1)."""
+        client, out = await self._run(
+            station_nc,
+            {"standard_name": "sea_surface_height_above_ngvd29"},
+            STOFSModel.ATLANTIC_3D,
+            "2026-09-02",
+            "12",
+            "2026-09-01 12:00",
+        )
+        assert out.startswith("No comparison")
+        assert "ngvd29" in out
+        client.fetch_coops_observations.assert_not_called()
+
+    @pytest.mark.asyncio
+    async def test_future_navd_realization_is_not_navd88(self, station_nc):
+        """'NAVD2022' is a different realization and is refused, not read as NAVD88."""
+        client, out = await self._run(
+            station_nc,
+            {"standard_name": "sea_surface_height_above_NAVD2022"},
+            STOFSModel.ATLANTIC_3D,
+            "2026-09-02",
+            "12",
+            "2026-09-01 12:00",
+        )
+        assert out.startswith("No comparison")
+        client.fetch_coops_observations.assert_not_called()
+
+    @pytest.mark.asyncio
+    async def test_conflicting_attributes_are_refused(self, station_nc):
+        """standard_name NAVD88 vs long_name MSL: refused, both labels reported."""
+        client, out = await self._run(
+            station_nc,
+            {
+                "standard_name": "sea_surface_height_above_navd88",
+                "long_name": "water surface elevation above msl",
+            },
+            STOFSModel.ATLANTIC_3D,
+            "2026-09-02",
+            "12",
+            "2026-09-01 12:00",
+        )
+        assert out.startswith("No comparison")
+        assert "contradict" in out
+        assert "above_navd88" in out and "above msl" in out
+        client.fetch_coops_observations.assert_not_called()
+
+    @pytest.mark.asyncio
+    async def test_3d_file_without_datum_label_is_refused(self, station_nc):
+        """3D files always name their datum; one that does not is not guessed."""
+        client, out = await self._run(
+            station_nc,
+            {},
+            STOFSModel.ATLANTIC_3D,
+            "2026-09-02",
+            "12",
+            "2026-09-01 12:00",
+        )
+        assert out.startswith("No comparison")
+        client.fetch_coops_observations.assert_not_called()
+
+    @pytest.mark.asyncio
+    async def test_datum_without_coops_equivalent_is_not_compared(self, station_nc):
+        """An xGEOID20b-referenced file is refused instead of compared."""
+        client, out = await self._run(
+            station_nc,
+            {"standard_name": "sea_surface_height_above_xgeoid20b"},
+            STOFSModel.ATLANTIC_3D,
+            "2026-08-18",
+            "12",
+            "2026-08-17 12:00",
+        )
+        assert "no CO-OPS equivalent" in out
+        client.fetch_coops_observations.assert_not_called()
+
+    @pytest.mark.asyncio
+    async def test_note_does_not_promise_small_offsets(self, station_nc):
+        """The unsupported '1-5 cm offsets are expected' claim is gone."""
+        _, out = await self._run(
+            station_nc,
+            ZETA_3D_V31,
+            STOFSModel.ATLANTIC_3D,
+            "2026-08-18",
+            "12",
+            "2026-08-17 12:00",
+        )
+        note = json.loads(out)["datum_note"]
+        assert "1–5 cm" not in note
+        assert "No vertical transformation is applied" in note
+
+
+class TestCompareWithObservationsWindowAndQuality:
+    """The response says where the window sits relative to the cycle time,
+    discloses clamping, and reports observation quality without filtering."""
+
+    def _ctx(self, path, records):
+        from unittest.mock import AsyncMock
+
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(return_value=path)
+        client.fetch_coops_observations = AsyncMock(return_value={"data": records})
+        return make_ctx(client)
+
+    async def _run(self, station_nc, records=None, **kwargs):
+        """3D file for the 2026-02-18 12z cycle: it starts 24 h before the cycle."""
+        from stofs_mcp.tools.validation import stofs_compare_with_observations
+
+        start = "2026-02-17 12:00"
+        path = station_nc(ZETA_3D_V21, start, [0.2] * 300)
+        if records is None:
+            records = [
+                {"t": t, "v": "0.100", "f": "0,0,0,0", "q": "v"}
+                for t in six_minute_times(start, 300)
+            ]
+        kwargs.setdefault("hours_to_compare", 30)
+        return await stofs_compare_with_observations(
+            self._ctx(path, records),
+            station_id="8443970",
+            model=STOFSModel.ATLANTIC_3D,
+            cycle_date="2026-02-18",
+            cycle_hour="12",
+            **kwargs,
+        )
+
+    def test_docstring_gives_model_specific_nowcast_length(self):
+        """The tool description no longer says the window starts 6 h before
+        the cycle for every model; 3D files start 24 h before it."""
+        from stofs_mcp.tools.validation import stofs_compare_with_observations
+
+        doc = stofs_compare_with_observations.__doc__
+        assert "24 hours before" in doc
+        assert "N + 24 (3D)" in doc
+
+    @pytest.mark.asyncio
+    async def test_3d_window_is_mostly_nowcast_and_says_so(self, station_nc):
+        """A 30 h 3D window spans lead -23.9 h to +6 h: 240 nowcast points."""
+        parsed = json.loads(await self._run(station_nc, response_format="json"))
+        assert parsed["cycle_time"] == "2026-02-18 12:00"
+        assert parsed["window_lead_hours"] == [-23.9, 6.0]
+        segments = parsed["statistics_by_segment"]
+        assert segments["nowcast"]["n"] == 240
+        assert segments["forecast"]["n"] == 60
+        assert segments["nowcast"]["bias"] == pytest.approx(0.1)
+
+    @pytest.mark.asyncio
+    async def test_clamped_window_is_disclosed(self, station_nc):
+        """hours_to_compare above 96 is clamped, and the response says so."""
+        parsed = json.loads(
+            await self._run(station_nc, hours_to_compare=200, response_format="json")
+        )
+        assert parsed["hours_to_compare"] == 96
+        assert parsed["hours_to_compare_requested"] == 200
+        markdown = await self._run(station_nc, hours_to_compare=200)
+        assert "200 h requested, clamped to 96 h" in markdown
+
+    @pytest.mark.asyncio
+    async def test_unclamped_window_has_no_requested_key(self, station_nc):
+        """Within limits, no clamping key is emitted."""
+        parsed = json.loads(await self._run(station_nc, response_format="json"))
+        assert "hours_to_compare_requested" not in parsed
+
+    @pytest.mark.asyncio
+    async def test_observation_quality_is_counted_not_filtered(self, station_nc):
+        """Preliminary and flagged records are counted and still compared."""
+        times = six_minute_times("2026-02-17 12:00", 300)
+        records = [
+            {
+                "t": t,
+                "v": "" if i == 5 else "0.100",
+                "f": "0,0,1,0" if i < 10 else "0,0,0,0",
+                "q": "p" if i % 2 else "v",
+            }
+            for i, t in enumerate(times)
+        ]
+        parsed = json.loads(
+            await self._run(station_nc, records=records, response_format="json")
+        )
+        quality = parsed["observation_quality"]
+        assert quality["missing"] == 1
+        assert quality["flagged"] == 9  # 10 flagged records, one has no value
+        assert quality["verified"] + quality["preliminary"] == 299
+        assert parsed["statistics"]["n"] == 299
+        assert parsed["alignment"]["exact"] == 299
+        assert parsed["alignment"]["method"].startswith("one-to-one")
+        matched = quality["matched"]
+        assert matched["pairs"] == 299
+        assert matched["verified"] + matched["preliminary"] == 299
+        assert matched["flagged"] == 9
+
+    @pytest.mark.asyncio
+    async def test_markdown_names_max_absolute_error_and_segments(self, station_nc):
+        """Markdown labels max |F-O| unambiguously and shows the segments."""
+        result = await self._run(station_nc)
+        assert "Max absolute error, max(abs(F − O))" in result
+        assert "| Nowcast | 240 |" in result
+        assert "| Forecast | 60 |" in result
+        assert "verified" in result and "not filtered" in result
+
+
+class TestForecastToolsDatum:
+    """Station-based forecast tools label values with the file's datum."""
+
+    @pytest.mark.asyncio
+    async def test_station_forecast_v31_3d_is_lmsl(self, station_nc):
+        """stofs_get_station_forecast reports LMSL for a v3.1 3D cycle."""
+        from unittest.mock import AsyncMock
+
+        from stofs_mcp.tools.forecast import stofs_get_station_forecast
+
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(
+            return_value=station_nc(ZETA_3D_V31, "2026-08-17 12:00", [0.1] * 5)
+        )
+        out = await stofs_get_station_forecast(
+            make_ctx(client),
+            station_id="8443970",
+            model=STOFSModel.ATLANTIC_3D,
+            cycle_date="2026-08-18",
+            cycle_hour="12",
+            response_format="json",
+        )
+        parsed = json.loads(out)
+        assert parsed["datum"] == "LMSL"
+        assert parsed["datum_source"].startswith("file metadata")
+
+    @pytest.mark.asyncio
+    async def test_max_water_level_v21_3d_is_navd88(self, station_nc):
+        """stofs_get_max_water_level reads NAVD88 from a pre-cutover 3D file."""
+        from unittest.mock import AsyncMock
+
+        from stofs_mcp.tools.forecast import stofs_get_max_water_level
+
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(
+            return_value=station_nc(ZETA_3D_V21, "2026-02-17 12:00", [0.1, 0.5])
+        )
+        out = await stofs_get_max_water_level(
+            make_ctx(client),
+            model=STOFSModel.ATLANTIC_3D,
+            cycle_date="2026-02-18",
+            cycle_hour="12",
+            response_format="json",
+        )
+        parsed = json.loads(out)
+        assert parsed["datum"] == "NAVD88"
+        assert parsed["top_stations"][0]["max_wl"] == pytest.approx(0.5)
+
+    @pytest.mark.asyncio
+    async def test_max_water_level_v31_3d_markdown_says_lmsl(self, station_nc):
+        """The markdown footer names LMSL for a post-cutover 3D cycle."""
+        from unittest.mock import AsyncMock
+
+        from stofs_mcp.tools.forecast import stofs_get_max_water_level
+
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(
+            return_value=station_nc(ZETA_3D_V31, "2026-08-17 12:00", [0.1, 0.5])
+        )
+        out = await stofs_get_max_water_level(
+            make_ctx(client),
+            model=STOFSModel.ATLANTIC_3D,
+            cycle_date="2026-08-18",
+            cycle_hour="12",
+        )
+        assert "Values relative to LMSL" in out
+        assert "NAVD88" not in out
+
+
+class TestDatumWarningsReachEveryTool:
+    """Datum warnings and provenance appear in every public tool (review C2).
+
+    Regression: station, point and maximum tools dropped datum_warning, so a
+    NAVD88-labelled file served for a v3.1 cycle came back without a warning.
+    """
+
+    CYCLE = {"cycle_date": "2026-09-02", "cycle_hour": "12"}
+
+    def _ctx(self, station_nc, zeta_attrs):
+        from unittest.mock import AsyncMock
+
+        path = station_nc(
+            zeta_attrs, "2026-09-01 12:00", [0.1, 0.4, 0.2], xy=[(-71.05, 42.35)]
+        )
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(return_value=path)
+        return make_ctx(client)
+
+    async def _all_json(self, station_nc, zeta_attrs):
+        from stofs_mcp.tools.forecast import (
+            stofs_get_max_water_level,
+            stofs_get_point_forecast,
+            stofs_get_station_forecast,
+        )
+
+        model = STOFSModel.ATLANTIC_3D
+        return {
+            "station": json.loads(
+                await stofs_get_station_forecast(
+                    self._ctx(station_nc, zeta_attrs),
+                    station_id="8443970",
+                    model=model,
+                    response_format="json",
+                    **self.CYCLE,
+                )
+            ),
+            "point": json.loads(
+                await stofs_get_point_forecast(
+                    self._ctx(station_nc, zeta_attrs),
+                    latitude=42.35,
+                    longitude=-71.05,
+                    model=model,
+                    response_format="json",
+                    **self.CYCLE,
+                )
+            ),
+            "max": json.loads(
+                await stofs_get_max_water_level(
+                    self._ctx(station_nc, zeta_attrs),
+                    model=model,
+                    response_format="json",
+                    **self.CYCLE,
+                )
+            ),
+        }
+
+    @pytest.mark.asyncio
+    async def test_documentation_mismatch_warns_in_station_point_and_max_json(
+        self, station_nc
+    ):
+        """A NAVD88 file on a v3.1 cycle: datum kept, warning in all three tools."""
+        out = await self._all_json(station_nc, ZETA_3D_V21)
+        for name, parsed in out.items():
+            assert parsed["datum"] == "NAVD88", name
+            assert "NOAA documents LMSL" in parsed["datum_warning"], name
+            prov = parsed["datum_provenance"]
+            assert prov["resolution"] == "file_metadata", name
+            assert prov["attributes"]["zeta:standard_name"].endswith("navd88"), name
+
+    @pytest.mark.asyncio
+    async def test_unsupported_datum_is_undetermined_in_station_point_and_max(
+        self, station_nc
+    ):
+        """An NGVD29 file is labelled undetermined, never LMSL, in every tool."""
+        out = await self._all_json(
+            station_nc, {"standard_name": "sea_surface_height_above_ngvd29"}
+        )
+        for name, parsed in out.items():
+            assert parsed["datum"] == "undetermined", name
+            assert parsed["datum_provenance"]["comparable"] is False, name
+            assert "ngvd29" in parsed["datum_warning"], name
+
+    @pytest.mark.asyncio
+    async def test_no_warning_key_is_null_not_missing(self, station_nc):
+        """A clean v3.1 file gives datum_warning None, present for consumers."""
+        out = await self._all_json(station_nc, ZETA_3D_V31)
+        for name, parsed in out.items():
+            assert "datum_warning" in parsed and parsed["datum_warning"] is None, name
+
+    @pytest.mark.asyncio
+    async def test_markdown_shows_warning_in_every_tool(self, station_nc):
+        """The warning line is in the Markdown of station, point and max tools."""
+        from stofs_mcp.tools.forecast import (
+            stofs_get_max_water_level,
+            stofs_get_point_forecast,
+            stofs_get_station_forecast,
+        )
+
+        model = STOFSModel.ATLANTIC_3D
+        outputs = [
+            await stofs_get_station_forecast(
+                self._ctx(station_nc, ZETA_3D_V21),
+                station_id="8443970",
+                model=model,
+                **self.CYCLE,
+            ),
+            await stofs_get_point_forecast(
+                self._ctx(station_nc, ZETA_3D_V21),
+                latitude=42.35,
+                longitude=-71.05,
+                model=model,
+                **self.CYCLE,
+            ),
+            await stofs_get_max_water_level(
+                self._ctx(station_nc, ZETA_3D_V21), model=model, **self.CYCLE
+            ),
+        ]
+        for text in outputs:
+            assert "Datum warning" in text and "NOAA documents LMSL" in text
+
+    @pytest.mark.asyncio
+    async def test_compare_carries_the_warning_in_provenance(self, station_nc):
+        """The comparison proceeds on the file's datum and reports the warning."""
+        from unittest.mock import AsyncMock
+
+        from stofs_mcp.tools.validation import stofs_compare_with_observations
+
+        start = "2026-09-01 12:00"
+        path = station_nc(ZETA_3D_V21, start, [0.2] * 50)
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(return_value=path)
+        client.fetch_coops_observations = AsyncMock(
+            return_value={
+                "data": [{"t": t, "v": "0.100"} for t in six_minute_times(start, 50)]
+            }
+        )
+        parsed = json.loads(
+            await stofs_compare_with_observations(
+                make_ctx(client),
+                station_id="8443970",
+                model=STOFSModel.ATLANTIC_3D,
+                hours_to_compare=4,
+                response_format="json",
+                **self.CYCLE,
+            )
+        )
+        assert client.fetch_coops_observations.call_args.kwargs["datum"] == "NAVD"
+        assert "NOAA documents LMSL" in parsed["datum_provenance"]["warning"]
+
+
+class TestNonFiniteComparisonsAndForecasts:
+    """End to end: non-finite inputs give valid JSON and correct counts (review C3)."""
+
+    START = "2026-10-29 12:00"
+
+    def _strict_loads(self, text):
+        def reject(name):
+            raise ValueError(name)
+
+        return json.loads(text, parse_constant=reject)
+
+    async def _compare(self, station_nc, model_values, obs_values):
+        from unittest.mock import AsyncMock
+
+        from stofs_mcp.tools.validation import stofs_compare_with_observations
+
+        path = station_nc(ZETA_3D_V31, self.START, model_values)
+        times = six_minute_times(self.START, len(obs_values))
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(return_value=path)
+        client.fetch_coops_observations = AsyncMock(
+            return_value={
+                "data": [
+                    {"t": t, "v": v, "f": "0,0,0,0", "q": "p"}
+                    for t, v in zip(times, obs_values)
+                ]
+            }
+        )
+        return await stofs_compare_with_observations(
+            make_ctx(client),
+            station_id="8443970",
+            model=STOFSModel.ATLANTIC_3D,
+            cycle_date="2026-10-30",
+            cycle_hour="12",
+            hours_to_compare=3,
+            response_format="json",
+        )
+
+    @pytest.mark.asyncio
+    async def test_nan_and_infinity_observations_are_excluded(self, station_nc):
+        """'NaN' and 'Infinity' observations are dropped, counted, and JSON is valid."""
+        obs = ["0.100"] * 30
+        obs[3], obs[4] = "NaN", "Infinity"
+        parsed = self._strict_loads(await self._compare(station_nc, [0.2] * 30, obs))
+        assert parsed["observation_quality"]["nonfinite"] == 2
+        assert parsed["statistics"]["n"] == 28
+        assert parsed["statistics"]["bias"] == pytest.approx(0.1)
+
+    @pytest.mark.asyncio
+    async def test_model_nan_and_fill_are_excluded(self, station_nc):
+        """Model NaN/fill records never pair with observations."""
+        import numpy as np
+
+        model = [0.2] * 30
+        model[5], model[6] = np.nan, -99999.0
+        parsed = self._strict_loads(
+            await self._compare(station_nc, model, ["0.100"] * 30)
+        )
+        assert parsed["statistics"]["n"] == 28
+        assert parsed["statistics"]["max_abs_error"] == pytest.approx(0.1)
+
+    @pytest.mark.asyncio
+    async def test_all_invalid_observations_give_a_clear_message(self, station_nc):
+        """All-missing/non-finite observations: an explanation, no statistics."""
+        out = await self._compare(station_nc, [0.2] * 30, ["NaN"] * 10 + [""] * 20)
+        assert "none has a usable value" in out
+        assert "20 missing, 10 non-finite" in out
+
+    @pytest.mark.asyncio
+    async def test_max_water_level_ignores_fill_only_station(self, station_nc):
+        """A station whose values are all fill is not ranked at -99999 m."""
+        from unittest.mock import AsyncMock
+
+        from stofs_mcp.tools.forecast import stofs_get_max_water_level
+
+        path = station_nc(
+            ZETA_3D_V31,
+            self.START,
+            [-99999.0, -99999.0],
+            stations=("8443970", "8410140"),
+        )
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(return_value=path)
+        parsed = self._strict_loads(
+            await stofs_get_max_water_level(
+                make_ctx(client),
+                model=STOFSModel.ATLANTIC_3D,
+                cycle_date="2026-10-30",
+                cycle_hour="12",
+                response_format="json",
+            )
+        )
+        assert parsed["top_stations"] == []
+
+
+class TestCompareWindowOriginAndCycleHour:
+    """Window origin and cycle-hour validation (second review H2)."""
+
+    @pytest.mark.asyncio
+    async def test_missing_leading_records_do_not_shift_the_window(self, station_nc):
+        """The window starts at the file's first record even if it is invalid."""
+        from unittest.mock import AsyncMock
+
+        import numpy as np
+
+        from stofs_mcp.tools.validation import stofs_compare_with_observations
+
+        start = "2026-10-29 12:00"
+        model = [np.nan] * 10 + [0.2] * 40  # first hour of model values missing
+        path = station_nc(ZETA_3D_V31, start, model)
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(return_value=path)
+        client.fetch_coops_observations = AsyncMock(
+            return_value={
+                "data": [{"t": t, "v": "0.100"} for t in six_minute_times(start, 50)]
+            }
+        )
+        parsed = json.loads(
+            await stofs_compare_with_observations(
+                make_ctx(client),
+                station_id="8443970",
+                model=STOFSModel.ATLANTIC_3D,
+                cycle_date="2026-10-30",
+                cycle_hour="12",
+                hours_to_compare=3,
+                response_format="json",
+            )
+        )
+        window = parsed["window"]
+        assert window["file_start"] == "2026-10-29 12:06"
+        assert window["requested_end"] == "2026-10-29 15:06"
+        assert window["model_available"][0] == "2026-10-29 13:06"
+        assert window["excluded_model_records"]["nonfinite"] == 10
+        assert parsed["statistics"]["n"] == 21  # 13:06 .. 15:06
+
+    @pytest.mark.asyncio
+    async def test_invalid_cycle_hour_is_rejected_before_network(self):
+        """'07' is not a STOFS-2D cycle: refused without touching S3 or CO-OPS."""
+        from unittest.mock import AsyncMock
+
+        from stofs_mcp.tools.validation import stofs_compare_with_observations
+
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(side_effect=AssertionError("network"))
+        out = await stofs_compare_with_observations(
+            make_ctx(client),
+            station_id="8443970",
+            cycle_date="2026-10-30",
+            cycle_hour="07",
+        )
+        assert "not a cycle of 2d_global" in out
+        client.download_netcdf.assert_not_called()
+
+    @pytest.mark.asyncio
+    async def test_3d_accepts_only_12z(self):
+        """STOFS-3D runs once a day at 12z."""
+        from stofs_mcp.utils import resolve_cycle
+
+        with pytest.raises(ValueError, match="valid hours: 12"):
+            await resolve_cycle(None, "3d_atlantic", "2026-10-30", "00")
+
+
+class TestCompareLeadWindow:
+    """A lead-time window compares different models over the same valid times."""
+
+    async def _run(
+        self, station_nc, model, zeta_attrs, start, n, global_attrs=None, **kw
+    ):
+        from unittest.mock import AsyncMock
+
+        from stofs_mcp.tools.validation import stofs_compare_with_observations
+
+        path = station_nc(zeta_attrs, start, [0.2] * n, global_attrs=global_attrs)
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(return_value=path)
+        client.fetch_coops_observations = AsyncMock(
+            return_value={
+                "data": [
+                    {"t": t, "v": "0.100", "q": "p", "f": "0,0,0,0"}
+                    for t in six_minute_times("2026-10-29 06:00", 1200)
+                ]
+            }
+        )
+        out = await stofs_compare_with_observations(
+            make_ctx(client),
+            station_id="8443970",
+            model=model,
+            cycle_date="2026-10-30",
+            cycle_hour="12",
+            response_format="json",
+            **kw,
+        )
+        return client, out
+
+    async def _forecast_48h(self, station_nc):
+        _, out3d = await self._run(
+            station_nc,
+            STOFSModel.ATLANTIC_3D,
+            ZETA_3D_V31,
+            "2026-10-29 12:00",  # 3D file starts 24 h before the cycle
+            1200,
+            lead_start_hours=0,
+            lead_end_hours=48,
+        )
+        _, out2d = await self._run(
+            station_nc,
+            STOFSModel.GLOBAL_2D,
+            ZETA_2D,
+            "2026-10-30 06:00",  # 2D file starts 6 h before the cycle
+            1860,
+            global_attrs=GLOBAL_2D,
+            lead_start_hours=0,
+            lead_end_hours=48,
+        )
+        return json.loads(out3d), json.loads(out2d)
+
+    @pytest.mark.asyncio
+    async def test_forecast_window_gives_identical_valid_times(self, station_nc):
+        """(0, 48] h selects the same 480 valid times from the 2D and 3D files."""
+        j3, j2 = await self._forecast_48h(station_nc)
+        for j in (j3, j2):
+            assert j["statistics"]["n"] == 480
+            assert j["window"]["matched"] == ["2026-10-30 12:06", "2026-11-01 12:00"]
+            assert j["window_lead_hours"] == [0.1, 48.0]
+            assert j["statistics_by_segment"]["nowcast"]["n"] == 0
+            assert j["statistics_by_segment"]["forecast"]["n"] == 480
+            assert j["hours_to_compare"] is None
+            assert j["lead_window_hours"] == [0, 48]
+            assert "lead (0, 48] h" in j["window"]["definition"]
+            assert "coverage_note" not in j
+
+    @pytest.mark.asyncio
+    async def test_3d_nowcast_window(self, station_nc):
+        """(-24, 0] h is the 3D nowcast: 240 points, none forecast."""
+        _, out = await self._run(
+            station_nc,
+            STOFSModel.ATLANTIC_3D,
+            ZETA_3D_V31,
+            "2026-10-29 12:00",
+            1200,
+            lead_start_hours=-24,
+            lead_end_hours=0,
+        )
+        j = json.loads(out)
+        assert j["statistics"]["n"] == 240
+        assert j["statistics_by_segment"]["forecast"]["n"] == 0
+        assert j["window"]["matched"] == ["2026-10-29 12:06", "2026-10-30 12:00"]
+
+    @pytest.mark.asyncio
+    async def test_observations_are_fetched_for_the_window_only(self, station_nc):
+        """The CO-OPS request starts at the first window time, not the file start."""
+        client, _ = await self._run(
+            station_nc,
+            STOFSModel.ATLANTIC_3D,
+            ZETA_3D_V31,
+            "2026-10-29 12:00",
+            1200,
+            lead_start_hours=0,
+            lead_end_hours=48,
+        )
+        args = client.fetch_coops_observations.call_args.args
+        assert args[1:3] == ("20261030 12:06", "20261101 12:00")
+
+    @pytest.mark.asyncio
+    async def test_window_beyond_the_file_is_reported(self, station_nc):
+        """A file that ends early triggers a coverage note instead of silence."""
+        _, out = await self._run(
+            station_nc,
+            STOFSModel.ATLANTIC_3D,
+            ZETA_3D_V31,
+            "2026-10-29 12:00",
+            720,  # 72 h file: ends at lead +48 h
+            lead_start_hours=0,
+            lead_end_hours=60,
+        )
+        j = json.loads(out)
+        assert (
+            "ends at 2026-11-01 12:00 UTC, before the window end" in j["coverage_note"]
+        )
+        assert j["statistics"]["n"] == 480
+
+    @pytest.mark.asyncio
+    async def test_inverted_bounds_are_refused(self, station_nc):
+        """lead_end_hours must exceed lead_start_hours."""
+        _, out = await self._run(
+            station_nc,
+            STOFSModel.ATLANTIC_3D,
+            ZETA_3D_V31,
+            "2026-10-29 12:00",
+            100,
+            lead_start_hours=10,
+            lead_end_hours=5,
+        )
+        assert out == "lead_end_hours must be greater than lead_start_hours."
+
+
+class TestSentinelStationsInEveryTool:
+    """Sentinel stations are never ranked or presented as water levels (audit C-1).
+
+    Regression: on the 2026-10-30 12z STOFS-3D file the max tool ranked five
+    Caribbean stations at 9,999,999.4-9,999,999.6 m.
+    """
+
+    CYCLE = {"cycle_date": "2026-10-30", "cycle_hour": "12"}
+    START = "2026-10-29 12:00"
+
+    def _ctx(self, path, obs=None):
+        from unittest.mock import AsyncMock
+
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(return_value=path)
+        client.fetch_coops_observations = AsyncMock(return_value={"data": obs or []})
+        return make_ctx(client), client
+
+    def _file(self, station_nc, sentinel_values):
+        """A real-like 3D file: Boston valid plus a 1e7 + c Caribbean station."""
+        import numpy as np
+
+        n = 30
+        path = station_nc(
+            ZETA_3D_V31, self.START, [0.5] * n, stations=("8443970", "9751381")
+        )
+        import netCDF4
+
+        nc = netCDF4.Dataset(str(path), "a")
+        z = np.asarray(nc["zeta"][:])
+        z[:, 1] = sentinel_values(n)
+        nc["zeta"][:] = z
+        nc.close()
+        return path
+
+    @pytest.mark.asyncio
+    async def test_max_tool_does_not_rank_sentinel_station(self, station_nc):
+        """The 1e7 + c station is listed as excluded, never as a top station."""
+        from stofs_mcp.tools.forecast import stofs_get_max_water_level
+
+        path = self._file(station_nc, lambda n: [9999999.582] * n)
+        ctx, _ = self._ctx(path)
+        parsed = json.loads(
+            await stofs_get_max_water_level(
+                ctx, model=STOFSModel.ATLANTIC_3D, response_format="json", **self.CYCLE
+            )
+        )
+        assert [r["station"] for r in parsed["top_stations"]] == ["8443970"]
+        assert max(r["max_wl"] for r in parsed["top_stations"]) < 10
+        excluded = parsed["excluded_stations"]
+        assert excluded[0]["station"] == "9751381"
+        assert excluded[0]["reasons"] == {"sentinel": 30}
+        assert excluded[0]["example_raw_value"] == pytest.approx(9999999.582)
+        assert parsed["excluded_values"]["sentinel"] == 30
+
+    @pytest.mark.asyncio
+    async def test_max_tool_markdown_names_excluded_station(self, station_nc):
+        """The Markdown says which station was excluded and why."""
+        from stofs_mcp.tools.forecast import stofs_get_max_water_level
+
+        path = self._file(station_nc, lambda n: [9999999.582] * n)
+        ctx, _ = self._ctx(path)
+        text = await stofs_get_max_water_level(
+            ctx, model=STOFSModel.ATLANTIC_3D, **self.CYCLE
+        )
+        assert "Excluded stations" in text and "9751381 (30 sentinel)" in text
+        assert "9999999" not in text
+
+    @pytest.mark.asyncio
+    async def test_station_tool_reports_no_valid_data(self, station_nc):
+        """The station tool explains that every record was a sentinel."""
+        from stofs_mcp.tools.forecast import stofs_get_station_forecast
+
+        path = self._file(station_nc, lambda n: [9999999.582] * n)
+        ctx, _ = self._ctx(path)
+        out = await stofs_get_station_forecast(
+            ctx, station_id="9751381", model=STOFSModel.ATLANTIC_3D, **self.CYCLE
+        )
+        assert out.startswith("No valid data for station 9751381")
+        assert "30 sentinel" in out
+
+    @pytest.mark.asyncio
+    async def test_point_tool_reports_no_valid_data(self, station_nc):
+        """If the nearest station is all sentinels, the point tool says so."""
+        from stofs_mcp.tools.forecast import stofs_get_point_forecast
+
+        path = self._file(station_nc, lambda n: [9999999.582] * n)
+        import netCDF4
+
+        nc = netCDF4.Dataset(str(path), "a")  # put the sentinel station at 18.3 N
+        nc["x"][:] = [-71.05, -64.7242]
+        nc["y"][:] = [42.35, 18.3182]
+        nc.close()
+        ctx, _ = self._ctx(path)
+        out = await stofs_get_point_forecast(
+            ctx,
+            latitude=18.3182,
+            longitude=-64.7242,
+            model=STOFSModel.ATLANTIC_3D,
+            **self.CYCLE,
+        )
+        assert "9751381" in out and "has no valid data" in out
+        assert "30 sentinel" in out
+
+    @pytest.mark.asyncio
+    async def test_compare_tool_refuses_without_fetching(self, station_nc):
+        """No comparison and no CO-OPS request for an all-sentinel station."""
+        from stofs_mcp.tools.validation import stofs_compare_with_observations
+
+        path = self._file(station_nc, lambda n: [9999999.582] * n)
+        ctx, client = self._ctx(path)
+        out = await stofs_compare_with_observations(
+            ctx, station_id="9751381", model=STOFSModel.ATLANTIC_3D, **self.CYCLE
+        )
+        assert out.startswith("No usable STOFS values for station 9751381")
+        assert "Nothing was compared" in out
+        client.fetch_coops_observations.assert_not_called()
+
+    @pytest.mark.asyncio
+    async def test_out_of_range_observations_are_excluded(self, station_nc):
+        """Observation sentinels/implausible values are counted, not compared."""
+        from stofs_mcp.tools.validation import stofs_compare_with_observations
+
+        path = station_nc(ZETA_3D_V31, self.START, [0.2] * 30)
+        obs = [
+            {"t": t, "v": v, "f": "0,0,0,0", "q": "p"}
+            for t, v in zip(
+                six_minute_times(self.START, 30),
+                ["0.100"] * 27 + ["99999.0", "-99998.6", "150.0"],
+            )
+        ]
+        ctx, _ = self._ctx(path, obs)
+        parsed = json.loads(
+            await stofs_compare_with_observations(
+                ctx,
+                station_id="8443970",
+                model=STOFSModel.ATLANTIC_3D,
+                hours_to_compare=3,
+                response_format="json",
+                **self.CYCLE,
+            )
+        )
+        q = parsed["observation_quality"]
+        assert (q["sentinel"], q["implausible"]) == (2, 1)
+        assert parsed["statistics"]["n"] == 27
+        assert parsed["statistics"]["max_abs_error"] == pytest.approx(0.1)
+
+
+class TestNullQualityFlags:
+    """m-2: a null CO-OPS 'f' field is not counted as flagged."""
+
+    @pytest.mark.asyncio
+    async def test_null_flag_is_not_flagged(self, station_nc):
+        """f: null gave str(None) = 'None', which used to count as a flag."""
+        from unittest.mock import AsyncMock
+
+        from stofs_mcp.tools.validation import stofs_compare_with_observations
+
+        start = "2026-10-29 12:00"
+        path = station_nc(ZETA_3D_V31, start, [0.2] * 30)
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(return_value=path)
+        client.fetch_coops_observations = AsyncMock(
+            return_value={
+                "data": [
+                    {"t": t, "v": "0.100", "f": None, "q": "p"}
+                    for t in six_minute_times(start, 30)
+                ]
+            }
+        )
+        parsed = json.loads(
+            await stofs_compare_with_observations(
+                make_ctx(client),
+                station_id="8443970",
+                model=STOFSModel.ATLANTIC_3D,
+                cycle_date="2026-10-30",
+                cycle_hour="12",
+                hours_to_compare=3,
+                response_format="json",
+            )
+        )
+        assert parsed["observation_quality"]["flagged"] == 0
+        assert parsed["observation_quality"]["matched"]["flagged"] == 0
+
+
+class TestStofs3dSwappedCoordinates:
+    """Point lookup works on pre-v3.1 STOFS-3D files with swapped x/y.
+
+    Regression: stofs_get_point_forecast at Boston for the 2026-02-18 3D
+    cycle returned "No STOFS station found within 50 km" because the file
+    stores Boston as x=42.354, y=-71.050.
+    """
+
+    @pytest.mark.asyncio
+    async def test_point_forecast_finds_boston_in_v21_3d_file(self, station_nc):
+        """The nearest station is found at 0 km after the repair."""
+        from unittest.mock import AsyncMock
+
+        from stofs_mcp.tools.forecast import stofs_get_point_forecast
+
+        path = station_nc(
+            ZETA_3D_V21,
+            "2026-02-17 12:00",
+            [0.1] * 5,
+            stations=("BHBM3 SOUS41 8443970 MA Boston", "8410140"),
+            xy=[(42.3539, -71.0503), (44.9046, -66.9829)],
+        )
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(return_value=path)
+        out = await stofs_get_point_forecast(
+            make_ctx(client),
+            latitude=42.3539,
+            longitude=-71.0503,
+            model=STOFSModel.ATLANTIC_3D,
+            cycle_date="2026-02-18",
+            cycle_hour="12",
+            response_format="json",
+        )
+        parsed = json.loads(out)
+        assert "8443970" in parsed["nearest_station"]
+        assert parsed["distance_km"] == pytest.approx(0.0, abs=0.01)
+
+    @pytest.mark.asyncio
+    async def test_max_water_level_region_filter_uses_real_coords(self, station_nc):
+        """east_coast filtering keeps Boston from a swapped 3D file."""
+        from unittest.mock import AsyncMock
+
+        from stofs_mcp.models import Region
+        from stofs_mcp.tools.forecast import stofs_get_max_water_level
+
+        path = station_nc(
+            ZETA_3D_V21, "2026-02-17 12:00", [0.1, 0.4], xy=[(42.3539, -71.0503)]
+        )
+        client = STOFSClient(backoff_factor=0)
+        client.download_netcdf = AsyncMock(return_value=path)
+        out = await stofs_get_max_water_level(
+            make_ctx(client),
+            model=STOFSModel.ATLANTIC_3D,
+            cycle_date="2026-02-18",
+            cycle_hour="12",
+            region=Region.EAST_COAST,
+            response_format="json",
+        )
+        rows = json.loads(out)["top_stations"]
+        assert len(rows) == 1
+        assert (rows[0]["lat"], rows[0]["lon"]) == (42.3539, -71.0503)
 
 
 # ---------------------------------------------------------------------------
@@ -1395,3 +2594,239 @@ async def test_resolve_latest_cycle_ttl_zero_disables_cache():
     finally:
         await c.close()
     assert route.call_count == 2
+
+
+# ---------------------------------------------------------------------------
+# WP1 defects D1 (coordinate provenance) and D2 (units in JSON), on station
+# files written from the verbatim 2026-02-18 12z STOFS-3D excerpt
+# ---------------------------------------------------------------------------
+
+
+def _client_for(path):
+    from unittest.mock import AsyncMock
+
+    client = STOFSClient(backoff_factor=0)
+    client.download_netcdf = AsyncMock(return_value=path)
+    return client
+
+
+class TestCoordinateProvenance:
+    """The station, point and max tools say when coordinates were corrected."""
+
+    @pytest.mark.asyncio
+    async def test_point_tool_reports_correction_for_boston(self, feb_excerpt_nc):
+        """Boston is found at 0 km and the JSON names the correction and its rule."""
+        from stofs_mcp.tools.forecast import stofs_get_point_forecast
+
+        out = await stofs_get_point_forecast(
+            make_ctx(_client_for(feb_excerpt_nc())),
+            latitude=42.3539,
+            longitude=-71.0503,
+            model=STOFSModel.ATLANTIC_3D,
+            cycle_date="2026-02-18",
+            cycle_hour="12",
+            response_format="json",
+        )
+        parsed = json.loads(out)
+        assert "8443970" in parsed["nearest_station"]
+        assert parsed["distance_km"] == pytest.approx(0.0, abs=0.01)
+        assert parsed["coordinate_warning"].startswith("2 of 5 station records")
+        assert (
+            "This station's coordinates were corrected" in parsed["coordinate_warning"]
+        )
+        prov = parsed["coordinate_provenance"]
+        assert prov["checked"] is True and prov["stations_corrected"] == 2
+        assert prov["station"]["corrected"] is True
+        assert prov["station"]["stored_x"] == pytest.approx(42.3539103827)
+        assert prov["station"]["stored_y"] == pytest.approx(-71.0502859522)
+        assert (
+            "latitude < 0 < longitude" in prov["rule"]
+            or "west of Greenwich" in prov["rule"]
+        )
+
+    @pytest.mark.asyncio
+    async def test_point_tool_markdown_has_one_coordinate_line(self, feb_excerpt_nc):
+        """Markdown carries exactly one coordinate-warning line."""
+        from stofs_mcp.tools.forecast import stofs_get_point_forecast
+
+        out = await stofs_get_point_forecast(
+            make_ctx(_client_for(feb_excerpt_nc())),
+            latitude=42.3539,
+            longitude=-71.0503,
+            model=STOFSModel.ATLANTIC_3D,
+            cycle_date="2026-02-18",
+            cycle_hour="12",
+        )
+        assert sum("Coordinate warning" in line for line in out.splitlines()) == 1
+
+    @pytest.mark.asyncio
+    async def test_point_tool_station_stored_as_labelled(self, feb_excerpt_nc):
+        """Trident Pier is stored correctly: the file-level count is given, not a station correction."""
+        from stofs_mcp.tools.forecast import stofs_get_point_forecast
+
+        out = await stofs_get_point_forecast(
+            make_ctx(_client_for(feb_excerpt_nc())),
+            latitude=28.4157,
+            longitude=-80.5934,
+            model=STOFSModel.ATLANTIC_3D,
+            cycle_date="2026-02-18",
+            cycle_hour="12",
+            response_format="json",
+        )
+        parsed = json.loads(out)
+        assert "8721604" in parsed["nearest_station"]
+        assert parsed["coordinate_provenance"]["station"]["corrected"] is False
+        assert "This station" not in parsed["coordinate_warning"]
+
+    @pytest.mark.asyncio
+    async def test_station_tool_without_reversed_records(self, feb_excerpt_nc):
+        """A file whose records are all as labelled: no warning, zero corrections."""
+        from stofs_mcp.tools.forecast import stofs_get_station_forecast
+
+        from .conftest import FEB_AS_LABELLED
+
+        out = await stofs_get_station_forecast(
+            make_ctx(_client_for(feb_excerpt_nc(FEB_AS_LABELLED))),
+            station_id="8767816",
+            model=STOFSModel.ATLANTIC_3D,
+            cycle_date="2026-02-18",
+            cycle_hour="12",
+            response_format="json",
+        )
+        parsed = json.loads(out)
+        assert parsed["coordinate_warning"] is None
+        assert parsed["coordinate_provenance"]["stations_corrected"] == 0
+        assert parsed["coordinate_provenance"]["station"]["corrected"] is False
+
+    @pytest.mark.asyncio
+    async def test_station_tool_reports_reversed_station(self, feb_excerpt_nc):
+        """Boston's own record is named as corrected, with its stored values."""
+        from stofs_mcp.tools.forecast import stofs_get_station_forecast
+
+        out = await stofs_get_station_forecast(
+            make_ctx(_client_for(feb_excerpt_nc())),
+            station_id="8443970",
+            model=STOFSModel.ATLANTIC_3D,
+            cycle_date="2026-02-18",
+            cycle_hour="12",
+            response_format="json",
+        )
+        parsed = json.loads(out)
+        assert (parsed["lat"], parsed["lon"]) == (
+            pytest.approx(42.3539103827),
+            pytest.approx(-71.0502859522),
+        )
+        assert parsed["coordinate_provenance"]["station"]["corrected"] is True
+
+    @pytest.mark.asyncio
+    async def test_max_tool_reports_file_level_counts(self, feb_excerpt_nc):
+        """The max tool reports how many records were corrected, in JSON and markdown."""
+        from stofs_mcp.tools.forecast import stofs_get_max_water_level
+
+        # each tool call deletes its downloaded file, so every call gets its own copy
+        parsed = json.loads(
+            await stofs_get_max_water_level(
+                make_ctx(_client_for(feb_excerpt_nc())),
+                model=STOFSModel.ATLANTIC_3D,
+                cycle_date="2026-02-18",
+                cycle_hour="12",
+                response_format="json",
+            )
+        )
+        assert parsed["coordinate_provenance"]["stations_corrected"] == 2
+        assert parsed["coordinate_warning"].startswith("2 of 5 station records")
+        md = await stofs_get_max_water_level(
+            make_ctx(_client_for(feb_excerpt_nc())),
+            model=STOFSModel.ATLANTIC_3D,
+            cycle_date="2026-02-18",
+            cycle_hour="12",
+        )
+        assert sum("Coordinate warning" in line for line in md.splitlines()) == 1
+
+    @pytest.mark.asyncio
+    async def test_undetermined_record_is_not_used_for_location(self, feb_excerpt_nc):
+        """SYNTHETIC record that reads as neither orientation is never chosen as nearest."""
+        from stofs_mcp.tools.forecast import stofs_get_point_forecast
+
+        # stored x=42.35, y=71.05: read as labelled it would sit at 71.05 N, 42.35 E,
+        # exactly at the query point; read reversed it would sit at 42.35 S
+        path = feb_excerpt_nc(
+            ("8443970",), extra=[("SYNTHETIC 0000000 both positive", 42.35, 71.05)]
+        )
+        out = await stofs_get_point_forecast(
+            make_ctx(_client_for(path)),
+            latitude=71.05,
+            longitude=42.35,
+            model=STOFSModel.ATLANTIC_3D,
+            cycle_date="2026-02-18",
+            cycle_hour="12",
+            max_distance_km=50.0,
+            response_format="json",
+        )
+        assert out.startswith("No STOFS station found within 50.0 km")
+
+    @pytest.mark.asyncio
+    async def test_2d_station_reports_no_check(self, station_nc):
+        """2D-Global: coordinate_provenance says no check applies, warning is None."""
+        from stofs_mcp.tools.forecast import stofs_get_station_forecast
+
+        from .conftest import GLOBAL_2D, ZETA_2D
+
+        path = station_nc(
+            ZETA_2D, "2026-10-30 06:00", [0.1, 0.2], global_attrs=GLOBAL_2D
+        )
+        parsed = json.loads(
+            await stofs_get_station_forecast(
+                make_ctx(_client_for(path)),
+                station_id="8443970",
+                model=STOFSModel.GLOBAL_2D,
+                cycle_date="2026-10-30",
+                cycle_hour="06",
+                response_format="json",
+            )
+        )
+        assert parsed["coordinate_warning"] is None
+        assert parsed["coordinate_provenance"]["checked"] is False
+
+
+class TestUnitsInJson:
+    """The max, station and point tools state units in JSON (WP1 defect D2)."""
+
+    @pytest.mark.asyncio
+    async def test_station_point_and_max_state_units(self, feb_excerpt_nc):
+        """All three report the zeta:units of the file ('m'), at top level beside the datum."""
+        from stofs_mcp.tools.forecast import (
+            stofs_get_max_water_level,
+            stofs_get_point_forecast,
+            stofs_get_station_forecast,
+        )
+
+        # each tool call deletes its downloaded file, so every call gets its own copy
+        common = dict(
+            model=STOFSModel.ATLANTIC_3D,
+            cycle_date="2026-02-18",
+            cycle_hour="12",
+            response_format="json",
+        )
+        station = json.loads(
+            await stofs_get_station_forecast(
+                make_ctx(_client_for(feb_excerpt_nc())), station_id="8443970", **common
+            )
+        )
+        point = json.loads(
+            await stofs_get_point_forecast(
+                make_ctx(_client_for(feb_excerpt_nc())),
+                latitude=42.3539,
+                longitude=-71.0503,
+                **common,
+            )
+        )
+        peak = json.loads(
+            await stofs_get_max_water_level(
+                make_ctx(_client_for(feb_excerpt_nc())), **common
+            )
+        )
+        for parsed in (station, point, peak):
+            assert parsed["units"] == "m"
+            keys = list(parsed)
+            assert keys.index("units") == keys.index("datum_provenance") + 1

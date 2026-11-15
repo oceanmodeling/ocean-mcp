@@ -2,11 +2,51 @@
 
 from __future__ import annotations
 
+import json
 import math
 import os
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+
+
+# ---------------------------------------------------------------------------
+# Strict JSON
+# ---------------------------------------------------------------------------
+
+
+def _json_safe(obj: Any) -> Any:
+    """Recursively convert NaN/±Inf (Python or NumPy) to None and NumPy
+    scalars to Python types, so the result serializes as standard JSON."""
+    if isinstance(obj, dict):
+        return {k: _json_safe(v) for k, v in obj.items()}
+    if isinstance(obj, (list, tuple)):
+        return [_json_safe(v) for v in obj]
+    if hasattr(obj, "tolist") and getattr(obj, "ndim", 0):
+        return _json_safe(obj.tolist())  # NumPy array -> nested lists
+    if hasattr(obj, "item") and not isinstance(obj, (str, bytes)):
+        try:
+            obj = obj.item()  # NumPy scalar -> Python scalar
+        except (ValueError, TypeError):
+            return obj
+    if isinstance(obj, float) and not math.isfinite(obj):
+        return None
+    return obj
+
+
+def dumps_strict(obj: Any, indent: int | None = 2) -> str:
+    """json.dumps that never emits NaN/Infinity: non-finite numbers become
+    null, and allow_nan=False guards against anything left over."""
+    return json.dumps(_json_safe(obj), indent=indent, allow_nan=False)
+
+
+def is_finite_number(value: Any) -> bool:
+    """True for a real, finite number (False for None, NaN, ±Inf, non-numbers)."""
+    try:
+        return math.isfinite(float(value))
+    except (TypeError, ValueError):
+        return False
 
 
 # ---------------------------------------------------------------------------
@@ -54,9 +94,698 @@ def _decode_station_names(var) -> list[str]:
     return names
 
 
+# ---------------------------------------------------------------------------
+# Vertical datum: classify file metadata, never guess an unfamiliar reference
+# ---------------------------------------------------------------------------
+
+# Known datum tokens in a CF standard_name / long_name. Separators are '_',
+# ' ' or punctuation, so tokens are delimited by non-alphanumerics. Digits
+# count as part of a token: "navd2022" is not NAVD88, "gmsl" is not LMSL.
+_KNOWN_DATUM_PATTERNS = (
+    (re.compile(r"(?<![a-z0-9])navd(?:[ _]?88)?(?![ _]?\d)(?![a-z0-9])"), "NAVD88"),
+    (
+        re.compile(r"(?<![a-z0-9])mllw(?![a-z0-9])|mean[_ ]lower[_ ]low[_ ]water"),
+        "MLLW",
+    ),
+    (
+        re.compile(r"(?<![a-z0-9])l?msl(?![a-z0-9])|(?<![a-z])mean[_ ]sea[_ ]level"),
+        "LMSL",
+    ),
+    (re.compile(r"(?<![a-z0-9])xgeoid[ _]?(\d+[a-z]?)?(?![a-z0-9])"), "xGEOID"),
+)
+
+# The reference a label names explicitly: "..._above_<ref>", "relative to <ref>".
+_REFERENCE_PHRASE = re.compile(
+    r"(?:above|relative[_ ]to|referenced[_ ]to|with[_ ]respect[_ ]to)[_ ]+([a-z0-9][a-z0-9_ ]*)"
+)
+
+# References that name no specific vertical datum. ADCIRC writes
+# "sea_surface_height_above_geoid" whatever the actual reference.
+_GENERIC_REFERENCES = {"geoid"}
+# Words that qualify a reference without naming another one ("above the geoid",
+# "above geoid in metres"), and placeholder values meaning "no datum given".
+_REFERENCE_FILLER = {"the", "a", "an", "in", "m", "meter", "meters", "metre", "metres"}
+_PLACEHOLDER_VALUES = {"n/a", "na", "none", "null", "unknown", "unspecified", "-"}
+
+
+def classify_datum_label(
+    label: str | None, explicit_reference: bool = False
+) -> dict[str, str | None]:
+    """Classify one water-level label by the vertical datum it names.
+
+    ``explicit_reference=True`` is for attributes whose whole value is a datum
+    name (global ``datum`` / ``vertical_datum``): an unknown value there is
+    'unsupported', not 'generic'.
+
+    Returns {'status', 'datum', 'reference'} where status is one of:
+
+    - 'absent': no label;
+    - 'generic': names no specific datum (no reference, or ADCIRC's "geoid");
+    - 'recognized': names exactly one known datum ('datum' is set);
+    - 'unsupported': names an explicit reference this server does not know,
+      e.g. NGVD29 or NAVD2022 ('reference' is set);
+    - 'conflicting': names more than one known datum.
+    """
+    text = (label or "").strip().lower()
+    if not text or (explicit_reference and text in _PLACEHOLDER_VALUES):
+        return {"status": "absent", "datum": None, "reference": None}
+
+    found: list[str] = []
+    for pattern, name in _KNOWN_DATUM_PATTERNS:
+        for match in pattern.finditer(text):
+            datum = name
+            if name == "xGEOID":  # keep the model version, e.g. xGEOID20b
+                datum = "xGEOID" + (match.group(1) or "")
+            if datum not in found:
+                found.append(datum)
+    phrase = _REFERENCE_PHRASE.search(text)
+    reference = phrase.group(1).strip(" _") if phrase else None
+    if explicit_reference and reference is None:
+        reference = text
+
+    if len(found) > 1:
+        return {"status": "conflicting", "datum": None, "reference": ", ".join(found)}
+    if found:
+        return {"status": "recognized", "datum": found[0], "reference": reference}
+    words = [
+        w
+        for w in re.split(r"[ _]+", reference or "")
+        if w and w not in _REFERENCE_FILLER
+    ]
+    if reference and not (words and set(words) <= _GENERIC_REFERENCES):
+        return {"status": "unsupported", "datum": None, "reference": reference}
+    return {"status": "generic", "datum": None, "reference": reference}
+
+
+def datum_from_label(label: str | None) -> str | None:
+    """The single known datum a label names, else None (see classify_datum_label)."""
+    return classify_datum_label(label)["datum"]
+
+
+def _product_signature(nc) -> dict[str, str]:
+    """Identify the producing system from global attributes (model, title,
+    version, and the STOFS package version in ``history``)."""
+    sig: dict[str, str] = {}
+    for attr in ("model", "title", "version", "source"):
+        value = getattr(nc, attr, None)
+        if value is not None:
+            sig[attr] = str(value).split("!")[0].strip()
+    history = str(getattr(nc, "history", "") or "")
+    match = re.search(r"stofs\.v(\d+(?:\.\d+)*)", history)
+    if match:
+        sig["package"] = f"stofs.v{match.group(1)}"
+    title = sig.get("title", "")
+    match = re.search(
+        r"(STOFS_2D_GLOBAL|ESTOFS GLOBAL)[ ._]*V?(\d+(?:\.\d+)*)", title, re.I
+    )
+    if match:
+        sig["product_version"] = f"{match.group(1).upper()} V{match.group(2)}"
+    elif "package" in sig:
+        sig["product_version"] = sig["package"]
+    return sig
+
+
+def read_datum_metadata(nc, zeta_var_name: str | None) -> dict[str, Any]:
+    """Collect and classify every datum-bearing attribute of a station file.
+
+    Inspects zeta's ``standard_name`` and ``long_name`` and the legacy global
+    ``datum`` / ``vertical_datum``, never ``history`` (it names conversion
+    scripts, not the result). All raw attribute values are kept.
+
+    Returns a dict with 'status' (absent / generic / recognized / unsupported
+    / conflicting, combined over all attributes), 'datum' ('' unless
+    recognized), 'label' (the deciding attribute), 'reference', 'attributes'
+    ({name: raw value}) and 'product' (global-attribute signature).
+    """
+    attributes: dict[str, str] = {}
+    if zeta_var_name and zeta_var_name in nc.variables:
+        var = nc.variables[zeta_var_name]
+        for attr in ("standard_name", "long_name"):
+            value = getattr(var, attr, None)
+            if value:
+                attributes[f"{zeta_var_name}:{attr}"] = str(value)
+    for attr in ("datum", "vertical_datum"):
+        value = getattr(nc, attr, None)
+        if value:
+            attributes[f":{attr}"] = str(value)
+
+    combined = combine_datum_attributes(attributes)
+    combined["product"] = _product_signature(nc)
+    return combined
+
+
+def combine_datum_attributes(attributes: dict[str, str]) -> dict[str, Any]:
+    """Combine per-attribute classifications into one file-level verdict.
+
+    An unsupported reference or two different known datums make the file
+    'unsupported' / 'conflicting'; generic labels never conflict with a
+    specific one.
+    """
+    classified = {
+        k: classify_datum_label(v, explicit_reference=k.startswith(":"))
+        for k, v in attributes.items()
+    }
+    unsupported = [k for k, c in classified.items() if c["status"] == "unsupported"]
+    recognized = {
+        k: c["datum"] for k, c in classified.items() if c["status"] == "recognized"
+    }
+    conflicting = [k for k, c in classified.items() if c["status"] == "conflicting"]
+    distinct = sorted(set(recognized.values()))
+
+    def fmt(keys):
+        return "; ".join(f"{k}={attributes[k]}" for k in keys)
+
+    if unsupported:
+        k = unsupported[0]
+        status, datum, label, ref = (
+            "unsupported",
+            "",
+            fmt(unsupported),
+            classified[k]["reference"],
+        )
+    elif conflicting or len(distinct) > 1:
+        keys = conflicting + [k for k in recognized if k not in conflicting]
+        status, datum, label, ref = "conflicting", "", fmt(keys), None
+    elif distinct:
+        k = next(iter(recognized))
+        status, datum, label, ref = "recognized", distinct[0], fmt([k]), None
+    elif attributes:
+        status, datum, label, ref = "generic", "", fmt(list(attributes)[:1]), None
+    else:
+        status, datum, label, ref = "absent", "", "", None
+    return {
+        "status": status,
+        "datum": datum,
+        "label": label,
+        "reference": ref,
+        "attributes": attributes,
+    }
+
+
+_VERSION_IN_TITLE = re.compile(
+    r"(STOFS_2D_GLOBAL|ESTOFS GLOBAL)[ ._]*V?(\d+)\.(\d+)(?:\.(\d+))?", re.I
+)
+
+
+def documented_fallback(model: str, product: dict[str, str]) -> tuple[str | None, str]:
+    """Whether NOAA's documented datum may stand in for a generic/absent label.
+
+    Only STOFS-2D-Global station files qualify: ADCIRC output whose zeta always
+    carries the generic "above geoid" label. The version in the title must be
+    one the documentation covers (models.DOCUMENTED_2D_STATION_DATUM, no
+    warning) or an accepted legacy version (ASSUMED_2D_STATION_DATUM, with a
+    warning). Anything else, including a future STOFS_2D_GLOBAL V4.0, is not
+    assigned a datum.
+
+    Returns:
+        ('documented' | 'assumed' | None, explanation).
+    """
+    from .models import ASSUMED_2D_STATION_DATUM, DOCUMENTED_2D_STATION_DATUM
+
+    if model != "2d_global":
+        return None, "only STOFS-2D-Global files have a documented default datum"
+    if product.get("model", "").upper() != "ADCIRC":
+        return None, "the file is not ADCIRC output (STOFS-2D-Global signature)"
+    title = product.get("title", "")
+    match = _VERSION_IN_TITLE.search(title)
+    if not match:
+        return None, (
+            f"the title '{title}' carries no STOFS-2D-Global/ESTOFS version, so the "
+            "documented default cannot be checked against it"
+        )
+    family = match.group(1).upper()
+    key = (family, f"{int(match.group(2))}.{int(match.group(3))}")
+    version = f"{family} V{key[1]}" + (f".{match.group(4)}" if match.group(4) else "")
+    if key in DOCUMENTED_2D_STATION_DATUM:
+        return "documented", f"{version}: {DOCUMENTED_2D_STATION_DATUM[key]}"
+    if key in ASSUMED_2D_STATION_DATUM:
+        return "assumed", f"{version}: {ASSUMED_2D_STATION_DATUM[key]}"
+    known = ", ".join(f"{f} V{v}" for f, v in DOCUMENTED_2D_STATION_DATUM)
+    return None, (
+        f"{version} is not a version whose station datum is documented "
+        f"(documented: {known}); STOFS-3D changed its station datum at a version "
+        "boundary, so no default is assumed"
+    )
+
+
+def resolve_station_datum(
+    model: str,
+    date: str,
+    hour: str,
+    parsed: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Decide which datum a station file's values are referenced to, if any.
+
+    - A recognized datum in the file metadata is used; a warning is added when
+      it differs from what NOAA documents for that model and cycle.
+    - An unsupported explicit reference or conflicting attributes give datum
+      'undetermined' and comparable=False, with the reason in the warning.
+    - A generic/absent label falls back to the documented datum only for the
+      recognized STOFS-2D/ESTOFS ADCIRC signature; otherwise 'undetermined'.
+
+    Args:
+        model: '2d_global' or '3d_atlantic'.
+        date: Cycle date, YYYYMMDD.
+        hour: Cycle hour, HH.
+        parsed: Result of parse_station_netcdf ('datum_status', 'datum',
+            'datum_label', 'datum_attributes', 'product').
+
+    Returns:
+        Dict with 'datum', 'resolution' (file_metadata / documented_fallback /
+        undetermined), 'comparable', 'datum_source', 'datum_warning' ('' if
+        none), 'documented_datum', 'attributes' and 'product_version'.
+    """
+    from .models import documented_station_datum
+
+    parsed = dict(parsed or {})
+    documented = documented_station_datum(model, date, hour)
+    label = parsed.get("datum_label") or ""
+    if not parsed.get("datum_status"):
+        # Caller without a classification: classify the "name=value" label(s)
+        # rather than trusting a bare datum or assuming absence.
+        attrs = dict(part.split("=", 1) for part in label.split("; ") if "=" in part)
+        combined = combine_datum_attributes(attrs)
+        if parsed.get("datum") and combined["status"] in ("absent", "generic"):
+            combined = combined | {"status": "recognized", "datum": parsed["datum"]}
+        parsed.setdefault("datum_attributes", attrs)
+        parsed["datum"] = combined["datum"] or parsed.get("datum") or ""
+        parsed["datum_reference"] = combined["reference"]
+        parsed["datum_status"] = combined["status"]
+    status = parsed["datum_status"]
+    product = parsed.get("product") or {}
+    base = {
+        "documented_datum": documented,
+        "attributes": parsed.get("datum_attributes") or {},
+        "product_version": product.get("product_version", ""),
+    }
+
+    if status == "recognized":
+        datum = parsed.get("datum") or ""
+        warning = ""
+        if datum != documented:
+            warning = (
+                f"File metadata says {datum}, but NOAA documents {documented} for "
+                f"this model and cycle; using the file's {datum}."
+            )
+        return base | {
+            "datum": datum,
+            "resolution": "file_metadata",
+            "comparable": True,
+            "datum_source": f"file metadata: {label}",
+            "datum_warning": warning,
+        }
+    if status == "unsupported":
+        return base | {
+            "datum": "undetermined",
+            "resolution": "undetermined",
+            "comparable": False,
+            "datum_source": f"file metadata: {label}",
+            "datum_warning": (
+                f"The file references '{parsed.get('datum_reference')}', a vertical "
+                "datum this server does not recognize; values are not paired with "
+                "any CO-OPS datum."
+            ),
+        }
+    if status == "conflicting":
+        return base | {
+            "datum": "undetermined",
+            "resolution": "undetermined",
+            "comparable": False,
+            "datum_source": f"file metadata: {label}",
+            "datum_warning": (
+                "The file's datum attributes contradict each other "
+                f"({label}); values are not paired with any CO-OPS datum."
+            ),
+        }
+    verdict, explanation = documented_fallback(model, product)
+    why = f"file label {label} names no specific datum" if label else "no file label"
+    if verdict is not None:
+        return base | {
+            "datum": documented,
+            "resolution": "documented_fallback",
+            "comparable": True,
+            "datum_source": f"NOAA documentation ({explanation}); {why}",
+            "datum_warning": (
+                f"Datum assumed, not documented for this version: {explanation}."
+                if verdict == "assumed"
+                else ""
+            ),
+        }
+    return base | {
+        "datum": "undetermined",
+        "resolution": "undetermined",
+        "comparable": False,
+        "datum_source": f"file metadata: {label}"
+        if label
+        else "no datum metadata in file",
+        "datum_warning": (
+            f"The file names no specific vertical datum and no documented default "
+            f"applies: {explanation}. Values are not paired with any CO-OPS datum."
+        ),
+    }
+
+
+def datum_provenance(datum_info: dict[str, Any]) -> dict[str, Any]:
+    """JSON-ready provenance for a resolved station datum (every tool emits it).
+
+    'warning' is None when there is nothing to report, so consumers can rely
+    on the key being present.
+    """
+    return {
+        "datum": datum_info.get("datum"),
+        "resolution": datum_info.get("resolution"),
+        "comparable": datum_info.get("comparable"),
+        "source": datum_info.get("datum_source"),
+        "warning": datum_info.get("datum_warning") or None,
+        "documented_datum": datum_info.get("documented_datum"),
+        "product_version": datum_info.get("product_version") or None,
+        "attributes": datum_info.get("attributes") or {},
+    }
+
+
+def datum_markdown_lines(datum_info: dict[str, Any]) -> list[str]:
+    """Markdown metadata lines: the datum with its source, then any warning."""
+    lines = [f"Datum: {datum_info.get('datum')} ({datum_info.get('datum_source')})"]
+    if datum_info.get("datum_warning"):
+        lines.append(f"⚠️ Datum warning: {datum_info['datum_warning']}")
+    return lines
+
+
+COORDINATE_RULE_3D = (
+    "STOFS-3D-Atlantic stations all lie north of the equator and west of "
+    "Greenwich: a record whose y (labelled latitude) is negative and x "
+    "(labelled longitude) positive is stored reversed and is swapped; a record "
+    "that reads as neither orientation (coordinates of the same sign, zero or "
+    "not finite) is left undetermined and not used for location"
+)
+COORDINATE_RULE_NOT_APPLIED = (
+    "not applied: only STOFS-3D-Atlantic files are checked; for STOFS-2D-Global "
+    "a southern-hemisphere, eastern-hemisphere record can be a real station"
+)
+_MAX_NAMED_STATIONS = 10
+
+
+def check_station_coords(
+    model: str | None,
+    lats: list[float],
+    lons: list[float],
+) -> tuple[list[float], list[float], dict[str, Any]]:
+    """Repair STOFS-3D-Atlantic records whose latitude and longitude are
+    swapped, and report what was done.
+
+    STOFS-3D-Atlantic v2.1 station files (cycles before 2026-08-17 12z) store
+    latitude in ``x`` and longitude in ``y`` for most rows (105 of 108),
+    although the attributes say the opposite; v3.1 files are correct. The 3D
+    domain lies entirely north of the equator and west of Greenwich, so a row
+    reading as latitude < 0 < longitude must be swapped. A row that reads as
+    neither orientation cannot be placed without guessing; its coordinates are
+    returned as NaN and the row is reported as undetermined. The rule applies
+    only to 3d_atlantic: for 2D-Global such a row can be a real station (e.g.
+    Australia).
+
+    Returns:
+        (lats, lons, info). ``info`` holds ``checked``, ``rule``,
+        ``n_stations``, the indices ``corrected`` and ``undetermined``, and
+        ``raw`` (the stored (y, x) pairs, i.e. (labelled lat, labelled lon)).
+    """
+    raw = [(float(a), float(b)) for a, b in zip(lats, lons)]
+    info: dict[str, Any] = {
+        "checked": model == "3d_atlantic",
+        "rule": COORDINATE_RULE_3D
+        if model == "3d_atlantic"
+        else COORDINATE_RULE_NOT_APPLIED,
+        "n_stations": len(raw),
+        "corrected": [],
+        "undetermined": [],
+        "raw": raw,
+    }
+    if model != "3d_atlantic":
+        return lats, lons, info
+    fixed_lats, fixed_lons = [], []
+    for i, (lat, lon) in enumerate(raw):
+        if lat > 0 > lon:
+            pass  # as labelled: north of the equator, west of Greenwich
+        elif lat < 0 < lon:
+            lat, lon = lon, lat
+            info["corrected"].append(i)
+        else:
+            lat, lon = math.nan, math.nan
+            info["undetermined"].append(i)
+        fixed_lats.append(lat)
+        fixed_lons.append(lon)
+    return fixed_lats, fixed_lons, info
+
+
+def unswap_station_coords(
+    model: str | None,
+    lats: list[float],
+    lons: list[float],
+) -> tuple[list[float], list[float]]:
+    """The repaired coordinates of check_station_coords, without the report."""
+    fixed_lats, fixed_lons, _ = check_station_coords(model, lats, lons)
+    return fixed_lats, fixed_lons
+
+
+def _named(indices: list[int], names: list[str] | None) -> list[str]:
+    names = names or []
+    return [
+        names[i].strip() if i < len(names) else str(i)
+        for i in indices[:_MAX_NAMED_STATIONS]
+    ]
+
+
+def coordinate_provenance(
+    info: dict[str, Any] | None,
+    station_idx: int | None = None,
+    station_names: list[str] | None = None,
+) -> dict[str, Any]:
+    """JSON-ready report of the coordinate check (the station, point and max
+    tools emit it, beside datum_provenance)."""
+    info = info or {
+        "checked": False,
+        "rule": COORDINATE_RULE_NOT_APPLIED,
+        "n_stations": 0,
+        "corrected": [],
+        "undetermined": [],
+        "raw": [],
+    }
+    out: dict[str, Any] = {
+        "checked": info["checked"],
+        "rule": info["rule"],
+        "stations_in_file": info["n_stations"],
+        "stations_corrected": len(info["corrected"]),
+        "stations_undetermined": len(info["undetermined"]),
+        "undetermined_stations": _named(info["undetermined"], station_names),
+    }
+    if station_idx is not None and station_idx < len(info["raw"]):
+        stored_y, stored_x = info["raw"][station_idx]
+        out["station"] = {
+            "corrected": station_idx in info["corrected"],
+            "undetermined": station_idx in info["undetermined"],
+            "stored_x": stored_x,
+            "stored_y": stored_y,
+        }
+    return out
+
+
+def coordinate_warning(
+    info: dict[str, Any] | None,
+    station_idx: int | None = None,
+    station_names: list[str] | None = None,
+) -> str | None:
+    """One-sentence statement of any coordinate correction, or None."""
+    if not info or not info["checked"]:
+        return None
+    n_fix, n_und = len(info["corrected"]), len(info["undetermined"])
+    if not n_fix and not n_und:
+        return None
+    parts = []
+    if n_fix:
+        parts.append(
+            f"{n_fix} of {info['n_stations']} station records in this file store "
+            "latitude in x and longitude in y, the reverse of their attributes; "
+            "their coordinates were swapped (rule: a record reading as latitude "
+            "< 0 < longitude cannot lie in the STOFS-3D-Atlantic domain)."
+        )
+    if n_und:
+        names = ", ".join(_named(info["undetermined"], station_names))
+        more = " …" if n_und > _MAX_NAMED_STATIONS else ""
+        parts.append(
+            f"{n_und} station record(s) read as neither orientation, so their "
+            f"position is undetermined and they are not used for location: "
+            f"{names}{more}."
+        )
+    if station_idx is not None and station_idx < len(info["raw"]):
+        stored_y, stored_x = info["raw"][station_idx]
+        if station_idx in info["corrected"]:
+            parts.append(
+                f"This station's coordinates were corrected (stored x={stored_x}, "
+                f"y={stored_y})."
+            )
+        elif station_idx in info["undetermined"]:
+            parts.append(
+                f"This station's position is undetermined (stored x={stored_x}, "
+                f"y={stored_y})."
+            )
+    return " ".join(parts)
+
+
+def coordinate_markdown_lines(
+    info: dict[str, Any] | None,
+    station_idx: int | None = None,
+    station_names: list[str] | None = None,
+) -> list[str]:
+    """Markdown metadata line for a coordinate correction (empty if none)."""
+    warning = coordinate_warning(info, station_idx, station_names)
+    return [f"⚠️ Coordinate warning: {warning}"] if warning else []
+
+
+def station_match_warning(
+    data: dict[str, Any], window_times: list[str] | None = None
+) -> str | None:
+    """One sentence when the requested identifier matches more than one record, else None.
+
+    The first matching record is the one used. For every other record the sentence gives
+    the largest absolute difference from it over the times where both have valid values,
+    within ``window_times`` (the comparison window) when given, else over the series.
+    """
+    records = data.get("matching_records") or []
+    if len(records) < 2:
+        return None
+    keep = set(window_times) if window_times is not None else None
+    used = {
+        t: v
+        for t, v in zip(data.get("times", []), data.get("values", []))
+        if keep is None or t in keep
+    }
+    scope = (
+        "in the comparison window" if window_times is not None else "over the series"
+    )
+    parts = []
+    for rec in data.get("duplicate_records", []):
+        diffs = [
+            abs(used[t] - v) for t, v in zip(rec["times"], rec["values"]) if t in used
+        ]
+        parts.append(
+            f"'{rec['name']}' (record {rec['index']}): "
+            + (
+                f"largest absolute difference {max(diffs):.3f} m {scope} "
+                f"({len(diffs)} common valid times)"
+                if diffs
+                else f"no common valid time {scope}"
+            )
+        )
+    first = records[0]
+    return (
+        f"Station identifier '{data.get('station_id')}' matches {len(records)} records "
+        f"in this file; the first, '{first['name']}' (record {first['index']}), is used. "
+        "Other matching records: " + "; ".join(parts) + "."
+    )
+
+
+def station_match_markdown_lines(
+    data: dict[str, Any], window_times: list[str] | None = None
+) -> list[str]:
+    """Markdown metadata line for a duplicated identifier (empty if none)."""
+    warning = station_match_warning(data, window_times)
+    return [f"⚠️ Station warning: {warning}"] if warning else []
+
+
+def zeta_units(zeta_var: Any) -> str:
+    """Units of the water-level variable, from its ``units`` attribute.
+
+    STOFS station files declare ``m``; if the attribute is missing, the value
+    the comparison tool assumes ("m") is returned.
+    """
+    units = getattr(zeta_var, "units", None)
+    return str(units).strip() if units not in (None, "") else "m"
+
+
+EXCLUSION_REASONS = ("masked_or_fill", "nonfinite", "sentinel", "implausible")
+
+
+def value_exclusion_reason(value: Any) -> str | None:
+    """Why a single water-level value is unusable, or None if it is usable.
+
+    'nonfinite' (NaN/±Inf or not a number), 'sentinel' (|v| >=
+    NO_DATA_MAGNITUDE_M: a no-data code, possibly shifted by a constant) or
+    'implausible' (|v| >= PLAUSIBLE_WATER_LEVEL_M, 50 m). See models.py for
+    the rationale of both bounds.
+    """
+    from .models import NO_DATA_MAGNITUDE_M, PLAUSIBLE_WATER_LEVEL_M
+
+    if not is_finite_number(value):
+        return "nonfinite"
+    magnitude = abs(float(value))
+    if magnitude >= NO_DATA_MAGNITUDE_M:
+        return "sentinel"
+    if magnitude >= PLAUSIBLE_WATER_LEVEL_M:
+        return "implausible"
+    return None
+
+
+def exclusion_masks(var, raw) -> tuple[Any, dict[str, Any]]:
+    """Float data and one boolean mask per exclusion reason (see valid_values)."""
+    import numpy as np
+
+    from .models import NO_DATA_MAGNITUDE_M, PLAUSIBLE_WATER_LEVEL_M
+
+    mask = np.ma.getmaskarray(raw)
+    data = np.asarray(np.ma.getdata(raw), dtype=float)
+    nonfinite = ~np.isfinite(data) & ~mask
+    with np.errstate(invalid="ignore"):
+        fill = mask.copy()
+        for attr in ("_FillValue", "missing_value"):
+            value = getattr(var, attr, None)
+            if value is not None:
+                fill |= np.isin(data, np.atleast_1d(np.asarray(value, dtype=float)))
+        fill &= ~nonfinite
+        magnitude = np.where(fill | nonfinite, 0.0, np.abs(data))
+        sentinel = magnitude >= NO_DATA_MAGNITUDE_M
+        implausible = ~sentinel & (magnitude >= PLAUSIBLE_WATER_LEVEL_M)
+    return data, {
+        "masked_or_fill": fill,
+        "nonfinite": nonfinite,
+        "sentinel": sentinel,
+        "implausible": implausible,
+    }
+
+
+def valid_values(var, raw) -> tuple[Any, Any, dict[str, int]]:
+    """Separate usable water-level values from unusable ones, by reason.
+
+    In order of precedence:
+    - 'masked_or_fill': the netCDF4 mask, or a value equal to the variable's
+      _FillValue or missing_value (even when unmasked);
+    - 'nonfinite': NaN or ±Inf;
+    - 'sentinel': |v| >= NO_DATA_MAGNITUDE_M, a no-data code that may have been
+      shifted by a constant so that it no longer equals _FillValue (STOFS-3D
+      v3.1: 1e7 + c; STOFS-2D v3.1: -99999 + 0.4);
+    - 'implausible': PLAUSIBLE_WATER_LEVEL_M <= |v| < NO_DATA_MAGNITUDE_M.
+
+    Nothing is replaced by zero; every tool uses this rule.
+
+    Returns:
+        (data, invalid, excluded): float array, boolean array of rejected
+        entries, and counts per reason in EXCLUSION_REASONS.
+    """
+    data, masks = exclusion_masks(var, raw)
+    invalid = masks["masked_or_fill"].copy()
+    for name in ("nonfinite", "sentinel", "implausible"):
+        invalid |= masks[name]
+    return data, invalid, {k: int(m.sum()) for k, m in masks.items()}
+
+
+def describe_exclusions(excluded: dict[str, int] | None) -> str:
+    """'1200 sentinel, 3 masked_or_fill' style summary ('' if nothing excluded)."""
+    parts = [f"{n} {k}" for k, n in (excluded or {}).items() if n]
+    return ", ".join(parts)
+
+
 def parse_station_netcdf(
     filepath: Path | str,
     station_id: str | None = None,
+    model: str | None = None,
 ) -> dict[str, Any]:
     """Open a STOFS station NetCDF file and extract water level time series.
 
@@ -64,15 +793,25 @@ def parse_station_netcdf(
         filepath: Path to the downloaded NetCDF file.
         station_id: CO-OPS station ID to extract. If None, returns metadata
                     about all stations without time series data.
+        model: '2d_global' or '3d_atlantic', if known. Enables the 3D
+               coordinate repair (see unswap_station_coords).
 
     Returns:
         Dict with keys:
             - 'station_names': list of all station ID strings
             - 'lats': list of latitudes
-            - 'lons': list of longitudes
+            - 'lons': list of longitudes (both after the STOFS-3D coordinate
+              check; an undetermined record's are NaN)
+            - 'coordinate_check': the check_station_coords report, or None
+            - 'units': units of the water-level variable (zeta_units)
             - 'n_stations': total station count
             - 'n_times': total time steps
-            - 'datum': datum attribute if available
+            - 'datum': datum named by the zeta metadata ('NAVD88', 'LMSL',
+              ...) or '' unless recognized
+            - 'datum_status': absent / generic / recognized / unsupported /
+              conflicting (see read_datum_metadata)
+            - 'datum_label', 'datum_reference', 'datum_attributes' (all raw
+              datum-bearing attributes), 'product' (global-attribute signature)
             If station_id provided, also:
             - 'station_id': the matched station ID
             - 'station_idx': index in the array
@@ -123,30 +862,43 @@ def parse_station_netcdf(
                 float(v) for v in np.array(nc.variables[lon_var_name][:]).ravel()
             )
 
+        coordinate_check = None
+        if lats and lons:
+            lats, lons, coordinate_check = check_station_coords(model, lats, lons)
+
         n_stations = len(station_names) or (len(lats) if lats else 0)
         n_times = len(nc.variables[time_var_name])
 
-        # --- Datum attribute ---
-        datum = getattr(nc, "datum", getattr(nc, "vertical_datum", ""))
+        # --- Datum, from the water-level variable's own metadata ---
+        dm = read_datum_metadata(nc, zeta_var_name)
 
         result: dict[str, Any] = {
             "station_names": station_names,
             "lats": lats,
             "lons": lons,
+            "coordinate_check": coordinate_check,
+            "units": zeta_units(nc.variables[zeta_var_name]),
             "n_stations": n_stations,
             "n_times": n_times,
-            "datum": datum,
+            "datum": dm["datum"],
+            "datum_status": dm["status"],
+            "datum_label": dm["label"],
+            "datum_reference": dm["reference"],
+            "datum_attributes": dm["attributes"],
+            "product": dm["product"],
         }
 
         if station_id is None:
             return result
 
-        # --- Find station index ---
-        station_idx = None
-        for i, name in enumerate(station_names):
-            if station_id in name or name.strip() == station_id:
-                station_idx = i
-                break
+        # --- Find station index (the first matching record is used; every match is
+        # recorded so that a duplicated identifier can be reported) ---
+        matching = [
+            i
+            for i, name in enumerate(station_names)
+            if station_id in name or name.strip() == station_id
+        ]
+        station_idx = matching[0] if matching else None
 
         if station_idx is None:
             raise ValueError(
@@ -166,27 +918,36 @@ def parse_station_netcdf(
         datetimes = netCDF4.num2date(raw_times, units=units, calendar=calendar)
         time_strings = [dt.strftime("%Y-%m-%d %H:%M") for dt in datetimes]
 
-        # --- Water level time series ---
+        # --- Water level time series (zeta shape: (time, station)) ---
         zeta = nc.variables[zeta_var_name]
-        fill_value = getattr(zeta, "_FillValue", None)
+        data, invalid, excluded = valid_values(zeta, zeta[:, station_idx])
 
-        # zeta shape: (time, station)
-        values_raw = np.array(zeta[:, station_idx])
-
-        # Mask fill values
-        if fill_value is not None:
-            mask = np.abs(values_raw) > 1e10
-            mask |= values_raw == fill_value
-        else:
-            mask = np.abs(values_raw) > 1e10
-
-        # Build filtered lists
         times_out = []
         values_out = []
-        for t_str, v, m in zip(time_strings, values_raw.tolist(), mask.tolist()):
-            if not m:
+        for t_str, v, bad in zip(time_strings, data.tolist(), invalid.tolist()):
+            if not bad:
                 times_out.append(t_str)
                 values_out.append(round(float(v), 4))
+
+        # Other records carrying the same identifier: their valid values, so the
+        # tools can say how much the records differ (station_match_warning).
+        duplicate_records = []
+        for j in matching[1:]:
+            d_data, d_invalid, _ = valid_values(zeta, zeta[:, j])
+            duplicate_records.append(
+                {
+                    "index": j,
+                    "name": station_names[j],
+                    "times": [
+                        t for t, bad in zip(time_strings, d_invalid.tolist()) if not bad
+                    ],
+                    "values": [
+                        round(float(v), 4)
+                        for v, bad in zip(d_data.tolist(), d_invalid.tolist())
+                        if not bad
+                    ],
+                }
+            )
 
         station_lat = lats[station_idx] if station_idx < len(lats) else None
         station_lon = lons[station_idx] if station_idx < len(lons) else None
@@ -201,6 +962,12 @@ def parse_station_netcdf(
                 "lon": station_lon,
                 "model_start": time_strings[0] if time_strings else "",
                 "model_end": time_strings[-1] if time_strings else "",
+                "n_records": len(time_strings),
+                "excluded_model_records": excluded,
+                "matching_records": [
+                    {"index": i, "name": station_names[i]} for i in matching
+                ],
+                "duplicate_records": duplicate_records,
             }
         )
         return result
@@ -264,49 +1031,69 @@ def compute_validation_stats(
     forecast: list[float],
     observed: list[float],
 ) -> dict[str, float]:
-    """Compute bias, RMSE, MAE, peak error, and correlation for aligned arrays.
+    """Compute bias, RMSE, MAE, max absolute error and correlation.
+
+    Pairs where either value is missing or non-finite are excluded and
+    counted in ``n_excluded_nonfinite``; nothing is replaced by zero.
+
+    ``max_abs_error`` is max_t |forecast(t) - observed(t)|, the largest
+    pointwise discrepancy. It is not the error in the peak water level; that
+    is ``compute_peak_stats``'s ``peak_error_m``. ``peak_error`` is kept as a
+    legacy alias of ``max_abs_error`` for existing callers.
 
     Args:
         forecast: List of STOFS forecast values (m).
         observed: List of CO-OPS observed values (m), same length as forecast.
 
     Returns:
-        Dict with keys: bias, rmse, mae, peak_error, correlation, n.
+        Dict with keys: bias, rmse, mae, max_abs_error, peak_error (alias),
+        correlation, n, n_excluded_nonfinite.
     """
     import numpy as np
 
-    f = np.array(forecast, dtype=float)
-    o = np.array(observed, dtype=float)
-
-    if len(f) == 0 or len(f) != len(o):
-        return {
-            "bias": None,
-            "rmse": None,
-            "mae": None,
-            "peak_error": None,
-            "correlation": None,
-            "n": 0,
-        }
+    empty = {
+        "bias": None,
+        "rmse": None,
+        "mae": None,
+        "max_abs_error": None,
+        "peak_error": None,
+        "correlation": None,
+        "n": 0,
+        "n_excluded_nonfinite": 0,
+    }
+    if len(forecast) != len(observed):
+        return empty
+    f = np.array([v if is_finite_number(v) else np.nan for v in forecast], dtype=float)
+    o = np.array([v if is_finite_number(v) else np.nan for v in observed], dtype=float)
+    keep = np.isfinite(f) & np.isfinite(o)
+    n_excluded = int((~keep).sum())
+    f, o = f[keep], o[keep]
+    if len(f) == 0:
+        return empty | {"n_excluded_nonfinite": n_excluded}
 
     diff = f - o
     bias = float(np.mean(diff))
     rmse = float(np.sqrt(np.mean(diff**2)))
     mae = float(np.mean(np.abs(diff)))
-    peak_error = float(np.max(np.abs(diff)))
+    max_abs_error = float(np.max(np.abs(diff)))
 
-    # Correlation
-    if np.std(f) > 0 and np.std(o) > 0:
-        correlation = float(np.corrcoef(f, o)[0, 1])
-    else:
-        correlation = float("nan")
+    # Correlation: undefined for a constant series (np.std of identical floats
+    # can be ~1e-17, so test the range). None rather than NaN, which is not
+    # valid JSON.
+    correlation = None
+    if np.ptp(f) > 0 and np.ptp(o) > 0:
+        r = float(np.corrcoef(f, o)[0, 1])
+        correlation = r if math.isfinite(r) else None
 
     return {
         "bias": round(bias, 4),
         "rmse": round(rmse, 4),
         "mae": round(mae, 4),
-        "peak_error": round(peak_error, 4),
-        "correlation": round(correlation, 4),
+        "max_abs_error": round(max_abs_error, 4),
+        "peak_error": round(max_abs_error, 4),
+        "correlation": None if correlation is None else round(correlation, 4),
         "n": int(len(f)),
+        "n_excluded_nonfinite": n_excluded,
     }
 
 
@@ -332,6 +1119,15 @@ def compute_peak_stats(
         (forecast peak minus observed peak) and peak_timing_error_hours
         (positive means the forecast peak came later).
     """
+    if times and len(times) == len(forecast) == len(observed):
+        keep = [
+            i
+            for i in range(len(times))
+            if is_finite_number(forecast[i]) and is_finite_number(observed[i])
+        ]
+        times = [times[i] for i in keep]
+        forecast = [float(forecast[i]) for i in keep]
+        observed = [float(observed[i]) for i in keep]
     if not times or not (len(times) == len(forecast) == len(observed)):
         return {
             "observed_peak_m": None,
@@ -364,6 +1160,110 @@ def compute_peak_stats(
 # ---------------------------------------------------------------------------
 
 
+_TIME_FORMATS = ("%Y-%m-%d %H:%M", "%Y/%m/%d %H:%M", "%m/%d/%Y %H:%M")
+
+
+def utc_seconds(s: str) -> int | None:
+    """Seconds since 1970 for a 'YYYY-MM-DD HH:MM' UTC string, None if malformed.
+
+    Uses calendar.timegm, so the result does not depend on the host's local
+    timezone or DST (naive datetime.timestamp() does).
+    """
+    import calendar
+
+    for fmt in _TIME_FORMATS:
+        try:
+            return calendar.timegm(datetime.strptime(s, fmt).timetuple())
+        except (ValueError, TypeError):
+            continue
+    return None
+
+
+def match_timeseries(
+    forecast_times: list[str],
+    observed_times: list[str],
+    tolerance_minutes: int = 3,
+) -> dict[str, Any]:
+    """Pair forecast and observation timestamps one-to-one, deterministically.
+
+    1. Exact timestamp matches are paired first.
+    2. Each remaining forecast time, in time order, takes the nearest unused
+       observation within ``tolerance_minutes``; on a tie the earlier
+       observation wins. No observation is used twice.
+
+    Times are UTC strings. Malformed times are skipped and counted; for a
+    repeated timestamp (forecast or observation) only the first record is used
+    and the repeats are counted.
+
+    Returns:
+        Dict with 'pairs' (sorted (forecast_index, observed_index)), 'exact',
+        'nearest', 'bad_forecast_times', 'bad_observed_times',
+        'duplicate_observed_times', 'duplicate_forecast_times' and
+        'tolerance_minutes'.
+    """
+    import bisect
+
+    tol = tolerance_minutes * 60
+    obs_by_sec: dict[int, int] = {}
+    bad_obs = dup_obs = 0
+    for i, t in enumerate(observed_times):
+        sec = utc_seconds(t)
+        if sec is None:
+            bad_obs += 1
+        elif sec in obs_by_sec:
+            dup_obs += 1
+        else:
+            obs_by_sec[sec] = i
+    obs_secs = sorted(obs_by_sec)
+
+    fc: list[tuple[int, int]] = []
+    seen_fc: set[int] = set()
+    bad_fc = dup_fc = 0
+    for i, t in enumerate(forecast_times):
+        sec = utc_seconds(t)
+        if sec is None:
+            bad_fc += 1
+        elif sec in seen_fc:
+            dup_fc += 1  # only the first record of a repeated time is paired
+        else:
+            seen_fc.add(sec)
+            fc.append((sec, i))
+    fc.sort()
+
+    used: set[int] = set()
+    pairs: dict[int, int] = {}
+    for sec, fi in fc:  # pass 1: exact
+        if sec in obs_by_sec and sec not in used:
+            used.add(sec)
+            pairs[fi] = obs_by_sec[sec]
+    n_exact = len(pairs)
+    for sec, fi in fc:  # pass 2: nearest unused within tolerance
+        if fi in pairs:
+            continue
+        best = None
+        k = bisect.bisect_left(obs_secs, sec - tol)
+        while k < len(obs_secs) and obs_secs[k] <= sec + tol:
+            cand = obs_secs[k]
+            if cand not in used:
+                d = abs(cand - sec)
+                if best is None or d < abs(best - sec):  # ties keep the earlier
+                    best = cand
+            k += 1
+        if best is not None:
+            used.add(best)
+            pairs[fi] = obs_by_sec[best]
+    return {
+        "pairs": sorted(pairs.items()),
+        "exact": n_exact,
+        "nearest": len(pairs) - n_exact,
+        "bad_forecast_times": bad_fc,
+        "bad_observed_times": bad_obs,
+        "duplicate_observed_times": dup_obs,
+        "duplicate_forecast_times": dup_fc,
+        "tolerance_minutes": tolerance_minutes,
+    }
+
+
 def align_timeseries(
     forecast_times: list[str],
     forecast_values: list[float],
@@ -371,60 +1271,15 @@ def align_timeseries(
     observed_values: list[float],
     tolerance_minutes: int = 3,
 ) -> tuple[list[str], list[float], list[float]]:
-    """Align two time series to common timestamps.
-
-    Matches forecast times to the nearest observed timestamp within
-    tolerance_minutes. Returns only matched pairs.
-
-    Args:
-        forecast_times: List of 'YYYY-MM-DD HH:MM' strings.
-        forecast_values: Corresponding forecast values.
-        observed_times: List of 'YYYY-MM-DD HH:MM' strings.
-        observed_values: Corresponding observed values.
-        tolerance_minutes: Max time difference for a match (default 3).
+    """Align two time series with match_timeseries (one-to-one, exact first).
 
     Returns:
-        (common_times, aligned_forecast, aligned_observed) lists.
+        (common_times, aligned_forecast, aligned_observed), in forecast order.
     """
-
-    def parse_dt(s: str) -> datetime:
-        for fmt in ("%Y-%m-%d %H:%M", "%Y/%m/%d %H:%M", "%m/%d/%Y %H:%M"):
-            try:
-                return datetime.strptime(s, fmt)
-            except ValueError:
-                continue
-        raise ValueError(f"Cannot parse datetime: {s!r}")
-
-    tol = tolerance_minutes * 60  # seconds
-
-    obs_dts = [parse_dt(t) for t in observed_times]
-    obs_timestamps = [dt.timestamp() for dt in obs_dts]
-
-    common_times = []
-    aligned_forecast = []
-    aligned_observed = []
-
-    for f_t_str, f_v in zip(forecast_times, forecast_values):
-        try:
-            f_dt = parse_dt(f_t_str)
-        except ValueError:
-            continue
-        f_ts = f_dt.timestamp()
-
-        # Find nearest observed
-        best_i = None
-        best_diff = float("inf")
-        for i, o_ts in enumerate(obs_timestamps):
-            diff = abs(f_ts - o_ts)
-            if diff < best_diff:
-                best_diff = diff
-                best_i = i
-
-        if best_i is not None and best_diff <= tol:
-            common_times.append(f_t_str)
-            aligned_forecast.append(f_v)
-            aligned_observed.append(observed_values[best_i])
-
+    m = match_timeseries(forecast_times, observed_times, tolerance_minutes)
+    common_times = [forecast_times[fi] for fi, _ in m["pairs"]]
+    aligned_forecast = [forecast_values[fi] for fi, _ in m["pairs"]]
+    aligned_observed = [observed_values[oi] for _, oi in m["pairs"]]
     return common_times, aligned_forecast, aligned_observed
 
 
@@ -616,6 +1471,10 @@ async def resolve_cycle(
 
     Returns:
         (YYYYMMDD, HH) or None if a provided ``cycle_date`` is unparseable.
+
+    Raises:
+        ValueError: if ``cycle_hour`` is not one of the model's cycle hours
+            (checked before any network access).
     """
     from .models import MODEL_CYCLES
 
@@ -634,7 +1493,13 @@ async def resolve_cycle(
             date_str = datetime.now(timezone.utc).strftime("%Y%m%d")
 
         if cycle_hour:
-            hour_str = cycle_hour.zfill(2)
+            hour_str = str(cycle_hour).strip().zfill(2)
+            valid = MODEL_CYCLES.get(model) or []
+            if valid and hour_str not in valid:
+                raise ValueError(
+                    f"Cycle hour '{cycle_hour}' is not a cycle of {model}; "
+                    f"valid hours: {', '.join(sorted(valid))}."
+                )
         else:
             # Default to the model's first listed cycle hour.
             hour_str = (MODEL_CYCLES.get(model) or ["12"])[0]

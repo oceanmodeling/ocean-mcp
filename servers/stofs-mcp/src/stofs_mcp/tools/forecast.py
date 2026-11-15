@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from typing import Literal
-import json
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -12,7 +11,8 @@ from mcp.types import ToolAnnotations
 
 from ..client import STOFSClient
 from ..models import (
-    MODEL_DATUMS,
+    PLAUSIBLE_WATER_LEVEL_M,
+    GRIDDED_DATUMS,
     Region,
     STOFSModel,
     STOFSProduct,
@@ -29,6 +29,20 @@ from ..utils import (
     handle_stofs_error,
     parse_station_netcdf,
     resolve_cycle,
+    datum_markdown_lines,
+    datum_provenance,
+    describe_exclusions,
+    dumps_strict,
+    exclusion_masks,
+    resolve_station_datum,
+    read_datum_metadata,
+    check_station_coords,
+    coordinate_markdown_lines,
+    station_match_markdown_lines,
+    station_match_warning,
+    coordinate_provenance,
+    coordinate_warning,
+    zeta_units,
 )
 
 
@@ -63,7 +77,7 @@ def _cap_series_json(result: dict, max_points: int = 2000) -> str:
             f"Showing the first {len(times)} of {total} forecast points "
             "(truncated to limit response size)."
         )
-    return json.dumps(result, indent=2)
+    return dumps_strict(result)
 
 
 @mcp.tool(
@@ -123,18 +137,24 @@ async def stofs_get_station_forecast(
         tmp_path = await client.download_netcdf(url)
 
         # Parse
-        data = parse_station_netcdf(tmp_path, station_id)
+        data = parse_station_netcdf(tmp_path, station_id, model=model.value)
 
         times = data["times"]
         values = data["values"]
 
         if not times:
+            why = describe_exclusions(data.get("excluded_model_records"))
             return (
-                f"No valid data found for station {station_id} in this STOFS cycle. "
-                "The station may be in a dry area or the data may have fill values."
+                f"No valid data for station {station_id} in this STOFS cycle: all "
+                f"{data.get('n_records', 0)} records were excluded"
+                + (f" ({why})" if why else "")
+                + ". 'sentinel' values are no-data codes (possibly shifted by a "
+                "datum constant); 'implausible' values exceed "
+                f"{PLAUSIBLE_WATER_LEVEL_M:g} m."
             )
 
-        datum = MODEL_DATUMS.get(model.value, "unknown")
+        datum_info = resolve_station_datum(model.value, date_str, hour_str, data)
+        datum = datum_info["datum"]
         model_label = get_model_label(model.value, date_str)
         product_label = {
             "cwl": "Combined Water Level (tide + surge)",
@@ -151,6 +171,22 @@ async def stofs_get_station_forecast(
                     "cycle_date": date_str,
                     "cycle_hour": hour_str,
                     "datum": datum,
+                    "datum_source": datum_info["datum_source"],
+                    "datum_warning": datum_info["datum_warning"] or None,
+                    "datum_provenance": datum_provenance(datum_info),
+                    "units": data.get("units") or "m",
+                    "station_warning": station_match_warning(data),
+                    "coordinate_warning": coordinate_warning(
+                        data.get("coordinate_check"),
+                        data.get("station_idx"),
+                        data.get("station_names"),
+                    ),
+                    "coordinate_provenance": coordinate_provenance(
+                        data.get("coordinate_check"),
+                        data.get("station_idx"),
+                        data.get("station_names"),
+                    ),
+                    "excluded_model_records": data.get("excluded_model_records"),
                     "lat": data.get("lat"),
                     "lon": data.get("lon"),
                     "model_start": data.get("model_start"),
@@ -168,7 +204,13 @@ async def stofs_get_station_forecast(
                 f"Model: {model_label}",
                 f"Product: {product_label}",
                 f"Cycle: {date_str[:4]}-{date_str[4:6]}-{date_str[6:]} {hour_str}z",
-                f"Datum: {datum}",
+                *datum_markdown_lines(datum_info),
+                *coordinate_markdown_lines(
+                    data.get("coordinate_check"),
+                    data.get("station_idx"),
+                    data.get("station_names"),
+                ),
+                *station_match_markdown_lines(data),
                 f"Lat/Lon: {data.get('lat', '?')}, {data.get('lon', '?')}",
             ],
         )
@@ -231,7 +273,7 @@ async def stofs_get_point_forecast(
         tmp_path = await client.download_netcdf(url)
 
         # Get all station metadata first
-        meta = parse_station_netcdf(tmp_path)
+        meta = parse_station_netcdf(tmp_path, model=model.value)
         station_names = meta["station_names"]
         lats = meta["lats"]
         lons = meta["lons"]
@@ -256,11 +298,21 @@ async def stofs_get_point_forecast(
         nearest_idx, nearest_name, distance_km = result
 
         # Extract data for nearest station
-        data = parse_station_netcdf(tmp_path, nearest_name.strip())
+        data = parse_station_netcdf(tmp_path, nearest_name.strip(), model=model.value)
         times = data["times"]
         values = data["values"]
+        if not times:
+            why = describe_exclusions(data.get("excluded_model_records"))
+            return (
+                f"The nearest STOFS station, {nearest_name.strip()} "
+                f"({distance_km:.1f} km away), has no valid data in this cycle: all "
+                f"{data.get('n_records', 0)} records were excluded"
+                + (f" ({why})" if why else "")
+                + ". Try another nearby station with stofs_list_stations."
+            )
 
-        datum = MODEL_DATUMS.get(model.value, "unknown")
+        datum_info = resolve_station_datum(model.value, date_str, hour_str, data)
+        datum = datum_info["datum"]
         model_label = get_model_label(model.value, date_str)
 
         if response_format == "json":
@@ -274,6 +326,17 @@ async def stofs_get_point_forecast(
                     "cycle_date": date_str,
                     "cycle_hour": hour_str,
                     "datum": datum,
+                    "datum_source": datum_info["datum_source"],
+                    "datum_warning": datum_info["datum_warning"] or None,
+                    "datum_provenance": datum_provenance(datum_info),
+                    "units": data.get("units") or "m",
+                    "coordinate_warning": coordinate_warning(
+                        meta.get("coordinate_check"), nearest_idx, station_names
+                    ),
+                    "coordinate_provenance": coordinate_provenance(
+                        meta.get("coordinate_check"), nearest_idx, station_names
+                    ),
+                    "excluded_model_records": data.get("excluded_model_records"),
                     "times": times,
                     "values": values,
                 }
@@ -287,7 +350,10 @@ async def stofs_get_point_forecast(
                 f"Nearest STOFS station: {nearest_name.strip()}",
                 f"Distance to nearest station: {distance_km:.1f} km",
                 f"Cycle: {date_str[:4]}-{date_str[4:6]}-{date_str[6:]} {hour_str}z",
-                f"Datum: {datum}",
+                *datum_markdown_lines(datum_info),
+                *coordinate_markdown_lines(
+                    meta.get("coordinate_check"), nearest_idx, station_names
+                ),
             ],
         )
 
@@ -361,9 +427,14 @@ async def stofs_get_max_water_level(
             if not zeta_var_name:
                 return "Could not find water level variable in STOFS NetCDF file."
 
-            zeta = np.array(nc.variables[zeta_var_name][:])
-            getattr(nc.variables[zeta_var_name], "_FillValue", 1e37)
-            zeta = np.where(np.abs(zeta) > 1e10, np.nan, zeta)
+            datum_meta = read_datum_metadata(nc, zeta_var_name)
+            zeta_var = nc.variables[zeta_var_name]
+            units = zeta_units(zeta_var)
+            raw_zeta, masks = exclusion_masks(zeta_var, zeta_var[:])
+            invalid = np.zeros(raw_zeta.shape, dtype=bool)
+            for m in masks.values():
+                invalid |= m
+            zeta = np.where(invalid, np.nan, raw_zeta)
 
             station_names = (
                 _decode_station_names(nc.variables[sname_var_name])
@@ -384,13 +455,36 @@ async def stofs_get_max_water_level(
         finally:
             nc.close()
 
+        lats, lons, coord_check = check_station_coords(model.value, lats, lons)
+
         n_stations = zeta.shape[1] if zeta.ndim == 2 else 0
         if n_stations == 0:
             return "Could not determine station count from STOFS file."
 
         # Compute per-station max
-        with np.errstate(all="ignore"):
-            max_vals = np.nanmax(zeta, axis=0)
+        # Stations with no valid value (dry, or all fill) stay NaN and are skipped.
+        has_data = ~np.all(np.isnan(zeta), axis=0)
+        max_vals = np.full(zeta.shape[1], np.nan)
+        max_vals[has_data] = np.nanmax(zeta[:, has_data], axis=0)
+
+        excluded_values = {k: int(m.sum()) for k, m in masks.items()}
+        # Stations left with no valid value because of no-data sentinels or
+        # implausible values are named, not silently dropped.
+        excluded_stations = []
+        for i in np.where(~has_data)[0]:
+            reasons = {k: int(m[:, i].sum()) for k, m in masks.items() if m[:, i].any()}
+            if not reasons.keys() & {"sentinel", "implausible"}:
+                continue  # dry or fill-only: no water level to report
+            finite = raw_zeta[:, i][np.isfinite(raw_zeta[:, i])]
+            excluded_stations.append(
+                {
+                    "station": station_names[i].strip()
+                    if i < len(station_names)
+                    else str(i),
+                    "reasons": reasons,
+                    "example_raw_value": float(finite[0]) if finite.size else None,
+                }
+            )
 
         rows = []
         for i in range(n_stations):
@@ -424,16 +518,41 @@ async def stofs_get_max_water_level(
         rows.sort(key=lambda r: r["max_wl"], reverse=True)
         rows = rows[:top_n]
 
-        datum = MODEL_DATUMS.get(model.value, "unknown")
+        datum_info = resolve_station_datum(
+            model.value,
+            date_str,
+            hour_str,
+            {
+                "datum": datum_meta["datum"],
+                "datum_status": datum_meta["status"],
+                "datum_label": datum_meta["label"],
+                "datum_reference": datum_meta["reference"],
+                "datum_attributes": datum_meta["attributes"],
+                "product": datum_meta["product"],
+            },
+        )
+        datum = datum_info["datum"]
         model_label = get_model_label(model.value, date_str)
 
         if response_format == "json":
-            return json.dumps(
+            return dumps_strict(
                 {
                     "model": model.value,
                     "cycle_date": date_str,
                     "cycle_hour": hour_str,
                     "datum": datum,
+                    "datum_source": datum_info["datum_source"],
+                    "datum_warning": datum_info["datum_warning"] or None,
+                    "datum_provenance": datum_provenance(datum_info),
+                    "units": units,
+                    "coordinate_warning": coordinate_warning(
+                        coord_check, None, station_names
+                    ),
+                    "coordinate_provenance": coordinate_provenance(
+                        coord_check, None, station_names
+                    ),
+                    "excluded_values": excluded_values,
+                    "excluded_stations": excluded_stations,
                     "top_stations": rows,
                 },
                 indent=2,
@@ -444,8 +563,13 @@ async def stofs_get_max_water_level(
             f"**Cycle**: {date_str[:4]}-{date_str[4:6]}-{date_str[6:]} {hour_str}z | "
             f"**Datum**: {datum} | "
             f"**Showing top {len(rows)} stations**",
+            f"*Datum source: {datum_info['datum_source']}*",
             "",
         ]
+        if datum_info["datum_warning"]:
+            lines.insert(2, f"⚠️ **Datum warning**: {datum_info['datum_warning']}")
+        for line in coordinate_markdown_lines(coord_check, None, station_names):
+            lines.insert(len(lines) - 1, line)
         if region:
             lines[1] += f" | **Region**: {region.value}"
 
@@ -460,7 +584,26 @@ async def stofs_get_max_water_level(
             )
 
         lines.append("")
-        lines.append(f"*Data from NOAA STOFS. Values relative to {datum}.*")
+        if excluded_stations:
+            lines.append(
+                "**Excluded stations** (no valid value; not ranked): "
+                + "; ".join(
+                    f"{e['station']} ({describe_exclusions(e['reasons'])})"
+                    for e in excluded_stations
+                )
+            )
+            lines.append("")
+        if any(excluded_values.values()):
+            lines.append(
+                f"*Excluded values: {describe_exclusions(excluded_values)}. "
+                "'sentinel' = no-data code (possibly shifted by a datum constant); "
+                f"'implausible' = |value| >= {PLAUSIBLE_WATER_LEVEL_M:g} m.*"
+            )
+        lines.append(
+            f"*Data from NOAA STOFS. Values relative to {datum}.*"
+            if datum_info["comparable"]
+            else "*Data from NOAA STOFS. Vertical datum undetermined; see the warning.*"
+        )
         return "\n".join(lines)
 
     except Exception as e:
@@ -575,7 +718,7 @@ async def stofs_get_gridded_forecast(
                 "Try a location closer to the coast."
             )
 
-        datum = MODEL_DATUMS.get(model.value, "unknown")
+        datum = GRIDDED_DATUMS.get(model.value, "unknown")
         model_label = (
             "STOFS-2D-Global" if model.value == "2d_global" else "STOFS-3D-Atlantic"
         )
@@ -586,7 +729,7 @@ async def stofs_get_gridded_forecast(
         )
 
         if response_format == "json":
-            return json.dumps(
+            return dumps_strict(
                 {
                     "query_lat": latitude,
                     "query_lon": longitude,
@@ -600,6 +743,7 @@ async def stofs_get_gridded_forecast(
                     "cycle_date": date_str,
                     "cycle_hour": hour_str,
                     "datum": datum,
+                    "datum_source": "NOAA documentation for the gridded product",
                     "source": "NOMADS OPeNDAP (regular grid)",
                     "n_points": data["n_times"],
                     "times": data["times"],
