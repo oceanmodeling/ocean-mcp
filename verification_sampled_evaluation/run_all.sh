@@ -58,6 +58,7 @@ A=(--models "$V/data/archive/models" --coops "$V/data/archive/coops" --meta "$V/
 "$R" -I "$V/reference/classify.py" "${A[@]}" --out "$V/reference/results/noanomaly_w49_7" --only-variant cwl.noanomaly
 
 say "4. A1 datum consistency (offline VDatum)"
+mkdir -p "$V/results/a1"
 "$ENVS/vdatum/bin/python" -I "$V/reference/a1_datum_consistency.py" --run "$V/results/a1/datum_consistency.json"
 
 say "5. block containment and the pre-session scan (acquisition record)"
