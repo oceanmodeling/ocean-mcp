@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import math
 import os
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
@@ -570,6 +570,14 @@ def align_timeseries(
 ) -> tuple[list[str], list[float], list[float]]:
     """Align two time series to common timestamps within tolerance.
 
+    Both series are UTC (OFS model times and CO-OPS observations requested
+    with time_zone=gmt). Parsed times are made timezone-aware UTC before any
+    arithmetic: ``.timestamp()`` on a naive datetime reads it as host-local
+    time, so on a host with daylight saving the gap between two times on
+    either side of the local changeover came out an hour wrong (e.g.
+    America/New_York, 2026-11-01 01:54 vs 02:00 UTC gave 66 minutes, not 6),
+    and pairs within tolerance were lost.
+
     Returns:
         (common_times, aligned_forecast, aligned_observed)
     """
@@ -577,7 +585,7 @@ def align_timeseries(
     def parse_dt(s: str) -> datetime:
         for fmt in ("%Y-%m-%d %H:%M", "%Y/%m/%d %H:%M", "%m/%d/%Y %H:%M"):
             try:
-                return datetime.strptime(s, fmt)
+                return datetime.strptime(s, fmt).replace(tzinfo=timezone.utc)
             except ValueError:
                 continue
         raise ValueError(f"Cannot parse datetime: {s!r}")
