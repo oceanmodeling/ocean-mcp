@@ -18,7 +18,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-REPO = HERE.parent
+REPO = HERE.parent.parent  # the package sits in verification/
 
 DATA_FILES = [
     "session_record.json",

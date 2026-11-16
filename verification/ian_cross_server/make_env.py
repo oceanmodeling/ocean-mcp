@@ -31,7 +31,7 @@ from pathlib import Path
 PACKAGES = {"nhc-mcp": "0.1.1", "coops-mcp": "0.1.1"}
 MODULES = {"nhc-mcp": "nhc_mcp", "coops-mcp": "coops_mcp"}
 USER_AGENT = "ocean-mcp-wp2-verification"
-REPO_ROOT = Path(__file__).resolve().parent.parent
+REPO_ROOT = Path(__file__).resolve().parents[2]  # the package sits in verification/
 
 
 def now() -> str:

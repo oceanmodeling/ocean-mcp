@@ -220,7 +220,7 @@ No figure was changed or added. The existing two-panel figure (`examples/ian_wat
 ## 13. Reproduce
 
 ```bash
-cd verification_ian_cross_server
+cd verification/ian_cross_server
 python3 make_env.py /path/to/new-env                  # PyPI wheels, hashes checked
 /path/to/new-env/bin/python inspect_tools.py          # tools/list for both servers
 /path/to/new-env/bin/python run_workflow.py           # live: overwrites session_record.json
@@ -234,6 +234,8 @@ python3 -I replay_offline.py                          # offline; exit 1 on any d
 ```
 
 To check the archive, run only the last command. A live rerun produces a new session record with new timestamps and `retrieved_at` values, so its `results.json` differs from the archived one in those fields.
+
+**Package location.** The package was first committed as `verification_ian_cross_server/` at the repository root and later moved to `verification/ian_cross_server/`. `analyze.py`, `make_env.py` and `build_manifest.py` now take the repository root two folders up instead of one; nothing else in them changed. `manifest.json` records their new SHA-256 values and is otherwise unchanged. The manifest before the move had SHA-256 `9541aea606758f39d01e7878cf409a28b9cb9d50a5bf01e55f33ecba58f0a92f`.
 
 ## 14. Files
 

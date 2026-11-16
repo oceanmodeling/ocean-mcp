@@ -12,7 +12,7 @@ import os
 from pathlib import Path
 
 PACKAGE = Path(__file__).resolve().parents[1]
-REPO = PACKAGE.parent
+REPO = PACKAGE.parents[1]  # the package sits in verification/
 DATA = Path(os.environ.get("STOFS_V31_DATA", PACKAGE / "data"))
 RAW = DATA / "raw"
 COOPS = DATA / "coops"

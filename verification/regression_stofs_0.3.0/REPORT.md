@@ -4,7 +4,8 @@ Branch `fix/stofs-post-wp5` (from `fix/stofs-post-wp1` `52c7f46`), worktree
 `.claude/worktrees/stofs-post-wp5`. Local only.
 
 - **Code:** commit `f5ab1fd`, only `servers/stofs-mcp/`.
-- **This report and its evidence:** under `verification_post_wp5/`.
+- **This report and its evidence:** under `verification/regression_stofs_0.3.0/` (first committed as
+  `verification_post_wp5/`).
 - **Network:** no network request was made for WP7. Everything ran from archives and caches
   already on disk.
 - **Load:** CPU-heavy work ran one job at a time, at `nice 19` and `ionice` idle priority.

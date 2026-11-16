@@ -6,7 +6,7 @@ source to the target datum, i.e. reports where the target surface's zero lies.
 Writes results/vdatum_boston.json.
 
 Usage (from the repository root):
-  uv run --project servers/vdatum-mcp python verification_stofs_v31_boston/scripts/05a_vdatum_offsets.py
+  uv run --project servers/vdatum-mcp python verification/stofs_v31_boston/scripts/05a_vdatum_offsets.py
 """
 
 from __future__ import annotations

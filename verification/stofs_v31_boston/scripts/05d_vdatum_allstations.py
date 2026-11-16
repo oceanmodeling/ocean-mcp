@@ -5,7 +5,7 @@ results/vdatum_allstations.json. The vendored NOAA coastalmodeling-vdatum reads
 its grids by HTTP range requests on first use.
 
 Usage (from the repository root):
-  uv run --project servers/vdatum-mcp python verification_stofs_v31_boston/scripts/05d_vdatum_allstations.py
+  uv run --project servers/vdatum-mcp python verification/stofs_v31_boston/scripts/05d_vdatum_allstations.py
 """
 
 from __future__ import annotations

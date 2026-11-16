@@ -13,7 +13,7 @@ the CO-OPS requests answered from the archived response. No network access.
 Writes results/replay_offline.json; exits 1 if a replay differs.
 
 Usage (from the repository root):
-  uv run --project servers/stofs-mcp python verification_stofs_v31_boston/scripts/02b_replay_tools_offline.py
+  uv run --project servers/stofs-mcp python verification/stofs_v31_boston/scripts/02b_replay_tools_offline.py
 """
 
 from __future__ import annotations
