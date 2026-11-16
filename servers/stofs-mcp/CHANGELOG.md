@@ -1,6 +1,6 @@
 # Changelog: stofs-mcp
 
-## 0.3.0 (unreleased)
+## 0.3.0 (2026-11-16)
 
 Changes since 0.2.0 (`stofs-mcp-v0.2.0`, commit `5e45c62`). This release changes default behaviour and output schemas. Callers that parse JSON responses should read "Output schema" below.
 
