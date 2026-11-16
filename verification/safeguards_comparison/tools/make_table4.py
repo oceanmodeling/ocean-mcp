@@ -3,8 +3,8 @@
 
 Read-only. Standard library only. Nothing is written unless --json is given.
 
-Inputs, relative to ROOT (the WP1 directory `verification_safeguards_comparison/`
-on branch `eval/safeguards-comparison`):
+Inputs, relative to ROOT (the WP1 directory `verification/safeguards_comparison/`,
+first committed on branch `eval/safeguards-comparison`):
 
   results/grades_A_B_C_D_Cpost_amended.json  grader v1 (frozen grader/grade.py) on the
                                              A1-amended references

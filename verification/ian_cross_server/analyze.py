@@ -34,7 +34,7 @@ from decimal import Decimal
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-REPO = HERE.parent
+REPO = HERE.parent.parent  # the package sits in verification/
 
 STATIONS = {"8725520": "Fort Myers", "8726520": "St. Petersburg"}
 STORM_ID = "AL092022"

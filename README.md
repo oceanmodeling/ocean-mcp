@@ -227,6 +227,8 @@ Each server is fully self-contained with its own `pyproject.toml`, dependencies,
 
 See [CONVENTIONS.md](CONVENTIONS.md) for the full response/behavior contract (output caps, `retrieved_at`, error format, HTTP retries, dependency bounds).
 
+Reproducible verification and evaluation packages for the server releases are in [`verification/`](verification/README.md).
+
 ## Citation
 
 If you use this project in your research or work, please cite:

@@ -310,18 +310,18 @@ The revision-1 three-panel figure (`figures/boston_stofs_v31_validation*`, `scri
 Reproduction commands, run from the repository root on this branch:
 
 ```bash
-cd verification_stofs_v31_boston
+cd verification/stofs_v31_boston
 RUN="uv run --no-project --isolated --managed-python --python 3.13 --with-requirements requirements-analysis.txt python"
 $RUN scripts/00_fetch_inputs.py --grib      # or --verify-only to check checksums
 $RUN scripts/01_extract_boston.py
-(cd .. && uv run --project servers/stofs-mcp python verification_stofs_v31_boston/scripts/02_run_ocean_mcp.py)
-(cd .. && uv run --project servers/stofs-mcp python verification_stofs_v31_boston/scripts/02b_replay_tools_offline.py)   # offline; exit 1 if a replay differs
+(cd ../.. && uv run --project servers/stofs-mcp python verification/stofs_v31_boston/scripts/02_run_ocean_mcp.py)
+(cd ../.. && uv run --project servers/stofs-mcp python verification/stofs_v31_boston/scripts/02b_replay_tools_offline.py)   # offline; exit 1 if a replay differs
 $RUN scripts/03_verify_independent.py      # exit 1 on any Ocean-MCP disagreement
 $RUN scripts/04_datum_assessment.py
-(cd .. && uv run --project servers/vdatum-mcp python verification_stofs_v31_boston/scripts/05a_vdatum_offsets.py)
+(cd ../.. && uv run --project servers/vdatum-mcp python verification/stofs_v31_boston/scripts/05a_vdatum_offsets.py)
 $RUN scripts/05b_lmsl_realization_check.py
 $RUN scripts/05c_station_table.py
-(cd .. && uv run --project servers/vdatum-mcp python verification_stofs_v31_boston/scripts/05d_vdatum_allstations.py)
+(cd ../.. && uv run --project servers/vdatum-mcp python verification/stofs_v31_boston/scripts/05d_vdatum_allstations.py)
 $RUN scripts/05e_grid_vs_vdatum_allstations.py
 $RUN scripts/06b_figure_two_panel.py
 $RUN scripts/06c_statistics_table.py

@@ -7,7 +7,7 @@ request and raw response in results/mcp/. The server downloads the station
 files and the CO-OPS observations itself (4 + 4 requests).
 
 Usage (from the repository root):
-  uv run --project servers/stofs-mcp python verification_stofs_v31_boston/scripts/02_run_ocean_mcp.py
+  uv run --project servers/stofs-mcp python verification/stofs_v31_boston/scripts/02_run_ocean_mcp.py
 """
 
 from __future__ import annotations
