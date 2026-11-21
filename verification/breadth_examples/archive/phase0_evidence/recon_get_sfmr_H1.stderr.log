@@ -1,0 +1,16 @@
+[11/20/26 21:17:40] INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[11/20/26 21:17:41] INFO     HTTP Request: GET                   _client.py:1740
+                             https://ftp.nhc.noaa.gov/atcf/btk/b                
+                             al092022.dat "HTTP/1.1 404 Not                     
+                             Found"                                             
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://ftp.nhc.noaa.gov/atcf/archi                
+                             ve/2022/bal092022.dat.gz "HTTP/1.1                 
+                             200 OK"                                            
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.aoml.noaa.gov/ftp/hrd/d                
+                             ata/sfmr/2022/ian/NOAA_SFMR20220928                
+                             H1.nc "HTTP/1.1 403 Forbidden"                     

@@ -1,0 +1,28 @@
+{
+  "server": "recon-mcp",
+  "tool": "recon_get_sfmr",
+  "arguments": {
+    "year": 2022,
+    "storm_name": "ian",
+    "storm_number": 9,
+    "filename": "NOAA_SFMR20220928H1.nc",
+    "response_format": "json"
+  },
+  "started_at": "2026-11-21T02:17:40.515+00:00",
+  "elapsed_s": 0.739,
+  "result": {
+    "meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "## SFMR Radial Wind Profile \u2014 Ian (2022)\n\nCould not process any SFMR files. The files may be in an unexpected format or the best track may not overlap the flight times.",
+        "annotations": null,
+        "meta": null
+      }
+    ],
+    "structuredContent": {
+      "result": "## SFMR Radial Wind Profile \u2014 Ian (2022)\n\nCould not process any SFMR files. The files may be in an unexpected format or the best track may not overlap the flight times."
+    },
+    "isError": false
+  }
+}

@@ -1,0 +1,7 @@
+[11/21/26 12:42:11] INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   
+[11/21/26 12:42:51] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[11/21/26 12:42:52] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/activesta                
+                             tions.xml "HTTP/1.1 200 OK"                        

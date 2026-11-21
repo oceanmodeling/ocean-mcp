@@ -1,0 +1,153 @@
+{
+ "station_id": "44097",
+ "station_lat": 40.966,
+ "station_lon": -71.123,
+ "forecast": {
+  "cycle": "2026-11-21 12z",
+  "grid": "global.0p25",
+  "variable_key_returned": "swh",
+  "variables_requested": [
+   "HTSGW"
+  ],
+  "n_points": 25,
+  "series": [
+   {
+    "time": "2026-11-21 12:00",
+    "hs_m": 0.35
+   },
+   {
+    "time": "2026-11-21 15:00",
+    "hs_m": 0.35
+   },
+   {
+    "time": "2026-11-21 18:00",
+    "hs_m": 0.36
+   },
+   {
+    "time": "2026-11-21 21:00",
+    "hs_m": 0.38
+   },
+   {
+    "time": "2026-11-22 00:00",
+    "hs_m": 0.4
+   },
+   {
+    "time": "2026-11-22 03:00",
+    "hs_m": 0.45
+   },
+   {
+    "time": "2026-11-22 06:00",
+    "hs_m": 0.46
+   },
+   {
+    "time": "2026-11-22 09:00",
+    "hs_m": 0.46
+   },
+   {
+    "time": "2026-11-22 12:00",
+    "hs_m": 0.46
+   },
+   {
+    "time": "2026-11-22 15:00",
+    "hs_m": 0.5
+   },
+   {
+    "time": "2026-11-22 18:00",
+    "hs_m": 0.61
+   },
+   {
+    "time": "2026-11-22 21:00",
+    "hs_m": 0.79
+   },
+   {
+    "time": "2026-11-23 00:00",
+    "hs_m": 1.29
+   },
+   {
+    "time": "2026-11-23 03:00",
+    "hs_m": 2.1
+   },
+   {
+    "time": "2026-11-23 06:00",
+    "hs_m": 3.0
+   },
+   {
+    "time": "2026-11-23 09:00",
+    "hs_m": 3.7
+   },
+   {
+    "time": "2026-11-23 12:00",
+    "hs_m": 3.35
+   },
+   {
+    "time": "2026-11-23 15:00",
+    "hs_m": 3.03
+   },
+   {
+    "time": "2026-11-23 18:00",
+    "hs_m": 2.66
+   },
+   {
+    "time": "2026-11-23 21:00",
+    "hs_m": 2.31
+   },
+   {
+    "time": "2026-11-24 00:00",
+    "hs_m": 2.08
+   },
+   {
+    "time": "2026-11-24 03:00",
+    "hs_m": 1.98
+   },
+   {
+    "time": "2026-11-24 06:00",
+    "hs_m": 1.78
+   },
+   {
+    "time": "2026-11-24 09:00",
+    "hs_m": 1.65
+   },
+   {
+    "time": "2026-11-24 12:00",
+    "hs_m": 1.65
+   }
+  ]
+ },
+ "tool_comparison": {
+  "cycle": "2026-11-21 12z",
+  "observation_window": {
+   "hours": 24,
+   "reference": "latest row in the file",
+   "rows_in_file": 2141,
+   "undated_rows": 0,
+   "latest_time": "2026-11-21 17:00",
+   "window_start": "2026-11-20 17:00",
+   "rows_in_window": 48,
+   "oldest_time_in_file": "2026-10-07 00:00",
+   "covers_full_window": true,
+   "typical_interval_minutes": 30,
+   "rows_with_wvht": 48
+  },
+  "comparison_times": [
+   "2026-11-21 12:00",
+   "2026-11-21 15:00"
+  ],
+  "forecast_values": [
+   0.35,
+   0.35
+  ],
+  "observed_values": [
+   0.4,
+   0.4
+  ]
+ },
+ "tool_comparison_stats": {
+  "bias": -0.05,
+  "rmse": 0.05,
+  "mae": 0.05,
+  "peak_error": 0.05,
+  "correlation": "NaN",
+  "n": 2
+ },
+ "pairing_rule_stated_in_response": false
+}

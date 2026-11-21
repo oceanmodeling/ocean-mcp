@@ -42,3 +42,16 @@ usgs-mcp is not part of Part A. The feasibility step found only daily values for
 - The caption and the report name ww3-mcp as the source.
 
 **Effect on the server count.** The figure draws on five servers: nhc-mcp, coops-mcp, recon-mcp, ww3-mcp and ndbc-mcp. ndbc-mcp contributes only the buoy position.
+
+## A5. Figure layout and line breaks (2026-11-21 about 18:10 UTC, after the values were seen; no number changes)
+
+Made after the recording, while drawing the figures. `DESIGN.md` §8 did not fix these details.
+
+**Layout.**
+- Panel (a) sits on the left at full height, with (b), (c) and (d) stacked on the right, instead of a 2 × 2 grid. The map spans 15° of latitude; in a 2 × 2 cell it would have been about 35 mm wide.
+- The map extent is 89.5°W–79.0°W, 16°N–31°N. AF301's first record is at 30.4°N 88.9°W.
+- The map items carry direct labels and a compact key in the empty south-west corner. A full legend covered best-track points: the legend check reported 6 points inside it.
+
+**Line breaks.** In panel (b), the lines break at a missing or QC-removed value, and where consecutive records are more than 60 s apart. HDOB records are 30 s apart.
+
+**Panel (d) legend.** Colour marks the station and line style marks observed or residual, so the legend fits within the panel width.

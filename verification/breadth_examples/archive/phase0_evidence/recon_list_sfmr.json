@@ -1,0 +1,26 @@
+{
+  "server": "recon-mcp",
+  "tool": "recon_list_sfmr",
+  "arguments": {
+    "year": 2022,
+    "storm_name": "ian",
+    "response_format": "json"
+  },
+  "started_at": "2026-11-21T02:14:46.104+00:00",
+  "elapsed_s": 0.901,
+  "result": {
+    "meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "Error during listing SFMR files for ian (2022): HTTP 403: Forbidden. The NHC server may be temporarily unavailable. Please try again.",
+        "annotations": null,
+        "meta": null
+      }
+    ],
+    "structuredContent": {
+      "result": "Error during listing SFMR files for ian (2022): HTTP 403: Forbidden. The NHC server may be temporarily unavailable. Please try again."
+    },
+    "isError": false
+  }
+}

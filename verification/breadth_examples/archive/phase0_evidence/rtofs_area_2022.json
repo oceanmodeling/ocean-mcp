@@ -1,0 +1,31 @@
+{
+  "server": "rtofs-mcp",
+  "tool": "rtofs_get_area_forecast",
+  "arguments": {
+    "lat_start": 26.0,
+    "lat_end": 26.5,
+    "lon_start": -83.5,
+    "lon_end": -83.0,
+    "variable": "sst",
+    "time": "2022-09-28T12:00:00Z",
+    "n_points": 2,
+    "response_format": "json"
+  },
+  "started_at": "2026-11-21T02:35:40.058+00:00",
+  "elapsed_s": 0.468,
+  "result": {
+    "meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "No valid data in bounding box (26.0, -83.5) to (26.5, -83.0). The area may be entirely over land.",
+        "annotations": null,
+        "meta": null
+      }
+    ],
+    "structuredContent": {
+      "result": "No valid data in bounding box (26.0, -83.5) to (26.5, -83.0). The area may be entirely over land."
+    },
+    "isError": false
+  }
+}

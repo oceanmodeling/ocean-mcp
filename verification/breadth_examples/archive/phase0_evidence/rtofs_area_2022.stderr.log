@@ -1,0 +1,32 @@
+[11/20/26 21:35:40] INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://tds.hycom.org/thredds/ncss/                
+                             FMRC_ESPC-D-V02_t3z/FMRC_ESPC-D-V02                
+                             _t3z_best.ncd?var=water_temp&latitu                
+                             de=26.5&longitude=-83.5&accept=csv&                
+                             time=2022-09-28T12%3A00%3A00Z&vertC                
+                             oord=0.0 "HTTP/1.1 400 400"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://tds.hycom.org/thredds/ncss/                
+                             FMRC_ESPC-D-V02_t3z/FMRC_ESPC-D-V02                
+                             _t3z_best.ncd?var=water_temp&latitu                
+                             de=26.0&longitude=-83.0&accept=csv&                
+                             time=2022-09-28T12%3A00%3A00Z&vertC                
+                             oord=0.0 "HTTP/1.1 400 400"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://tds.hycom.org/thredds/ncss/                
+                             FMRC_ESPC-D-V02_t3z/FMRC_ESPC-D-V02                
+                             _t3z_best.ncd?var=water_temp&latitu                
+                             de=26.0&longitude=-83.5&accept=csv&                
+                             time=2022-09-28T12%3A00%3A00Z&vertC                
+                             oord=0.0 "HTTP/1.1 400 400"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://tds.hycom.org/thredds/ncss/                
+                             FMRC_ESPC-D-V02_t3z/FMRC_ESPC-D-V02                
+                             _t3z_best.ncd?var=water_temp&latitu                
+                             de=26.5&longitude=-83.0&accept=csv&                
+                             time=2022-09-28T12%3A00%3A00Z&vertC                
+                             oord=0.0 "HTTP/1.1 400 400"                        

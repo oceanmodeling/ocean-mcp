@@ -1,0 +1,50 @@
+{
+ "rule": "most HDOB records with non-null SFMR within 150 km of the interpolated best-track centre, observation date 2022-09-28 UTC; ties: more non-null SFMR, then call sign",
+ "per_call_sign": {
+  "AF301": {
+   "records": 940,
+   "sfmr_nonnull": 733,
+   "sfmr_within_150km": 506,
+   "sfmr_within_150km_after_qc": 437
+  },
+  "AF307": {
+   "records": 740,
+   "sfmr_nonnull": 672,
+   "sfmr_within_150km": 415,
+   "sfmr_within_150km_after_qc": 380
+  },
+  "AF302": {
+   "records": 720,
+   "sfmr_nonnull": 677,
+   "sfmr_within_150km": 266,
+   "sfmr_within_150km_after_qc": 216
+  },
+  "NOAA2": {
+   "records": 800,
+   "sfmr_nonnull": 730,
+   "sfmr_within_150km": 188,
+   "sfmr_within_150km_after_qc": 177
+  },
+  "AF308": {
+   "records": 920,
+   "sfmr_nonnull": 286,
+   "sfmr_within_150km": 0,
+   "sfmr_within_150km_after_qc": 0
+  },
+  "NOAA3": {
+   "records": 360,
+   "sfmr_nonnull": 0,
+   "sfmr_within_150km": 0,
+   "sfmr_within_150km_after_qc": 0
+  },
+  "NOAA9": {
+   "records": 157,
+   "sfmr_nonnull": 0,
+   "sfmr_within_150km": 0,
+   "sfmr_within_150km_after_qc": 0
+  }
+ },
+ "selected": "AF301",
+ "selected_after_qc_sensitivity": "AF301",
+ "computed": "scripts/analyze_part_a.py:194"
+}

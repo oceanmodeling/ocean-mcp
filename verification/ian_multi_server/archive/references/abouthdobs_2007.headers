@@ -1,0 +1,13 @@
+HTTP/2 200 
+content-type: text/html; charset=UTF-8
+date: Sat, 21 Nov 2026 17:30:35 GMT
+expires: Sat, 21 Nov 2026 17:31:35 GMT
+strict-transport-security: max-age=31536000
+server: Apache/2.4.37 (Red Hat Enterprise Linux)
+accept-ranges: bytes
+cache-control: max-age=60
+x-cache: Miss from cloudfront
+via: 1.1 a2c162ce08367d0379d62c009d560b4a.cloudfront.net (CloudFront)
+x-amz-cf-pop: BOS50-P2
+x-amz-cf-id: Or_1DkHtCx1Sdxd62BS-w4-axNwJ7oaWj6-6PKgua7xeMWSfmsLrGA==
+

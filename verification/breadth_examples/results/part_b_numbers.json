@@ -1,0 +1,322 @@
+{
+ "b1_station": {
+  "value": "44097",
+  "unit": "id",
+  "kind": "returned",
+  "tool": "ndbc_get_station",
+  "call": "S1.1",
+  "archive": "archive/session1_record.json"
+ },
+ "b1_cycle": {
+  "value": "2026-11-21 12z",
+  "unit": "cycle",
+  "kind": "returned",
+  "tool": "ww3_get_forecast_at_point",
+  "call": "S1.3",
+  "archive": "archive/session1_record.json"
+ },
+ "b1_forecast_valid_times": {
+  "value": 25,
+  "unit": "times",
+  "kind": "returned",
+  "tool": "ww3_get_forecast_at_point",
+  "call": "S1.3",
+  "archive": "archive/session1_record.json"
+ },
+ "b1_tool_pairs": {
+  "value": 2,
+  "unit": "pairs",
+  "kind": "returned",
+  "tool": "ww3_compare_forecast_with_buoy",
+  "call": "S1.2",
+  "archive": "archive/session1_record.json"
+ },
+ "b1_tool_pair_times": {
+  "value": [
+   "2026-11-21 12:00",
+   "2026-11-21 15:00"
+  ],
+  "unit": "UTC",
+  "kind": "returned",
+  "tool": "ww3_compare_forecast_with_buoy",
+  "call": "S1.2",
+  "archive": "archive/session1_record.json"
+ },
+ "b1_tool_bias": {
+  "value": -0.05,
+  "unit": "m",
+  "kind": "returned",
+  "tool": "ww3_compare_forecast_with_buoy",
+  "call": "S1.2",
+  "archive": "archive/session1_record.json"
+ },
+ "b1_tool_rmse": {
+  "value": 0.05,
+  "unit": "m",
+  "kind": "returned",
+  "tool": "ww3_compare_forecast_with_buoy",
+  "call": "S1.2",
+  "archive": "archive/session1_record.json"
+ },
+ "b1_tool_mae": {
+  "value": 0.05,
+  "unit": "m",
+  "kind": "returned",
+  "tool": "ww3_compare_forecast_with_buoy",
+  "call": "S1.2",
+  "archive": "archive/session1_record.json"
+ },
+ "b1_tool_peak_error": {
+  "value": 0.05,
+  "unit": "m",
+  "kind": "returned",
+  "tool": "ww3_compare_forecast_with_buoy",
+  "call": "S1.2",
+  "archive": "archive/session1_record.json"
+ },
+ "b1_tool_correlation": {
+  "value": "NaN (non-standard JSON token in the tool response)",
+  "unit": "-",
+  "kind": "returned",
+  "tool": "ww3_compare_forecast_with_buoy",
+  "call": "S1.2",
+  "archive": "archive/session1_record.json"
+ },
+ "b2_model": {
+  "value": "cbofs",
+  "unit": "-",
+  "kind": "returned",
+  "tool": "ofs_compare_with_coops",
+  "call": "C1",
+  "archive": "archive/session1_record.json"
+ },
+ "b2_station": {
+  "value": "8574680 Baltimore",
+  "unit": "-",
+  "kind": "returned",
+  "tool": "ofs_compare_with_coops",
+  "call": "C1",
+  "archive": "archive/session1_record.json"
+ },
+ "b2_model_datum": {
+  "value": "NAVD88",
+  "unit": "-",
+  "kind": "returned",
+  "tool": "ofs_compare_with_coops",
+  "call": "C1",
+  "archive": "archive/session1_record.json"
+ },
+ "b2_obs_datum": {
+  "value": "NAVD",
+  "unit": "-",
+  "kind": "returned",
+  "tool": "ofs_compare_with_coops",
+  "call": "C1",
+  "archive": "archive/session1_record.json"
+ },
+ "b2_period": {
+  "value": [
+   "2026-11-20T17:37:33.520730+00:00",
+   "2026-11-21T17:37:33.520730+00:00"
+  ],
+  "unit": "UTC",
+  "kind": "returned",
+  "tool": "ofs_compare_with_coops",
+  "call": "C1",
+  "archive": "archive/session1_record.json"
+ },
+ "b2_grid_distance_km": {
+  "value": 1.16,
+  "unit": "km",
+  "kind": "returned",
+  "tool": "ofs_compare_with_coops",
+  "call": "C1",
+  "archive": "archive/session1_record.json"
+ },
+ "b2_n": {
+  "value": 24,
+  "unit": "pairs",
+  "kind": "returned",
+  "tool": "ofs_compare_with_coops",
+  "call": "C1",
+  "archive": "archive/session1_record.json"
+ },
+ "b2_bias": {
+  "value": 0.0996,
+  "unit": "m",
+  "kind": "returned",
+  "tool": "ofs_compare_with_coops",
+  "call": "C1",
+  "archive": "archive/session1_record.json"
+ },
+ "b2_rmse": {
+  "value": 0.1064,
+  "unit": "m",
+  "kind": "returned",
+  "tool": "ofs_compare_with_coops",
+  "call": "C1",
+  "archive": "archive/session1_record.json"
+ },
+ "b2_mae": {
+  "value": 0.0996,
+  "unit": "m",
+  "kind": "returned",
+  "tool": "ofs_compare_with_coops",
+  "call": "C1",
+  "archive": "archive/session1_record.json"
+ },
+ "b2_peak_error": {
+  "value": 0.1727,
+  "unit": "m",
+  "kind": "returned",
+  "tool": "ofs_compare_with_coops",
+  "call": "C1",
+  "archive": "archive/session1_record.json"
+ },
+ "b2_correlation": {
+  "value": 0.9644,
+  "unit": "-",
+  "kind": "returned",
+  "tool": "ofs_compare_with_coops",
+  "call": "C1",
+  "archive": "archive/session1_record.json"
+ },
+ "b3_vdatum_mhhw_m": {
+  "value": "2.2121",
+  "unit": "m MHHW",
+  "kind": "returned",
+  "tool": "vdatum_convert",
+  "call": "V1",
+  "archive": "archive/session1_record.json"
+ },
+ "b3_vdatum_navd88_m": {
+  "value": "2.2922",
+  "unit": "m NAVD88",
+  "kind": "returned",
+  "tool": "vdatum_convert",
+  "call": "V2",
+  "archive": "archive/session1_record.json"
+ },
+ "b3_coops_MHHW_m": {
+  "value": "1.73",
+  "unit": "m above STND",
+  "kind": "returned",
+  "tool": "coops_get_datums",
+  "call": "V3",
+  "archive": "archive/session1_record.json"
+ },
+ "b3_coops_MLLW_m": {
+  "value": "1.329",
+  "unit": "m above STND",
+  "kind": "returned",
+  "tool": "coops_get_datums",
+  "call": "V3",
+  "archive": "archive/session1_record.json"
+ },
+ "b3_coops_NAVD88_m": {
+  "value": "1.647",
+  "unit": "m above STND",
+  "kind": "returned",
+  "tool": "coops_get_datums",
+  "call": "V3",
+  "archive": "archive/session1_record.json"
+ },
+ "b3_coops_mhhw_m": {
+  "value": "2.212",
+  "unit": "m MHHW",
+  "kind": "computed",
+  "computed": "scripts/analyze_part_b.py:320",
+  "how": "2.613 - (MHHW - MLLW), integer mm"
+ },
+ "b3_coops_navd88_m": {
+  "value": "2.295",
+  "unit": "m NAVD88",
+  "kind": "computed",
+  "computed": "scripts/analyze_part_b.py:320",
+  "how": "2.613 - (NAVD88 - MLLW), integer mm"
+ },
+ "b3_diff_mhhw_mm": {
+  "value": "0.1",
+  "unit": "mm",
+  "kind": "computed",
+  "computed": "scripts/analyze_part_b.py:320",
+  "how": "vdatum - CO-OPS, tenths of mm"
+ },
+ "b3_diff_navd88_mm": {
+  "value": "-2.8",
+  "unit": "mm",
+  "kind": "computed",
+  "computed": "scripts/analyze_part_b.py:320",
+  "how": "vdatum - CO-OPS, tenths of mm"
+ },
+ "b4_latest_run": {
+  "value": "2026-11-16T12:00:00Z",
+  "unit": "UTC",
+  "kind": "returned",
+  "tool": "rtofs_get_latest_time",
+  "call": "T1",
+  "archive": "archive/session1_record.json"
+ },
+ "b4_axis": {
+  "value": [
+   "2026-11-12T12:00:00Z",
+   "2026-11-24T12:00:00Z"
+  ],
+  "unit": "UTC",
+  "kind": "returned",
+  "tool": "rtofs_get_latest_time",
+  "call": "T1",
+  "archive": "archive/session1_record.json"
+ },
+ "b4_time_echoed": {
+  "value": "2026-11-21T15:00:00Z",
+  "unit": "UTC",
+  "kind": "returned",
+  "tool": "rtofs_get_profile_forecast",
+  "call": "T3",
+  "archive": "archive/session1_record.json"
+ },
+ "b4_total_distance_km": {
+  "value": 251.78,
+  "unit": "km",
+  "kind": "returned",
+  "tool": "rtofs_get_transect",
+  "call": "T2",
+  "archive": "archive/session1_record.json"
+ },
+ "b4_profiles_with_levels": {
+  "value": 20,
+  "unit": "profiles",
+  "kind": "returned",
+  "tool": "rtofs_get_transect",
+  "call": "T2",
+  "archive": "archive/session1_record.json"
+ },
+ "b4_forecast_hour": {
+  "value": 123.0,
+  "unit": "h",
+  "kind": "computed",
+  "computed": "scripts/analyze_part_b.py:453",
+  "how": "requested time - latest_run"
+ },
+ "b4_temp_max": {
+  "value": [
+   25.548999786376953,
+   0.0,
+   66.03
+  ],
+  "unit": "degC, depth m, distance km",
+  "kind": "returned",
+  "tool": "rtofs_get_transect",
+  "call": "T2",
+  "archive": "archive/session1_record.json"
+ },
+ "b4_max_depth_levels": {
+  "value": 39,
+  "unit": "levels",
+  "kind": "returned",
+  "tool": "rtofs_get_transect",
+  "call": "T2",
+  "archive": "archive/session1_record.json"
+ }
+}

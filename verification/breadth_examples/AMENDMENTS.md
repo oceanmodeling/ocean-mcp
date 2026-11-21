@@ -40,3 +40,10 @@ Changes to the brief's rules, or to `DESIGN.md` after it was frozen, in the orde
 **Change.** `vdatum_convert` is called with `online=true`, because it cannot run offline. `run_all.sh` replays the archived responses, and the report says that the conversion itself cannot be rerun offline.
 
 **Effect.** This changes no argument that affects the value.
+
+## B5. Figure details (2026-11-21 about 18:15 UTC, after the values were seen; no number changes)
+
+Made while drawing the figures. `DESIGN.md` did not fix these details.
+
+- **B4 colours.** The colour scale runs from the lowest to the highest temperature at depths down to 1000 m. Small triangles above the section mark the 20 profile positions.
+- **B2 statistics.** The statistics the tool returned are printed below the axes rather than in a box over the data.

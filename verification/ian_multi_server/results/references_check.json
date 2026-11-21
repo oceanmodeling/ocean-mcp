@@ -1,0 +1,80 @@
+{
+ "url": "https://www.nhc.noaa.gov/abouthdobs_2007.shtml",
+ "retrieved": "2026-11-21 17:30:35 GMT (curl; HTTP date header)",
+ "sha256": "3ad3a4e221296fb7889c495b962fd6aa1bdfe9ae21f1664bf03ffb4fef337eef",
+ "quotations": {
+  "observation_time": {
+   "text": "Observation time, in hours, minutes and seconds (UTC). The observation time is the midpoint of the 30-s averaging interval used for the record's meteorological data.",
+   "found": true
+  },
+  "flight_level_wind": {
+   "text": "Wind speed, in kt (30-s average). 999 indicates missing value.",
+   "found": true
+  },
+  "sfmr_wind": {
+   "text": "Maximum 10-second average surface wind speed occurring within the encoding interval from the Stepped Frequency Microwave Radiometer (SFMR), in kt. 999 indicates missing value.",
+   "found": true
+  },
+  "sfmr_rain": {
+   "text": "SFMR-derived rain rate, in mm hr-1, evaluated over the 10-s interval chosen for KKK . 999 indicates missing value.",
+   "found": true
+  },
+  "ff": {
+   "text": "Quality control flags.",
+   "found": true
+  },
+  "first_column": {
+   "text": "First column indicates status of positional variables as follows:",
+   "found": true
+  },
+  "pos_0": {
+   "text": "0 All parameters of nominal accuracy",
+   "found": true
+  },
+  "pos_1": {
+   "text": "1 Lat/lon questionable",
+   "found": true
+  },
+  "pos_2": {
+   "text": "2 Geopotential altitude or static pressure questionable",
+   "found": true
+  },
+  "pos_3": {
+   "text": "3 Both lat/lon and GA/PS questionable",
+   "found": true
+  },
+  "second_column": {
+   "text": "Second column indicates status of meteorological variables as follows:",
+   "found": true
+  },
+  "met_1": {
+   "text": "1 T or TD questionable",
+   "found": true
+  },
+  "met_2": {
+   "text": "2 Flight-level winds questionable",
+   "found": true
+  },
+  "met_3": {
+   "text": "3 SFMR parameter(s) questionable",
+   "found": true
+  },
+  "met_4": {
+   "text": "4 T/TD and FL winds questionable",
+   "found": true
+  },
+  "met_5": {
+   "text": "5 T/TD and SFMR questionable",
+   "found": true
+  },
+  "met_6": {
+   "text": "6 FL winds and SFMR questionable",
+   "found": true
+  },
+  "met_9": {
+   "text": "9 T/TD, FL winds, and SFMR questionable",
+   "found": true
+  }
+ },
+ "all_found": true
+}

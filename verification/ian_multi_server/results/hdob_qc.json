@@ -1,0 +1,97 @@
+{
+ "source": "NHC, High Density Observations (HDOB) Bulletin, https://www.nhc.noaa.gov/abouthdobs_2007.shtml (archive/references/abouthdobs_2007.shtml)",
+ "records": 940,
+ "missing_sfmr_null": 207,
+ "missing_fl_wind_null": 0,
+ "missing_position_null": 0,
+ "by_flag": {
+  "00": {
+   "records": 646,
+   "decoded": {
+    "position": false,
+    "sfmr": false,
+    "fl_wind": false,
+    "recognised": true
+   },
+   "sfmr_removed": 0,
+   "fl_wind_removed": 0,
+   "positions_removed": 0
+  },
+  "02": {
+   "records": 15,
+   "decoded": {
+    "position": false,
+    "sfmr": false,
+    "fl_wind": true,
+    "recognised": true
+   },
+   "sfmr_removed": 0,
+   "fl_wind_removed": 15,
+   "positions_removed": 0
+  },
+  "03": {
+   "records": 231,
+   "decoded": {
+    "position": false,
+    "sfmr": true,
+    "fl_wind": false,
+    "recognised": true
+   },
+   "sfmr_removed": 56,
+   "fl_wind_removed": 0,
+   "positions_removed": 0
+  },
+  "06": {
+   "records": 11,
+   "decoded": {
+    "position": false,
+    "sfmr": true,
+    "fl_wind": true,
+    "recognised": true
+   },
+   "sfmr_removed": 9,
+   "fl_wind_removed": 11,
+   "positions_removed": 0
+  },
+  "23": {
+   "records": 30,
+   "decoded": {
+    "position": false,
+    "sfmr": true,
+    "fl_wind": false,
+    "recognised": true
+   },
+   "sfmr_removed": 0,
+   "fl_wind_removed": 0,
+   "positions_removed": 0
+  },
+  "32": {
+   "records": 2,
+   "decoded": {
+    "position": true,
+    "sfmr": false,
+    "fl_wind": true,
+    "recognised": true
+   },
+   "sfmr_removed": 0,
+   "fl_wind_removed": 2,
+   "positions_removed": 2
+  },
+  "36": {
+   "records": 5,
+   "decoded": {
+    "position": true,
+    "sfmr": true,
+    "fl_wind": true,
+    "recognised": true
+   },
+   "sfmr_removed": 5,
+   "fl_wind_removed": 5,
+   "positions_removed": 5
+  }
+ },
+ "sfmr_removed_total": 70,
+ "fl_wind_removed_total": 33,
+ "positions_removed_total": 7,
+ "computed": "scripts/analyze_part_a.py:232"
+}

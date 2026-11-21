@@ -1,0 +1,335 @@
+[11/21/26 12:36:50] INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   
+[11/21/26 12:37:04] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/data/real                
+                             time2/44097.txt "HTTP/1.1 200 OK"                  
+                    INFO     HTTP Request: HEAD                  _client.py:1740
+                             https://noaa-gfs-bdp-pds.s3.amazona                
+                             ws.com/gfs.20261121/18/wave/gridded                
+                             /gfswave.t18z.global.0p25.f000.grib                
+                             2 "HTTP/1.1 404 Not Found"                         
+                    INFO     HTTP Request: HEAD                  _client.py:1740
+                             https://noaa-gfs-bdp-pds.s3.amazona                
+                             ws.com/gfs.20261121/12/wave/gridded                
+                             /gfswave.t12z.global.0p25.f000.grib                
+                             2 "HTTP/1.1 200 OK"                                
+[11/21/26 12:37:05] INFO     HTTP Request: GET                   _client.py:1740
+                             https://nomads.ncep.noaa.gov/cgi-bi                
+                             n/filter_gfswave.pl?file=gfswave.t1                
+                             2z.global.0p25.f000.grib2&dir=%2Fgf                
+                             s.20261121/12/wave/gridded&var_HTSG                
+                             W=on&subregion=&toplat=41.966&botto                
+                             mlat=39.966&leftlon=287.877&rightlo                
+                             n=289.877&lev_surface=on "HTTP/1.1                 
+                             200 OK"                                            
+[11/21/26 12:37:09] INFO     HTTP Request: GET                   _client.py:1740
+                             https://nomads.ncep.noaa.gov/cgi-bi                
+                             n/filter_gfswave.pl?file=gfswave.t1                
+                             2z.global.0p25.f003.grib2&dir=%2Fgf                
+                             s.20261121/12/wave/gridded&var_HTSG                
+                             W=on&subregion=&toplat=41.966&botto                
+                             mlat=39.966&leftlon=287.877&rightlo                
+                             n=289.877&lev_surface=on "HTTP/1.1                 
+                             200 OK"                                            
+[11/21/26 12:37:10] INFO     HTTP Request: GET                   _client.py:1740
+                             https://nomads.ncep.noaa.gov/cgi-bi                
+                             n/filter_gfswave.pl?file=gfswave.t1                
+                             2z.global.0p25.f006.grib2&dir=%2Fgf                
+                             s.20261121/12/wave/gridded&var_HTSG                
+                             W=on&subregion=&toplat=41.966&botto                
+                             mlat=39.966&leftlon=287.877&rightlo                
+                             n=289.877&lev_surface=on "HTTP/1.1                 
+                             200 OK"                                            
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://nomads.ncep.noaa.gov/cgi-bi                
+                             n/filter_gfswave.pl?file=gfswave.t1                
+                             2z.global.0p25.f009.grib2&dir=%2Fgf                
+                             s.20261121/12/wave/gridded&var_HTSG                
+                             W=on&subregion=&toplat=41.966&botto                
+                             mlat=39.966&leftlon=287.877&rightlo                
+                             n=289.877&lev_surface=on "HTTP/1.1                 
+                             200 OK"                                            
+[11/21/26 12:37:11] INFO     HTTP Request: GET                   _client.py:1740
+                             https://nomads.ncep.noaa.gov/cgi-bi                
+                             n/filter_gfswave.pl?file=gfswave.t1                
+                             2z.global.0p25.f012.grib2&dir=%2Fgf                
+                             s.20261121/12/wave/gridded&var_HTSG                
+                             W=on&subregion=&toplat=41.966&botto                
+                             mlat=39.966&leftlon=287.877&rightlo                
+                             n=289.877&lev_surface=on "HTTP/1.1                 
+                             200 OK"                                            
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://nomads.ncep.noaa.gov/cgi-bi                
+                             n/filter_gfswave.pl?file=gfswave.t1                
+                             2z.global.0p25.f015.grib2&dir=%2Fgf                
+                             s.20261121/12/wave/gridded&var_HTSG                
+                             W=on&subregion=&toplat=41.966&botto                
+                             mlat=39.966&leftlon=287.877&rightlo                
+                             n=289.877&lev_surface=on "HTTP/1.1                 
+                             200 OK"                                            
+[11/21/26 12:37:12] INFO     HTTP Request: GET                   _client.py:1740
+                             https://nomads.ncep.noaa.gov/cgi-bi                
+                             n/filter_gfswave.pl?file=gfswave.t1                
+                             2z.global.0p25.f018.grib2&dir=%2Fgf                
+                             s.20261121/12/wave/gridded&var_HTSG                
+                             W=on&subregion=&toplat=41.966&botto                
+                             mlat=39.966&leftlon=287.877&rightlo                
+                             n=289.877&lev_surface=on "HTTP/1.1                 
+                             200 OK"                                            
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://nomads.ncep.noaa.gov/cgi-bi                
+                             n/filter_gfswave.pl?file=gfswave.t1                
+                             2z.global.0p25.f021.grib2&dir=%2Fgf                
+                             s.20261121/12/wave/gridded&var_HTSG                
+                             W=on&subregion=&toplat=41.966&botto                
+                             mlat=39.966&leftlon=287.877&rightlo                
+                             n=289.877&lev_surface=on "HTTP/1.1                 
+                             200 OK"                                            
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://nomads.ncep.noaa.gov/cgi-bi                
+                             n/filter_gfswave.pl?file=gfswave.t1                
+                             2z.global.0p25.f024.grib2&dir=%2Fgf                
+                             s.20261121/12/wave/gridded&var_HTSG                
+                             W=on&subregion=&toplat=41.966&botto                
+                             mlat=39.966&leftlon=287.877&rightlo                
+                             n=289.877&lev_surface=on "HTTP/1.1                 
+                             200 OK"                                            
+[11/21/26 12:37:15] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[11/21/26 12:37:16] INFO     HTTP Request: HEAD                  _client.py:1740
+                             https://noaa-gfs-bdp-pds.s3.amazona                
+                             ws.com/gfs.20261121/18/wave/gridded                
+                             /gfswave.t18z.global.0p25.f000.grib                
+                             2 "HTTP/1.1 404 Not Found"                         
+                    INFO     HTTP Request: HEAD                  _client.py:1740
+                             https://noaa-gfs-bdp-pds.s3.amazona                
+                             ws.com/gfs.20261121/12/wave/gridded                
+                             /gfswave.t12z.global.0p25.f000.grib                
+                             2 "HTTP/1.1 200 OK"                                
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://nomads.ncep.noaa.gov/cgi-bi                
+                             n/filter_gfswave.pl?file=gfswave.t1                
+                             2z.global.0p25.f000.grib2&dir=%2Fgf                
+                             s.20261121/12/wave/gridded&var_HTSG                
+                             W=on&subregion=&toplat=41.966&botto                
+                             mlat=39.966&leftlon=287.877&rightlo                
+                             n=289.877&lev_surface=on "HTTP/1.1                 
+                             200 OK"                                            
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://nomads.ncep.noaa.gov/cgi-bi                
+                             n/filter_gfswave.pl?file=gfswave.t1                
+                             2z.global.0p25.f003.grib2&dir=%2Fgf                
+                             s.20261121/12/wave/gridded&var_HTSG                
+                             W=on&subregion=&toplat=41.966&botto                
+                             mlat=39.966&leftlon=287.877&rightlo                
+                             n=289.877&lev_surface=on "HTTP/1.1                 
+                             200 OK"                                            
+[11/21/26 12:37:17] INFO     HTTP Request: GET                   _client.py:1740
+                             https://nomads.ncep.noaa.gov/cgi-bi                
+                             n/filter_gfswave.pl?file=gfswave.t1                
+                             2z.global.0p25.f006.grib2&dir=%2Fgf                
+                             s.20261121/12/wave/gridded&var_HTSG                
+                             W=on&subregion=&toplat=41.966&botto                
+                             mlat=39.966&leftlon=287.877&rightlo                
+                             n=289.877&lev_surface=on "HTTP/1.1                 
+                             200 OK"                                            
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://nomads.ncep.noaa.gov/cgi-bi                
+                             n/filter_gfswave.pl?file=gfswave.t1                
+                             2z.global.0p25.f009.grib2&dir=%2Fgf                
+                             s.20261121/12/wave/gridded&var_HTSG                
+                             W=on&subregion=&toplat=41.966&botto                
+                             mlat=39.966&leftlon=287.877&rightlo                
+                             n=289.877&lev_surface=on "HTTP/1.1                 
+                             200 OK"                                            
+[11/21/26 12:37:18] INFO     HTTP Request: GET                   _client.py:1740
+                             https://nomads.ncep.noaa.gov/cgi-bi                
+                             n/filter_gfswave.pl?file=gfswave.t1                
+                             2z.global.0p25.f012.grib2&dir=%2Fgf                
+                             s.20261121/12/wave/gridded&var_HTSG                
+                             W=on&subregion=&toplat=41.966&botto                
+                             mlat=39.966&leftlon=287.877&rightlo                
+                             n=289.877&lev_surface=on "HTTP/1.1                 
+                             200 OK"                                            
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://nomads.ncep.noaa.gov/cgi-bi                
+                             n/filter_gfswave.pl?file=gfswave.t1                
+                             2z.global.0p25.f015.grib2&dir=%2Fgf                
+                             s.20261121/12/wave/gridded&var_HTSG                
+                             W=on&subregion=&toplat=41.966&botto                
+                             mlat=39.966&leftlon=287.877&rightlo                
+                             n=289.877&lev_surface=on "HTTP/1.1                 
+                             200 OK"                                            
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://nomads.ncep.noaa.gov/cgi-bi                
+                             n/filter_gfswave.pl?file=gfswave.t1                
+                             2z.global.0p25.f018.grib2&dir=%2Fgf                
+                             s.20261121/12/wave/gridded&var_HTSG                
+                             W=on&subregion=&toplat=41.966&botto                
+                             mlat=39.966&leftlon=287.877&rightlo                
+                             n=289.877&lev_surface=on "HTTP/1.1                 
+                             200 OK"                                            
+[11/21/26 12:37:19] INFO     HTTP Request: GET                   _client.py:1740
+                             https://nomads.ncep.noaa.gov/cgi-bi                
+                             n/filter_gfswave.pl?file=gfswave.t1                
+                             2z.global.0p25.f021.grib2&dir=%2Fgf                
+                             s.20261121/12/wave/gridded&var_HTSG                
+                             W=on&subregion=&toplat=41.966&botto                
+                             mlat=39.966&leftlon=287.877&rightlo                
+                             n=289.877&lev_surface=on "HTTP/1.1                 
+                             200 OK"                                            
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://nomads.ncep.noaa.gov/cgi-bi                
+                             n/filter_gfswave.pl?file=gfswave.t1                
+                             2z.global.0p25.f024.grib2&dir=%2Fgf                
+                             s.20261121/12/wave/gridded&var_HTSG                
+                             W=on&subregion=&toplat=41.966&botto                
+                             mlat=39.966&leftlon=287.877&rightlo                
+                             n=289.877&lev_surface=on "HTTP/1.1                 
+                             200 OK"                                            
+[11/21/26 12:37:20] INFO     HTTP Request: GET                   _client.py:1740
+                             https://nomads.ncep.noaa.gov/cgi-bi                
+                             n/filter_gfswave.pl?file=gfswave.t1                
+                             2z.global.0p25.f027.grib2&dir=%2Fgf                
+                             s.20261121/12/wave/gridded&var_HTSG                
+                             W=on&subregion=&toplat=41.966&botto                
+                             mlat=39.966&leftlon=287.877&rightlo                
+                             n=289.877&lev_surface=on "HTTP/1.1                 
+                             200 OK"                                            
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://nomads.ncep.noaa.gov/cgi-bi                
+                             n/filter_gfswave.pl?file=gfswave.t1                
+                             2z.global.0p25.f030.grib2&dir=%2Fgf                
+                             s.20261121/12/wave/gridded&var_HTSG                
+                             W=on&subregion=&toplat=41.966&botto                
+                             mlat=39.966&leftlon=287.877&rightlo                
+                             n=289.877&lev_surface=on "HTTP/1.1                 
+                             200 OK"                                            
+[11/21/26 12:37:21] INFO     HTTP Request: GET                   _client.py:1740
+                             https://nomads.ncep.noaa.gov/cgi-bi                
+                             n/filter_gfswave.pl?file=gfswave.t1                
+                             2z.global.0p25.f033.grib2&dir=%2Fgf                
+                             s.20261121/12/wave/gridded&var_HTSG                
+                             W=on&subregion=&toplat=41.966&botto                
+                             mlat=39.966&leftlon=287.877&rightlo                
+                             n=289.877&lev_surface=on "HTTP/1.1                 
+                             200 OK"                                            
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://nomads.ncep.noaa.gov/cgi-bi                
+                             n/filter_gfswave.pl?file=gfswave.t1                
+                             2z.global.0p25.f036.grib2&dir=%2Fgf                
+                             s.20261121/12/wave/gridded&var_HTSG                
+                             W=on&subregion=&toplat=41.966&botto                
+                             mlat=39.966&leftlon=287.877&rightlo                
+                             n=289.877&lev_surface=on "HTTP/1.1                 
+                             200 OK"                                            
+[11/21/26 12:37:22] INFO     HTTP Request: GET                   _client.py:1740
+                             https://nomads.ncep.noaa.gov/cgi-bi                
+                             n/filter_gfswave.pl?file=gfswave.t1                
+                             2z.global.0p25.f039.grib2&dir=%2Fgf                
+                             s.20261121/12/wave/gridded&var_HTSG                
+                             W=on&subregion=&toplat=41.966&botto                
+                             mlat=39.966&leftlon=287.877&rightlo                
+                             n=289.877&lev_surface=on "HTTP/1.1                 
+                             200 OK"                                            
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://nomads.ncep.noaa.gov/cgi-bi                
+                             n/filter_gfswave.pl?file=gfswave.t1                
+                             2z.global.0p25.f042.grib2&dir=%2Fgf                
+                             s.20261121/12/wave/gridded&var_HTSG                
+                             W=on&subregion=&toplat=41.966&botto                
+                             mlat=39.966&leftlon=287.877&rightlo                
+                             n=289.877&lev_surface=on "HTTP/1.1                 
+                             200 OK"                                            
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://nomads.ncep.noaa.gov/cgi-bi                
+                             n/filter_gfswave.pl?file=gfswave.t1                
+                             2z.global.0p25.f045.grib2&dir=%2Fgf                
+                             s.20261121/12/wave/gridded&var_HTSG                
+                             W=on&subregion=&toplat=41.966&botto                
+                             mlat=39.966&leftlon=287.877&rightlo                
+                             n=289.877&lev_surface=on "HTTP/1.1                 
+                             200 OK"                                            
+[11/21/26 12:37:23] INFO     HTTP Request: GET                   _client.py:1740
+                             https://nomads.ncep.noaa.gov/cgi-bi                
+                             n/filter_gfswave.pl?file=gfswave.t1                
+                             2z.global.0p25.f048.grib2&dir=%2Fgf                
+                             s.20261121/12/wave/gridded&var_HTSG                
+                             W=on&subregion=&toplat=41.966&botto                
+                             mlat=39.966&leftlon=287.877&rightlo                
+                             n=289.877&lev_surface=on "HTTP/1.1                 
+                             200 OK"                                            
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://nomads.ncep.noaa.gov/cgi-bi                
+                             n/filter_gfswave.pl?file=gfswave.t1                
+                             2z.global.0p25.f051.grib2&dir=%2Fgf                
+                             s.20261121/12/wave/gridded&var_HTSG                
+                             W=on&subregion=&toplat=41.966&botto                
+                             mlat=39.966&leftlon=287.877&rightlo                
+                             n=289.877&lev_surface=on "HTTP/1.1                 
+                             200 OK"                                            
+[11/21/26 12:37:24] INFO     HTTP Request: GET                   _client.py:1740
+                             https://nomads.ncep.noaa.gov/cgi-bi                
+                             n/filter_gfswave.pl?file=gfswave.t1                
+                             2z.global.0p25.f054.grib2&dir=%2Fgf                
+                             s.20261121/12/wave/gridded&var_HTSG                
+                             W=on&subregion=&toplat=41.966&botto                
+                             mlat=39.966&leftlon=287.877&rightlo                
+                             n=289.877&lev_surface=on "HTTP/1.1                 
+                             200 OK"                                            
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://nomads.ncep.noaa.gov/cgi-bi                
+                             n/filter_gfswave.pl?file=gfswave.t1                
+                             2z.global.0p25.f057.grib2&dir=%2Fgf                
+                             s.20261121/12/wave/gridded&var_HTSG                
+                             W=on&subregion=&toplat=41.966&botto                
+                             mlat=39.966&leftlon=287.877&rightlo                
+                             n=289.877&lev_surface=on "HTTP/1.1                 
+                             200 OK"                                            
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://nomads.ncep.noaa.gov/cgi-bi                
+                             n/filter_gfswave.pl?file=gfswave.t1                
+                             2z.global.0p25.f060.grib2&dir=%2Fgf                
+                             s.20261121/12/wave/gridded&var_HTSG                
+                             W=on&subregion=&toplat=41.966&botto                
+                             mlat=39.966&leftlon=287.877&rightlo                
+                             n=289.877&lev_surface=on "HTTP/1.1                 
+                             200 OK"                                            
+[11/21/26 12:37:25] INFO     HTTP Request: GET                   _client.py:1740
+                             https://nomads.ncep.noaa.gov/cgi-bi                
+                             n/filter_gfswave.pl?file=gfswave.t1                
+                             2z.global.0p25.f063.grib2&dir=%2Fgf                
+                             s.20261121/12/wave/gridded&var_HTSG                
+                             W=on&subregion=&toplat=41.966&botto                
+                             mlat=39.966&leftlon=287.877&rightlo                
+                             n=289.877&lev_surface=on "HTTP/1.1                 
+                             200 OK"                                            
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://nomads.ncep.noaa.gov/cgi-bi                
+                             n/filter_gfswave.pl?file=gfswave.t1                
+                             2z.global.0p25.f066.grib2&dir=%2Fgf                
+                             s.20261121/12/wave/gridded&var_HTSG                
+                             W=on&subregion=&toplat=41.966&botto                
+                             mlat=39.966&leftlon=287.877&rightlo                
+                             n=289.877&lev_surface=on "HTTP/1.1                 
+                             200 OK"                                            
+[11/21/26 12:37:26] INFO     HTTP Request: GET                   _client.py:1740
+                             https://nomads.ncep.noaa.gov/cgi-bi                
+                             n/filter_gfswave.pl?file=gfswave.t1                
+                             2z.global.0p25.f069.grib2&dir=%2Fgf                
+                             s.20261121/12/wave/gridded&var_HTSG                
+                             W=on&subregion=&toplat=41.966&botto                
+                             mlat=39.966&leftlon=287.877&rightlo                
+                             n=289.877&lev_surface=on "HTTP/1.1                 
+                             200 OK"                                            
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://nomads.ncep.noaa.gov/cgi-bi                
+                             n/filter_gfswave.pl?file=gfswave.t1                
+                             2z.global.0p25.f072.grib2&dir=%2Fgf                
+                             s.20261121/12/wave/gridded&var_HTSG                
+                             W=on&subregion=&toplat=41.966&botto                
+                             mlat=39.966&leftlon=287.877&rightlo                
+                             n=289.877&lev_surface=on "HTTP/1.1                 
+                             200 OK"                                            

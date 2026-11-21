@@ -1,0 +1,716 @@
+[11/20/26 21:20:01] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[11/20/26 21:20:02] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=TRDF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+                    INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   
+[11/20/26 21:20:04] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=41113h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 200 OK"                                 
+[11/20/26 21:20:07] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=FMRF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:20:09] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=41009h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 200 OK"                                 
+[11/20/26 21:20:13] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=42023h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 200 OK"                                 
+[11/20/26 21:20:16] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=SIPF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:20:18] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=VENF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:20:20] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=42026h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 200 OK"                                 
+[11/20/26 21:20:22] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=41069h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:20:24] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[11/20/26 21:20:25] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=41070h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:20:27] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=41114h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 200 OK"                                 
+[11/20/26 21:20:29] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=41068h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:20:31] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[11/20/26 21:20:32] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=42013h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 200 OK"                                 
+[11/20/26 21:20:34] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=42097h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 200 OK"                                 
+[11/20/26 21:20:37] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=RKQF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:20:39] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=RKXF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:20:41] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=42095h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 200 OK"                                 
+[11/20/26 21:20:43] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[11/20/26 21:20:44] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=PMAF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:20:46] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=CDCF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:20:48] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=MTBF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:20:50] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=SANF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:20:52] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=EBEF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:20:54] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=TSHF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:20:56] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=SKCF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:20:58] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=TPAF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:21:00] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=KYWF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:21:02] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=SAPF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:21:04] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=OPTF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:21:06] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[11/20/26 21:21:07] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=41010h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 200 OK"                                 
+[11/20/26 21:21:09] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[11/20/26 21:21:10] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=42098h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 200 OK"                                 
+[11/20/26 21:21:12] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=GTXF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:21:14] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=GTQF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:21:16] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=CWBF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:21:18] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=WPLF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:21:20] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=CNBF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:21:22] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[11/20/26 21:21:23] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=41117h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 200 OK"                                 
+[11/20/26 21:21:25] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=SAUF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:21:27] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=LMRF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:21:29] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=LKWF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:21:31] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=ARPF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:21:33] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=WIWF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:21:35] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[11/20/26 21:21:36] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=42022h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 200 OK"                                 
+[11/20/26 21:21:38] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=BSKF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:21:40] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=SREF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:21:42] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=HREF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:21:44] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=BDVF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:21:46] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=GBIF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:21:48] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[11/20/26 21:21:49] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=SMKF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:21:51] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=VCAF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:21:53] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=CWAF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:21:55] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=TPEF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:21:57] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=CANF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:21:59] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=NRRF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:22:01] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=WWEF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:22:03] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=MUKF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:22:05] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=LRIF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:22:07] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=PEGF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:22:09] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=JKYF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:22:11] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[11/20/26 21:22:12] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=42099h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 200 OK"                                 
+[11/20/26 21:22:14] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=BKYF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:22:16] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=LONF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:22:18] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=LTJF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:22:20] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=MYPF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:22:22] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[11/20/26 21:22:23] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=41122h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:22:25] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=42056h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 200 OK"                                 
+[11/20/26 21:22:27] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=GBTF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:22:30] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=LRKF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:22:32] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=BKBF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:22:34] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=BLIF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:22:36] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=TBYF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:22:38] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=DMSF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:22:40] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=WRBF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:22:42] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=JXUF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:22:44] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=PKYF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:22:46] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=41112h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 200 OK"                                 
+[11/20/26 21:22:49] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=VAKF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:22:51] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=TRRF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:22:53] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=NFDF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:22:55] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=BOBF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:22:57] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=LMDF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:22:59] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=JBYF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:23:01] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=FRDF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:23:03] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=TCVF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:23:05] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=HCEF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:23:07] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=MDKF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:23:09] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[11/20/26 21:23:10] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=LSNF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:23:12] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=FWYF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:23:14] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=MNBF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:23:16] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=SPGF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:23:18] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=DKKF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:23:20] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=LBSF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:23:22] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=BNKF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:23:24] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=KBMG1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:23:26] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=BWSF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:23:28] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=THRF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:23:30] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=CDRF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:23:32] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=CKYF1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:23:34] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[11/20/26 21:23:35] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=41008h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 200 OK"                                 
+[11/20/26 21:23:37] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=SAQG1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:23:39] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=SAXG1h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 404 Not Found"                          
+[11/20/26 21:23:41] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[11/20/26 21:23:42] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=42003h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 200 OK"                                 
+[11/20/26 21:23:44] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=42036h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 200 OK"                                 

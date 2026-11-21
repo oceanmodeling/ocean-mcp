@@ -1,0 +1,26 @@
+{
+  "server": "ofs-mcp",
+  "tool": "ofs_list_cycles",
+  "arguments": {
+    "model": "tbofs",
+    "date": "2022-09-28",
+    "num_days": 1
+  },
+  "started_at": "2026-11-21T02:34:55.601+00:00",
+  "elapsed_s": 0.52,
+  "result": {
+    "meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "## OFS Forecast Cycles \u2014 Tampa Bay OFS\n**Checking**: last 1 day(s) | **Available**: 0 of 4 cycles\n\n| Date | Cycle | Status | First Forecast File |\n| --- | --- | --- | --- |\n| 2022-09-28 | 18z | Not available | \u2014 |\n| 2022-09-28 | 12z | Not available | \u2014 |\n| 2022-09-28 | 06z | Not available | \u2014 |\n| 2022-09-28 | 00z | Not available | \u2014 |\n\n*No cycles found for TBOFS. OFS products typically arrive ~2 hours after cycle time. Try again later or check a wider date range.*",
+        "annotations": null,
+        "meta": null
+      }
+    ],
+    "structuredContent": {
+      "result": "## OFS Forecast Cycles \u2014 Tampa Bay OFS\n**Checking**: last 1 day(s) | **Available**: 0 of 4 cycles\n\n| Date | Cycle | Status | First Forecast File |\n| --- | --- | --- | --- |\n| 2022-09-28 | 18z | Not available | \u2014 |\n| 2022-09-28 | 12z | Not available | \u2014 |\n| 2022-09-28 | 06z | Not available | \u2014 |\n| 2022-09-28 | 00z | Not available | \u2014 |\n\n*No cycles found for TBOFS. OFS products typically arrive ~2 hours after cycle time. Try again later or check a wider date range.*"
+    },
+    "isError": false
+  }
+}

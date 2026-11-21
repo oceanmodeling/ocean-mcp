@@ -1,0 +1,1028 @@
+[11/21/26 12:42:06] INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   
+[11/21/26 12:42:11] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[11/21/26 12:42:13] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/ "HTTP/1.1 200 OK"                 
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             81436.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             81425.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             81415.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             81405.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             81355.txt "HTTP/1.1 200 OK"                        
+[11/21/26 12:42:14] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             81345.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             81335.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             81325.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             81315.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             81305.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             81255.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             81245.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             81235.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             81225.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             81215.txt "HTTP/1.1 200 OK"                        
+[11/21/26 12:42:15] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             81205.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             81155.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             81145.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             81135.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             81125.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             81115.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             81105.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             81055.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             81045.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             81035.txt "HTTP/1.1 200 OK"                        
+[11/21/26 12:42:16] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             81025.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             81015.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             81005.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80955.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80944.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80934.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80924.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80914.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80904.txt "HTTP/1.1 200 OK"                        
+[11/21/26 12:42:17] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80854.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80844.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80834.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80824.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80814.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80804.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80413.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80403.txt "HTTP/1.1 200 OK"                        
+[11/21/26 12:42:18] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80353.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80343.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80333.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80323.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80313.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80303.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80253.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80243.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80233.txt "HTTP/1.1 200 OK"                        
+[11/21/26 12:42:19] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80223.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80213.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80203.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80153.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80143.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80133.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80123.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80118.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80108.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80058.txt "HTTP/1.1 200 OK"                        
+[11/21/26 12:42:20] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80048.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80038.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80028.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80018.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KWBC.2022092                
+                             80008.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             82107.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             82057.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             82047.txt "HTTP/1.1 200 OK"                        
+[11/21/26 12:42:21] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             82037.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             82027.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             82017.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             82007.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81957.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81947.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81937.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81927.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81917.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81907.txt "HTTP/1.1 200 OK"                        
+[11/21/26 12:42:22] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81857.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81847.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81837.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81827.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81817.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81807.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81757.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81747.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81737.txt "HTTP/1.1 200 OK"                        
+[11/21/26 12:42:23] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81727.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81717.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81707.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81657.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81647.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81637.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81627.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81617.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81607.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81557.txt "HTTP/1.1 200 OK"                        
+[11/21/26 12:42:24] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81547.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81537.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81527.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81517.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81507.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81459.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81449.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81439.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81429.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81419.txt "HTTP/1.1 200 OK"                        
+[11/21/26 12:42:25] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81409.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81359.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81353.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81350.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81343.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81339.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81333.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81329.txt "HTTP/1.1 200 OK"                        
+[11/21/26 12:42:26] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81323.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81319.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81313.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81309.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81303.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81300.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81254.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81249.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81245.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81241.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81233.txt "HTTP/1.1 200 OK"                        
+[11/21/26 12:42:27] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81229.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81223.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81219.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81215.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81209.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81203.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81159.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81154.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81149.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81143.txt "HTTP/1.1 200 OK"                        
+[11/21/26 12:42:28] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81139.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81133.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81129.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81123.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81119.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81113.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81109.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81103.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81059.txt "HTTP/1.1 200 OK"                        
+[11/21/26 12:42:29] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81053.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81049.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81043.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81039.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81035.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81030.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81023.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81020.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81014.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81009.txt "HTTP/1.1 200 OK"                        
+[11/21/26 12:42:30] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81003.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             81001.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80953.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80949.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80944.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80940.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80933.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80930.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80924.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80923.txt "HTTP/1.1 200 OK"                        
+[11/21/26 12:42:31] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80913.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80910.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80903.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80900.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80853.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80849.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80843.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80839.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80833.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80829.txt "HTTP/1.1 200 OK"                        
+[11/21/26 12:42:32] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80824.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80819.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80814.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80809.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80803.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80759.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80753.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80750.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80743.txt "HTTP/1.1 200 OK"                        
+[11/21/26 12:42:33] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80739.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80733.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80729.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80723.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80713.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80703.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80654.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80643.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80633.txt "HTTP/1.1 200 OK"                        
+[11/21/26 12:42:34] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80623.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80613.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80559.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80549.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80539.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80529.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80519.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80509.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80500.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80450.txt "HTTP/1.1 200 OK"                        
+[11/21/26 12:42:35] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80439.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80429.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80419.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80409.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80401.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80349.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80339.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80329.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80319.txt "HTTP/1.1 200 OK"                        
+[11/21/26 12:42:36] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80309.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80259.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80249.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80239.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80229.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80219.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80209.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80159.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80149.txt "HTTP/1.1 200 OK"                        
+[11/21/26 12:42:37] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80139.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80129.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80119.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80109.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80059.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80049.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80039.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80029.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80019.txt "HTTP/1.1 200 OK"                        
+[11/21/26 12:42:38] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             80009.txt "HTTP/1.1 200 OK"                        
+[11/21/26 12:42:41] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/ "HTTP/1.1 200 OK"                 
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             92355.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             92345.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             92335.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             92325.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             92315.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             92305.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             92255.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             92245.txt "HTTP/1.1 200 OK"                        
+[11/21/26 12:42:42] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             92235.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             92225.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             92215.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             92205.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             92155.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             92145.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             92139.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             92135.txt "HTTP/1.1 200 OK"                        
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.nhc.noaa.gov/archive/re                
+                             con/2022/AHONT1/AHONT1-KNHC.2022092                
+                             92115.txt "HTTP/1.1 200 OK"                        
+[11/21/26 12:42:44] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[11/21/26 12:42:45] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.aoml.noaa.gov/ftp/hrd/d                
+                             ata/sfmr/2022/ian/ "HTTP/1.1 403                   
+                             Forbidden"                                         
+[11/21/26 12:42:48] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://ftp.nhc.noaa.gov/atcf/btk/b                
+                             al092022.dat "HTTP/1.1 404 Not                     
+                             Found"                                             
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://ftp.nhc.noaa.gov/atcf/archi                
+                             ve/2022/bal092022.dat.gz "HTTP/1.1                 
+                             200 OK"                                            
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.aoml.noaa.gov/ftp/hrd/d                
+                             ata/sfmr/2022/ian/NOAA_SFMR20220928                
+                             H1.nc "HTTP/1.1 403 Forbidden"                     

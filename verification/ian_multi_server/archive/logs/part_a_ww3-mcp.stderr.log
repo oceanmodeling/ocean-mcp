@@ -1,0 +1,9 @@
+[11/21/26 12:42:09] INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   
+[11/21/26 12:42:55] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/view_text                
+                             _file.php?filename=42097h2022.txt.g                
+                             z&dir=data%2Fhistorical%2Fstdmet%2F                
+                              "HTTP/1.1 200 OK"                                 
