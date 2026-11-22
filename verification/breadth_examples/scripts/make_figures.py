@@ -24,7 +24,6 @@ import matplotlib.dates as mdates  # noqa: E402
 import matplotlib.pyplot as plt  # noqa: E402
 import numpy as np  # noqa: E402
 from matplotlib.collections import PathCollection, QuadMesh  # noqa: E402
-from matplotlib.colors import LinearSegmentedColormap  # noqa: E402
 from matplotlib.lines import Line2D  # noqa: E402
 
 PACKAGE = Path(__file__).resolve().parents[1]
@@ -35,9 +34,9 @@ MUTED, GRID = "#52514e", "#e4e3df"
 MM = 1 / 25.4
 PDF_META = {"CreationDate": None, "ModDate": None}
 PNG_META = {"Software": None}
-TEMP = LinearSegmentedColormap.from_list(
-    "temp", ["#08306b", BLUE, "#cfe0f5", "#fbe1d3", ORANGE, "#5a2108"]
-)
+# AMENDMENTS.md AM6: sequential, perceptually uniform (was a diverging blue-white-orange ramp)
+TEMP = matplotlib.colormaps["viridis"]
+SEABED = "#d9d8d4"  # light grey where the model has no values (below the model sea bed)
 
 
 def style() -> None:
@@ -175,6 +174,7 @@ def fig_b2() -> dict:
     ax.xaxis.set_major_locator(mdates.HourLocator(byhour=[0, 6, 12, 18]))
     ax.xaxis.set_major_formatter(mdates.DateFormatter("%d %b\n%H:%M"))
     ax.set_xlim(tt[0] - timedelta(minutes=30), tt[-1] + timedelta(minutes=30))
+    ax.set_xlabel("Time (UTC), 2026")  # AMENDMENTS.md AM7
     tidy(ax)
     ax.legend(
         loc="lower left",
@@ -248,6 +248,7 @@ def fig_b4() -> dict:
     ax.plot(
         x, np.zeros_like(x) - 12, ls="none", marker="v", ms=3, color=INK, clip_on=False
     )
+    ax.set_facecolor(SEABED)  # AM6: cells below the model sea bed show as light grey
     ax.set_ylim(1000, 0)
     ax.set_xlim(xe[0], xe[-1])
     ax.set_ylabel("Depth (m)")
@@ -309,6 +310,7 @@ def fig_b1() -> dict | None:
     ax.set_ylabel("Hs (m)")
     ax.xaxis.set_major_locator(mdates.HourLocator(byhour=[0, 12]))
     ax.xaxis.set_major_formatter(mdates.DateFormatter("%d %b\n%H:%M"))
+    ax.set_xlabel("Time (UTC), 2026")
     tidy(ax)
     ax.legend(
         loc="lower left", bbox_to_anchor=(-0.02, 1.0), frameon=False, borderaxespad=0.1

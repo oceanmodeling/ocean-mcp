@@ -3,14 +3,14 @@
   "value": "AF301",
   "unit": "call sign",
   "kind": "computed",
-  "computed": "scripts/analyze_part_a.py:194",
+  "computed": "scripts/analyze_part_a.py:193",
   "how": "rule 6.2"
  },
  "aircraft_sfmr_within_150km": {
   "value": 506,
   "unit": "records",
   "kind": "computed",
-  "computed": "scripts/analyze_part_a.py:194",
+  "computed": "scripts/analyze_part_a.py:193",
   "how": "count, rule 6.2"
  },
  "hdob_records_28sep_all_aircraft": {
@@ -33,35 +33,35 @@
   "value": 70,
   "unit": "records",
   "kind": "computed",
-  "computed": "scripts/analyze_part_a.py:232",
+  "computed": "scripts/analyze_part_a.py:231",
   "how": "flag decoding, DESIGN.md 7"
  },
  "qc_fl_wind_removed_total": {
   "value": 33,
   "unit": "records",
   "kind": "computed",
-  "computed": "scripts/analyze_part_a.py:232",
+  "computed": "scripts/analyze_part_a.py:231",
   "how": "flag decoding, DESIGN.md 7"
  },
  "qc_positions_removed_total": {
   "value": 7,
   "unit": "records",
   "kind": "computed",
-  "computed": "scripts/analyze_part_a.py:232",
+  "computed": "scripts/analyze_part_a.py:231",
   "how": "flag decoding, DESIGN.md 7"
  },
  "qc_missing_sfmr_null": {
   "value": 207,
   "unit": "records",
   "kind": "computed",
-  "computed": "scripts/analyze_part_a.py:232",
+  "computed": "scripts/analyze_part_a.py:231",
   "how": "flag decoding, DESIGN.md 7"
  },
  "qc_missing_fl_wind_null": {
   "value": 0,
   "unit": "records",
   "kind": "computed",
-  "computed": "scripts/analyze_part_a.py:232",
+  "computed": "scripts/analyze_part_a.py:231",
   "how": "flag decoding, DESIGN.md 7"
  },
  "aircraft_first_record": {
@@ -116,18 +116,32 @@
   "value": 1.92,
   "unit": "km",
   "kind": "computed",
-  "computed": "scripts/analyze_part_a.py:353",
+  "computed": "scripts/analyze_part_a.py:364",
   "how": "haversine to interpolated centre"
  },
- "best_track_vmax_levels_kt": {
-  "value": [
-   120,
-   140
-  ],
-  "unit": "kt",
-  "kind": "computed",
-  "computed": "scripts/analyze_part_a.py:360",
-  "how": "nearest best-track record in time"
+ "best_track_0600_max_wind_kt": {
+  "value": 120,
+  "unit": "kt (1-min)",
+  "kind": "returned",
+  "tool": "nhc_get_best_track",
+  "call": "call 1",
+  "archive": "verification/ian_cross_server/session_record.json"
+ },
+ "best_track_1200_max_wind_kt": {
+  "value": 140,
+  "unit": "kt (1-min)",
+  "kind": "returned",
+  "tool": "nhc_get_best_track",
+  "call": "call 1",
+  "archive": "verification/ian_cross_server/session_record.json"
+ },
+ "best_track_1800_max_wind_kt": {
+  "value": 135,
+  "unit": "kt (1-min)",
+  "kind": "returned",
+  "tool": "nhc_get_best_track",
+  "call": "call 1",
+  "archive": "verification/ian_cross_server/session_record.json"
  },
  "buoy_lat": {
   "value": 25.704,
@@ -157,35 +171,35 @@
   "value": 144,
   "unit": "rows",
   "kind": "computed",
-  "computed": "scripts/analyze_part_a.py:452",
+  "computed": "scripts/analyze_part_a.py:465",
   "how": "rows with timestamp in window"
  },
  "buoy_wvht_null_in_window": {
   "value": 0,
   "unit": "rows",
   "kind": "computed",
-  "computed": "scripts/analyze_part_a.py:452",
+  "computed": "scripts/analyze_part_a.py:465",
   "how": "null WVHT (tool maps 9-codes to null)"
  },
  "buoy_median_interval_min": {
   "value": 30.0,
   "unit": "min",
   "kind": "computed",
-  "computed": "scripts/analyze_part_a.py:452",
+  "computed": "scripts/analyze_part_a.py:465",
   "how": "median spacing of window rows"
  },
  "buoy_gaps": {
   "value": 0,
   "unit": "gaps",
   "kind": "computed",
-  "computed": "scripts/analyze_part_a.py:452",
+  "computed": "scripts/analyze_part_a.py:465",
   "how": "spacing > 1.5 x median"
  },
  "buoy_implied_missing_slots": {
   "value": 0,
   "unit": "slots",
   "kind": "computed",
-  "computed": "scripts/analyze_part_a.py:452",
+  "computed": "scripts/analyze_part_a.py:465",
   "how": "sum(round(gap/median) - 1)"
  },
  "buoy_wvht_max_m": {
@@ -208,21 +222,21 @@
   "value": "2022-09-27 00:26",
   "unit": "UTC",
   "kind": "computed",
-  "computed": "scripts/analyze_part_a.py:493",
+  "computed": "scripts/analyze_part_a.py:506",
   "how": "first row in window"
  },
  "fort_myers_residual_max_m": {
   "value": "2.209",
   "unit": "m",
   "kind": "computed",
-  "computed": "scripts/analyze_part_a.py:519",
+  "computed": "scripts/analyze_part_a.py:532",
   "how": "max(observed - predicted), integer mm"
  },
  "st_petersburg_residual_min_m": {
   "value": "-1.755",
   "unit": "m",
   "kind": "computed",
-  "computed": "scripts/analyze_part_a.py:531",
+  "computed": "scripts/analyze_part_a.py:544",
   "how": "min(observed - predicted), integer mm"
  },
  "fort_myers_residual_max_time": {
@@ -232,14 +246,14 @@
   ],
   "unit": "UTC",
   "kind": "computed",
-  "computed": "scripts/analyze_part_a.py:538",
+  "computed": "scripts/analyze_part_a.py:551",
   "how": "times of the maximum"
  },
  "st_petersburg_residual_min_time": {
   "value": "2022-09-28 23:00",
   "unit": "UTC",
   "kind": "computed",
-  "computed": "scripts/analyze_part_a.py:545",
+  "computed": "scripts/analyze_part_a.py:558",
   "how": "time of the minimum"
  },
  "fort_myers_observed_max_m": {

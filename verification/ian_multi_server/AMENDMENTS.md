@@ -55,3 +55,58 @@ Made after the recording, while drawing the figures. `DESIGN.md` §8 did not fix
 **Line breaks.** In panel (b), the lines break at a missing or QC-removed value, and where consecutive records are more than 60 s apart. HDOB records are 30 s apart.
 
 **Panel (d) legend.** Colour marks the station and line style marks observed or residual, so the legend fits within the panel width.
+
+## A6. Panel (b) best-track line (2026-11-22, after the values were seen)
+
+**Change.** The best-track reference was a step line taking, for each HDOB record, the best-track record nearest in time. It is now:
+- markers at the 6-hourly best-track times inside the axis: 06:00 UTC 120 kt and 12:00 UTC 140 kt;
+- joined by a thin line interpolated linearly in time;
+- the line continues toward the 18:00 UTC value (135 kt) and is clipped at the axis edge.
+
+The three values are returned by `nhc_get_best_track` (reused call 1). The legend reads "Best track, 1-min max wind (6-hourly, linear between)".
+
+**Reason.** The step at 09:00 UTC was an artifact of nearest-record matching, not a feature of the best track.
+
+**Files changed.**
+- `results/panel_b.json` no longer carries the per-record nearest-record fields. It now holds the three bracketing 6-hourly records and the drawing rule.
+- In `results/part_a_numbers.json`, the computed entry `best_track_vmax_levels_kt` is replaced by the three returned values.
+- No other number changed.
+
+## A7. Panel (a) coastline, markers and labels (2026-11-22, layout; adds one non-MCP input)
+
+**Coastline.** Panel (a) of both figures now draws the Natural Earth 1:50m coastline (public domain).
+- It is archived in `archive/non_mcp/natural_earth/` with its source URL and SHA-256 (`SOURCE.md`).
+- It is extracted by `scripts/coastline.py` into `results/coastline_subset.json`.
+- It is named in the key, the caption and the report.
+- It is the package's only input that does not come from an MCP tool.
+
+**Key and colorbar.** These moved from inside the map to below it, because the coastline now fills the map's south-west corner.
+
+**Markers and labels.**
+- The landfall star went from 8 to 5.5 pt and the tide-gauge triangles from 5 to 4.5 pt. The star and the Fort Myers triangle are 33 km apart, about 1.9 mm on the map; at the old sizes they overlapped.
+- The Fort Myers and St. Petersburg labels moved further from their markers.
+- New checks report that the star and the Fort Myers triangle do not overlap, and that no label overlaps a marker.
+
+**Fallback page.** It is 125 mm tall instead of 110 mm, to hold the key below the map.
+
+## A8. Panel labels and spacing (2026-11-22, layout)
+
+**Labels.** "a"–"d" became "(a)"–"(d)", bold, 10 pt, top left.
+
+**Spacing.**
+- Panels (b), (c) and (d) are 24.5, 22.5 and 25 mm tall; they were 27, 24 and 27 mm.
+- The legend of (d) now clears the axis and tick marks of (c). A new check found no legend touching another panel's axes, ticks included.
+
+**Panel (b) legend.** It is a single column of three entries.
+
+**Checks.** The figure checks also report:
+- overlapping text pairs;
+- the map-marker checks;
+- legend overlap counting only points that lie inside the axes. Coastline vertices outside the map are clipped and never drawn.
+
+## A9. Caption and report text (2026-11-22; no number change)
+
+The caption and `REPORT.md` now say:
+- **Buoy position.** It is the position `ndbc_get_station` returns today, not a 2022 position. The 86.1 km closest approach depends on it.
+- **Peak flight-level wind.** AF301's 142 kt (30-s mean) is from one Air Force aircraft. The NHC report's 160 kt came from a NOAA aircraft at 750 mb; that statement was supplied by the author and is not checked against the report PDF here.
+- **Averaging periods.** The best-track wind is a 1-minute value, the SFMR wind a 10-second maximum and the flight-level wind a 30-second mean.

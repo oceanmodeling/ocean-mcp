@@ -26,7 +26,13 @@
   ],
   "legend_vs_panel_letter": [],
   "legend_outside_page": [],
+  "legend_vs_other_axes": [],
   "text_outside_page": [],
+  "overlapping_text_pairs": [],
+  "map_markers": {
+   "landfall_star_overlaps_fort_myers_triangle": false,
+   "labels_over_markers": []
+  },
   "landfall_line_drawn": {
    "b": false,
    "c": true,
@@ -52,7 +58,13 @@
   ],
   "legend_vs_panel_letter": [],
   "legend_outside_page": [],
+  "legend_vs_other_axes": [],
   "text_outside_page": [],
+  "overlapping_text_pairs": [],
+  "map_markers": {
+   "landfall_star_overlaps_fort_myers_triangle": false,
+   "labels_over_markers": []
+  },
   "landfall_line_drawn": {
    "b": true
   }

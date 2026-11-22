@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import json
 import math
+import re
 from datetime import datetime, timedelta
 from pathlib import Path
 
@@ -33,6 +34,7 @@ FIG = PACKAGE / "figures"
 
 BLUE, ORANGE, INK = "#2a78d6", "#eb6834", "#0b0b0b"
 MUTED, GRID = "#52514e", "#e4e3df"
+COAST = "#9c9a94"  # coastline, light grey (non-MCP context)
 KT_TO_MS = 1852 / 3600
 LANDFALL = datetime(2022, 9, 28, 19, 5)
 MM = 1 / 25.4
@@ -129,6 +131,11 @@ def panel_map(ax, a, fallback_sfmr=None):
     lats = [p["lat"] for p in bt]
     f = a["flight_track"]["points"]
     ac = a["flight_track"]["aircraft"]
+    # Natural Earth 1:50m coastline, the one non-MCP input (AMENDMENTS.md A7)
+    for line in load("coastline_subset.json")["polylines"]:
+        ax.plot(
+            [q[0] for q in line], [q[1] for q in line], color=COAST, lw=0.5, zorder=1
+        )
     ax.plot(lons, lats, color=MUTED, lw=0.9, zorder=2)
     if fallback_sfmr is None:
         sc = ax.scatter(
@@ -171,13 +178,16 @@ def panel_map(ax, a, fallback_sfmr=None):
             zorder=4,
         )
         cbar_label = f"{ac} SFMR\nsurface wind (kt)"
+    markers = {}
     for sid, g in a["tide_gauges"].items():
-        ax.plot(g["lon"], g["lat"], marker="^", ms=5, color=INK, ls="none", zorder=6)
+        markers[sid] = ax.plot(
+            g["lon"], g["lat"], marker="^", ms=4.5, color=INK, ls="none", zorder=6
+        )[0]
     gm, gs_ = a["tide_gauges"]["8725520"], a["tide_gauges"]["8726520"]
     ax.annotate(
         "Fort Myers",
         (gm["lon"], gm["lat"]),
-        xytext=(gm["lon"] + 0.35, gm["lat"] - 0.55),
+        xytext=(gm["lon"] + 0.55, gm["lat"] - 0.75),
         fontsize=8,
         ha="left",
         va="top",
@@ -187,7 +197,7 @@ def panel_map(ax, a, fallback_sfmr=None):
     ax.annotate(
         "St. Petersburg",
         (gs_["lon"], gs_["lat"]),
-        xytext=(gs_["lon"] + 0.35, gs_["lat"] + 0.55),
+        xytext=(gs_["lon"] + 0.45, gs_["lat"] + 0.65),
         fontsize=8,
         ha="left",
         va="bottom",
@@ -195,7 +205,7 @@ def panel_map(ax, a, fallback_sfmr=None):
         zorder=7,
     )
     b = a["buoy"]
-    ax.plot(
+    markers["buoy"] = ax.plot(
         b["lon"],
         b["lat"],
         marker="s",
@@ -205,7 +215,7 @@ def panel_map(ax, a, fallback_sfmr=None):
         mew=1.0,
         ls="none",
         zorder=6,
-    )
+    )[0]
     ax.annotate(
         b["id"],
         (b["lon"], b["lat"]),
@@ -216,17 +226,18 @@ def panel_map(ax, a, fallback_sfmr=None):
         zorder=7,
     )
     lf = a["landfall"]
-    ax.plot(
+    markers["landfall"] = ax.plot(
         lf["lon"],
         lf["lat"],
         marker="*",
-        ms=8,
+        ms=5.5,
         mfc=ORANGE,
         mec=INK,
-        mew=0.6,
+        mew=0.5,
         ls="none",
         zorder=7,
-    )
+    )[0]
+    ax.wp9_markers = markers  # for the overlap checks
     ax.set_xlim(*MAP_X)
     ax.set_ylim(*MAP_Y)
     ax.set_aspect(1 / math.cos(math.radians(23.5)))
@@ -267,29 +278,47 @@ def panel_map(ax, a, fallback_sfmr=None):
             Line2D([], [], color=ORANGE, lw=0, marker="o", ms=3, label=f"{ac} SFMR"),
         ]
     handles += [
-        Line2D([], [], marker="^", color=INK, ls="none", ms=5, label="Tide gauge"),
+        Line2D([], [], marker="^", color=INK, ls="none", ms=4.5, label="Tide gauge"),
         Line2D(
             [], [], marker="s", mfc="white", mec=INK, ls="none", ms=4.5, label="Buoy"
         ),
         Line2D(
-            [], [], marker="*", mfc=ORANGE, mec=INK, ls="none", ms=7, label="Landfall"
+            [], [], marker="*", mfc=ORANGE, mec=INK, ls="none", ms=6, label="Landfall"
         ),
+        Line2D([], [], color=COAST, lw=0.5, label="Coastline (Natural Earth)"),
     ]
+    return sc, handles, cbar_label
+
+
+def map_key(fig, ax, sc, handles, cbar_label, cbar_mm) -> None:
+    """Key (two columns) and horizontal colorbar below the map, outside it (A7)."""
+    ax.set_anchor("N")
     ax.legend(
         handles=handles,
-        loc="lower left",
-        bbox_to_anchor=(0.0, 0.0),
+        loc="upper left",
+        bbox_to_anchor=(-0.12, -0.075),
+        ncol=2,
         frameon=False,
-        borderaxespad=0.3,
-        handlelength=1.5,
-        labelspacing=0.35,
+        borderaxespad=0.0,
+        handlelength=1.2,
+        handletextpad=0.5,
+        columnspacing=0.8,
+        labelspacing=0.3,
     )
-    cax = ax.inset_axes([0.05, 0.30, 0.30, 0.022])
+    x, y, w = cbar_mm
+    cax = axes_mm(fig, x, y, w, 2.2, "colorbar")
     cb = plt.colorbar(sc, cax=cax, orientation="horizontal")
     cb.set_ticks([20, 80, 140])
     cb.ax.tick_params(labelsize=8, length=2)
-    cax.set_title(cbar_label, fontsize=8, pad=2, loc="left")
-    return sc
+    W, H = fig.get_size_inches() / MM
+    fig.text(
+        (x + w + 2) / W,
+        (y + 1.1) / H,
+        cbar_label,
+        fontsize=8,
+        va="center",
+        ha="left",
+    )
 
 
 def panel_b(ax, b):
@@ -300,13 +329,17 @@ def panel_b(ax, b):
     ax.plot(x, y, color=BLUE, lw=0.8, label="SFMR surface (10-s max)", zorder=4)
     x, y = with_breaks(tt, [r["fl_wind_kt"] for r in rows], gap)
     ax.plot(x, y, color=ORANGE, lw=0.8, label="Flight level (30-s mean)", zorder=3)
-    ax.step(
-        tt,
-        [r["best_track_vmax_kt"] for r in rows],
-        where="mid",
+    # AMENDMENTS.md A6: the 6-hourly best-track values joined linearly in time (was a
+    # nearest-record step); the line runs on toward the next record and is clipped at the edge.
+    bt = b["best_track"]
+    ax.plot(
+        [t(r["time"]) for r in bt],
+        [r["max_wind_kt"] for r in bt],
         color=INK,
-        lw=1.1,
-        label="Best-track max wind",
+        lw=0.8,
+        marker="o",
+        ms=3.5,
+        label="Best track, 1-min max wind (6-hourly, linear between)",
         zorder=5,
     )
     ax.set_ylabel("Wind (kt)")
@@ -454,6 +487,10 @@ def checks(fig) -> dict:
                     )
                     xy = xy[~np.isnan(xy).any(axis=1)]
                     disp = ax.transData.transform(xy)
+                    axbox = ax.get_window_extent()
+                    disp = np.array([q for q in disp if axbox.contains(*q)]).reshape(
+                        -1, 2
+                    )
                     n += (
                         int(box.contains_points(disp).sum())
                         if hasattr(box, "contains_points")
@@ -472,7 +509,7 @@ def checks(fig) -> dict:
     letters = [
         tx
         for tx in fig.findobj(matplotlib.text.Text)
-        if tx.get_fontweight() == "bold" and len(tx.get_text()) == 1
+        if tx.get_fontweight() == "bold" and re.fullmatch(r"\(\w\)", tx.get_text())
     ]
     clashes, outside = [], []
     for ax in fig.axes:
@@ -498,13 +535,69 @@ def checks(fig) -> dict:
             and fig_box.contains(*tx.get_window_extent().p1)
         )
     ]
+    # legend against the other panels' axes, including their tick marks (AMENDMENTS.md A8)
+    renderer = fig.canvas.get_renderer()
+    legend_vs_axes = []
+    main_axes = [ax for ax in fig.axes if ax.get_label() in ("a", "b", "c", "d")]
+    for ax in main_axes:
+        leg = ax.get_legend()
+        if leg is None:
+            continue
+        box = leg.get_window_extent()
+        for other in main_axes:
+            if other is ax:
+                continue
+            ob = other.get_window_extent()
+            pad = 3.5 * fig.dpi / 72  # major tick length, pt -> px
+            if (
+                box.x0 < ob.x1 + pad
+                and box.x1 > ob.x0 - pad
+                and box.y0 < ob.y1 + pad
+                and box.y1 > ob.y0 - pad
+            ):
+                legend_vs_axes.append((ax.get_label(), other.get_label()))
+    # any two drawn texts overlapping (texts of one legend excluded among themselves)
+    texts = drawn_texts(fig)
+    owner = {}
+    for ax in fig.axes:
+        leg = ax.get_legend()
+        if leg is not None:
+            for tx in leg.get_texts():
+                owner[id(tx)] = id(leg)
+    text_pairs = []
+    for i, t1 in enumerate(texts):
+        b1 = t1.get_window_extent(renderer)
+        for t2 in texts[i + 1 :]:
+            if owner.get(id(t1)) is not None and owner.get(id(t1)) == owner.get(id(t2)):
+                continue
+            if b1.overlaps(t2.get_window_extent(renderer)):
+                text_pairs.append((t1.get_text(), t2.get_text()))
+    # map markers: landfall star against the Fort Myers triangle, and labels against markers
+    marker_checks = {}
+    for ax in fig.axes:
+        mk = getattr(ax, "wp9_markers", None)
+        if not mk:
+            continue
+        boxes = {k: v.get_window_extent(renderer) for k, v in mk.items()}
+        marker_checks["landfall_star_overlaps_fort_myers_triangle"] = bool(
+            boxes["landfall"].overlaps(boxes["8725520"])
+        )
+        marker_checks["labels_over_markers"] = [
+            (tx.get_text(), k)
+            for tx in ax.texts
+            for k, bb in boxes.items()
+            if matplotlib.text.Text.get_window_extent(tx, renderer).overlaps(bb)
+        ]
     return {
         "min_font_pt": min(sizes),
         "font_sizes_pt": sorted(set(sizes)),
         "legend_overlap": overlaps,
         "legend_vs_panel_letter": clashes,
         "legend_outside_page": outside,
+        "legend_vs_other_axes": legend_vs_axes,
         "text_outside_page": text_outside,
+        "overlapping_text_pairs": text_pairs,
+        "map_markers": marker_checks,
     }
 
 
@@ -521,21 +614,22 @@ def main() -> None:
 
     # ---- main figure, 190 mm x 130 mm
     fig = plt.figure(figsize=(190 * MM, 130 * MM))
-    ax_a = axes_mm(fig, 13, 11, 60, 116, "a")
-    ax_d = axes_mm(fig, 91, 13, 86, 27, "d")
-    ax_c = axes_mm(fig, 91, 49.5, 86, 24, "c")
-    ax_b = axes_mm(fig, 91, 89, 86, 27, "b")
+    ax_a = axes_mm(fig, 13, 11, 60, 112, "a")
+    ax_d = axes_mm(fig, 91, 13, 86, 25, "d")
+    ax_c = axes_mm(fig, 91, 50.5, 86, 22.5, "c")
+    ax_b = axes_mm(fig, 91, 90, 86, 24.5, "b")
     ax_c.sharex(ax_d)
-    panel_map(ax_a, a)
+    sc, handles, cbl = panel_map(ax_a, a)
+    map_key(fig, ax_a, sc, handles, cbl, (14, 5.0, 26))
     lf_b = panel_b(ax_b, b)
     ax_b.legend(
         loc="lower right",
         bbox_to_anchor=(1.0, 1.0),
-        ncol=2,
+        ncol=1,
         frameon=False,
         borderaxespad=0.1,
         handlelength=1.5,
-        columnspacing=0.9,
+        labelspacing=0.25,
     )
     panel_c(ax_c, c)
     d_handles = panel_d(ax_d, d)
@@ -557,20 +651,21 @@ def main() -> None:
         columnspacing=0.9,
     )
     ax_d.set_xlabel("Time (UTC), 2022", labelpad=1)
-    label(ax_a, "a", -0.17)
+    label(ax_a, "(a)", -0.17)
     for ax in (ax_b, ax_c, ax_d):
-        label(ax, ax.get_label(), -0.15)
+        label(ax, f"({ax.get_label()})", -0.15)
     report["main"] = checks(fig)
     report["main"]["landfall_line_drawn"] = {"b": lf_b, "c": lf_c, "d": lf_d}
     save(fig, "ian_4panel_190mm")
     plt.close(fig)
 
-    # ---- fallback, 190 mm x 110 mm: (a) track and reconnaissance winds, (b) water levels
+    # ---- fallback, 190 mm x 125 mm: (a) track and reconnaissance winds, (b) water levels
     pts = [(lat, lon, r["sfmr_kt"]) for r, (lat, lon) in _flight_sfmr(a, b)]
-    fig = plt.figure(figsize=(190 * MM, 110 * MM))
-    ax_a = axes_mm(fig, 14, 9, 58, 99, "a")
-    ax_w = axes_mm(fig, 90, 15, 92, 78, "b")
-    panel_map(ax_a, a, fallback_sfmr=pts)
+    fig = plt.figure(figsize=(190 * MM, 125 * MM))
+    ax_a = axes_mm(fig, 14, 31, 58, 88, "a")
+    ax_w = axes_mm(fig, 90, 15, 92, 92, "b")
+    sc, handles, cbl = panel_map(ax_a, a, fallback_sfmr=pts)
+    map_key(fig, ax_a, sc, handles, cbl, (15, 5.5, 26))
     w_handles = panel_d(ax_w, d)
     time_axis(ax_w)
     lf_fb = landfall_line(ax_w)
@@ -585,8 +680,8 @@ def main() -> None:
         columnspacing=0.9,
     )
     ax_w.set_xlabel("Time (UTC), 2022", labelpad=1)
-    label(ax_a, "a", -0.19)
-    label(ax_w, "b", -0.10)
+    label(ax_a, "(a)", -0.19)
+    label(ax_w, "(b)", -0.10)
     report["fallback"] = checks(fig)
     report["fallback"]["landfall_line_drawn"] = {"b": lf_fb}
     save(fig, "ian_2panel_fallback_190mm")

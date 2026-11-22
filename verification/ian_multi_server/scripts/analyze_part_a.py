@@ -40,7 +40,6 @@ from common import (  # noqa: E402
     dump,
     haversine_km,
     ian_call_text,
-    nearest_record,
     parse_utc,
 )
 
@@ -297,7 +296,6 @@ def main() -> None:
     rows = []
     for o in sel:
         q = decode_ff(o["qc_flags"])
-        bt = nearest_record(track, o["t"])
         c = centre_at(track, o["t"])
         d = (
             None
@@ -309,8 +307,6 @@ def main() -> None:
                 "time": o["t"].strftime("%Y-%m-%d %H:%M:%S"),
                 "sfmr_kt": None if q["sfmr"] else o["sfmr_sfc_wind_kt"],
                 "fl_wind_kt": None if q["fl_wind"] else o["fl_wind_speed_kt"],
-                "best_track_vmax_kt": bt["max_wind"],
-                "best_track_record": bt["datetime"],
                 "distance_to_centre_km": d,
             }
         )
@@ -325,12 +321,27 @@ def main() -> None:
         for r in rows
         if r["distance_to_centre_km"] is not None
     ]
+    # Best track for reference (AMENDMENTS.md A6): the 6-hourly records (00, 06, 12, 18 UTC)
+    # from the last one at or before the first record to the first one at or after the last.
+    six = [p for p in track if p["datetime"][9:13] in ("0000", "0600", "1200", "1800")]
+    i0 = max(i for i, p in enumerate(six) if p["time"] <= span[0])
+    i1 = min(i for i, p in enumerate(six) if p["time"] >= span[1])
+    bt_ref = [
+        {
+            "time": p["time"].strftime("%Y-%m-%d %H:%M"),
+            "max_wind_kt": p["max_wind"],
+            "record": p["datetime"],
+        }
+        for p in six[i0 : i1 + 1]
+    ]
     panel_b = {
         "aircraft": ac,
         "unit": "kt",
         "first_time": span[0].strftime("%Y-%m-%d %H:%M:%S"),
         "last_time": span[1].strftime("%Y-%m-%d %H:%M:%S"),
         "landfall_in_range": landfall_in_b,
+        "best_track": bt_ref,
+        "best_track_rule": "6-hourly best-track records (1-min maximum sustained wind) bracketing the flight; drawn as markers joined by straight lines in time, clipped at the axis edge",
         "rows": rows,
     }
     dump(PACKAGE / "results" / "panel_b.json", panel_b)
@@ -353,13 +364,15 @@ def main() -> None:
         at(),
         "haversine to interpolated centre",
     )
-    computed(
-        "best_track_vmax_levels_kt",
-        sorted({r["best_track_vmax_kt"] for r in rows}),
-        "kt",
-        at(),
-        "nearest best-track record in time",
-    )
+    for r in bt_ref:
+        returned(
+            f"best_track_{r['time'][11:13]}{r['time'][14:16]}_max_wind_kt",
+            r["max_wind_kt"],
+            "kt (1-min)",
+            "nhc_get_best_track",
+            "call 1",
+            IAN,
+        )
 
     # ---- panel (a)
     bt_shown = [
