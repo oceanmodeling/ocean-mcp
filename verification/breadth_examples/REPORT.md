@@ -1,6 +1,6 @@
 # Three short examples and a fourth, for servers the paper does not yet show: report
 
-Run date: 2026-11-21 (UTC). Branch `docs/breadth-examples`, created from the local `origin/main` ref (575cd21) without fetching. The design was committed in `fdce9bb` before anything was recorded; the data and scripts are in `bdadd79`.
+Run date: 2026-11-21 (UTC). Branch `docs/breadth-examples`, created from the local `origin/main` ref (575cd21) without fetching. The design was committed in `fdce9bb` before anything was recorded; the data and scripts are in `bdadd79`. The B2 and B4 figures were revised on 2026-11-22 in `dffe3cb` (`AMENDMENTS.md` AM6, AM7); no result value changed.
 
 These are **scripted MCP workflows**. Tools and arguments are fixed in `DESIGN.md` and `scripts/record_session1.py`. No language model was involved. Nothing here tests a safeguard, and none of it is an evaluation.
 
@@ -96,7 +96,7 @@ All SHA-256 values match PyPI's digests, and each installed source tree is ident
 
 **Note on the datum.** This tool pairs a fixed, documented datum. `model_datum` comes from the server's model table: NAVD88 for CBOFS, mapped to the CO-OPS datum `NAVD`. The tool neither resolves the datum per model file nor declines when it cannot confirm it. The response also names no model run or cycle: the series is the THREDDS FMRC "best" aggregation.
 
-**Figure** `figures/b2_ofs_cbofs_baltimore_90mm.pdf` and `…_600dpi.png`, 90 mm × 78 mm. Smallest font 8.0 pt. The legend covers no data, and the statistics are printed below the axes.
+**Figure** `figures/b2_ofs_cbofs_baltimore_90mm.pdf` and `…_600dpi.png`, 90 mm × 78 mm. The time axis is labelled "Time (UTC), 2026" (AM7). Smallest font 8.0 pt. The legend covers no data, and the statistics are printed below the axes.
 
 **Draft caption, B2 (38 words).** CBOFS water level (ofs-mcp) against CO-OPS observations at Baltimore, 8574680, for the 24 h before the call (20–21 November 2026). Datums as the tool states them: model NAVD88 from a fixed table, observations NAVD. Statistics returned by ofs_compare_with_coops.
 
@@ -142,10 +142,12 @@ The table is `results/b3_table.md` and `.json`; there is no figure.
 **The tool did not fail**, so B4 is included.
 
 **Figure** `figures/b4_rtofs_hatteras_section_190mm.pdf` and `…_600dpi.png`, 190 mm × 80 mm, 0–1000 m.
-- Cells without interpolation; colour scale from the lowest to the highest value down to 1000 m.
+- Cells without interpolation.
+- Colour scale `viridis`, sequential and perceptually uniform, from the lowest to the highest value down to 1000 m (AM6).
+- Below the model sea bed the profiles return no values; that area is light grey (AM6).
 - Smallest font 8.0 pt. No legend; no text off the page.
 
-**Draft caption, B4 (34 words).** RTOFS (HYCOM ESPC-D-V02) temperature section across the Gulf Stream off Cape Hatteras, 0–1000 m, valid 15:00 UTC 21 November 2026, from rtofs-mcp. Newest run reported: 16 November 2026 12Z (123-h forecast). Triangles: profile positions.
+**Draft caption, B4 (38 words).** RTOFS (HYCOM ESPC-D-V02) temperature section across the Gulf Stream off Cape Hatteras, 0–1000 m, valid 15:00 UTC 21 November 2026, from rtofs-mcp. Newest run reported: 16 November 2026 12Z (123-h forecast). Grey: below model sea bed. Triangles: profiles.
 
 ## 7. Offline replay
 
@@ -165,8 +167,10 @@ The executable bit is set in Git (this drive does not keep file modes, so `bash 
 5. 11 outputs against `results/SHA256SUMS`.
 
 **Check run.**
-- Run once from a scratch copy outside the repository: `git archive` of `bdadd79` into `/mnt/d/ocean-mcp-wp9/scratch_runall_20261121T175901Z`, inside `unshare -rn`.
-- Result: **exit 0, "OK: every output matches"**. **No file differed.**
+- Run from a scratch copy outside the repository, inside `unshare -rn`:
+  - first on `bdadd79` (`/mnt/d/ocean-mcp-wp9/scratch_runall_20261121T175901Z`);
+  - again on `dffe3cb`, after the figure revisions (`/mnt/d/ocean-mcp-wp9/scratch_runall_dffe3cb`).
+- Result both times: **exit 0, "OK: every output matches"**. **No file differed.**
 - It printed that B1 session 2 is not archived yet. B3 is replayed from the archived responses only.
 
 ## 8. Defects and oddities
@@ -194,11 +198,15 @@ None was fixed. The nine defects from the feasibility step are listed in full, w
 ## 9. Amendments
 
 In order (`AMENDMENTS.md`):
-- **B1** Newest GFS-Wave cycle for B1; the FMRC series for B2; the tools have no cycle argument. Before any value was seen.
-- **B2** B1 recorded in two sessions, with client pairing. Before any value was seen.
-- **B3** B4 as a section off Cape Hatteras. Before any value was seen.
-- **B4** B3 recorded online. B3's values had been seen in the feasibility step; no argument affecting the value changed.
-- **B5** Figure details: B4 colour range and profile markers, B2 statistics placement. After the values were seen; no number changed.
+The amendments were relabelled AM1–AM7 on 2026-11-22, so that none shares a name with examples B1–B4. The old labels were B1–B5 = AM1–AM5.
+
+- **AM1** Newest GFS-Wave cycle for example B1; the FMRC series for example B2; the tools have no cycle argument. Before any value was seen.
+- **AM2** Example B1 recorded in two sessions, with client pairing. Before any value was seen.
+- **AM3** Example B4 as a section off Cape Hatteras. Before any value was seen.
+- **AM4** Example B3 recorded online. B3's values had been seen in the feasibility step; no argument affecting the value changed.
+- **AM5** Figure details: B4 colour range and profile markers, B2 statistics placement. After the values were seen; no number changed.
+- **AM6** B4 colour scale `viridis` instead of a diverging scale; light grey below the model sea bed. Layout; no number changed.
+- **AM7** B2 time axis labelled "Time (UTC), 2026" (and B1 when drawn). Layout; no number changed.
 
 ## 10. Files
 

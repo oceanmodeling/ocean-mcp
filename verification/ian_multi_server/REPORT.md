@@ -1,6 +1,6 @@
 # Hurricane Ian (2022) through five MCP servers: report
 
-Run date: 2026-11-21 (UTC). Branch `docs/breadth-examples`, created from the local `origin/main` ref (575cd21) without fetching. The design was committed in `fdce9bb` before anything was recorded; the data and scripts are in `bdadd79`.
+Run date: 2026-11-21 (UTC). Branch `docs/breadth-examples`, created from the local `origin/main` ref (575cd21) without fetching. The design was committed in `fdce9bb` before anything was recorded; the data and scripts are in `bdadd79`. The figures were revised on 2026-11-22 in `dffe3cb` (`AMENDMENTS.md` A6–A9); no result value changed except the best-track reference in panel (b).
 
 This is a **scripted multi-server MCP workflow**. The tool sequence and the arguments are fixed in `DESIGN.md` and `scripts/record_part_a.py`. No language model selected or invoked a tool. The package tests no safeguard and is not an evaluation.
 
@@ -12,18 +12,19 @@ This is a **scripted multi-server MCP workflow**. The tool sequence and the argu
 | `[C: script:line]` | The client computed it at that line. The line numbers are also stored in `results/part_a_numbers.json`. |
 | `[D: DESIGN.md §n]` | Design parameters: windows, radii, thresholds. |
 | `[E: archive/env_provenance.json]` | Versions and checksums. |
+| `[N: archive/non_mcp/natural_earth/]` | The one non-MCP input: the Natural Earth 1:50m coastline, drawn for orientation only. |
 
 The two archived Part A files are `archive/part_a_record.json.gz` (written **A** below) and the reused `verification/ian_cross_server/session_record.json` (written **I**).
 
 ## 1. Summary
 
 1. **Recording.** One client process held three MCP stdio sessions at once (recon-mcp, ww3-mcp, ndbc-mcp) and made six calls between 17:42:03 and 17:42:56 UTC. The nhc-mcp and coops-mcp responses were reused from `verification/ian_cross_server/`. They were read in place, after their SHA-256 was verified, and never written.
-2. **Aircraft.** The frozen rule selected **AF301** [C: scripts/analyze_part_a.py:194]: 506 HDOB records with an SFMR wind within 150 km of the storm centre [C: scripts/analyze_part_a.py:194]. The next was AF307 with 415. AF301 also leads after QC removal (437). No mission number is asserted: the HDOB records carry only the call sign.
+2. **Aircraft.** The frozen rule selected **AF301** [C: scripts/analyze_part_a.py:193]: 506 HDOB records with an SFMR wind within 150 km of the storm centre [C: scripts/analyze_part_a.py:193]. The next was AF307 with 415. AF301 also leads after QC removal (437). No mission number is asserted: the HDOB records carry only the call sign.
 3. **Buoy.** The amended rule selected **42097 (Pulley Ridge, FL)**, before any value was seen [C: scripts/select_buoy.py, `results/buoy_selection.json`]. Its closest approach is 86.1 km at 08:30 UTC on 28 September. Its wave heights come from **ww3-mcp** (`ww3_get_buoy_history`), because ndbc-mcp cannot return data older than 45 days. ndbc-mcp supplied only the position.
-4. **QC flags.** They were decoded from the NHC HDOB format page, which is archived and quote-checked. For AF301 they removed 70 SFMR values, 33 flight-level winds and 7 positions [C: scripts/analyze_part_a.py:232]. Another 207 SFMR values were missing, i.e. null in the response [C: scripts/analyze_part_a.py:232].
+4. **QC flags.** They were decoded from the NHC HDOB format page, which is archived and quote-checked. For AF301 they removed 70 SFMR values, 33 flight-level winds and 7 positions [C: scripts/analyze_part_a.py:231]. Another 207 SFMR values were missing, i.e. null in the response [C: scripts/analyze_part_a.py:231].
 5. **Panel (d)** reproduces the published numbers exactly:
-   - Fort Myers residual maximum +2.209 m at 22:18 UTC (tied at 22:30) [C: scripts/analyze_part_a.py:519, :538];
-   - St. Petersburg residual minimum −1.755 m at 23:00 UTC [C: scripts/analyze_part_a.py:531, :545];
+   - Fort Myers residual maximum +2.209 m at 22:18 UTC (tied at 22:30) [C: scripts/analyze_part_a.py:532, :551];
+   - St. Petersburg residual minimum −1.755 m at 23:00 UTC [C: scripts/analyze_part_a.py:544, :558];
    - Fort Myers observed maximum 2.613 m above MLLW [T: coops_get_water_levels, call 3, I].
 6. **The two SFMR tools do not work.** AOML returned HTTP 403 to both `recon_list_sfmr` and `recon_get_sfmr` (section 6).
 7. **Offline replay.** `run_all.sh`, run from a scratch copy outside the repository inside `unshare -rn` (no network), reproduced every result and figure byte for byte (section 10).
@@ -91,11 +92,11 @@ Recomputed offline by `scripts/select_buoy.py` from the archived feasibility res
 
 The other five are on the Atlantic side, 218.7 km or more away. There is no tie.
 
-**Position.** The buoy position is NDBC's current metadata. No tool returns its 2022 position.
+**Position.** Buoy 42097 is placed where `ndbc_get_station` puts it today (25.704°N, 83.654°W) [T: ndbc_get_station, N1, A]. This is NDBC's current metadata, not a 2022 position, and no tool returns the 2022 position. The 86.1 km closest approach, and with it the selection, depends on this position.
 
 ### 4.2 Aircraft (`DESIGN.md` §6.2)
 
-`results/aircraft_selection.json` [C: scripts/analyze_part_a.py:194]:
+`results/aircraft_selection.json` [C: scripts/analyze_part_a.py:193]:
 
 | Call sign | Records | Non-null SFMR | SFMR within 150 km | Same, after QC |
 |---|---|---|---|---|
@@ -108,7 +109,7 @@ The other five are on the Atlantic side, 218.7 km or more away. There is no tie.
 | NOAA9 | 157 | 0 | 0 | 0 |
 
 - AF301's records on 28 September run from 06:04:30 to 13:54:00 UTC [T: recon_get_hdobs, R1, A].
-- Its closest record to the interpolated centre is 1.92 km away [C: scripts/analyze_part_a.py:353].
+- Its closest record to the interpolated centre is 1.92 km away [C: scripts/analyze_part_a.py:364].
 - Landfall (19:05 UTC) falls after its last record, so panel (b) has no landfall line.
 - NOAA2 is the aircraft of the brief's candidate mission 20220928H1. By this rule it ranks fourth.
 
@@ -132,10 +133,10 @@ The page defines the two-digit field "FF". The removal rules are in `DESIGN.md` 
 | 36 | lat/lon and GA/PS questionable / FL winds and SFMR questionable | 5 | 5 | 5 | 5 |
 | **Total** | | 940 | **70** | **33** | **7** |
 
-All counts: [C: scripts/analyze_part_a.py:232], `results/hdob_qc.json`.
+All counts: [C: scripts/analyze_part_a.py:231], `results/hdob_qc.json`.
 
 - **Flagged records that held no value.** Flag 03 marked 231 records but removed only 56 SFMR values: the other 175 had no SFMR value. Flag 23 removed nothing, because its 30 records carry no SFMR value.
-- **Missing values.** 207 SFMR values and 0 flight-level winds were missing (null) [C: scripts/analyze_part_a.py:232].
+- **Missing values.** 207 SFMR values and 0 flight-level winds were missing (null) [C: scripts/analyze_part_a.py:231].
 - **Plotted.** Panel (b) shows 663 SFMR values and 907 flight-level winds [C: `results/panel_b.json`]; panel (a) shows 933 flight-track positions [C: `results/panel_a.json`].
 - **No unrecognised code** appeared.
 
@@ -154,15 +155,20 @@ The same 403 occurred three times in the feasibility step (02:14, 02:18 and 02:4
 
 | Panel | Data | Numbers |
 |---|---|---|
-| (a) | Best track 26 September 00:00 to 30 September 00:00, 21 records [T: nhc_get_best_track, call 1, I] [D: §5]. Gauges (calls 2, 5). Buoy (N1). AF301 flight track (R1, QC-passing positions). Landfall point 26.7°N 82.2°W (NHC TCR, cited). | No coastline: no MCP server supplies one. |
-| (b) | AF301 SFMR and flight-level wind, kt, right axis m/s. | SFMR maximum after QC 137 kt at 10:29:30 [T: recon_get_hdobs, R1, A]. Flight-level maximum after QC 142 kt at 12:42:00 [T: recon_get_hdobs, R1, A]. Best-track maximum wind at the nearest record: 120 kt, then 140 kt [C: scripts/analyze_part_a.py:360; values from T: nhc_get_best_track, call 1, I]. |
+| (a) | Best track 26 September 00:00 to 30 September 00:00, 21 records [T: nhc_get_best_track, call 1, I] [D: §5]. Gauges (calls 2, 5). Buoy at its present ndbc-mcp position (N1). AF301 flight track (R1, QC-passing positions). Landfall point 26.7°N 82.2°W (NHC TCR, cited). Coastline: Natural Earth 1:50m [N], 34 of 1429 parts, 9720 vertices, in `results/coastline_subset.json` (extracted by `scripts/coastline.py`). | The coastline is the only non-MCP input; no MCP server supplies one. |
+| (b) | AF301 SFMR and flight-level wind, kt, right axis m/s. Best track as markers at its 6-hourly times, joined by straight lines in time; the line runs toward the 18:00 value and is clipped at the axis edge (A6). | SFMR maximum after QC 137 kt at 10:29:30 [T: recon_get_hdobs, R1, A]. Flight-level maximum after QC 142 kt at 12:42:00 [T: recon_get_hdobs, R1, A]. Best track 120 kt at 06:00, 140 kt at 12:00 and 135 kt at 18:00 UTC [T: nhc_get_best_track, call 1, I]. |
 | (c) | 42097 WVHT, 27 September 00:00 to 30 September 00:00 [D: §5], from ww3-mcp. | Window rows and nulls below. Maximum 8.31 m at 11:26 UTC on 28 September [T: ww3_get_buoy_history, W1, A]. |
-| (d) | Observed water level (MLLW) and residual at both gauges. | 720 matched timestamps per station [C: scripts/analyze_part_a.py:519]. Extremes as in section 1. |
+| (d) | Observed water level (MLLW) and residual at both gauges. | 720 matched timestamps per station [C: scripts/analyze_part_a.py:532]. Extremes as in section 1. |
+
+**Panel (b): what the three winds are.**
+- **Averaging periods.** The best-track wind is a 1-minute maximum sustained value. The SFMR wind is the highest 10-second mean in each 30-second record. The flight-level wind is a 30-second mean at the aircraft's altitude. The three are not interchangeable.
+- **AF301's peak.** Its flight-level wind of 142 kt (30-s mean) is from one Air Force aircraft on one flight.
+- **The NHC report's figure.** The report gives 160 kt, measured by a NOAA aircraft at 750 mb. This statement was supplied by the author; the report PDF is not archived here, and the quotation was not checked against it.
 
 **Panel (c) details.**
-- 144 window rows [C: scripts/analyze_part_a.py:452], 0 with null WVHT [C: :452].
-- Median spacing 30 min [C: :452]; 0 gaps and 0 missing slots implied by that spacing [C: :452].
-- The first window row is at 00:26 [C: :493].
+- 144 window rows [C: scripts/analyze_part_a.py:465], 0 with null WVHT [C: :465].
+- Median spacing 30 min [C: :465]; 0 gaps and 0 missing slots implied by that spacing [C: :465].
+- The first window row is at 00:26 [C: :506].
 - The whole 2022 file has 0 WVHT values coded as missing [T: ww3_get_buoy_history, W1, A, `missing_values.excluded_counts`].
 - There is no second axis: WSPD and PRES are null in every window row; the buoy reports waves only.
 
@@ -171,22 +177,31 @@ The same 403 occurred three times in the feasibility step (02:14, 02:18 and 02:4
 | File | Content | Smallest font | Legend over data |
 |---|---|---|---|
 | `figures/ian_4panel_190mm.pdf`, `…_600dpi.png` | Main figure, 190 mm × 130 mm, panels (a)–(d) | 8.0 pt | none (0 points inside any legend) |
-| `figures/ian_2panel_fallback_190mm.pdf`, `…_600dpi.png` | Fallback, 190 mm × 110 mm: (a) track with AF301 SFMR along the flight, (b) water levels | 8.0 pt | none |
+| `figures/ian_2panel_fallback_190mm.pdf`, `…_600dpi.png` | Fallback, 190 mm × 125 mm: (a) track with AF301 SFMR along the flight, (b) water levels | 8.0 pt | none |
 
 **Checks.** Reported in `results/figure_checks.json`:
-- font sizes used: 8.0, 8.5 and 10 pt (panel letters);
-- no legend overlaps a panel letter;
-- no drawn text leaves the page.
+- font sizes used: 8.0, 8.5 and 10 pt (panel labels "(a)"–"(d)");
+- no legend covers a data point drawn inside the axes;
+- no legend overlaps a panel label, leaves the page, or touches another panel's axes or tick marks (in particular, the legend of (d) clears (c));
+- no two texts overlap, and no drawn text leaves the page;
+- on the map, the landfall star does not overlap the Fort Myers triangle, and no label overlaps a marker.
+
+**Map key.** The key and the colorbar sit below the map, outside it, because the coastline fills the map's south-west corner (A7).
 
 **Landfall line.** Drawn in (c) and (d) of the main figure and in (b) of the fallback. Not drawn in (b) of the main figure, which ends at 13:54 UTC.
 
-**Draft caption, main figure (68 words).** Hurricane Ian (2022) through five MCP servers. (a) Best track coloured by maximum wind (nhc-mcp), tide gauges (coops-mcp), buoy 42097 (ndbc-mcp position) and aircraft AF301's track (recon-mcp). (b) AF301 SFMR surface and flight-level winds, QC-flagged values removed, with best-track maximum wind; the flight ends before landfall. (c) Wave height at 42097 (ww3-mcp). (d) Water level above MLLW and residual, Fort Myers and St. Petersburg. Dashed: landfall, 19:05 UTC.
+**Draft caption, main figure (69 words).** Hurricane Ian (2022) through five MCP servers. (a) Best track coloured by maximum wind (nhc-mcp), tide gauges (coops-mcp), buoy 42097 at its present ndbc-mcp position, AF301 track (recon-mcp), Natural Earth coastline. (b) AF301 SFMR (10-s maximum) and flight-level (30-s mean) winds, QC-flagged values removed; best track (1-min, 6-hourly); the flight ends before landfall. (c) Wave height, 42097 (ww3-mcp). (d) Water level above MLLW and residual. Dashed: landfall, 19:05 UTC.
 
-**Draft caption, fallback (40 words).** Hurricane Ian (2022). (a) Best track (nhc-mcp), tide gauges (coops-mcp), buoy 42097 (ndbc-mcp) and aircraft AF301's track coloured by SFMR surface wind, QC-flagged values removed (recon-mcp). (b) Water level above MLLW and residual, Fort Myers and St. Petersburg. Dashed: landfall.
+**Statements that do not fit within 70 words.** For the text, or for a longer caption:
+- Buoy 42097 is plotted at the position `ndbc-mcp` returns today, not its 2022 position, and the 86.1 km closest approach depends on it.
+- AF301's peak flight-level wind, 142 kt (30-s mean), is from one Air Force aircraft. The NHC report's 160 kt came from a NOAA aircraft at 750 mb (supplied by the author; not checked here against the report).
+- The best-track wind is a 1-minute value, the SFMR wind a 10-second maximum and the flight-level wind a 30-second mean.
 
-## 9. Paragraph for the paper (103 words)
+**Draft caption, fallback (44 words).** Hurricane Ian (2022). (a) Best track (nhc-mcp), tide gauges (coops-mcp), buoy 42097 at its present ndbc-mcp position, Natural Earth coastline, and aircraft AF301's track coloured by SFMR surface wind (10-s maximum), QC-flagged values removed (recon-mcp). (b) Water level above MLLW and residual. Dashed: landfall.
 
-The revised Figure 4 draws on five servers. Responses from nhc-mcp (`nhc_get_best_track`) and coops-mcp (`coops_get_station`, `coops_get_water_levels`, `coops_get_tide_predictions`), archived from an earlier scripted session, are reused unchanged. In a new session, one client held stdio sessions to three more servers. recon-mcp's `recon_get_hdobs` returned 4637 high-density aircraft observations for 28 September 2022. ww3-mcp's `ww3_get_buoy_history` returned buoy 42097's 2022 NDBC record, and ndbc-mcp's `ndbc_get_station` its position. The client computed the storm-centre distances that selected aircraft AF301 and buoy 42097 by rules fixed in advance. It also decoded the HDOB quality flags and computed the residuals (+2.209 m, −1.755 m). Both AOML SFMR tools failed (HTTP 403).
+## 9. Paragraph for the paper (116 words)
+
+The revised Figure 4 draws on five servers. Responses from nhc-mcp (`nhc_get_best_track`) and coops-mcp (`coops_get_station`, `coops_get_water_levels`, `coops_get_tide_predictions`), archived from an earlier scripted session, are reused unchanged. In a new session, one client held stdio sessions to three more servers. recon-mcp's `recon_get_hdobs` returned 4637 high-density aircraft observations for 28 September 2022. ww3-mcp's `ww3_get_buoy_history` returned buoy 42097's 2022 NDBC record, and ndbc-mcp's `ndbc_get_station` its position. The client computed the storm-centre distances that selected aircraft AF301 and buoy 42097 by rules fixed in advance. It also decoded the HDOB quality flags and computed the residuals (+2.209 m, −1.755 m). Both AOML SFMR tools failed (HTTP 403). The coastline, from Natural Earth, is the only input not obtained through MCP.
 
 ## 10. Offline replay
 
@@ -199,17 +214,20 @@ bash verification/ian_multi_server/run_all.sh
 The executable bit is set in Git (this drive does not keep file modes, so `bash run_all.sh` is the safe form).
 
 **Steps.**
-1. Every archived file against `archive/MANIFEST.sha256` (194 files).
+1. Every archived file against `archive/MANIFEST.sha256` (200 files).
 2. The reused Ian session against its SHA-256.
 3. The 18 HDOB quotations.
 4. The buoy selection.
 5. The analysis.
-6. The figures: matplotlib 3.10.8 from `scripts/requirements-figures.txt`, uv `--offline`.
-7. All 15 outputs against `results/SHA256SUMS`.
+6. The coastline subset from the archived Natural Earth file (standard library).
+7. The figures: matplotlib 3.10.8 from `scripts/requirements-figures.txt`, uv `--offline`.
+8. All 16 outputs against `results/SHA256SUMS`.
 
 **Check run.**
-- Run once from a scratch copy outside the repository: `git archive` of `bdadd79` (the three needed packages) into `/mnt/d/ocean-mcp-wp9/scratch_runall_20261121T175901Z`, inside `unshare -rn`, so no network interface existed.
-- Result: **exit 0, "OK: every output matches"**.
+- Run from a scratch copy outside the repository: `git archive` of the needed packages into a fresh folder, inside `unshare -rn`, so no network interface existed.
+  - First on `bdadd79`, before the figure revisions (`/mnt/d/ocean-mcp-wp9/scratch_runall_20261121T175901Z`).
+  - Again on `dffe3cb`, after them (`/mnt/d/ocean-mcp-wp9/scratch_runall_dffe3cb`).
+- Result both times: **exit 0, "OK: every output matches"**.
 - **No file differed.**
 - The figures are byte-reproducible because the PDF and PNG metadata carry no dates. Two earlier consecutive runs in the worktree also matched (15 of 15 files).
 
@@ -257,14 +275,18 @@ In order (`AMENDMENTS.md`):
 - **A3** No river gauge. Before any value was seen.
 - **A4** Buoy values from ww3-mcp, ndbc-mcp for metadata. Before any value was seen.
 - **A5** Figure layout, map extent, direct labels, panel (b) line breaks, panel (d) legend. After the values were seen; no number changed.
+- **A6** Panel (b) best track: 6-hourly markers joined linearly in time, replacing a nearest-record step whose jump at 09:00 was an artifact. After the values were seen; `panel_b.json` and the best-track entries of `part_a_numbers.json` changed.
+- **A7** Panel (a): Natural Earth coastline (the one non-MCP input); key and colorbar below the map; smaller landfall and gauge markers so they do not overlap; labels moved; fallback page 125 mm tall. Layout.
+- **A8** Panel labels "(a)"–"(d)"; panel heights adjusted so the legend of (d) clears (c). Layout.
+- **A9** Caption and report statements on the buoy position, the peak flight-level wind and the averaging periods. Text only.
 
 ## 13. Limitations
 
 - **One live run.** HDOB bulletins and NDBC annual files are archival but can be reissued.
 - **One environment.** Client and servers share one virtual environment; the servers are separate processes.
-- **Positions.** The buoy position is current metadata. The best track is given to 0.1° and interpolated linearly in time.
+- **Positions.** The buoy position is current metadata, not the 2022 position, and the 86.1 km closest approach depends on it. The best track is given to 0.1° and interpolated linearly in time.
 - **Markdown parsing.** Coordinates come from markdown for `coops_get_station` and `ndbc_get_station`.
-- **No coastline** in panel (a).
+- **Coastline.** It comes from Natural Earth, not from MCP. It is drawn for orientation only and enters no number.
 - **Linux-only process evidence** (`/proc`).
 
 ## 14. Reproduce
@@ -287,6 +309,7 @@ bash run_all.sh                                           # offline replay and c
 | `archive/phase0_selection/` | Feasibility responses that select the buoy |
 | `archive/references/` | NHC HDOB format page and its HTTP headers |
 | `archive/env_provenance.json` | Wheels, digests, freeze, installed source against the tags |
-| `scripts/` | Recording, selection, analysis, figures, manifests |
-| `results/` | Selections, QC, panel inputs, numbers with provenance, figure checks, `SHA256SUMS` |
+| `archive/non_mcp/natural_earth/` | Natural Earth 1:50m coastline (shapefile parts) and `SOURCE.md`: source URL, SHA-256, terms |
+| `scripts/` | Recording, selection, analysis, coastline extraction, figures, manifests |
+| `results/` | Selections, QC, panel inputs, coastline subset, numbers with provenance, figure checks, `SHA256SUMS` |
 | `figures/` | PDF and 600 dpi PNG |
