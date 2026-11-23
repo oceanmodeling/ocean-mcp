@@ -1,4 +1,4 @@
-"""Verify the NHC Tropical Cyclone Report quotation on the peak flight-level wind (AMENDMENTS.md A10).
+"""Verify the NHC Tropical Cyclone Report quotations on the peak flight-level and SFMR winds (AMENDMENTS.md A10, A12).
 
     python record_tcr_quote.py --tcr <AL092022_Ian.pdf> [--tcr-headers <curl -D headers>]
 
@@ -38,6 +38,15 @@ QUOTES = [
     (
         5,
         "During the missions, the maximum 10-second averaged flight-level winds reported in the hurricane's core were 160 kt from a NOAA aircraft at 750 mb (an altitude of about 6800 ft) at 1013 UTC 28 September.",
+    ),
+    # SFMR comparison (AMENDMENTS.md A12)
+    (
+        5,
+        "There were also multiple peak SFMR surface wind estimates from both Air Force and NOAA aircraft of 137-138 kt at 1030 UTC and 1013 UTC, respectively.",
+    ),
+    (
+        5,
+        "The SFMR data from the Air Force instrument was flagged as unreliable in the real-time products, but reprocessing in the post-storm analysis using an updated algorithm no longer flagged the peak values.",
     ),
 ]
 STRAIGHT = str.maketrans({"’": "'", "‘": "'", "“": '"', "”": '"'})

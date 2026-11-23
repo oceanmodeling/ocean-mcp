@@ -293,5 +293,37 @@
   "kind": "computed",
   "computed": "scripts/analyze_part_a.py:637",
   "how": "non-null values removed by the flight-level-wind QC rule"
+ },
+ "af301_sfmr_max_before_qc_kt": {
+  "value": 138,
+  "unit": "kt",
+  "kind": "returned",
+  "tool": "recon_get_hdobs",
+  "call": "R1",
+  "archive": "archive/part_a_record.json.gz"
+ },
+ "af301_sfmr_max_before_qc_time": {
+  "value": "2022-09-28 12:05:30",
+  "unit": "UTC",
+  "kind": "returned",
+  "tool": "recon_get_hdobs",
+  "call": "R1",
+  "archive": "archive/part_a_record.json.gz"
+ },
+ "af301_sfmr_max_before_qc_ff": {
+  "value": "03",
+  "unit": "HDOB FF",
+  "kind": "returned",
+  "tool": "recon_get_hdobs",
+  "call": "R1",
+  "archive": "archive/part_a_record.json.gz"
+ },
+ "sfmr_max_after_qc_ff": {
+  "value": "00",
+  "unit": "HDOB FF",
+  "kind": "returned",
+  "tool": "recon_get_hdobs",
+  "call": "R1",
+  "archive": "archive/part_a_record.json.gz"
  }
 }

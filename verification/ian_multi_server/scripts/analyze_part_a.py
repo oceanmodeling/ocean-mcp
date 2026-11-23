@@ -637,6 +637,23 @@ def main() -> None:
         at(),
         "non-null values removed by the flight-level-wind QC rule",
     )
+    # ---- AF301 SFMR peak next to the NHC report (AMENDMENTS.md A12): descriptive only.
+    raw_sfmr = max(
+        (o["sfmr_sfc_wind_kt"], o["t"].strftime("%Y-%m-%d %H:%M:%S"), o["qc_flags"])
+        for o in sel
+        if o["sfmr_sfc_wind_kt"] is not None
+    )
+    returned("af301_sfmr_max_before_qc_kt", raw_sfmr[0], "kt", "recon_get_hdobs", "R1")
+    returned(
+        "af301_sfmr_max_before_qc_time", raw_sfmr[1], "UTC", "recon_get_hdobs", "R1"
+    )
+    returned(
+        "af301_sfmr_max_before_qc_ff", raw_sfmr[2], "HDOB FF", "recon_get_hdobs", "R1"
+    )
+    rec137 = next(o for o in sel if o["t"].strftime("%Y-%m-%d %H:%M:%S") == smax[1])
+    returned(
+        "sfmr_max_after_qc_ff", rec137["qc_flags"], "HDOB FF", "recon_get_hdobs", "R1"
+    )
     dump(PACKAGE / "results" / "part_a_numbers.json", NUMBERS)
     if mismatch:
         raise SystemExit(f"panel (d) differs from the published numbers: {mismatch}")

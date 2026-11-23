@@ -38,6 +38,22 @@
    "found_on_pages": [
     5
    ]
+  },
+  {
+   "page": 5,
+   "text": "There were also multiple peak SFMR surface wind estimates from both Air Force and NOAA aircraft of 137-138 kt at 1030 UTC and 1013 UTC, respectively.",
+   "found_on_stated_page": true,
+   "found_on_pages": [
+    5
+   ]
+  },
+  {
+   "page": 5,
+   "text": "The SFMR data from the Air Force instrument was flagged as unreliable in the real-time products, but reprocessing in the post-storm analysis using an updated algorithm no longer flagged the peak values.",
+   "found_on_stated_page": true,
+   "found_on_pages": [
+    5
+   ]
   }
  ]
 }

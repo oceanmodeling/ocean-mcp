@@ -135,3 +135,19 @@ All three were found on p. 5. The record, with the PDF's SHA-256, is `archive/re
 **Result.** 144 kt at 12:43:00 UTC. 907 values remain; QC removed 33. QC removal does not change the maximum.
 
 **Not changed.** The number is not plotted, and no figure or figure input changed. It is added to `results/part_a_numbers.json` after every existing entry; no other result changed.
+
+## A12. AF301's SFMR peak set beside the NHC report (2026-11-23; after the values were seen; descriptive comparison)
+
+**What.** At the author's request, `REPORT.md` sets AF301's SFMR maximum after QC, 137 kt at 10:29:30 UTC, next to the NHC report's statement on p. 5: “There were also multiple peak SFMR surface wind estimates from both Air Force and NOAA aircraft of 137-138 kt at 1030 UTC and 1013 UTC, respectively.”
+
+**Context added.** The report's next sentence was also verified and quoted, because it bears on the comparison: “The SFMR data from the Air Force instrument was flagged as unreliable in the real-time products, but reprocessing in the post-storm analysis using an updated algorithm no longer flagged the peak values.”
+
+**Check.** Both sentences were checked against the same PDF (SHA-256 `804d2a86…5fce`) by `scripts/record_tcr_quote.py`, by the A10 method, and added to `archive/references/tcr_quote_check.json`. There are now five verified passages, all on p. 5.
+
+**Descriptive numbers added** to `results/part_a_numbers.json`, all returned by `recon_get_hdobs` (R1):
+- the FF of the 137 kt record: 00;
+- AF301's SFMR maximum before QC removal: 138 kt at 12:05:30 UTC, FF 03.
+
+Added beyond the author's request, to show that QC removal changes AF301's SFMR maximum from 138 to 137 kt.
+
+**Not changed.** No figure, figure input or other result changed. The new entries come after every existing one, so no provenance line number moved.

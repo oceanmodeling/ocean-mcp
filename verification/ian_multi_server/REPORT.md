@@ -1,6 +1,6 @@
 # Hurricane Ian (2022) through five MCP servers: report
 
-Run date: 2026-11-21 (UTC). Branch `docs/breadth-examples`, created from the local `origin/main` ref (575cd21) without fetching. The design was committed in `fdce9bb` before anything was recorded; the data and scripts are in `bdadd79`. The figures were revised on 2026-11-22 in `dffe3cb` (`AMENDMENTS.md` A6–A9); no result value changed except the best-track reference in panel (b). On 2026-11-23 the NHC report's quotation on the 160 kt flight-level wind was verified against the PDF (A10), and AF301's 10-second peak flight-level wind was added as a descriptive number (A11).
+Run date: 2026-11-21 (UTC). Branch `docs/breadth-examples`, created from the local `origin/main` ref (575cd21) without fetching. The design was committed in `fdce9bb` before anything was recorded; the data and scripts are in `bdadd79`. The figures were revised on 2026-11-22 in `dffe3cb` (`AMENDMENTS.md` A6–A9); no result value changed except the best-track reference in panel (b). On 2026-11-23 the NHC report's quotation on the 160 kt flight-level wind was verified against the PDF (A10). AF301's 10-second peak flight-level wind (A11) and a comparison of AF301's SFMR peak with the report's 137-138 kt (A12) were added as descriptive numbers.
 
 This is a **scripted multi-server MCP workflow**. The tool sequence and the arguments are fixed in `DESIGN.md` and `scripts/record_part_a.py`. No language model selected or invoked a tool. The package tests no safeguard and is not an evaluation.
 
@@ -172,6 +172,14 @@ The same 403 occurred three times in the feasibility step (02:14, 02:18 and 02:4
   - After the same QC removal as the 30-second wind, AF301's maximum is **144 kt at 12:43:00 UTC** on 28 September [T: recon_get_hdobs, R1, A].
   - 907 values remain after QC [C: scripts/analyze_part_a.py:630]; QC removed 33 [C: :637]. QC removal does not change the maximum.
   - This number is descriptive only. It is not plotted, and the figure is unchanged (A11).
+- **SFMR peak, next to the NHC report.**
+  - **AF301.** Its SFMR maximum after QC removal is 137 kt at 10:29:30 UTC [T: recon_get_hdobs, R1, A]. That record carries FF 00 [T: recon_get_hdobs, R1, A]. It is the HDOB record nearest 1030 UTC.
+  - **The report**, p. 5: “There were also multiple peak SFMR surface wind estimates from both Air Force and NOAA aircraft of 137-138 kt at 1030 UTC and 1013 UTC, respectively.” [cited; verified in `archive/references/tcr_quote_check.json`].
+  - **Context, from the next sentence of the report**, p. 5: “The SFMR data from the Air Force instrument was flagged as unreliable in the real-time products, but reprocessing in the post-storm analysis using an updated algorithm no longer flagged the peak values.” [cited; verified as above].
+  - **Flags around the peak.** In the real-time HDOB records used here, the AF301 SFMR values from 10:30:00 onward carry SFMR-questionable flags and are removed by the QC rule (`DESIGN.md` §7).
+  - **Before QC removal**, AF301's SFMR maximum is 138 kt at 12:05:30 UTC, with FF 03 (SFMR questionable) [T: recon_get_hdobs, R1, A]. QC removal therefore lowers AF301's SFMR maximum from 138 to 137 kt.
+  - **Not compared.** The reprocessed post-storm SFMR data the report refers to are not available through MCP here: the AOML SFMR tools fail (section 6).
+  - This comparison is descriptive only. No figure changed (A12).
 
 **Panel (c) details.**
 - 144 window rows [C: scripts/analyze_part_a.py:465], 0 with null WVHT [C: :465].
@@ -290,6 +298,7 @@ In order (`AMENDMENTS.md`):
 - **A9** Caption and report statements on the buoy position, the peak flight-level wind and the averaging periods. Text only.
 - **A10** The NHC report quotation on the 160 kt flight-level wind verified against the PDF (p. 5; SHA-256 recorded). Text only.
 - **A11** AF301's 10-second peak flight-level wind (144 kt at 12:43 UTC, after QC) added as a descriptive number. After the values were seen; not plotted.
+- **A12** AF301's SFMR peak (137 kt at 10:29:30 UTC after QC; 138 kt at 12:05:30 before QC) set beside the NHC report's 137-138 kt, with two verified report sentences. After the values were seen; descriptive only, no figure change.
 
 ## 13. Limitations
 
@@ -318,7 +327,7 @@ bash run_all.sh                                           # offline replay and c
 | `archive/part_a_record.json.gz` | The session: calls, full results, processes, tool listings |
 | `archive/logs/` | Server stderr logs (HTTP status codes) |
 | `archive/phase0_selection/` | Feasibility responses that select the buoy |
-| `archive/references/` | NHC HDOB format page and its HTTP headers; `tcr_quote_check.json`, the verified NHC report quotation with the PDF's SHA-256 |
+| `archive/references/` | NHC HDOB format page and its HTTP headers; `tcr_quote_check.json`, the five verified NHC report passages with the PDF's SHA-256 |
 | `archive/env_provenance.json` | Wheels, digests, freeze, installed source against the tags |
 | `archive/non_mcp/natural_earth/` | Natural Earth 1:50m coastline (shapefile parts) and `SOURCE.md`: source URL, SHA-256, terms |
 | `scripts/` | Recording, selection, analysis, coastline extraction, figures, manifests; `record_tcr_quote.py` (needs the PDF, not part of the offline replay) |
