@@ -244,6 +244,7 @@ The executable bit is set in Git (this drive does not keep file modes, so `bash 
   - First on `bdadd79`, before the figure revisions (`/mnt/d/ocean-mcp-wp9/scratch_runall_20261121T175901Z`).
   - Again on `dffe3cb`, after them (`/mnt/d/ocean-mcp-wp9/scratch_runall_dffe3cb`).
   - Again on `71c99eb`, after the quotation check and the added number (`/mnt/d/ocean-mcp-wp9/scratch_runall_71c99eb`).
+  - Again on `b3864ac`, after the SFMR comparison (`/mnt/d/ocean-mcp-wp9/scratch_runall_b3864ac`).
 - Result every time: **exit 0, "OK: every output matches"**.
 - **No file differed.**
 - The figures are byte-reproducible because the PDF and PNG metadata carry no dates. Two earlier consecutive runs in the worktree also matched (15 of 15 files).
