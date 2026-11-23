@@ -263,5 +263,35 @@
   "tool": "coops_get_water_levels",
   "call": "call 3",
   "archive": "verification/ian_cross_server/session_record.json"
+ },
+ "af301_peak_fl_wind_10s_max_kt_after_qc": {
+  "value": 144,
+  "unit": "kt (highest 10-s mean in the 30-s record)",
+  "kind": "returned",
+  "tool": "recon_get_hdobs",
+  "call": "R1",
+  "archive": "archive/part_a_record.json.gz"
+ },
+ "af301_peak_fl_wind_10s_max_time": {
+  "value": "2022-09-28 12:43:00",
+  "unit": "UTC",
+  "kind": "returned",
+  "tool": "recon_get_hdobs",
+  "call": "R1",
+  "archive": "archive/part_a_record.json.gz"
+ },
+ "af301_peak_fl_wind_10s_nonnull_after_qc": {
+  "value": 907,
+  "unit": "records",
+  "kind": "computed",
+  "computed": "scripts/analyze_part_a.py:630",
+  "how": "non-null peak_fl_wind_kt after QC removal"
+ },
+ "af301_peak_fl_wind_10s_removed_by_qc": {
+  "value": 33,
+  "unit": "records",
+  "kind": "computed",
+  "computed": "scripts/analyze_part_a.py:637",
+  "how": "non-null values removed by the flight-level-wind QC rule"
  }
 }

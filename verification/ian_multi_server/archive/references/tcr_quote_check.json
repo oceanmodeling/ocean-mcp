@@ -1,0 +1,43 @@
+{
+ "created_by": "scripts/record_tcr_quote.py",
+ "method": "pypdf text per page; all whitespace removed from page and quotation; curly quotation marks read as straight; passage must be on the stated page (as verification/ian_cross_server/record_references.py, plus the quotation-mark rule)",
+ "pypdf_version": "6.12.0",
+ "document": {
+  "citation": "Bucci, L., Alaka, L., Hagen, A., Delgado, S., Beven, J. Tropical Cyclone Report: Hurricane Ian (AL092022), 23-30 September 2022. National Hurricane Center.",
+  "url": "https://www.nhc.noaa.gov/data/tcr/AL092022_Ian.pdf",
+  "local_file_name": "AL092022_Ian.pdf",
+  "retrieved_at_http_date": "Mon, 23 Nov 2026 01:47:01 GMT",
+  "last_modified": "Thu, 12 Mar 2026 20:11:39 GMT",
+  "bytes": 7049210,
+  "sha256": "804d2a867917d4ab157e5b2b1e444d21d306379a08d07ffd7059d157a4b15fce",
+  "pages": 72,
+  "same_file_as_ian_cross_server_2026_11_06": true,
+  "archived": false
+ },
+ "quotations_verified": [
+  {
+   "page": 5,
+   "text": "the maximum 10-second averaged flight-level winds reported in the hurricane's core were 160 kt from a NOAA aircraft at 750 mb",
+   "found_on_stated_page": true,
+   "found_on_pages": [
+    5
+   ]
+  },
+  {
+   "page": 5,
+   "text": "1013 UTC 28 September",
+   "found_on_stated_page": true,
+   "found_on_pages": [
+    5
+   ]
+  },
+  {
+   "page": 5,
+   "text": "During the missions, the maximum 10-second averaged flight-level winds reported in the hurricane's core were 160 kt from a NOAA aircraft at 750 mb (an altitude of about 6800 ft) at 1013 UTC 28 September.",
+   "found_on_stated_page": true,
+   "found_on_pages": [
+    5
+   ]
+  }
+ ]
+}

@@ -108,5 +108,30 @@ The three values are returned by `nhc_get_best_track` (reused call 1). The legen
 
 The caption and `REPORT.md` now say:
 - **Buoy position.** It is the position `ndbc_get_station` returns today, not a 2022 position. The 86.1 km closest approach depends on it.
-- **Peak flight-level wind.** AF301's 142 kt (30-s mean) is from one Air Force aircraft. The NHC report's 160 kt came from a NOAA aircraft at 750 mb; that statement was supplied by the author and is not checked against the report PDF here.
+- **Peak flight-level wind.** AF301's 142 kt (30-s mean) is from one Air Force aircraft. The NHC report, p. 5, reads: “During the missions, the maximum 10-second averaged flight-level winds reported in the hurricane’s core were 160 kt from a NOAA aircraft at 750 mb (an altitude of about 6800 ft) at 1013 UTC 28 September.” The 160 kt is a 10-second average; AF301's 142 kt is a 30-second mean. The quotation was verified against the PDF on 2026-11-23 (A10).
 - **Averaging periods.** The best-track wind is a 1-minute value, the SFMR wind a 10-second maximum and the flight-level wind a 30-second mean.
+
+## A10. NHC report quotation verified (2026-11-23; text only)
+
+**Source.** The author downloaded the NHC Tropical Cyclone Report for Ian (`https://www.nhc.noaa.gov/data/tcr/AL092022_Ian.pdf`, retrieved 2026-11-23 01:47:01 GMT).
+- 7,049,210 bytes, 72 pages, revised 12 March 2026.
+- SHA-256 `804d2a867917d4ab157e5b2b1e444d21d306379a08d07ffd7059d157a4b15fce`: the same file `verification/ian_cross_server` verified on 2026-11-06.
+
+**Check.** `scripts/record_tcr_quote.py` checked three passages on p. 5 the way `ian_cross_server/record_references.py` does (pypdf 6.12.0; all whitespace removed; curly quotation marks read as straight):
+- the author's quotation;
+- "1013 UTC 28 September";
+- the full sentence: “During the missions, the maximum 10-second averaged flight-level winds reported in the hurricane’s core were 160 kt from a NOAA aircraft at 750 mb (an altitude of about 6800 ft) at 1013 UTC 28 September.”
+
+All three were found on p. 5. The record, with the PDF's SHA-256, is `archive/references/tcr_quote_check.json`. The PDF is not archived.
+
+**Effect.** The "not checked against the report" wording in A9 and in `REPORT.md` is replaced by the verified quotation, with the note that the 160 kt is a 10-second average and AF301's 142 kt a 30-second mean.
+
+## A11. AF301's 10-second peak flight-level wind added (2026-11-23; after the values were seen; descriptive only)
+
+**What.** At the author's request, `scripts/analyze_part_a.py` now also reports AF301's highest `peak_fl_wind_kt` on 28 September. That field is the highest 10-second mean flight-level wind in each 30-second HDOB record, returned by `recon_get_hdobs` (R1). It is reported next to the NHC report's 160 kt.
+
+**QC.** The same removal as for the 30-second flight-level wind: FF second digit 2, 4, 6 or 9, or an unrecognised code.
+
+**Result.** 144 kt at 12:43:00 UTC. 907 values remain; QC removed 33. QC removal does not change the maximum.
+
+**Not changed.** The number is not plotted, and no figure or figure input changed. It is added to `results/part_a_numbers.json` after every existing entry; no other result changed.

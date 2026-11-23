@@ -601,6 +601,42 @@ def main() -> None:
         },
     )
 
+    # ---- AF301 10-s peak flight-level wind (AMENDMENTS.md A11): descriptive only, not plotted.
+    # Same QC rule as the 30-s flight-level wind (FF second digit 2, 4, 6, 9 or unrecognised).
+    pk = [
+        (o["peak_fl_wind_kt"], o["t"].strftime("%Y-%m-%d %H:%M:%S"))
+        for o in sel
+        if o["peak_fl_wind_kt"] is not None and not decode_ff(o["qc_flags"])["fl_wind"]
+    ]
+    pk_removed = sum(
+        o["peak_fl_wind_kt"] is not None and decode_ff(o["qc_flags"])["fl_wind"]
+        for o in sel
+    )
+    pkmax = max(pk)
+    returned(
+        "af301_peak_fl_wind_10s_max_kt_after_qc",
+        pkmax[0],
+        "kt (highest 10-s mean in the 30-s record)",
+        "recon_get_hdobs",
+        "R1",
+    )
+    returned(
+        "af301_peak_fl_wind_10s_max_time", pkmax[1], "UTC", "recon_get_hdobs", "R1"
+    )
+    computed(
+        "af301_peak_fl_wind_10s_nonnull_after_qc",
+        len(pk),
+        "records",
+        at(),
+        "non-null peak_fl_wind_kt after QC removal",
+    )
+    computed(
+        "af301_peak_fl_wind_10s_removed_by_qc",
+        pk_removed,
+        "records",
+        at(),
+        "non-null values removed by the flight-level-wind QC rule",
+    )
     dump(PACKAGE / "results" / "part_a_numbers.json", NUMBERS)
     if mismatch:
         raise SystemExit(f"panel (d) differs from the published numbers: {mismatch}")

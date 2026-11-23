@@ -1,6 +1,6 @@
 # Hurricane Ian (2022) through five MCP servers: report
 
-Run date: 2026-11-21 (UTC). Branch `docs/breadth-examples`, created from the local `origin/main` ref (575cd21) without fetching. The design was committed in `fdce9bb` before anything was recorded; the data and scripts are in `bdadd79`. The figures were revised on 2026-11-22 in `dffe3cb` (`AMENDMENTS.md` A6–A9); no result value changed except the best-track reference in panel (b).
+Run date: 2026-11-21 (UTC). Branch `docs/breadth-examples`, created from the local `origin/main` ref (575cd21) without fetching. The design was committed in `fdce9bb` before anything was recorded; the data and scripts are in `bdadd79`. The figures were revised on 2026-11-22 in `dffe3cb` (`AMENDMENTS.md` A6–A9); no result value changed except the best-track reference in panel (b). On 2026-11-23 the NHC report's quotation on the 160 kt flight-level wind was verified against the PDF (A10), and AF301's 10-second peak flight-level wind was added as a descriptive number (A11).
 
 This is a **scripted multi-server MCP workflow**. The tool sequence and the arguments are fixed in `DESIGN.md` and `scripts/record_part_a.py`. No language model selected or invoked a tool. The package tests no safeguard and is not an evaluation.
 
@@ -13,6 +13,7 @@ This is a **scripted multi-server MCP workflow**. The tool sequence and the argu
 | `[D: DESIGN.md §n]` | Design parameters: windows, radii, thresholds. |
 | `[E: archive/env_provenance.json]` | Versions and checksums. |
 | `[N: archive/non_mcp/natural_earth/]` | The one non-MCP input: the Natural Earth 1:50m coastline, drawn for orientation only. |
+| `[cited]` | Quoted from a cited document, with the check recorded under `archive/references/`. |
 
 The two archived Part A files are `archive/part_a_record.json.gz` (written **A** below) and the reused `verification/ian_cross_server/session_record.json` (written **I**).
 
@@ -163,7 +164,14 @@ The same 403 occurred three times in the feasibility step (02:14, 02:18 and 02:4
 **Panel (b): what the three winds are.**
 - **Averaging periods.** The best-track wind is a 1-minute maximum sustained value. The SFMR wind is the highest 10-second mean in each 30-second record. The flight-level wind is a 30-second mean at the aircraft's altitude. The three are not interchangeable.
 - **AF301's peak.** Its flight-level wind of 142 kt (30-s mean) is from one Air Force aircraft on one flight.
-- **The NHC report's figure.** The report gives 160 kt, measured by a NOAA aircraft at 750 mb. This statement was supplied by the author; the report PDF is not archived here, and the quotation was not checked against it.
+- **The NHC report's figure.** NHC Tropical Cyclone Report, Hurricane Ian, p. 5: “During the missions, the maximum 10-second averaged flight-level winds reported in the hurricane’s core were 160 kt from a NOAA aircraft at 750 mb (an altitude of about 6800 ft) at 1013 UTC 28 September.” [cited; verified in `archive/references/tcr_quote_check.json`].
+  - The report is the revision of 12 March 2026, retrieved 2026-11-23 01:47:01 GMT from `https://www.nhc.noaa.gov/data/tcr/AL092022_Ian.pdf`: 7,049,210 bytes, 72 pages, SHA-256 `804d2a867917d4ab157e5b2b1e444d21d306379a08d07ffd7059d157a4b15fce`. That is the same file `verification/ian_cross_server` verified on 2026-11-06.
+  - `scripts/record_tcr_quote.py` checked the passage the way `ian_cross_server/record_references.py` does: pypdf 6.12.0, all whitespace removed, curly quotation marks read as straight, found on p. 5. The PDF is not archived; its URL, size and SHA-256 are.
+- **Different averaging periods.** The report's 160 kt is a 10-second average. AF301's 142 kt is a 30-second mean, so the two are not directly comparable.
+- **AF301's 10-second peak, for comparison.** HDOB records also carry the highest 10-second mean flight-level wind in each 30-second record (`peak_fl_wind_kt`).
+  - After the same QC removal as the 30-second wind, AF301's maximum is **144 kt at 12:43:00 UTC** on 28 September [T: recon_get_hdobs, R1, A].
+  - 907 values remain after QC [C: scripts/analyze_part_a.py:630]; QC removed 33 [C: :637]. QC removal does not change the maximum.
+  - This number is descriptive only. It is not plotted, and the figure is unchanged (A11).
 
 **Panel (c) details.**
 - 144 window rows [C: scripts/analyze_part_a.py:465], 0 with null WVHT [C: :465].
@@ -194,7 +202,7 @@ The same 403 occurred three times in the feasibility step (02:14, 02:18 and 02:4
 
 **Statements that do not fit within 70 words.** For the text, or for a longer caption:
 - Buoy 42097 is plotted at the position `ndbc-mcp` returns today, not its 2022 position, and the 86.1 km closest approach depends on it.
-- AF301's peak flight-level wind, 142 kt (30-s mean), is from one Air Force aircraft. The NHC report's 160 kt came from a NOAA aircraft at 750 mb (supplied by the author; not checked here against the report).
+- AF301's peak flight-level wind, 142 kt (30-s mean), is from one Air Force aircraft. The NHC report's 160 kt is a 10-second average from a NOAA aircraft at 750 mb at 1013 UTC 28 September (NHC report, p. 5, verified). AF301's own 10-second peak is 144 kt at 12:43 UTC.
 - The best-track wind is a 1-minute value, the SFMR wind a 10-second maximum and the flight-level wind a 30-second mean.
 
 **Draft caption, fallback (44 words).** Hurricane Ian (2022). (a) Best track (nhc-mcp), tide gauges (coops-mcp), buoy 42097 at its present ndbc-mcp position, Natural Earth coastline, and aircraft AF301's track coloured by SFMR surface wind (10-s maximum), QC-flagged values removed (recon-mcp). (b) Water level above MLLW and residual. Dashed: landfall.
@@ -279,6 +287,8 @@ In order (`AMENDMENTS.md`):
 - **A7** Panel (a): Natural Earth coastline (the one non-MCP input); key and colorbar below the map; smaller landfall and gauge markers so they do not overlap; labels moved; fallback page 125 mm tall. Layout.
 - **A8** Panel labels "(a)"–"(d)"; panel heights adjusted so the legend of (d) clears (c). Layout.
 - **A9** Caption and report statements on the buoy position, the peak flight-level wind and the averaging periods. Text only.
+- **A10** The NHC report quotation on the 160 kt flight-level wind verified against the PDF (p. 5; SHA-256 recorded). Text only.
+- **A11** AF301's 10-second peak flight-level wind (144 kt at 12:43 UTC, after QC) added as a descriptive number. After the values were seen; not plotted.
 
 ## 13. Limitations
 
@@ -307,9 +317,9 @@ bash run_all.sh                                           # offline replay and c
 | `archive/part_a_record.json.gz` | The session: calls, full results, processes, tool listings |
 | `archive/logs/` | Server stderr logs (HTTP status codes) |
 | `archive/phase0_selection/` | Feasibility responses that select the buoy |
-| `archive/references/` | NHC HDOB format page and its HTTP headers |
+| `archive/references/` | NHC HDOB format page and its HTTP headers; `tcr_quote_check.json`, the verified NHC report quotation with the PDF's SHA-256 |
 | `archive/env_provenance.json` | Wheels, digests, freeze, installed source against the tags |
 | `archive/non_mcp/natural_earth/` | Natural Earth 1:50m coastline (shapefile parts) and `SOURCE.md`: source URL, SHA-256, terms |
-| `scripts/` | Recording, selection, analysis, coastline extraction, figures, manifests |
+| `scripts/` | Recording, selection, analysis, coastline extraction, figures, manifests; `record_tcr_quote.py` (needs the PDF, not part of the offline replay) |
 | `results/` | Selections, QC, panel inputs, coastline subset, numbers with provenance, figure checks, `SHA256SUMS` |
 | `figures/` | PDF and 600 dpi PNG |
