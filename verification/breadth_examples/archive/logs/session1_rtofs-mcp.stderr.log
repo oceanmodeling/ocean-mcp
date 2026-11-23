@@ -1,0 +1,165 @@
+[11/21/26 12:37:00] INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   
+[11/21/26 12:37:51] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[11/21/26 12:37:52] INFO     HTTP Request: GET                   _client.py:1740
+                             https://tds.hycom.org/thredds/dodsC                
+                             /FMRC_ESPC-D-V02_t3z/FMRC_ESPC-D-V0                
+                             2_t3z_best.ncd.das "HTTP/1.1 200                   
+                             200"                                               
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://tds.hycom.org/thredds/dodsC                
+                             /FMRC_ESPC-D-V02_t3z/FMRC_ESPC-D-V0                
+                             2_t3z_best.ncd.ascii?time,time_run                 
+                             "HTTP/1.1 200 200"                                 
+[11/21/26 12:37:55] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://tds.hycom.org/thredds/ncss/                
+                             FMRC_ESPC-D-V02_t3z/FMRC_ESPC-D-V02                
+                             _t3z_best.ncd?var=water_temp&latitu                
+                             de=34.7921&longitude=-74.3263&accep                
+                             t=csv&time=2026-11-21T15%3A00%3A00Z                
+                              "HTTP/1.1 200 200"                                
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://tds.hycom.org/thredds/ncss/                
+                             FMRC_ESPC-D-V02_t3z/FMRC_ESPC-D-V02                
+                             _t3z_best.ncd?var=water_temp&latitu                
+                             de=34.3711&longitude=-73.8132&accep                
+                             t=csv&time=2026-11-21T15%3A00%3A00Z                
+                              "HTTP/1.1 200 200"                                
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://tds.hycom.org/thredds/ncss/                
+                             FMRC_ESPC-D-V02_t3z/FMRC_ESPC-D-V02                
+                             _t3z_best.ncd?var=water_temp&latitu                
+                             de=33.95&longitude=-73.3&accept=csv                
+                             &time=2026-11-21T15%3A00%3A00Z                     
+                             "HTTP/1.1 200 200"                                 
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://tds.hycom.org/thredds/ncss/                
+                             FMRC_ESPC-D-V02_t3z/FMRC_ESPC-D-V02                
+                             _t3z_best.ncd?var=water_temp&latitu                
+                             de=35.2974&longitude=-74.9421&accep                
+                             t=csv&time=2026-11-21T15%3A00%3A00Z                
+                              "HTTP/1.1 200 200"                                
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://tds.hycom.org/thredds/ncss/                
+                             FMRC_ESPC-D-V02_t3z/FMRC_ESPC-D-V02                
+                             _t3z_best.ncd?var=water_temp&latitu                
+                             de=34.5395&longitude=-74.0184&accep                
+                             t=csv&time=2026-11-21T15%3A00%3A00Z                
+                              "HTTP/1.1 200 200"                                
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://tds.hycom.org/thredds/ncss/                
+                             FMRC_ESPC-D-V02_t3z/FMRC_ESPC-D-V02                
+                             _t3z_best.ncd?var=water_temp&latitu                
+                             de=34.7079&longitude=-74.2237&accep                
+                             t=csv&time=2026-11-21T15%3A00%3A00Z                
+                              "HTTP/1.1 200 200"                                
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://tds.hycom.org/thredds/ncss/                
+                             FMRC_ESPC-D-V02_t3z/FMRC_ESPC-D-V02                
+                             _t3z_best.ncd?var=water_temp&latitu                
+                             de=34.8763&longitude=-74.4289&accep                
+                             t=csv&time=2026-11-21T15%3A00%3A00Z                
+                              "HTTP/1.1 200 200"                                
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://tds.hycom.org/thredds/ncss/                
+                             FMRC_ESPC-D-V02_t3z/FMRC_ESPC-D-V02                
+                             _t3z_best.ncd?var=water_temp&latitu                
+                             de=34.1184&longitude=-73.5053&accep                
+                             t=csv&time=2026-11-21T15%3A00%3A00Z                
+                              "HTTP/1.1 200 200"                                
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://tds.hycom.org/thredds/ncss/                
+                             FMRC_ESPC-D-V02_t3z/FMRC_ESPC-D-V02                
+                             _t3z_best.ncd?var=water_temp&latitu                
+                             de=35.4658&longitude=-75.1474&accep                
+                             t=csv&time=2026-11-21T15%3A00%3A00Z                
+                              "HTTP/1.1 200 200"                                
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://tds.hycom.org/thredds/ncss/                
+                             FMRC_ESPC-D-V02_t3z/FMRC_ESPC-D-V02                
+                             _t3z_best.ncd?var=water_temp&latitu                
+                             de=34.9605&longitude=-74.5316&accep                
+                             t=csv&time=2026-11-21T15%3A00%3A00Z                
+                              "HTTP/1.1 200 200"                                
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://tds.hycom.org/thredds/ncss/                
+                             FMRC_ESPC-D-V02_t3z/FMRC_ESPC-D-V02                
+                             _t3z_best.ncd?var=water_temp&latitu                
+                             de=35.0447&longitude=-74.6342&accep                
+                             t=csv&time=2026-11-21T15%3A00%3A00Z                
+                              "HTTP/1.1 200 200"                                
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://tds.hycom.org/thredds/ncss/                
+                             FMRC_ESPC-D-V02_t3z/FMRC_ESPC-D-V02                
+                             _t3z_best.ncd?var=water_temp&latitu                
+                             de=34.6237&longitude=-74.1211&accep                
+                             t=csv&time=2026-11-21T15%3A00%3A00Z                
+                              "HTTP/1.1 200 200"                                
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://tds.hycom.org/thredds/ncss/                
+                             FMRC_ESPC-D-V02_t3z/FMRC_ESPC-D-V02                
+                             _t3z_best.ncd?var=water_temp&latitu                
+                             de=35.55&longitude=-75.25&accept=cs                
+                             v&time=2026-11-21T15%3A00%3A00Z                    
+                             "HTTP/1.1 200 200"                                 
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://tds.hycom.org/thredds/ncss/                
+                             FMRC_ESPC-D-V02_t3z/FMRC_ESPC-D-V02                
+                             _t3z_best.ncd?var=water_temp&latitu                
+                             de=35.2132&longitude=-74.8395&accep                
+                             t=csv&time=2026-11-21T15%3A00%3A00Z                
+                              "HTTP/1.1 200 200"                                
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://tds.hycom.org/thredds/ncss/                
+                             FMRC_ESPC-D-V02_t3z/FMRC_ESPC-D-V02                
+                             _t3z_best.ncd?var=water_temp&latitu                
+                             de=34.4553&longitude=-73.9158&accep                
+                             t=csv&time=2026-11-21T15%3A00%3A00Z                
+                              "HTTP/1.1 200 200"                                
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://tds.hycom.org/thredds/ncss/                
+                             FMRC_ESPC-D-V02_t3z/FMRC_ESPC-D-V02                
+                             _t3z_best.ncd?var=water_temp&latitu                
+                             de=35.3816&longitude=-75.0447&accep                
+                             t=csv&time=2026-11-21T15%3A00%3A00Z                
+                              "HTTP/1.1 200 200"                                
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://tds.hycom.org/thredds/ncss/                
+                             FMRC_ESPC-D-V02_t3z/FMRC_ESPC-D-V02                
+                             _t3z_best.ncd?var=water_temp&latitu                
+                             de=35.1289&longitude=-74.7368&accep                
+                             t=csv&time=2026-11-21T15%3A00%3A00Z                
+                              "HTTP/1.1 200 200"                                
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://tds.hycom.org/thredds/ncss/                
+                             FMRC_ESPC-D-V02_t3z/FMRC_ESPC-D-V02                
+                             _t3z_best.ncd?var=water_temp&latitu                
+                             de=34.2026&longitude=-73.6079&accep                
+                             t=csv&time=2026-11-21T15%3A00%3A00Z                
+                              "HTTP/1.1 200 200"                                
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://tds.hycom.org/thredds/ncss/                
+                             FMRC_ESPC-D-V02_t3z/FMRC_ESPC-D-V02                
+                             _t3z_best.ncd?var=water_temp&latitu                
+                             de=34.0342&longitude=-73.4026&accep                
+                             t=csv&time=2026-11-21T15%3A00%3A00Z                
+                              "HTTP/1.1 200 200"                                
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://tds.hycom.org/thredds/ncss/                
+                             FMRC_ESPC-D-V02_t3z/FMRC_ESPC-D-V02                
+                             _t3z_best.ncd?var=water_temp&latitu                
+                             de=34.2868&longitude=-73.7105&accep                
+                             t=csv&time=2026-11-21T15%3A00%3A00Z                
+                              "HTTP/1.1 200 200"                                
+[11/21/26 12:37:59] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://tds.hycom.org/thredds/ncss/                
+                             FMRC_ESPC-D-V02_t3z/FMRC_ESPC-D-V02                
+                             _t3z_best.ncd?var=water_temp&latitu                
+                             de=34.7079&longitude=-74.2237&accep                
+                             t=csv&time=2026-11-21T15%3A00%3A00Z                
+                              "HTTP/1.1 200 200"                                

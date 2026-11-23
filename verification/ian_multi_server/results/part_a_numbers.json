@@ -1,0 +1,329 @@
+{
+ "aircraft_selected": {
+  "value": "AF301",
+  "unit": "call sign",
+  "kind": "computed",
+  "computed": "scripts/analyze_part_a.py:193",
+  "how": "rule 6.2"
+ },
+ "aircraft_sfmr_within_150km": {
+  "value": 506,
+  "unit": "records",
+  "kind": "computed",
+  "computed": "scripts/analyze_part_a.py:193",
+  "how": "count, rule 6.2"
+ },
+ "hdob_records_28sep_all_aircraft": {
+  "value": 4637,
+  "unit": "records",
+  "kind": "returned",
+  "tool": "recon_get_hdobs",
+  "call": "R1+R2",
+  "archive": "archive/part_a_record.json.gz"
+ },
+ "hdob_records_selected": {
+  "value": 940,
+  "unit": "records",
+  "kind": "returned",
+  "tool": "recon_get_hdobs",
+  "call": "R1+R2",
+  "archive": "archive/part_a_record.json.gz"
+ },
+ "qc_sfmr_removed_total": {
+  "value": 70,
+  "unit": "records",
+  "kind": "computed",
+  "computed": "scripts/analyze_part_a.py:231",
+  "how": "flag decoding, DESIGN.md 7"
+ },
+ "qc_fl_wind_removed_total": {
+  "value": 33,
+  "unit": "records",
+  "kind": "computed",
+  "computed": "scripts/analyze_part_a.py:231",
+  "how": "flag decoding, DESIGN.md 7"
+ },
+ "qc_positions_removed_total": {
+  "value": 7,
+  "unit": "records",
+  "kind": "computed",
+  "computed": "scripts/analyze_part_a.py:231",
+  "how": "flag decoding, DESIGN.md 7"
+ },
+ "qc_missing_sfmr_null": {
+  "value": 207,
+  "unit": "records",
+  "kind": "computed",
+  "computed": "scripts/analyze_part_a.py:231",
+  "how": "flag decoding, DESIGN.md 7"
+ },
+ "qc_missing_fl_wind_null": {
+  "value": 0,
+  "unit": "records",
+  "kind": "computed",
+  "computed": "scripts/analyze_part_a.py:231",
+  "how": "flag decoding, DESIGN.md 7"
+ },
+ "aircraft_first_record": {
+  "value": "2022-09-28 06:04:30",
+  "unit": "UTC",
+  "kind": "returned",
+  "tool": "recon_get_hdobs",
+  "call": "R1",
+  "archive": "archive/part_a_record.json.gz"
+ },
+ "aircraft_last_record": {
+  "value": "2022-09-28 13:54:00",
+  "unit": "UTC",
+  "kind": "returned",
+  "tool": "recon_get_hdobs",
+  "call": "R1",
+  "archive": "archive/part_a_record.json.gz"
+ },
+ "sfmr_max_kt_after_qc": {
+  "value": 137,
+  "unit": "kt",
+  "kind": "returned",
+  "tool": "recon_get_hdobs",
+  "call": "R1",
+  "archive": "archive/part_a_record.json.gz"
+ },
+ "sfmr_max_time": {
+  "value": "2022-09-28 10:29:30",
+  "unit": "UTC",
+  "kind": "returned",
+  "tool": "recon_get_hdobs",
+  "call": "R1",
+  "archive": "archive/part_a_record.json.gz"
+ },
+ "fl_wind_max_kt_after_qc": {
+  "value": 142,
+  "unit": "kt",
+  "kind": "returned",
+  "tool": "recon_get_hdobs",
+  "call": "R1",
+  "archive": "archive/part_a_record.json.gz"
+ },
+ "fl_wind_max_time": {
+  "value": "2022-09-28 12:42:00",
+  "unit": "UTC",
+  "kind": "returned",
+  "tool": "recon_get_hdobs",
+  "call": "R1",
+  "archive": "archive/part_a_record.json.gz"
+ },
+ "aircraft_min_distance_to_centre_km": {
+  "value": 1.92,
+  "unit": "km",
+  "kind": "computed",
+  "computed": "scripts/analyze_part_a.py:364",
+  "how": "haversine to interpolated centre"
+ },
+ "best_track_0600_max_wind_kt": {
+  "value": 120,
+  "unit": "kt (1-min)",
+  "kind": "returned",
+  "tool": "nhc_get_best_track",
+  "call": "call 1",
+  "archive": "verification/ian_cross_server/session_record.json"
+ },
+ "best_track_1200_max_wind_kt": {
+  "value": 140,
+  "unit": "kt (1-min)",
+  "kind": "returned",
+  "tool": "nhc_get_best_track",
+  "call": "call 1",
+  "archive": "verification/ian_cross_server/session_record.json"
+ },
+ "best_track_1800_max_wind_kt": {
+  "value": 135,
+  "unit": "kt (1-min)",
+  "kind": "returned",
+  "tool": "nhc_get_best_track",
+  "call": "call 1",
+  "archive": "verification/ian_cross_server/session_record.json"
+ },
+ "buoy_lat": {
+  "value": 25.704,
+  "unit": "deg",
+  "kind": "returned",
+  "tool": "ndbc_get_station",
+  "call": "N1",
+  "archive": "archive/part_a_record.json.gz"
+ },
+ "buoy_lon": {
+  "value": -83.654,
+  "unit": "deg",
+  "kind": "returned",
+  "tool": "ndbc_get_station",
+  "call": "N1",
+  "archive": "archive/part_a_record.json.gz"
+ },
+ "buoy_rows_in_file": {
+  "value": 11279,
+  "unit": "rows",
+  "kind": "returned",
+  "tool": "ww3_get_buoy_history",
+  "call": "W1",
+  "archive": "archive/part_a_record.json.gz"
+ },
+ "buoy_rows_in_window": {
+  "value": 144,
+  "unit": "rows",
+  "kind": "computed",
+  "computed": "scripts/analyze_part_a.py:465",
+  "how": "rows with timestamp in window"
+ },
+ "buoy_wvht_null_in_window": {
+  "value": 0,
+  "unit": "rows",
+  "kind": "computed",
+  "computed": "scripts/analyze_part_a.py:465",
+  "how": "null WVHT (tool maps 9-codes to null)"
+ },
+ "buoy_median_interval_min": {
+  "value": 30.0,
+  "unit": "min",
+  "kind": "computed",
+  "computed": "scripts/analyze_part_a.py:465",
+  "how": "median spacing of window rows"
+ },
+ "buoy_gaps": {
+  "value": 0,
+  "unit": "gaps",
+  "kind": "computed",
+  "computed": "scripts/analyze_part_a.py:465",
+  "how": "spacing > 1.5 x median"
+ },
+ "buoy_implied_missing_slots": {
+  "value": 0,
+  "unit": "slots",
+  "kind": "computed",
+  "computed": "scripts/analyze_part_a.py:465",
+  "how": "sum(round(gap/median) - 1)"
+ },
+ "buoy_wvht_max_m": {
+  "value": 8.31,
+  "unit": "m",
+  "kind": "returned",
+  "tool": "ww3_get_buoy_history",
+  "call": "W1",
+  "archive": "archive/part_a_record.json.gz"
+ },
+ "buoy_wvht_max_time": {
+  "value": "2022-09-28 11:26",
+  "unit": "UTC",
+  "kind": "returned",
+  "tool": "ww3_get_buoy_history",
+  "call": "W1",
+  "archive": "archive/part_a_record.json.gz"
+ },
+ "buoy_first_window_row": {
+  "value": "2022-09-27 00:26",
+  "unit": "UTC",
+  "kind": "computed",
+  "computed": "scripts/analyze_part_a.py:506",
+  "how": "first row in window"
+ },
+ "fort_myers_residual_max_m": {
+  "value": "2.209",
+  "unit": "m",
+  "kind": "computed",
+  "computed": "scripts/analyze_part_a.py:532",
+  "how": "max(observed - predicted), integer mm"
+ },
+ "st_petersburg_residual_min_m": {
+  "value": "-1.755",
+  "unit": "m",
+  "kind": "computed",
+  "computed": "scripts/analyze_part_a.py:544",
+  "how": "min(observed - predicted), integer mm"
+ },
+ "fort_myers_residual_max_time": {
+  "value": [
+   "2022-09-28 22:18",
+   "2022-09-28 22:30"
+  ],
+  "unit": "UTC",
+  "kind": "computed",
+  "computed": "scripts/analyze_part_a.py:551",
+  "how": "times of the maximum"
+ },
+ "st_petersburg_residual_min_time": {
+  "value": "2022-09-28 23:00",
+  "unit": "UTC",
+  "kind": "computed",
+  "computed": "scripts/analyze_part_a.py:558",
+  "how": "time of the minimum"
+ },
+ "fort_myers_observed_max_m": {
+  "value": "2.613",
+  "unit": "m MLLW",
+  "kind": "returned",
+  "tool": "coops_get_water_levels",
+  "call": "call 3",
+  "archive": "verification/ian_cross_server/session_record.json"
+ },
+ "af301_peak_fl_wind_10s_max_kt_after_qc": {
+  "value": 144,
+  "unit": "kt (highest 10-s mean in the 30-s record)",
+  "kind": "returned",
+  "tool": "recon_get_hdobs",
+  "call": "R1",
+  "archive": "archive/part_a_record.json.gz"
+ },
+ "af301_peak_fl_wind_10s_max_time": {
+  "value": "2022-09-28 12:43:00",
+  "unit": "UTC",
+  "kind": "returned",
+  "tool": "recon_get_hdobs",
+  "call": "R1",
+  "archive": "archive/part_a_record.json.gz"
+ },
+ "af301_peak_fl_wind_10s_nonnull_after_qc": {
+  "value": 907,
+  "unit": "records",
+  "kind": "computed",
+  "computed": "scripts/analyze_part_a.py:630",
+  "how": "non-null peak_fl_wind_kt after QC removal"
+ },
+ "af301_peak_fl_wind_10s_removed_by_qc": {
+  "value": 33,
+  "unit": "records",
+  "kind": "computed",
+  "computed": "scripts/analyze_part_a.py:637",
+  "how": "non-null values removed by the flight-level-wind QC rule"
+ },
+ "af301_sfmr_max_before_qc_kt": {
+  "value": 138,
+  "unit": "kt",
+  "kind": "returned",
+  "tool": "recon_get_hdobs",
+  "call": "R1",
+  "archive": "archive/part_a_record.json.gz"
+ },
+ "af301_sfmr_max_before_qc_time": {
+  "value": "2022-09-28 12:05:30",
+  "unit": "UTC",
+  "kind": "returned",
+  "tool": "recon_get_hdobs",
+  "call": "R1",
+  "archive": "archive/part_a_record.json.gz"
+ },
+ "af301_sfmr_max_before_qc_ff": {
+  "value": "03",
+  "unit": "HDOB FF",
+  "kind": "returned",
+  "tool": "recon_get_hdobs",
+  "call": "R1",
+  "archive": "archive/part_a_record.json.gz"
+ },
+ "sfmr_max_after_qc_ff": {
+  "value": "00",
+  "unit": "HDOB FF",
+  "kind": "returned",
+  "tool": "recon_get_hdobs",
+  "call": "R1",
+  "archive": "archive/part_a_record.json.gz"
+ }
+}

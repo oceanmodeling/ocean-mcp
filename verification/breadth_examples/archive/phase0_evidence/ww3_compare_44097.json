@@ -1,0 +1,28 @@
+{
+  "server": "ww3-mcp",
+  "tool": "ww3_compare_forecast_with_buoy",
+  "arguments": {
+    "station_id": "44097",
+    "buoy_lat": 40.966,
+    "buoy_lon": -71.123,
+    "hours_to_compare": 24,
+    "response_format": "json"
+  },
+  "started_at": "2026-11-21T02:42:01.211+00:00",
+  "elapsed_s": 13.044,
+  "result": {
+    "meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"station_id\": \"44097\",\n  \"buoy_lat\": 40.966,\n  \"buoy_lon\": -71.123,\n  \"grid\": \"global.0p25\",\n  \"cycle\": \"2026-11-20 18z\",\n  \"observation_window\": {\n    \"hours\": 24,\n    \"reference\": \"latest row in the file\",\n    \"rows_in_file\": 2111,\n    \"undated_rows\": 0,\n    \"latest_time\": \"2026-11-21 02:00\",\n    \"window_start\": \"2026-11-20 02:00\",\n    \"rows_in_window\": 48,\n    \"oldest_time_in_file\": \"2026-10-07 00:00\",\n    \"covers_full_window\": true,\n    \"typical_interval_minutes\": 30,\n    \"rows_with_wvht\": 48\n  },\n  \"stats\": {\n    \"bias\": -0.0133,\n    \"rmse\": 0.0424,\n    \"mae\": 0.0333,\n    \"peak_error\": 0.07,\n    \"correlation\": 0.866,\n    \"n\": 3\n  },\n  \"comparison_times\": [\n    \"2026-11-20 18:00\",\n    \"2026-11-20 21:00\",\n    \"2026-11-21 00:00\"\n  ],\n  \"forecast_values\": [\n    0.52,\n    0.53,\n    0.51\n  ],\n  \"observed_values\": [\n    0.5,\n    0.6,\n    0.5\n  ]\n}",
+        "annotations": null,
+        "meta": null
+      }
+    ],
+    "structuredContent": {
+      "result": "{\n  \"station_id\": \"44097\",\n  \"buoy_lat\": 40.966,\n  \"buoy_lon\": -71.123,\n  \"grid\": \"global.0p25\",\n  \"cycle\": \"2026-11-20 18z\",\n  \"observation_window\": {\n    \"hours\": 24,\n    \"reference\": \"latest row in the file\",\n    \"rows_in_file\": 2111,\n    \"undated_rows\": 0,\n    \"latest_time\": \"2026-11-21 02:00\",\n    \"window_start\": \"2026-11-20 02:00\",\n    \"rows_in_window\": 48,\n    \"oldest_time_in_file\": \"2026-10-07 00:00\",\n    \"covers_full_window\": true,\n    \"typical_interval_minutes\": 30,\n    \"rows_with_wvht\": 48\n  },\n  \"stats\": {\n    \"bias\": -0.0133,\n    \"rmse\": 0.0424,\n    \"mae\": 0.0333,\n    \"peak_error\": 0.07,\n    \"correlation\": 0.866,\n    \"n\": 3\n  },\n  \"comparison_times\": [\n    \"2026-11-20 18:00\",\n    \"2026-11-20 21:00\",\n    \"2026-11-21 00:00\"\n  ],\n  \"forecast_values\": [\n    0.52,\n    0.53,\n    0.51\n  ],\n  \"observed_values\": [\n    0.5,\n    0.6,\n    0.5\n  ]\n}"
+    },
+    "isError": false
+  }
+}

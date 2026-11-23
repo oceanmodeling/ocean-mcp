@@ -1,0 +1,303 @@
+{
+  "created_by": "make_env.py (WP9 phase 0)",
+  "started_at": "2026-11-21T02:11:29+00:00",
+  "finished_at": "2026-11-21T02:11:59+00:00",
+  "env_dir": "/mnt/d/ocean-mcp-wp9/phase0/env",
+  "python": "3.13.12",
+  "uv": "uv 0.10.4",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "wheels": {
+    "nhc-mcp": {
+      "version": "0.1.1",
+      "wheel_filename": "nhc_mcp-0.1.1-py3-none-any.whl",
+      "wheel_url": "https://files.pythonhosted.org/packages/82/98/467653e6514a023ce7f3a7c46a33ba071e0bf3ce7cde4321ef6104ee247b/nhc_mcp-0.1.1-py3-none-any.whl",
+      "pypi_upload_time": "2026-10-01T10:23:17.412317Z",
+      "pypi_sha256": "34bd7bb5b2b1dc6995d20572acff5afc47b198d69570b93bfd5e037035811c25",
+      "downloaded_sha256": "34bd7bb5b2b1dc6995d20572acff5afc47b198d69570b93bfd5e037035811c25",
+      "requires_dist": [
+        "httpx<1,>=0.27.0",
+        "mcp[cli]<2,>=1.0.0",
+        "pydantic<3,>=2.0.0"
+      ],
+      "local_path": "/mnt/d/ocean-mcp-wp9/phase0/env.wheels/nhc-mcp/nhc_mcp-0.1.1-py3-none-any.whl"
+    },
+    "coops-mcp": {
+      "version": "0.1.1",
+      "wheel_filename": "coops_mcp-0.1.1-py3-none-any.whl",
+      "wheel_url": "https://files.pythonhosted.org/packages/94/3e/e7214785a3134f6c032946a9ad0e420b20742ac9d3d1db4dd7de6dbf5dc6/coops_mcp-0.1.1-py3-none-any.whl",
+      "pypi_upload_time": "2026-09-04T04:52:33.287016Z",
+      "pypi_sha256": "f9630bc8bf7e024aff0ade1ec2e9a696487e3fdccc1e2b9860a6c5e64846f210",
+      "downloaded_sha256": "f9630bc8bf7e024aff0ade1ec2e9a696487e3fdccc1e2b9860a6c5e64846f210",
+      "requires_dist": [
+        "httpx<1,>=0.27.0",
+        "mcp[cli]<2,>=1.0.0",
+        "pydantic<3,>=2.0.0"
+      ],
+      "local_path": "/mnt/d/ocean-mcp-wp9/phase0/env.wheels/coops-mcp/coops_mcp-0.1.1-py3-none-any.whl"
+    },
+    "recon-mcp": {
+      "version": "0.1.3",
+      "wheel_filename": "recon_mcp-0.1.3-py3-none-any.whl",
+      "wheel_url": "https://files.pythonhosted.org/packages/b7/28/06dfe2b939feb7e9a855841b3348c09d0b75066d367acdab7720eb13288e/recon_mcp-0.1.3-py3-none-any.whl",
+      "pypi_upload_time": "2026-10-20T03:32:18.769934Z",
+      "pypi_sha256": "338a5a84ae70c8c0d38b47b6a2c2bfc13543dfb068c0085dd6a1075450d6a9e8",
+      "downloaded_sha256": "338a5a84ae70c8c0d38b47b6a2c2bfc13543dfb068c0085dd6a1075450d6a9e8",
+      "requires_dist": [
+        "httpx<1,>=0.27.0",
+        "mcp[cli]<2,>=1.0.0",
+        "netcdf4<2,>=1.7.0",
+        "numpy<3,>=1.26.0",
+        "pydantic<3,>=2.0.0"
+      ],
+      "local_path": "/mnt/d/ocean-mcp-wp9/phase0/env.wheels/recon-mcp/recon_mcp-0.1.3-py3-none-any.whl"
+    },
+    "ndbc-mcp": {
+      "version": "0.1.2",
+      "wheel_filename": "ndbc_mcp-0.1.2-py3-none-any.whl",
+      "wheel_url": "https://files.pythonhosted.org/packages/f7/83/f5918efe2ad327a7cb41a238bffa6dbd2d046b4d3e5fc98e808d5a92be2b/ndbc_mcp-0.1.2-py3-none-any.whl",
+      "pypi_upload_time": "2026-07-28T19:29:13.833582Z",
+      "pypi_sha256": "0ad49f38aa4822bdfa03be5fe3be381d28b6998c417ac475f5f2184af35c6817",
+      "downloaded_sha256": "0ad49f38aa4822bdfa03be5fe3be381d28b6998c417ac475f5f2184af35c6817",
+      "requires_dist": [
+        "httpx<1,>=0.27.0",
+        "mcp[cli]<2,>=1.0.0",
+        "pydantic<3,>=2.0.0"
+      ],
+      "local_path": "/mnt/d/ocean-mcp-wp9/phase0/env.wheels/ndbc-mcp/ndbc_mcp-0.1.2-py3-none-any.whl"
+    },
+    "usgs-mcp": {
+      "version": "0.1.2",
+      "wheel_filename": "usgs_mcp-0.1.2-py3-none-any.whl",
+      "wheel_url": "https://files.pythonhosted.org/packages/f8/e5/5e155aa8c14243630b0d0b1db9b964babedd6ae6c713b54060e4fa5837a6/usgs_mcp-0.1.2-py3-none-any.whl",
+      "pypi_upload_time": "2026-11-16T00:43:19.437244Z",
+      "pypi_sha256": "5076006cf984ee24dfc02d3d7377c44502080a07aabf0db5a17167df3bd120f2",
+      "downloaded_sha256": "5076006cf984ee24dfc02d3d7377c44502080a07aabf0db5a17167df3bd120f2",
+      "requires_dist": [
+        "httpx<1,>=0.27.0",
+        "mcp[cli]<2,>=1.0.0",
+        "pydantic<3,>=2.0.0"
+      ],
+      "local_path": "/mnt/d/ocean-mcp-wp9/phase0/env.wheels/usgs-mcp/usgs_mcp-0.1.2-py3-none-any.whl"
+    },
+    "ww3-mcp": {
+      "version": "0.1.3",
+      "wheel_filename": "ww3_mcp-0.1.3-py3-none-any.whl",
+      "wheel_url": "https://files.pythonhosted.org/packages/8b/40/6bddeee10d22dbf08ac63659ad89af4025648a9641dc5d7e26e773d3fcf1/ww3_mcp-0.1.3-py3-none-any.whl",
+      "pypi_upload_time": "2026-11-16T00:47:46.310663Z",
+      "pypi_sha256": "8825e2ce75b1f102f1561c68ac03de12de93e98cbc90090d68a2d3a60b1c942d",
+      "downloaded_sha256": "8825e2ce75b1f102f1561c68ac03de12de93e98cbc90090d68a2d3a60b1c942d",
+      "requires_dist": [
+        "cfgrib<1,>=0.9.12",
+        "eccodes<3,>=2.37.0",
+        "httpx<1,>=0.27.0",
+        "mcp[cli]<2,>=1.0.0",
+        "numpy<3,>=1.26.0",
+        "pydantic<3,>=2.0.0",
+        "xarray>=2024.1.0"
+      ],
+      "local_path": "/mnt/d/ocean-mcp-wp9/phase0/env.wheels/ww3-mcp/ww3_mcp-0.1.3-py3-none-any.whl"
+    },
+    "ofs-mcp": {
+      "version": "0.1.3",
+      "wheel_filename": "ofs_mcp-0.1.3-py3-none-any.whl",
+      "wheel_url": "https://files.pythonhosted.org/packages/3d/2c/65f12097afad094a213f596e47e4ad79e18ce39bcad28d288d214f42b219/ofs_mcp-0.1.3-py3-none-any.whl",
+      "pypi_upload_time": "2026-11-16T11:43:26.052132Z",
+      "pypi_sha256": "f2f4943b0bf0594f2480c93831f0604aa2816365b2c5415e8cc42f5de162de6c",
+      "downloaded_sha256": "f2f4943b0bf0594f2480c93831f0604aa2816365b2c5415e8cc42f5de162de6c",
+      "requires_dist": [
+        "httpx<1,>=0.27.0",
+        "mcp[cli]<2,>=1.0.0",
+        "netcdf4<2,>=1.7.0",
+        "numpy<3,>=1.26.0",
+        "pydantic<3,>=2.0.0"
+      ],
+      "local_path": "/mnt/d/ocean-mcp-wp9/phase0/env.wheels/ofs-mcp/ofs_mcp-0.1.3-py3-none-any.whl"
+    },
+    "rtofs-mcp": {
+      "version": "0.1.4",
+      "wheel_filename": "rtofs_mcp-0.1.4-py3-none-any.whl",
+      "wheel_url": "https://files.pythonhosted.org/packages/66/9b/3cfb9e36adbf4129ba8cb5a40f495b5607eb588b71ed4be58d782621bdb4/rtofs_mcp-0.1.4-py3-none-any.whl",
+      "pypi_upload_time": "2026-11-16T12:05:29.546934Z",
+      "pypi_sha256": "f943d3db9d28c61a8126c99ed569c64bb79e6d9f92338477e75e090839aac033",
+      "downloaded_sha256": "f943d3db9d28c61a8126c99ed569c64bb79e6d9f92338477e75e090839aac033",
+      "requires_dist": [
+        "httpx<1,>=0.27.0",
+        "mcp[cli]<2,>=1.0.0",
+        "pydantic<3,>=2.0.0"
+      ],
+      "local_path": "/mnt/d/ocean-mcp-wp9/phase0/env.wheels/rtofs-mcp/rtofs_mcp-0.1.4-py3-none-any.whl"
+    },
+    "goes-mcp": {
+      "version": "0.1.3",
+      "wheel_filename": "goes_mcp-0.1.3-py3-none-any.whl",
+      "wheel_url": "https://files.pythonhosted.org/packages/78/0e/63de139541edd0247e63c6e07c667259beac30c6dcd3c6ae1900f4b00145/goes_mcp-0.1.3-py3-none-any.whl",
+      "pypi_upload_time": "2026-10-01T10:38:14.685018Z",
+      "pypi_sha256": "329d6a621ccb02dd8c3d02c7870ea27456cfae970fea222e278b0f8809416e36",
+      "downloaded_sha256": "329d6a621ccb02dd8c3d02c7870ea27456cfae970fea222e278b0f8809416e36",
+      "requires_dist": [
+        "httpx<1,>=0.27.0",
+        "mcp[cli]<2,>=1.0.0",
+        "pydantic<3,>=2.0.0"
+      ],
+      "local_path": "/mnt/d/ocean-mcp-wp9/phase0/env.wheels/goes-mcp/goes_mcp-0.1.3-py3-none-any.whl"
+    },
+    "vdatum-mcp": {
+      "version": "0.1.1",
+      "wheel_filename": "vdatum_mcp-0.1.1-py3-none-any.whl",
+      "wheel_url": "https://files.pythonhosted.org/packages/71/a2/5404ae7bf94b4b1f58e8d97ca30d1ec6035cfd7eb4152d911440fba303da/vdatum_mcp-0.1.1-py3-none-any.whl",
+      "pypi_upload_time": "2026-07-28T20:09:15.091483Z",
+      "pypi_sha256": "80f3f4ec22f331f37aa341300ea69a7722c7e840ec6d8efc5f45da4d7973fa40",
+      "downloaded_sha256": "80f3f4ec22f331f37aa341300ea69a7722c7e840ec6d8efc5f45da4d7973fa40",
+      "requires_dist": [
+        "mcp[cli]<2,>=1.0.0",
+        "numpy<3,>=1.26",
+        "pyproj<4,>=3.7"
+      ],
+      "local_path": "/mnt/d/ocean-mcp-wp9/phase0/env.wheels/vdatum-mcp/vdatum_mcp-0.1.1-py3-none-any.whl"
+    }
+  },
+  "freeze": [
+    "annotated-doc==0.0.7",
+    "annotated-types==0.8.0",
+    "anyio==4.16.0",
+    "attrs==26.1.0",
+    "certifi==2026.11.20",
+    "cffi==2.1.1",
+    "cfgrib==0.9.15.1",
+    "cftime==1.6.6.1",
+    "click==8.5.1",
+    "coops-mcp @ file:///mnt/d/ocean-mcp-wp9/phase0/env.wheels/coops-mcp/coops_mcp-0.1.1-py3-none-any.whl",
+    "cryptography==50.0.2",
+    "eccodes==2.50.1",
+    "eccodeslib==2.50.0.34",
+    "eckitlib==2.5.0.34",
+    "findlibs==0.1.5",
+    "goes-mcp @ file:///mnt/d/ocean-mcp-wp9/phase0/env.wheels/goes-mcp/goes_mcp-0.1.3-py3-none-any.whl",
+    "h11==0.16.0",
+    "httpcore==1.0.9",
+    "httpx==0.28.1",
+    "httpx-sse==0.4.3",
+    "idna==3.20",
+    "jsonschema==4.26.0",
+    "jsonschema-specifications==2025.9.1",
+    "markdown-it-py==4.3.0",
+    "mcp==1.30.0",
+    "mdurl==0.1.2",
+    "ndbc-mcp @ file:///mnt/d/ocean-mcp-wp9/phase0/env.wheels/ndbc-mcp/ndbc_mcp-0.1.2-py3-none-any.whl",
+    "netcdf4==1.7.5.1.post1",
+    "nhc-mcp @ file:///mnt/d/ocean-mcp-wp9/phase0/env.wheels/nhc-mcp/nhc_mcp-0.1.1-py3-none-any.whl",
+    "numpy==2.5.5",
+    "ofs-mcp @ file:///mnt/d/ocean-mcp-wp9/phase0/env.wheels/ofs-mcp/ofs_mcp-0.1.3-py3-none-any.whl",
+    "packaging==26.3",
+    "pandas==3.1.1",
+    "pycparser==3.12",
+    "pydantic==2.14.4",
+    "pydantic-core==2.50.5",
+    "pydantic-settings==2.16.3",
+    "pygments==2.21.0",
+    "pyjwt==2.15.1",
+    "pyproj==3.8.0",
+    "python-dateutil==4.0.0",
+    "python-dotenv==1.2.4",
+    "python-multipart==0.0.34",
+    "recon-mcp @ file:///mnt/d/ocean-mcp-wp9/phase0/env.wheels/recon-mcp/recon_mcp-0.1.3-py3-none-any.whl",
+    "referencing==0.37.0",
+    "rich==15.0.0",
+    "rpds-py==2026.9.1",
+    "rtofs-mcp @ file:///mnt/d/ocean-mcp-wp9/phase0/env.wheels/rtofs-mcp/rtofs_mcp-0.1.4-py3-none-any.whl",
+    "shellingham==1.5.4",
+    "sse-starlette==3.7.0",
+    "starlette==1.10.0",
+    "typer==0.29.2",
+    "typing-extensions==4.16.0",
+    "typing-inspection==0.4.5",
+    "tzdata==2026.6",
+    "usgs-mcp @ file:///mnt/d/ocean-mcp-wp9/phase0/env.wheels/usgs-mcp/usgs_mcp-0.1.2-py3-none-any.whl",
+    "uvicorn==0.54.0",
+    "vdatum-mcp @ file:///mnt/d/ocean-mcp-wp9/phase0/env.wheels/vdatum-mcp/vdatum_mcp-0.1.1-py3-none-any.whl",
+    "ww3-mcp @ file:///mnt/d/ocean-mcp-wp9/phase0/env.wheels/ww3-mcp/ww3_mcp-0.1.3-py3-none-any.whl",
+    "xarray==2026.9.0"
+  ],
+  "installed_source_vs_tag": {
+    "nhc-mcp": {
+      "tag": "nhc-mcp-v0.1.1",
+      "tag_commit": "5e45c628c8f86c33dfffdc098b82a5b7cf2f0dbd",
+      "files_installed": 10,
+      "files_in_tag": 10,
+      "identical_to_tag": true,
+      "differences": []
+    },
+    "coops-mcp": {
+      "tag": "coops-mcp-v0.1.1",
+      "tag_commit": "f8d88a2e1575af27569244ca17040fc6cd9f28c7",
+      "files_installed": 12,
+      "files_in_tag": 12,
+      "identical_to_tag": true,
+      "differences": []
+    },
+    "recon-mcp": {
+      "tag": "recon-mcp-v0.1.3",
+      "tag_commit": "3b31effdcf44e27d5dff225a183f48c7ad9b760f",
+      "files_installed": 12,
+      "files_in_tag": 12,
+      "identical_to_tag": true,
+      "differences": []
+    },
+    "ndbc-mcp": {
+      "tag": "ndbc-mcp-v0.1.2",
+      "tag_commit": "f08c2f5e00a970fd404a959f2173b6ac74a4d215",
+      "files_installed": 9,
+      "files_in_tag": 9,
+      "identical_to_tag": true,
+      "differences": []
+    },
+    "usgs-mcp": {
+      "tag": "usgs-mcp-v0.1.2",
+      "tag_commit": "fb240d4a3351b1bbb8b7dc318bd7545fe28cb3e1",
+      "files_installed": 10,
+      "files_in_tag": 10,
+      "identical_to_tag": true,
+      "differences": []
+    },
+    "ww3-mcp": {
+      "tag": "ww3-mcp-v0.1.3",
+      "tag_commit": "2737356c774adbf2e34575d9929e1b08a4e39f60",
+      "files_installed": 10,
+      "files_in_tag": 10,
+      "identical_to_tag": true,
+      "differences": []
+    },
+    "ofs-mcp": {
+      "tag": "ofs-mcp-v0.1.3",
+      "tag_commit": "d865749edc37d71d108c4da28adfdf60f491cc45",
+      "files_installed": 9,
+      "files_in_tag": 9,
+      "identical_to_tag": true,
+      "differences": []
+    },
+    "rtofs-mcp": {
+      "tag": "rtofs-mcp-v0.1.4",
+      "tag_commit": "f7800f1693c04b8a1cb6860d761817be31e0f696",
+      "files_installed": 9,
+      "files_in_tag": 9,
+      "identical_to_tag": true,
+      "differences": []
+    },
+    "goes-mcp": {
+      "tag": "goes-mcp-v0.1.3",
+      "tag_commit": "5e45c628c8f86c33dfffdc098b82a5b7cf2f0dbd",
+      "files_installed": 8,
+      "files_in_tag": 8,
+      "identical_to_tag": true,
+      "differences": []
+    },
+    "vdatum-mcp": {
+      "tag": "vdatum-mcp-v0.1.1",
+      "tag_commit": "636f071c00db5eda693db091c084ae1469b6265f",
+      "files_installed": 13,
+      "files_in_tag": 13,
+      "identical_to_tag": true,
+      "differences": []
+    }
+  }
+}

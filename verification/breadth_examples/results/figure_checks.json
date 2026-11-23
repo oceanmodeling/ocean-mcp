@@ -1,0 +1,16 @@
+{
+ "b2": {
+  "min_font_pt": 8.0,
+  "legend_points_inside": [
+   0
+  ],
+  "text_outside_page": []
+ },
+ "b4": {
+  "min_font_pt": 8.0,
+  "legend_points_inside": [],
+  "text_outside_page": [],
+  "cells_drawn": 20
+ },
+ "b1": "not drawn: session 2 not archived yet"
+}

@@ -1,0 +1,8 @@
+[11/20/26 21:14:46] INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+                    INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.aoml.noaa.gov/ftp/hrd/d                
+                             ata/sfmr/2022/ian/ "HTTP/1.1 403                   
+                             Forbidden"                                         

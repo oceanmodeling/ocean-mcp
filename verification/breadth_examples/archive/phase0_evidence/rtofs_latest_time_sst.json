@@ -1,0 +1,25 @@
+{
+  "server": "rtofs-mcp",
+  "tool": "rtofs_get_latest_time",
+  "arguments": {
+    "dataset": "sst",
+    "response_format": "json"
+  },
+  "started_at": "2026-11-21T02:35:05.451+00:00",
+  "elapsed_s": 0.794,
+  "result": {
+    "meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"dataset\": \"sst\",\n  \"description\": \"Temperature (3D with depth), 3-hourly, 8-day forecast\",\n  \"thredds_dataset\": \"FMRC_ESPC-D-V02_t3z/FMRC_ESPC-D-V02_t3z_best.ncd\",\n  \"variables\": [\n    \"water_temp\"\n  ],\n  \"first_time\": \"2026-11-11T12:00:00Z\",\n  \"last_time\": \"2026-11-24T12:00:00Z\",\n  \"n_time_steps\": 105,\n  \"time_step_hours\": 3.0,\n  \"latest_run\": \"2026-11-16T12:00:00Z\",\n  \"timezone\": \"UTC\",\n  \"time_units\": \"hours since 2026-11-11 12:00:00.000 UTC\",\n  \"source\": \"HYCOM THREDDS OPeNDAP, dataset time coordinate\",\n  \"source_url\": \"https://tds.hycom.org/thredds/dodsC/FMRC_ESPC-D-V02_t3z/FMRC_ESPC-D-V02_t3z_best.ncd.ascii?time,time_run\",\n  \"retrieved_at\": \"2026-11-21T02:35:06+00:00\"\n}",
+        "annotations": null,
+        "meta": null
+      }
+    ],
+    "structuredContent": {
+      "result": "{\n  \"dataset\": \"sst\",\n  \"description\": \"Temperature (3D with depth), 3-hourly, 8-day forecast\",\n  \"thredds_dataset\": \"FMRC_ESPC-D-V02_t3z/FMRC_ESPC-D-V02_t3z_best.ncd\",\n  \"variables\": [\n    \"water_temp\"\n  ],\n  \"first_time\": \"2026-11-11T12:00:00Z\",\n  \"last_time\": \"2026-11-24T12:00:00Z\",\n  \"n_time_steps\": 105,\n  \"time_step_hours\": 3.0,\n  \"latest_run\": \"2026-11-16T12:00:00Z\",\n  \"timezone\": \"UTC\",\n  \"time_units\": \"hours since 2026-11-11 12:00:00.000 UTC\",\n  \"source\": \"HYCOM THREDDS OPeNDAP, dataset time coordinate\",\n  \"source_url\": \"https://tds.hycom.org/thredds/dodsC/FMRC_ESPC-D-V02_t3z/FMRC_ESPC-D-V02_t3z_best.ncd.ascii?time,time_run\",\n  \"retrieved_at\": \"2026-11-21T02:35:06+00:00\"\n}"
+    },
+    "isError": false
+  }
+}

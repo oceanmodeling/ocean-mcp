@@ -1,0 +1,33 @@
+{
+ "position": {
+  "lat": "26.647778",
+  "lon": "-81.87111",
+  "source": "coops_get_station, verification/ian_cross_server/session_record.json call 2"
+ },
+ "input": "2.613 m above MLLW (Fort Myers observed peak, verification/ian_cross_server)",
+ "coops_datums_m_above_stnd": {
+  "MHHW": "1.73",
+  "MLLW": "1.329",
+  "NAVD88": "1.647",
+  "STND": "0.0"
+ },
+ "rows": [
+  {
+   "target": "MHHW",
+   "vdatum_m": "2.2121",
+   "coops_m": "2.212",
+   "diff_mm": "0.1"
+  },
+  {
+   "target": "NAVD88",
+   "vdatum_m": "2.2922",
+   "coops_m": "2.295",
+   "diff_mm": "-2.8"
+  }
+ ],
+ "uncertainty_stated": {
+  "vdatum_convert (V1, V2)": false,
+  "coops_get_datums (V3)": false
+ },
+ "computed": "scripts/analyze_part_b.py:320"
+}

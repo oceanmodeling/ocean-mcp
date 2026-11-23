@@ -1,0 +1,26 @@
+{
+  "server": "goes-mcp",
+  "tool": "goes_get_image",
+  "arguments": {
+    "timestamp": "20220928120000",
+    "satellite": "goes-19",
+    "coverage": "CONUS",
+    "product": "GEOCOLOR",
+    "resolution": "thumbnail"
+  },
+  "started_at": "2026-11-21T02:37:06.274+00:00",
+  "elapsed_s": 0.004,
+  "result": {
+    "meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "## GeoColor \u2014 GOES-19 (East) @ 20220928120000\n\n![GeoColor](https://cdn.star.nesdis.noaa.gov/GOES19/ABI/CONUS/GEOCOLOR/20222711200_GOES19-ABI-CONUS-GEOCOLOR-416x250.jpg)\n\n- **Satellite**: GOES-19 (East)\n- **Coverage**: CONUS\n- **Product**: GeoColor (GEOCOLOR)\n- **Timestamp**: 20220928120000\n- **Resolution**: thumbnail\n- **URL**: https://cdn.star.nesdis.noaa.gov/GOES19/ABI/CONUS/GEOCOLOR/20222711200_GOES19-ABI-CONUS-GEOCOLOR-416x250.jpg",
+        "annotations": null,
+        "meta": null
+      }
+    ],
+    "structuredContent": null,
+    "isError": false
+  }
+}

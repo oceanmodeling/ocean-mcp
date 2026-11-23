@@ -1,0 +1,5667 @@
+{
+ "aircraft": "AF301",
+ "unit": "kt",
+ "first_time": "2022-09-28 06:04:30",
+ "last_time": "2022-09-28 13:54:00",
+ "landfall_in_range": false,
+ "best_track": [
+  {
+   "time": "2022-09-28 06:00",
+   "max_wind_kt": 120,
+   "record": "20220928 0600 UTC"
+  },
+  {
+   "time": "2022-09-28 12:00",
+   "max_wind_kt": 140,
+   "record": "20220928 1200 UTC"
+  },
+  {
+   "time": "2022-09-28 18:00",
+   "max_wind_kt": 135,
+   "record": "20220928 1800 UTC"
+  }
+ ],
+ "best_track_rule": "6-hourly best-track records (1-min maximum sustained wind) bracketing the flight; drawn as markers joined by straight lines in time, clipped at the axis edge",
+ "rows": [
+  {
+   "time": "2022-09-28 06:04:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 826.46
+  },
+  {
+   "time": "2022-09-28 06:05:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 826.39
+  },
+  {
+   "time": "2022-09-28 06:05:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 826.32
+  },
+  {
+   "time": "2022-09-28 06:06:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 826.25
+  },
+  {
+   "time": "2022-09-28 06:06:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 826.18
+  },
+  {
+   "time": "2022-09-28 06:07:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 826.11
+  },
+  {
+   "time": "2022-09-28 06:07:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 826.05
+  },
+  {
+   "time": "2022-09-28 06:08:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 825.98
+  },
+  {
+   "time": "2022-09-28 06:08:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 825.91
+  },
+  {
+   "time": "2022-09-28 06:09:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 825.84
+  },
+  {
+   "time": "2022-09-28 06:09:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 825.77
+  },
+  {
+   "time": "2022-09-28 06:10:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 825.7
+  },
+  {
+   "time": "2022-09-28 06:10:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 825.63
+  },
+  {
+   "time": "2022-09-28 06:11:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 825.57
+  },
+  {
+   "time": "2022-09-28 06:11:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 825.5
+  },
+  {
+   "time": "2022-09-28 06:12:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 825.43
+  },
+  {
+   "time": "2022-09-28 06:12:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 825.36
+  },
+  {
+   "time": "2022-09-28 06:13:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 825.29
+  },
+  {
+   "time": "2022-09-28 06:13:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 825.22
+  },
+  {
+   "time": "2022-09-28 06:14:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 825.15
+  },
+  {
+   "time": "2022-09-28 06:14:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 825.09
+  },
+  {
+   "time": "2022-09-28 06:15:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 825.02
+  },
+  {
+   "time": "2022-09-28 06:15:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 824.95
+  },
+  {
+   "time": "2022-09-28 06:16:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 824.88
+  },
+  {
+   "time": "2022-09-28 06:16:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 824.81
+  },
+  {
+   "time": "2022-09-28 06:17:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 824.74
+  },
+  {
+   "time": "2022-09-28 06:17:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 824.67
+  },
+  {
+   "time": "2022-09-28 06:18:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 824.61
+  },
+  {
+   "time": "2022-09-28 06:18:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 824.54
+  },
+  {
+   "time": "2022-09-28 06:19:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 824.47
+  },
+  {
+   "time": "2022-09-28 06:19:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 824.4
+  },
+  {
+   "time": "2022-09-28 06:20:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 824.33
+  },
+  {
+   "time": "2022-09-28 06:20:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 824.26
+  },
+  {
+   "time": "2022-09-28 06:21:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 824.2
+  },
+  {
+   "time": "2022-09-28 06:21:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 824.13
+  },
+  {
+   "time": "2022-09-28 06:22:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 824.06
+  },
+  {
+   "time": "2022-09-28 06:22:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 823.99
+  },
+  {
+   "time": "2022-09-28 06:23:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 825.1
+  },
+  {
+   "time": "2022-09-28 06:23:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 825.03
+  },
+  {
+   "time": "2022-09-28 06:24:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 824.96
+  },
+  {
+   "time": "2022-09-28 06:24:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 824.89
+  },
+  {
+   "time": "2022-09-28 06:25:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 824.82
+  },
+  {
+   "time": "2022-09-28 06:25:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 824.76
+  },
+  {
+   "time": "2022-09-28 06:26:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 824.69
+  },
+  {
+   "time": "2022-09-28 06:26:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 824.62
+  },
+  {
+   "time": "2022-09-28 06:27:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 824.55
+  },
+  {
+   "time": "2022-09-28 06:27:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 824.48
+  },
+  {
+   "time": "2022-09-28 06:28:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 824.42
+  },
+  {
+   "time": "2022-09-28 06:28:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 824.35
+  },
+  {
+   "time": "2022-09-28 06:29:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 824.28
+  },
+  {
+   "time": "2022-09-28 06:29:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 0,
+   "distance_to_centre_km": 824.21
+  },
+  {
+   "time": "2022-09-28 06:30:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 1,
+   "distance_to_centre_km": 824.14
+  },
+  {
+   "time": "2022-09-28 06:30:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 10,
+   "distance_to_centre_km": 825.33
+  },
+  {
+   "time": "2022-09-28 06:31:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 32,
+   "distance_to_centre_km": 824.09
+  },
+  {
+   "time": "2022-09-28 06:31:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 37,
+   "distance_to_centre_km": 825.35
+  },
+  {
+   "time": "2022-09-28 06:32:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 36,
+   "distance_to_centre_km": 826.54
+  },
+  {
+   "time": "2022-09-28 06:32:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 38,
+   "distance_to_centre_km": 826.56
+  },
+  {
+   "time": "2022-09-28 06:33:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 46,
+   "distance_to_centre_km": 826.6
+  },
+  {
+   "time": "2022-09-28 06:33:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 38,
+   "distance_to_centre_km": 822.93
+  },
+  {
+   "time": "2022-09-28 06:34:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 28,
+   "distance_to_centre_km": 820.43
+  },
+  {
+   "time": "2022-09-28 06:34:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 24,
+   "distance_to_centre_km": 817.93
+  },
+  {
+   "time": "2022-09-28 06:35:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 19,
+   "distance_to_centre_km": 814.26
+  },
+  {
+   "time": "2022-09-28 06:35:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 14,
+   "distance_to_centre_km": 810.49
+  },
+  {
+   "time": "2022-09-28 06:36:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 19,
+   "distance_to_centre_km": 807.98
+  },
+  {
+   "time": "2022-09-28 06:36:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 23,
+   "distance_to_centre_km": 804.32
+  },
+  {
+   "time": "2022-09-28 06:37:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 22,
+   "distance_to_centre_km": 800.54
+  },
+  {
+   "time": "2022-09-28 06:37:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 17,
+   "distance_to_centre_km": 796.87
+  },
+  {
+   "time": "2022-09-28 06:38:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 18,
+   "distance_to_centre_km": 793.09
+  },
+  {
+   "time": "2022-09-28 06:38:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 18,
+   "distance_to_centre_km": 790.6
+  },
+  {
+   "time": "2022-09-28 06:39:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 19,
+   "distance_to_centre_km": 785.65
+  },
+  {
+   "time": "2022-09-28 06:39:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 19,
+   "distance_to_centre_km": 783.16
+  },
+  {
+   "time": "2022-09-28 06:40:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 18,
+   "distance_to_centre_km": 778.21
+  },
+  {
+   "time": "2022-09-28 06:40:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 21,
+   "distance_to_centre_km": 775.71
+  },
+  {
+   "time": "2022-09-28 06:41:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 22,
+   "distance_to_centre_km": 770.76
+  },
+  {
+   "time": "2022-09-28 06:41:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 22,
+   "distance_to_centre_km": 767.09
+  },
+  {
+   "time": "2022-09-28 06:42:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 21,
+   "distance_to_centre_km": 763.32
+  },
+  {
+   "time": "2022-09-28 06:42:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 22,
+   "distance_to_centre_km": 758.38
+  },
+  {
+   "time": "2022-09-28 06:43:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 21,
+   "distance_to_centre_km": 753.44
+  },
+  {
+   "time": "2022-09-28 06:43:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 22,
+   "distance_to_centre_km": 748.49
+  },
+  {
+   "time": "2022-09-28 06:44:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 21,
+   "distance_to_centre_km": 743.55
+  },
+  {
+   "time": "2022-09-28 06:44:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 22,
+   "distance_to_centre_km": 737.43
+  },
+  {
+   "time": "2022-09-28 06:45:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 23,
+   "distance_to_centre_km": 732.49
+  },
+  {
+   "time": "2022-09-28 06:45:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 22,
+   "distance_to_centre_km": 726.28
+  },
+  {
+   "time": "2022-09-28 06:46:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 22,
+   "distance_to_centre_km": 721.34
+  },
+  {
+   "time": "2022-09-28 06:46:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 22,
+   "distance_to_centre_km": 716.4
+  },
+  {
+   "time": "2022-09-28 06:47:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 22,
+   "distance_to_centre_km": 711.45
+  },
+  {
+   "time": "2022-09-28 06:47:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 22,
+   "distance_to_centre_km": 706.51
+  },
+  {
+   "time": "2022-09-28 06:48:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 23,
+   "distance_to_centre_km": 701.57
+  },
+  {
+   "time": "2022-09-28 06:48:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 23,
+   "distance_to_centre_km": 696.61
+  },
+  {
+   "time": "2022-09-28 06:49:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 23,
+   "distance_to_centre_km": 691.67
+  },
+  {
+   "time": "2022-09-28 06:49:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 23,
+   "distance_to_centre_km": 686.73
+  },
+  {
+   "time": "2022-09-28 06:50:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 23,
+   "distance_to_centre_km": 681.77
+  },
+  {
+   "time": "2022-09-28 06:50:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 23,
+   "distance_to_centre_km": 681.7
+  },
+  {
+   "time": "2022-09-28 06:51:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 23,
+   "distance_to_centre_km": 671.89
+  },
+  {
+   "time": "2022-09-28 06:51:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 22,
+   "distance_to_centre_km": 666.93
+  },
+  {
+   "time": "2022-09-28 06:52:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 22,
+   "distance_to_centre_km": 661.99
+  },
+  {
+   "time": "2022-09-28 06:52:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 21,
+   "distance_to_centre_km": 655.8
+  },
+  {
+   "time": "2022-09-28 06:53:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 21,
+   "distance_to_centre_km": 650.85
+  },
+  {
+   "time": "2022-09-28 06:53:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 21,
+   "distance_to_centre_km": 645.9
+  },
+  {
+   "time": "2022-09-28 06:54:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 20,
+   "distance_to_centre_km": 640.96
+  },
+  {
+   "time": "2022-09-28 06:54:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 20,
+   "distance_to_centre_km": 636.01
+  },
+  {
+   "time": "2022-09-28 06:55:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 19,
+   "distance_to_centre_km": 631.06
+  },
+  {
+   "time": "2022-09-28 06:55:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 19,
+   "distance_to_centre_km": 626.11
+  },
+  {
+   "time": "2022-09-28 06:56:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 19,
+   "distance_to_centre_km": 621.16
+  },
+  {
+   "time": "2022-09-28 06:56:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 19,
+   "distance_to_centre_km": 616.21
+  },
+  {
+   "time": "2022-09-28 06:57:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 20,
+   "distance_to_centre_km": 611.27
+  },
+  {
+   "time": "2022-09-28 06:57:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 20,
+   "distance_to_centre_km": 606.32
+  },
+  {
+   "time": "2022-09-28 06:58:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 20,
+   "distance_to_centre_km": 601.36
+  },
+  {
+   "time": "2022-09-28 06:58:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 21,
+   "distance_to_centre_km": 596.42
+  },
+  {
+   "time": "2022-09-28 06:59:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 21,
+   "distance_to_centre_km": 591.47
+  },
+  {
+   "time": "2022-09-28 06:59:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 21,
+   "distance_to_centre_km": 586.52
+  },
+  {
+   "time": "2022-09-28 07:00:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 21,
+   "distance_to_centre_km": 581.57
+  },
+  {
+   "time": "2022-09-28 07:00:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 21,
+   "distance_to_centre_km": 576.62
+  },
+  {
+   "time": "2022-09-28 07:01:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 21,
+   "distance_to_centre_km": 571.67
+  },
+  {
+   "time": "2022-09-28 07:01:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 21,
+   "distance_to_centre_km": 566.73
+  },
+  {
+   "time": "2022-09-28 07:02:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 21,
+   "distance_to_centre_km": 561.78
+  },
+  {
+   "time": "2022-09-28 07:02:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 22,
+   "distance_to_centre_km": 556.83
+  },
+  {
+   "time": "2022-09-28 07:03:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 22,
+   "distance_to_centre_km": 551.88
+  },
+  {
+   "time": "2022-09-28 07:03:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 22,
+   "distance_to_centre_km": 546.93
+  },
+  {
+   "time": "2022-09-28 07:04:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 21,
+   "distance_to_centre_km": 543.22
+  },
+  {
+   "time": "2022-09-28 07:04:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 20,
+   "distance_to_centre_km": 538.27
+  },
+  {
+   "time": "2022-09-28 07:05:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 20,
+   "distance_to_centre_km": 533.33
+  },
+  {
+   "time": "2022-09-28 07:05:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 19,
+   "distance_to_centre_km": 528.38
+  },
+  {
+   "time": "2022-09-28 07:06:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 19,
+   "distance_to_centre_km": 523.43
+  },
+  {
+   "time": "2022-09-28 07:06:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 18,
+   "distance_to_centre_km": 518.49
+  },
+  {
+   "time": "2022-09-28 07:07:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 19,
+   "distance_to_centre_km": 513.55
+  },
+  {
+   "time": "2022-09-28 07:07:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 19,
+   "distance_to_centre_km": 508.6
+  },
+  {
+   "time": "2022-09-28 07:08:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 19,
+   "distance_to_centre_km": 503.66
+  },
+  {
+   "time": "2022-09-28 07:08:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 19,
+   "distance_to_centre_km": 497.46
+  },
+  {
+   "time": "2022-09-28 07:09:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 20,
+   "distance_to_centre_km": 493.72
+  },
+  {
+   "time": "2022-09-28 07:09:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 20,
+   "distance_to_centre_km": 488.76
+  },
+  {
+   "time": "2022-09-28 07:10:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 19,
+   "distance_to_centre_km": 483.76
+  },
+  {
+   "time": "2022-09-28 07:10:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 19,
+   "distance_to_centre_km": 480.01
+  },
+  {
+   "time": "2022-09-28 07:11:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 19,
+   "distance_to_centre_km": 473.82
+  },
+  {
+   "time": "2022-09-28 07:11:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 19,
+   "distance_to_centre_km": 470.07
+  },
+  {
+   "time": "2022-09-28 07:12:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 19,
+   "distance_to_centre_km": 463.87
+  },
+  {
+   "time": "2022-09-28 07:12:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 19,
+   "distance_to_centre_km": 460.12
+  },
+  {
+   "time": "2022-09-28 07:13:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 19,
+   "distance_to_centre_km": 456.37
+  },
+  {
+   "time": "2022-09-28 07:13:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 20,
+   "distance_to_centre_km": 450.17
+  },
+  {
+   "time": "2022-09-28 07:14:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 19,
+   "distance_to_centre_km": 446.42
+  },
+  {
+   "time": "2022-09-28 07:14:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 20,
+   "distance_to_centre_km": 440.22
+  },
+  {
+   "time": "2022-09-28 07:15:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 21,
+   "distance_to_centre_km": 436.47
+  },
+  {
+   "time": "2022-09-28 07:15:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 21,
+   "distance_to_centre_km": 431.51
+  },
+  {
+   "time": "2022-09-28 07:16:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 21,
+   "distance_to_centre_km": 426.52
+  },
+  {
+   "time": "2022-09-28 07:16:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 21,
+   "distance_to_centre_km": 422.78
+  },
+  {
+   "time": "2022-09-28 07:17:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 22,
+   "distance_to_centre_km": 416.58
+  },
+  {
+   "time": "2022-09-28 07:17:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 23,
+   "distance_to_centre_km": 412.83
+  },
+  {
+   "time": "2022-09-28 07:18:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 23,
+   "distance_to_centre_km": 406.62
+  },
+  {
+   "time": "2022-09-28 07:18:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 24,
+   "distance_to_centre_km": 402.89
+  },
+  {
+   "time": "2022-09-28 07:19:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 23,
+   "distance_to_centre_km": 399.14
+  },
+  {
+   "time": "2022-09-28 07:19:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 24,
+   "distance_to_centre_km": 392.94
+  },
+  {
+   "time": "2022-09-28 07:20:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 24,
+   "distance_to_centre_km": 389.19
+  },
+  {
+   "time": "2022-09-28 07:20:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 25,
+   "distance_to_centre_km": 383.0
+  },
+  {
+   "time": "2022-09-28 07:21:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 26,
+   "distance_to_centre_km": 379.26
+  },
+  {
+   "time": "2022-09-28 07:21:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 26,
+   "distance_to_centre_km": 375.52
+  },
+  {
+   "time": "2022-09-28 07:22:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 26,
+   "distance_to_centre_km": 369.32
+  },
+  {
+   "time": "2022-09-28 07:22:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 27,
+   "distance_to_centre_km": 365.57
+  },
+  {
+   "time": "2022-09-28 07:23:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 27,
+   "distance_to_centre_km": 359.37
+  },
+  {
+   "time": "2022-09-28 07:23:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 28,
+   "distance_to_centre_km": 355.64
+  },
+  {
+   "time": "2022-09-28 07:24:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 29,
+   "distance_to_centre_km": 350.65
+  },
+  {
+   "time": "2022-09-28 07:24:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 30,
+   "distance_to_centre_km": 345.71
+  },
+  {
+   "time": "2022-09-28 07:25:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 30,
+   "distance_to_centre_km": 340.71
+  },
+  {
+   "time": "2022-09-28 07:25:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 30,
+   "distance_to_centre_km": 335.77
+  },
+  {
+   "time": "2022-09-28 07:26:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 30,
+   "distance_to_centre_km": 330.78
+  },
+  {
+   "time": "2022-09-28 07:26:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 31,
+   "distance_to_centre_km": 325.85
+  },
+  {
+   "time": "2022-09-28 07:27:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 31,
+   "distance_to_centre_km": 322.13
+  },
+  {
+   "time": "2022-09-28 07:27:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 31,
+   "distance_to_centre_km": 317.11
+  },
+  {
+   "time": "2022-09-28 07:28:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 32,
+   "distance_to_centre_km": 312.21
+  },
+  {
+   "time": "2022-09-28 07:28:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 32,
+   "distance_to_centre_km": 307.2
+  },
+  {
+   "time": "2022-09-28 07:29:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 33,
+   "distance_to_centre_km": 303.48
+  },
+  {
+   "time": "2022-09-28 07:29:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 34,
+   "distance_to_centre_km": 298.58
+  },
+  {
+   "time": "2022-09-28 07:30:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 34,
+   "distance_to_centre_km": 293.56
+  },
+  {
+   "time": "2022-09-28 07:30:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 34,
+   "distance_to_centre_km": 289.85
+  },
+  {
+   "time": "2022-09-28 07:31:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 34,
+   "distance_to_centre_km": 286.14
+  },
+  {
+   "time": "2022-09-28 07:31:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 36,
+   "distance_to_centre_km": 282.43
+  },
+  {
+   "time": "2022-09-28 07:32:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 38,
+   "distance_to_centre_km": 277.4
+  },
+  {
+   "time": "2022-09-28 07:32:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 37,
+   "distance_to_centre_km": 273.7
+  },
+  {
+   "time": "2022-09-28 07:33:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 29,
+   "distance_to_centre_km": 268.84
+  },
+  {
+   "time": "2022-09-28 07:33:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 25,
+   "distance_to_centre_km": 263.81
+  },
+  {
+   "time": "2022-09-28 07:34:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 25,
+   "distance_to_centre_km": 261.45
+  },
+  {
+   "time": "2022-09-28 07:34:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 26,
+   "distance_to_centre_km": 256.62
+  },
+  {
+   "time": "2022-09-28 07:35:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 29,
+   "distance_to_centre_km": 252.93
+  },
+  {
+   "time": "2022-09-28 07:35:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 30,
+   "distance_to_centre_km": 249.26
+  },
+  {
+   "time": "2022-09-28 07:36:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 30,
+   "distance_to_centre_km": 245.58
+  },
+  {
+   "time": "2022-09-28 07:36:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 25,
+   "distance_to_centre_km": 242.19
+  },
+  {
+   "time": "2022-09-28 07:37:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 30,
+   "distance_to_centre_km": 238.54
+  },
+  {
+   "time": "2022-09-28 07:37:30",
+   "sfmr_kt": 39,
+   "fl_wind_kt": 30,
+   "distance_to_centre_km": 234.89
+  },
+  {
+   "time": "2022-09-28 07:38:00",
+   "sfmr_kt": 39,
+   "fl_wind_kt": 31,
+   "distance_to_centre_km": 232.34
+  },
+  {
+   "time": "2022-09-28 07:38:30",
+   "sfmr_kt": 40,
+   "fl_wind_kt": 31,
+   "distance_to_centre_km": 228.69
+  },
+  {
+   "time": "2022-09-28 07:39:00",
+   "sfmr_kt": 41,
+   "fl_wind_kt": 31,
+   "distance_to_centre_km": 226.14
+  },
+  {
+   "time": "2022-09-28 07:39:30",
+   "sfmr_kt": 41,
+   "fl_wind_kt": 31,
+   "distance_to_centre_km": 223.58
+  },
+  {
+   "time": "2022-09-28 07:40:00",
+   "sfmr_kt": 40,
+   "fl_wind_kt": 31,
+   "distance_to_centre_km": 218.54
+  },
+  {
+   "time": "2022-09-28 07:40:30",
+   "sfmr_kt": 40,
+   "fl_wind_kt": 31,
+   "distance_to_centre_km": 215.97
+  },
+  {
+   "time": "2022-09-28 07:41:00",
+   "sfmr_kt": 41,
+   "fl_wind_kt": 33,
+   "distance_to_centre_km": 212.34
+  },
+  {
+   "time": "2022-09-28 07:41:30",
+   "sfmr_kt": 41,
+   "fl_wind_kt": 36,
+   "distance_to_centre_km": 209.78
+  },
+  {
+   "time": "2022-09-28 07:42:00",
+   "sfmr_kt": 43,
+   "fl_wind_kt": 35,
+   "distance_to_centre_km": 205.81
+  },
+  {
+   "time": "2022-09-28 07:42:30",
+   "sfmr_kt": 43,
+   "fl_wind_kt": 35,
+   "distance_to_centre_km": 202.18
+  },
+  {
+   "time": "2022-09-28 07:43:00",
+   "sfmr_kt": 42,
+   "fl_wind_kt": 38,
+   "distance_to_centre_km": 199.61
+  },
+  {
+   "time": "2022-09-28 07:43:30",
+   "sfmr_kt": 43,
+   "fl_wind_kt": 39,
+   "distance_to_centre_km": 195.98
+  },
+  {
+   "time": "2022-09-28 07:44:00",
+   "sfmr_kt": 45,
+   "fl_wind_kt": 41,
+   "distance_to_centre_km": 192.01
+  },
+  {
+   "time": "2022-09-28 07:44:30",
+   "sfmr_kt": 44,
+   "fl_wind_kt": 41,
+   "distance_to_centre_km": 188.38
+  },
+  {
+   "time": "2022-09-28 07:45:00",
+   "sfmr_kt": 43,
+   "fl_wind_kt": 38,
+   "distance_to_centre_km": 185.82
+  },
+  {
+   "time": "2022-09-28 07:45:30",
+   "sfmr_kt": 43,
+   "fl_wind_kt": 36,
+   "distance_to_centre_km": 183.26
+  },
+  {
+   "time": "2022-09-28 07:46:00",
+   "sfmr_kt": 44,
+   "fl_wind_kt": 39,
+   "distance_to_centre_km": 178.21
+  },
+  {
+   "time": "2022-09-28 07:46:30",
+   "sfmr_kt": 44,
+   "fl_wind_kt": 38,
+   "distance_to_centre_km": 175.65
+  },
+  {
+   "time": "2022-09-28 07:47:00",
+   "sfmr_kt": 45,
+   "fl_wind_kt": 35,
+   "distance_to_centre_km": 172.02
+  },
+  {
+   "time": "2022-09-28 07:47:30",
+   "sfmr_kt": 45,
+   "fl_wind_kt": 37,
+   "distance_to_centre_km": 169.47
+  },
+  {
+   "time": "2022-09-28 07:48:00",
+   "sfmr_kt": 47,
+   "fl_wind_kt": 38,
+   "distance_to_centre_km": 165.47
+  },
+  {
+   "time": "2022-09-28 07:48:30",
+   "sfmr_kt": 47,
+   "fl_wind_kt": 39,
+   "distance_to_centre_km": 161.86
+  },
+  {
+   "time": "2022-09-28 07:49:00",
+   "sfmr_kt": 49,
+   "fl_wind_kt": 41,
+   "distance_to_centre_km": 159.29
+  },
+  {
+   "time": "2022-09-28 07:49:30",
+   "sfmr_kt": 49,
+   "fl_wind_kt": 42,
+   "distance_to_centre_km": 156.72
+  },
+  {
+   "time": "2022-09-28 07:50:00",
+   "sfmr_kt": 49,
+   "fl_wind_kt": 43,
+   "distance_to_centre_km": 153.12
+  },
+  {
+   "time": "2022-09-28 07:50:30",
+   "sfmr_kt": 49,
+   "fl_wind_kt": 45,
+   "distance_to_centre_km": 149.11
+  },
+  {
+   "time": "2022-09-28 07:51:00",
+   "sfmr_kt": 50,
+   "fl_wind_kt": 44,
+   "distance_to_centre_km": 145.51
+  },
+  {
+   "time": "2022-09-28 07:51:30",
+   "sfmr_kt": 52,
+   "fl_wind_kt": 46,
+   "distance_to_centre_km": 142.94
+  },
+  {
+   "time": "2022-09-28 07:52:00",
+   "sfmr_kt": 52,
+   "fl_wind_kt": 47,
+   "distance_to_centre_km": 140.38
+  },
+  {
+   "time": "2022-09-28 07:52:30",
+   "sfmr_kt": 52,
+   "fl_wind_kt": 49,
+   "distance_to_centre_km": 135.33
+  },
+  {
+   "time": "2022-09-28 07:53:00",
+   "sfmr_kt": 51,
+   "fl_wind_kt": 51,
+   "distance_to_centre_km": 132.76
+  },
+  {
+   "time": "2022-09-28 07:53:30",
+   "sfmr_kt": 54,
+   "fl_wind_kt": 53,
+   "distance_to_centre_km": 130.2
+  },
+  {
+   "time": "2022-09-28 07:54:00",
+   "sfmr_kt": 56,
+   "fl_wind_kt": 56,
+   "distance_to_centre_km": 126.6
+  },
+  {
+   "time": "2022-09-28 07:54:30",
+   "sfmr_kt": 56,
+   "fl_wind_kt": 56,
+   "distance_to_centre_km": 124.03
+  },
+  {
+   "time": "2022-09-28 07:55:00",
+   "sfmr_kt": 57,
+   "fl_wind_kt": 57,
+   "distance_to_centre_km": 120.02
+  },
+  {
+   "time": "2022-09-28 07:55:30",
+   "sfmr_kt": 58,
+   "fl_wind_kt": 60,
+   "distance_to_centre_km": 116.42
+  },
+  {
+   "time": "2022-09-28 07:56:00",
+   "sfmr_kt": 60,
+   "fl_wind_kt": 55,
+   "distance_to_centre_km": 113.86
+  },
+  {
+   "time": "2022-09-28 07:56:30",
+   "sfmr_kt": 61,
+   "fl_wind_kt": 60,
+   "distance_to_centre_km": 110.28
+  },
+  {
+   "time": "2022-09-28 07:57:00",
+   "sfmr_kt": 63,
+   "fl_wind_kt": 58,
+   "distance_to_centre_km": 107.72
+  },
+  {
+   "time": "2022-09-28 07:57:30",
+   "sfmr_kt": 64,
+   "fl_wind_kt": 62,
+   "distance_to_centre_km": 105.16
+  },
+  {
+   "time": "2022-09-28 07:58:00",
+   "sfmr_kt": 66,
+   "fl_wind_kt": 65,
+   "distance_to_centre_km": 101.12
+  },
+  {
+   "time": "2022-09-28 07:58:30",
+   "sfmr_kt": 65,
+   "fl_wind_kt": 64,
+   "distance_to_centre_km": 97.56
+  },
+  {
+   "time": "2022-09-28 07:59:00",
+   "sfmr_kt": 68,
+   "fl_wind_kt": 66,
+   "distance_to_centre_km": 94.99
+  },
+  {
+   "time": "2022-09-28 07:59:30",
+   "sfmr_kt": 69,
+   "fl_wind_kt": 67,
+   "distance_to_centre_km": 92.42
+  },
+  {
+   "time": "2022-09-28 08:00:00",
+   "sfmr_kt": 70,
+   "fl_wind_kt": 70,
+   "distance_to_centre_km": 89.87
+  },
+  {
+   "time": "2022-09-28 08:00:30",
+   "sfmr_kt": 71,
+   "fl_wind_kt": 73,
+   "distance_to_centre_km": 86.32
+  },
+  {
+   "time": "2022-09-28 08:01:00",
+   "sfmr_kt": 72,
+   "fl_wind_kt": 77,
+   "distance_to_centre_km": 83.76
+  },
+  {
+   "time": "2022-09-28 08:01:30",
+   "sfmr_kt": 72,
+   "fl_wind_kt": 77,
+   "distance_to_centre_km": 81.2
+  },
+  {
+   "time": "2022-09-28 08:02:00",
+   "sfmr_kt": 76,
+   "fl_wind_kt": 78,
+   "distance_to_centre_km": 78.64
+  },
+  {
+   "time": "2022-09-28 08:02:30",
+   "sfmr_kt": 77,
+   "fl_wind_kt": 88,
+   "distance_to_centre_km": 76.08
+  },
+  {
+   "time": "2022-09-28 08:03:00",
+   "sfmr_kt": 80,
+   "fl_wind_kt": 87,
+   "distance_to_centre_km": 72.01
+  },
+  {
+   "time": "2022-09-28 08:03:30",
+   "sfmr_kt": 81,
+   "fl_wind_kt": 95,
+   "distance_to_centre_km": 70.03
+  },
+  {
+   "time": "2022-09-28 08:04:00",
+   "sfmr_kt": 83,
+   "fl_wind_kt": 95,
+   "distance_to_centre_km": 67.48
+  },
+  {
+   "time": "2022-09-28 08:04:30",
+   "sfmr_kt": 83,
+   "fl_wind_kt": 91,
+   "distance_to_centre_km": 64.93
+  },
+  {
+   "time": "2022-09-28 08:05:00",
+   "sfmr_kt": 87,
+   "fl_wind_kt": 104,
+   "distance_to_centre_km": 62.38
+  },
+  {
+   "time": "2022-09-28 08:05:30",
+   "sfmr_kt": 89,
+   "fl_wind_kt": 104,
+   "distance_to_centre_km": 59.83
+  },
+  {
+   "time": "2022-09-28 08:06:00",
+   "sfmr_kt": 87,
+   "fl_wind_kt": 100,
+   "distance_to_centre_km": 57.28
+  },
+  {
+   "time": "2022-09-28 08:06:30",
+   "sfmr_kt": 88,
+   "fl_wind_kt": 104,
+   "distance_to_centre_km": 54.74
+  },
+  {
+   "time": "2022-09-28 08:07:00",
+   "sfmr_kt": 91,
+   "fl_wind_kt": 106,
+   "distance_to_centre_km": 52.19
+  },
+  {
+   "time": "2022-09-28 08:07:30",
+   "sfmr_kt": 96,
+   "fl_wind_kt": 107,
+   "distance_to_centre_km": 49.66
+  },
+  {
+   "time": "2022-09-28 08:08:00",
+   "sfmr_kt": 98,
+   "fl_wind_kt": 109,
+   "distance_to_centre_km": 47.12
+  },
+  {
+   "time": "2022-09-28 08:08:30",
+   "sfmr_kt": 102,
+   "fl_wind_kt": 114,
+   "distance_to_centre_km": 44.58
+  },
+  {
+   "time": "2022-09-28 08:09:00",
+   "sfmr_kt": 104,
+   "fl_wind_kt": 114,
+   "distance_to_centre_km": 42.06
+  },
+  {
+   "time": "2022-09-28 08:09:30",
+   "sfmr_kt": 106,
+   "fl_wind_kt": 110,
+   "distance_to_centre_km": 39.53
+  },
+  {
+   "time": "2022-09-28 08:10:00",
+   "sfmr_kt": 104,
+   "fl_wind_kt": 106,
+   "distance_to_centre_km": 38.66
+  },
+  {
+   "time": "2022-09-28 08:10:30",
+   "sfmr_kt": 106,
+   "fl_wind_kt": 97,
+   "distance_to_centre_km": 36.16
+  },
+  {
+   "time": "2022-09-28 08:11:00",
+   "sfmr_kt": 105,
+   "fl_wind_kt": null,
+   "distance_to_centre_km": 33.68
+  },
+  {
+   "time": "2022-09-28 08:11:30",
+   "sfmr_kt": 100,
+   "fl_wind_kt": null,
+   "distance_to_centre_km": 31.21
+  },
+  {
+   "time": "2022-09-28 08:12:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": null,
+   "distance_to_centre_km": 27.75
+  },
+  {
+   "time": "2022-09-28 08:12:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": null,
+   "distance_to_centre_km": 25.25
+  },
+  {
+   "time": "2022-09-28 08:13:00",
+   "sfmr_kt": 46,
+   "fl_wind_kt": null,
+   "distance_to_centre_km": 21.09
+  },
+  {
+   "time": "2022-09-28 08:13:30",
+   "sfmr_kt": 29,
+   "fl_wind_kt": null,
+   "distance_to_centre_km": 16.92
+  },
+  {
+   "time": "2022-09-28 08:14:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": null,
+   "distance_to_centre_km": 15.19
+  },
+  {
+   "time": "2022-09-28 08:14:30",
+   "sfmr_kt": 26,
+   "fl_wind_kt": null,
+   "distance_to_centre_km": 12.01
+  },
+  {
+   "time": "2022-09-28 08:15:00",
+   "sfmr_kt": 26,
+   "fl_wind_kt": null,
+   "distance_to_centre_km": 9.36
+  },
+  {
+   "time": "2022-09-28 08:15:30",
+   "sfmr_kt": 28,
+   "fl_wind_kt": null,
+   "distance_to_centre_km": 9.39
+  },
+  {
+   "time": "2022-09-28 08:16:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": null,
+   "distance_to_centre_km": 7.59
+  },
+  {
+   "time": "2022-09-28 08:16:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": null,
+   "distance_to_centre_km": 11.18
+  },
+  {
+   "time": "2022-09-28 08:17:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": null,
+   "distance_to_centre_km": 11.06
+  },
+  {
+   "time": "2022-09-28 08:17:30",
+   "sfmr_kt": 26,
+   "fl_wind_kt": null,
+   "distance_to_centre_km": 8.26
+  },
+  {
+   "time": "2022-09-28 08:18:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": null,
+   "distance_to_centre_km": 8.99
+  },
+  {
+   "time": "2022-09-28 08:18:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": null,
+   "distance_to_centre_km": 12.84
+  },
+  {
+   "time": "2022-09-28 08:19:00",
+   "sfmr_kt": 25,
+   "fl_wind_kt": null,
+   "distance_to_centre_km": 15.25
+  },
+  {
+   "time": "2022-09-28 08:19:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": null,
+   "distance_to_centre_km": 18.75
+  },
+  {
+   "time": "2022-09-28 08:20:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": null,
+   "distance_to_centre_km": 21.18
+  },
+  {
+   "time": "2022-09-28 08:20:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": null,
+   "distance_to_centre_km": 20.49
+  },
+  {
+   "time": "2022-09-28 08:21:00",
+   "sfmr_kt": 33,
+   "fl_wind_kt": null,
+   "distance_to_centre_km": 21.17
+  },
+  {
+   "time": "2022-09-28 08:21:30",
+   "sfmr_kt": 35,
+   "fl_wind_kt": null,
+   "distance_to_centre_km": 19.78
+  },
+  {
+   "time": "2022-09-28 08:22:00",
+   "sfmr_kt": 37,
+   "fl_wind_kt": null,
+   "distance_to_centre_km": 18.88
+  },
+  {
+   "time": "2022-09-28 08:22:30",
+   "sfmr_kt": 39,
+   "fl_wind_kt": null,
+   "distance_to_centre_km": 18.53
+  },
+  {
+   "time": "2022-09-28 08:23:00",
+   "sfmr_kt": 43,
+   "fl_wind_kt": null,
+   "distance_to_centre_km": 16.98
+  },
+  {
+   "time": "2022-09-28 08:23:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": null,
+   "distance_to_centre_km": 17.88
+  },
+  {
+   "time": "2022-09-28 08:24:00",
+   "sfmr_kt": 65,
+   "fl_wind_kt": null,
+   "distance_to_centre_km": 20.13
+  },
+  {
+   "time": "2022-09-28 08:24:30",
+   "sfmr_kt": 83,
+   "fl_wind_kt": null,
+   "distance_to_centre_km": 23.23
+  },
+  {
+   "time": "2022-09-28 08:25:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": null,
+   "distance_to_centre_km": 26.5
+  },
+  {
+   "time": "2022-09-28 08:25:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": null,
+   "distance_to_centre_km": 28.86
+  },
+  {
+   "time": "2022-09-28 08:26:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 137,
+   "distance_to_centre_km": 33.71
+  },
+  {
+   "time": "2022-09-28 08:26:30",
+   "sfmr_kt": 109,
+   "fl_wind_kt": null,
+   "distance_to_centre_km": 36.08
+  },
+  {
+   "time": "2022-09-28 08:27:00",
+   "sfmr_kt": 104,
+   "fl_wind_kt": 134,
+   "distance_to_centre_km": 39.49
+  },
+  {
+   "time": "2022-09-28 08:27:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 127,
+   "distance_to_centre_km": 43.31
+  },
+  {
+   "time": "2022-09-28 08:28:00",
+   "sfmr_kt": 94,
+   "fl_wind_kt": 121,
+   "distance_to_centre_km": 45.69
+  },
+  {
+   "time": "2022-09-28 08:28:30",
+   "sfmr_kt": 84,
+   "fl_wind_kt": 116,
+   "distance_to_centre_km": 50.55
+  },
+  {
+   "time": "2022-09-28 08:29:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 108,
+   "distance_to_centre_km": 52.93
+  },
+  {
+   "time": "2022-09-28 08:29:30",
+   "sfmr_kt": 80,
+   "fl_wind_kt": 103,
+   "distance_to_centre_km": 55.31
+  },
+  {
+   "time": "2022-09-28 08:30:00",
+   "sfmr_kt": 77,
+   "fl_wind_kt": 99,
+   "distance_to_centre_km": 59.12
+  },
+  {
+   "time": "2022-09-28 08:30:30",
+   "sfmr_kt": 74,
+   "fl_wind_kt": 96,
+   "distance_to_centre_km": 62.55
+  },
+  {
+   "time": "2022-09-28 08:31:00",
+   "sfmr_kt": 70,
+   "fl_wind_kt": 92,
+   "distance_to_centre_km": 64.92
+  },
+  {
+   "time": "2022-09-28 08:31:30",
+   "sfmr_kt": 67,
+   "fl_wind_kt": 88,
+   "distance_to_centre_km": 68.74
+  },
+  {
+   "time": "2022-09-28 08:32:00",
+   "sfmr_kt": 66,
+   "fl_wind_kt": 84,
+   "distance_to_centre_km": 71.1
+  },
+  {
+   "time": "2022-09-28 08:32:30",
+   "sfmr_kt": 65,
+   "fl_wind_kt": 82,
+   "distance_to_centre_km": 75.98
+  },
+  {
+   "time": "2022-09-28 08:33:00",
+   "sfmr_kt": 62,
+   "fl_wind_kt": 80,
+   "distance_to_centre_km": 78.34
+  },
+  {
+   "time": "2022-09-28 08:33:30",
+   "sfmr_kt": 60,
+   "fl_wind_kt": 79,
+   "distance_to_centre_km": 80.72
+  },
+  {
+   "time": "2022-09-28 08:34:00",
+   "sfmr_kt": 59,
+   "fl_wind_kt": 81,
+   "distance_to_centre_km": 85.58
+  },
+  {
+   "time": "2022-09-28 08:34:30",
+   "sfmr_kt": 58,
+   "fl_wind_kt": 80,
+   "distance_to_centre_km": 87.97
+  },
+  {
+   "time": "2022-09-28 08:35:00",
+   "sfmr_kt": 57,
+   "fl_wind_kt": 80,
+   "distance_to_centre_km": 90.35
+  },
+  {
+   "time": "2022-09-28 08:35:30",
+   "sfmr_kt": 57,
+   "fl_wind_kt": 77,
+   "distance_to_centre_km": 95.21
+  },
+  {
+   "time": "2022-09-28 08:36:00",
+   "sfmr_kt": 52,
+   "fl_wind_kt": 76,
+   "distance_to_centre_km": 97.59
+  },
+  {
+   "time": "2022-09-28 08:36:30",
+   "sfmr_kt": 49,
+   "fl_wind_kt": 76,
+   "distance_to_centre_km": 101.38
+  },
+  {
+   "time": "2022-09-28 08:37:00",
+   "sfmr_kt": 49,
+   "fl_wind_kt": 73,
+   "distance_to_centre_km": 103.76
+  },
+  {
+   "time": "2022-09-28 08:37:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 74,
+   "distance_to_centre_km": 107.56
+  },
+  {
+   "time": "2022-09-28 08:38:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 72,
+   "distance_to_centre_km": 108.31
+  },
+  {
+   "time": "2022-09-28 08:38:30",
+   "sfmr_kt": 52,
+   "fl_wind_kt": 68,
+   "distance_to_centre_km": 105.29
+  },
+  {
+   "time": "2022-09-28 08:39:00",
+   "sfmr_kt": 51,
+   "fl_wind_kt": 73,
+   "distance_to_centre_km": 104.89
+  },
+  {
+   "time": "2022-09-28 08:39:30",
+   "sfmr_kt": 52,
+   "fl_wind_kt": 71,
+   "distance_to_centre_km": 103.78
+  },
+  {
+   "time": "2022-09-28 08:40:00",
+   "sfmr_kt": 53,
+   "fl_wind_kt": 78,
+   "distance_to_centre_km": 103.7
+  },
+  {
+   "time": "2022-09-28 08:40:30",
+   "sfmr_kt": 53,
+   "fl_wind_kt": 71,
+   "distance_to_centre_km": 101.37
+  },
+  {
+   "time": "2022-09-28 08:41:00",
+   "sfmr_kt": 57,
+   "fl_wind_kt": 79,
+   "distance_to_centre_km": 101.59
+  },
+  {
+   "time": "2022-09-28 08:41:30",
+   "sfmr_kt": 58,
+   "fl_wind_kt": 75,
+   "distance_to_centre_km": 101.38
+  },
+  {
+   "time": "2022-09-28 08:42:00",
+   "sfmr_kt": 59,
+   "fl_wind_kt": 67,
+   "distance_to_centre_km": 101.93
+  },
+  {
+   "time": "2022-09-28 08:42:30",
+   "sfmr_kt": 60,
+   "fl_wind_kt": 72,
+   "distance_to_centre_km": 102.63
+  },
+  {
+   "time": "2022-09-28 08:43:00",
+   "sfmr_kt": 61,
+   "fl_wind_kt": 78,
+   "distance_to_centre_km": 101.27
+  },
+  {
+   "time": "2022-09-28 08:43:30",
+   "sfmr_kt": 61,
+   "fl_wind_kt": 80,
+   "distance_to_centre_km": 101.98
+  },
+  {
+   "time": "2022-09-28 08:44:00",
+   "sfmr_kt": 62,
+   "fl_wind_kt": 77,
+   "distance_to_centre_km": 103.16
+  },
+  {
+   "time": "2022-09-28 08:44:30",
+   "sfmr_kt": 61,
+   "fl_wind_kt": 75,
+   "distance_to_centre_km": 104.31
+  },
+  {
+   "time": "2022-09-28 08:45:00",
+   "sfmr_kt": 61,
+   "fl_wind_kt": 74,
+   "distance_to_centre_km": 105.8
+  },
+  {
+   "time": "2022-09-28 08:45:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 69,
+   "distance_to_centre_km": 105.52
+  },
+  {
+   "time": "2022-09-28 08:46:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 68,
+   "distance_to_centre_km": 103.57
+  },
+  {
+   "time": "2022-09-28 08:46:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 67,
+   "distance_to_centre_km": 99.8
+  },
+  {
+   "time": "2022-09-28 08:47:00",
+   "sfmr_kt": 64,
+   "fl_wind_kt": 72,
+   "distance_to_centre_km": 95.97
+  },
+  {
+   "time": "2022-09-28 08:47:30",
+   "sfmr_kt": 67,
+   "fl_wind_kt": 72,
+   "distance_to_centre_km": 94.0
+  },
+  {
+   "time": "2022-09-28 08:48:00",
+   "sfmr_kt": 71,
+   "fl_wind_kt": 75,
+   "distance_to_centre_km": 90.17
+  },
+  {
+   "time": "2022-09-28 08:48:30",
+   "sfmr_kt": 70,
+   "fl_wind_kt": 79,
+   "distance_to_centre_km": 88.2
+  },
+  {
+   "time": "2022-09-28 08:49:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 82,
+   "distance_to_centre_km": 84.37
+  },
+  {
+   "time": "2022-09-28 08:49:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 83,
+   "distance_to_centre_km": 80.55
+  },
+  {
+   "time": "2022-09-28 08:50:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 89,
+   "distance_to_centre_km": 78.58
+  },
+  {
+   "time": "2022-09-28 08:50:30",
+   "sfmr_kt": 76,
+   "fl_wind_kt": 86,
+   "distance_to_centre_km": 74.76
+  },
+  {
+   "time": "2022-09-28 08:51:00",
+   "sfmr_kt": 76,
+   "fl_wind_kt": 88,
+   "distance_to_centre_km": 70.94
+  },
+  {
+   "time": "2022-09-28 08:51:30",
+   "sfmr_kt": 75,
+   "fl_wind_kt": 90,
+   "distance_to_centre_km": 68.97
+  },
+  {
+   "time": "2022-09-28 08:52:00",
+   "sfmr_kt": 71,
+   "fl_wind_kt": 92,
+   "distance_to_centre_km": 65.15
+  },
+  {
+   "time": "2022-09-28 08:52:30",
+   "sfmr_kt": 73,
+   "fl_wind_kt": 94,
+   "distance_to_centre_km": 63.18
+  },
+  {
+   "time": "2022-09-28 08:53:00",
+   "sfmr_kt": 78,
+   "fl_wind_kt": 95,
+   "distance_to_centre_km": 59.36
+  },
+  {
+   "time": "2022-09-28 08:53:30",
+   "sfmr_kt": 79,
+   "fl_wind_kt": 101,
+   "distance_to_centre_km": 55.54
+  },
+  {
+   "time": "2022-09-28 08:54:00",
+   "sfmr_kt": 83,
+   "fl_wind_kt": 109,
+   "distance_to_centre_km": 53.58
+  },
+  {
+   "time": "2022-09-28 08:54:30",
+   "sfmr_kt": 90,
+   "fl_wind_kt": 110,
+   "distance_to_centre_km": 49.76
+  },
+  {
+   "time": "2022-09-28 08:55:00",
+   "sfmr_kt": 101,
+   "fl_wind_kt": 122,
+   "distance_to_centre_km": 47.8
+  },
+  {
+   "time": "2022-09-28 08:55:30",
+   "sfmr_kt": 110,
+   "fl_wind_kt": 121,
+   "distance_to_centre_km": 43.99
+  },
+  {
+   "time": "2022-09-28 08:56:00",
+   "sfmr_kt": 112,
+   "fl_wind_kt": 116,
+   "distance_to_centre_km": 42.04
+  },
+  {
+   "time": "2022-09-28 08:56:30",
+   "sfmr_kt": 110,
+   "fl_wind_kt": 102,
+   "distance_to_centre_km": 38.23
+  },
+  {
+   "time": "2022-09-28 08:57:00",
+   "sfmr_kt": 114,
+   "fl_wind_kt": 98,
+   "distance_to_centre_km": 36.28
+  },
+  {
+   "time": "2022-09-28 08:57:30",
+   "sfmr_kt": 113,
+   "fl_wind_kt": 88,
+   "distance_to_centre_km": 34.32
+  },
+  {
+   "time": "2022-09-28 08:58:00",
+   "sfmr_kt": 104,
+   "fl_wind_kt": 70,
+   "distance_to_centre_km": 30.55
+  },
+  {
+   "time": "2022-09-28 08:58:30",
+   "sfmr_kt": 101,
+   "fl_wind_kt": 51,
+   "distance_to_centre_km": 28.6
+  },
+  {
+   "time": "2022-09-28 08:59:00",
+   "sfmr_kt": 86,
+   "fl_wind_kt": 41,
+   "distance_to_centre_km": 24.84
+  },
+  {
+   "time": "2022-09-28 08:59:30",
+   "sfmr_kt": 73,
+   "fl_wind_kt": 35,
+   "distance_to_centre_km": 21.1
+  },
+  {
+   "time": "2022-09-28 09:00:00",
+   "sfmr_kt": 33,
+   "fl_wind_kt": 30,
+   "distance_to_centre_km": 17.42
+  },
+  {
+   "time": "2022-09-28 09:00:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 15,
+   "distance_to_centre_km": 14.5
+  },
+  {
+   "time": "2022-09-28 09:01:00",
+   "sfmr_kt": 27,
+   "fl_wind_kt": 5,
+   "distance_to_centre_km": 12.79
+  },
+  {
+   "time": "2022-09-28 09:01:30",
+   "sfmr_kt": 28,
+   "fl_wind_kt": 4,
+   "distance_to_centre_km": 9.77
+  },
+  {
+   "time": "2022-09-28 09:02:00",
+   "sfmr_kt": 25,
+   "fl_wind_kt": 7,
+   "distance_to_centre_km": 9.05
+  },
+  {
+   "time": "2022-09-28 09:02:30",
+   "sfmr_kt": 25,
+   "fl_wind_kt": 17,
+   "distance_to_centre_km": 8.58
+  },
+  {
+   "time": "2022-09-28 09:03:00",
+   "sfmr_kt": 30,
+   "fl_wind_kt": 26,
+   "distance_to_centre_km": 7.33
+  },
+  {
+   "time": "2022-09-28 09:03:30",
+   "sfmr_kt": 33,
+   "fl_wind_kt": 34,
+   "distance_to_centre_km": 5.78
+  },
+  {
+   "time": "2022-09-28 09:04:00",
+   "sfmr_kt": 39,
+   "fl_wind_kt": 43,
+   "distance_to_centre_km": 6.82
+  },
+  {
+   "time": "2022-09-28 09:04:30",
+   "sfmr_kt": 40,
+   "fl_wind_kt": 49,
+   "distance_to_centre_km": 8.65
+  },
+  {
+   "time": "2022-09-28 09:05:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 65,
+   "distance_to_centre_km": 12.3
+  },
+  {
+   "time": "2022-09-28 09:05:30",
+   "sfmr_kt": 82,
+   "fl_wind_kt": 95,
+   "distance_to_centre_km": 14.85
+  },
+  {
+   "time": "2022-09-28 09:06:00",
+   "sfmr_kt": 95,
+   "fl_wind_kt": 134,
+   "distance_to_centre_km": 18.4
+  },
+  {
+   "time": "2022-09-28 09:06:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 134,
+   "distance_to_centre_km": 20.7
+  },
+  {
+   "time": "2022-09-28 09:07:00",
+   "sfmr_kt": 103,
+   "fl_wind_kt": 132,
+   "distance_to_centre_km": 23.25
+  },
+  {
+   "time": "2022-09-28 09:07:30",
+   "sfmr_kt": 103,
+   "fl_wind_kt": 126,
+   "distance_to_centre_km": 24.69
+  },
+  {
+   "time": "2022-09-28 09:08:00",
+   "sfmr_kt": 101,
+   "fl_wind_kt": 123,
+   "distance_to_centre_km": 27.26
+  },
+  {
+   "time": "2022-09-28 09:08:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 118,
+   "distance_to_centre_km": 27.74
+  },
+  {
+   "time": "2022-09-28 09:09:00",
+   "sfmr_kt": 95,
+   "fl_wind_kt": 117,
+   "distance_to_centre_km": 29.36
+  },
+  {
+   "time": "2022-09-28 09:09:30",
+   "sfmr_kt": 94,
+   "fl_wind_kt": 112,
+   "distance_to_centre_km": 28.56
+  },
+  {
+   "time": "2022-09-28 09:10:00",
+   "sfmr_kt": 94,
+   "fl_wind_kt": 113,
+   "distance_to_centre_km": 29.5
+  },
+  {
+   "time": "2022-09-28 09:10:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 115,
+   "distance_to_centre_km": 31.27
+  },
+  {
+   "time": "2022-09-28 09:11:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 110,
+   "distance_to_centre_km": 30.73
+  },
+  {
+   "time": "2022-09-28 09:11:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 105,
+   "distance_to_centre_km": 32.58
+  },
+  {
+   "time": "2022-09-28 09:12:00",
+   "sfmr_kt": 86,
+   "fl_wind_kt": 107,
+   "distance_to_centre_km": 33.94
+  },
+  {
+   "time": "2022-09-28 09:12:30",
+   "sfmr_kt": 85,
+   "fl_wind_kt": 109,
+   "distance_to_centre_km": 35.83
+  },
+  {
+   "time": "2022-09-28 09:13:00",
+   "sfmr_kt": 85,
+   "fl_wind_kt": 104,
+   "distance_to_centre_km": 37.36
+  },
+  {
+   "time": "2022-09-28 09:13:30",
+   "sfmr_kt": 87,
+   "fl_wind_kt": 98,
+   "distance_to_centre_km": 39.3
+  },
+  {
+   "time": "2022-09-28 09:14:00",
+   "sfmr_kt": 82,
+   "fl_wind_kt": 96,
+   "distance_to_centre_km": 41.22
+  },
+  {
+   "time": "2022-09-28 09:14:30",
+   "sfmr_kt": 78,
+   "fl_wind_kt": 94,
+   "distance_to_centre_km": 43.17
+  },
+  {
+   "time": "2022-09-28 09:15:00",
+   "sfmr_kt": 78,
+   "fl_wind_kt": 91,
+   "distance_to_centre_km": 46.94
+  },
+  {
+   "time": "2022-09-28 09:15:30",
+   "sfmr_kt": 77,
+   "fl_wind_kt": 93,
+   "distance_to_centre_km": 48.89
+  },
+  {
+   "time": "2022-09-28 09:16:00",
+   "sfmr_kt": 74,
+   "fl_wind_kt": 99,
+   "distance_to_centre_km": 50.84
+  },
+  {
+   "time": "2022-09-28 09:16:30",
+   "sfmr_kt": 74,
+   "fl_wind_kt": 97,
+   "distance_to_centre_km": 54.42
+  },
+  {
+   "time": "2022-09-28 09:17:00",
+   "sfmr_kt": 69,
+   "fl_wind_kt": 93,
+   "distance_to_centre_km": 56.39
+  },
+  {
+   "time": "2022-09-28 09:17:30",
+   "sfmr_kt": 67,
+   "fl_wind_kt": 88,
+   "distance_to_centre_km": 58.35
+  },
+  {
+   "time": "2022-09-28 09:18:00",
+   "sfmr_kt": 62,
+   "fl_wind_kt": 85,
+   "distance_to_centre_km": 62.16
+  },
+  {
+   "time": "2022-09-28 09:18:30",
+   "sfmr_kt": 61,
+   "fl_wind_kt": 84,
+   "distance_to_centre_km": 64.12
+  },
+  {
+   "time": "2022-09-28 09:19:00",
+   "sfmr_kt": 58,
+   "fl_wind_kt": 85,
+   "distance_to_centre_km": 66.09
+  },
+  {
+   "time": "2022-09-28 09:19:30",
+   "sfmr_kt": 63,
+   "fl_wind_kt": 80,
+   "distance_to_centre_km": 69.79
+  },
+  {
+   "time": "2022-09-28 09:20:00",
+   "sfmr_kt": 64,
+   "fl_wind_kt": 73,
+   "distance_to_centre_km": 71.77
+  },
+  {
+   "time": "2022-09-28 09:20:30",
+   "sfmr_kt": 58,
+   "fl_wind_kt": 70,
+   "distance_to_centre_km": 75.59
+  },
+  {
+   "time": "2022-09-28 09:21:00",
+   "sfmr_kt": 50,
+   "fl_wind_kt": 66,
+   "distance_to_centre_km": 77.56
+  },
+  {
+   "time": "2022-09-28 09:21:30",
+   "sfmr_kt": 47,
+   "fl_wind_kt": 67,
+   "distance_to_centre_km": 81.38
+  },
+  {
+   "time": "2022-09-28 09:22:00",
+   "sfmr_kt": 47,
+   "fl_wind_kt": 65,
+   "distance_to_centre_km": 83.36
+  },
+  {
+   "time": "2022-09-28 09:22:30",
+   "sfmr_kt": 45,
+   "fl_wind_kt": 62,
+   "distance_to_centre_km": 87.12
+  },
+  {
+   "time": "2022-09-28 09:23:00",
+   "sfmr_kt": 45,
+   "fl_wind_kt": 60,
+   "distance_to_centre_km": 89.1
+  },
+  {
+   "time": "2022-09-28 09:23:30",
+   "sfmr_kt": 44,
+   "fl_wind_kt": 59,
+   "distance_to_centre_km": 92.93
+  },
+  {
+   "time": "2022-09-28 09:24:00",
+   "sfmr_kt": 44,
+   "fl_wind_kt": 58,
+   "distance_to_centre_km": 94.91
+  },
+  {
+   "time": "2022-09-28 09:24:30",
+   "sfmr_kt": 44,
+   "fl_wind_kt": 57,
+   "distance_to_centre_km": 98.73
+  },
+  {
+   "time": "2022-09-28 09:25:00",
+   "sfmr_kt": 44,
+   "fl_wind_kt": 54,
+   "distance_to_centre_km": 100.69
+  },
+  {
+   "time": "2022-09-28 09:25:30",
+   "sfmr_kt": 50,
+   "fl_wind_kt": 54,
+   "distance_to_centre_km": 104.52
+  },
+  {
+   "time": "2022-09-28 09:26:00",
+   "sfmr_kt": 51,
+   "fl_wind_kt": 53,
+   "distance_to_centre_km": 108.36
+  },
+  {
+   "time": "2022-09-28 09:26:30",
+   "sfmr_kt": 44,
+   "fl_wind_kt": 51,
+   "distance_to_centre_km": 110.33
+  },
+  {
+   "time": "2022-09-28 09:27:00",
+   "sfmr_kt": 41,
+   "fl_wind_kt": 49,
+   "distance_to_centre_km": 114.16
+  },
+  {
+   "time": "2022-09-28 09:27:30",
+   "sfmr_kt": 40,
+   "fl_wind_kt": 49,
+   "distance_to_centre_km": 116.14
+  },
+  {
+   "time": "2022-09-28 09:28:00",
+   "sfmr_kt": 39,
+   "fl_wind_kt": 50,
+   "distance_to_centre_km": 119.98
+  },
+  {
+   "time": "2022-09-28 09:28:30",
+   "sfmr_kt": 37,
+   "fl_wind_kt": 49,
+   "distance_to_centre_km": 123.81
+  },
+  {
+   "time": "2022-09-28 09:29:00",
+   "sfmr_kt": 37,
+   "fl_wind_kt": 48,
+   "distance_to_centre_km": 125.79
+  },
+  {
+   "time": "2022-09-28 09:29:30",
+   "sfmr_kt": 36,
+   "fl_wind_kt": 47,
+   "distance_to_centre_km": 129.61
+  },
+  {
+   "time": "2022-09-28 09:30:00",
+   "sfmr_kt": 37,
+   "fl_wind_kt": 46,
+   "distance_to_centre_km": 131.63
+  },
+  {
+   "time": "2022-09-28 09:30:30",
+   "sfmr_kt": 36,
+   "fl_wind_kt": 44,
+   "distance_to_centre_km": 135.45
+  },
+  {
+   "time": "2022-09-28 09:31:00",
+   "sfmr_kt": 33,
+   "fl_wind_kt": 44,
+   "distance_to_centre_km": 139.28
+  },
+  {
+   "time": "2022-09-28 09:31:30",
+   "sfmr_kt": 33,
+   "fl_wind_kt": 44,
+   "distance_to_centre_km": 141.26
+  },
+  {
+   "time": "2022-09-28 09:32:00",
+   "sfmr_kt": 33,
+   "fl_wind_kt": 43,
+   "distance_to_centre_km": 145.14
+  },
+  {
+   "time": "2022-09-28 09:32:30",
+   "sfmr_kt": 31,
+   "fl_wind_kt": 44,
+   "distance_to_centre_km": 147.12
+  },
+  {
+   "time": "2022-09-28 09:33:00",
+   "sfmr_kt": 30,
+   "fl_wind_kt": 44,
+   "distance_to_centre_km": 150.94
+  },
+  {
+   "time": "2022-09-28 09:33:30",
+   "sfmr_kt": 30,
+   "fl_wind_kt": 46,
+   "distance_to_centre_km": 154.78
+  },
+  {
+   "time": "2022-09-28 09:34:00",
+   "sfmr_kt": 29,
+   "fl_wind_kt": 45,
+   "distance_to_centre_km": 156.75
+  },
+  {
+   "time": "2022-09-28 09:34:30",
+   "sfmr_kt": 28,
+   "fl_wind_kt": 46,
+   "distance_to_centre_km": 160.65
+  },
+  {
+   "time": "2022-09-28 09:35:00",
+   "sfmr_kt": 27,
+   "fl_wind_kt": 47,
+   "distance_to_centre_km": 164.47
+  },
+  {
+   "time": "2022-09-28 09:35:30",
+   "sfmr_kt": 25,
+   "fl_wind_kt": 47,
+   "distance_to_centre_km": 166.45
+  },
+  {
+   "time": "2022-09-28 09:36:00",
+   "sfmr_kt": 25,
+   "fl_wind_kt": 48,
+   "distance_to_centre_km": 170.27
+  },
+  {
+   "time": "2022-09-28 09:36:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 49,
+   "distance_to_centre_km": 172.19
+  },
+  {
+   "time": "2022-09-28 09:37:00",
+   "sfmr_kt": 27,
+   "fl_wind_kt": 47,
+   "distance_to_centre_km": 172.25
+  },
+  {
+   "time": "2022-09-28 09:37:30",
+   "sfmr_kt": 29,
+   "fl_wind_kt": 47,
+   "distance_to_centre_km": 170.5
+  },
+  {
+   "time": "2022-09-28 09:38:00",
+   "sfmr_kt": 28,
+   "fl_wind_kt": 47,
+   "distance_to_centre_km": 168.83
+  },
+  {
+   "time": "2022-09-28 09:38:30",
+   "sfmr_kt": 29,
+   "fl_wind_kt": 47,
+   "distance_to_centre_km": 165.38
+  },
+  {
+   "time": "2022-09-28 09:39:00",
+   "sfmr_kt": 30,
+   "fl_wind_kt": 48,
+   "distance_to_centre_km": 163.84
+  },
+  {
+   "time": "2022-09-28 09:39:30",
+   "sfmr_kt": 32,
+   "fl_wind_kt": 48,
+   "distance_to_centre_km": 162.39
+  },
+  {
+   "time": "2022-09-28 09:40:00",
+   "sfmr_kt": 34,
+   "fl_wind_kt": 49,
+   "distance_to_centre_km": 161.0
+  },
+  {
+   "time": "2022-09-28 09:40:30",
+   "sfmr_kt": 35,
+   "fl_wind_kt": 50,
+   "distance_to_centre_km": 159.68
+  },
+  {
+   "time": "2022-09-28 09:41:00",
+   "sfmr_kt": 35,
+   "fl_wind_kt": 50,
+   "distance_to_centre_km": 158.46
+  },
+  {
+   "time": "2022-09-28 09:41:30",
+   "sfmr_kt": 35,
+   "fl_wind_kt": 51,
+   "distance_to_centre_km": 155.48
+  },
+  {
+   "time": "2022-09-28 09:42:00",
+   "sfmr_kt": 36,
+   "fl_wind_kt": 50,
+   "distance_to_centre_km": 154.42
+  },
+  {
+   "time": "2022-09-28 09:42:30",
+   "sfmr_kt": 38,
+   "fl_wind_kt": 50,
+   "distance_to_centre_km": 153.44
+  },
+  {
+   "time": "2022-09-28 09:43:00",
+   "sfmr_kt": 39,
+   "fl_wind_kt": 51,
+   "distance_to_centre_km": 152.54
+  },
+  {
+   "time": "2022-09-28 09:43:30",
+   "sfmr_kt": 41,
+   "fl_wind_kt": 51,
+   "distance_to_centre_km": 151.74
+  },
+  {
+   "time": "2022-09-28 09:44:00",
+   "sfmr_kt": 42,
+   "fl_wind_kt": 50,
+   "distance_to_centre_km": 151.03
+  },
+  {
+   "time": "2022-09-28 09:44:30",
+   "sfmr_kt": 43,
+   "fl_wind_kt": 49,
+   "distance_to_centre_km": 148.65
+  },
+  {
+   "time": "2022-09-28 09:45:00",
+   "sfmr_kt": 44,
+   "fl_wind_kt": 47,
+   "distance_to_centre_km": 148.12
+  },
+  {
+   "time": "2022-09-28 09:45:30",
+   "sfmr_kt": 43,
+   "fl_wind_kt": 48,
+   "distance_to_centre_km": 147.69
+  },
+  {
+   "time": "2022-09-28 09:46:00",
+   "sfmr_kt": 43,
+   "fl_wind_kt": 48,
+   "distance_to_centre_km": 147.37
+  },
+  {
+   "time": "2022-09-28 09:46:30",
+   "sfmr_kt": 42,
+   "fl_wind_kt": 47,
+   "distance_to_centre_km": 147.12
+  },
+  {
+   "time": "2022-09-28 09:47:00",
+   "sfmr_kt": 43,
+   "fl_wind_kt": 49,
+   "distance_to_centre_km": 146.98
+  },
+  {
+   "time": "2022-09-28 09:47:30",
+   "sfmr_kt": 43,
+   "fl_wind_kt": 51,
+   "distance_to_centre_km": 145.29
+  },
+  {
+   "time": "2022-09-28 09:48:00",
+   "sfmr_kt": 42,
+   "fl_wind_kt": 50,
+   "distance_to_centre_km": 145.35
+  },
+  {
+   "time": "2022-09-28 09:48:30",
+   "sfmr_kt": 43,
+   "fl_wind_kt": 52,
+   "distance_to_centre_km": 145.45
+  },
+  {
+   "time": "2022-09-28 09:49:00",
+   "sfmr_kt": 42,
+   "fl_wind_kt": 51,
+   "distance_to_centre_km": 145.78
+  },
+  {
+   "time": "2022-09-28 09:49:30",
+   "sfmr_kt": 41,
+   "fl_wind_kt": 53,
+   "distance_to_centre_km": 147.08
+  },
+  {
+   "time": "2022-09-28 09:50:00",
+   "sfmr_kt": 40,
+   "fl_wind_kt": 54,
+   "distance_to_centre_km": 147.57
+  },
+  {
+   "time": "2022-09-28 09:50:30",
+   "sfmr_kt": 37,
+   "fl_wind_kt": 55,
+   "distance_to_centre_km": 146.66
+  },
+  {
+   "time": "2022-09-28 09:51:00",
+   "sfmr_kt": 36,
+   "fl_wind_kt": 56,
+   "distance_to_centre_km": 147.37
+  },
+  {
+   "time": "2022-09-28 09:51:30",
+   "sfmr_kt": 38,
+   "fl_wind_kt": 58,
+   "distance_to_centre_km": 148.15
+  },
+  {
+   "time": "2022-09-28 09:52:00",
+   "sfmr_kt": 38,
+   "fl_wind_kt": 57,
+   "distance_to_centre_km": 149.03
+  },
+  {
+   "time": "2022-09-28 09:52:30",
+   "sfmr_kt": 39,
+   "fl_wind_kt": 55,
+   "distance_to_centre_km": 150.0
+  },
+  {
+   "time": "2022-09-28 09:53:00",
+   "sfmr_kt": 39,
+   "fl_wind_kt": 55,
+   "distance_to_centre_km": 151.05
+  },
+  {
+   "time": "2022-09-28 09:53:30",
+   "sfmr_kt": 41,
+   "fl_wind_kt": 56,
+   "distance_to_centre_km": 150.91
+  },
+  {
+   "time": "2022-09-28 09:54:00",
+   "sfmr_kt": 40,
+   "fl_wind_kt": 56,
+   "distance_to_centre_km": 152.15
+  },
+  {
+   "time": "2022-09-28 09:54:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 57,
+   "distance_to_centre_km": 153.48
+  },
+  {
+   "time": "2022-09-28 09:55:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 57,
+   "distance_to_centre_km": 149.93
+  },
+  {
+   "time": "2022-09-28 09:55:30",
+   "sfmr_kt": 40,
+   "fl_wind_kt": 55,
+   "distance_to_centre_km": 147.52
+  },
+  {
+   "time": "2022-09-28 09:56:00",
+   "sfmr_kt": 40,
+   "fl_wind_kt": 54,
+   "distance_to_centre_km": 143.8
+  },
+  {
+   "time": "2022-09-28 09:56:30",
+   "sfmr_kt": 39,
+   "fl_wind_kt": 54,
+   "distance_to_centre_km": 140.21
+  },
+  {
+   "time": "2022-09-28 09:57:00",
+   "sfmr_kt": 41,
+   "fl_wind_kt": 56,
+   "distance_to_centre_km": 136.48
+  },
+  {
+   "time": "2022-09-28 09:57:30",
+   "sfmr_kt": 42,
+   "fl_wind_kt": 56,
+   "distance_to_centre_km": 134.07
+  },
+  {
+   "time": "2022-09-28 09:58:00",
+   "sfmr_kt": 44,
+   "fl_wind_kt": 56,
+   "distance_to_centre_km": 130.35
+  },
+  {
+   "time": "2022-09-28 09:58:30",
+   "sfmr_kt": 48,
+   "fl_wind_kt": 56,
+   "distance_to_centre_km": 125.46
+  },
+  {
+   "time": "2022-09-28 09:59:00",
+   "sfmr_kt": 49,
+   "fl_wind_kt": 57,
+   "distance_to_centre_km": 120.57
+  },
+  {
+   "time": "2022-09-28 09:59:30",
+   "sfmr_kt": 49,
+   "fl_wind_kt": 59,
+   "distance_to_centre_km": 120.63
+  },
+  {
+   "time": "2022-09-28 10:00:00",
+   "sfmr_kt": 47,
+   "fl_wind_kt": 61,
+   "distance_to_centre_km": 114.44
+  },
+  {
+   "time": "2022-09-28 10:00:30",
+   "sfmr_kt": 48,
+   "fl_wind_kt": 58,
+   "distance_to_centre_km": 110.85
+  },
+  {
+   "time": "2022-09-28 10:01:00",
+   "sfmr_kt": 49,
+   "fl_wind_kt": 57,
+   "distance_to_centre_km": 107.14
+  },
+  {
+   "time": "2022-09-28 10:01:30",
+   "sfmr_kt": 47,
+   "fl_wind_kt": 60,
+   "distance_to_centre_km": 104.72
+  },
+  {
+   "time": "2022-09-28 10:02:00",
+   "sfmr_kt": 49,
+   "fl_wind_kt": 59,
+   "distance_to_centre_km": 101.0
+  },
+  {
+   "time": "2022-09-28 10:02:30",
+   "sfmr_kt": 49,
+   "fl_wind_kt": 62,
+   "distance_to_centre_km": 97.43
+  },
+  {
+   "time": "2022-09-28 10:03:00",
+   "sfmr_kt": 49,
+   "fl_wind_kt": 65,
+   "distance_to_centre_km": 95.02
+  },
+  {
+   "time": "2022-09-28 10:03:30",
+   "sfmr_kt": 50,
+   "fl_wind_kt": 64,
+   "distance_to_centre_km": 91.3
+  },
+  {
+   "time": "2022-09-28 10:04:00",
+   "sfmr_kt": 51,
+   "fl_wind_kt": 69,
+   "distance_to_centre_km": 88.88
+  },
+  {
+   "time": "2022-09-28 10:04:30",
+   "sfmr_kt": 52,
+   "fl_wind_kt": 71,
+   "distance_to_centre_km": 84.02
+  },
+  {
+   "time": "2022-09-28 10:05:00",
+   "sfmr_kt": 53,
+   "fl_wind_kt": 71,
+   "distance_to_centre_km": 81.61
+  },
+  {
+   "time": "2022-09-28 10:05:30",
+   "sfmr_kt": 54,
+   "fl_wind_kt": 76,
+   "distance_to_centre_km": 77.88
+  },
+  {
+   "time": "2022-09-28 10:06:00",
+   "sfmr_kt": 55,
+   "fl_wind_kt": 78,
+   "distance_to_centre_km": 75.47
+  },
+  {
+   "time": "2022-09-28 10:06:30",
+   "sfmr_kt": 56,
+   "fl_wind_kt": 80,
+   "distance_to_centre_km": 70.61
+  },
+  {
+   "time": "2022-09-28 10:07:00",
+   "sfmr_kt": 59,
+   "fl_wind_kt": 83,
+   "distance_to_centre_km": 68.21
+  },
+  {
+   "time": "2022-09-28 10:07:30",
+   "sfmr_kt": 60,
+   "fl_wind_kt": 84,
+   "distance_to_centre_km": 64.47
+  },
+  {
+   "time": "2022-09-28 10:08:00",
+   "sfmr_kt": 62,
+   "fl_wind_kt": 88,
+   "distance_to_centre_km": 60.98
+  },
+  {
+   "time": "2022-09-28 10:08:30",
+   "sfmr_kt": 64,
+   "fl_wind_kt": 91,
+   "distance_to_centre_km": 57.23
+  },
+  {
+   "time": "2022-09-28 10:09:00",
+   "sfmr_kt": 63,
+   "fl_wind_kt": 93,
+   "distance_to_centre_km": 54.83
+  },
+  {
+   "time": "2022-09-28 10:09:30",
+   "sfmr_kt": 66,
+   "fl_wind_kt": 94,
+   "distance_to_centre_km": 51.09
+  },
+  {
+   "time": "2022-09-28 10:10:00",
+   "sfmr_kt": 68,
+   "fl_wind_kt": 99,
+   "distance_to_centre_km": 48.69
+  },
+  {
+   "time": "2022-09-28 10:10:30",
+   "sfmr_kt": 69,
+   "fl_wind_kt": 105,
+   "distance_to_centre_km": 45.27
+  },
+  {
+   "time": "2022-09-28 10:11:00",
+   "sfmr_kt": 71,
+   "fl_wind_kt": 110,
+   "distance_to_centre_km": 41.49
+  },
+  {
+   "time": "2022-09-28 10:11:30",
+   "sfmr_kt": 76,
+   "fl_wind_kt": 115,
+   "distance_to_centre_km": 39.12
+  },
+  {
+   "time": "2022-09-28 10:12:00",
+   "sfmr_kt": 79,
+   "fl_wind_kt": 110,
+   "distance_to_centre_km": 35.36
+  },
+  {
+   "time": "2022-09-28 10:12:30",
+   "sfmr_kt": 83,
+   "fl_wind_kt": 108,
+   "distance_to_centre_km": 32.02
+  },
+  {
+   "time": "2022-09-28 10:13:00",
+   "sfmr_kt": 85,
+   "fl_wind_kt": 107,
+   "distance_to_centre_km": 28.23
+  },
+  {
+   "time": "2022-09-28 10:13:30",
+   "sfmr_kt": 87,
+   "fl_wind_kt": 106,
+   "distance_to_centre_km": 25.9
+  },
+  {
+   "time": "2022-09-28 10:14:00",
+   "sfmr_kt": 101,
+   "fl_wind_kt": 121,
+   "distance_to_centre_km": 22.11
+  },
+  {
+   "time": "2022-09-28 10:14:30",
+   "sfmr_kt": 111,
+   "fl_wind_kt": 124,
+   "distance_to_centre_km": 19.01
+  },
+  {
+   "time": "2022-09-28 10:15:00",
+   "sfmr_kt": 110,
+   "fl_wind_kt": 107,
+   "distance_to_centre_km": 15.24
+  },
+  {
+   "time": "2022-09-28 10:15:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 80,
+   "distance_to_centre_km": 11.0
+  },
+  {
+   "time": "2022-09-28 10:16:00",
+   "sfmr_kt": 65,
+   "fl_wind_kt": 62,
+   "distance_to_centre_km": 9.12
+  },
+  {
+   "time": "2022-09-28 10:16:30",
+   "sfmr_kt": 39,
+   "fl_wind_kt": 44,
+   "distance_to_centre_km": 5.94
+  },
+  {
+   "time": "2022-09-28 10:17:00",
+   "sfmr_kt": 29,
+   "fl_wind_kt": 38,
+   "distance_to_centre_km": 4.01
+  },
+  {
+   "time": "2022-09-28 10:17:30",
+   "sfmr_kt": 27,
+   "fl_wind_kt": 29,
+   "distance_to_centre_km": 5.04
+  },
+  {
+   "time": "2022-09-28 10:18:00",
+   "sfmr_kt": 28,
+   "fl_wind_kt": 16,
+   "distance_to_centre_km": 6.49
+  },
+  {
+   "time": "2022-09-28 10:18:30",
+   "sfmr_kt": 23,
+   "fl_wind_kt": 5,
+   "distance_to_centre_km": 9.02
+  },
+  {
+   "time": "2022-09-28 10:19:00",
+   "sfmr_kt": 25,
+   "fl_wind_kt": 3,
+   "distance_to_centre_km": 9.79
+  },
+  {
+   "time": "2022-09-28 10:19:30",
+   "sfmr_kt": 28,
+   "fl_wind_kt": 16,
+   "distance_to_centre_km": 12.78
+  },
+  {
+   "time": "2022-09-28 10:20:00",
+   "sfmr_kt": 41,
+   "fl_wind_kt": 30,
+   "distance_to_centre_km": 16.43
+  },
+  {
+   "time": "2022-09-28 10:20:30",
+   "sfmr_kt": 56,
+   "fl_wind_kt": 40,
+   "distance_to_centre_km": 18.54
+  },
+  {
+   "time": "2022-09-28 10:21:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 57,
+   "distance_to_centre_km": 22.34
+  },
+  {
+   "time": "2022-09-28 10:21:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 67,
+   "distance_to_centre_km": 23.99
+  },
+  {
+   "time": "2022-09-28 10:22:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 67,
+   "distance_to_centre_km": 23.56
+  },
+  {
+   "time": "2022-09-28 10:22:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 50,
+   "distance_to_centre_km": 21.6
+  },
+  {
+   "time": "2022-09-28 10:23:00",
+   "sfmr_kt": 48,
+   "fl_wind_kt": 32,
+   "distance_to_centre_km": 18.07
+  },
+  {
+   "time": "2022-09-28 10:23:30",
+   "sfmr_kt": 36,
+   "fl_wind_kt": 22,
+   "distance_to_centre_km": 14.66
+  },
+  {
+   "time": "2022-09-28 10:24:00",
+   "sfmr_kt": 31,
+   "fl_wind_kt": 12,
+   "distance_to_centre_km": 13.1
+  },
+  {
+   "time": "2022-09-28 10:24:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 11,
+   "distance_to_centre_km": 11.82
+  },
+  {
+   "time": "2022-09-28 10:25:00",
+   "sfmr_kt": 29,
+   "fl_wind_kt": 17,
+   "distance_to_centre_km": 14.73
+  },
+  {
+   "time": "2022-09-28 10:25:30",
+   "sfmr_kt": 32,
+   "fl_wind_kt": 25,
+   "distance_to_centre_km": 18.52
+  },
+  {
+   "time": "2022-09-28 10:26:00",
+   "sfmr_kt": 50,
+   "fl_wind_kt": 32,
+   "distance_to_centre_km": 20.82
+  },
+  {
+   "time": "2022-09-28 10:26:30",
+   "sfmr_kt": 87,
+   "fl_wind_kt": 40,
+   "distance_to_centre_km": 24.17
+  },
+  {
+   "time": "2022-09-28 10:27:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 68,
+   "distance_to_centre_km": 27.92
+  },
+  {
+   "time": "2022-09-28 10:27:30",
+   "sfmr_kt": 130,
+   "fl_wind_kt": 84,
+   "distance_to_centre_km": 30.3
+  },
+  {
+   "time": "2022-09-28 10:28:00",
+   "sfmr_kt": 131,
+   "fl_wind_kt": 103,
+   "distance_to_centre_km": 32.68
+  },
+  {
+   "time": "2022-09-28 10:28:30",
+   "sfmr_kt": 126,
+   "fl_wind_kt": 133,
+   "distance_to_centre_km": 35.06
+  },
+  {
+   "time": "2022-09-28 10:29:00",
+   "sfmr_kt": 134,
+   "fl_wind_kt": 135,
+   "distance_to_centre_km": 37.45
+  },
+  {
+   "time": "2022-09-28 10:29:30",
+   "sfmr_kt": 137,
+   "fl_wind_kt": 122,
+   "distance_to_centre_km": 39.85
+  },
+  {
+   "time": "2022-09-28 10:30:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 114,
+   "distance_to_centre_km": 42.24
+  },
+  {
+   "time": "2022-09-28 10:30:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 114,
+   "distance_to_centre_km": 44.64
+  },
+  {
+   "time": "2022-09-28 10:31:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": null,
+   "distance_to_centre_km": 47.05
+  },
+  {
+   "time": "2022-09-28 10:31:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 104,
+   "distance_to_centre_km": 49.44
+  },
+  {
+   "time": "2022-09-28 10:32:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 99,
+   "distance_to_centre_km": 51.85
+  },
+  {
+   "time": "2022-09-28 10:32:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 107,
+   "distance_to_centre_km": 54.26
+  },
+  {
+   "time": "2022-09-28 10:33:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 100,
+   "distance_to_centre_km": 56.66
+  },
+  {
+   "time": "2022-09-28 10:33:30",
+   "sfmr_kt": 107,
+   "fl_wind_kt": 109,
+   "distance_to_centre_km": 59.07
+  },
+  {
+   "time": "2022-09-28 10:34:00",
+   "sfmr_kt": 102,
+   "fl_wind_kt": 107,
+   "distance_to_centre_km": 61.48
+  },
+  {
+   "time": "2022-09-28 10:34:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 102,
+   "distance_to_centre_km": 65.16
+  },
+  {
+   "time": "2022-09-28 10:35:00",
+   "sfmr_kt": 89,
+   "fl_wind_kt": 96,
+   "distance_to_centre_km": 67.57
+  },
+  {
+   "time": "2022-09-28 10:35:30",
+   "sfmr_kt": 87,
+   "fl_wind_kt": 89,
+   "distance_to_centre_km": 71.25
+  },
+  {
+   "time": "2022-09-28 10:36:00",
+   "sfmr_kt": 83,
+   "fl_wind_kt": 86,
+   "distance_to_centre_km": 73.65
+  },
+  {
+   "time": "2022-09-28 10:36:30",
+   "sfmr_kt": 80,
+   "fl_wind_kt": 83,
+   "distance_to_centre_km": 77.35
+  },
+  {
+   "time": "2022-09-28 10:37:00",
+   "sfmr_kt": 79,
+   "fl_wind_kt": 80,
+   "distance_to_centre_km": 79.75
+  },
+  {
+   "time": "2022-09-28 10:37:30",
+   "sfmr_kt": 76,
+   "fl_wind_kt": 78,
+   "distance_to_centre_km": 82.14
+  },
+  {
+   "time": "2022-09-28 10:38:00",
+   "sfmr_kt": 72,
+   "fl_wind_kt": 71,
+   "distance_to_centre_km": 87.02
+  },
+  {
+   "time": "2022-09-28 10:38:30",
+   "sfmr_kt": 70,
+   "fl_wind_kt": 67,
+   "distance_to_centre_km": 89.41
+  },
+  {
+   "time": "2022-09-28 10:39:00",
+   "sfmr_kt": 71,
+   "fl_wind_kt": 67,
+   "distance_to_centre_km": 91.82
+  },
+  {
+   "time": "2022-09-28 10:39:30",
+   "sfmr_kt": 70,
+   "fl_wind_kt": 65,
+   "distance_to_centre_km": 95.5
+  },
+  {
+   "time": "2022-09-28 10:40:00",
+   "sfmr_kt": 68,
+   "fl_wind_kt": 70,
+   "distance_to_centre_km": 97.9
+  },
+  {
+   "time": "2022-09-28 10:40:30",
+   "sfmr_kt": 68,
+   "fl_wind_kt": 70,
+   "distance_to_centre_km": 100.31
+  },
+  {
+   "time": "2022-09-28 10:41:00",
+   "sfmr_kt": 64,
+   "fl_wind_kt": 63,
+   "distance_to_centre_km": 105.17
+  },
+  {
+   "time": "2022-09-28 10:41:30",
+   "sfmr_kt": 64,
+   "fl_wind_kt": 58,
+   "distance_to_centre_km": 107.57
+  },
+  {
+   "time": "2022-09-28 10:42:00",
+   "sfmr_kt": 61,
+   "fl_wind_kt": 57,
+   "distance_to_centre_km": 109.97
+  },
+  {
+   "time": "2022-09-28 10:42:30",
+   "sfmr_kt": 60,
+   "fl_wind_kt": 57,
+   "distance_to_centre_km": 113.65
+  },
+  {
+   "time": "2022-09-28 10:43:00",
+   "sfmr_kt": 60,
+   "fl_wind_kt": 56,
+   "distance_to_centre_km": 116.05
+  },
+  {
+   "time": "2022-09-28 10:43:30",
+   "sfmr_kt": 59,
+   "fl_wind_kt": 51,
+   "distance_to_centre_km": 118.46
+  },
+  {
+   "time": "2022-09-28 10:44:00",
+   "sfmr_kt": 57,
+   "fl_wind_kt": 52,
+   "distance_to_centre_km": 123.32
+  },
+  {
+   "time": "2022-09-28 10:44:30",
+   "sfmr_kt": 54,
+   "fl_wind_kt": 56,
+   "distance_to_centre_km": 125.72
+  },
+  {
+   "time": "2022-09-28 10:45:00",
+   "sfmr_kt": 55,
+   "fl_wind_kt": 53,
+   "distance_to_centre_km": 128.13
+  },
+  {
+   "time": "2022-09-28 10:45:30",
+   "sfmr_kt": 54,
+   "fl_wind_kt": 48,
+   "distance_to_centre_km": 131.79
+  },
+  {
+   "time": "2022-09-28 10:46:00",
+   "sfmr_kt": 53,
+   "fl_wind_kt": 44,
+   "distance_to_centre_km": 134.2
+  },
+  {
+   "time": "2022-09-28 10:46:30",
+   "sfmr_kt": 51,
+   "fl_wind_kt": 43,
+   "distance_to_centre_km": 136.59
+  },
+  {
+   "time": "2022-09-28 10:47:00",
+   "sfmr_kt": 52,
+   "fl_wind_kt": 45,
+   "distance_to_centre_km": 141.47
+  },
+  {
+   "time": "2022-09-28 10:47:30",
+   "sfmr_kt": 51,
+   "fl_wind_kt": 42,
+   "distance_to_centre_km": 143.86
+  },
+  {
+   "time": "2022-09-28 10:48:00",
+   "sfmr_kt": 49,
+   "fl_wind_kt": 43,
+   "distance_to_centre_km": 146.27
+  },
+  {
+   "time": "2022-09-28 10:48:30",
+   "sfmr_kt": 50,
+   "fl_wind_kt": 42,
+   "distance_to_centre_km": 149.93
+  },
+  {
+   "time": "2022-09-28 10:49:00",
+   "sfmr_kt": 50,
+   "fl_wind_kt": 44,
+   "distance_to_centre_km": 152.33
+  },
+  {
+   "time": "2022-09-28 10:49:30",
+   "sfmr_kt": 51,
+   "fl_wind_kt": 46,
+   "distance_to_centre_km": 157.19
+  },
+  {
+   "time": "2022-09-28 10:50:00",
+   "sfmr_kt": 50,
+   "fl_wind_kt": 49,
+   "distance_to_centre_km": 159.59
+  },
+  {
+   "time": "2022-09-28 10:50:30",
+   "sfmr_kt": 51,
+   "fl_wind_kt": 50,
+   "distance_to_centre_km": 162.0
+  },
+  {
+   "time": "2022-09-28 10:51:00",
+   "sfmr_kt": 51,
+   "fl_wind_kt": 50,
+   "distance_to_centre_km": 165.66
+  },
+  {
+   "time": "2022-09-28 10:51:30",
+   "sfmr_kt": 48,
+   "fl_wind_kt": 49,
+   "distance_to_centre_km": 168.06
+  },
+  {
+   "time": "2022-09-28 10:52:00",
+   "sfmr_kt": 48,
+   "fl_wind_kt": 51,
+   "distance_to_centre_km": 172.92
+  },
+  {
+   "time": "2022-09-28 10:52:30",
+   "sfmr_kt": 48,
+   "fl_wind_kt": 48,
+   "distance_to_centre_km": 175.32
+  },
+  {
+   "time": "2022-09-28 10:53:00",
+   "sfmr_kt": 47,
+   "fl_wind_kt": 46,
+   "distance_to_centre_km": 177.72
+  },
+  {
+   "time": "2022-09-28 10:53:30",
+   "sfmr_kt": 46,
+   "fl_wind_kt": 45,
+   "distance_to_centre_km": 181.38
+  },
+  {
+   "time": "2022-09-28 10:54:00",
+   "sfmr_kt": 44,
+   "fl_wind_kt": 44,
+   "distance_to_centre_km": 183.77
+  },
+  {
+   "time": "2022-09-28 10:54:30",
+   "sfmr_kt": 46,
+   "fl_wind_kt": 42,
+   "distance_to_centre_km": 188.64
+  },
+  {
+   "time": "2022-09-28 10:55:00",
+   "sfmr_kt": 46,
+   "fl_wind_kt": 42,
+   "distance_to_centre_km": 191.03
+  },
+  {
+   "time": "2022-09-28 10:55:30",
+   "sfmr_kt": 46,
+   "fl_wind_kt": 42,
+   "distance_to_centre_km": 194.69
+  },
+  {
+   "time": "2022-09-28 10:56:00",
+   "sfmr_kt": 46,
+   "fl_wind_kt": 42,
+   "distance_to_centre_km": 197.09
+  },
+  {
+   "time": "2022-09-28 10:56:30",
+   "sfmr_kt": 45,
+   "fl_wind_kt": 42,
+   "distance_to_centre_km": 200.7
+  },
+  {
+   "time": "2022-09-28 10:57:00",
+   "sfmr_kt": 44,
+   "fl_wind_kt": 45,
+   "distance_to_centre_km": 204.34
+  },
+  {
+   "time": "2022-09-28 10:57:30",
+   "sfmr_kt": 43,
+   "fl_wind_kt": 42,
+   "distance_to_centre_km": 208.0
+  },
+  {
+   "time": "2022-09-28 10:58:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 38,
+   "distance_to_centre_km": 208.01
+  },
+  {
+   "time": "2022-09-28 10:58:30",
+   "sfmr_kt": 44,
+   "fl_wind_kt": 40,
+   "distance_to_centre_km": 205.59
+  },
+  {
+   "time": "2022-09-28 10:59:00",
+   "sfmr_kt": 46,
+   "fl_wind_kt": 42,
+   "distance_to_centre_km": 203.23
+  },
+  {
+   "time": "2022-09-28 10:59:30",
+   "sfmr_kt": 46,
+   "fl_wind_kt": 43,
+   "distance_to_centre_km": 200.92
+  },
+  {
+   "time": "2022-09-28 11:00:00",
+   "sfmr_kt": 47,
+   "fl_wind_kt": 42,
+   "distance_to_centre_km": 198.64
+  },
+  {
+   "time": "2022-09-28 11:00:30",
+   "sfmr_kt": 46,
+   "fl_wind_kt": 41,
+   "distance_to_centre_km": 196.42
+  },
+  {
+   "time": "2022-09-28 11:01:00",
+   "sfmr_kt": 47,
+   "fl_wind_kt": 38,
+   "distance_to_centre_km": 194.25
+  },
+  {
+   "time": "2022-09-28 11:01:30",
+   "sfmr_kt": 45,
+   "fl_wind_kt": 39,
+   "distance_to_centre_km": 190.76
+  },
+  {
+   "time": "2022-09-28 11:02:00",
+   "sfmr_kt": 47,
+   "fl_wind_kt": 42,
+   "distance_to_centre_km": 188.68
+  },
+  {
+   "time": "2022-09-28 11:02:30",
+   "sfmr_kt": 48,
+   "fl_wind_kt": 45,
+   "distance_to_centre_km": 186.65
+  },
+  {
+   "time": "2022-09-28 11:03:00",
+   "sfmr_kt": 48,
+   "fl_wind_kt": 46,
+   "distance_to_centre_km": 184.68
+  },
+  {
+   "time": "2022-09-28 11:03:30",
+   "sfmr_kt": 46,
+   "fl_wind_kt": 48,
+   "distance_to_centre_km": 182.77
+  },
+  {
+   "time": "2022-09-28 11:04:00",
+   "sfmr_kt": 45,
+   "fl_wind_kt": 49,
+   "distance_to_centre_km": 180.92
+  },
+  {
+   "time": "2022-09-28 11:04:30",
+   "sfmr_kt": 47,
+   "fl_wind_kt": 50,
+   "distance_to_centre_km": 179.13
+  },
+  {
+   "time": "2022-09-28 11:05:00",
+   "sfmr_kt": 47,
+   "fl_wind_kt": 51,
+   "distance_to_centre_km": 177.41
+  },
+  {
+   "time": "2022-09-28 11:05:30",
+   "sfmr_kt": 46,
+   "fl_wind_kt": 51,
+   "distance_to_centre_km": 174.97
+  },
+  {
+   "time": "2022-09-28 11:06:00",
+   "sfmr_kt": 46,
+   "fl_wind_kt": 52,
+   "distance_to_centre_km": 173.42
+  },
+  {
+   "time": "2022-09-28 11:06:30",
+   "sfmr_kt": 46,
+   "fl_wind_kt": 53,
+   "distance_to_centre_km": 171.93
+  },
+  {
+   "time": "2022-09-28 11:07:00",
+   "sfmr_kt": 46,
+   "fl_wind_kt": 53,
+   "distance_to_centre_km": 168.98
+  },
+  {
+   "time": "2022-09-28 11:07:30",
+   "sfmr_kt": 47,
+   "fl_wind_kt": 54,
+   "distance_to_centre_km": 167.63
+  },
+  {
+   "time": "2022-09-28 11:08:00",
+   "sfmr_kt": 49,
+   "fl_wind_kt": 54,
+   "distance_to_centre_km": 166.36
+  },
+  {
+   "time": "2022-09-28 11:08:30",
+   "sfmr_kt": 48,
+   "fl_wind_kt": 52,
+   "distance_to_centre_km": 164.61
+  },
+  {
+   "time": "2022-09-28 11:09:00",
+   "sfmr_kt": 48,
+   "fl_wind_kt": 52,
+   "distance_to_centre_km": 163.54
+  },
+  {
+   "time": "2022-09-28 11:09:30",
+   "sfmr_kt": 49,
+   "fl_wind_kt": 51,
+   "distance_to_centre_km": 162.55
+  },
+  {
+   "time": "2022-09-28 11:10:00",
+   "sfmr_kt": 50,
+   "fl_wind_kt": 49,
+   "distance_to_centre_km": 161.65
+  },
+  {
+   "time": "2022-09-28 11:10:30",
+   "sfmr_kt": 48,
+   "fl_wind_kt": 49,
+   "distance_to_centre_km": 160.83
+  },
+  {
+   "time": "2022-09-28 11:11:00",
+   "sfmr_kt": 45,
+   "fl_wind_kt": 49,
+   "distance_to_centre_km": 160.11
+  },
+  {
+   "time": "2022-09-28 11:11:30",
+   "sfmr_kt": 47,
+   "fl_wind_kt": 50,
+   "distance_to_centre_km": 159.18
+  },
+  {
+   "time": "2022-09-28 11:12:00",
+   "sfmr_kt": 46,
+   "fl_wind_kt": 51,
+   "distance_to_centre_km": 158.67
+  },
+  {
+   "time": "2022-09-28 11:12:30",
+   "sfmr_kt": 47,
+   "fl_wind_kt": 51,
+   "distance_to_centre_km": 156.59
+  },
+  {
+   "time": "2022-09-28 11:13:00",
+   "sfmr_kt": 47,
+   "fl_wind_kt": 50,
+   "distance_to_centre_km": 156.27
+  },
+  {
+   "time": "2022-09-28 11:13:30",
+   "sfmr_kt": 46,
+   "fl_wind_kt": 51,
+   "distance_to_centre_km": 156.03
+  },
+  {
+   "time": "2022-09-28 11:14:00",
+   "sfmr_kt": 45,
+   "fl_wind_kt": 50,
+   "distance_to_centre_km": 155.84
+  },
+  {
+   "time": "2022-09-28 11:14:30",
+   "sfmr_kt": 45,
+   "fl_wind_kt": 50,
+   "distance_to_centre_km": 155.84
+  },
+  {
+   "time": "2022-09-28 11:15:00",
+   "sfmr_kt": 45,
+   "fl_wind_kt": 51,
+   "distance_to_centre_km": 155.94
+  },
+  {
+   "time": "2022-09-28 11:15:30",
+   "sfmr_kt": 45,
+   "fl_wind_kt": 50,
+   "distance_to_centre_km": 156.12
+  },
+  {
+   "time": "2022-09-28 11:16:00",
+   "sfmr_kt": 44,
+   "fl_wind_kt": 50,
+   "distance_to_centre_km": 156.56
+  },
+  {
+   "time": "2022-09-28 11:16:30",
+   "sfmr_kt": 45,
+   "fl_wind_kt": 51,
+   "distance_to_centre_km": 156.98
+  },
+  {
+   "time": "2022-09-28 11:17:00",
+   "sfmr_kt": 43,
+   "fl_wind_kt": 51,
+   "distance_to_centre_km": 157.49
+  },
+  {
+   "time": "2022-09-28 11:17:30",
+   "sfmr_kt": 43,
+   "fl_wind_kt": 51,
+   "distance_to_centre_km": 158.09
+  },
+  {
+   "time": "2022-09-28 11:18:00",
+   "sfmr_kt": 43,
+   "fl_wind_kt": 51,
+   "distance_to_centre_km": 158.78
+  },
+  {
+   "time": "2022-09-28 11:18:30",
+   "sfmr_kt": 46,
+   "fl_wind_kt": 50,
+   "distance_to_centre_km": 158.34
+  },
+  {
+   "time": "2022-09-28 11:19:00",
+   "sfmr_kt": 46,
+   "fl_wind_kt": 47,
+   "distance_to_centre_km": 159.26
+  },
+  {
+   "time": "2022-09-28 11:19:30",
+   "sfmr_kt": 44,
+   "fl_wind_kt": 45,
+   "distance_to_centre_km": 160.26
+  },
+  {
+   "time": "2022-09-28 11:20:00",
+   "sfmr_kt": 43,
+   "fl_wind_kt": 42,
+   "distance_to_centre_km": 161.35
+  },
+  {
+   "time": "2022-09-28 11:20:30",
+   "sfmr_kt": 45,
+   "fl_wind_kt": 43,
+   "distance_to_centre_km": 162.52
+  },
+  {
+   "time": "2022-09-28 11:21:00",
+   "sfmr_kt": 45,
+   "fl_wind_kt": 44,
+   "distance_to_centre_km": 163.78
+  },
+  {
+   "time": "2022-09-28 11:21:30",
+   "sfmr_kt": 44,
+   "fl_wind_kt": 45,
+   "distance_to_centre_km": 165.11
+  },
+  {
+   "time": "2022-09-28 11:22:00",
+   "sfmr_kt": 43,
+   "fl_wind_kt": 45,
+   "distance_to_centre_km": 167.22
+  },
+  {
+   "time": "2022-09-28 11:22:30",
+   "sfmr_kt": 42,
+   "fl_wind_kt": 45,
+   "distance_to_centre_km": 168.74
+  },
+  {
+   "time": "2022-09-28 11:23:00",
+   "sfmr_kt": 42,
+   "fl_wind_kt": 44,
+   "distance_to_centre_km": 171.12
+  },
+  {
+   "time": "2022-09-28 11:23:30",
+   "sfmr_kt": 41,
+   "fl_wind_kt": 43,
+   "distance_to_centre_km": 172.83
+  },
+  {
+   "time": "2022-09-28 11:24:00",
+   "sfmr_kt": 41,
+   "fl_wind_kt": 42,
+   "distance_to_centre_km": 173.1
+  },
+  {
+   "time": "2022-09-28 11:24:30",
+   "sfmr_kt": 41,
+   "fl_wind_kt": 43,
+   "distance_to_centre_km": 175.86
+  },
+  {
+   "time": "2022-09-28 11:25:00",
+   "sfmr_kt": 38,
+   "fl_wind_kt": 43,
+   "distance_to_centre_km": 178.75
+  },
+  {
+   "time": "2022-09-28 11:25:30",
+   "sfmr_kt": 37,
+   "fl_wind_kt": 43,
+   "distance_to_centre_km": 180.77
+  },
+  {
+   "time": "2022-09-28 11:26:00",
+   "sfmr_kt": 37,
+   "fl_wind_kt": 42,
+   "distance_to_centre_km": 182.87
+  },
+  {
+   "time": "2022-09-28 11:26:30",
+   "sfmr_kt": 38,
+   "fl_wind_kt": 42,
+   "distance_to_centre_km": 186.06
+  },
+  {
+   "time": "2022-09-28 11:27:00",
+   "sfmr_kt": 38,
+   "fl_wind_kt": 42,
+   "distance_to_centre_km": 188.28
+  },
+  {
+   "time": "2022-09-28 11:27:30",
+   "sfmr_kt": 37,
+   "fl_wind_kt": 42,
+   "distance_to_centre_km": 191.66
+  },
+  {
+   "time": "2022-09-28 11:28:00",
+   "sfmr_kt": 33,
+   "fl_wind_kt": 41,
+   "distance_to_centre_km": 194.0
+  },
+  {
+   "time": "2022-09-28 11:28:30",
+   "sfmr_kt": 34,
+   "fl_wind_kt": 41,
+   "distance_to_centre_km": 196.4
+  },
+  {
+   "time": "2022-09-28 11:29:00",
+   "sfmr_kt": 34,
+   "fl_wind_kt": 39,
+   "distance_to_centre_km": 198.73
+  },
+  {
+   "time": "2022-09-28 11:29:30",
+   "sfmr_kt": 34,
+   "fl_wind_kt": 39,
+   "distance_to_centre_km": 202.52
+  },
+  {
+   "time": "2022-09-28 11:30:00",
+   "sfmr_kt": 35,
+   "fl_wind_kt": 39,
+   "distance_to_centre_km": 205.06
+  },
+  {
+   "time": "2022-09-28 11:30:30",
+   "sfmr_kt": 34,
+   "fl_wind_kt": 40,
+   "distance_to_centre_km": 207.66
+  },
+  {
+   "time": "2022-09-28 11:31:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 39,
+   "distance_to_centre_km": 206.61
+  },
+  {
+   "time": "2022-09-28 11:31:30",
+   "sfmr_kt": 32,
+   "fl_wind_kt": 40,
+   "distance_to_centre_km": 203.12
+  },
+  {
+   "time": "2022-09-28 11:32:00",
+   "sfmr_kt": 33,
+   "fl_wind_kt": 41,
+   "distance_to_centre_km": 199.69
+  },
+  {
+   "time": "2022-09-28 11:32:30",
+   "sfmr_kt": 36,
+   "fl_wind_kt": 43,
+   "distance_to_centre_km": 197.48
+  },
+  {
+   "time": "2022-09-28 11:33:00",
+   "sfmr_kt": 36,
+   "fl_wind_kt": 44,
+   "distance_to_centre_km": 195.55
+  },
+  {
+   "time": "2022-09-28 11:33:30",
+   "sfmr_kt": 35,
+   "fl_wind_kt": 44,
+   "distance_to_centre_km": 192.33
+  },
+  {
+   "time": "2022-09-28 11:34:00",
+   "sfmr_kt": 34,
+   "fl_wind_kt": 44,
+   "distance_to_centre_km": 190.26
+  },
+  {
+   "time": "2022-09-28 11:34:30",
+   "sfmr_kt": 36,
+   "fl_wind_kt": 43,
+   "distance_to_centre_km": 187.18
+  },
+  {
+   "time": "2022-09-28 11:35:00",
+   "sfmr_kt": 34,
+   "fl_wind_kt": 43,
+   "distance_to_centre_km": 184.18
+  },
+  {
+   "time": "2022-09-28 11:35:30",
+   "sfmr_kt": 34,
+   "fl_wind_kt": 42,
+   "distance_to_centre_km": 180.78
+  },
+  {
+   "time": "2022-09-28 11:36:00",
+   "sfmr_kt": 34,
+   "fl_wind_kt": 41,
+   "distance_to_centre_km": 178.89
+  },
+  {
+   "time": "2022-09-28 11:36:30",
+   "sfmr_kt": 34,
+   "fl_wind_kt": 41,
+   "distance_to_centre_km": 176.08
+  },
+  {
+   "time": "2022-09-28 11:37:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 42,
+   "distance_to_centre_km": 175.84
+  },
+  {
+   "time": "2022-09-28 11:37:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 42,
+   "distance_to_centre_km": 179.06
+  },
+  {
+   "time": "2022-09-28 11:38:00",
+   "sfmr_kt": 32,
+   "fl_wind_kt": 41,
+   "distance_to_centre_km": 181.65
+  },
+  {
+   "time": "2022-09-28 11:38:30",
+   "sfmr_kt": 31,
+   "fl_wind_kt": 39,
+   "distance_to_centre_km": 184.24
+  },
+  {
+   "time": "2022-09-28 11:39:00",
+   "sfmr_kt": 33,
+   "fl_wind_kt": 39,
+   "distance_to_centre_km": 186.21
+  },
+  {
+   "time": "2022-09-28 11:39:30",
+   "sfmr_kt": 35,
+   "fl_wind_kt": 39,
+   "distance_to_centre_km": 186.71
+  },
+  {
+   "time": "2022-09-28 11:40:00",
+   "sfmr_kt": 36,
+   "fl_wind_kt": 39,
+   "distance_to_centre_km": 187.81
+  },
+  {
+   "time": "2022-09-28 11:40:30",
+   "sfmr_kt": 38,
+   "fl_wind_kt": 41,
+   "distance_to_centre_km": 189.89
+  },
+  {
+   "time": "2022-09-28 11:41:00",
+   "sfmr_kt": 37,
+   "fl_wind_kt": 41,
+   "distance_to_centre_km": 189.52
+  },
+  {
+   "time": "2022-09-28 11:41:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 40,
+   "distance_to_centre_km": 186.69
+  },
+  {
+   "time": "2022-09-28 11:42:00",
+   "sfmr_kt": 33,
+   "fl_wind_kt": 41,
+   "distance_to_centre_km": 184.31
+  },
+  {
+   "time": "2022-09-28 11:42:30",
+   "sfmr_kt": 33,
+   "fl_wind_kt": 40,
+   "distance_to_centre_km": 180.46
+  },
+  {
+   "time": "2022-09-28 11:43:00",
+   "sfmr_kt": 33,
+   "fl_wind_kt": 40,
+   "distance_to_centre_km": 178.08
+  },
+  {
+   "time": "2022-09-28 11:43:30",
+   "sfmr_kt": 33,
+   "fl_wind_kt": 39,
+   "distance_to_centre_km": 174.67
+  },
+  {
+   "time": "2022-09-28 11:44:00",
+   "sfmr_kt": 34,
+   "fl_wind_kt": 39,
+   "distance_to_centre_km": 170.82
+  },
+  {
+   "time": "2022-09-28 11:44:30",
+   "sfmr_kt": 36,
+   "fl_wind_kt": 40,
+   "distance_to_centre_km": 168.43
+  },
+  {
+   "time": "2022-09-28 11:45:00",
+   "sfmr_kt": 37,
+   "fl_wind_kt": 40,
+   "distance_to_centre_km": 164.59
+  },
+  {
+   "time": "2022-09-28 11:45:30",
+   "sfmr_kt": 38,
+   "fl_wind_kt": 41,
+   "distance_to_centre_km": 162.21
+  },
+  {
+   "time": "2022-09-28 11:46:00",
+   "sfmr_kt": 39,
+   "fl_wind_kt": 42,
+   "distance_to_centre_km": 158.36
+  },
+  {
+   "time": "2022-09-28 11:46:30",
+   "sfmr_kt": 39,
+   "fl_wind_kt": 43,
+   "distance_to_centre_km": 155.98
+  },
+  {
+   "time": "2022-09-28 11:47:00",
+   "sfmr_kt": 40,
+   "fl_wind_kt": 44,
+   "distance_to_centre_km": 152.58
+  },
+  {
+   "time": "2022-09-28 11:47:30",
+   "sfmr_kt": 41,
+   "fl_wind_kt": 45,
+   "distance_to_centre_km": 148.73
+  },
+  {
+   "time": "2022-09-28 11:48:00",
+   "sfmr_kt": 40,
+   "fl_wind_kt": 46,
+   "distance_to_centre_km": 146.35
+  },
+  {
+   "time": "2022-09-28 11:48:30",
+   "sfmr_kt": 39,
+   "fl_wind_kt": 47,
+   "distance_to_centre_km": 142.5
+  },
+  {
+   "time": "2022-09-28 11:49:00",
+   "sfmr_kt": 40,
+   "fl_wind_kt": 46,
+   "distance_to_centre_km": 140.13
+  },
+  {
+   "time": "2022-09-28 11:49:30",
+   "sfmr_kt": 41,
+   "fl_wind_kt": 45,
+   "distance_to_centre_km": 136.28
+  },
+  {
+   "time": "2022-09-28 11:50:00",
+   "sfmr_kt": 43,
+   "fl_wind_kt": 46,
+   "distance_to_centre_km": 132.88
+  },
+  {
+   "time": "2022-09-28 11:50:30",
+   "sfmr_kt": 45,
+   "fl_wind_kt": 47,
+   "distance_to_centre_km": 129.02
+  },
+  {
+   "time": "2022-09-28 11:51:00",
+   "sfmr_kt": 45,
+   "fl_wind_kt": 46,
+   "distance_to_centre_km": 126.65
+  },
+  {
+   "time": "2022-09-28 11:51:30",
+   "sfmr_kt": 44,
+   "fl_wind_kt": 46,
+   "distance_to_centre_km": 124.27
+  },
+  {
+   "time": "2022-09-28 11:52:00",
+   "sfmr_kt": 46,
+   "fl_wind_kt": 48,
+   "distance_to_centre_km": 120.43
+  },
+  {
+   "time": "2022-09-28 11:52:30",
+   "sfmr_kt": 46,
+   "fl_wind_kt": 48,
+   "distance_to_centre_km": 117.02
+  },
+  {
+   "time": "2022-09-28 11:53:00",
+   "sfmr_kt": 44,
+   "fl_wind_kt": 47,
+   "distance_to_centre_km": 113.18
+  },
+  {
+   "time": "2022-09-28 11:53:30",
+   "sfmr_kt": 47,
+   "fl_wind_kt": 53,
+   "distance_to_centre_km": 110.8
+  },
+  {
+   "time": "2022-09-28 11:54:00",
+   "sfmr_kt": 47,
+   "fl_wind_kt": 59,
+   "distance_to_centre_km": 108.42
+  },
+  {
+   "time": "2022-09-28 11:54:30",
+   "sfmr_kt": 48,
+   "fl_wind_kt": 57,
+   "distance_to_centre_km": 104.58
+  },
+  {
+   "time": "2022-09-28 11:55:00",
+   "sfmr_kt": 48,
+   "fl_wind_kt": 57,
+   "distance_to_centre_km": 102.2
+  },
+  {
+   "time": "2022-09-28 11:55:30",
+   "sfmr_kt": 47,
+   "fl_wind_kt": 58,
+   "distance_to_centre_km": 98.37
+  },
+  {
+   "time": "2022-09-28 11:56:00",
+   "sfmr_kt": 48,
+   "fl_wind_kt": 59,
+   "distance_to_centre_km": 95.99
+  },
+  {
+   "time": "2022-09-28 11:56:30",
+   "sfmr_kt": 47,
+   "fl_wind_kt": 58,
+   "distance_to_centre_km": 92.59
+  },
+  {
+   "time": "2022-09-28 11:57:00",
+   "sfmr_kt": 49,
+   "fl_wind_kt": 62,
+   "distance_to_centre_km": 88.74
+  },
+  {
+   "time": "2022-09-28 11:57:30",
+   "sfmr_kt": 51,
+   "fl_wind_kt": 64,
+   "distance_to_centre_km": 86.36
+  },
+  {
+   "time": "2022-09-28 11:58:00",
+   "sfmr_kt": 55,
+   "fl_wind_kt": 67,
+   "distance_to_centre_km": 82.53
+  },
+  {
+   "time": "2022-09-28 11:58:30",
+   "sfmr_kt": 59,
+   "fl_wind_kt": 68,
+   "distance_to_centre_km": 80.16
+  },
+  {
+   "time": "2022-09-28 11:59:00",
+   "sfmr_kt": 64,
+   "fl_wind_kt": 69,
+   "distance_to_centre_km": 76.33
+  },
+  {
+   "time": "2022-09-28 11:59:30",
+   "sfmr_kt": 70,
+   "fl_wind_kt": 77,
+   "distance_to_centre_km": 72.91
+  },
+  {
+   "time": "2022-09-28 12:00:00",
+   "sfmr_kt": 72,
+   "fl_wind_kt": 77,
+   "distance_to_centre_km": 73.02
+  },
+  {
+   "time": "2022-09-28 12:00:30",
+   "sfmr_kt": 73,
+   "fl_wind_kt": 81,
+   "distance_to_centre_km": 66.69
+  },
+  {
+   "time": "2022-09-28 12:01:00",
+   "sfmr_kt": 77,
+   "fl_wind_kt": 82,
+   "distance_to_centre_km": 64.29
+  },
+  {
+   "time": "2022-09-28 12:01:30",
+   "sfmr_kt": 84,
+   "fl_wind_kt": 88,
+   "distance_to_centre_km": 60.46
+  },
+  {
+   "time": "2022-09-28 12:02:00",
+   "sfmr_kt": 86,
+   "fl_wind_kt": 91,
+   "distance_to_centre_km": 58.06
+  },
+  {
+   "time": "2022-09-28 12:02:30",
+   "sfmr_kt": 90,
+   "fl_wind_kt": 97,
+   "distance_to_centre_km": 53.17
+  },
+  {
+   "time": "2022-09-28 12:03:00",
+   "sfmr_kt": 98,
+   "fl_wind_kt": 98,
+   "distance_to_centre_km": 50.78
+  },
+  {
+   "time": "2022-09-28 12:03:30",
+   "sfmr_kt": 104,
+   "fl_wind_kt": 98,
+   "distance_to_centre_km": 48.38
+  },
+  {
+   "time": "2022-09-28 12:04:00",
+   "sfmr_kt": 111,
+   "fl_wind_kt": 115,
+   "distance_to_centre_km": 46.0
+  },
+  {
+   "time": "2022-09-28 12:04:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 126,
+   "distance_to_centre_km": 42.16
+  },
+  {
+   "time": "2022-09-28 12:05:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": null,
+   "distance_to_centre_km": 39.77
+  },
+  {
+   "time": "2022-09-28 12:05:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 80,
+   "distance_to_centre_km": 37.37
+  },
+  {
+   "time": "2022-09-28 12:06:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 79,
+   "distance_to_centre_km": 33.95
+  },
+  {
+   "time": "2022-09-28 12:06:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 58,
+   "distance_to_centre_km": 31.57
+  },
+  {
+   "time": "2022-09-28 12:07:00",
+   "sfmr_kt": 114,
+   "fl_wind_kt": 51,
+   "distance_to_centre_km": 27.71
+  },
+  {
+   "time": "2022-09-28 12:07:30",
+   "sfmr_kt": 67,
+   "fl_wind_kt": 51,
+   "distance_to_centre_km": 25.32
+  },
+  {
+   "time": "2022-09-28 12:08:00",
+   "sfmr_kt": 46,
+   "fl_wind_kt": 47,
+   "distance_to_centre_km": 21.49
+  },
+  {
+   "time": "2022-09-28 12:08:30",
+   "sfmr_kt": 43,
+   "fl_wind_kt": 41,
+   "distance_to_centre_km": 17.73
+  },
+  {
+   "time": "2022-09-28 12:09:00",
+   "sfmr_kt": 39,
+   "fl_wind_kt": 33,
+   "distance_to_centre_km": 15.33
+  },
+  {
+   "time": "2022-09-28 12:09:30",
+   "sfmr_kt": 37,
+   "fl_wind_kt": 25,
+   "distance_to_centre_km": 11.69
+  },
+  {
+   "time": "2022-09-28 12:10:00",
+   "sfmr_kt": 36,
+   "fl_wind_kt": 15,
+   "distance_to_centre_km": 9.33
+  },
+  {
+   "time": "2022-09-28 12:10:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 5,
+   "distance_to_centre_km": 6.19
+  },
+  {
+   "time": "2022-09-28 12:11:00",
+   "sfmr_kt": 25,
+   "fl_wind_kt": 10,
+   "distance_to_centre_km": 7.76
+  },
+  {
+   "time": "2022-09-28 12:11:30",
+   "sfmr_kt": 25,
+   "fl_wind_kt": 19,
+   "distance_to_centre_km": 9.89
+  },
+  {
+   "time": "2022-09-28 12:12:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 23,
+   "distance_to_centre_km": 9.9
+  },
+  {
+   "time": "2022-09-28 12:12:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 28,
+   "distance_to_centre_km": 10.67
+  },
+  {
+   "time": "2022-09-28 12:13:00",
+   "sfmr_kt": 30,
+   "fl_wind_kt": 32,
+   "distance_to_centre_km": 11.45
+  },
+  {
+   "time": "2022-09-28 12:13:30",
+   "sfmr_kt": 35,
+   "fl_wind_kt": 38,
+   "distance_to_centre_km": 12.37
+  },
+  {
+   "time": "2022-09-28 12:14:00",
+   "sfmr_kt": 42,
+   "fl_wind_kt": 42,
+   "distance_to_centre_km": 12.42
+  },
+  {
+   "time": "2022-09-28 12:14:30",
+   "sfmr_kt": 49,
+   "fl_wind_kt": 52,
+   "distance_to_centre_km": 15.02
+  },
+  {
+   "time": "2022-09-28 12:15:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 65,
+   "distance_to_centre_km": 17.27
+  },
+  {
+   "time": "2022-09-28 12:15:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 72,
+   "distance_to_centre_km": 16.32
+  },
+  {
+   "time": "2022-09-28 12:16:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 61,
+   "distance_to_centre_km": 13.76
+  },
+  {
+   "time": "2022-09-28 12:16:30",
+   "sfmr_kt": 43,
+   "fl_wind_kt": 48,
+   "distance_to_centre_km": 10.56
+  },
+  {
+   "time": "2022-09-28 12:17:00",
+   "sfmr_kt": 37,
+   "fl_wind_kt": 43,
+   "distance_to_centre_km": 9.83
+  },
+  {
+   "time": "2022-09-28 12:17:30",
+   "sfmr_kt": 31,
+   "fl_wind_kt": 37,
+   "distance_to_centre_km": 8.47
+  },
+  {
+   "time": "2022-09-28 12:18:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 27,
+   "distance_to_centre_km": 7.64
+  },
+  {
+   "time": "2022-09-28 12:18:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 12,
+   "distance_to_centre_km": 6.87
+  },
+  {
+   "time": "2022-09-28 12:19:00",
+   "sfmr_kt": 23,
+   "fl_wind_kt": 5,
+   "distance_to_centre_km": 8.25
+  },
+  {
+   "time": "2022-09-28 12:19:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 8,
+   "distance_to_centre_km": 7.54
+  },
+  {
+   "time": "2022-09-28 12:20:00",
+   "sfmr_kt": 22,
+   "fl_wind_kt": 16,
+   "distance_to_centre_km": 8.94
+  },
+  {
+   "time": "2022-09-28 12:20:30",
+   "sfmr_kt": 26,
+   "fl_wind_kt": 26,
+   "distance_to_centre_km": 9.95
+  },
+  {
+   "time": "2022-09-28 12:21:00",
+   "sfmr_kt": 28,
+   "fl_wind_kt": 38,
+   "distance_to_centre_km": 11.44
+  },
+  {
+   "time": "2022-09-28 12:21:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 43,
+   "distance_to_centre_km": 13.34
+  },
+  {
+   "time": "2022-09-28 12:22:00",
+   "sfmr_kt": 38,
+   "fl_wind_kt": 56,
+   "distance_to_centre_km": 12.47
+  },
+  {
+   "time": "2022-09-28 12:22:30",
+   "sfmr_kt": 40,
+   "fl_wind_kt": 62,
+   "distance_to_centre_km": 11.31
+  },
+  {
+   "time": "2022-09-28 12:23:00",
+   "sfmr_kt": 51,
+   "fl_wind_kt": 72,
+   "distance_to_centre_km": 12.94
+  },
+  {
+   "time": "2022-09-28 12:23:30",
+   "sfmr_kt": 70,
+   "fl_wind_kt": 83,
+   "distance_to_centre_km": 14.91
+  },
+  {
+   "time": "2022-09-28 12:24:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 109,
+   "distance_to_centre_km": 16.35
+  },
+  {
+   "time": "2022-09-28 12:24:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 128,
+   "distance_to_centre_km": 19.82
+  },
+  {
+   "time": "2022-09-28 12:25:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 138,
+   "distance_to_centre_km": 21.41
+  },
+  {
+   "time": "2022-09-28 12:25:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 119,
+   "distance_to_centre_km": 18.06
+  },
+  {
+   "time": "2022-09-28 12:26:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 91,
+   "distance_to_centre_km": 14.72
+  },
+  {
+   "time": "2022-09-28 12:26:30",
+   "sfmr_kt": 76,
+   "fl_wind_kt": 71,
+   "distance_to_centre_km": 11.93
+  },
+  {
+   "time": "2022-09-28 12:27:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 47,
+   "distance_to_centre_km": 8.84
+  },
+  {
+   "time": "2022-09-28 12:27:30",
+   "sfmr_kt": 44,
+   "fl_wind_kt": 41,
+   "distance_to_centre_km": 9.01
+  },
+  {
+   "time": "2022-09-28 12:28:00",
+   "sfmr_kt": 50,
+   "fl_wind_kt": 36,
+   "distance_to_centre_km": 9.99
+  },
+  {
+   "time": "2022-09-28 12:28:30",
+   "sfmr_kt": 61,
+   "fl_wind_kt": 36,
+   "distance_to_centre_km": 11.42
+  },
+  {
+   "time": "2022-09-28 12:29:00",
+   "sfmr_kt": 72,
+   "fl_wind_kt": 44,
+   "distance_to_centre_km": 13.78
+  },
+  {
+   "time": "2022-09-28 12:29:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 50,
+   "distance_to_centre_km": 16.67
+  },
+  {
+   "time": "2022-09-28 12:30:00",
+   "sfmr_kt": 84,
+   "fl_wind_kt": 56,
+   "distance_to_centre_km": 21.46
+  },
+  {
+   "time": "2022-09-28 12:30:30",
+   "sfmr_kt": 102,
+   "fl_wind_kt": 63,
+   "distance_to_centre_km": 23.84
+  },
+  {
+   "time": "2022-09-28 12:31:00",
+   "sfmr_kt": 112,
+   "fl_wind_kt": 87,
+   "distance_to_centre_km": 27.82
+  },
+  {
+   "time": "2022-09-28 12:31:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 103,
+   "distance_to_centre_km": 31.0
+  },
+  {
+   "time": "2022-09-28 12:32:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 102,
+   "distance_to_centre_km": 30.94
+  },
+  {
+   "time": "2022-09-28 12:32:30",
+   "sfmr_kt": 113,
+   "fl_wind_kt": 87,
+   "distance_to_centre_km": 26.82
+  },
+  {
+   "time": "2022-09-28 12:33:00",
+   "sfmr_kt": 106,
+   "fl_wind_kt": 70,
+   "distance_to_centre_km": 25.14
+  },
+  {
+   "time": "2022-09-28 12:33:30",
+   "sfmr_kt": 97,
+   "fl_wind_kt": 52,
+   "distance_to_centre_km": 21.05
+  },
+  {
+   "time": "2022-09-28 12:34:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 44,
+   "distance_to_centre_km": 18.55
+  },
+  {
+   "time": "2022-09-28 12:34:30",
+   "sfmr_kt": 79,
+   "fl_wind_kt": 29,
+   "distance_to_centre_km": 16.05
+  },
+  {
+   "time": "2022-09-28 12:35:00",
+   "sfmr_kt": 38,
+   "fl_wind_kt": 26,
+   "distance_to_centre_km": 11.95
+  },
+  {
+   "time": "2022-09-28 12:35:30",
+   "sfmr_kt": 34,
+   "fl_wind_kt": 19,
+   "distance_to_centre_km": 7.89
+  },
+  {
+   "time": "2022-09-28 12:36:00",
+   "sfmr_kt": 31,
+   "fl_wind_kt": 20,
+   "distance_to_centre_km": 6.44
+  },
+  {
+   "time": "2022-09-28 12:36:30",
+   "sfmr_kt": 28,
+   "fl_wind_kt": 20,
+   "distance_to_centre_km": 3.93
+  },
+  {
+   "time": "2022-09-28 12:37:00",
+   "sfmr_kt": 27,
+   "fl_wind_kt": 24,
+   "distance_to_centre_km": 1.92
+  },
+  {
+   "time": "2022-09-28 12:37:30",
+   "sfmr_kt": 26,
+   "fl_wind_kt": 21,
+   "distance_to_centre_km": 3.25
+  },
+  {
+   "time": "2022-09-28 12:38:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 29,
+   "distance_to_centre_km": 6.26
+  },
+  {
+   "time": "2022-09-28 12:38:30",
+   "sfmr_kt": 33,
+   "fl_wind_kt": 36,
+   "distance_to_centre_km": 8.6
+  },
+  {
+   "time": "2022-09-28 12:39:00",
+   "sfmr_kt": 48,
+   "fl_wind_kt": 46,
+   "distance_to_centre_km": 10.67
+  },
+  {
+   "time": "2022-09-28 12:39:30",
+   "sfmr_kt": 60,
+   "fl_wind_kt": 55,
+   "distance_to_centre_km": 13.85
+  },
+  {
+   "time": "2022-09-28 12:40:00",
+   "sfmr_kt": 74,
+   "fl_wind_kt": 73,
+   "distance_to_centre_km": 16.65
+  },
+  {
+   "time": "2022-09-28 12:40:30",
+   "sfmr_kt": 82,
+   "fl_wind_kt": 89,
+   "distance_to_centre_km": 20.01
+  },
+  {
+   "time": "2022-09-28 12:41:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 104,
+   "distance_to_centre_km": 23.49
+  },
+  {
+   "time": "2022-09-28 12:41:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 128,
+   "distance_to_centre_km": 25.84
+  },
+  {
+   "time": "2022-09-28 12:42:00",
+   "sfmr_kt": 105,
+   "fl_wind_kt": 142,
+   "distance_to_centre_km": 30.11
+  },
+  {
+   "time": "2022-09-28 12:42:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 140,
+   "distance_to_centre_km": 32.26
+  },
+  {
+   "time": "2022-09-28 12:43:00",
+   "sfmr_kt": 95,
+   "fl_wind_kt": 141,
+   "distance_to_centre_km": 35.98
+  },
+  {
+   "time": "2022-09-28 12:43:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 131,
+   "distance_to_centre_km": 38.17
+  },
+  {
+   "time": "2022-09-28 12:44:00",
+   "sfmr_kt": 88,
+   "fl_wind_kt": 121,
+   "distance_to_centre_km": 39.62
+  },
+  {
+   "time": "2022-09-28 12:44:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 118,
+   "distance_to_centre_km": 42.61
+  },
+  {
+   "time": "2022-09-28 12:45:00",
+   "sfmr_kt": 81,
+   "fl_wind_kt": 113,
+   "distance_to_centre_km": 44.09
+  },
+  {
+   "time": "2022-09-28 12:45:30",
+   "sfmr_kt": 75,
+   "fl_wind_kt": 108,
+   "distance_to_centre_km": 47.14
+  },
+  {
+   "time": "2022-09-28 12:46:00",
+   "sfmr_kt": 71,
+   "fl_wind_kt": 105,
+   "distance_to_centre_km": 48.08
+  },
+  {
+   "time": "2022-09-28 12:46:30",
+   "sfmr_kt": 72,
+   "fl_wind_kt": 103,
+   "distance_to_centre_km": 48.02
+  },
+  {
+   "time": "2022-09-28 12:47:00",
+   "sfmr_kt": 74,
+   "fl_wind_kt": 103,
+   "distance_to_centre_km": 49.08
+  },
+  {
+   "time": "2022-09-28 12:47:30",
+   "sfmr_kt": 75,
+   "fl_wind_kt": 104,
+   "distance_to_centre_km": 48.62
+  },
+  {
+   "time": "2022-09-28 12:48:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 104,
+   "distance_to_centre_km": 49.86
+  },
+  {
+   "time": "2022-09-28 12:48:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 102,
+   "distance_to_centre_km": 53.76
+  },
+  {
+   "time": "2022-09-28 12:49:00",
+   "sfmr_kt": 70,
+   "fl_wind_kt": 98,
+   "distance_to_centre_km": 54.59
+  },
+  {
+   "time": "2022-09-28 12:49:30",
+   "sfmr_kt": 70,
+   "fl_wind_kt": 98,
+   "distance_to_centre_km": 56.29
+  },
+  {
+   "time": "2022-09-28 12:50:00",
+   "sfmr_kt": null,
+   "fl_wind_kt": 95,
+   "distance_to_centre_km": 56.15
+  },
+  {
+   "time": "2022-09-28 12:50:30",
+   "sfmr_kt": 66,
+   "fl_wind_kt": 94,
+   "distance_to_centre_km": 57.23
+  },
+  {
+   "time": "2022-09-28 12:51:00",
+   "sfmr_kt": 65,
+   "fl_wind_kt": 92,
+   "distance_to_centre_km": 57.77
+  },
+  {
+   "time": "2022-09-28 12:51:30",
+   "sfmr_kt": 63,
+   "fl_wind_kt": 94,
+   "distance_to_centre_km": 58.58
+  },
+  {
+   "time": "2022-09-28 12:52:00",
+   "sfmr_kt": 64,
+   "fl_wind_kt": 95,
+   "distance_to_centre_km": 58.43
+  },
+  {
+   "time": "2022-09-28 12:52:30",
+   "sfmr_kt": 64,
+   "fl_wind_kt": 96,
+   "distance_to_centre_km": 58.7
+  },
+  {
+   "time": "2022-09-28 12:53:00",
+   "sfmr_kt": 61,
+   "fl_wind_kt": 94,
+   "distance_to_centre_km": 59.39
+  },
+  {
+   "time": "2022-09-28 12:53:30",
+   "sfmr_kt": 55,
+   "fl_wind_kt": 92,
+   "distance_to_centre_km": 60.47
+  },
+  {
+   "time": "2022-09-28 12:54:00",
+   "sfmr_kt": 59,
+   "fl_wind_kt": 94,
+   "distance_to_centre_km": 60.29
+  },
+  {
+   "time": "2022-09-28 12:54:30",
+   "sfmr_kt": 61,
+   "fl_wind_kt": 89,
+   "distance_to_centre_km": 62.04
+  },
+  {
+   "time": "2022-09-28 12:55:00",
+   "sfmr_kt": 62,
+   "fl_wind_kt": 89,
+   "distance_to_centre_km": 64.12
+  },
+  {
+   "time": "2022-09-28 12:55:30",
+   "sfmr_kt": 63,
+   "fl_wind_kt": 85,
+   "distance_to_centre_km": 64.73
+  },
+  {
+   "time": "2022-09-28 12:56:00",
+   "sfmr_kt": 63,
+   "fl_wind_kt": 84,
+   "distance_to_centre_km": 67.36
+  },
+  {
+   "time": "2022-09-28 12:56:30",
+   "sfmr_kt": 64,
+   "fl_wind_kt": 83,
+   "distance_to_centre_km": 70.24
+  },
+  {
+   "time": "2022-09-28 12:57:00",
+   "sfmr_kt": 64,
+   "fl_wind_kt": 80,
+   "distance_to_centre_km": 71.49
+  },
+  {
+   "time": "2022-09-28 12:57:30",
+   "sfmr_kt": 62,
+   "fl_wind_kt": 80,
+   "distance_to_centre_km": 74.78
+  },
+  {
+   "time": "2022-09-28 12:58:00",
+   "sfmr_kt": 61,
+   "fl_wind_kt": 79,
+   "distance_to_centre_km": 78.23
+  },
+  {
+   "time": "2022-09-28 12:58:30",
+   "sfmr_kt": 62,
+   "fl_wind_kt": 77,
+   "distance_to_centre_km": 79.99
+  },
+  {
+   "time": "2022-09-28 12:59:00",
+   "sfmr_kt": 62,
+   "fl_wind_kt": 75,
+   "distance_to_centre_km": 83.64
+  },
+  {
+   "time": "2022-09-28 12:59:30",
+   "sfmr_kt": 65,
+   "fl_wind_kt": 71,
+   "distance_to_centre_km": 85.6
+  },
+  {
+   "time": "2022-09-28 13:00:00",
+   "sfmr_kt": 60,
+   "fl_wind_kt": 68,
+   "distance_to_centre_km": 87.87
+  },
+  {
+   "time": "2022-09-28 13:00:30",
+   "sfmr_kt": 63,
+   "fl_wind_kt": 69,
+   "distance_to_centre_km": 88.28
+  },
+  {
+   "time": "2022-09-28 13:01:00",
+   "sfmr_kt": 65,
+   "fl_wind_kt": 71,
+   "distance_to_centre_km": 87.38
+  },
+  {
+   "time": "2022-09-28 13:01:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 72,
+   "distance_to_centre_km": 86.33
+  },
+  {
+   "time": "2022-09-28 13:02:00",
+   "sfmr_kt": 69,
+   "fl_wind_kt": 71,
+   "distance_to_centre_km": 85.98
+  },
+  {
+   "time": "2022-09-28 13:02:30",
+   "sfmr_kt": 71,
+   "fl_wind_kt": 74,
+   "distance_to_centre_km": 85.35
+  },
+  {
+   "time": "2022-09-28 13:03:00",
+   "sfmr_kt": 72,
+   "fl_wind_kt": 72,
+   "distance_to_centre_km": 84.87
+  },
+  {
+   "time": "2022-09-28 13:03:30",
+   "sfmr_kt": 73,
+   "fl_wind_kt": 72,
+   "distance_to_centre_km": 84.58
+  },
+  {
+   "time": "2022-09-28 13:04:00",
+   "sfmr_kt": 72,
+   "fl_wind_kt": 76,
+   "distance_to_centre_km": 82.86
+  },
+  {
+   "time": "2022-09-28 13:04:30",
+   "sfmr_kt": 74,
+   "fl_wind_kt": 76,
+   "distance_to_centre_km": 83.89
+  },
+  {
+   "time": "2022-09-28 13:05:00",
+   "sfmr_kt": 75,
+   "fl_wind_kt": 74,
+   "distance_to_centre_km": 84.24
+  },
+  {
+   "time": "2022-09-28 13:05:30",
+   "sfmr_kt": 74,
+   "fl_wind_kt": 71,
+   "distance_to_centre_km": 83.34
+  },
+  {
+   "time": "2022-09-28 13:06:00",
+   "sfmr_kt": 75,
+   "fl_wind_kt": 73,
+   "distance_to_centre_km": 84.11
+  },
+  {
+   "time": "2022-09-28 13:06:30",
+   "sfmr_kt": 76,
+   "fl_wind_kt": 74,
+   "distance_to_centre_km": 82.55
+  },
+  {
+   "time": "2022-09-28 13:07:00",
+   "sfmr_kt": 75,
+   "fl_wind_kt": 77,
+   "distance_to_centre_km": 82.44
+  },
+  {
+   "time": "2022-09-28 13:07:30",
+   "sfmr_kt": 75,
+   "fl_wind_kt": 78,
+   "distance_to_centre_km": 82.63
+  },
+  {
+   "time": "2022-09-28 13:08:00",
+   "sfmr_kt": 74,
+   "fl_wind_kt": 77,
+   "distance_to_centre_km": 81.76
+  },
+  {
+   "time": "2022-09-28 13:08:30",
+   "sfmr_kt": 74,
+   "fl_wind_kt": 77,
+   "distance_to_centre_km": 82.51
+  },
+  {
+   "time": "2022-09-28 13:09:00",
+   "sfmr_kt": 74,
+   "fl_wind_kt": 76,
+   "distance_to_centre_km": 82.11
+  },
+  {
+   "time": "2022-09-28 13:09:30",
+   "sfmr_kt": 74,
+   "fl_wind_kt": 76,
+   "distance_to_centre_km": 83.41
+  },
+  {
+   "time": "2022-09-28 13:10:00",
+   "sfmr_kt": 74,
+   "fl_wind_kt": 81,
+   "distance_to_centre_km": 83.46
+  },
+  {
+   "time": "2022-09-28 13:10:30",
+   "sfmr_kt": 72,
+   "fl_wind_kt": 77,
+   "distance_to_centre_km": 85.29
+  },
+  {
+   "time": "2022-09-28 13:11:00",
+   "sfmr_kt": 72,
+   "fl_wind_kt": 72,
+   "distance_to_centre_km": 85.78
+  },
+  {
+   "time": "2022-09-28 13:11:30",
+   "sfmr_kt": 68,
+   "fl_wind_kt": 69,
+   "distance_to_centre_km": 86.46
+  },
+  {
+   "time": "2022-09-28 13:12:00",
+   "sfmr_kt": 66,
+   "fl_wind_kt": 70,
+   "distance_to_centre_km": 87.02
+  },
+  {
+   "time": "2022-09-28 13:12:30",
+   "sfmr_kt": 67,
+   "fl_wind_kt": 69,
+   "distance_to_centre_km": 88.18
+  },
+  {
+   "time": "2022-09-28 13:13:00",
+   "sfmr_kt": 66,
+   "fl_wind_kt": 67,
+   "distance_to_centre_km": 91.17
+  },
+  {
+   "time": "2022-09-28 13:13:30",
+   "sfmr_kt": 67,
+   "fl_wind_kt": 64,
+   "distance_to_centre_km": 92.68
+  },
+  {
+   "time": "2022-09-28 13:14:00",
+   "sfmr_kt": 66,
+   "fl_wind_kt": 63,
+   "distance_to_centre_km": 94.35
+  },
+  {
+   "time": "2022-09-28 13:14:30",
+   "sfmr_kt": 64,
+   "fl_wind_kt": 65,
+   "distance_to_centre_km": 96.17
+  },
+  {
+   "time": "2022-09-28 13:15:00",
+   "sfmr_kt": 63,
+   "fl_wind_kt": 65,
+   "distance_to_centre_km": 98.14
+  },
+  {
+   "time": "2022-09-28 13:15:30",
+   "sfmr_kt": 62,
+   "fl_wind_kt": 65,
+   "distance_to_centre_km": 100.24
+  },
+  {
+   "time": "2022-09-28 13:16:00",
+   "sfmr_kt": 60,
+   "fl_wind_kt": 65,
+   "distance_to_centre_km": 102.47
+  },
+  {
+   "time": "2022-09-28 13:16:30",
+   "sfmr_kt": 59,
+   "fl_wind_kt": 65,
+   "distance_to_centre_km": 104.48
+  },
+  {
+   "time": "2022-09-28 13:17:00",
+   "sfmr_kt": 57,
+   "fl_wind_kt": 63,
+   "distance_to_centre_km": 108.52
+  },
+  {
+   "time": "2022-09-28 13:17:30",
+   "sfmr_kt": null,
+   "fl_wind_kt": 57,
+   "distance_to_centre_km": 110.6
+  },
+  {
+   "time": "2022-09-28 13:18:00",
+   "sfmr_kt": 55,
+   "fl_wind_kt": 56,
+   "distance_to_centre_km": 114.32
+  },
+  {
+   "time": "2022-09-28 13:18:30",
+   "sfmr_kt": 51,
+   "fl_wind_kt": 58,
+   "distance_to_centre_km": 117.62
+  },
+  {
+   "time": "2022-09-28 13:19:00",
+   "sfmr_kt": 49,
+   "fl_wind_kt": 62,
+   "distance_to_centre_km": 121.36
+  },
+  {
+   "time": "2022-09-28 13:19:30",
+   "sfmr_kt": 52,
+   "fl_wind_kt": 59,
+   "distance_to_centre_km": 123.47
+  },
+  {
+   "time": "2022-09-28 13:20:00",
+   "sfmr_kt": 51,
+   "fl_wind_kt": 55,
+   "distance_to_centre_km": 126.78
+  },
+  {
+   "time": "2022-09-28 13:20:30",
+   "sfmr_kt": 52,
+   "fl_wind_kt": 53,
+   "distance_to_centre_km": 130.08
+  },
+  {
+   "time": "2022-09-28 13:21:00",
+   "sfmr_kt": 50,
+   "fl_wind_kt": 51,
+   "distance_to_centre_km": 131.77
+  },
+  {
+   "time": "2022-09-28 13:21:30",
+   "sfmr_kt": 49,
+   "fl_wind_kt": 50,
+   "distance_to_centre_km": 134.66
+  },
+  {
+   "time": "2022-09-28 13:22:00",
+   "sfmr_kt": 51,
+   "fl_wind_kt": 52,
+   "distance_to_centre_km": 135.97
+  },
+  {
+   "time": "2022-09-28 13:22:30",
+   "sfmr_kt": 47,
+   "fl_wind_kt": 54,
+   "distance_to_centre_km": 139.3
+  },
+  {
+   "time": "2022-09-28 13:23:00",
+   "sfmr_kt": 46,
+   "fl_wind_kt": 56,
+   "distance_to_centre_km": 142.28
+  },
+  {
+   "time": "2022-09-28 13:23:30",
+   "sfmr_kt": 46,
+   "fl_wind_kt": 55,
+   "distance_to_centre_km": 143.98
+  },
+  {
+   "time": "2022-09-28 13:24:00",
+   "sfmr_kt": 47,
+   "fl_wind_kt": 54,
+   "distance_to_centre_km": 147.01
+  },
+  {
+   "time": "2022-09-28 13:24:30",
+   "sfmr_kt": 45,
+   "fl_wind_kt": 48,
+   "distance_to_centre_km": 150.36
+  },
+  {
+   "time": "2022-09-28 13:25:00",
+   "sfmr_kt": 44,
+   "fl_wind_kt": 42,
+   "distance_to_centre_km": 151.77
+  },
+  {
+   "time": "2022-09-28 13:25:30",
+   "sfmr_kt": 45,
+   "fl_wind_kt": 42,
+   "distance_to_centre_km": 155.13
+  },
+  {
+   "time": "2022-09-28 13:26:00",
+   "sfmr_kt": 44,
+   "fl_wind_kt": 44,
+   "distance_to_centre_km": 158.22
+  },
+  {
+   "time": "2022-09-28 13:26:30",
+   "sfmr_kt": 46,
+   "fl_wind_kt": 45,
+   "distance_to_centre_km": 159.7
+  },
+  {
+   "time": "2022-09-28 13:27:00",
+   "sfmr_kt": 45,
+   "fl_wind_kt": 44,
+   "distance_to_centre_km": 163.06
+  },
+  {
+   "time": "2022-09-28 13:27:30",
+   "sfmr_kt": 42,
+   "fl_wind_kt": 44,
+   "distance_to_centre_km": 166.21
+  },
+  {
+   "time": "2022-09-28 13:28:00",
+   "sfmr_kt": 42,
+   "fl_wind_kt": 45,
+   "distance_to_centre_km": 169.4
+  },
+  {
+   "time": "2022-09-28 13:28:30",
+   "sfmr_kt": 45,
+   "fl_wind_kt": 45,
+   "distance_to_centre_km": 172.61
+  },
+  {
+   "time": "2022-09-28 13:29:00",
+   "sfmr_kt": 45,
+   "fl_wind_kt": 47,
+   "distance_to_centre_km": 174.18
+  },
+  {
+   "time": "2022-09-28 13:29:30",
+   "sfmr_kt": 44,
+   "fl_wind_kt": 45,
+   "distance_to_centre_km": 177.33
+  },
+  {
+   "time": "2022-09-28 13:30:00",
+   "sfmr_kt": 43,
+   "fl_wind_kt": 43,
+   "distance_to_centre_km": 177.37
+  },
+  {
+   "time": "2022-09-28 13:30:30",
+   "sfmr_kt": 42,
+   "fl_wind_kt": 42,
+   "distance_to_centre_km": 180.56
+  },
+  {
+   "time": "2022-09-28 13:31:00",
+   "sfmr_kt": 42,
+   "fl_wind_kt": 44,
+   "distance_to_centre_km": 183.91
+  },
+  {
+   "time": "2022-09-28 13:31:30",
+   "sfmr_kt": 43,
+   "fl_wind_kt": 43,
+   "distance_to_centre_km": 185.61
+  },
+  {
+   "time": "2022-09-28 13:32:00",
+   "sfmr_kt": 43,
+   "fl_wind_kt": 42,
+   "distance_to_centre_km": 189.01
+  },
+  {
+   "time": "2022-09-28 13:32:30",
+   "sfmr_kt": 43,
+   "fl_wind_kt": 42,
+   "distance_to_centre_km": 190.75
+  },
+  {
+   "time": "2022-09-28 13:33:00",
+   "sfmr_kt": 42,
+   "fl_wind_kt": 42,
+   "distance_to_centre_km": 194.26
+  },
+  {
+   "time": "2022-09-28 13:33:30",
+   "sfmr_kt": 43,
+   "fl_wind_kt": 42,
+   "distance_to_centre_km": 197.7
+  },
+  {
+   "time": "2022-09-28 13:34:00",
+   "sfmr_kt": 43,
+   "fl_wind_kt": 39,
+   "distance_to_centre_km": 201.16
+  },
+  {
+   "time": "2022-09-28 13:34:30",
+   "sfmr_kt": 43,
+   "fl_wind_kt": 40,
+   "distance_to_centre_km": 204.78
+  },
+  {
+   "time": "2022-09-28 13:35:00",
+   "sfmr_kt": 43,
+   "fl_wind_kt": 40,
+   "distance_to_centre_km": 206.61
+  },
+  {
+   "time": "2022-09-28 13:35:30",
+   "sfmr_kt": 41,
+   "fl_wind_kt": 38,
+   "distance_to_centre_km": 210.12
+  },
+  {
+   "time": "2022-09-28 13:36:00",
+   "sfmr_kt": 41,
+   "fl_wind_kt": 39,
+   "distance_to_centre_km": 215.48
+  },
+  {
+   "time": "2022-09-28 13:36:30",
+   "sfmr_kt": 40,
+   "fl_wind_kt": 38,
+   "distance_to_centre_km": 219.01
+  },
+  {
+   "time": "2022-09-28 13:37:00",
+   "sfmr_kt": 39,
+   "fl_wind_kt": 38,
+   "distance_to_centre_km": 222.55
+  },
+  {
+   "time": "2022-09-28 13:37:30",
+   "sfmr_kt": 38,
+   "fl_wind_kt": 45,
+   "distance_to_centre_km": 226.34
+  },
+  {
+   "time": "2022-09-28 13:38:00",
+   "sfmr_kt": 41,
+   "fl_wind_kt": 45,
+   "distance_to_centre_km": 229.9
+  },
+  {
+   "time": "2022-09-28 13:38:30",
+   "sfmr_kt": 41,
+   "fl_wind_kt": 44,
+   "distance_to_centre_km": 233.74
+  },
+  {
+   "time": "2022-09-28 13:39:00",
+   "sfmr_kt": 41,
+   "fl_wind_kt": 44,
+   "distance_to_centre_km": 238.97
+  },
+  {
+   "time": "2022-09-28 13:39:30",
+   "sfmr_kt": 39,
+   "fl_wind_kt": 43,
+   "distance_to_centre_km": 242.87
+  },
+  {
+   "time": "2022-09-28 13:40:00",
+   "sfmr_kt": 39,
+   "fl_wind_kt": 43,
+   "distance_to_centre_km": 246.47
+  },
+  {
+   "time": "2022-09-28 13:40:30",
+   "sfmr_kt": 39,
+   "fl_wind_kt": 44,
+   "distance_to_centre_km": 250.41
+  },
+  {
+   "time": "2022-09-28 13:41:00",
+   "sfmr_kt": 38,
+   "fl_wind_kt": 43,
+   "distance_to_centre_km": 254.03
+  },
+  {
+   "time": "2022-09-28 13:41:30",
+   "sfmr_kt": 38,
+   "fl_wind_kt": 43,
+   "distance_to_centre_km": 257.66
+  },
+  {
+   "time": "2022-09-28 13:42:00",
+   "sfmr_kt": 38,
+   "fl_wind_kt": 42,
+   "distance_to_centre_km": 263.27
+  },
+  {
+   "time": "2022-09-28 13:42:30",
+   "sfmr_kt": 37,
+   "fl_wind_kt": 40,
+   "distance_to_centre_km": 266.91
+  },
+  {
+   "time": "2022-09-28 13:43:00",
+   "sfmr_kt": 37,
+   "fl_wind_kt": 39,
+   "distance_to_centre_km": 270.95
+  },
+  {
+   "time": "2022-09-28 13:43:30",
+   "sfmr_kt": 36,
+   "fl_wind_kt": 38,
+   "distance_to_centre_km": 274.59
+  },
+  {
+   "time": "2022-09-28 13:44:00",
+   "sfmr_kt": 36,
+   "fl_wind_kt": 38,
+   "distance_to_centre_km": 278.66
+  },
+  {
+   "time": "2022-09-28 13:44:30",
+   "sfmr_kt": 35,
+   "fl_wind_kt": 37,
+   "distance_to_centre_km": 283.93
+  },
+  {
+   "time": "2022-09-28 13:45:00",
+   "sfmr_kt": 34,
+   "fl_wind_kt": 36,
+   "distance_to_centre_km": 287.6
+  },
+  {
+   "time": "2022-09-28 13:45:30",
+   "sfmr_kt": 34,
+   "fl_wind_kt": 35,
+   "distance_to_centre_km": 291.7
+  },
+  {
+   "time": "2022-09-28 13:46:00",
+   "sfmr_kt": 34,
+   "fl_wind_kt": 34,
+   "distance_to_centre_km": 295.37
+  },
+  {
+   "time": "2022-09-28 13:46:30",
+   "sfmr_kt": 34,
+   "fl_wind_kt": 35,
+   "distance_to_centre_km": 299.51
+  },
+  {
+   "time": "2022-09-28 13:47:00",
+   "sfmr_kt": 34,
+   "fl_wind_kt": 36,
+   "distance_to_centre_km": 304.79
+  },
+  {
+   "time": "2022-09-28 13:47:30",
+   "sfmr_kt": 34,
+   "fl_wind_kt": 37,
+   "distance_to_centre_km": 308.94
+  },
+  {
+   "time": "2022-09-28 13:48:00",
+   "sfmr_kt": 33,
+   "fl_wind_kt": 36,
+   "distance_to_centre_km": 312.63
+  },
+  {
+   "time": "2022-09-28 13:48:30",
+   "sfmr_kt": 33,
+   "fl_wind_kt": 35,
+   "distance_to_centre_km": 316.82
+  },
+  {
+   "time": "2022-09-28 13:49:00",
+   "sfmr_kt": 33,
+   "fl_wind_kt": 35,
+   "distance_to_centre_km": 322.1
+  },
+  {
+   "time": "2022-09-28 13:49:30",
+   "sfmr_kt": 32,
+   "fl_wind_kt": 34,
+   "distance_to_centre_km": 326.3
+  },
+  {
+   "time": "2022-09-28 13:50:00",
+   "sfmr_kt": 33,
+   "fl_wind_kt": 35,
+   "distance_to_centre_km": 330.0
+  },
+  {
+   "time": "2022-09-28 13:50:30",
+   "sfmr_kt": 33,
+   "fl_wind_kt": 34,
+   "distance_to_centre_km": 335.81
+  },
+  {
+   "time": "2022-09-28 13:51:00",
+   "sfmr_kt": 33,
+   "fl_wind_kt": 33,
+   "distance_to_centre_km": 339.52
+  },
+  {
+   "time": "2022-09-28 13:51:30",
+   "sfmr_kt": 32,
+   "fl_wind_kt": 33,
+   "distance_to_centre_km": 343.76
+  },
+  {
+   "time": "2022-09-28 13:52:00",
+   "sfmr_kt": 32,
+   "fl_wind_kt": 33,
+   "distance_to_centre_km": 347.46
+  },
+  {
+   "time": "2022-09-28 13:52:30",
+   "sfmr_kt": 31,
+   "fl_wind_kt": 32,
+   "distance_to_centre_km": 353.3
+  },
+  {
+   "time": "2022-09-28 13:53:00",
+   "sfmr_kt": 31,
+   "fl_wind_kt": 26,
+   "distance_to_centre_km": 357.02
+  },
+  {
+   "time": "2022-09-28 13:53:30",
+   "sfmr_kt": 30,
+   "fl_wind_kt": 29,
+   "distance_to_centre_km": 362.86
+  },
+  {
+   "time": "2022-09-28 13:54:00",
+   "sfmr_kt": 31,
+   "fl_wind_kt": 27,
+   "distance_to_centre_km": 366.57
+  }
+ ]
+}

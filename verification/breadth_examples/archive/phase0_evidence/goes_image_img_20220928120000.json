@@ -1,0 +1,27 @@
+{
+  "server": "goes-mcp",
+  "tool": "goes_get_image",
+  "arguments": {
+    "timestamp": "20220928120000",
+    "satellite": "goes-19",
+    "coverage": "CONUS",
+    "product": "GEOCOLOR",
+    "resolution": "thumbnail",
+    "response_format": "image"
+  },
+  "started_at": "2026-11-21T02:38:02.736+00:00",
+  "elapsed_s": 0.392,
+  "result": {
+    "meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "GOES Error: Image not found at https://cdn.star.nesdis.noaa.gov/GOES19/ABI/CONUS/GEOCOLOR/20222711200_GOES19-ABI-CONUS-GEOCOLOR-416x250.jpg. The timestamp may be too old or the product unavailable.",
+        "annotations": null,
+        "meta": null
+      }
+    ],
+    "structuredContent": null,
+    "isError": false
+  }
+}

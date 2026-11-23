@@ -1,0 +1,30 @@
+{
+  "server": "rtofs-mcp",
+  "tool": "rtofs_get_area_forecast",
+  "arguments": {
+    "lat_start": 26.0,
+    "lat_end": 26.5,
+    "lon_start": -83.5,
+    "lon_end": -83.0,
+    "variable": "sst",
+    "n_points": 2,
+    "response_format": "json"
+  },
+  "started_at": "2026-11-21T02:36:19.569+00:00",
+  "elapsed_s": 0.653,
+  "result": {
+    "meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"variable\": \"sst\",\n  \"unit\": \"degC\",\n  \"bbox\": {\n    \"lat_start\": 26.0,\n    \"lat_end\": 26.5,\n    \"lon_start\": -83.5,\n    \"lon_end\": -83.0\n  },\n  \"n_points_per_axis\": 2,\n  \"n_valid\": 4,\n  \"data\": [\n    {\n      \"lat\": 26.0,\n      \"lon\": -83.5,\n      \"time\": \"2026-11-21T03:00:00Z\",\n      \"value\": 27.364999771118164\n    },\n    {\n      \"lat\": 26.0,\n      \"lon\": -83.0,\n      \"time\": \"2026-11-21T03:00:00Z\",\n      \"value\": 26.641000747680664\n    },\n    {\n      \"lat\": 26.5,\n      \"lon\": -83.5,\n      \"time\": \"2026-11-21T03:00:00Z\",\n      \"value\": 26.729999542236328\n    },\n    {\n      \"lat\": 26.5,\n      \"lon\": -83.0,\n      \"time\": \"2026-11-21T03:00:00Z\",\n      \"value\": 26.17799949645996\n    }\n  ]\n}",
+        "annotations": null,
+        "meta": null
+      }
+    ],
+    "structuredContent": {
+      "result": "{\n  \"variable\": \"sst\",\n  \"unit\": \"degC\",\n  \"bbox\": {\n    \"lat_start\": 26.0,\n    \"lat_end\": 26.5,\n    \"lon_start\": -83.5,\n    \"lon_end\": -83.0\n  },\n  \"n_points_per_axis\": 2,\n  \"n_valid\": 4,\n  \"data\": [\n    {\n      \"lat\": 26.0,\n      \"lon\": -83.5,\n      \"time\": \"2026-11-21T03:00:00Z\",\n      \"value\": 27.364999771118164\n    },\n    {\n      \"lat\": 26.0,\n      \"lon\": -83.0,\n      \"time\": \"2026-11-21T03:00:00Z\",\n      \"value\": 26.641000747680664\n    },\n    {\n      \"lat\": 26.5,\n      \"lon\": -83.5,\n      \"time\": \"2026-11-21T03:00:00Z\",\n      \"value\": 26.729999542236328\n    },\n    {\n      \"lat\": 26.5,\n      \"lon\": -83.0,\n      \"time\": \"2026-11-21T03:00:00Z\",\n      \"value\": 26.17799949645996\n    }\n  ]\n}"
+    },
+    "isError": false
+  }
+}

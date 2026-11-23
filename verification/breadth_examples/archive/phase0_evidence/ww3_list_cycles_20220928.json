@@ -1,0 +1,25 @@
+{
+  "server": "ww3-mcp",
+  "tool": "ww3_list_cycles",
+  "arguments": {
+    "date": "2022-09-28",
+    "num_days": 1
+  },
+  "started_at": "2026-11-21T02:34:45.908+00:00",
+  "elapsed_s": 0.51,
+  "result": {
+    "meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "## GFS-Wave Forecast Cycles \u2014 Global 0.25-degree\n**Checking**: last 1 day(s) | **Available**: 4 of 4 cycles\n\n| Date | Cycle | Status |\n| --- | --- | --- |\n| 2022-09-28 | 18z | Available |\n| 2022-09-28 | 12z | Available |\n| 2022-09-28 | 06z | Available |\n| 2022-09-28 | 00z | Available |\n\n*Latest available: **2022-09-28 18z**. Use ww3_get_forecast_at_point to retrieve wave data.*",
+        "annotations": null,
+        "meta": null
+      }
+    ],
+    "structuredContent": {
+      "result": "## GFS-Wave Forecast Cycles \u2014 Global 0.25-degree\n**Checking**: last 1 day(s) | **Available**: 4 of 4 cycles\n\n| Date | Cycle | Status |\n| --- | --- | --- |\n| 2022-09-28 | 18z | Available |\n| 2022-09-28 | 12z | Available |\n| 2022-09-28 | 06z | Available |\n| 2022-09-28 | 00z | Available |\n\n*Latest available: **2022-09-28 18z**. Use ww3_get_forecast_at_point to retrieve wave data.*"
+    },
+    "isError": false
+  }
+}

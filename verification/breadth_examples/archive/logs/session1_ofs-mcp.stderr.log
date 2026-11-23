@@ -1,0 +1,16 @@
+[11/21/26 12:36:53] INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   
+[11/21/26 12:37:28] INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[11/21/26 12:37:29] INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/mdapi/prod/webapi/stations/85746                
+                             80.json "HTTP/1.1 200 OK"                          
+[11/21/26 12:37:33] INFO     HTTP Request: GET                   _client.py:1740
+                             https://api.tidesandcurrents.noaa.g                
+                             ov/api/prod/datagetter?station=8574                
+                             680&product=water_level&datum=NAVD&                
+                             units=metric&time_zone=gmt&format=j                
+                             son&begin_date=20261120+17%3A37&end                
+                             _date=20261121+17%3A37&application=                
+                             ofs_mcp "HTTP/1.1 200 OK"                          

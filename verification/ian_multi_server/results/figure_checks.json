@@ -1,0 +1,72 @@
+{
+ "main": {
+  "min_font_pt": 8.0,
+  "font_sizes_pt": [
+   8.0,
+   8.5,
+   10.0
+  ],
+  "legend_overlap": [
+   {
+    "axes": "a",
+    "points_inside_legend": 0
+   },
+   {
+    "axes": "d",
+    "points_inside_legend": 0
+   },
+   {
+    "axes": "c",
+    "points_inside_legend": 0
+   },
+   {
+    "axes": "b",
+    "points_inside_legend": 0
+   }
+  ],
+  "legend_vs_panel_letter": [],
+  "legend_outside_page": [],
+  "legend_vs_other_axes": [],
+  "text_outside_page": [],
+  "overlapping_text_pairs": [],
+  "map_markers": {
+   "landfall_star_overlaps_fort_myers_triangle": false,
+   "labels_over_markers": []
+  },
+  "landfall_line_drawn": {
+   "b": false,
+   "c": true,
+   "d": true
+  }
+ },
+ "fallback": {
+  "min_font_pt": 8.0,
+  "font_sizes_pt": [
+   8.0,
+   8.5,
+   10.0
+  ],
+  "legend_overlap": [
+   {
+    "axes": "a",
+    "points_inside_legend": 0
+   },
+   {
+    "axes": "b",
+    "points_inside_legend": 0
+   }
+  ],
+  "legend_vs_panel_letter": [],
+  "legend_outside_page": [],
+  "legend_vs_other_axes": [],
+  "text_outside_page": [],
+  "overlapping_text_pairs": [],
+  "map_markers": {
+   "landfall_star_overlaps_fort_myers_triangle": false,
+   "labels_over_markers": []
+  },
+  "landfall_line_drawn": {
+   "b": true
+  }
+ }
+}
