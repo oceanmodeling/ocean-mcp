@@ -222,7 +222,7 @@ bash verification/ian_multi_server/run_all.sh
 The executable bit is set in Git (this drive does not keep file modes, so `bash run_all.sh` is the safe form).
 
 **Steps.**
-1. Every archived file against `archive/MANIFEST.sha256` (200 files).
+1. Every archived file against `archive/MANIFEST.sha256` (201 files).
 2. The reused Ian session against its SHA-256.
 3. The 18 HDOB quotations.
 4. The buoy selection.
@@ -235,7 +235,8 @@ The executable bit is set in Git (this drive does not keep file modes, so `bash 
 - Run from a scratch copy outside the repository: `git archive` of the needed packages into a fresh folder, inside `unshare -rn`, so no network interface existed.
   - First on `bdadd79`, before the figure revisions (`/mnt/d/ocean-mcp-wp9/scratch_runall_20261121T175901Z`).
   - Again on `dffe3cb`, after them (`/mnt/d/ocean-mcp-wp9/scratch_runall_dffe3cb`).
-- Result both times: **exit 0, "OK: every output matches"**.
+  - Again on `71c99eb`, after the quotation check and the added number (`/mnt/d/ocean-mcp-wp9/scratch_runall_71c99eb`).
+- Result every time: **exit 0, "OK: every output matches"**.
 - **No file differed.**
 - The figures are byte-reproducible because the PDF and PNG metadata carry no dates. Two earlier consecutive runs in the worktree also matched (15 of 15 files).
 
