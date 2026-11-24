@@ -230,7 +230,7 @@ bash verification/ian_multi_server/run_all.sh
 The executable bit is set in Git (this drive does not keep file modes, so `bash run_all.sh` is the safe form).
 
 **Steps.**
-1. Every archived file against `archive/MANIFEST.sha256` (201 files).
+1. Every archived file against `archive/MANIFEST.sha256` (202 files).
 2. The reused Ian session against its SHA-256.
 3. The 18 HDOB quotations.
 4. The buoy selection.
@@ -247,6 +247,12 @@ The executable bit is set in Git (this drive does not keep file modes, so `bash 
   - Again on `b3864ac`, after the SFMR comparison (`/mnt/d/ocean-mcp-wp9/scratch_runall_b3864ac`).
 - Result every time: **exit 0, "OK: every output matches"**.
 - **No file differed.**
+- **The uv cache.** The figure step uses the pinned plotting packages from uv's cache (`--offline`). That cache is not part of the package.
+  - On this machine it was emptied on 2026-11-23, so on 2026-11-24 the ten pinned packages were downloaded again from PyPI, with the author's agreement.
+  - Each wheel's SHA-256 matched PyPI's published digest; the list is in `archive/plotting_wheels_2026-11-24.json`.
+  - With them, this package's replay again matched every output byte for byte.
+  - The resolver also installs `tzdata` 2026.6, an unpinned dependency of python-dateutil 4.0.0. It changed no output.
+  - On a fresh machine, run the figure environment once with the network on before the offline replay.
 - The figures are byte-reproducible because the PDF and PNG metadata carry no dates. Two earlier consecutive runs in the worktree also matched (15 of 15 files).
 
 ## 11. Defects and oddities
@@ -330,6 +336,7 @@ bash run_all.sh                                           # offline replay and c
 | `archive/phase0_selection/` | Feasibility responses that select the buoy |
 | `archive/references/` | NHC HDOB format page and its HTTP headers; `tcr_quote_check.json`, the five verified NHC report passages with the PDF's SHA-256 |
 | `archive/env_provenance.json` | Wheels, digests, freeze, installed source against the tags |
+| `archive/plotting_wheels_2026-11-24.json` | The plotting wheels downloaded on 2026-11-24, with SHA-256 checked against PyPI |
 | `archive/non_mcp/natural_earth/` | Natural Earth 1:50m coastline (shapefile parts) and `SOURCE.md`: source URL, SHA-256, terms |
 | `scripts/` | Recording, selection, analysis, coastline extraction, figures, manifests; `record_tcr_quote.py` (needs the PDF, not part of the offline replay) |
 | `results/` | Selections, QC, panel inputs, coastline subset, numbers with provenance, figure checks, `SHA256SUMS` |

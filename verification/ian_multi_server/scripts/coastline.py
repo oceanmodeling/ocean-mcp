@@ -19,13 +19,21 @@ from pathlib import Path
 PACKAGE = Path(__file__).resolve().parents[1]
 SHP = PACKAGE / "archive" / "non_mcp" / "natural_earth" / "ne_50m_coastline.shp"
 SHP_SHA256 = "797d675af9613f80b51ab6049fa32e589974d7a97c6497ca56772965f179ed26"
-EXTENT = (-89.5, -79.0, 16.0, 31.0)  # lon min, lon max, lat min, lat max (the map, DESIGN/A5)
+EXTENT = (
+    -89.5,
+    -79.0,
+    16.0,
+    31.0,
+)  # lon min, lon max, lat min, lat max (the map, DESIGN/A5)
 MARGIN = 1.0
 
 
 def polylines(raw: bytes):
     """Yield the parts of every polyline record as lists of (lon, lat)."""
-    if struct.unpack(">i", raw[0:4])[0] != 9994 or struct.unpack("<i", raw[32:36])[0] != 3:
+    if (
+        struct.unpack(">i", raw[0:4])[0] != 9994
+        or struct.unpack("<i", raw[32:36])[0] != 3
+    ):
         raise SystemExit("not a polyline shapefile")
     pos = 100
     while pos < len(raw):
@@ -53,7 +61,10 @@ def main() -> None:
     n_parts = 0
     for part in polylines(raw):
         n_parts += 1
-        if any(x0 - MARGIN <= x <= x1 + MARGIN and y0 - MARGIN <= y <= y1 + MARGIN for x, y in part):
+        if any(
+            x0 - MARGIN <= x <= x1 + MARGIN and y0 - MARGIN <= y <= y1 + MARGIN
+            for x, y in part
+        ):
             keep.append([[round(x, 4), round(y, 4)] for x, y in part])
     out = {
         "source": "Natural Earth 1:50m coastline, archive/non_mcp/natural_earth/ne_50m_coastline.shp",

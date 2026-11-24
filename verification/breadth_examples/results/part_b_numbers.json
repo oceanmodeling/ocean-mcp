@@ -82,6 +82,41 @@
   "call": "S1.2",
   "archive": "archive/session1_record.json"
  },
+ "b1_client_n": {
+  "value": 25,
+  "unit": "-",
+  "kind": "computed",
+  "computed": "scripts/analyze_part_b.py:223",
+  "how": "DESIGN.md 3.3"
+ },
+ "b1_client_bias_m": {
+  "value": 0.07399999999999998,
+  "unit": "m",
+  "kind": "computed",
+  "computed": "scripts/analyze_part_b.py:223",
+  "how": "DESIGN.md 3.3"
+ },
+ "b1_client_rmse_m": {
+  "value": 0.2987908967823484,
+  "unit": "m",
+  "kind": "computed",
+  "computed": "scripts/analyze_part_b.py:223",
+  "how": "DESIGN.md 3.3"
+ },
+ "b1_client_mae_m": {
+  "value": 0.19719999999999996,
+  "unit": "m",
+  "kind": "computed",
+  "computed": "scripts/analyze_part_b.py:223",
+  "how": "DESIGN.md 3.3"
+ },
+ "b1_client_r": {
+  "value": 0.9724654223160542,
+  "unit": "-",
+  "kind": "computed",
+  "computed": "scripts/analyze_part_b.py:223",
+  "how": "DESIGN.md 3.3"
+ },
  "b2_model": {
   "value": "cbofs",
   "unit": "-",

@@ -1,0 +1,7 @@
+[11/24/26 08:08:19] INFO     Processing request of type            server.py:733
+                             ListToolsRequest                                   
+                    INFO     Processing request of type            server.py:733
+                             CallToolRequest                                    
+[11/24/26 08:08:20] INFO     HTTP Request: GET                   _client.py:1740
+                             https://www.ndbc.noaa.gov/data/real                
+                             time2/44097.txt "HTTP/1.1 200 OK"                  
