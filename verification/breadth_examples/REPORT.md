@@ -185,6 +185,7 @@ The executable bit is set in Git (this drive does not keep file modes, so `bash 
 - Run from a scratch copy outside the repository, inside `unshare -rn`:
   - first on `bdadd79` (`/mnt/d/ocean-mcp-wp9/scratch_runall_20261121T175901Z`);
   - again on `dffe3cb`, after the figure revisions (`/mnt/d/ocean-mcp-wp9/scratch_runall_dffe3cb`).
+  - again on `e9914ef`, after B1 session 2 (`/mnt/d/ocean-mcp-wp9/scratch_runall_e9914ef`).
 - Result every time: **exit 0, "OK: every output matches"**. **No file differed.**
 - Before session 2, the run printed that session 2 was not archived. B3 is always replayed from the archived responses only.
 

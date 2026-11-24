@@ -245,6 +245,7 @@ The executable bit is set in Git (this drive does not keep file modes, so `bash 
   - Again on `dffe3cb`, after them (`/mnt/d/ocean-mcp-wp9/scratch_runall_dffe3cb`).
   - Again on `71c99eb`, after the quotation check and the added number (`/mnt/d/ocean-mcp-wp9/scratch_runall_71c99eb`).
   - Again on `b3864ac`, after the SFMR comparison (`/mnt/d/ocean-mcp-wp9/scratch_runall_b3864ac`).
+  - Again on `e9914ef`, after B1 session 2 and the restored uv cache (`/mnt/d/ocean-mcp-wp9/scratch_runall_e9914ef`).
 - Result every time: **exit 0, "OK: every output matches"**.
 - **No file differed.**
 - **The uv cache.** The figure step uses the pinned plotting packages from uv's cache (`--offline`). That cache is not part of the package.
