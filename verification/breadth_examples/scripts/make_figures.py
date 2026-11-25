@@ -308,7 +308,8 @@ def fig_b1() -> dict | None:
         label=f"GFS-Wave {s1['forecast']['cycle']} forecast (ww3-mcp)",
     )
     ax.set_ylabel("Hs (m)")
-    ax.xaxis.set_major_locator(mdates.HourLocator(byhour=[0, 12]))
+    ax.xaxis.set_major_locator(mdates.HourLocator(byhour=[0]))
+    ax.xaxis.set_minor_locator(mdates.HourLocator(byhour=[12]))
     ax.xaxis.set_major_formatter(mdates.DateFormatter("%d %b\n%H:%M"))
     ax.set_xlabel("Time (UTC), 2026")
     tidy(ax)
@@ -317,9 +318,9 @@ def fig_b1() -> dict | None:
     )
     st = pr["stats"]
     fig.text(
-        15 / 90,
+        4 / 90,
         2.5 / 78,
-        "Computed by the client from {n} pairs\n(nearest observation within 30 min):\nbias {b:+.3f} m, RMSE {r:.3f} m, MAE {m:.3f} m, r = {c}".format(
+        "Computed by the client from {n} pairs (nearest\nobservation within 30 min): bias {b:+.3f} m,\nRMSE {r:.3f} m, MAE {m:.3f} m, r = {c}".format(
             n=st["n"],
             b=st["bias_m"],
             r=st["rmse_m"],

@@ -1,6 +1,6 @@
 # Three short examples and a fourth, for servers the paper does not yet show: report
 
-Run date: 2026-11-21 (UTC). Branch `docs/breadth-examples`, created from the local `origin/main` ref (575cd21) without fetching. The design was committed in `fdce9bb` before anything was recorded; the data and scripts are in `bdadd79`. The B2 and B4 figures were revised on 2026-11-22 in `dffe3cb` (`AMENDMENTS.md` AM6, AM7); no result value changed.
+Run date: 2026-11-21 (UTC). Branch `docs/breadth-examples`, created from the local `origin/main` ref (575cd21) without fetching. The design was committed in `fdce9bb` before anything was recorded; the data and scripts are in `bdadd79`. The B2 and B4 figures were revised on 2026-11-22 in `dffe3cb` (`AMENDMENTS.md` AM6, AM7); no result value changed. B1 session 2 (the buoy observations) was recorded on 2026-11-24, and B1's pairing, statistics and figure were added then.
 
 These are **scripted MCP workflows**. Tools and arguments are fixed in `DESIGN.md` and `scripts/record_session1.py`. No language model was involved. Nothing here tests a safeguard, and none of it is an evaluation.
 
@@ -17,7 +17,7 @@ These are **scripted MCP workflows**. Tools and arguments are fixed in `DESIGN.m
 
 | Example | Status | Result |
 |---|---|---|
-| B1 wave forecast against buoy 44097 (ww3-mcp, ndbc-mcp) | **Session 1 recorded; session 2 due no earlier than 2026-11-24 13:00 UTC** | Forecast 2026-11-21 12z, 25 valid times to +72 h [T: ww3_get_forecast_at_point, S1.3]. The tool's own comparison returned **2 pairs** [T: ww3_compare_forecast_with_buoy, S1.2]. No figure yet. |
+| B1 wave forecast against buoy 44097 (ww3-mcp, ndbc-mcp) | Done (two sessions) | Forecast 2026-11-21 12z, 25 valid times to +72 h [T: ww3_get_forecast_at_point, S1.3]. Client pairing: **25 pairs**, bias +0.074 m, RMSE 0.299 m, MAE 0.197 m, r = 0.972 [C: scripts/analyze_part_b.py:223]. The tool's own comparison returned **2 pairs** [T: ww3_compare_forecast_with_buoy, S1.2]. |
 | B2 CBOFS against Baltimore (ofs-mcp, coops-mcp) | Done | 24 pairs; datums as stated by the tool: model `NAVD88`, observations `NAVD` [T: ofs_compare_with_coops, C1] |
 | B3 vdatum against CO-OPS datums (vdatum-mcp, coops-mcp) | Done (recorded online) | vdatum − CO-OPS: **+0.1 mm** to MHHW, **−2.8 mm** to NAVD88 [C: scripts/analyze_part_b.py:320]. Neither source states an uncertainty. |
 | B4 RTOFS temperature section off Cape Hatteras (rtofs-mcp) | Done | 20 of 20 profiles. Valid 2026-11-21 15:00 UTC [T: rtofs_get_profile_forecast, T3]. Newest run 2026-11-16 12Z [T: rtofs_get_latest_time, T1], i.e. a 123 h forecast [C: scripts/analyze_part_b.py:453]. |
@@ -65,24 +65,39 @@ All SHA-256 values match PyPI's digests, and each installed source tree is ident
 - **Why only 2 pairs.** The observation window ends at the buoy's latest row (17:00) and the forecast starts at the cycle time (12:00). So only valid times between the two can pair: 12:00 and 15:00.
 - **The NaN.** With two pairs whose forecasts are equal (0.35 m, 0.35 m) [T: S1.2], the correlation is undefined. The tool emits the bare token `NaN`, which is not valid JSON.
 
-**Session 2, not yet run.**
+**Session 2** (2026-11-24, `archive/session2_record.json`, SHA-256 `9942129a…f5bf`). One client process (PID 198247) held one session to ndbc-mcp 0.1.2 (PID 198257) from 13:08:17 to 13:08:20 UTC.
 
-```bash
-<env>/bin/python verification/breadth_examples/scripts/record_b1_session2.py
-```
+| Key | Tool | Arguments | Returned |
+|---|---|---|---|
+| S2.1 | `ndbc_get_observations` | `station_id="44097"`, `hours=80` (cycle to call time 73.1 h, rounded up, plus 6, by rule), `variables=["WVHT"]`, json, `max_records=2000` | 159 rows, `truncated: false`, from 2026-11-21 04:30 to 2026-11-24 12:30; all 159 carry a WVHT value [T: ndbc_get_observations, S2.1, `archive/session2_record.json`] |
 
-- It refuses to run before 2026-11-24 13:00 UTC (cycle + 73 h).
-- It calls `ndbc_get_observations(44097, hours=H, variables=["WVHT"], response_format="json", max_records=2000)`, with H fixed by rule.
-- Afterwards:
+**Observation timestamps.** The tool returns them without a time-zone designator, e.g. `2026-11-24T12:30:00`. NDBC realtime rows are UTC, and the analysis reads all 159 as UTC; it records the count in `results/b1_pairs.json`.
 
-  ```bash
-  python3 -I scripts/build_manifests.py   # after the analysis and figures are rerun
-  bash run_all.sh
-  ```
+**Gaps.** The rows are 30 minutes apart (median). There are two gaps of 60 minutes: 21 November 23:00 to 22 November 00:00, and 22 November 23:00 to 23 November 00:00. The figure breaks the line there.
 
-  These produce the pairing (nearest observation within 30 min, `DESIGN.md` §3.3), the statistics and the figure `b1_ww3_44097_90mm`.
+**Pairing.** As fixed in `DESIGN.md` §3.3: for each forecast valid time, the nearest observation with WVHT within 30 minutes; if two are equally near, the earlier one.
+- All 25 valid times from 21 November 12:00 to 24 November 12:00 have a pair, each with an observation at the same minute [C: scripts/analyze_part_b.py:223].
+- No valid time went unpaired.
 
-**Draft caption, B1 (37 words), for after session 2.** GFS-Wave forecast (2026-11-21 12z, ww3-mcp) and observed significant wave height at NDBC 44097, Block Island (ndbc-mcp, recorded three days later). Statistics computed by the client from pairs within 30 min. The tool's own comparison returned 2 pairs.
+**Statistics** over the 25 pairs, forecast minus observed, computed by the client [C: scripts/analyze_part_b.py:223]:
+
+| Statistic | Value |
+|---|---|
+| n | 25 |
+| bias, mean(F − O) | +0.074 m |
+| RMSE | 0.299 m |
+| MAE | 0.197 m |
+| Pearson r | 0.972 |
+| largest \|F − O\| | 0.83 m, at 2026-11-23 15:00 UTC |
+
+**Against the tool's own comparison.** The tool's comparison from session 1 used the same cycle but paired only 12:00 and 15:00 on 21 November, i.e. forecast hours 0 and 3. That is why the second session was needed (`AMENDMENTS.md` AM2).
+
+**Figure** `figures/b1_ww3_44097_90mm.pdf` and `…_600dpi.png`, 90 mm × 78 mm.
+- Observations as a line, broken at the two gaps. The forecast as a line with markers at the 3-hourly valid times.
+- The client statistics are printed below the axes, labelled as computed by the client. The time axis is labelled "Time (UTC), 2026".
+- Smallest font 8.0 pt. The legend covers no data, and no text leaves the page.
+
+**Draft caption, B1 (38 words).** GFS-Wave forecast (2026-11-21 12z, ww3-mcp) and significant wave height observed at NDBC 44097, Block Island (ndbc-mcp, recorded three days later). Statistics computed by the client from 25 pairs within 30 min; the tool's own comparison returned 2 pairs.
 
 ## 4. B2: CBOFS against CO-OPS Baltimore (8574680)
 
@@ -160,18 +175,26 @@ bash verification/breadth_examples/run_all.sh
 The executable bit is set in Git (this drive does not keep file modes, so `bash run_all.sh` is the safe form).
 
 **Steps.**
-1. 39 archived files against `archive/MANIFEST.sha256`.
+1. Every archived file against `archive/MANIFEST.sha256` (42 files).
 2. The Ian session checksum.
-3. The analysis.
-4. The figures: matplotlib 3.10.8, uv `--offline`.
-5. 11 outputs against `results/SHA256SUMS`.
+3. The analysis, now including B1's pairing and statistics.
+4. The figures, now including B1: matplotlib 3.10.8, uv `--offline`.
+5. 14 outputs against `results/SHA256SUMS`.
 
 **Check run.**
 - Run from a scratch copy outside the repository, inside `unshare -rn`:
   - first on `bdadd79` (`/mnt/d/ocean-mcp-wp9/scratch_runall_20261121T175901Z`);
   - again on `dffe3cb`, after the figure revisions (`/mnt/d/ocean-mcp-wp9/scratch_runall_dffe3cb`).
-- Result both times: **exit 0, "OK: every output matches"**. **No file differed.**
-- It printed that B1 session 2 is not archived yet. B3 is replayed from the archived responses only.
+  - again on `e9914ef`, after B1 session 2 (`/mnt/d/ocean-mcp-wp9/scratch_runall_e9914ef`).
+- Result every time: **exit 0, "OK: every output matches"**. **No file differed.**
+- Before session 2, the run printed that session 2 was not archived. B3 is always replayed from the archived responses only.
+
+**The uv cache.** The figure step uses the pinned plotting packages from uv's cache (`--offline`). That cache is not part of the package.
+- On this machine it was emptied on 2026-11-23, so on 2026-11-24 the ten pinned packages were downloaded again from PyPI, with the author's agreement.
+- Each wheel's SHA-256 matched PyPI's published digest; the list is in `archive/plotting_wheels_2026-11-24.json`.
+- With them, every previously committed figure and result was reproduced byte for byte.
+- The resolver also installs `tzdata` 2026.6, a dependency of python-dateutil 4.0.0 that `scripts/requirements-figures.txt` does not pin. It changed no output.
+- On a fresh machine, run the figure environment once with the network on before the offline replay.
 
 ## 8. Defects and oddities
 
@@ -214,9 +237,11 @@ The amendments were relabelled AM1–AM7 on 2026-11-22, so that none shares a na
 |---|---|
 | `DESIGN.md`, `AMENDMENTS.md` | Frozen design and the amendments |
 | `archive/session1_record.json` | Session 1: calls, full results, processes, tool listings |
+| `archive/session2_record.json` | Session 2 (B1 observations): the call, full result, processes |
+| `archive/plotting_wheels_2026-11-24.json` | The plotting wheels downloaded on 2026-11-24, with SHA-256 checked against PyPI |
 | `archive/logs/` | Server stderr logs |
 | `archive/phase0_evidence/` | Feasibility responses that document defects 1–9; the feasibility scripts as run |
 | `archive/env_provenance.json` | Wheels, digests, freeze, source against the tags |
 | `scripts/` | Recording (sessions 1 and 2), analysis, figures, manifests |
 | `results/` | Per-example results, numbers with provenance, figure checks, `SHA256SUMS` |
-| `figures/` | B2 and B4, PDF and 600 dpi PNG |
+| `figures/` | B1, B2 and B4, PDF and 600 dpi PNG |

@@ -1,0 +1,645 @@
+{
+ "record_type": "mcp_session",
+ "label": "session2",
+ "note": "Part B session 2: B1 buoy observations",
+ "client": {
+  "pid": 198247,
+  "python": "3.13.12",
+  "executable": "/mnt/d/ocean-mcp-wp9/phase0/env/bin/python",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "mcp_sdk": "1.30.0"
+ },
+ "session_started_at": "2026-11-24T13:08:16.989+00:00",
+ "session_finished_at": "2026-11-24T13:08:20.119+00:00",
+ "servers": {
+  "ndbc-mcp": {
+   "module": "ndbc_mcp",
+   "distribution_version": "0.1.2",
+   "initialize_result": {
+    "meta": null,
+    "protocolVersion": "2025-11-25",
+    "capabilities": {
+     "experimental": {},
+     "logging": null,
+     "prompts": {
+      "listChanged": false
+     },
+     "resources": {
+      "subscribe": false,
+      "listChanged": false
+     },
+     "tools": {
+      "listChanged": false
+     },
+     "completions": null,
+     "tasks": null
+    },
+    "serverInfo": {
+     "name": "ndbc_mcp",
+     "title": null,
+     "version": "1.30.0",
+     "websiteUrl": null,
+     "icons": null
+    },
+    "instructions": null
+   },
+   "tool_names": [
+    "ndbc_get_daily_summary",
+    "ndbc_compare_stations",
+    "ndbc_get_latest_observation",
+    "ndbc_get_observations",
+    "ndbc_get_wave_summary",
+    "ndbc_list_stations",
+    "ndbc_get_station",
+    "ndbc_find_nearest_stations"
+   ],
+   "tools": [
+    {
+     "name": "ndbc_get_daily_summary",
+     "title": null,
+     "description": "Get daily min/max/mean statistics for key variables over recent days.\n\nArgs:\n    station_id: NDBC station ID (e.g., '41001', '46042').\n    days: Number of days to summarize (default 7, max 45).\n    variables: Variables to include (default: WSPD, GST, WVHT, DPD, PRES, ATMP, WTMP).\n    response_format: Output format \u2014 'markdown' (default) or 'json'.\n",
+     "inputSchema": {
+      "properties": {
+       "station_id": {
+        "title": "Station Id",
+        "type": "string"
+       },
+       "days": {
+        "default": 7,
+        "title": "Days",
+        "type": "integer"
+       },
+       "variables": {
+        "anyOf": [
+         {
+          "items": {
+           "type": "string"
+          },
+          "type": "array"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Variables"
+       },
+       "response_format": {
+        "default": "markdown",
+        "enum": [
+         "markdown",
+         "json"
+        ],
+        "title": "Response Format",
+        "type": "string"
+       }
+      },
+      "required": [
+       "station_id"
+      ],
+      "title": "ndbc_get_daily_summaryArguments",
+      "type": "object"
+     },
+     "outputSchema": {
+      "properties": {
+       "result": {
+        "title": "Result",
+        "type": "string"
+       }
+      },
+      "required": [
+       "result"
+      ],
+      "title": "ndbc_get_daily_summaryOutput",
+      "type": "object"
+     },
+     "icons": null,
+     "annotations": {
+      "title": null,
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": true
+     },
+     "meta": null,
+     "execution": null
+    },
+    {
+     "name": "ndbc_compare_stations",
+     "title": null,
+     "description": "Compare latest observations from multiple NDBC stations side by side.\n\nArgs:\n    station_ids: List of NDBC station IDs to compare (2-10 stations, e.g., ['41001', '41002', '44013']).\n    response_format: Output format \u2014 'markdown' (default) or 'json'.\n",
+     "inputSchema": {
+      "properties": {
+       "station_ids": {
+        "items": {
+         "type": "string"
+        },
+        "title": "Station Ids",
+        "type": "array"
+       },
+       "response_format": {
+        "default": "markdown",
+        "enum": [
+         "markdown",
+         "json"
+        ],
+        "title": "Response Format",
+        "type": "string"
+       }
+      },
+      "required": [
+       "station_ids"
+      ],
+      "title": "ndbc_compare_stationsArguments",
+      "type": "object"
+     },
+     "outputSchema": {
+      "properties": {
+       "result": {
+        "title": "Result",
+        "type": "string"
+       }
+      },
+      "required": [
+       "result"
+      ],
+      "title": "ndbc_compare_stationsOutput",
+      "type": "object"
+     },
+     "icons": null,
+     "annotations": {
+      "title": null,
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": true
+     },
+     "meta": null,
+     "execution": null
+    },
+    {
+     "name": "ndbc_get_latest_observation",
+     "title": null,
+     "description": "Get the latest observation from an NDBC station.\n\nReturns all available variables (wind, waves, temperature, pressure, etc.)\nas key-value pairs.\n\nArgs:\n    station_id: NDBC station ID (e.g., '41001', '46042', 'TPLM2').\n    response_format: Output format \u2014 'markdown' (default) or 'json'.\n",
+     "inputSchema": {
+      "properties": {
+       "station_id": {
+        "title": "Station Id",
+        "type": "string"
+       },
+       "response_format": {
+        "default": "markdown",
+        "enum": [
+         "markdown",
+         "json"
+        ],
+        "title": "Response Format",
+        "type": "string"
+       }
+      },
+      "required": [
+       "station_id"
+      ],
+      "title": "ndbc_get_latest_observationArguments",
+      "type": "object"
+     },
+     "outputSchema": {
+      "properties": {
+       "result": {
+        "title": "Result",
+        "type": "string"
+       }
+      },
+      "required": [
+       "result"
+      ],
+      "title": "ndbc_get_latest_observationOutput",
+      "type": "object"
+     },
+     "icons": null,
+     "annotations": {
+      "title": null,
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": true
+     },
+     "meta": null,
+     "execution": null
+    },
+    {
+     "name": "ndbc_get_observations",
+     "title": null,
+     "description": "Get time series observations from an NDBC station.\n\nData covers the last 45 days (rolling), updated every ~10 minutes.\n\nArgs:\n    station_id: NDBC station ID (e.g., '41001', '46042').\n    hours: Number of hours to retrieve (default 24, max 1080 = 45 days).\n    variables: Optional list of variables to include (e.g., ['WSPD', 'WVHT', 'WTMP']). Default: all available.\n    response_format: Output format \u2014 'markdown' (default) or 'json'.\n    max_records: Cap on JSON records returned (default 2000). A long hours\n        window is thousands of points; only the most recent max_records are\n        kept, and the JSON flags any truncation. (Markdown is already capped.)\n",
+     "inputSchema": {
+      "properties": {
+       "station_id": {
+        "title": "Station Id",
+        "type": "string"
+       },
+       "hours": {
+        "default": 24,
+        "title": "Hours",
+        "type": "integer"
+       },
+       "variables": {
+        "anyOf": [
+         {
+          "items": {
+           "type": "string"
+          },
+          "type": "array"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Variables"
+       },
+       "response_format": {
+        "default": "markdown",
+        "enum": [
+         "markdown",
+         "json"
+        ],
+        "title": "Response Format",
+        "type": "string"
+       },
+       "max_records": {
+        "default": 2000,
+        "title": "Max Records",
+        "type": "integer"
+       }
+      },
+      "required": [
+       "station_id"
+      ],
+      "title": "ndbc_get_observationsArguments",
+      "type": "object"
+     },
+     "outputSchema": {
+      "properties": {
+       "result": {
+        "title": "Result",
+        "type": "string"
+       }
+      },
+      "required": [
+       "result"
+      ],
+      "title": "ndbc_get_observationsOutput",
+      "type": "object"
+     },
+     "icons": null,
+     "annotations": {
+      "title": null,
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": true
+     },
+     "meta": null,
+     "execution": null
+    },
+    {
+     "name": "ndbc_get_wave_summary",
+     "title": null,
+     "description": "Get spectral wave summary from an NDBC station.\n\nProvides swell and wind-wave separation from the .spec file.\n\nArgs:\n    station_id: NDBC station ID (e.g., '41001', '46042').\n    hours: Number of hours to retrieve (default 24, max 1080).\n    response_format: Output format \u2014 'markdown' (default) or 'json'.\n    max_records: Cap on JSON records returned (default 2000). Only the most\n        recent max_records are kept, and the JSON flags any truncation.\n        (Markdown is already capped.)\n",
+     "inputSchema": {
+      "properties": {
+       "station_id": {
+        "title": "Station Id",
+        "type": "string"
+       },
+       "hours": {
+        "default": 24,
+        "title": "Hours",
+        "type": "integer"
+       },
+       "response_format": {
+        "default": "markdown",
+        "enum": [
+         "markdown",
+         "json"
+        ],
+        "title": "Response Format",
+        "type": "string"
+       },
+       "max_records": {
+        "default": 2000,
+        "title": "Max Records",
+        "type": "integer"
+       }
+      },
+      "required": [
+       "station_id"
+      ],
+      "title": "ndbc_get_wave_summaryArguments",
+      "type": "object"
+     },
+     "outputSchema": {
+      "properties": {
+       "result": {
+        "title": "Result",
+        "type": "string"
+       }
+      },
+      "required": [
+       "result"
+      ],
+      "title": "ndbc_get_wave_summaryOutput",
+      "type": "object"
+     },
+     "icons": null,
+     "annotations": {
+      "title": null,
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": true
+     },
+     "meta": null,
+     "execution": null
+    },
+    {
+     "name": "ndbc_list_stations",
+     "title": null,
+     "description": "List active NDBC stations with optional filters.\n\nArgs:\n    station_type: Filter by platform type (e.g., 'buoy', 'fixed', 'dart', 'cman', 'tides', 'oilrig').\n    owner: Filter by station owner string (case-insensitive substring match, e.g., 'NDBC', 'Environment Canada').\n    has_met: If true, only stations with meteorological sensors.\n    limit: Maximum stations to return (default 50).\n    offset: Number of stations to skip for pagination (default 0).\n",
+     "inputSchema": {
+      "properties": {
+       "station_type": {
+        "anyOf": [
+         {
+          "type": "string"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Station Type"
+       },
+       "owner": {
+        "anyOf": [
+         {
+          "type": "string"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Owner"
+       },
+       "has_met": {
+        "anyOf": [
+         {
+          "type": "boolean"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Has Met"
+       },
+       "limit": {
+        "default": 50,
+        "title": "Limit",
+        "type": "integer"
+       },
+       "offset": {
+        "default": 0,
+        "title": "Offset",
+        "type": "integer"
+       }
+      },
+      "title": "ndbc_list_stationsArguments",
+      "type": "object"
+     },
+     "outputSchema": {
+      "properties": {
+       "result": {
+        "title": "Result",
+        "type": "string"
+       }
+      },
+      "required": [
+       "result"
+      ],
+      "title": "ndbc_list_stationsOutput",
+      "type": "object"
+     },
+     "icons": null,
+     "annotations": {
+      "title": null,
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": true
+     },
+     "meta": null,
+     "execution": null
+    },
+    {
+     "name": "ndbc_get_station",
+     "title": null,
+     "description": "Get metadata for a specific NDBC station.\n\nArgs:\n    station_id: NDBC station ID (e.g., '41001', '46042', 'TPLM2').\n",
+     "inputSchema": {
+      "properties": {
+       "station_id": {
+        "title": "Station Id",
+        "type": "string"
+       }
+      },
+      "required": [
+       "station_id"
+      ],
+      "title": "ndbc_get_stationArguments",
+      "type": "object"
+     },
+     "outputSchema": {
+      "properties": {
+       "result": {
+        "title": "Result",
+        "type": "string"
+       }
+      },
+      "required": [
+       "result"
+      ],
+      "title": "ndbc_get_stationOutput",
+      "type": "object"
+     },
+     "icons": null,
+     "annotations": {
+      "title": null,
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": true
+     },
+     "meta": null,
+     "execution": null
+    },
+    {
+     "name": "ndbc_find_nearest_stations",
+     "title": null,
+     "description": "Find NDBC stations nearest to a geographic coordinate.\n\nArgs:\n    latitude: Latitude in decimal degrees (e.g., 40.7).\n    longitude: Longitude in decimal degrees (e.g., -74.0).\n    radius_km: Search radius in kilometers (default 200).\n    station_type: Optional filter by platform type (e.g., 'buoy').\n    has_met: If true, only stations with meteorological sensors.\n    limit: Maximum number of stations to return (default 5).\n    response_format: Output format \u2014 'markdown' (default) or 'geojson'\n        (a FeatureCollection of Point features, coordinates [lon, lat]).\n",
+     "inputSchema": {
+      "properties": {
+       "latitude": {
+        "title": "Latitude",
+        "type": "number"
+       },
+       "longitude": {
+        "title": "Longitude",
+        "type": "number"
+       },
+       "radius_km": {
+        "default": 200.0,
+        "title": "Radius Km",
+        "type": "number"
+       },
+       "station_type": {
+        "anyOf": [
+         {
+          "type": "string"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Station Type"
+       },
+       "has_met": {
+        "anyOf": [
+         {
+          "type": "boolean"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Has Met"
+       },
+       "limit": {
+        "default": 5,
+        "title": "Limit",
+        "type": "integer"
+       },
+       "response_format": {
+        "default": "markdown",
+        "enum": [
+         "markdown",
+         "geojson"
+        ],
+        "title": "Response Format",
+        "type": "string"
+       }
+      },
+      "required": [
+       "latitude",
+       "longitude"
+      ],
+      "title": "ndbc_find_nearest_stationsArguments",
+      "type": "object"
+     },
+     "outputSchema": {
+      "properties": {
+       "result": {
+        "title": "Result",
+        "type": "string"
+       }
+      },
+      "required": [
+       "result"
+      ],
+      "title": "ndbc_find_nearest_stationsOutput",
+      "type": "object"
+     },
+     "icons": null,
+     "annotations": {
+      "title": null,
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": true
+     },
+     "meta": null,
+     "execution": null
+    }
+   ]
+  }
+ },
+ "server_processes_before_first_call": [
+  {
+   "pid": 198257,
+   "cmdline": [
+    "/mnt/d/ocean-mcp-wp9/phase0/env/bin/python",
+    "-m",
+    "ndbc_mcp"
+   ]
+  }
+ ],
+ "server_processes_after_last_call": [
+  {
+   "pid": 198257,
+   "cmdline": [
+    "/mnt/d/ocean-mcp-wp9/phase0/env/bin/python",
+    "-m",
+    "ndbc_mcp"
+   ]
+  }
+ ],
+ "events": [
+  {
+   "at": "2026-11-24T13:08:19.761+00:00",
+   "note": "B1 session 2: H fixed by rule",
+   "station_id": "44097",
+   "cycle": "2026-11-21T12:00:00+00:00",
+   "hours": 80
+  }
+ ],
+ "calls": [
+  {
+   "key": "S2.1",
+   "seq": 1,
+   "server": "ndbc-mcp",
+   "tool": "ndbc_get_observations",
+   "arguments": {
+    "station_id": "44097",
+    "hours": 80,
+    "variables": [
+     "WVHT"
+    ],
+    "response_format": "json",
+    "max_records": 2000
+   },
+   "pause_before_s": 0.0,
+   "started_at": "2026-11-24T13:08:19.762+00:00",
+   "finished_at": "2026-11-24T13:08:20.115+00:00",
+   "is_error": false,
+   "text_sha256": "bb1ab24643dd162a6dc76335b31ef116182dd19473c3e5aa0aa9ca62bb572ea1",
+   "result_sha256": "301a517dfe94a87d7e9b69cd79912033aefe14405f3cd2f2b82cb4bab0981767",
+   "result": {
+    "meta": null,
+    "content": [
+     {
+      "type": "text",
+      "text": "{\n  \"station\": \"44097\",\n  \"hours\": 80,\n  \"retrieved_at\": \"2026-11-24T13:08:20+00:00\",\n  \"truncated\": false,\n  \"returned\": 159,\n  \"total\": 159,\n  \"records\": [\n    {\n      \"datetime\": \"2026-11-24T12:30:00\",\n      \"WVHT\": 1.6\n    },\n    {\n      \"datetime\": \"2026-11-24T12:00:00\",\n      \"WVHT\": 1.6\n    },\n    {\n      \"datetime\": \"2026-11-24T11:30:00\",\n      \"WVHT\": 1.6\n    },\n    {\n      \"datetime\": \"2026-11-24T11:00:00\",\n      \"WVHT\": 1.6\n    },\n    {\n      \"datetime\": \"2026-11-24T10:30:00\",\n      \"WVHT\": 1.6\n    },\n    {\n      \"datetime\": \"2026-11-24T10:00:00\",\n      \"WVHT\": 1.6\n    },\n    {\n      \"datetime\": \"2026-11-24T09:30:00\",\n      \"WVHT\": 1.6\n    },\n    {\n      \"datetime\": \"2026-11-24T09:00:00\",\n      \"WVHT\": 1.7\n    },\n    {\n      \"datetime\": \"2026-11-24T08:30:00\",\n      \"WVHT\": 1.7\n    },\n    {\n      \"datetime\": \"2026-11-24T08:00:00\",\n      \"WVHT\": 1.8\n    },\n    {\n      \"datetime\": \"2026-11-24T07:30:00\",\n      \"WVHT\": 1.8\n    },\n    {\n      \"datetime\": \"2026-11-24T07:00:00\",\n      \"WVHT\": 1.9\n    },\n    {\n      \"datetime\": \"2026-11-24T06:30:00\",\n      \"WVHT\": 1.9\n    },\n    {\n      \"datetime\": \"2026-11-24T06:00:00\",\n      \"WVHT\": 2.0\n    },\n    {\n      \"datetime\": \"2026-11-24T05:30:00\",\n      \"WVHT\": 2.0\n    },\n    {\n      \"datetime\": \"2026-11-24T05:00:00\",\n      \"WVHT\": 2.2\n    },\n    {\n      \"datetime\": \"2026-11-24T04:30:00\",\n      \"WVHT\": 2.3\n    },\n    {\n      \"datetime\": \"2026-11-24T04:00:00\",\n      \"WVHT\": 2.4\n    },\n    {\n      \"datetime\": \"2026-11-24T03:30:00\",\n      \"WVHT\": 2.2\n    },\n    {\n      \"datetime\": \"2026-11-24T03:00:00\",\n      \"WVHT\": 2.0\n    },\n    {\n      \"datetime\": \"2026-11-24T02:30:00\",\n      \"WVHT\": 2.0\n    },\n    {\n      \"datetime\": \"2026-11-24T02:00:00\",\n      \"WVHT\": 2.2\n    },\n    {\n      \"datetime\": \"2026-11-24T01:30:00\",\n      \"WVHT\": 1.9\n    },\n    {\n      \"datetime\": \"2026-11-24T01:00:00\",\n      \"WVHT\": 2.1\n    },\n    {\n      \"datetime\": \"2026-11-24T00:30:00\",\n      \"WVHT\": 2.2\n    },\n    {\n      \"datetime\": \"2026-11-24T00:00:00\",\n      \"WVHT\": 2.3\n    },\n    {\n      \"datetime\": \"2026-11-23T23:30:00\",\n      \"WVHT\": 2.3\n    },\n    {\n      \"datetime\": \"2026-11-23T23:00:00\",\n      \"WVHT\": 2.4\n    },\n    {\n      \"datetime\": \"2026-11-23T22:30:00\",\n      \"WVHT\": 2.1\n    },\n    {\n      \"datetime\": \"2026-11-23T22:00:00\",\n      \"WVHT\": 2.4\n    },\n    {\n      \"datetime\": \"2026-11-23T21:30:00\",\n      \"WVHT\": 2.5\n    },\n    {\n      \"datetime\": \"2026-11-23T21:00:00\",\n      \"WVHT\": 2.2\n    },\n    {\n      \"datetime\": \"2026-11-23T20:30:00\",\n      \"WVHT\": 2.4\n    },\n    {\n      \"datetime\": \"2026-11-23T20:00:00\",\n      \"WVHT\": 2.1\n    },\n    {\n      \"datetime\": \"2026-11-23T19:30:00\",\n      \"WVHT\": 2.2\n    },\n    {\n      \"datetime\": \"2026-11-23T19:00:00\",\n      \"WVHT\": 2.2\n    },\n    {\n      \"datetime\": \"2026-11-23T18:30:00\",\n      \"WVHT\": 2.1\n    },\n    {\n      \"datetime\": \"2026-11-23T18:00:00\",\n      \"WVHT\": 2.2\n    },\n    {\n      \"datetime\": \"2026-11-23T17:30:00\",\n      \"WVHT\": 2.1\n    },\n    {\n      \"datetime\": \"2026-11-23T17:00:00\",\n      \"WVHT\": 2.1\n    },\n    {\n      \"datetime\": \"2026-11-23T16:30:00\",\n      \"WVHT\": 2.3\n    },\n    {\n      \"datetime\": \"2026-11-23T16:00:00\",\n      \"WVHT\": 2.0\n    },\n    {\n      \"datetime\": \"2026-11-23T15:30:00\",\n      \"WVHT\": 2.1\n    },\n    {\n      \"datetime\": \"2026-11-23T15:00:00\",\n      \"WVHT\": 2.2\n    },\n    {\n      \"datetime\": \"2026-11-23T14:30:00\",\n      \"WVHT\": 2.3\n    },\n    {\n      \"datetime\": \"2026-11-23T14:00:00\",\n      \"WVHT\": 2.2\n    },\n    {\n      \"datetime\": \"2026-11-23T13:30:00\",\n      \"WVHT\": 2.2\n    },\n    {\n      \"datetime\": \"2026-11-23T13:00:00\",\n      \"WVHT\": 2.4\n    },\n    {\n      \"datetime\": \"2026-11-23T12:30:00\",\n      \"WVHT\": 2.6\n    },\n    {\n      \"datetime\": \"2026-11-23T12:00:00\",\n      \"WVHT\": 2.6\n    },\n    {\n      \"datetime\": \"2026-11-23T11:30:00\",\n      \"WVHT\": 2.5\n    },\n    {\n      \"datetime\": \"2026-11-23T11:00:00\",\n      \"WVHT\": 2.9\n    },\n    {\n      \"datetime\": \"2026-11-23T10:30:00\",\n      \"WVHT\": 2.8\n    },\n    {\n      \"datetime\": \"2026-11-23T10:00:00\",\n      \"WVHT\": 3.0\n    },\n    {\n      \"datetime\": \"2026-11-23T09:30:00\",\n      \"WVHT\": 3.0\n    },\n    {\n      \"datetime\": \"2026-11-23T09:00:00\",\n      \"WVHT\": 3.2\n    },\n    {\n      \"datetime\": \"2026-11-23T08:30:00\",\n      \"WVHT\": 3.5\n    },\n    {\n      \"datetime\": \"2026-11-23T08:00:00\",\n      \"WVHT\": 3.3\n    },\n    {\n      \"datetime\": \"2026-11-23T07:30:00\",\n      \"WVHT\": 3.7\n    },\n    {\n      \"datetime\": \"2026-11-23T07:00:00\",\n      \"WVHT\": 3.5\n    },\n    {\n      \"datetime\": \"2026-11-23T06:30:00\",\n      \"WVHT\": 3.6\n    },\n    {\n      \"datetime\": \"2026-11-23T06:00:00\",\n      \"WVHT\": 3.1\n    },\n    {\n      \"datetime\": \"2026-11-23T05:30:00\",\n      \"WVHT\": 2.8\n    },\n    {\n      \"datetime\": \"2026-11-23T05:00:00\",\n      \"WVHT\": 2.2\n    },\n    {\n      \"datetime\": \"2026-11-23T04:30:00\",\n      \"WVHT\": 2.1\n    },\n    {\n      \"datetime\": \"2026-11-23T04:00:00\",\n      \"WVHT\": 2.0\n    },\n    {\n      \"datetime\": \"2026-11-23T03:30:00\",\n      \"WVHT\": 1.7\n    },\n    {\n      \"datetime\": \"2026-11-23T03:00:00\",\n      \"WVHT\": 1.6\n    },\n    {\n      \"datetime\": \"2026-11-23T02:30:00\",\n      \"WVHT\": 1.4\n    },\n    {\n      \"datetime\": \"2026-11-23T02:00:00\",\n      \"WVHT\": 1.4\n    },\n    {\n      \"datetime\": \"2026-11-23T01:30:00\",\n      \"WVHT\": 1.3\n    },\n    {\n      \"datetime\": \"2026-11-23T01:00:00\",\n      \"WVHT\": 1.2\n    },\n    {\n      \"datetime\": \"2026-11-23T00:30:00\",\n      \"WVHT\": 1.1\n    },\n    {\n      \"datetime\": \"2026-11-23T00:00:00\",\n      \"WVHT\": 1.1\n    },\n    {\n      \"datetime\": \"2026-11-22T23:00:00\",\n      \"WVHT\": 0.9\n    },\n    {\n      \"datetime\": \"2026-11-22T22:30:00\",\n      \"WVHT\": 0.9\n    },\n    {\n      \"datetime\": \"2026-11-22T22:00:00\",\n      \"WVHT\": 0.9\n    },\n    {\n      \"datetime\": \"2026-11-22T21:30:00\",\n      \"WVHT\": 0.9\n    },\n    {\n      \"datetime\": \"2026-11-22T21:00:00\",\n      \"WVHT\": 0.8\n    },\n    {\n      \"datetime\": \"2026-11-22T20:30:00\",\n      \"WVHT\": 0.7\n    },\n    {\n      \"datetime\": \"2026-11-22T20:00:00\",\n      \"WVHT\": 0.8\n    },\n    {\n      \"datetime\": \"2026-11-22T19:30:00\",\n      \"WVHT\": 0.7\n    },\n    {\n      \"datetime\": \"2026-11-22T19:00:00\",\n      \"WVHT\": 0.7\n    },\n    {\n      \"datetime\": \"2026-11-22T18:30:00\",\n      \"WVHT\": 0.7\n    },\n    {\n      \"datetime\": \"2026-11-22T18:00:00\",\n      \"WVHT\": 0.7\n    },\n    {\n      \"datetime\": \"2026-11-22T17:30:00\",\n      \"WVHT\": 0.7\n    },\n    {\n      \"datetime\": \"2026-11-22T17:00:00\",\n      \"WVHT\": 0.7\n    },\n    {\n      \"datetime\": \"2026-11-22T16:30:00\",\n      \"WVHT\": 0.7\n    },\n    {\n      \"datetime\": \"2026-11-22T16:00:00\",\n      \"WVHT\": 0.6\n    },\n    {\n      \"datetime\": \"2026-11-22T15:30:00\",\n      \"WVHT\": 0.6\n    },\n    {\n      \"datetime\": \"2026-11-22T15:00:00\",\n      \"WVHT\": 0.7\n    },\n    {\n      \"datetime\": \"2026-11-22T14:30:00\",\n      \"WVHT\": 0.6\n    },\n    {\n      \"datetime\": \"2026-11-22T14:00:00\",\n      \"WVHT\": 0.6\n    },\n    {\n      \"datetime\": \"2026-11-22T13:30:00\",\n      \"WVHT\": 0.6\n    },\n    {\n      \"datetime\": \"2026-11-22T13:00:00\",\n      \"WVHT\": 0.6\n    },\n    {\n      \"datetime\": \"2026-11-22T12:30:00\",\n      \"WVHT\": 0.6\n    },\n    {\n      \"datetime\": \"2026-11-22T12:00:00\",\n      \"WVHT\": 0.6\n    },\n    {\n      \"datetime\": \"2026-11-22T11:30:00\",\n      \"WVHT\": 0.6\n    },\n    {\n      \"datetime\": \"2026-11-22T11:00:00\",\n      \"WVHT\": 0.6\n    },\n    {\n      \"datetime\": \"2026-11-22T10:30:00\",\n      \"WVHT\": 0.6\n    },\n    {\n      \"datetime\": \"2026-11-22T10:00:00\",\n      \"WVHT\": 0.6\n    },\n    {\n      \"datetime\": \"2026-11-22T09:30:00\",\n      \"WVHT\": 0.6\n    },\n    {\n      \"datetime\": \"2026-11-22T09:00:00\",\n      \"WVHT\": 0.6\n    },\n    {\n      \"datetime\": \"2026-11-22T08:30:00\",\n      \"WVHT\": 0.5\n    },\n    {\n      \"datetime\": \"2026-11-22T08:00:00\",\n      \"WVHT\": 0.5\n    },\n    {\n      \"datetime\": \"2026-11-22T07:30:00\",\n      \"WVHT\": 0.5\n    },\n    {\n      \"datetime\": \"2026-11-22T07:00:00\",\n      \"WVHT\": 0.6\n    },\n    {\n      \"datetime\": \"2026-11-22T06:30:00\",\n      \"WVHT\": 0.5\n    },\n    {\n      \"datetime\": \"2026-11-22T06:00:00\",\n      \"WVHT\": 0.5\n    },\n    {\n      \"datetime\": \"2026-11-22T05:30:00\",\n      \"WVHT\": 0.5\n    },\n    {\n      \"datetime\": \"2026-11-22T05:00:00\",\n      \"WVHT\": 0.5\n    },\n    {\n      \"datetime\": \"2026-11-22T04:30:00\",\n      \"WVHT\": 0.5\n    },\n    {\n      \"datetime\": \"2026-11-22T04:00:00\",\n      \"WVHT\": 0.6\n    },\n    {\n      \"datetime\": \"2026-11-22T03:30:00\",\n      \"WVHT\": 0.5\n    },\n    {\n      \"datetime\": \"2026-11-22T03:00:00\",\n      \"WVHT\": 0.5\n    },\n    {\n      \"datetime\": \"2026-11-22T02:30:00\",\n      \"WVHT\": 0.5\n    },\n    {\n      \"datetime\": \"2026-11-22T02:00:00\",\n      \"WVHT\": 0.5\n    },\n    {\n      \"datetime\": \"2026-11-22T01:30:00\",\n      \"WVHT\": 0.5\n    },\n    {\n      \"datetime\": \"2026-11-22T01:00:00\",\n      \"WVHT\": 0.5\n    },\n    {\n      \"datetime\": \"2026-11-22T00:30:00\",\n      \"WVHT\": 0.5\n    },\n    {\n      \"datetime\": \"2026-11-22T00:00:00\",\n      \"WVHT\": 0.5\n    },\n    {\n      \"datetime\": \"2026-11-21T23:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T22:30:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T22:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T21:30:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T21:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T20:30:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T20:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T19:30:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T19:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T18:30:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T18:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T17:30:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T17:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T16:30:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T16:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T15:30:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T15:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T14:30:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T14:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T13:30:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T13:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T12:30:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T12:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T11:30:00\",\n      \"WVHT\": 0.3\n    },\n    {\n      \"datetime\": \"2026-11-21T11:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T10:30:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T10:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T09:30:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T09:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T08:30:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T08:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T07:30:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T07:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T06:30:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T06:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T05:30:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T05:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T04:30:00\",\n      \"WVHT\": 0.4\n    }\n  ]\n}",
+      "annotations": null,
+      "meta": null
+     }
+    ],
+    "structuredContent": {
+     "result": "{\n  \"station\": \"44097\",\n  \"hours\": 80,\n  \"retrieved_at\": \"2026-11-24T13:08:20+00:00\",\n  \"truncated\": false,\n  \"returned\": 159,\n  \"total\": 159,\n  \"records\": [\n    {\n      \"datetime\": \"2026-11-24T12:30:00\",\n      \"WVHT\": 1.6\n    },\n    {\n      \"datetime\": \"2026-11-24T12:00:00\",\n      \"WVHT\": 1.6\n    },\n    {\n      \"datetime\": \"2026-11-24T11:30:00\",\n      \"WVHT\": 1.6\n    },\n    {\n      \"datetime\": \"2026-11-24T11:00:00\",\n      \"WVHT\": 1.6\n    },\n    {\n      \"datetime\": \"2026-11-24T10:30:00\",\n      \"WVHT\": 1.6\n    },\n    {\n      \"datetime\": \"2026-11-24T10:00:00\",\n      \"WVHT\": 1.6\n    },\n    {\n      \"datetime\": \"2026-11-24T09:30:00\",\n      \"WVHT\": 1.6\n    },\n    {\n      \"datetime\": \"2026-11-24T09:00:00\",\n      \"WVHT\": 1.7\n    },\n    {\n      \"datetime\": \"2026-11-24T08:30:00\",\n      \"WVHT\": 1.7\n    },\n    {\n      \"datetime\": \"2026-11-24T08:00:00\",\n      \"WVHT\": 1.8\n    },\n    {\n      \"datetime\": \"2026-11-24T07:30:00\",\n      \"WVHT\": 1.8\n    },\n    {\n      \"datetime\": \"2026-11-24T07:00:00\",\n      \"WVHT\": 1.9\n    },\n    {\n      \"datetime\": \"2026-11-24T06:30:00\",\n      \"WVHT\": 1.9\n    },\n    {\n      \"datetime\": \"2026-11-24T06:00:00\",\n      \"WVHT\": 2.0\n    },\n    {\n      \"datetime\": \"2026-11-24T05:30:00\",\n      \"WVHT\": 2.0\n    },\n    {\n      \"datetime\": \"2026-11-24T05:00:00\",\n      \"WVHT\": 2.2\n    },\n    {\n      \"datetime\": \"2026-11-24T04:30:00\",\n      \"WVHT\": 2.3\n    },\n    {\n      \"datetime\": \"2026-11-24T04:00:00\",\n      \"WVHT\": 2.4\n    },\n    {\n      \"datetime\": \"2026-11-24T03:30:00\",\n      \"WVHT\": 2.2\n    },\n    {\n      \"datetime\": \"2026-11-24T03:00:00\",\n      \"WVHT\": 2.0\n    },\n    {\n      \"datetime\": \"2026-11-24T02:30:00\",\n      \"WVHT\": 2.0\n    },\n    {\n      \"datetime\": \"2026-11-24T02:00:00\",\n      \"WVHT\": 2.2\n    },\n    {\n      \"datetime\": \"2026-11-24T01:30:00\",\n      \"WVHT\": 1.9\n    },\n    {\n      \"datetime\": \"2026-11-24T01:00:00\",\n      \"WVHT\": 2.1\n    },\n    {\n      \"datetime\": \"2026-11-24T00:30:00\",\n      \"WVHT\": 2.2\n    },\n    {\n      \"datetime\": \"2026-11-24T00:00:00\",\n      \"WVHT\": 2.3\n    },\n    {\n      \"datetime\": \"2026-11-23T23:30:00\",\n      \"WVHT\": 2.3\n    },\n    {\n      \"datetime\": \"2026-11-23T23:00:00\",\n      \"WVHT\": 2.4\n    },\n    {\n      \"datetime\": \"2026-11-23T22:30:00\",\n      \"WVHT\": 2.1\n    },\n    {\n      \"datetime\": \"2026-11-23T22:00:00\",\n      \"WVHT\": 2.4\n    },\n    {\n      \"datetime\": \"2026-11-23T21:30:00\",\n      \"WVHT\": 2.5\n    },\n    {\n      \"datetime\": \"2026-11-23T21:00:00\",\n      \"WVHT\": 2.2\n    },\n    {\n      \"datetime\": \"2026-11-23T20:30:00\",\n      \"WVHT\": 2.4\n    },\n    {\n      \"datetime\": \"2026-11-23T20:00:00\",\n      \"WVHT\": 2.1\n    },\n    {\n      \"datetime\": \"2026-11-23T19:30:00\",\n      \"WVHT\": 2.2\n    },\n    {\n      \"datetime\": \"2026-11-23T19:00:00\",\n      \"WVHT\": 2.2\n    },\n    {\n      \"datetime\": \"2026-11-23T18:30:00\",\n      \"WVHT\": 2.1\n    },\n    {\n      \"datetime\": \"2026-11-23T18:00:00\",\n      \"WVHT\": 2.2\n    },\n    {\n      \"datetime\": \"2026-11-23T17:30:00\",\n      \"WVHT\": 2.1\n    },\n    {\n      \"datetime\": \"2026-11-23T17:00:00\",\n      \"WVHT\": 2.1\n    },\n    {\n      \"datetime\": \"2026-11-23T16:30:00\",\n      \"WVHT\": 2.3\n    },\n    {\n      \"datetime\": \"2026-11-23T16:00:00\",\n      \"WVHT\": 2.0\n    },\n    {\n      \"datetime\": \"2026-11-23T15:30:00\",\n      \"WVHT\": 2.1\n    },\n    {\n      \"datetime\": \"2026-11-23T15:00:00\",\n      \"WVHT\": 2.2\n    },\n    {\n      \"datetime\": \"2026-11-23T14:30:00\",\n      \"WVHT\": 2.3\n    },\n    {\n      \"datetime\": \"2026-11-23T14:00:00\",\n      \"WVHT\": 2.2\n    },\n    {\n      \"datetime\": \"2026-11-23T13:30:00\",\n      \"WVHT\": 2.2\n    },\n    {\n      \"datetime\": \"2026-11-23T13:00:00\",\n      \"WVHT\": 2.4\n    },\n    {\n      \"datetime\": \"2026-11-23T12:30:00\",\n      \"WVHT\": 2.6\n    },\n    {\n      \"datetime\": \"2026-11-23T12:00:00\",\n      \"WVHT\": 2.6\n    },\n    {\n      \"datetime\": \"2026-11-23T11:30:00\",\n      \"WVHT\": 2.5\n    },\n    {\n      \"datetime\": \"2026-11-23T11:00:00\",\n      \"WVHT\": 2.9\n    },\n    {\n      \"datetime\": \"2026-11-23T10:30:00\",\n      \"WVHT\": 2.8\n    },\n    {\n      \"datetime\": \"2026-11-23T10:00:00\",\n      \"WVHT\": 3.0\n    },\n    {\n      \"datetime\": \"2026-11-23T09:30:00\",\n      \"WVHT\": 3.0\n    },\n    {\n      \"datetime\": \"2026-11-23T09:00:00\",\n      \"WVHT\": 3.2\n    },\n    {\n      \"datetime\": \"2026-11-23T08:30:00\",\n      \"WVHT\": 3.5\n    },\n    {\n      \"datetime\": \"2026-11-23T08:00:00\",\n      \"WVHT\": 3.3\n    },\n    {\n      \"datetime\": \"2026-11-23T07:30:00\",\n      \"WVHT\": 3.7\n    },\n    {\n      \"datetime\": \"2026-11-23T07:00:00\",\n      \"WVHT\": 3.5\n    },\n    {\n      \"datetime\": \"2026-11-23T06:30:00\",\n      \"WVHT\": 3.6\n    },\n    {\n      \"datetime\": \"2026-11-23T06:00:00\",\n      \"WVHT\": 3.1\n    },\n    {\n      \"datetime\": \"2026-11-23T05:30:00\",\n      \"WVHT\": 2.8\n    },\n    {\n      \"datetime\": \"2026-11-23T05:00:00\",\n      \"WVHT\": 2.2\n    },\n    {\n      \"datetime\": \"2026-11-23T04:30:00\",\n      \"WVHT\": 2.1\n    },\n    {\n      \"datetime\": \"2026-11-23T04:00:00\",\n      \"WVHT\": 2.0\n    },\n    {\n      \"datetime\": \"2026-11-23T03:30:00\",\n      \"WVHT\": 1.7\n    },\n    {\n      \"datetime\": \"2026-11-23T03:00:00\",\n      \"WVHT\": 1.6\n    },\n    {\n      \"datetime\": \"2026-11-23T02:30:00\",\n      \"WVHT\": 1.4\n    },\n    {\n      \"datetime\": \"2026-11-23T02:00:00\",\n      \"WVHT\": 1.4\n    },\n    {\n      \"datetime\": \"2026-11-23T01:30:00\",\n      \"WVHT\": 1.3\n    },\n    {\n      \"datetime\": \"2026-11-23T01:00:00\",\n      \"WVHT\": 1.2\n    },\n    {\n      \"datetime\": \"2026-11-23T00:30:00\",\n      \"WVHT\": 1.1\n    },\n    {\n      \"datetime\": \"2026-11-23T00:00:00\",\n      \"WVHT\": 1.1\n    },\n    {\n      \"datetime\": \"2026-11-22T23:00:00\",\n      \"WVHT\": 0.9\n    },\n    {\n      \"datetime\": \"2026-11-22T22:30:00\",\n      \"WVHT\": 0.9\n    },\n    {\n      \"datetime\": \"2026-11-22T22:00:00\",\n      \"WVHT\": 0.9\n    },\n    {\n      \"datetime\": \"2026-11-22T21:30:00\",\n      \"WVHT\": 0.9\n    },\n    {\n      \"datetime\": \"2026-11-22T21:00:00\",\n      \"WVHT\": 0.8\n    },\n    {\n      \"datetime\": \"2026-11-22T20:30:00\",\n      \"WVHT\": 0.7\n    },\n    {\n      \"datetime\": \"2026-11-22T20:00:00\",\n      \"WVHT\": 0.8\n    },\n    {\n      \"datetime\": \"2026-11-22T19:30:00\",\n      \"WVHT\": 0.7\n    },\n    {\n      \"datetime\": \"2026-11-22T19:00:00\",\n      \"WVHT\": 0.7\n    },\n    {\n      \"datetime\": \"2026-11-22T18:30:00\",\n      \"WVHT\": 0.7\n    },\n    {\n      \"datetime\": \"2026-11-22T18:00:00\",\n      \"WVHT\": 0.7\n    },\n    {\n      \"datetime\": \"2026-11-22T17:30:00\",\n      \"WVHT\": 0.7\n    },\n    {\n      \"datetime\": \"2026-11-22T17:00:00\",\n      \"WVHT\": 0.7\n    },\n    {\n      \"datetime\": \"2026-11-22T16:30:00\",\n      \"WVHT\": 0.7\n    },\n    {\n      \"datetime\": \"2026-11-22T16:00:00\",\n      \"WVHT\": 0.6\n    },\n    {\n      \"datetime\": \"2026-11-22T15:30:00\",\n      \"WVHT\": 0.6\n    },\n    {\n      \"datetime\": \"2026-11-22T15:00:00\",\n      \"WVHT\": 0.7\n    },\n    {\n      \"datetime\": \"2026-11-22T14:30:00\",\n      \"WVHT\": 0.6\n    },\n    {\n      \"datetime\": \"2026-11-22T14:00:00\",\n      \"WVHT\": 0.6\n    },\n    {\n      \"datetime\": \"2026-11-22T13:30:00\",\n      \"WVHT\": 0.6\n    },\n    {\n      \"datetime\": \"2026-11-22T13:00:00\",\n      \"WVHT\": 0.6\n    },\n    {\n      \"datetime\": \"2026-11-22T12:30:00\",\n      \"WVHT\": 0.6\n    },\n    {\n      \"datetime\": \"2026-11-22T12:00:00\",\n      \"WVHT\": 0.6\n    },\n    {\n      \"datetime\": \"2026-11-22T11:30:00\",\n      \"WVHT\": 0.6\n    },\n    {\n      \"datetime\": \"2026-11-22T11:00:00\",\n      \"WVHT\": 0.6\n    },\n    {\n      \"datetime\": \"2026-11-22T10:30:00\",\n      \"WVHT\": 0.6\n    },\n    {\n      \"datetime\": \"2026-11-22T10:00:00\",\n      \"WVHT\": 0.6\n    },\n    {\n      \"datetime\": \"2026-11-22T09:30:00\",\n      \"WVHT\": 0.6\n    },\n    {\n      \"datetime\": \"2026-11-22T09:00:00\",\n      \"WVHT\": 0.6\n    },\n    {\n      \"datetime\": \"2026-11-22T08:30:00\",\n      \"WVHT\": 0.5\n    },\n    {\n      \"datetime\": \"2026-11-22T08:00:00\",\n      \"WVHT\": 0.5\n    },\n    {\n      \"datetime\": \"2026-11-22T07:30:00\",\n      \"WVHT\": 0.5\n    },\n    {\n      \"datetime\": \"2026-11-22T07:00:00\",\n      \"WVHT\": 0.6\n    },\n    {\n      \"datetime\": \"2026-11-22T06:30:00\",\n      \"WVHT\": 0.5\n    },\n    {\n      \"datetime\": \"2026-11-22T06:00:00\",\n      \"WVHT\": 0.5\n    },\n    {\n      \"datetime\": \"2026-11-22T05:30:00\",\n      \"WVHT\": 0.5\n    },\n    {\n      \"datetime\": \"2026-11-22T05:00:00\",\n      \"WVHT\": 0.5\n    },\n    {\n      \"datetime\": \"2026-11-22T04:30:00\",\n      \"WVHT\": 0.5\n    },\n    {\n      \"datetime\": \"2026-11-22T04:00:00\",\n      \"WVHT\": 0.6\n    },\n    {\n      \"datetime\": \"2026-11-22T03:30:00\",\n      \"WVHT\": 0.5\n    },\n    {\n      \"datetime\": \"2026-11-22T03:00:00\",\n      \"WVHT\": 0.5\n    },\n    {\n      \"datetime\": \"2026-11-22T02:30:00\",\n      \"WVHT\": 0.5\n    },\n    {\n      \"datetime\": \"2026-11-22T02:00:00\",\n      \"WVHT\": 0.5\n    },\n    {\n      \"datetime\": \"2026-11-22T01:30:00\",\n      \"WVHT\": 0.5\n    },\n    {\n      \"datetime\": \"2026-11-22T01:00:00\",\n      \"WVHT\": 0.5\n    },\n    {\n      \"datetime\": \"2026-11-22T00:30:00\",\n      \"WVHT\": 0.5\n    },\n    {\n      \"datetime\": \"2026-11-22T00:00:00\",\n      \"WVHT\": 0.5\n    },\n    {\n      \"datetime\": \"2026-11-21T23:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T22:30:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T22:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T21:30:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T21:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T20:30:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T20:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T19:30:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T19:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T18:30:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T18:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T17:30:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T17:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T16:30:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T16:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T15:30:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T15:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T14:30:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T14:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T13:30:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T13:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T12:30:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T12:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T11:30:00\",\n      \"WVHT\": 0.3\n    },\n    {\n      \"datetime\": \"2026-11-21T11:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T10:30:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T10:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T09:30:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T09:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T08:30:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T08:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T07:30:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T07:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T06:30:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T06:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T05:30:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T05:00:00\",\n      \"WVHT\": 0.4\n    },\n    {\n      \"datetime\": \"2026-11-21T04:30:00\",\n      \"WVHT\": 0.4\n    }\n  ]\n}"
+    },
+    "isError": false
+   }
+  }
+ ]
+}
